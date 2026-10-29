@@ -1,0 +1,87 @@
+{
+  "name": "Sync vulnerability intelligence",
+  "on": {
+    "schedule": [
+      {
+        "cron": "0 0 * * *",
+        "timezone": "Asia/Kolkata"
+      }
+    ],
+    "workflow_dispatch": {}
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "vulnerability-sync-${{ github.ref }}",
+    "cancel-in-progress": false
+  },
+  "jobs": {
+    "sync": {
+      "if": "vars.SYNC_ENABLED == 'true' && github.ref_name == github.event.repository.default_branch",
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 90,
+      "permissions": {
+        "contents": "write"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "with": {
+            "fetch-depth": 0
+          }
+        },
+        {
+          "uses": "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "with": {
+            "python-version": "3.12"
+          }
+        },
+        {
+          "name": "Restore local intelligence state",
+          "uses": "actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830",
+          "with": {
+            "path": "indexes/intelligence.sqlite\n.cache/http",
+            "key": "intel-v1-${{ github.ref_name }}-${{ github.run_id }}-${{ github.run_attempt }}",
+            "restore-keys": "intel-v1-${{ github.ref_name }}-"
+          }
+        },
+        {
+          "name": "Prevent silent historical reset",
+          "run": "if [ ! -f indexes/intelligence.sqlite ] && [ '${{ github.event_name }}' != 'workflow_dispatch' ]; then echo 'Missing state: restore approved baseline before resuming'; exit 1; fi"
+        },
+        {
+          "name": "Tests and syntax",
+          "run": "python -m unittest discover -s tests -v\npython -m compileall -q scripts tests"
+        },
+        {
+          "name": "Synchronize official metadata",
+          "env": {
+            "GITHUB_TOKEN": "${{ github.token }}",
+            "NVD_API_KEY": "${{ secrets.NVD_API_KEY }}"
+          },
+          "run": "python scripts/sync.py"
+        },
+        {
+          "name": "Validate data and repository limits",
+          "run": "python scripts/validate.py"
+        },
+        {
+          "name": "Publish scoped validated changes",
+          "run": "python scripts/publish_data.py"
+        },
+        {
+          "name": "Preserve state and failure evidence",
+          "if": "always()",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "intelligence-state-${{ github.run_id }}",
+            "path": "indexes/intelligence.sqlite\nmetadata/",
+            "retention-days": "${{ vars.INTEL_RETENTION_DAYS || 7 }}",
+            "if-no-files-found": "warn"
+          }
+        }
+      ]
+    }
+  }
+}
