@@ -1,5 +1,5 @@
 {
-  "name": "Sync vulnerability intelligence",
+  "name": "Sync THREAT-BASE datasets",
   "on": {
     "schedule": [
       {
@@ -13,14 +13,14 @@
     "contents": "read"
   },
   "concurrency": {
-    "group": "vulnerability-sync-${{ github.ref }}",
+    "group": "threat-base-data-publication",
     "cancel-in-progress": false
   },
   "jobs": {
     "sync": {
       "if": "(github.event_name == 'workflow_dispatch' || vars.SYNC_ENABLED == 'true') && github.ref_name == github.event.repository.default_branch && github.ref_type == 'branch'",
       "runs-on": "ubuntu-latest",
-      "timeout-minutes": 90,
+      "timeout-minutes": 180,
       "permissions": {
         "contents": "write"
       },
@@ -28,58 +28,20 @@
         {
           "uses": "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
           "with": {
-            "fetch-depth": 0
+            "fetch-depth": 0,
+            "persist-credentials": true
           }
         },
         {
-          "uses": "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
-          "with": {
-            "python-version": "3.12"
-          }
+          "name": "Mirror original source data",
+          "run": "bash .github/scripts/sync.sh"
         },
         {
-          "name": "Restore local intelligence state",
-          "uses": "actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830",
-          "with": {
-            "path": "indexes/intelligence.sqlite\n.cache/http",
-            "key": "intel-v1-${{ github.ref_name }}-${{ github.run_id }}-${{ github.run_attempt }}",
-            "restore-keys": "intel-v1-${{ github.ref_name }}-"
-          }
-        },
-        {
-          "name": "Prevent silent historical reset",
-          "run": "if [ ! -f indexes/intelligence.sqlite ] && [ '${{ github.event_name }}' != 'workflow_dispatch' ]; then echo 'Missing state: restore approved baseline before resuming'; exit 1; fi"
-        },
-        {
-          "name": "Tests and syntax",
-          "run": "python -m unittest discover -s tests -v\npython -m compileall -q scripts tests"
-        },
-        {
-          "name": "Synchronize official metadata",
+          "name": "Publish source directories",
           "env": {
-            "GITHUB_TOKEN": "${{ github.token }}",
-            "NVD_API_KEY": "${{ secrets.NVD_API_KEY }}"
+            "TARGET_BRANCH": "${{ github.event.repository.default_branch }}"
           },
-          "run": "python scripts/sync.py"
-        },
-        {
-          "name": "Validate data and repository limits",
-          "run": "python scripts/validate.py"
-        },
-        {
-          "name": "Publish scoped validated changes",
-          "run": "python scripts/publish_data.py"
-        },
-        {
-          "name": "Preserve state and failure evidence",
-          "if": "always()",
-          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
-          "with": {
-            "name": "intelligence-state-${{ github.run_id }}",
-            "path": "indexes/intelligence.sqlite\nmetadata/",
-            "retention-days": "${{ vars.INTEL_RETENTION_DAYS || 7 }}",
-            "if-no-files-found": "warn"
-          }
+          "run": "set -Eeuo pipefail\ngit config user.name 'github-actions[bot]'\ngit config user.email '41898282+github-actions[bot]@users.noreply.github.com'\ngit add -- cvelistV5 nvd-json-data-feeds github-advisory-database pypa-advisory-database mitre-attack cisa-advisories cisa-kev epss cwe capec redhat-advisories .upstream-state\ngit diff --cached --quiet && exit 0\ngit commit -m \"data: synchronize upstream datasets\"\nfor attempt in 1 2 3; do\n  git push origin \"HEAD:$TARGET_BRANCH\" && exit 0\n  git fetch origin \"$TARGET_BRANCH\"\n  if ! git rebase \"origin/$TARGET_BRANCH\"; then\n    git rebase --abort\n    exit 1\n  fi\ndone\nexit 1"
         }
       ]
     }

@@ -1,9 +1,9 @@
 # Data sources and original publisher attribution
 
-Reviewed: **2026-10-29**. Only adapters present in `config/sources.json` and the
-originating advisory databases actually used by the configured OSV integration
-are listed. Implemented does not mean fully synchronized. CERT/CC is implemented
-but disabled; disabled sources are not packaged in monthly releases.
+Reviewed: **2026-10-29**. Original datasets are kept in source-named folders.
+Coverage depends on available repository snapshots, bulk archives and feeds.
+Downloading does not establish completeness or redistribution rights.
+CERT/CC remains excluded pending redistribution review.
 
 Source data is not relicensed under the project Apache license. Original authors,
 CNAs, vendors and advisory contributors retain their rights; record-level credits,
@@ -16,7 +16,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://www.mitre.org/](https://www.mitre.org/).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/enterprise-attack/enterprise-attack.json](https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/enterprise-attack/enterprise-attack.json)
@@ -25,7 +25,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Credit MITRE and contributors. Reproduce the applicable MITRE copyright designation, complete license and disclaimers with copies; preserve source markings and notices.
 
-**THREAT-BASE modifications:** STIX bundle objects are stored separately with relationships, markings and original object fields retained; normalized summaries are added. No linked tools are downloaded.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** Royalty-free use is conditional on preserving the required notices. Trademark and endorsement rights are not granted; the root project Apache license does not replace these terms.
 
@@ -37,7 +37,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://www.mitre.org/](https://www.mitre.org/).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/ics-attack/ics-attack.json](https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/ics-attack/ics-attack.json)
@@ -46,7 +46,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Credit MITRE and contributors. Reproduce the applicable MITRE copyright designation, complete license and disclaimers with copies; preserve source markings and notices.
 
-**THREAT-BASE modifications:** STIX bundle objects are stored separately with relationships, markings and original object fields retained; normalized summaries are added. No linked tools are downloaded.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** Royalty-free use is conditional on preserving the required notices. Trademark and endorsement rights are not granted; the root project Apache license does not replace these terms.
 
@@ -58,7 +58,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://www.mitre.org/](https://www.mitre.org/).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://capec.mitre.org/data/xml/capec_latest.xml](https://capec.mitre.org/data/xml/capec_latest.xml)
@@ -67,7 +67,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Credit MITRE and contributors. Reproduce the applicable MITRE copyright designation, complete license and disclaimers with copies; preserve source markings and notices.
 
-**THREAT-BASE modifications:** Official XML is parsed to attack-pattern ID, name, description and status. Execution flows/examples are excluded; the stored source row is a metadata projection, not full original XML.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** Royalty-free use is conditional on preserving the required notices. Trademark and endorsement rights are not granted; the root project Apache license does not replace these terms.
 
@@ -79,7 +79,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://www.kb.cert.org/vuls/](https://www.kb.cert.org/vuls/), [https://www.sei.cmu.edu/](https://www.sei.cmu.edu/).
 
-**Integration status:** Implemented and feed-tested; disabled pending rights review.
+**Integration status:** Excluded pending rights review.
 
 **Exact dataset endpoints:**
 - [https://www.kb.cert.org/vulfeed/](https://www.kb.cert.org/vulfeed/)
@@ -88,9 +88,9 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Credit CERT/CC and Carnegie Mellon University; preserve source links and any supplied third-party notices.
 
-**THREAT-BASE modifications:** Recent Atom entries are projected to advisory metadata and normalized records. No complete vulnerability-note archive is mirrored.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
-**Redistribution restrictions:** Adapter is implemented and feed-tested but disabled by default. Do not add mirrored content or include it in releases until redistribution permission is reviewed.
+**Redistribution restrictions:** Source remains excluded. Do not add mirrored content or include it in releases until redistribution permission is reviewed.
 
 **Last verification / review:** 2026-10-29.
 
@@ -100,7 +100,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://www.cisa.gov/](https://www.cisa.gov/).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://www.cisa.gov/cybersecurity-advisories/all.xml](https://www.cisa.gov/cybersecurity-advisories/all.xml)
@@ -109,7 +109,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Credit CISA and identified vendor/advisory authors; retain original links and supplied notices.
 
-**THREAT-BASE modifications:** Recent official RSS entries are projected to advisory metadata. Descriptions/references are retained; no full historical scraping, prose-based CVE matching or CSAF product matching is performed.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** No blanket license is asserted for third-party content, logos or vendor text. The policy page denied automated access during review; verify intended redistribution against the official policies.
 
@@ -121,7 +121,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://www.cisa.gov/](https://www.cisa.gov/).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://www.cisa.gov/cybersecurity-advisories/ics-advisories.xml](https://www.cisa.gov/cybersecurity-advisories/ics-advisories.xml)
@@ -130,7 +130,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Credit CISA and identified vendor/advisory authors; retain original links and supplied notices.
 
-**THREAT-BASE modifications:** Recent official RSS entries are projected to advisory metadata. Descriptions/references are retained; no full historical scraping, prose-based CVE matching or CSAF product matching is performed.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** No blanket license is asserted for third-party content, logos or vendor text. The policy page denied automated access during review; verify intended redistribution against the official policies.
 
@@ -142,7 +142,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://www.cisa.gov/](https://www.cisa.gov/).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json](https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json)
@@ -151,7 +151,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Credit CISA; preserve the original repository license/disclaimer and third-party advisory references.
 
-**THREAT-BASE modifications:** Selected source metadata is normalized to the common schema, indexed and partitioned for release. Raw JSON is preserved where supplied; no missing values or upstream assessments are invented. Catalog entries are accumulated; delisted entries remain historical observations.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** CC0 applies to the catalog, not linked websites. No CISA logo, DHS seal or endorsement rights are granted.
 
@@ -163,7 +163,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://www.cve.org/](https://www.cve.org/).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/deltaLog.json](https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/deltaLog.json)
@@ -175,7 +175,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Credit the CVE Program and original CNA/advisory authors; retain identifiers, references and any supplied notices.
 
-**THREAT-BASE modifications:** Selected source metadata is normalized to the common schema, indexed and partitioned for release. Raw JSON is preserved where supplied; no missing values or upstream assessments are invented. Recent delta selection and exact-ID correlation; rejected/reserved/disputed evidence remains explicit.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** No blanket SPDX license is asserted. The current legal page requires JavaScript and its text was not retrieved; verify intended redistribution against the official terms before expanding distribution.
 
@@ -187,7 +187,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://www.mitre.org/](https://www.mitre.org/).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://cwe.mitre.org/data/xml/cwec_latest.xml.zip](https://cwe.mitre.org/data/xml/cwec_latest.xml.zip)
@@ -196,7 +196,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Credit MITRE and contributors. Reproduce the applicable MITRE copyright designation, complete license and disclaimers with copies; preserve source markings and notices.
 
-**THREAT-BASE modifications:** Official XML ZIP is parsed to weakness ID, name, description and status. Other XML content/examples are excluded; the stored source row is a metadata projection, not full original XML.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** Royalty-free use is conditional on preserving the required notices. Trademark and endorsement rights are not granted; the root project Apache license does not replace these terms.
 
@@ -208,7 +208,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://www.first.org/epss/](https://www.first.org/epss/), [https://www.empiricalsecurity.com/](https://www.empiricalsecurity.com/).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://epss.empiricalsecurity.com/epss_scores-current.csv.gz](https://epss.empiricalsecurity.com/epss_scores-current.csv.gz)
@@ -217,7 +217,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Attribute FIRST EPSS and Empirical Security, and retain the score date. Attribution is requested in the official FAQ.
 
-**THREAT-BASE modifications:** The daily gzip CSV is parsed into per-CVE records; score/percentile strings become numeric values and the header date is retained. Only the latest observed score is stored; the model header version is not currently stored.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** Freely published does not establish an unrestricted redistribution license. Review current terms for the intended redistribution; do not present estimates as confirmed exploitation.
 
@@ -229,7 +229,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://github.com/github/advisory-database](https://github.com/github/advisory-database).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://api.github.com/advisories](https://api.github.com/advisories)
@@ -238,7 +238,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Attribute the original publisher and contributors, retain source and license links and existing notices, identify selection/normalization as modifications, and do not imply endorsement.
 
-**THREAT-BASE modifications:** Selected source metadata is normalized to the common schema, indexed and partitioned for release. Raw JSON is preserved where supplied; no missing values or upstream assessments are invented. The REST integration selects reviewed non-malware advisories; package ranges and patch metadata are projected.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** Redistribution must satisfy CC-BY-4.0 attribution and modification requirements. Linked vendor material remains subject to its own rights.
 
@@ -250,7 +250,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://www.nist.gov/](https://www.nist.gov/).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://services.nvd.nist.gov/rest/json/cves/2.0](https://services.nvd.nist.gov/rest/json/cves/2.0)
@@ -259,7 +259,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Credit NIST NVD and retain the required non-endorsement statement. Preserve CNA/vendor references and third-party notices.
 
-**THREAT-BASE modifications:** Selected source metadata is normalized to the common schema, indexed and partitioned for release. Raw JSON is preserved where supplied; no missing values or upstream assessments are invented. Modification-window selection; separate CVSS assessments, CPEs and explicitly tagged exploit references are projected.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** Do not claim NIST endorsement or assume referenced third-party works are unrestricted.
 
@@ -273,7 +273,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://osv.dev/](https://osv.dev/).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://api.osv.dev/v1/vulns](https://api.osv.dev/v1/vulns)
@@ -286,7 +286,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Attribute the original publisher and contributors, retain source and license links and existing notices, identify selection/normalization as modifications, and do not imply endorsement. Credit the originating database as well as OSV.
 
-**THREAT-BASE modifications:** Selected source metadata is normalized to the common schema, indexed and partitioned for release. Raw JSON is preserved where supplied; no missing values or upstream assessments are invented. Only configured advisory IDs and package/version query results are fetched; verified aliases and package ranges are retained.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** OSV is not one uniformly licensed dataset. Release support is restricted to reviewed GHSA/PYSEC origins; adding other origins requires a separate license/notice review.
 
@@ -318,7 +318,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Official publisher URLs:** [https://access.redhat.com/security/data](https://access.redhat.com/security/data).
 
-**Integration status:** Enabled adapter; coverage is limited to the configured scope.
+**Integration status:** Source-organized data; see README for automated versus local bulk coverage.
 
 **Exact dataset endpoints:**
 - [https://security.access.redhat.com/data/metrics/rhsa.rss](https://security.access.redhat.com/data/metrics/rhsa.rss)
@@ -327,7 +327,7 @@ These summaries do not grant rights or replace the linked full terms.
 
 **Attribution requirements:** Attribute the original publisher and contributors, retain source and license links and existing notices, identify selection/normalization as modifications, and do not imply endorsement. Attribute Red Hat and link the original security data.
 
-**THREAT-BASE modifications:** Selected source metadata is normalized to the common schema, indexed and partitioned for release. Raw JSON is preserved where supplied; no missing values or upstream assessments are invented. Recent RHSA RSS entries are stored as advisory metadata; no RPM-range or image-inventory interpretation is added.
+**THREAT-BASE modifications:** Original records retained in source-named directories or bulk archives. Directory organization changes; no normalization or relicensing.
 
 **Redistribution restrictions:** Retain Red Hat attribution and license information; distinguish changes and respect separate rights in referenced material.
 
@@ -335,22 +335,29 @@ These summaries do not grant rights or replace the linked full terms.
 
 ## Notice preservation and release attribution
 
-The root LICENSE and existing upstream notice documents are preserved. Ingested
-source JSON is retained alongside normalized projections; XML classification
-projections are identified explicitly above. New representations and risk rankings
-are project transformations, not upstream endorsements.
+The root LICENSE and upstream notices are preserved. Source records retain their
+original fields. NVD feed envelopes may be split into individual CVE records;
+source-named directories do not change ownership or imply endorsement.
 
-Monthly release metadata records only the included sources, their original
-publishers, official/dataset URLs, terms, attribution requirements, transformations
-and restrictions. Notes credit those publishers directly. Raw upstream license
-texts are copied without editing and their SHA-256 digests are recorded. OSV
-archives include distinct GitHub and PyPA notices, rather than substituting one
-publisher license for the other. Disabled sources are excluded.
+Monthly releases package committed source directories, this source register and
+retained upstream notices. Checksums cover the release assets. Local bulk archives
+are not automatically published. GitHub and PyPA notices remain separate; one
+publisher's license never substitutes for another's. CERT/CC remains excluded.
 
 CVE current legal-page text, CISA advisory-policy access and CERT/CC redistribution
 remain review limitations. EPSS public availability is not described as an SPDX
-license. Confirm unresolved rights before expanding redistribution; no new mirror
-was fetched for this attribution update. Adding a new source or OSV origin requires
-its own verified terms and notice support.
+license. Confirm unresolved rights before expanding redistribution. Additional OSV
+origins retain their own terms even when included in a local full OSV download.
+
+## Additional bulk and mirror endpoints
+
+- NVD individual-file mirror: https://github.com/fkie-cad/nvd-json-data-feeds
+  (FKIE CAD community reconstruction of NIST data; preserve its supplied notices).
+- Official NVD yearly feeds: https://nvd.nist.gov/feeds/json/cve/2.0/
+- Full OSV export: https://storage.googleapis.com/osv-vulnerabilities/all.zip
+- Official EPSS history: https://github.com/empiricalsec/epss_scores
+- CISA CSAF advisories: https://github.com/cisagov/CSAF
+- Red Hat full CSAF advisories and VEX:
+  https://security.access.redhat.com/data/csaf/v2/
 
 For formats, pacing and update mechanisms see [the technical audit](docs/SOURCES.md).

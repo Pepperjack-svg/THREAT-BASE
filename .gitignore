@@ -18,6 +18,8 @@ build/
 # Credentials and local configuration
 # Local development notes; already committed files require separate review
 docs/internal/
+.downloads/
+.local/
 .env
 .env.*
 !.env.example
@@ -55,7 +57,12 @@ archives/
 *.gz
 *.bz2
 *.xz
+*.zst
 *.csv.gz
+
+# Keep the small current EPSS/CWE datasets in Git; bulk history stays local.
+!epss/epss_scores-current.csv.gz
+!cwe/cwec_latest.xml.zip
 
 # Local logs, editor and operating-system files
 *.log

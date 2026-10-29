@@ -10,18 +10,17 @@
     "workflow_dispatch": {}
   },
   "permissions": {
-    "contents": "read",
-    "actions": "read"
+    "contents": "read"
   },
   "concurrency": {
-    "group": "monthly-release-${{ github.repository }}",
+    "group": "threat-base-data-publication",
     "cancel-in-progress": false
   },
   "jobs": {
     "release": {
       "if": "github.ref_name == github.event.repository.default_branch && github.ref_type == 'branch'",
       "runs-on": "ubuntu-latest",
-      "timeout-minutes": 45,
+      "timeout-minutes": 180,
       "permissions": {
         "contents": "write",
         "actions": "read"
@@ -35,42 +34,11 @@
           }
         },
         {
-          "uses": "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
-          "with": {
-            "python-version": "3.12"
-          }
-        },
-        {
-          "name": "Validate publisher and repository",
-          "run": "python -m compileall -q scripts tests\npython -m unittest discover -s tests -v\npython scripts/validate.py\ngit diff --check"
-        },
-        {
-          "name": "Verify latest daily sync and monthly version",
-          "id": "plan",
+          "name": "Package and verify dataset snapshot",
           "env": {
-            "GH_TOKEN": "${{ github.token }}",
-            "DEFAULT_BRANCH": "${{ github.event.repository.default_branch }}"
+            "GH_TOKEN": "${{ github.token }}"
           },
-          "run": "python scripts/release.py plan"
-        },
-        {
-          "name": "Restore exact successful daily-sync state",
-          "if": "steps.plan.outputs.skip != 'true'",
-          "uses": "actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830",
-          "with": {
-            "path": "indexes/intelligence.sqlite\n.cache/http",
-            "key": "${{ steps.plan.outputs.cache_key }}",
-            "fail-on-cache-miss": true
-          }
-        },
-        {
-          "name": "Validate datasets and publish complete draft",
-          "if": "steps.plan.outputs.skip != 'true'",
-          "env": {
-            "GH_TOKEN": "${{ github.token }}",
-            "DEFAULT_BRANCH": "${{ github.event.repository.default_branch }}"
-          },
-          "run": "python scripts/release.py publish"
+          "run": "bash .github/scripts/release.sh"
         }
       ]
     }
