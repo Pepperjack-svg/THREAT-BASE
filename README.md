@@ -1,272 +1,365 @@
-# Cybersecurity Intelligence Database
+# THREAT-BASE
 
-Defensive vulnerability metadata ingestion, normalization, correlation, prioritization,
-and local search for researchers and Tempest's Kakashi and Itachi agents.
-Python 3.12+; standard library only. No paid APIs, exploit execution, external scans,
-payload downloads, malware binaries, or automatic upstream code execution.
+An open-source cybersecurity intelligence database aggregating vulnerability records, security advisories, exploitation intelligence, and attack-pattern datasets from trusted public sources.
 
-**Implementation is local and awaiting independent review, not production certified.**
-Automatic publication is disabled unless repository variable `SYNC_ENABLED=true`.
-Nothing was committed, pushed, published, or provisioned during implementation.
-The local repository tracks `origin/main` at
-`https://github.com/Pepperjack-svg/VULN-INTEL.git`; its existing LICENSE was preserved.
-Full historical coverage is not claimed.
+## Project overview
 
-## Source status and coverage
+THREAT-BASE provides Python tools to collect, validate, normalize and search public
+security metadata. It is intended for cybersecurity researchers, security engineers,
+developers, analysts and students who need attributable vulnerability evidence.
 
-The implementation audit and live checks took place on 29 October 2026.
-`metadata/sync-status.json` records actual outcomes; an adapter existing does not
-mean its upstream has been synchronized. Counts below describe the initial validation.
+The project combines a local SQLite database with a bounded set of curated JSON
+records in Git. It is a metadata resource: it does not scan external systems,
+execute exploits or download linked malware, exploit payloads or offensive tools.
 
-| Source | Implementation / test status | Coverage and limitations |
-| --- | --- | --- |
-| CVE Program / cvelistV5 | Implemented; live record validated; fixtures tested | Delta log; initial recent window only; 1 record in explicit smoke window. Import baseline for history. Gaps fail closed. |
-| NVD API 2.0 | Implemented; live validated | 2,168 observations (2,158 unique CVEs) in initial modification window; overlapping records deduplicated. Not complete NVD history. |
-| CISA KEV / cisagov/kev-data | Implemented; live validated | 1,762 entries in catalog; historical observations retained after delisting. |
-| GitHub Advisory Database API | Implemented; parser and pagination tested; full live window failed | Official API for reviewed non-malware advisories. Unauthenticated rate limit prevented completion; checkpoint did not advance. Requires successful token-enabled validation before enabling automation. |
-| OSV | Implemented; live validated | 7 advisory records from configured IDs and requests 2.31.0 watch; package queries use official version semantics upstream. Not all ecosystems mirrored. |
-| FIRST EPSS | Implemented; live validated | 396,966 daily rows; probability, percentile, and score date retained. Full daily CSV is the supported bulk mechanism. |
-| CISA advisories | Implemented; live validated | 30 RSS entries; metadata and references, no historical scraping or prose-based CVE correlation. |
-| CISA ICS advisories | Implemented; live validated | 30 official RSS entries; metadata; CSAF product/range ingestion not implemented. |
-| CERT/CC | Optional; Atom adapter live validated | 15 entries; disabled by default pending redistribution review. Not a complete VU archive. |
-| Red Hat advisories | Implemented; live validated | 158 recent RHSA RSS entries; OS/container advisory metadata; no complete container image database or RPM range evaluation. |
-| MITRE CWE | Implemented; live validated | 984 weakness summaries; latest official XML ZIP; source examples excluded. |
-| MITRE CAPEC | Implemented; live validated | 615 classification summaries; latest XML; execution flows excluded. |
-| ATT&CK Enterprise / ICS | Implemented; live validated | 26,690 / 2,566 STIX objects, including relationships and markings; counts are objects, not techniques. No linked tools downloaded. |
-| Exploit references | Implemented; fixtures tested | Only upstream references explicitly tagged Exploit; no URL crawling or payload fetching. |
-| Other vendors, complete OSV dumps, distro CSAF/OVAL, container inventory | Not integrated; optional extensions | No universal feed is fabricated. Red Hat RSS and OSV watches provide bounded existing coverage. |
+Coverage depends on configured sources, watches and import boundaries. Check
+[per-source synchronization status](metadata/sync-status.json) before relying on a
+record. An implemented adapter does not establish complete or current coverage.
 
-Official URLs, rights, authentication, pacing, and update cadence are documented
-in [the source audit](docs/SOURCES.md) and `config/sources.json`.
+## Key features
 
-## Architecture and storage
+- Official JSON, CSV, XML, RSS/Atom and STIX metadata adapters.
+- Incremental modification windows, conditional HTTP requests, bounded retries,
+  timeouts and strong-ETag download resumption where supported.
+- Atomic source transactions, content hashes, retained vulnerability revisions and
+  checkpoints that preserve earlier data when a source fails.
+- Normalized records with exact upstream identifier correlation and separate evidence.
+- Read-only local search, defensive reports and configurable risk prioritization.
+- Daily synchronization and monthly release workflows with manual triggers.
+- File-size gates, curated exports, ignored local databases and source attribution.
+
+## Supported intelligence sources
+
+These statuses describe the implementation and recorded local validation, not a
+claim that a live GitHub Actions synchronization has succeeded.
+
+| Source | Data category | Integration status | Update mechanism |
+| --- | --- | --- | --- |
+| CVE Program / cvelistV5 | CVE records | Implemented; live record sample validated; historical baseline required | Rolling delta log and local baseline import |
+| NIST NVD | CVSS, CPE and vulnerability metadata | Implemented; recent live window validated; partial history | Paginated API 2.0 modification windows |
+| CISA KEV | Known exploitation evidence | Implemented; live catalog validated; delisted observations retained | Official JSON catalog |
+| FIRST EPSS | Exploitation probability estimates | Implemented; live daily file validated | Daily gzip CSV |
+| GitHub Advisory Database | Reviewed package advisories | Implemented; full live window remains unverified after a rate-limit failure | Paginated REST API modification windows |
+| OSV | Open-source package vulnerabilities | Implemented; configured watches live validated; limited scope | Version-aware package queries and advisory retrieval |
+| CISA advisories and ICS | Security and industrial advisories | Implemented; current feeds live validated | RSS metadata and references |
+| CERT/CC | Vulnerability notes | Optional; feed tested; disabled pending redistribution review | Atom metadata |
+| Red Hat | OS and container-related advisories | Implemented; recent feed live validated; no image inventory | RHSA RSS metadata |
+| MITRE CWE and CAPEC | Weakness and attack-pattern classifications | Implemented; catalogs live validated; examples/procedures excluded | Official XML/ZIP downloads |
+| MITRE ATT&CK Enterprise and ICS | Threat knowledge | Implemented; bundles live validated | Official STIX JSON bundles |
+| Public exploit references | Defensive reference metadata | Implemented for explicitly tagged upstream references | Extracted from source records; links are not fetched |
+
+Full OSV mirroring, additional vendor feeds, CSAF/OVAL product matching and
+container-image matching are not implemented. See [DATA_SOURCES.md](DATA_SOURCES.md)
+for providers and terms, [the source audit](docs/SOURCES.md) for API details, and
+[the source registry](config/sources.json) for exact enabled scope.
+
+## Repository structure
 
 ```text
-config/                      source registry, watch scope, risk weights
-scripts/sources/feeds.py      bounded official API / CSV / XML / STIX adapters
-scripts/http_client.py       timeout, validators, retry and safe Range resume
-scripts/store.py             atomic per-source transactions, hashes, checkpoints
-scripts/normalize.py         common schema without invented values
-scripts/query.py             read-only agent and human CLI
-indexes/intelligence.sqlite  raw source records, normalized records, term indexes
-data/curated/<source>/<shard> selected normalized JSON, eligible for Git
-data/cisa-kev/latest.json    compatible small KEV output, accumulated observations
-metadata/                    source outcomes, coverage, source attribution
-.cache/http/                 regenerable HTTP representations and partial downloads
-tests/                       offline fixtures and mocks
+.github/workflows/     Validation, daily synchronization and monthly releases
+config/                Source URLs, enabled feeds, watches and risk weights
+scripts/               Ingestion, normalization, validation, indexing and search
+scripts/sources/       Upstream format adapters
+data/curated/          Partitioned normalized records selected for Git
+data/cisa-kev/         Compatible small KEV export
+metadata/              Source attribution, outcomes and verification summaries
+docs/                  Public source documentation
+tests/                 Offline tests with fixtures and mocks
+indexes/               Local generated SQLite database; ignored by Git
 ```
 
-SQLite holds full source-specific JSON alongside normalized records. A single
-source transaction updates records, indexed terms, and its checkpoint together.
-A failed request, parser, record budget, or validation rolls back that source;
-successful independent sources remain usable. WAL permits readers during ingestion.
-Older CVE, NVD, GHSA and OSV revisions are kept in SQLite's `history` table.
-No existing CVE IDs or rejected records are deleted. Daily EPSS values keep the
-latest observation per CVE; long-term score history requires external archives.
-CWE/CAPEC raw rows are explicit metadata projections, not complete original XML.
+[Technical design notes](vault/Projects/cve-intelligence-build.md) describe storage,
+trust boundaries and recovery. Optional generated paths appear only when used.
 
-Records use source and verified identifiers as identity; CVE/GHSA/OSV alias links
-correlate exact upstream IDs. Descriptions and similar package names never merge
-records. Conflicting assessments remain separate. Reserved/rejected/withdrawn and
-disputed states remain visible. Missing CVSS and unknown exposure remain unknown.
+## Getting started
 
-Indexes cover ID, CVE, GHSA, OSV, vendor, product, package, CWE, severity, KEV and
-publication day. Values are exact and case sensitive. Search returns up to 100
-records by default (Python API supports 1,000). This is not a fuzzy search engine.
-
-## Install and run locally
-
-An existing Python 3.12+ interpreter is sufficient; `requirements.txt` has no packages.
-
-```powershell
+```sh
+git clone https://github.com/Pepperjack-svg/THREAT-BASE.git
+cd THREAT-BASE
 python -m unittest discover -s tests -v
 python scripts/sync.py --sources cisa-kev,osv
-python scripts/query.py --field cve --value CVE-2021-44228 --report
-python scripts/sync.py
-python scripts/validate.py
+python scripts/query.py --value CVE-2021-44228 --report
 ```
 
-Default initial CVE, NVD and GitHub windows start one day ago. Other sources use
-current feeds or explicitly configured OSV watches. `--sources` selects a comma
-separated subset, including optional adapters. Edit `config/sources.json` to set
-enabled sources, IDs, package/version watches, record and curated-export budgets.
-There are no API keys in the registry. Optional `NVD_API_KEY` and `GITHUB_TOKEN`
-are read only from the process environment. None were configured during this task.
+The local SQLite database is created during ingestion. A clone includes curated
+records, not the full raw database. Restore a retained database snapshot or run
+synchronization before using the local search CLI.
 
-```powershell
+## Installation and requirements
+
+Use Python **3.12 or later** and Git. Runtime and tests use the Python standard
+library; no dependency-installation step or requirements file is needed. Workflows
+use Python 3.12 on GitHub-hosted Ubuntu runners.
+
+Optional environment variables are `NVD_API_KEY` for NVD and `GITHUB_TOKEN` for
+GitHub API access. Public access works within upstream limits; no paid API is
+required. Keep credentials in environment variables or GitHub Actions secrets.
+
+## Data synchronization
+
+```sh
+python scripts/sync.py
+python scripts/sync.py --sources cisa-kev,first-epss
 python scripts/sync.py --sources nvd --start 2026-10-01T00:00:00+00:00
-python scripts/sync.py --import-dir C:\datasets\cvelistV5\cves --import-source cve --start 2026-10-28T00:00:00+00:00
-python scripts/sync.py --sources cve
+python scripts/validate.py
 python scripts/generate_index.py
 ```
 
-Imports never delete the supplied tree. `--start` on an import is your assertion
-of the snapshot's complete coverage boundary, not an upstream verification.
-Verify that boundary yourself, use a retained official baseline, and catch up from
-it immediately. Without an explicit boundary an import uses 1970, causing CVE
-gap detection to stop an unsafe delta-only continuation. Backfills use bounded
-119-day NVD windows. Large requested runs can exceed source budgets; narrow the
-requested interval and resume. HTTP page caches and validated Range downloads
-survive interruptions; uncommitted source rows are replayed on the next attempt.
+Edit [config/sources.json](config/sources.json) to select enabled sources, OSV
+package/version watches, curated IDs, record budgets and HTTP-cache retention.
+`--sources` explicitly selects adapters, including optional ones.
 
-The old starter's `data/first-epss/latest.csv.gz`, advisory tarball and
-`data/sync-status.json` are not deleted if present. Canonical status is now in
-`metadata/`. Full advisory tarballs are no longer produced or staged.
+CVE, NVD and GitHub initially use a recent one-day window. Later runs use successful
+source checkpoints with a five-minute overlap. NVD requests use bounded date windows;
+EPSS uses its complete current daily CSV; catalogs and feeds use HTTP validators.
+Unchanged source records keep stable content hashes and synchronization timestamps.
 
-## Tempest read-only use
+For existing official CVE or OSV trees:
 
-```powershell
-python scripts/query.py --agent kakashi --value CVE-2021-44228 --report
-python scripts/query.py --agent itachi --field kev --value true
+```sh
+python scripts/sync.py --import-dir /datasets/cvelistV5/cves --import-source cve --start 2026-10-28T00:00:00+00:00
+```
+
+An import boundary is the operator's assertion that the retained snapshot is
+complete through that time. Verify it independently. Imports do not delete the
+supplied tree. CVE delta gaps fail instead of silently treating missing history as
+covered. A default undated import starts at 1970 and cannot safely continue a recent
+delta stream without a verified boundary.
+
+Each source is transactional. Failures preserve its earlier records and watermark,
+are recorded in [metadata/sync-status.json](metadata/sync-status.json), and make the
+sync command fail. Successful independent sources remain stored. HTTP state can be
+reused after interruption; an uncommitted source transaction is replayed.
+
+## Automated updates and GitHub Actions
+
+| Workflow | Schedule | Manual trigger |
+| --- | --- | --- |
+| [Synchronization](.github/workflows/sync.yml) | Daily at **12:00 AM IST**, `Asia/Kolkata` (18:30 UTC on the preceding day) | Run workflow |
+| [Monthly release](.github/workflows/release.yml) | First day of each month at **1:00 AM IST** (19:30 UTC on the preceding day) | Run workflow |
+| [Validation](.github/workflows/validate.yml) | Pushes and pull requests | Run workflow |
+
+Timezone-aware cron expressions are `0 0 * * *` for sync and `0 1 1 * *` for releases,
+with `timezone: Asia/Kolkata`. GitHub may delay or skip scheduled executions; use
+**Actions > workflow name > Run workflow** to recover. Schedules use the default branch.
+
+To configure a fork or deployment:
+
+1. Allow GitHub Actions and the workflows' job-scoped `contents: write` permissions.
+2. Establish a retained baseline if historical coverage is required. Scheduled sync
+   fails if its local database state cannot be restored; manual dispatch permits
+   an intentional partial bootstrap.
+3. Set repository variable `SYNC_ENABLED=true` to allow daily data publication.
+   GitHub supplies the built-in token; optional `NVD_API_KEY` is an Actions secret.
+4. Set optional `INTEL_RETENTION_DAYS` for state artifacts (default seven days).
+5. Manually run sync and inspect every source outcome, job log and resulting commit.
+   Verify restoration from a retained snapshot before relying on unattended updates.
+
+Only jobs that publish data or releases request write access. Actions are pinned
+by commit SHA. Concurrency controls prevent competing runs within each workflow.
+Validation precedes publication. Source failures prevent data publication, while
+failure artifacts preserve evidence. Git pushes use bounded fetch/rebase recovery;
+conflicts stop without force-pushing or overwriting unrelated changes. Protected
+branches may require a separately configured PR-based publication process.
+
+Monthly publication requires a completed, successful latest daily sync on the same
+default branch. It uses that exact run/attempt cache key and rejects missing state,
+failed/in-progress syncs, stale sources, absent datasets, checkpoint mismatches and
+corrupted records. Code/config changes after the validated run require another daily
+sync. A 1:00 AM release may stop if the midnight sync is still running; rerun after
+it completes. Releases do not start a fresh sync or establish full historical coverage.
+
+Workflow configuration has been checked locally. Successful live source synchronization
+and monthly publication through GitHub Actions have **not been verified** here.
+
+## Releases
+
+The workflow uses [scripts/release.py](scripts/release.py) for validated snapshot
+preparation, draft recovery and publication; it does not alter the daily sync logic.
+
+[GitHub Releases](https://github.com/Pepperjack-svg/THREAT-BASE/releases) use calendar
+versions `YYYY.MM`, tags such as `v2026.11`, and titles such as
+**THREAT-BASE — November 2026**. Versions use the date in Asia/Kolkata. A published
+month is never replaced, even if no new records were added during that month.
+
+Compressed snapshots contain current records for enabled, successfully validated
+sources. Assets are grouped as CVE, NVD, KEV, EPSS, advisories, classifications and
+metadata; for example, `threat-base-kev-2026-11-part001.tar.gz`. Groups are partitioned
+around 128 MiB of uncompressed JSONL. Empty data archives are not created. Each asset
+is limited to 1 GiB and generated data assets to 4 GiB per run; larger deployments
+require a separately reviewed storage plan. Generated assets remain in ignored `dist/`.
+
+Data archives include JSONL source records and normalized projections, configuration,
+attribution and required available upstream notice texts. Metadata archives contain
+source status and configuration. `manifest.json` records the validated Git commit,
+UTC snapshot time, daily run, source counts, coverage, snapshot hashes and recorded
+upstream versions. Notes disclose unavailable versions or new/updated-record counts
+rather than guessing. Older revisions remain in retained SQLite backups; these assets
+snapshot current records rather than duplicating repository history. OSV archive
+support currently covers GHSA/PyPI origins; others require reviewed redistribution
+and notice support. Review [source terms](DATA_SOURCES.md) before full-data distribution.
+
+Download all archives, `manifest.json` and `SHA256SUMS` from the same release into
+one directory and verify them:
+
+```sh
+sha256sum -c SHA256SUMS
+# macOS alternative:
+shasum -a 256 -c SHA256SUMS
+```
+
+On PowerShell, use `Get-FileHash -Algorithm SHA256 <downloaded-file>` and compare
+the result with its `SHA256SUMS` line. The checksum list covers every data archive
+and `manifest.json`; it does not recursively checksum itself. After checking hashes,
+inspect an archive with `tar -tzf <archive.tar.gz>` before extracting it.
+
+Publication creates an owned draft at the exact validated commit, uploads assets,
+and verifies their sizes and SHA-256 digests. Assets without an API-provided digest
+are downloaded for hashing. Only a complete verified draft becomes public. Transient
+API/upload errors use bounded retries and GET-based recovery; completed uploads are
+reused without overwriting. Missing/conflicting published assets produce an error
+without modifying the existing release.
+
+Use **Actions > Monthly THREAT-BASE release > Run workflow** for manual execution.
+After an interrupted upload, prefer **Re-run jobs** on the original attempt so its
+commit remains unchanged. Recovery preserves the original draft timestamp and
+requires the same manifest and still-fresh daily state. Drafts from another snapshot,
+orphaned tags and partial/conflicting existing assets require manual review. Automation
+does not remove assets or move tags; failures retain an unpublished draft.
+
+The release job requires built-in-token `contents: write` and `actions: read`; other
+workflow permissions remain read-only. No PAT or additional Python dependency is
+needed. Deploy only after reviewing the code and redistribution rights, pushing the
+approved revision, and completing a successful daily sync. Then manually verify a
+release, its assets and publication, and inspect repository/tag rules and actual
+Actions results before relying on scheduled execution. Private development notes
+are excluded from all dataset archives.
+
+## Searching and using the data
+
+```sh
+python scripts/query.py --field cve --value CVE-2021-44228
 python scripts/query.py --field package --value requests --ecosystem PyPI --version 2.31.0
+python scripts/query.py --field kev --value true
 python scripts/query.py --value CVE-2021-44228 --report --exposed
 ```
 
-`Reader` opens SQLite using `mode=ro` and `PRAGMA query_only=ON`; mutation attempts
-fail. `--agent` labels intended use; it does not activate a specialist or create an
-authentication boundary. OS file permissions must restrict agents to read-only
-access if they also have independent shell tools. No memory gateway was connected.
+Search supports ID, CVE, GHSA, OSV, vendor, product, package, CWE, severity, KEV and
+publication day. Values are exact and case sensitive. The CLI returns up to 100
+records; the Python Reader API supports a configurable limit up to 1,000.
 
-Reports return separate source evidence, references, CVSS assessments, EPSS date,
-historical KEV observation, risk inputs, last checked time, failure/coverage status,
-and incomplete/stale indicators. Read-only clients use the last successful source
-checkpoint; records unchanged for years can still have a fresh source check.
-48 hours without a successful check marks a record stale. Coverage is always
-limited to the configured watch/window and must be considered separately.
+Reports correlate verified aliases and return source evidence, CVSS assessments,
+EPSS dates, historical KEV observations, remediation references, stale/incomplete
+flags and risk inputs. A source without a successful check for 48 hours is stale.
+`--exposed` is an explicit asset-inventory assertion, not a network scan.
 
-Offline package matching supports exact OSV listed versions and SemVer intervals
-including prerelease bounds. Unsupported PEP 440, RPM, Debian, Git and GHSA textual
-ranges return `null` (unknown), never a fabricated affected/unaffected decision.
-Configure a watch and synchronize through OSV for authoritative version-aware
-queries. Package names and ecosystem must match exactly; `pip` and `PyPI` are
-kept as supplied by their sources. No ecosystem equivalence is silently assumed.
+Offline matching handles exact listed OSV versions and SemVer intervals. Unsupported
+PEP 440, RPM, Debian, Git and GHSA textual ranges return `null` (unknown). Configure
+an OSV package/version watch for upstream version-aware evaluation. Ecosystems remain
+as supplied; names such as `pip` and `PyPI` are not silently equated.
 
-`config/risk.json` configures an additive policy score: KEV 50, EPSS probability
-times 25, technical CVSS/10 times 15, explicitly asserted exposure 10, missing
-remediation evidence 5, and stale source evidence 5. This is a policy ranking,
-not a percentage; it can exceed 100. CVSS is technical severity, EPSS is a model
-estimate, and KEV is evidence of known exploitation. Public exploit links do not
-confirm exploitation. `--exposed` is an explicit inventory assertion, not a scan.
-Rejected/withdrawn conflicting records suppress scoring. No asset inventory is
-invented, and a zero score does not mean a vulnerability is safe.
+The [risk policy](config/risk.json) combines KEV, EPSS, CVSS, asserted exposure,
+missing remediation evidence and freshness. Its score is an additive ranking, not
+a probability, and can exceed 100. Public exploit references do not confirm active
+exploitation; CVSS is technical severity. Reader uses SQLite `mode=ro` and
+`query_only=ON`; independent filesystem access still needs operating-system controls.
 
-## GitHub Actions and deployment
+## Data formats and schemas
 
-Workflows are JSON-form YAML 1.2 for dependency-free syntax validation. All Actions
-are pinned to verified commit SHAs. Validation runs on PRs/pushes using read-only
-contents access, with checkout credentials disabled. Sync is scheduled daily at
-**12:00 AM IST (00:00, Asia/Kolkata)**, equivalent to **18:30 UTC on the preceding
-day**, or by manual dispatch on the default branch. The schedule uses
-`cron: '0 0 * * *'` with `timezone: 'Asia/Kolkata'`; cron times are interpreted in
-that timezone. Only the sync job requests `contents: write`. Branch concurrency
-prevents competing scheduled runs. GitHub may delay or skip scheduled runs; use
-**Actions > Sync vulnerability intelligence > Run workflow** for manual recovery.
+Upstream source-specific JSON and normalized records are stored together in SQLite.
+Classification XML is reduced to explicitly selected metadata, not stored as complete
+original XML. Normalization and term indexes are implemented in
+[scripts/normalize.py](scripts/normalize.py) and [scripts/store.py](scripts/store.py).
 
-Exact deployment steps, to perform **only after explicit approval**:
+| Record fields | Meaning |
+| --- | --- |
+| `id`, `source`, `aliases` | Original identity, provider key and exact identifier links |
+| `title`, `description`, `published`, `modified`, `state`, `disputed` | Available source narrative, timestamps and status |
+| `cvss`, `severity`, `cwes`, `cpes` | Separate technical assessments and classifications |
+| `vendors`, `products`, `affected`, `packages`, `fixed_versions` | Available software and remediation evidence |
+| `kev`, `epss` | Known-exploitation observation and dated probability/percentile |
+| `references`, `exploit_references` | Attributed upstream links; linked content is not fetched |
+| `last_synchronized`, `content_hash`, `original_source_identifier` | Curated export provenance and integrity fields |
 
-1. Have an independent reviewer inspect this implementation and its evidence,
-   source licensing, retention, and recovery plan. This review is still pending.
-2. The local repository is already linked to `Pepperjack-svg/VULN-INTEL` at your
-   request. Obtain approval to commit/push this reviewed revision; no new commit
-   or push has been performed.
-3. Establish a complete retained baseline if historical coverage is required.
-   Choose approved durable storage for SQLite/backups; no storage service is configured.
-4. Publish the approved files to your chosen repository/default branch. Keep
-   `SYNC_ENABLED` unset while reviewing Actions permissions and branch rules.
-5. Allow the workflow's scoped token write permission if organization policy
-   permits it. No PAT is required. Optionally configure free `NVD_API_KEY` as an
-   Actions secret; GitHub supplies `GITHUB_TOKEN` automatically.
-6. Set `SYNC_ENABLED=true`, set optional `INTEL_RETENTION_DAYS` (default 7), and
-   manually dispatch. Inspect **every source** outcome; resolve GitHub's live
-   pagination validation failure before declaring the source operational.
-7. Verify the generated commit, backup artifact and a full restore drill, then
-   allow the next scheduled run. A protected branch that blocks bot pushes needs
-   a reviewed PR publication process; do not bypass protections.
+Missing values remain `null` or empty collections. Rejected, reserved, disputed and
+withdrawn records remain distinguishable. Older CVE/NVD/GHSA/OSV revisions remain in
+SQLite history; EPSS retains the latest observed score per CVE. Source outcomes and
+coverage are JSON in `metadata/`. This is a documented implementation schema; no
+separate formal JSON Schema or public HTTP service is currently supplied.
 
-Sync errors fail the workflow and prevent the publication step. Failure evidence
-and SQLite are uploaded even on failure. Publishing stages only curated data,
-small KEV output and metadata; unrelated working changes stop it. Push recovery
-uses at most three ordinary pushes with fetch/rebase; conflicts abort without
-force pushes or remote history rewrites. This helper was tested with mocked Git,
-not against a live remote. Manual local sync never commits or pushes.
+## Source attribution and licensing
 
-## Repository limits, retention and recovery
+THREAT-BASE credits the original publishers below. It collects and transforms their
+metadata; it does not own or independently originate their security assessments.
 
-Full SQLite and HTTP snapshots are ignored by Git. Git receives curated KEV-linked
-records and configured IDs only; exports default to at most 20,000 records. Git
-candidate files must be under 45 MiB, with a 250 MiB aggregate working-tree budget.
-These are conservative gates below GitHub's 100 MiB per-file limit, not a promise
-that Git history stays small. Repeated curated EPSS updates still grow history;
-monitor repository size and reduce watch/export scope before the budget is reached.
-No automated history rewriting is performed.
+| Original publisher | Integrated data / official URL |
+| --- | --- |
+| [CVE Program and contributing CNAs](https://www.cve.org/) | [Official CVE List V5](https://github.com/CVEProject/cvelistV5) |
+| [National Institute of Standards and Technology](https://www.nist.gov/) | [NIST National Vulnerability Database](https://nvd.nist.gov/) |
+| [Cybersecurity and Infrastructure Security Agency](https://www.cisa.gov/) | [KEV](https://github.com/cisagov/kev-data), [CISA advisories](https://www.cisa.gov/cybersecurity-advisories) and [ICS advisories](https://www.cisa.gov/cybersecurity-advisories/ics-advisories) |
+| [FIRST EPSS Special Interest Group](https://www.first.org/epss/) and [Empirical Security](https://www.empiricalsecurity.com/) | Daily EPSS probability and percentile data |
+| [GitHub and advisory contributors](https://github.com/github/advisory-database) | GitHub Advisory Database; also original GHSA records returned through OSV |
+| [OSV project / Google](https://osv.dev/) | OSV API aggregation and version-aware queries; original dataset rights remain separate |
+| [Python Packaging Authority and advisory contributors](https://github.com/pypa/advisory-database) | Original PyPI/PYSEC advisory records returned through OSV |
+| [The MITRE Corporation and contributors](https://www.mitre.org/) | [CWE](https://cwe.mitre.org/), [CAPEC](https://capec.mitre.org/) and [ATT&CK](https://attack.mitre.org/) Enterprise/ICS |
+| [CERT Coordination Center](https://www.kb.cert.org/vuls/), [Carnegie Mellon University SEI](https://www.sei.cmu.edu/) | Implemented CERT/CC Atom adapter; disabled pending redistribution review |
+| [Red Hat Product Security](https://access.redhat.com/security/data) | Official RHSA advisory feed |
 
-HTTP representations have configurable 7-day/512 MiB retention and are regenerable.
-SQLite source records and vulnerability revisions are never subject to cache
-pruning. Actions snapshots use `INTEL_RETENTION_DAYS`; caches are optimizations,
-not permanent archives. A scheduled run with no restored SQLite fails instead of
-silently resetting coverage. Manual dispatch permits an intentional partial
-bootstrap; examine its declared coverage before using it.
+Original CNA, vendor and advisory-author references and supplied credit/copyright
+fields remain in source records. Crediting a database does not transfer those
+authors' rights or imply endorsement. Only implemented adapters and the actual
+GitHub/PyPA origins used by the OSV integration are credited here.
 
-Download an approved state artifact and restore `intelligence.sqlite` into
-`indexes/` while ingestion is stopped, restore its matching `metadata/`, validate,
-and resume. Cache restoration alone cannot recover after cache eviction or artifact
-expiry. Preserve long-term snapshots in an approved external archive or a persistent
-runner with backups. A full baseline is otherwise needed after a long CVE gap.
-No external archive integration is implemented. Do not pay for or configure one
-without approval. Git LFS is intentionally not used: it does not solve daily full
-snapshot history, and its quotas/billing need separate approval.
+Source data remains subject to upstream terms; public accessibility does not make
+it unrestricted. Preserve provider identities, references, licenses and required
+notices with redistributed data. See [DATA_SOURCES.md](DATA_SOURCES.md) for providers,
+rights and verification limits, and [docs/SOURCES.md](docs/SOURCES.md) for the existing
+audit. Optional CERT/CC mirroring remains disabled pending redistribution review.
 
-Plan approximately 1–5 GB for the first million metadata records and indexes,
-plus source-dependent revision history and backup copies. Large NVD/CVE descriptions
-and repeated revisions can exceed this estimate. The verification report records
-actual sample sizes; it is not a complete-dataset benchmark. The Actions job has a
-90-minute budget; full historical backfills belong on a persistent local runner.
-
-## Licensing and attribution
-
-The existing repository LICENSE applies to project code. Source data retains
-upstream rights; the repository license does not relicense those datasets. Retain
-source registry, record identifiers, references and [attribution notices](docs/SOURCES.md)
-with any export. GitHub Advisory data is CC-BY-4.0, CISA's KEV repository is CC0,
-and Red Hat security data is CC-BY-4.0. OSV data inherits originating database
-licenses; inspect each newly configured ecosystem. EPSS is publicly provided by
-FIRST and Empirical Security with attribution requested; a blanket SPDX license
-is not asserted. MITRE datasets require their copyright and license notices in
-distributed copies. CERT/CC redistribution review remains open.
+Monthly `manifest.json`, the metadata archive's `attribution.json`, and release
+notes identify the publishers, official and dataset URLs, terms, transformations
+and restrictions for the included sources. Available upstream notice texts are
+copied verbatim into data and metadata archives with their SHA-256 digests recorded.
+GitHub and PyPA OSV-origin notices are kept separately. Existing project and upstream
+copyright/license notices are preserved; normalization does not relicense them.
 
 This product uses the NVD API but is not endorsed or certified by the NVD.
-No upstream organization endorses this repository. Source changes or updated terms
-require review before broader redistribution.
+No upstream organization is represented as endorsing this project.
 
-## Validation and troubleshooting
+## Contributing
 
-```powershell
-python -m compileall -q scripts tests
-python -m unittest discover -s tests -v
-python scripts/validate.py
-git diff --check
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md) for validation commands and contribution
+requirements. Include reproducible evidence for parser, source and coverage changes.
+Preserve historical records, source attribution and existing workflow entry points.
 
-Tests use synthetic fixtures/mocks, not live APIs. Validation checks candidate file
-sizes, JSON-form YAML workflow syntax, immutable Action pins, common secret patterns,
-SQLite integrity and source content hashes. Secret patterns are heuristic and cannot
-prove absence of every secret. `git diff --check` checks tracked changes; the new
-implementation is currently untracked, so it also requires direct file inspection
-before staging. The validator scans tracked and nonignored untracked candidates.
+## Security policy
 
-- `status: error`: prior source transaction/checkpoint is preserved; inspect source
-  configuration, network availability, upstream schema and rate limits. Status logs
-  store exception types rather than potentially sensitive authenticated request text.
-- HTTP 429/403: bounded retry honors `Retry-After`/reset; waits above 120 seconds
-  defer the source to a later run. Use the built-in workflow token for GitHub.
-- CVE coverage gap: import an independently verified official baseline and resume
-  from its boundary. Do not simply advance the checkpoint to hide missing records.
-- Interrupted process: first verify no sync is active, then remove only the stale
-  `.cache/sync.lock`. Partial downloads with strong ETags can resume safely.
-- Missing SQLite after cloning: run ingestion or restore the approved archive;
-  Git's curated files are a subset and cannot reconstruct the full raw database.
-- Budget failure: existing database remains intact; reduce window/watch/export scope
-  or arrange approved archival storage. Do not delete vulnerability history to pass.
+See [SECURITY.md](SECURITY.md) for reporting vulnerabilities and handling upstream
+metadata safely. Use the project only for authorized research and defensive analysis.
 
-See [engineering decisions and traceability](vault/Projects/cve-intelligence-build.md)
-and [verification evidence](metadata/verification.json) for remaining review gates.
+## Limitations and disclaimers
+
+- Initial historical coverage is partial; optional and failed sources remain explicit.
+- Upstream data can be incomplete, stale, corrected or unavailable. A missing record,
+  low policy score or public exploit link does not establish safety or exploitation.
+- Git contains curated records, not a complete raw database. Backups and recovery
+  require retained SQLite snapshots or an independently verified upstream baseline.
+- Cache and Actions artifacts expire. HTTP cache retention defaults to seven days
+  and 512 MiB; artifact retention is configurable. No durable external archive is configured.
+- Curated exports default to 20,000 records. Validation gates Git candidates at
+  45 MiB per file and 250 MiB total; repeated updates can still grow repository history.
+- Full backfills can exceed the 90-minute sync job budget. No history rewriting or
+  paid storage is configured to work around these limits.
+- Automated secret checks are heuristic. Tests and static checks do not establish
+  a security certification, independent review, upstream completeness or live availability.
+
+## License
+
+Eligible original project contributions are made available under the
+[Apache License 2.0](LICENSE) where contributors hold the necessary rights.
+Third-party code and vulnerability datasets retain their respective terms; the
+project does not claim ownership of imported intelligence. No additional personal
+copyright assertion is made.
+
+This project may include AI-assisted development. Copyright and licensing claims
+apply only to material for which the relevant contributors hold the necessary rights.

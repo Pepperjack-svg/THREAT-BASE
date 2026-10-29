@@ -17,6 +17,27 @@ from test_intelligence import CVE, RAW, FakeClient
 
 
 class SafeguardTests(unittest.TestCase):
+    def test_public_query_help_uses_generic_terminology(self):
+        import subprocess
+        import sys
+        root = Path(__file__).resolve().parents[1]
+        output = subprocess.check_output([sys.executable, 'scripts/query.py', '--help'], cwd=root, text=True)
+        self.assertIn('Read-only local vulnerability search', output)
+        for name in ('Kakashi', 'Itachi', 'kakashi', 'itachi'):
+            self.assertNotIn(name, output)
+
+    def test_legacy_query_client_argument_still_works(self):
+        import contextlib
+        import io
+        from scripts import query
+        for legacy in ('kakashi', 'itachi'):
+            with patch('sys.argv', ['query.py', '--agent', legacy, '--value', CVE]), patch('scripts.query.Reader') as reader, contextlib.redirect_stdout(io.StringIO()) as output:
+                reader.return_value.search.return_value = []
+                query.main()
+                self.assertEqual(json.loads(output.getvalue()), [])
+                reader.return_value.search.assert_called_once_with('id', CVE)
+                reader.return_value.close.assert_called_once()
+
     def test_incremental_watermark_uses_last_success_with_overlap(self):
         from datetime import datetime, timedelta, timezone
         with tempfile.TemporaryDirectory() as directory:
@@ -38,7 +59,7 @@ class SafeguardTests(unittest.TestCase):
             repo = Path(directory)
             subprocess.run(['git', 'init', '-q', str(repo)], check=True, capture_output=True)
             (repo / '.gitignore').write_bytes((root / '.gitignore').read_bytes())
-            for candidate in ('indexes/intelligence.sqlite', '.cache/http/test.body', 'backups/snapshot.zip', '.env.local'):
+            for candidate in ('indexes/intelligence.sqlite', '.cache/http/test.body', 'backups/snapshot.zip', '.env.local', 'dist/release.json', 'build/package.py', '.release/notes.md', 'example.egg-info/PKG-INFO', 'docs/internal/README.private.md', 'debug.bak'):
                 check = subprocess.run(['git', 'check-ignore', candidate], cwd=repo, capture_output=True)
                 self.assertEqual(check.returncode, 0, candidate)
             for candidate in ('data/curated/source/aa/CVE-2025-12345.json', 'metadata/sync-status.json', 'config/sources.json'):

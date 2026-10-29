@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only local interface for Kakashi, Itachi and human defenders."""
+"""Read-only local vulnerability search and defensive reporting."""
 import argparse
 import json
 import re
@@ -110,7 +110,7 @@ def main():
     parser.add_argument('--ecosystem')
     parser.add_argument('--report', action='store_true')
     parser.add_argument('--exposed', action='store_true', default=None, help='Explicit assertion from your asset inventory; no scanning')
-    parser.add_argument('--agent', choices=['kakashi', 'itachi'], help='Attribution only; both are read-only')
+    parser.add_argument('--agent', choices=['kakashi', 'itachi'], help=argparse.SUPPRESS)
     args = parser.parse_args()
     reader = Reader(args.database)
     try:
