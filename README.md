@@ -149,11 +149,16 @@ To configure a fork or deployment:
 2. Establish a retained baseline if historical coverage is required. Scheduled sync
    fails if its local database state cannot be restored; manual dispatch permits
    an intentional partial bootstrap.
-3. Set repository variable `SYNC_ENABLED=true` to allow daily data publication.
+3. Set repository variable `SYNC_ENABLED=true` to enable scheduled daily data publication.
+   Manual **Run workflow** dispatches on the default branch work without this variable,
+   including the initial bootstrap. Both triggers publish validated data changes.
    GitHub supplies the built-in token; optional `NVD_API_KEY` is an Actions secret.
 4. Set optional `INTEL_RETENTION_DAYS` for state artifacts (default seven days).
 5. Manually run sync and inspect every source outcome, job log and resulting commit.
    Verify restoration from a retained snapshot before relying on unattended updates.
+
+If an earlier manual run was skipped, start a new **Run workflow** on the default
+branch after updating the workflow. Re-running the old run uses its original revision.
 
 Only jobs that publish data or releases request write access. Actions are pinned
 by commit SHA. Concurrency controls prevent competing runs within each workflow.

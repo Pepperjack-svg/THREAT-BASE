@@ -17,6 +17,31 @@ from test_intelligence import CVE, RAW, FakeClient
 
 
 class SafeguardTests(unittest.TestCase):
+    def test_sync_trigger_gate_allows_manual_bootstrap_and_restricts_schedules(self):
+        root = Path(__file__).resolve().parents[1]
+        workflow = json.loads((root / '.github/workflows/sync.yml').read_text())
+        condition = workflow['jobs']['sync']['if']
+        # Exercise the actual workflow expression across unset/disabled/enabled
+        # variables, manual/scheduled events, non-default branches and tags.
+        for enabled in ('', 'false', 'true'):
+            for event in ('workflow_dispatch', 'schedule'):
+                for ref, ref_type in (('main', 'branch'), ('feature', 'branch'), ('main', 'tag')):
+                    with self.subTest(enabled=enabled, event=event, ref=ref, ref_type=ref_type):
+                        expression = condition
+                        context = {
+                            'github.event.repository.default_branch': 'main',
+                            'github.event_name': event,
+                            'github.ref_name': ref,
+                            'github.ref_type': ref_type,
+                            'vars.SYNC_ENABLED': enabled,
+                        }
+                        for key, value in context.items():
+                            expression = expression.replace(key, repr(value))
+                        expression = expression.replace('&&', ' and ').replace('||', ' or ')
+                        actual = eval(expression, {'__builtins__': {}}, {})
+                        expected = ref == 'main' and ref_type == 'branch' and (event == 'workflow_dispatch' or enabled == 'true')
+                        self.assertEqual(actual, expected)
+
     def test_public_query_help_uses_generic_terminology(self):
         import subprocess
         import sys
