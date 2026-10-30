@@ -23,8 +23,9 @@ xargs -0 -r -n 200 stat -c '%s %n' < "$work/files" | awk '$1 >= 95000000 {print 
 xargs -0 -r bash -c 'grep -IlE -- '\''-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|AKIA[0-9A-Z]{16}'\'' "$@" || [[ $? == 1 ]]' _ < "$work/files" > "$work/secrets"
 if [[ -s $work/secrets ]]; then
   while IFS= read -r file; do
-    fingerprint=$(sha256sum "$file")
-    if [[ -f .github/secret-scan-allowlist.txt ]] && grep -Fxq -- "$fingerprint" .github/secret-scan-allowlist.txt; then
+    hash=$(sha256sum --binary "$file" | cut -d ' ' -f1)
+    fingerprint="$hash  $file"
+    if [[ -f .github/secret-scan-allowlist.txt ]] && tr -d '\r' < .github/secret-scan-allowlist.txt | grep -Fxq -- "$fingerprint"; then
       continue
     fi
     echo "Possible secret in Git candidate: $file" >&2
