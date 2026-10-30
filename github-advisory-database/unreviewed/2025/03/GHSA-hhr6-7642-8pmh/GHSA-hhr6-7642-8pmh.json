@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hhr6-7642-8pmh",
+  "modified": "2025-03-20T12:32:41Z",
+  "published": "2025-03-20T12:32:41Z",
+  "aliases": [
+    "CVE-2024-11040"
+  ],
+  "details": "vllm-project vllm version 0.5.2.2 is vulnerable to Denial of Service attacks. The issue occurs in the 'POST /v1/completions' and 'POST /v1/embeddings' endpoints. For 'POST /v1/completions', enabling 'use_beam_search' and setting 'best_of' to a high value causes the HTTP connection to time out, with vllm ceasing effective work and the request remaining in a 'pending' state, blocking new completion requests. For 'POST /v1/embeddings', supplying invalid inputs to the JSON object causes an issue in the background loop, resulting in all further completion requests returning a 500 HTTP error code ('Internal Server Error') until vllm is restarted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11040"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/8ce20bbe-3c96-4cd1-97e5-25a5630925be"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-20T10:15:23Z"
+  }
+}

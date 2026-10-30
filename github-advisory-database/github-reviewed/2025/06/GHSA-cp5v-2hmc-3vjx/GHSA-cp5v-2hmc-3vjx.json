@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cp5v-2hmc-3vjx",
+  "modified": "2025-10-07T20:32:07Z",
+  "published": "2025-06-02T18:30:52Z",
+  "aliases": [
+    "CVE-2024-1440"
+  ],
+  "summary": "WSO2 is vulnerable to Open Redirect through multi-option URL in its authentication endpoint",
+  "details": "An open redirection vulnerability exists in multiple WSO2 products due to improper validation of the multi-option URL in the authentication endpoint when multi-option authentication is enabled. A malicious actor can craft a valid link that redirects users to an attacker-controlled site.\n\nBy exploiting this vulnerability, an attacker may trick users into visiting a malicious page, enabling phishing attacks to harvest sensitive information or perform other harmful actions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.wso2.carbon.identity.framework:org.wso2.carbon.identity.application.authentication.endpoint.util"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "7.0.111"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.wso2.carbon.identity.framework:org.wso2.carbon.identity.application.authentication.endpoint.util"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.25.707"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-1440"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wso2/carbon-identity-framework/pull/5580"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wso2/carbon-identity-framework/pull/5747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wso2/carbon-identity-framework/commit/29ea34ada98649c4ae71aa92f1cbe87ce82164b9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wso2/carbon-identity-framework/commit/7033924b6d53ff843529743b259f6c48f4e9c177"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/wso2/carbon-identity-framework"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2024/WSO2-2024-3171"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-07T20:32:07Z",
+    "nvd_published_at": "2025-06-02T17:15:21Z"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-32pv-963j-mqgr",
+  "modified": "2026-10-07T09:32:15Z",
+  "published": "2026-10-06T09:31:34Z",
+  "aliases": [
+    "CVE-2026-98315"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: protect runlist updates with the runlist lock\n\nntfs_non_resident_attr_shrink() calls runlist helpers that require the\nrunlist write lock, but did not hold it while freeing clusters and\ntruncating the runlist. Serialize those operations and the resident\nconversion with the runlist lock.\n\nntfs_attr_map_cluster() can merge a newly allocated run before updating\nmapping pairs. If the update fails, free the clusters and restore both\nthe in-memory runlist and on-disk mapping pairs from a saved runlist.\nMark the volume in error if either rollback step fails.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98315"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/742797432e8c9b0dd54ecc523c185e26b09d79a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91709ba5d6d709b2b663287b7e871e2c6b480502"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:23Z"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jmmv-h3mp-59v8",
+  "modified": "2026-06-03T21:16:25Z",
+  "published": "2026-06-03T21:16:25Z",
+  "aliases": [
+    "CVE-2026-44023"
+  ],
+  "summary": "Docling Core: Unsafe remote filename resolution",
+  "details": "### Impact\nIn versions `>= 1.5.0, < 2.74.1`, `docling-core` did not sufficiently restrict remote request destinations and could resolve a server-provided `Content-Disposition` to a local path in an unsafe manner.\n\nIn applications that accept untrusted URLs, this could allow SSRF attacks targeting local files outside the user-defined cache directory.\n\n### Patches\nPatched in `docling-core` `2.74.1`.\nThe fix adds stricter validation for remote destinations and normalizes server-provided filenames before use.\n\nUsers should upgrade to:\n- `docling-core` `>= 2.74.1`\n\n### Workarounds\nIf upgrading is not immediately possible, avoid passing untrusted URLs into remote fetch functionality.\n\n### References\n- Fix release: [`v2.74.1`](https://github.com/docling-project/docling-core/releases/tag/v2.74.1)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "docling-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.5.0"
+            },
+            {
+              "fixed": "2.74.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/docling-project/docling-core/security/advisories/GHSA-jmmv-h3mp-59v8"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/docling-project/docling-core"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/docling-project/docling-core/releases/tag/v2.74.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-03T21:16:25Z",
+    "nvd_published_at": null
+  }
+}

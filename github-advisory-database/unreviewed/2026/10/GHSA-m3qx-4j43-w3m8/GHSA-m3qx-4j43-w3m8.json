@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m3qx-4j43-w3m8",
+  "modified": "2026-10-23T12:31:37Z",
+  "published": "2026-10-23T12:31:37Z",
+  "aliases": [
+    "CVE-2026-98905"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Properly acquire queue buffers in CRIU restore\n\nWhen kfd_queue_acquire_buffers() was split off from\nset_queue_properties_from_user(), set_queue_properties_from_criu()\nwas missed. Thus, set_queue_properties_from_criu() is not\nfilling out the buffer fields of queue_properties, which\ncan come up when subsequent code expects them to be non-null.\n\nAdd the proper call to kfd_queue_acquire_buffers(), and also\nuse the right cast types in set_queue_properties_from_criu()\n(which were missed at the same time)\n\n(cherry picked from commit 88ed96abbbe27b70193544fbc1ee06448c274714)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98905"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/20a5e7ffdfecddc34c60a6b4483f42acf3d8731d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c6c290e408fe328e091f0bf7502a42b0deea82e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2dbdd14c3352483a89e4a9afda05d0f3fcc2c83"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:24Z"
+  }
+}

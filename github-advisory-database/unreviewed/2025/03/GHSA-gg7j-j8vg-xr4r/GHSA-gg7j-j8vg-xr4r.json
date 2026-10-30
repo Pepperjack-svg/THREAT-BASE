@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gg7j-j8vg-xr4r",
+  "modified": "2025-03-17T18:31:51Z",
+  "published": "2025-03-17T18:31:51Z",
+  "aliases": [
+    "CVE-2022-49487"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmtd: rawnand: intel: fix possible null-ptr-deref in ebu_nand_probe()\n\nIt will cause null-ptr-deref when using 'res', if platform_get_resource()\nreturns NULL, so move using 'res' after devm_ioremap_resource() that\nwill check it to avoid null-ptr-deref.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49487"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/daa5166450b447415aeeaac0199e445bae7bd0f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ddf66aefd685fd46500b9917333e1b1e118276dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5b1e419cdb6dd8709eb05ed34039a3ded8e6003"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8e262eb7575a4a2412f30f7a1b293875aceba80"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:24Z"
+  }
+}

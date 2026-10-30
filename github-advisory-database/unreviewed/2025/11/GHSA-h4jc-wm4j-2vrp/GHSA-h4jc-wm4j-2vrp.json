@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h4jc-wm4j-2vrp",
+  "modified": "2025-11-18T18:32:52Z",
+  "published": "2025-11-18T18:32:52Z",
+  "aliases": [
+    "CVE-2025-63603"
+  ],
+  "details": "A command injection vulnerability exists in the MCP Data Science Server's (reading-plus-ai/mcp-server-data-exploration) 0.1.6 in the safe_eval() function (src/mcp_server_ds/server.py:108). The function uses Python's exec() to execute user-supplied scripts but fails to restrict the __builtins__ dictionary in the globals parameter. When __builtins__ is not explicitly defined, Python automatically provides access to all built-in functions including __import__, exec, eval, and open. This allows an attacker to execute arbitrary Python code with full system privileges, leading to complete system compromise. The vulnerability can be exploited by submitting a malicious script to the run_script tool, requiring no authentication or special privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-63603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/reading-plus-ai/mcp-server-data-exploration/issues/12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-18T16:15:45Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-975v-7377-g4qf",
+  "modified": "2026-10-11T15:31:07Z",
+  "published": "2026-10-11T15:31:07Z",
+  "aliases": [
+    "CVE-2026-108854"
+  ],
+  "details": "Wanwu before 0.6.3 contains an insecure direct object reference vulnerability that allows any authenticated enabled user to delete other users' legacy AppKeys by supplying a numeric apiId. Attackers can iterate sequential key IDs against DELETE /v1/appspace/app/key to revoke AppKeys across organizations, breaking MCP and OpenAPI clients until owners issue new keys.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108854"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/UnicomAI/wanwu/commit/13d0b225ec237d5a0b44730b2331efadaeb462a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/UnicomAI/wanwu"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/UnicomAI/wanwu/blob/v0.6.2/internal/app-service/client/orm/app_key.go#L26-L31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/UnicomAI/wanwu/releases/tag/v0.6.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/unicomai-wanwu-appkey-delete-id-bola"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wanwu-before-0.6.3-idor-appkey-deletion-via-delete-v1-appspace-app-key"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T14:17:05Z"
+  }
+}

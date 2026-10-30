@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6c9m-6m34-wg94",
+  "modified": "2026-06-02T15:31:53Z",
+  "published": "2026-03-04T15:30:36Z",
+  "aliases": [
+    "CVE-2026-23236"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: smscufx: properly copy ioctl memory to kernelspace\n\nThe UFX_IOCTL_REPORT_DAMAGE ioctl does not properly copy data from\nuserspace to kernelspace, and instead directly references the memory,\nwhich can cause problems if invalid data is passed from userspace.  Fix\nthis all up by correctly copying the memory before accessing it within\nthe kernel.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23236"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-253495.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/061cfeb560aa3ddc174153dbe5be9d0b55eb7248"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0634e8d650993602fc5b389ff7ac525f6542e141"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/120adae7b42faa641179270c067864544a50ab69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c008ad0f0d1c1523902b9cdb08e404129677bfc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52917e265aa5f848212f60fc50fc504d8ef12866"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6167af934f956d3ae1e06d61f45cd0d1004bbe1a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0321e6e58facb39fe191caa0e52ed9aab6a48fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1e91bd4efeae48b0f42caed7e8ce2e3a0d05b02"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-04T15:16:14Z"
+  }
+}

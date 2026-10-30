@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pxrj-jchh-722x",
+  "modified": "2025-11-13T18:31:00Z",
+  "published": "2025-06-18T12:30:45Z",
+  "aliases": [
+    "CVE-2022-50056"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: Fix missing i_op in ntfs_read_mft\n\nThere is null pointer dereference because i_op == NULL.\nThe bug happens because we don't initialize i_op for records in $Extend.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50056"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/37a530bfe56ca9a0d3129598803f2794c7428aae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8089a1bc27b41e6800590a92d17c119e9aa8ff53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c293e8abc09e6e1faa50d967bd8862b1cbd575e5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:34Z"
+  }
+}

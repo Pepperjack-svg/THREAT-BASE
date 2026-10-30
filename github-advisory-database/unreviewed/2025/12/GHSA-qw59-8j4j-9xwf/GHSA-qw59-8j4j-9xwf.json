@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qw59-8j4j-9xwf",
+  "modified": "2025-12-30T15:30:35Z",
+  "published": "2025-12-30T15:30:35Z",
+  "aliases": [
+    "CVE-2023-54289"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qedf: Fix NULL dereference in error handling\n\nSmatch reported:\n\ndrivers/scsi/qedf/qedf_main.c:3056 qedf_alloc_global_queues()\nwarn: missing unwind goto?\n\nAt this point in the function, nothing has been allocated so we can return\ndirectly. In particular the \"qedf->global_queues\" have not been allocated\nso calling qedf_free_global_queues() will lead to a NULL dereference when\nwe check if (!gl[i]) and \"gl\" is NULL.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54289"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08c001c1e9444a3046c79a99aa93ac48073b18cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/271c9b2eb60149afbeab28cb39e52f73bde9900c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/961c8370c5f7e80a267680476e1bcff34bffe71a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac64019e4d4b08c23edb117e0b2590985e33de1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1de5105d29b145b727b797e2d5de071ab3a7ca1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c316bde418af4c2a9df51149ed01d1bd8ca5bebf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f025312b089474a54e4859f3453771314d9e3d4f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:17Z"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6w46-j5rx-g56g",
+  "modified": "2026-04-13T16:38:46Z",
+  "published": "2026-01-22T06:30:29Z",
+  "aliases": [
+    "CVE-2025-71176"
+  ],
+  "summary": "pytest has vulnerable tmpdir handling",
+  "details": "pytest through 9.0.2 on UNIX relies on directories with the `/tmp/pytest-of-{user}` name pattern, which allows local users to cause a denial of service or possibly gain privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pytest"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.0.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71176"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pytest-dev/pytest/issues/13669"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pytest-dev/pytest/pull/14343"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pytest-dev/pytest/commit/95d8423bd24992deea5b9df32555fa1741679e2c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pytest-dev/pytes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pytest-dev/pytest/releases/tag/9.0.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openwall.com/lists/oss-security/2026/01/21/5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-379"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-13T16:38:46Z",
+    "nvd_published_at": "2026-01-22T05:16:17Z"
+  }
+}

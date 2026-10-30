@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ff49-cc6c-4vwm",
+  "modified": "2025-12-10T00:30:21Z",
+  "published": "2025-09-17T15:30:37Z",
+  "aliases": [
+    "CVE-2022-50357"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: dwc3: core: fix some leaks in probe\n\nThe dwc3_get_properties() function calls:\n\n\tdwc->usb_psy = power_supply_get_by_name(usb_psy_name);\n\nso there is some additional clean up required on these error paths.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50357"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a735e4b5580a2a6bbd6572109b4c4f163c57462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a213503f483173e7eea76f2e7e3bdd6df7fd6f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79c3afb55942368921237d7b5355d48c52bdde20"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-17T15:15:34Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5g7c-29rx-62p8",
+  "modified": "2025-10-15T03:30:40Z",
+  "published": "2025-10-15T03:30:40Z",
+  "aliases": [
+    "CVE-2017-20204"
+  ],
+  "details": "DBLTek GoIP devices (models GoIP 1, 4, 8, 16, and 32) contain an undocumented vendor backdoor in the Telnet administrative interface that allows remote authentication as an undocumented user via a proprietary challenge–response scheme which is fundamentally flawed. Because the challenge response can be computed from the challenge itself, a remote attacker can authenticate without knowledge of a secret and obtain a root shell on the device. This can lead to persistent remote code execution, full device compromise, and arbitrary control of the device and any managed services. The firmware used within these devices was updated in December 2016 to make this vulnerability more complex to exploit. However, it is unknown if DBLTek has taken steps to fully mitigate.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-20204"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/JacobMisirian/DblTekGoIPPwn"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/undocumented-backdoor-account-in-dbltek-goip"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dbltek-goip-telnet-admin-interface-undocumented-backdoor"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.dbltek.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1242"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-15T02:15:31Z"
+  }
+}

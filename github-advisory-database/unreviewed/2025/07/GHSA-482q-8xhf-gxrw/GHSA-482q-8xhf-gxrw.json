@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-482q-8xhf-gxrw",
+  "modified": "2025-12-23T00:30:30Z",
+  "published": "2025-07-25T18:30:40Z",
+  "aliases": [
+    "CVE-2025-38461"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock: Fix transport_* TOCTOU\n\nTransport assignment may race with module unload. Protect new_transport\nfrom becoming a stale pointer.\n\nThis also takes care of an insecure call in vsock_use_local_transport();\nadd a lockdep assert.\n\nBUG: unable to handle page fault for address: fffffbfff8056000\nOops: Oops: 0000 [#1] SMP KASAN\nRIP: 0010:vsock_assign_transport+0x366/0x600\nCall Trace:\n vsock_connect+0x59c/0xc40\n __sys_connect+0xe8/0x100\n __x64_sys_connect+0x6e/0xc0\n do_syscall_64+0x92/0x1c0\n entry_SYSCALL_64_after_hwframe+0x4b/0x53",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36a439049b34cca0b3661276049b84a1f76cc21a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/687aa0c5581b8d4aa87fd92973e4ee576b550cdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b73bddf54777fb62d4d8c7729d0affe6df04477"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8667e8d0eb46bc54fdae30ba2f4786407d3d88eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ce53e744f18e73059d3124070e960f3aa9902bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9d24bb6780282b0255b9929abe5e8f98007e2c6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae2c712ba39c7007de63cb0c75b51ce1caaf1da5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T16:15:31Z"
+  }
+}

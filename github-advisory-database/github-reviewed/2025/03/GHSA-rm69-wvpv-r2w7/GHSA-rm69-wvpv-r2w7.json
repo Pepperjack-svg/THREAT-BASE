@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rm69-wvpv-r2w7",
+  "modified": "2025-03-21T17:25:31Z",
+  "published": "2025-03-20T12:32:42Z",
+  "aliases": [
+    "CVE-2024-12215"
+  ],
+  "summary": "Kedro allows Remote Code Execution by Pulling Micro Packages",
+  "details": "In kedro-org/kedro version 0.19.8, the `pull_package()` API function allows users to download and extract micro packages from the Internet. However, the function `project_wheel_metadata()` within the code path can execute the `setup.py` file inside the tar file, leading to remote code execution (RCE) by running arbitrary commands on the victim's machine.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "kedro"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.19.8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12215"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/kedro-org/kedro"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/fad27503-97a4-4933-91d4-96223b8c54d8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20",
+      "CWE-829",
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-03-21T17:25:31Z",
+    "nvd_published_at": "2025-03-20T10:15:27Z"
+  }
+}

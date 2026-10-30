@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7xvf-m26j-25fw",
+  "modified": "2025-03-06T00:31:56Z",
+  "published": "2025-03-06T00:31:55Z",
+  "aliases": [
+    "CVE-2022-49694"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: disable the elevator int del_gendisk\n\nThe elevator is only used for file system requests, which are stopped in\ndel_gendisk.  Move disabling the elevator and freeing the scheduler tags\nto the end of del_gendisk instead of doing that work in disk_release and\nblk_cleanup_queue to avoid a use after free on q->tag_set from\ndisk_release as the tag_set might not be alive at that point.\n\nMove the blk_qos_exit call as well, as it just depends on the elevator\nexit and would be the only reason to keep the not exactly cheap queue\nfreeze in disk_release.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49694"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/50e34d78815e474d410f342fbe783b18192ca518"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f28699fafc047ec33299da01e928c3a0073c5cc6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:44Z"
+  }
+}

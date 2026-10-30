@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c9q6-g3hr-8gww",
+  "modified": "2026-01-21T16:23:22Z",
+  "published": "2026-01-13T14:55:35Z",
+  "aliases": [
+    "CVE-2025-68704"
+  ],
+  "summary": "Jervis Has Weak Random for Timing Attack Mitigation",
+  "details": "### Vulnerability\n\nhttps://github.com/samrocketman/jervis/blob/157d2b63ffa5c4bb1d8ee2254950fd2231de2b05/src/main/groovy/net/gleske/jervis/tools/SecurityIO.groovy#L593-L594\n\nUses `java.util.Random()` which is not cryptographically secure.\n\n### Impact\n\nIf an attacker can predict the random delays, they may still be able to perform timing attacks.\n\n### Patches\n\nJervis will use `SecureRandom` for timing randomization.\n\nUpgrade to Jervis 2.2.\n\n### Workarounds\n\nNone\n\n### References\n\n- [OWASP Cryptographic Failures](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "net.gleske:jervis"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/samrocketman/jervis/security/advisories/GHSA-c9q6-g3hr-8gww"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68704"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samrocketman/jervis/commit/c3981ff71de7b0f767dfe7b37a2372cb2a51974a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/samrocketman/jervis"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samrocketman/jervis/blob/157d2b63ffa5c4bb1d8ee2254950fd2231de2b05/src/main/groovy/net/gleske/jervis/tools/SecurityIO.groovy#L593-L594"
+    },
+    {
+      "type": "WEB",
+      "url": "http://github.com/samrocketman/jervis/commit/c3981ff71de7b0f767dfe7b37a2372cb2a51974a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-330"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-13T14:55:35Z",
+    "nvd_published_at": "2026-01-13T20:16:07Z"
+  }
+}

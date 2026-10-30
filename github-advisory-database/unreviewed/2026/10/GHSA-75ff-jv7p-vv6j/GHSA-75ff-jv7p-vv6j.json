@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-75ff-jv7p-vv6j",
+  "modified": "2026-10-08T21:33:31Z",
+  "published": "2026-10-08T21:33:31Z",
+  "aliases": [
+    "CVE-2026-107781"
+  ],
+  "details": "Dromara Skyeye through commit 003549ae5615bd114ba5bb8ddf6a8e8ead97c321 contains a server-side request forgery and missing authorization vulnerability in the OnlyOffice save callback editUploadOfficeFileById. Unauthenticated attackers can supply arbitrary url and key parameters to make the server fetch internal URLs and overwrite any user's stored file, then read results via queryFileToShowById.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/skyeye/issues/29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/skyeye"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/skyeye/blob/003549ae5615bd114ba5bb8ddf6a8e8ead97c321/skyeye-adm/adm-pro/src/main/java/com/skyeye/eve/diskcloud/service/impl/FileConsoleServiceImpl.java#L533-L556"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dromara-skyeye-unauthenticated-ssrf-and-file-overwrite-via-edituploadofficefilebyid"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T21:17:53Z"
+  }
+}

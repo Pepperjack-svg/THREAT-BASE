@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v43m-w632-85qf",
+  "modified": "2026-10-16T00:31:57Z",
+  "published": "2026-10-16T00:31:57Z",
+  "aliases": [
+    "CVE-2026-111351"
+  ],
+  "details": "metasfresh through 5.175 contains a missing record-level authorization vulnerability in BoardRestController that allows authenticated low-privilege users to bypass role and organization access checks. Attackers can call the getBoard, getCard, addCard, removeCard and patchCard handlers to read records outside their scope and modify board card assignments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111351"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/metasfresh/metasfresh"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/metasfresh/metasfresh/blob/5.175/backend/de.metas.ui.web.base/src/main/java/de/metas/ui/web/board/BoardRestController.java#L137-L220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/metasfresh/metasfresh/blob/56dd881b972af4edb071e4f1261a55a8b1a9c4d7/backend/de.metas.ui.web.base/src/main/java/de/metas/ui/web/board/BoardDescriptorRepository.java#L473-L511"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/metasfresh-board-rest-missing-record-authz"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/metasfresh-through-5.175-authorization-bypass-via-rest-api-board-rest-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T22:19:32Z"
+  }
+}

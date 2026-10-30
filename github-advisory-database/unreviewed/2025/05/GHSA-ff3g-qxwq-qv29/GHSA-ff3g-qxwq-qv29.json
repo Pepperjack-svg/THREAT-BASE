@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ff3g-qxwq-qv29",
+  "modified": "2025-11-07T18:30:26Z",
+  "published": "2025-05-01T15:31:46Z",
+  "aliases": [
+    "CVE-2022-49786"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-cgroup: properly pin the parent in blkcg_css_online\n\nblkcg_css_online is supposed to pin the blkcg of the parent, but\n397c9f46ee4d refactored things and along the way, changed it to pin the\ncss instead.  This results in extra pins, and we end up leaking blkcgs\nand cgroups.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49786"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d118247e404d6338f7b90636a3c6b95a387ed163"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7dbd43f4a828fa1d9a8614d5b0ac40aee6375fe"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:01Z"
+  }
+}

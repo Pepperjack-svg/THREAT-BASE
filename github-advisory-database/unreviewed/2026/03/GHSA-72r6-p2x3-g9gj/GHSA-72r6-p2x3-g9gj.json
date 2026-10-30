@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-72r6-p2x3-g9gj",
+  "modified": "2026-06-30T03:35:55Z",
+  "published": "2026-03-17T00:31:34Z",
+  "aliases": [
+    "CVE-2026-4177"
+  ],
+  "details": "YAML::Syck versions through 1.36 for Perl has several potential security vulnerabilities including a high-severity heap buffer overflow in the YAML emitter.\n\nThe heap overflow occurs when class names exceed the initial 512-byte allocation.\n\nThe base64 decoder could read past the buffer end on trailing newlines.\n\nstrtok mutated n->type_id in place, corrupting shared node data.\n\nA memory leak occurred in syck_hdlr_add_anchor when a node already had an anchor. The incoming anchor string 'a' was leaked on early return.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cpan-authors/YAML-Syck/commit/e8844a31c8cf0052914b198fc784ed4e6b8ae69e.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:6470"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:8311"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-4177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2448277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/TODDR/YAML-Syck-1.37_01/changes#L21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-4177.json"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/03/16/6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120",
+      "CWE-122"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-16T23:16:21Z"
+  }
+}

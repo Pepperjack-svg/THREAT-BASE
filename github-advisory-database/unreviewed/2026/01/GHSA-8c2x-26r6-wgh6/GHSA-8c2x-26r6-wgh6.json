@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8c2x-26r6-wgh6",
+  "modified": "2026-03-25T18:31:35Z",
+  "published": "2026-01-31T12:30:11Z",
+  "aliases": [
+    "CVE-2026-23015"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: mpsse: fix reference leak in gpio_mpsse_probe() error paths\n\nThe reference obtained by calling usb_get_dev() is not released in the\ngpio_mpsse_probe() error paths. Fix that by using device managed helper\nfunctions. Also remove the usb_put_dev() call in the disconnect function\nsince now it will be released automatically.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e876e5a0875e71e34148c9feb2eedd3bf6b2b43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ea26e6dcabc270433b6ded2a1aee85b215d1b28"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-31T12:16:04Z"
+  }
+}

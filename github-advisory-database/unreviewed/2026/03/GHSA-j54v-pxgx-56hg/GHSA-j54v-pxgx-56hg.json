@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j54v-pxgx-56hg",
+  "modified": "2026-03-18T18:31:18Z",
+  "published": "2026-03-18T18:31:18Z",
+  "aliases": [
+    "CVE-2026-23261"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-fc: release admin tagset if init fails\n\nnvme_fabrics creates an NVMe/FC controller in following path:\n\n    nvmf_dev_write()\n      -> nvmf_create_ctrl()\n        -> nvme_fc_create_ctrl()\n          -> nvme_fc_init_ctrl()\n\nnvme_fc_init_ctrl() allocates the admin blk-mq resources right after\nnvme_add_ctrl() succeeds.  If any of the subsequent steps fail (changing\nthe controller state, scheduling connect work, etc.), we jump to the\nfail_ctrl path, which tears down the controller references but never\nfrees the admin queue/tag set.  The leaked blk-mq allocations match the\nkmemleak report seen during blktests nvme/fc.\n\nCheck ctrl->ctrl.admin_tagset in the fail_ctrl path and call\nnvme_remove_admin_tag_set() when it is set so that all admin queue\nallocations are reclaimed whenever controller setup aborts.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c54d3f5ebbc5982daaa004260242dc07ac943ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b134dead095bc5a58fa2b98b90ae93428cb4b328"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1877cc7270302081a315a81a0ee8331f19f95c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e810b290922c535feb34bc90ab549446fe94d2a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa301aef50e3f3b5be6ee53457608beae5aa7a01"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-18T18:16:24Z"
+  }
+}

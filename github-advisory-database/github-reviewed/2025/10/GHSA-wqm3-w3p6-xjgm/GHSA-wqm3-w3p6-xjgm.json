@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wqm3-w3p6-xjgm",
+  "modified": "2025-11-05T20:48:11Z",
+  "published": "2025-10-09T15:31:03Z",
+  "aliases": [
+    "CVE-2025-62228"
+  ],
+  "summary": "Apache Flink CDC is vulnerable to SQL Injection through maliciously crafted identifiers",
+  "details": "Apache Flink CDC version 3.0.0 to before 3.5.0 are vulnerable to a SQL injection via maliciously crafted identifiers eg. crafted database name or crafted table name. Even through only the logged-in database user can trigger the attack, users are recommended to update Flink CDC version to 3.5.0 which address this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:L/VA:L/SC:L/SI:L/SA:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.flink:flink-cdc-pipeline-connectors"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.flink:flink-connector-oracle-cdc"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.flink:flink-connector-db2-cdc"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.flink:flink-connector-sqlserver-cdc"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.flink:flink-connector-mysql-cdc"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-62228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/flink-cdc/pull/4123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/flink-cdc/commit/d5766187a9a4b191820e10238d4594ae665cdb89"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/flink-cdc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/3dn0hc1wbc5sj0jbgdg33gtnwlw7qrl3"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/10/09/2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-09T20:53:40Z",
+    "nvd_published_at": "2025-10-09T14:15:55Z"
+  }
+}

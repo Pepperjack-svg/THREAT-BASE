@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3hg3-468c-h77g",
+  "modified": "2026-10-16T18:34:43Z",
+  "published": "2026-10-16T18:34:43Z",
+  "aliases": [
+    "CVE-2026-111620"
+  ],
+  "details": "O2OA through 10.0.2-ce contains an authorization bypass vulnerability in x_processplatform_assemble_surface that allows authenticated users to download attachments from other works. ActionDownloadWithWork and ActionDownloadWithWorkStream never verify that the requested attachment id belongs to the referenced work or draft, so any visitable work or owned draft can be supplied. Attackers who know an attachment UUID can request it through jaxrs/attachment/download/{id}/work/{workId} to read documents attached to other users' processes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111620"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/o2oa/o2oa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/o2oa/o2oa/blob/10.0.2-ce/o2server/x_processplatform_assemble_surface/src/main/java/com/x/processplatform/assemble/surface/jaxrs/attachment/ActionDownloadWithWork.java#L44-L95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/o2oa/o2oa/blob/10.0.2-ce/o2server/x_processplatform_assemble_surface/src/main/java/com/x/processplatform/assemble/surface/jaxrs/attachment/ActionDownloadWithWorkStream.java#L45-L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/o2oa-processplatform-attachment-download-work-cross-work-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/o2oa-through-10.0.2-ce-cross-work-attachment-read-via-attachment-download-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:41Z"
+  }
+}

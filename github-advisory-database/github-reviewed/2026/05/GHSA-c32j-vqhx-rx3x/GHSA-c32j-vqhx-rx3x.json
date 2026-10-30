@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c32j-vqhx-rx3x",
+  "modified": "2026-06-02T22:12:50Z",
+  "published": "2026-05-18T17:24:55Z",
+  "aliases": [
+    "CVE-2026-45363"
+  ],
+  "summary": "ruby-jwt: Empty-key HMAC bypass; cross-language sibling of CVE-2026-44351",
+  "details": "`JWT.decode(token, '', true, algorithm: 'HS256')` accepts an attacker-forged token.\n`OpenSSL::HMAC.digest('SHA256', '', payload)` returns a valid digest under an empty key, and no `raise\n  InvalidKeyError if key.empty?` precondition exists in the HMAC algorithm.\n\n```\nJWT.decode(token, \"\", true, algorithm: 'HS256')\n  -> JWA::Hmac.verify(verification_key: \"\", ...)\n  -> OpenSSL::HMAC.digest('SHA256', \"\", signing_input) == signature\n```\n\nThe same path is reached when a keyfinder block or key_finder: argument returns \"\", nil, or an\narray containing nil for an unknown key. JWT::Decode#find_key only rejects literal nil and empty\narrays, and JWT::JWA::Hmac silently coerces nil to \"\" (signing_key ||= '') before signing.\n\n```\nJWT.decode(token, nil, true, algorithms: ['HS256']) { |_h| \"\" }\n  -> find_key returns \"\"               # \"\" && !Array(\"\").empty? == true\n  -> JWA::Hmac.verify(verification_key: \"\", ...)\n  -> verifies\n```\nCommon application patterns that produce the unsafe value: `redis.get(\"kid:#{kid}\").to_s`, ORM string columns with `default: ''`, `ENV['SECRET'] || '', Hash.new('')` lookups, [primary, fallback] where fallback may be nil. Applications passing a non-empty static key:, or whose keyfinder returns nil / raises on miss, are not affected.\n\nThe existing `enforce_hmac_key_length` option would block this but defaults to false. On OpenSSL ≥ 3.5 the empty-key HMAC.digest call no longer raises, so the OpenSSL-3.0 rescue in JWA::Hmac#sign does not fire.\n\nAffects HS256/HS384/HS512 via both JWT.decode (positional key and block keyfinder) and\n`JWT::EncodedToken#verify_signature!(key_finder:)`",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "jwt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.2.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "jwt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.10.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/jwt/ruby-jwt/security/advisories/GHSA-c32j-vqhx-rx3x"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jwt/ruby-jwt/issues/724"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jwt/ruby-jwt/commit/db560b769a07bd9724e77ff505011ac01872106f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jwt/ruby-jwt"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jwt/ruby-jwt/releases/tag/v2.10.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jwt/ruby-jwt/releases/tag/v3.2.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/jwt/CVE-2026-45363.yml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-45363"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1391",
+      "CWE-287",
+      "CWE-326"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-18T17:24:55Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8g9w-79w6-cw84",
+  "modified": "2026-01-30T00:31:22Z",
+  "published": "2026-01-29T21:30:31Z",
+  "aliases": [
+    "CVE-2025-69516"
+  ],
+  "details": "A Server-Side Template Injection (SSTI) vulnerability in the /reporting/templates/preview/ endpoint of Amidaware Tactical RMM, affecting versions equal to or earlier than v1.3.1, allows low-privileged users with Report Viewer or Report Manager permissions to achieve remote command execution on the server. This occurs due to improper sanitization of the template_md parameter, enabling direct injection of Jinja2 templates. This occurs due to misuse of the generate_html() function, the user-controlled value is inserted into `env.from_string`, a function that processes Jinja2 templates arbitrarily, making an SSTI possible.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-69516"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/NtGabrielGomes/7c424367cc316fd7527f668ff076fece"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/amidaware/tacticalrmm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.amidaware.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-29T20:16:09Z"
+  }
+}

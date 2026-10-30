@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5565-3c98-g6jc",
+  "modified": "2025-03-25T21:49:11Z",
+  "published": "2025-03-25T21:49:11Z",
+  "aliases": [
+    "CVE-2024-12369"
+  ],
+  "summary": "WildFly Elytron OpenID Connect Client ExtensionOIDC authorization code injection attack",
+  "details": "### Impact\n\nA vulnerability was found in OIDC-Client. When using the elytron-oidc-client subsystem with WildFly, authorization code injection attacks can occur, allowing an attacker to inject a stolen authorization code into the attacker's own session with the client with a victim's identity. This is usually done with a Man-in-the-Middle (MitM) or phishing attack.\n\n### Patches\n\n[2.2.9.Final](https://github.com/wildfly-security/wildfly-elytron/releases/tag/2.2.9.Final)\n[2.6.2.Final](https://github.com/wildfly-security/wildfly-elytron/releases/tag/2.6.2.Final)\n\n### Workarounds\n\nCurrently, no mitigation is currently available for this vulnerability.\n\n### References\n\nhttps://nvd.nist.gov/vuln/detail/CVE-2024-12369\nhttps://access.redhat.com/security/cve/CVE-2024-12369\t\nhttps://bugzilla.redhat.com/show_bug.cgi?id=2331178\nhttps://issues.redhat.com/browse/ELY-2887",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.wildfly.security:wildfly-elytron"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.17.0.Final"
+            },
+            {
+              "fixed": "2.2.9.Final"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.wildfly.security:wildfly-elytron"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.3.0.Final"
+            },
+            {
+              "fixed": "2.6.2.Final"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.wildfly.security:wildfly-elytron-http-oidc"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.17.0.Final"
+            },
+            {
+              "fixed": "2.2.9.Final"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.wildfly.security:wildfly-elytron-http-oidc"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.3.0.Final"
+            },
+            {
+              "fixed": "2.6.2.Final"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/wildfly-security/wildfly-elytron/security/advisories/GHSA-5565-3c98-g6jc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12369"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wildfly-security/wildfly-elytron/pull/2253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wildfly-security/wildfly-elytron/pull/2261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wildfly-security/wildfly-elytron/commit/5ac5e6bbcba58883b3cebb2ddbcec4de140c5ceb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wildfly-security/wildfly-elytron/commit/d7754f5a6a91ceb0f4dbbbfe301991f6a55404cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2024-12369"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2331178"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/wildfly-security/wildfly-elytron"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.redhat.com/browse/ELY-2887"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-03-25T21:49:11Z",
+    "nvd_published_at": null
+  }
+}

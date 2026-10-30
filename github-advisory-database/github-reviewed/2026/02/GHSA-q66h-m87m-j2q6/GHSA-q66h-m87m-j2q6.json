@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q66h-m87m-j2q6",
+  "modified": "2026-02-10T00:21:56Z",
+  "published": "2026-02-10T00:21:56Z",
+  "aliases": [],
+  "summary": "Bitcoinrb Vulnerable to Command injection via RPC ",
+  "details": "### Summary: Remote Code Execution\nUnsafe handling of request parameters in the RPC HTTP server results in command injection\n\n### Details\nIn lib/bitcoin/rpc/http_server.rb line 30-39, the JSON body of a POST request is parsed into `command` and `args` variables. These values are then passed to `send`, which is used to call an arbitrary class method. However, there is no validation that the provided `command` value is one of the expected RPC methods. \nThis means that an attacker could supply a `command` value such as `system`, and then pass arbitrary system commands into the `args` parameter and achieve remote code execution. \n\n### PoC\n1. Start the RPC server\n2. Send a request to the RPC server as so:\n ```\ncurl -X POST http://127.0.0.1:18443 -H 'Content-Type: application/json' \\\n    -d '{\"method\":\"eval\",\"params\":[\"File.write(\\\"/tmp/pwned\\\",\\\"owned\\\")\"]}'\n```\n3. Check the /tmp folder on the machine where the RPC server is being run. If a folder /pwned now exists, the vulnerability is confirmed.\n### Impact\nThis vulnerability would impact anyone running the RPC server. The impact is higher for those who are running it publicly exposed to the internet.\n\n### Remediation                                                \n                                                                                                                                                                                                                               \n  **Mitigating Factors:**                                                                                                                                                                                                      \n  - The RPC server is part of the experimental SPV node feature, which is not documented and has very few users.                                                                                                               \n  - The SPV-related features may be removed in future releases.                                                                                                                                                                \n                                                                                                                                                                                                                               \n  **Resolution:**                                                                                                                                                                                                              \n  - Added whitelist validation to allow only RPC methods defined in `RequestHandler`.                                                                                                                                          \n  - Fixed in version 1.12.0.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "bitcoinrb"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.12.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/chaintope/bitcoinrb/security/advisories/GHSA-q66h-m87m-j2q6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chaintope/bitcoinrb/commit/070327133a2a3e5a6d265b2d82f06f9414c01e74"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/chaintope/bitcoinrb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chaintope/bitcoinrb/releases/tag/v1.12.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-10T00:21:56Z",
+    "nvd_published_at": null
+  }
+}

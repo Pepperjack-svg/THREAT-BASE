@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8hf-63cr-rrfm",
+  "modified": "2026-10-20T21:30:43Z",
+  "published": "2026-10-17T00:31:19Z",
+  "aliases": [
+    "CVE-2026-110752"
+  ],
+  "details": "Text::CSV_XS versions before 1.65 for Perl allow memory exhaustion by allocating one entry per index of an RFC 7111 selector in fragment.\n\nfragment expands a row= or col= selector into an array with one element per selected index before it reads any data, and it does not clamp an explicit end column in a cell= selector to the row. Only the syntax and order of the ranges are checked, so row=1-400000000 on a two-line file allocates 400 million elements.\n\nAn application that passes a request-supplied fragment to fragment or csv can be made to exhaust memory, which ends the process with an Out of memory error that eval cannot catch.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cpan-authors/Text-CSV_XS/commit/d9d3d66f9ff6a8a1bc255a6ef05100f9b102b92b.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/HMBRAND/Text-CSV_XS-1.65/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T23:17:00Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rxxg-3pvc-749f",
+  "modified": "2026-10-11T15:31:05Z",
+  "published": "2026-10-11T15:31:05Z",
+  "aliases": [
+    "CVE-2026-108749"
+  ],
+  "details": "docling-serve 1.14.0 through 1.36.0 contains a missing authentication vulnerability that allows unauthenticated attackers to access /v1/memory/stats and /v1/memory/counts because they omit the require_auth dependency. Attackers can bypass the configured DOCLING_SERVE_API_KEY to read process and cgroup memory telemetry, object type histograms, and force repeated gc.collect() heap enumeration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/docling-project/docling-serve"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/docling-project/docling-serve/blob/07b1d3d3b515afd9196148e0353d54ea38de2a37/docling_serve/app.py#L1631-L1687"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/docling-project/docling-serve/blob/07b1d3d3b515afd9196148e0353d54ea38de2a37/docling_serve/auth.py#L49-L55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind03/docling-serve-memory-endpoints-api-key-bypass"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/docling-serve-1.14.0-through-1.36.0-missing-authentication-via-memory-management-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T13:17:19Z"
+  }
+}

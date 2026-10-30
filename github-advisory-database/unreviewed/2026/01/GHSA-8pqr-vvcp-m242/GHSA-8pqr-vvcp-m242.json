@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8pqr-vvcp-m242",
+  "modified": "2026-01-14T06:30:23Z",
+  "published": "2026-01-14T06:30:23Z",
+  "aliases": [
+    "CVE-2025-14464"
+  ],
+  "details": "The PDF Resume Parser plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 1.0. This is due to the plugin registering an AJAX action handler that is accessible to unauthenticated users and exposes SMTP configuration data including credentials. This makes it possible for unauthenticated attackers to extract sensitive SMTP credentials (username and password) from the WordPress configuration, which could be leveraged to compromise email accounts and potentially gain unauthorized access to other systems using the same credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14464"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pdf-resume-parser/tags/1.0/pdf-resume-parser.php#L309"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pdf-resume-parser/trunk/pdf-resume-parser.php#L309"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/8a84bcc2-23e0-4624-89a4-7bbb1b34c498?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-14T06:15:52Z"
+  }
+}

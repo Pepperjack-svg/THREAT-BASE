@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vj33-v2p6-r367",
+  "modified": "2025-07-23T03:32:05Z",
+  "published": "2025-07-23T03:32:05Z",
+  "aliases": [
+    "CVE-2025-6214"
+  ],
+  "details": "The Omnishop plugin for WordPress is vulnerable to Cross-Site Request Forgery on its /users/delete REST route in all versions up to, and including, 1.0.9. The route’s permission_callback only verifies that the requester is logged in, but fails to require any nonce or other proof of intent. This makes it possible for unauthenticated attackers to delete arbitrary user accounts via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-6214"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/omnishop/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e7c936b8-3132-45e1-92ed-32ecdc9cbb1e?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-23T03:15:25Z"
+  }
+}

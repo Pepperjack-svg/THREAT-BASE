@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4hx4-q2mp-7h24",
+  "modified": "2026-10-28T18:32:12Z",
+  "published": "2026-10-28T18:32:12Z",
+  "aliases": [
+    "CVE-2026-116267"
+  ],
+  "details": "MIME::Parser versions before 5.521 for Perl allow memory exhaustion via indented error messages from a truncated, deeply nested message.\n\nEach stored parser diagnostic is indented by three spaces per nesting level. When a message nested N levels deep ends without its closing boundaries, every level logs an error at its own depth, so the stored diagnostics grow with the square of N. The defaults place no limit on nesting depth.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116267"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/DSKOLL/MIME-tools-5.521/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T18:17:13Z"
+  }
+}

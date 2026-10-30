@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rfvr-jph4-c6j4",
+  "modified": "2025-08-19T21:30:36Z",
+  "published": "2025-08-19T18:31:32Z",
+  "aliases": [
+    "CVE-2025-51540"
+  ],
+  "details": "EzGED3 3.5.0 stores user passwords using an insecure hashing scheme: md5(md5(password)). This hashing method is cryptographically weak and allows attackers to perform efficient offline brute-force attacks if password hashes are disclosed. The lack of salting and use of a fast, outdated algorithm makes it feasible to recover plaintext credentials using precomputed tables or GPU-based cracking tools. The vendor states that the issue is fixed in 3.5.72.27183.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-51540"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ballpoint.fr/en/blog/ezged3-preauth-file-read-admin-takeover"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-260"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-19T16:15:28Z"
+  }
+}

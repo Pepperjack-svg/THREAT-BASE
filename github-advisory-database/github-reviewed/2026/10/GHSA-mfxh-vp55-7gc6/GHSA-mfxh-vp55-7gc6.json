@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mfxh-vp55-7gc6",
+  "modified": "2026-10-09T20:54:04Z",
+  "published": "2026-10-09T20:54:04Z",
+  "aliases": [
+    "CVE-2026-107843"
+  ],
+  "summary": "Contao: The registration module re-sends activation mails",
+  "details": "`ModuleRegistration::compile()` reaches its follow-up registration branch on **any** POST to a page carrying the module. That branch checks neither `FORM_SUBMIT` nor the captcha result computed immediately above it, and `resendActivationMail()` leads to `OptInToken::send()`, which has no rate limit at all.\n\n### Impact\n\nAnyone on the internet can make a Contao installation send unlimited mail to an address of their choosing, from the site's own sender and reputation, at one outbound message per HTTP request. That is both a nuisance for the recipient and a deliverability risk for the site operator. The same request is a reliable account oracle for \"this address has a pending registration on this site\", which is exactly the sort of membership fact a public site is usually expected not to disclose.\n\n**Honest bound.** The target must have an unconfirmed registration, that is `tl_member.disable = 1` together with an unconfirmed `reg-` opt-in token. An attacker can create that state for an arbitrary address, since registration requires no ownership proof, but on a site where `reg_activate` is off the branch is unreachable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "contao/core-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.1.0"
+            },
+            {
+              "fixed": "5.3.50"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "contao/core-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.4.0-RC1"
+            },
+            {
+              "fixed": "5.7.12"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/security/advisories/GHSA-mfxh-vp55-7gc6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/commit/2ea6117f9049db7221679251cfc41e67d941a74b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/contao/contao"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/releases/tag/5.3.50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/releases/tag/5.7.12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-204",
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-09T20:54:04Z",
+    "nvd_published_at": null
+  }
+}

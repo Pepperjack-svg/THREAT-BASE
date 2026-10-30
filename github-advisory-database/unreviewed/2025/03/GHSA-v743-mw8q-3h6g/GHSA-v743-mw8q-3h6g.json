@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v743-mw8q-3h6g",
+  "modified": "2025-10-30T18:31:04Z",
+  "published": "2025-03-27T18:31:27Z",
+  "aliases": [
+    "CVE-2023-53010"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbnxt: Do not read past the end of test names\n\nTest names were being concatenated based on a offset beyond the end of\nthe first name, which tripped the buffer overflow detection logic:\n\n detected buffer overflow in strnlen\n [...]\n Call Trace:\n bnxt_ethtool_init.cold+0x18/0x18\n\nRefactor struct hwrm_selftest_qlist_output to use an actual array,\nand adjust the concatenation to use snprintf() rather than a series of\nstrncat() calls.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53010"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cefa85480ac99c0bef5a09daadb48d65fc28e279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3e599c090fc6977331150c5f0a69ab8ce87da21"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-27T17:15:50Z"
+  }
+}

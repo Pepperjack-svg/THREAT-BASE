@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h3qq-hvw6-cjjf",
+  "modified": "2026-10-02T09:31:21Z",
+  "published": "2026-10-02T09:31:20Z",
+  "aliases": [
+    "CVE-2026-97342"
+  ],
+  "details": "The JetFormBuilder — Dynamic Blocks Form Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'choice' Post Meta via Insert/Update Post Action in all versions up to, and including, 3.6.5.4 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injected payload is submitted via the unauthenticated wp_ajax_nopriv_jet_form_builder_submit endpoint, stored verbatim into post meta through the Insert/Update Post action, and later rendered unescaped by the Select Field block template when the get_from_db option generator copies raw meta values into option value attributes and label content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97342"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Crocoblock/jetformbuilder/commit/534c2ce996408d1f9b5a9fba165348a7cd38bccc#diff-f60e64a78a96f00501af389dc216067c8335cd91ee7296e6c7d960f89dae7d20R547-R551"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.5.4/includes/classes/tools.php#L574"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.5.4/includes/form-handler.php#L85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.5.4/includes/generators/get-from-db.php#L226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.5.4/modules/actions-v2/insert-post/properties/post-meta-property.php#L152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.5.4/modules/option-field/blocks/select/block-template.php#L131"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/84857045-833f-44fb-ada0-1e0f4eb84a52?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-02T08:17:05Z"
+  }
+}

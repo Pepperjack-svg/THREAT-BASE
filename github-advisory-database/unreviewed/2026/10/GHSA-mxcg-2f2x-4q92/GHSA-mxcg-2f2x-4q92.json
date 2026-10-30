@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mxcg-2f2x-4q92",
+  "modified": "2026-10-06T15:32:00Z",
+  "published": "2026-10-06T15:32:00Z",
+  "aliases": [
+    "CVE-2026-77050"
+  ],
+  "details": "An issue was discovered in Django 6.1 before 6.1.2, 6.0 before 6.0.9, and 5.2 before 5.2.18.\n`django.utils.translation.get_supported_language_variant()` is subject to\na potential denial-of-service attack when processing many distinct, very long\nlanguage codes, which are retained as keys in an in-memory cache and\nconsume process memory.\nEarlier, unsupported Django series (such as 5.1.x, 5.0.x, and 4.2.x) were not evaluated and may also be affected.\nDjango would like to thank Gleb Lizunov for reporting this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77050"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/02a69e3791e3df23d45ea4ea7e7fc489f0eef2be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/3d32ee80ae52745d686bf94d3555000ddf073267"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/7e878b0f8bd42260903e6a0d38996a93b0474a0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/c88b304cc2d90fc37d3bd1f5f3829706fa6c13bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.djangoproject.com/en/dev/releases/security"
+    },
+    {
+      "type": "WEB",
+      "url": "https://groups.google.com/g/django-announce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-789"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T14:17:46Z"
+  }
+}

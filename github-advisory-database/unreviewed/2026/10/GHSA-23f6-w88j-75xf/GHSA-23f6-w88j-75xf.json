@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-23f6-w88j-75xf",
+  "modified": "2026-10-14T03:30:39Z",
+  "published": "2026-10-14T03:30:39Z",
+  "aliases": [
+    "CVE-2026-14765"
+  ],
+  "details": "Epic Games Unreal Engine versions up to and including 5.8.0 ship with an insecure default configuration for the LaunchURL Blueprint node (UKismetSystemLibrary::LaunchURL). The URL scheme filter (FURLRequestFilter) is empty by default, which permits all URL schemes. On Windows, this results in a call to ShellExecuteW() with the open verb, so a supplied file:/// URI causes the referenced file to be executed. Any Unreal Engine game that loads user-generated content containing Blueprints is vulnerable to command execution via a malicious local file or a remote file on a WebDAV share. This is an instance of CWE-1188 (Initialization of a Resource with an Insecure Default).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14765"
+    },
+    {
+      "type": "WEB",
+      "url": "https://khaelkugler.com/blogs/meccha_chameleon.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://takeonme.org/gcves/GCVE-1337-2026-00000000000000000000000000000000000000000000000001011111111101111111111110000000000000000000000000000000000000000000000000000001011"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1188"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T03:17:21Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4gvv-jqvc-49j6",
+  "modified": "2026-05-11T09:30:30Z",
+  "published": "2026-05-08T15:31:26Z",
+  "aliases": [
+    "CVE-2026-43374"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: nexthop: fix percpu use-after-free in remove_nh_grp_entry\n\nWhen removing a nexthop from a group, remove_nh_grp_entry() publishes\nthe new group via rcu_assign_pointer() then immediately frees the\nremoved entry's percpu stats with free_percpu(). However, the\nsynchronize_net() grace period in the caller remove_nexthop_from_groups()\nruns after the free. RCU readers that entered before the publish still\nsee the old group and can dereference the freed stats via\nnh_grp_entry_stats_inc() -> get_cpu_ptr(nhge->stats), causing a\nuse-after-free on percpu memory.\n\nFix by deferring the free_percpu() until after synchronize_net() in the\ncaller. Removed entries are chained via nh_list onto a local deferred\nfree list. After the grace period completes and all RCU readers have\nfinished, the percpu stats are safely freed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43374"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e08ad731862b22a87cc55f752e16d66cdc9e231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab5ebab9664214ba41a7633cb4e72f128204f924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/abf4feaee6405f1441929c6ebe7a250f2cd170a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2662e7593e94ae09b1cf7ee5f09160a3612bcb2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T15:16:48Z"
+  }
+}

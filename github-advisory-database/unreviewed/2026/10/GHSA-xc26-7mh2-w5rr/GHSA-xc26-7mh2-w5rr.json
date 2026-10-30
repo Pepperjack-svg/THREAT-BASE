@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xc26-7mh2-w5rr",
+  "modified": "2026-10-18T12:30:26Z",
+  "published": "2026-10-18T12:30:26Z",
+  "aliases": [
+    "CVE-2026-112010"
+  ],
+  "details": "smpeg through 2.0.0 contains an integer underflow vulnerability in stream_header() in MPEGsystem.cpp that allows attackers to wrap packet_size by declaring an undersized packet length. Attackers can supply a crafted MPEG file opened via SMPEG_new, SMPEG_new_rwops or SMPEG_new_data to trigger a reachable assertion or out-of-bounds copy, crashing the application.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112010"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/icculus/smpeg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/icculus/smpeg/blob/d188dc111f4817288718705e4a84e248803ccfdc/MPEGsystem.cpp#L295-L350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/icculus/smpeg/blob/d188dc111f4817288718705e4a84e248803ccfdc/MPEGsystem.cpp#L777"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/smpeg-system-header-stream-table-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/smpeg-through-2.0.0-integer-underflow-via-stream-header-in-mpegsystem-cpp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T12:17:13Z"
+  }
+}

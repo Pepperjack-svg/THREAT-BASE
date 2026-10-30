@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9r3-fw4f-w35f",
+  "modified": "2025-03-18T21:31:58Z",
+  "published": "2025-03-18T21:31:58Z",
+  "aliases": [
+    "CVE-2021-47654"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsamples/landlock: Fix path_list memory leak\n\nClang static analysis reports this error\n\nsandboxer.c:134:8: warning: Potential leak of memory\n  pointed to by 'path_list'\n        ret = 0;\n              ^\npath_list is allocated in parse_path() but never freed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-47654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/017196730299ccd6eed24bbfabed8af4ffd81530"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/20fbf100f84b9aeb9c91421abe1927bc152bc32b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49b0d8bf05809df5f87e5c03e26d74bdfdab4571"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66b513b7c64a7290c1fbb88e657f7cece992e131"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T06:37:07Z"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pgqq-8578-f8gj",
+  "modified": "2025-11-12T12:30:27Z",
+  "published": "2025-11-12T12:30:27Z",
+  "aliases": [
+    "CVE-2025-40126"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsparc: fix accurate exception reporting in copy_{from_to}_user for UltraSPARC\n\nThe referenced commit introduced exception handlers on user-space memory\nreferences in copy_from_user and copy_to_user. These handlers return from\nthe respective function and calculate the remaining bytes left to copy\nusing the current register contents. This commit fixes a couple of bad\ncalculations. This will fix the return value of copy_from_user and\ncopy_to_user in the faulting case. The behaviour of memcpy stays unchanged.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40126"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0bf3dc3a2156f1c5ddaba4b85d09767874634114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41c18baee66134e6ef786eb075c1b6adb22432b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4fba1713001195e59cfc001ff1f2837dab877efb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57c278500fce3cd4e1c540700c0b05426a958393"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59424dc0d0e044b2eb007686a4724ddd91d57db5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/674ff598148a28bae0b5372339de56f2abf0b1d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7de3a75bbc8465d816336c74d50109e73501efab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b137f277cc3297044aabd950f589e505d30104c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-12T11:15:42Z"
+  }
+}

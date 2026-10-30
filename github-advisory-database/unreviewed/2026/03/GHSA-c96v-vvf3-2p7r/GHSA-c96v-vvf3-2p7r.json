@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c96v-vvf3-2p7r",
+  "modified": "2026-04-02T15:31:35Z",
+  "published": "2026-03-10T18:31:19Z",
+  "aliases": [
+    "CVE-2026-23240"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntls: Fix race condition in tls_sw_cancel_work_tx()\n\nThis issue was discovered during a code audit.\n\nAfter cancel_delayed_work_sync() is called from tls_sk_proto_close(),\ntx_work_handler() can still be scheduled from paths such as the\nDelayed ACK handler or ksoftirqd.\nAs a result, the tx_work_handler() worker may dereference a freed\nTLS object.\n\nThe following is a simple race scenario:\n\n          cpu0                         cpu1\n\ntls_sk_proto_close()\n  tls_sw_cancel_work_tx()\n                                 tls_write_space()\n                                   tls_sw_write_space()\n                                     if (!test_and_set_bit(BIT_TX_SCHEDULED, &tx_ctx->tx_bitmask))\n    set_bit(BIT_TX_SCHEDULED, &ctx->tx_bitmask);\n    cancel_delayed_work_sync(&ctx->tx_work.work);\n                                     schedule_delayed_work(&tx_ctx->tx_work.work, 0);\n\nTo prevent this race condition, cancel_delayed_work_sync() is\nreplaced with disable_delayed_work_sync().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23240"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17153f154f80be2b47ebf52840f2d8f724eb2f3b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7bb09315f93dce6acc54bf59e5a95ba7365c2be4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/854cd32bc74fe573353095e90958490e4e4d641b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5de36d6cee74a92c1a21b260bc507e64bc451de"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-10T18:18:13Z"
+  }
+}

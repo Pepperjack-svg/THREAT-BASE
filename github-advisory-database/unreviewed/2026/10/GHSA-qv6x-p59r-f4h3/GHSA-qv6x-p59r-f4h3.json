@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qv6x-p59r-f4h3",
+  "modified": "2026-10-15T18:31:45Z",
+  "published": "2026-10-12T15:32:21Z",
+  "aliases": [
+    "CVE-2026-103535"
+  ],
+  "details": "Thelia v2.6.1 contains path traversal and PHP code injection vulnerabilities in its translation editor that can be chained to achieve remote code execution. The `item_name` parameter, used to build the translation file's write path, does not sanitize directory traversal sequences such as `../`. This enables an authenticated user with `UPDATE`-level permissions on `admin.configuration.language` to write files outside the expected `templates/` directory, including to web‑accessible paths. Separately, the translation‑writing logic does not escape `\\` in user‑supplied values, allowing inputs to break out of the PHP string literal and inject executable code into the translation file. Chained together, these flaws allow a malicious PHP file to be written to a web-accessible path and executed with the web‑server’s privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103535"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.cert.org/vuls/id/162329"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T15:17:06Z"
+  }
+}

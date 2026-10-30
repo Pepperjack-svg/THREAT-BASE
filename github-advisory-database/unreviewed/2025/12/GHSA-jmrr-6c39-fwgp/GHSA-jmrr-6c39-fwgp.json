@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jmrr-6c39-fwgp",
+  "modified": "2026-04-08T21:33:08Z",
+  "published": "2025-12-06T06:30:16Z",
+  "aliases": [
+    "CVE-2025-13922"
+  ],
+  "details": "The Tag, Category, and Taxonomy Manager – AI Autotagger with OpenAI plugin for WordPress is vulnerable to time-based blind SQL Injection via the 'existing_terms_orderby' parameter in the AI preview AJAX endpoint in all versions up to, and including, 3.40.1. This is due to insufficient escaping on user-supplied parameters and lack of SQL query parameterization. This makes it possible for authenticated attackers, with Contributor-level access and above who have AI metabox permissions, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database, cause performance degradation, or enable data inference through time-based techniques.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13922"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-tags/tags/3.40.1/inc/class.admin.php#L1406"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-tags/tags/3.40.1/modules/taxopress-ai/classes/TaxoPressAiAjax.php#L180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3408243%40simple-tags%2Ftrunk&old=3388829%40simple-tags%2Ftrunk&sfp_email=&sfph_mail=#file17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://research.cleantalk.org/cve-2025-13922"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f40cc632-c6af-4c8b-a455-76319f7fe151?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-06T05:16:44Z"
+  }
+}

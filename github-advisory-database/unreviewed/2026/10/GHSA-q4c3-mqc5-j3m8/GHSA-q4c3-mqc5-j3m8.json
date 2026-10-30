@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q4c3-mqc5-j3m8",
+  "modified": "2026-10-22T21:32:50Z",
+  "published": "2026-10-22T21:32:50Z",
+  "aliases": [
+    "CVE-2026-115508"
+  ],
+  "details": "Crawl4AI 0.7.0 before 0.9.5 contains an inefficient regular expression complexity vulnerability in the Docker API server that allows authenticated API clients to supply unbounded regular expressions in /crawl request bodies. Attackers can submit catastrophic-backtracking patterns via RegexExtractionStrategy.custom, RegexChunking.patterns or JsonCss, JsonXPath and JsonLxml schema regex fields against a crafted page to freeze the entire server, including /health.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/unclecode/crawl4ai/security/advisories/GHSA-j843-8p47-rhxp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115508"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/unclecode/crawl4ai/commit/8aea2006e2cdb96a185e50b20633fc323dff6429"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/unclecode/crawl4ai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/unclecode/crawl4ai/releases/tag/v0.9.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/crawl4ai-0.7.0-before-0.9.5-redos-via-crawl-regex-fields"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1333"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T20:17:06Z"
+  }
+}

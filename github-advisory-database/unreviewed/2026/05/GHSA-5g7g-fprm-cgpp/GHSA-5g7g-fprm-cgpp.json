@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5g7g-fprm-cgpp",
+  "modified": "2026-05-08T21:31:22Z",
+  "published": "2026-05-06T12:30:36Z",
+  "aliases": [
+    "CVE-2026-43282"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/ionic: Fix potential NULL pointer dereference in ionic_query_port\n\nThe function ionic_query_port() calls ib_device_get_netdev() without\nchecking the return value which could lead to NULL pointer dereference,\nFix it by checking the return value and return -ENODEV if the 'ndev' is\nNULL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b96156c927cd83c109e2e3946e6111dce73231f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81932a46dfd0db10a03f46f0b1c7ef946ac4552f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd80bd7105f88189f47d465ca8cb7d115570de30"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:49Z"
+  }
+}

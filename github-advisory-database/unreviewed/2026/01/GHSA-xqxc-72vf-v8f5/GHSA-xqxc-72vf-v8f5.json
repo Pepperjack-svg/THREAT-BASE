@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xqxc-72vf-v8f5",
+  "modified": "2026-01-13T18:31:11Z",
+  "published": "2026-01-13T18:31:11Z",
+  "aliases": [
+    "CVE-2026-21265"
+  ],
+  "details": "Windows Secure Boot stores Microsoft certificates in the UEFI KEK and DB. These original certificates are approaching expiration, and devices containing affected certificate versions must update them to maintain Secure Boot functionality and avoid compromising security by losing security fixes related to Windows boot manager or Secure Boot.\nThe operating system’s certificate update protection mechanism relies on firmware components that might contain defects, which can cause certificate trust updates to fail or behave unpredictably. This leads to potential disruption of the Secure Boot trust chain and requires careful validation and deployment to restore intended security guarantees.\n\n\n\nCertificate Authority (CA)\nLocation\nPurpose\nExpiration Date\n\n\n\n\nMicrosoft Corporation KEK CA 2011\nKEK\nSigns updates to the DB and DBX\n06/24/2026\n\n\nMicrosoft Corporation UEFI CA 2011\nDB\nSigns 3rd party boot loaders, Option ROMs, etc.\n06/27/2026\n\n\nMicrosoft Windows Production PCA 2011\nDB\nSigns the Windows Boot Manager\n10/19/2026\n\n\n\nFor more information see this CVE and Windows Secure Boot certificate expiration and CA updates.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21265"
+    },
+    {
+      "type": "WEB",
+      "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21265"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1329"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-13T18:16:25Z"
+  }
+}

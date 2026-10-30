@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j8h4-v947-5h7q",
+  "modified": "2025-10-06T09:30:20Z",
+  "published": "2025-10-06T09:30:20Z",
+  "aliases": [
+    "CVE-2025-59729"
+  ],
+  "details": "When parsing the header for a DHAV file, there's an integer underflow in offset calculation that leads to reading the duration from before the start of the allocated buffer.\n\nIf we load a DHAV file that is larger than MAX_DURATION_BUFFER_SIZE bytes (0x100000) for example 0x101000 bytes, then at [0] we have size = 0x101000. At [1] we have end_buffer_size = 0x100000, and at [2] we have end_buffer_pos = 0x1000.\n\nThe loop then scans backwards through the buffer looking for the dhav tag; when it is found, we'll calculate end_pos based on a 32-bit offset read from the buffer.\n\nThere is subsequently a check [3] that end_pos is within the section of the file that has been copied into end_buffer, but it only correctly handles the cases where end_pos is before the start of the file or after the section copied into end_buffer, and not the case where end_pos is within the the file, but before the section copied into end_buffer. If we provide such an offset, (end_pos - end_buffer_pos) can underflow, resulting in the subsequent access at [4] occurring before the beginning of the allocation.\n\nWe recommend upgrading to version 8.0 or beyond.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:H/AT:P/PR:L/UI:P/VC:L/VI:H/VA:N/SC:L/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issuetracker.google.com/433513232"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-06T08:15:34Z"
+  }
+}

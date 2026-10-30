@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jgvw-vmvx-q85m",
+  "modified": "2025-08-18T15:30:32Z",
+  "published": "2025-08-18T15:30:32Z",
+  "aliases": [
+    "CVE-2025-4962"
+  ],
+  "details": "An Insecure Direct Object Reference (IDOR) vulnerability was identified in the `POST /v1/templates` endpoint of the Lunary API, affecting versions up to 0.8.8. This vulnerability allows authenticated users to create templates in another user's project by altering the `projectId` query parameter. The root cause of this issue is the absence of server-side validation to ensure that the authenticated user owns the specified `projectId`. The vulnerability has been addressed in version 1.9.23.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-4962"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lunary-ai/lunary/commit/e977d06f18a615963ffbe07e5bdff70218c29907"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/137a0aef-e243-49d4-832f-8e56056cba1a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-18T14:15:30Z"
+  }
+}

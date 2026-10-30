@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2cq2-6rr9-jjr9",
+  "modified": "2025-11-25T21:32:03Z",
+  "published": "2025-09-05T18:31:26Z",
+  "aliases": [
+    "CVE-2025-39696"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: hda: tas2781: Fix wrong reference of tasdevice_priv\n\nDuring the conversion to unify the calibration data management, the\nreference to tasdevice_priv was wrongly set to h->hda_priv instead of\nh->priv.  This resulted in memory corruption and crashes eventually.\nUnfortunately it's a void pointer, hence the compiler couldn't know\nthat it's wrong.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39696"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2812815aa79637d39d4398ecd7e58f65d1c79231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f4422e7c9436abf81a00270be7e4d6d3760ec0e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-05T18:15:46Z"
+  }
+}

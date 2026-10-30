@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x89q-h3c4-g624",
+  "modified": "2026-10-14T09:31:34Z",
+  "published": "2026-10-14T09:31:34Z",
+  "aliases": [
+    "CVE-2026-105107"
+  ],
+  "details": "Koha is vulnerable to SQL injection in the Most-circulated items report. The reports/cat_issues_top.pl script (sub calculate) concatenates the user-controlled Criteria, Filter, and Limit request parameters directly into dynamic SQL. Criteria is only prefix-normalized and never validated against an allow-list, so it is inserted verbatim into identifier positions (SELECT DISTINCTROW, GROUP BY, ORDER BY, and the main calculation query). Filter values are concatenated raw into single-quoted LIKE, BETWEEN, and comparison fragments. Limit is appended raw to a LIMIT clause. An authenticated staff user with the reports module permission (not requiring superlibrarian) can inject arbitrary SQL and read any table reachable by the Koha database user, including borrowers (userid and bcrypt password hashes, two-factor secrets, personal data), api_keys, and sessions. The issue is fixed in Koha 24.11.19, 25.05.14, 25.11.08, and 26.05.03, and in the 26.11 development branch. This is the unpatched twin of reports/bor_issues_top.pl (CVE-2026-70372).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105107"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.koha-community.org/bugzilla3/show_bug.cgi?id=42736"
+    },
+    {
+      "type": "WEB",
+      "url": "https://download.koha-community.org"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-6428"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-70372"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T08:17:03Z"
+  }
+}

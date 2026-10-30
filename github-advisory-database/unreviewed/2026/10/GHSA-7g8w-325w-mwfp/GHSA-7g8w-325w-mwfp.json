@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7g8w-325w-mwfp",
+  "modified": "2026-10-21T15:42:28Z",
+  "published": "2026-10-21T15:42:27Z",
+  "aliases": [
+    "CVE-2026-114396"
+  ],
+  "details": "Trudesk through 1.2.11 contains a server-side JavaScript injection vulnerability that allows authenticated users to inject code into a MongoDB $where clause via the search parameter. Attackers can close the regular expression in GET /api/v1/tickets/search to loop mongod for denial of service or leak full ticket documents including internal notes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114396"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/polonel/trudesk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/polonel/trudesk/blob/v1.2.11/src/models/ticket.js#L1184-L1215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@leediay/multiple-vuln-trudesk-1211"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/trudesk-through-1.2.11-mongodb-where-injection-via-tickets-search-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-943"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T13:18:30Z"
+  }
+}

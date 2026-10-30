@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v7xm-65w9-h5rq",
+  "modified": "2026-04-28T09:34:13Z",
+  "published": "2026-04-28T09:34:13Z",
+  "aliases": [
+    "CVE-2026-4805"
+  ],
+  "details": "The Woostify plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 2.5.0 This is due to insufficient input sanitization and output escaping in the bundled Lity.js lightbox library, where user-controlled input from the href attribute is concatenated directly into a jQuery HTML string without sanitization. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4805"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/woostify/woostify/commit/a4669598aa8c5de344dda6c3d42389a3c2e61adc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themes.trac.wordpress.org/browser/woostify/2.4.6/assets/js/lity.js#L142"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themes.trac.wordpress.org/browser/woostify/2.4.6/assets/js/lity.js#L163"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themes.trac.wordpress.org/browser/woostify/2.4.6/assets/js/lity.js#L611"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themes.trac.wordpress.org/browser/woostify/2.4.6/assets/js/lity.js#L635"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themes.trac.wordpress.org/changeset?old_path=%2Fwoostify/2.5.0&new_path=%2Fwoostify/2.5.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/883ad6f7-e701-4708-b5d4-69b72ff38499?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-28T08:16:01Z"
+  }
+}

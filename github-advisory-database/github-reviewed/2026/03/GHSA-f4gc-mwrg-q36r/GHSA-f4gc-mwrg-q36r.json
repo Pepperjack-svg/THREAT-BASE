@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f4gc-mwrg-q36r",
+  "modified": "2026-03-26T17:26:29Z",
+  "published": "2026-03-24T09:30:31Z",
+  "aliases": [
+    "CVE-2026-32642"
+  ],
+  "summary": "Apache Artemis: Unauthorized Temporary Address Creation via OpenWire Protocol",
+  "details": "Incorrect Authorization (CWE-863) vulnerability in Apache Artemis, Apache ActiveMQ Artemis exists when an application using the OpenWire protocol attempts to create a non-durable JMS topic subscription on an address that doesn't exist with an authenticated user which has the \"createDurableQueue\" permission but does not have the \"createAddress\" permission and address auto-creation is disabled. In this circumstance, a temporary address will be created whereas the attempt to create the non-durable subscription should instead fail since the user is not authorized to create the corresponding address. When the OpenWire connection is closed the address is removed.\n\nThis issue affects Apache Artemis: from 2.50.0 through 2.52.0; Apache ActiveMQ Artemis: from 2.0.0 through 2.44.0.\n\nUsers are recommended to upgrade to version 2.53.0, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.artemis:artemis-openwire-protocol"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.50.0"
+            },
+            {
+              "fixed": "2.53.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.activemq:artemis-openwire-protocol"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "2.53.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32642"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/artemis"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/4wlrp31ngq2yb54sf4kjb3bl41t4xgtp"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/03/20/2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-26T17:26:29Z",
+    "nvd_published_at": "2026-03-24T08:16:01Z"
+  }
+}

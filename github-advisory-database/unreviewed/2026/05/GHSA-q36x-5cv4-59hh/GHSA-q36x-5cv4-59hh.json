@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q36x-5cv4-59hh",
+  "modified": "2026-10-15T03:35:58Z",
+  "published": "2026-05-27T15:33:22Z",
+  "aliases": [
+    "CVE-2026-46069"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mwifiex: fix use-after-free in mwifiex_adapter_cleanup()\n\nThe mwifiex_adapter_cleanup() function uses timer_delete()\n(non-synchronous) for the wakeup_timer before the adapter structure is\nfreed. This is incorrect because timer_delete() does not wait for any\nrunning timer callback to complete.\n\nIf the wakeup_timer callback (wakeup_timer_fn) is executing when\nmwifiex_adapter_cleanup() is called, the callback will continue to\naccess adapter fields (adapter->hw_status, adapter->if_ops.card_reset,\netc.) which may be freed by mwifiex_free_adapter() called later in the\nmwifiex_remove_card() path.\n\nUse timer_delete_sync() instead to ensure any running timer callback has\ncompleted before returning.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46069"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/030abbae49cf9fd1fba7aa08e15ec81efbeb78cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11869ce402d95519d49b25a2a97741f68d69d103"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1958a92599b2653d730ccb6f5685fc3fbed21812"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e179a60a60c0a5aea245e8e67768343c0f070b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63fe3389b3e092d6c0eeea9fc0318e7918b16618"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a88f5391dc68f78cae5eb6a8cd341cafee795d3d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae5e95d4157481693be2317e3ffcd84e36010cbb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3508895450cca4aeaf5dbadbb5e582363005264"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:28Z"
+  }
+}

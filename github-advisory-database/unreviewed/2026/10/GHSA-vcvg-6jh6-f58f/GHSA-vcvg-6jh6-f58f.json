@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vcvg-6jh6-f58f",
+  "modified": "2026-10-16T18:34:49Z",
+  "published": "2026-10-16T18:34:49Z",
+  "aliases": [
+    "CVE-2026-111669"
+  ],
+  "details": "ZR.Admin.NET through 3.8.2 contains an sql injection vulnerability that allows authenticated attackers to manipulate the ORDER BY clause by supplying a crafted PagerInfo.Sort query parameter to the shared ToPage paging helper. Attackers holding the system:user:list permission can inject subquery or CASE expressions via GET /system/user/list to extract database contents such as stored credentials through blind techniques.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111669"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/izhaorui/Zr.Admin.NET/commit/d32c211aeedab3e07bb4f02f54bb251fff37361c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitee.com/izory/ZrAdminNetCore/tags"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/izhaorui/Zr.Admin.NET/blob/v3.8.1/ZR.Admin.WebApi/Controllers/System/SysUserController.cs#L47-L52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/izhaorui/Zr.Admin.NET/blob/v3.8.1/ZR.Repository/BaseRepository.cs#L342-L351"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/zradmin-net-order-by-sort-sql-injection"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/zr-admin-net-through-3.8.2-sql-injection-via-pagerinfo-sort-order-by"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:49Z"
+  }
+}

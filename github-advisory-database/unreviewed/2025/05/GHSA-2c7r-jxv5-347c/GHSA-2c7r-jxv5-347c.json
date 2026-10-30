@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2c7r-jxv5-347c",
+  "modified": "2025-11-12T21:31:03Z",
+  "published": "2025-05-09T09:33:20Z",
+  "aliases": [
+    "CVE-2025-37883"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/sclp: Add check for get_zeroed_page()\n\nAdd check for the return value of get_zeroed_page() in\nsclp_console_init() to prevent null pointer dereference.\nFurthermore, to solve the memory leak caused by the loop\nallocation, add a free helper to do the free job.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37883"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/28e5a867aa542e369e211c2baba7044228809a99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/397254706eba9d8f99fd237feede7ab3169a7f9a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b3aa72636a6205933609ec274a8747720c1ee3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3db42c75a921854a99db0a2775814fef97415bac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e1e00dc45648125ef7cb87ebc3b581ac224e7b39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f69f8a93aacf6e99af7b1cc992d8ca2cc07b96fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-09T07:16:09Z"
+  }
+}

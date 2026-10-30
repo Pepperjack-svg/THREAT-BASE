@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r8g9-gm9p-ff4h",
+  "modified": "2026-07-02T12:30:48Z",
+  "published": "2026-05-28T12:30:31Z",
+  "aliases": [
+    "CVE-2026-46176"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/mlx5: Fix error path fall-through in mlx5_ib_dev_res_srq_init()\n\nmlx5_ib_dev_res_srq_init() allocates two SRQs, s0 and s1. When\nib_create_srq() fails for s1, the error branch destroys s0 but falls\nthrough and unconditionally assigns the freed s0 and the ERR_PTR s1 to\ndevr->s0 and devr->s1.\n\nThis leads to several problems: the lock-free fast path checks\n\"if (devr->s1) return 0;\" and treats the ERR_PTR as already initialised;\nusers in mlx5_ib_create_qp() dereference the freed SRQ or ERR_PTR via\nto_msrq(devr->s0)->msrq.srqn; and mlx5_ib_dev_res_cleanup() dereferences\nthe ERR_PTR and double-frees s0 on teardown.\n\nFix by adding the same `goto unlock` in the s1 failure path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46176"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:30848"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:33215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:33685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:34094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-46176"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2482594"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6fd93142dd1d09000c3750af08270f5792523fe9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a13c2ac4d480b734342c6fbf8249fc48afd675f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b087913ae88256df66620f7ba0a9776716aeef7e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc2cf5935b4665172235341163315905197ae91d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c488df06bd552bb8b6e14fa0cfd5ad986c6e9525"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-46176.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-825"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:33Z"
+  }
+}

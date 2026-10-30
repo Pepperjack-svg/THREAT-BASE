@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hf5g-mj3f-66c7",
+  "modified": "2026-10-21T15:42:00Z",
+  "published": "2026-10-18T18:32:06Z",
+  "aliases": [
+    "CVE-2026-98848"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtc: ac100: Assign .num before accessing .hws\n\nCommit f316cdff8d67 (\"clk: Annotate struct clk_hw_onecell_data with\n__counted_by\") annotated the hws member of 'struct clk_hw_onecell_data'\nwith __counted_by, which informs the bounds sanitizer (UBSAN_BOUNDS)\nabout the number of elements in .hws[], so that it can warn when .hws[]\nis accessed out of bounds. As noted in that change, the __counted_by\nmember must be initialized with the number of elements before the first\narray access happens, otherwise there will be a warning from each access\nprior to the initialization because the number of elements is zero.\nThis occurs in ac100_rtc_register_clks() due to .num being assigned only\nafter every clkout clock has been stored in .hws[]. With\nCONFIG_UBSAN_BOUNDS and a compiler that implements __counted_by (GCC\n15.1+ or Clang 20.1+), this triggers an array-index-out-of-bounds report\nduring probe, and with CONFIG_UBSAN_TRAP the first store traps.\n\nInitialize .num with AC100_CLKOUT_NUM, the number of elements .hws[] was\nallocated with, right after the allocation. That is the value the loop\ncounter ends up at on the success path anyway, so the provider's\nbehaviour is unchanged.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98848"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/160619b38707241e22569f9c983a4b3d0890996a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a4117eee82dd85f11bf898bf66026764011eeb6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6bb55381daf1a1bed0657189a1396e7467712525"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ad1bf77039cba83373bf1eff3784655e3e3ed2ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e77c5fc1f39fdb06ecd1f55b101eea1e1db2ffef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:39Z"
+  }
+}

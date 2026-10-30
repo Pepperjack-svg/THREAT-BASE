@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wj97-6gr4-gfmq",
+  "modified": "2025-11-19T18:31:16Z",
+  "published": "2025-07-25T15:30:54Z",
+  "aliases": [
+    "CVE-2025-38432"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: netpoll: Initialize UDP checksum field before checksumming\n\ncommit f1fce08e63fe (\"netpoll: Eliminate redundant assignment\") removed\nthe initialization of the UDP checksum, which was wrong and broke\nnetpoll IPv6 transmission due to bad checksumming.\n\nudph->check needs to be set before calling csum_ipv6_magic().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/353016ec159f939a380ff6746476a779367ba9a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f5990207026987a353d5a95204c4d9cb725637fd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T15:15:28Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c4vh-j2xp-73q4",
+  "modified": "2026-10-15T21:36:06Z",
+  "published": "2026-10-15T21:36:06Z",
+  "aliases": [
+    "CVE-2026-111156"
+  ],
+  "details": "libTiMidity through 0.2.8 contains an out-of-bounds access vulnerability in init_soundfont() in src/sndfont.c that allows attackers to corrupt memory by supplying unvalidated SF2 preset header bank and preset values. Attackers can craft a .sf2 file whose bank or preset indexes past the 128-entry tonebank or drumset arrays, causing heap memory reads, writes, and application crashes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111156"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sezero/libtimidity"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sezero/libtimidity/blob/a52adf6aee2635e2a16797213a089c2180e67757/src/sndfont.c#L199-L224"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/libtimidity-soundfont-generator-oper-oob-write"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libtimidity-through-0.2.8-out-of-bounds-access-via-soundfont-preset-header"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:30Z"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpvw-x46c-p2qx",
+  "modified": "2025-12-17T21:30:31Z",
+  "published": "2025-07-03T09:30:33Z",
+  "aliases": [
+    "CVE-2025-38120"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_set_pipapo_avx2: fix initial map fill\n\nIf the first field doesn't cover the entire start map, then we must zero\nout the remainder, else we leak those bits into the next match round map.\n\nThe early fix was incomplete and did only fix up the generic C\nimplementation.\n\nA followup patch adds a test case to nft_concat_range.sh.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38120"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/251496ce1728c9fd47bd2b20a7b21b20b9a020ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39bab2d3517b5b50c609b4f8c66129bf619fffa0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8068e1e42b46518ce680dc6470bcd710efc3fa0a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8164d0efaf370c425dc69a1e8216940d09e7de0c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90bc7f5a244aadee4292b28098b7c98aadd4b3aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5ad58285f9217d68cd5ea2ad86ce254a3fe7c4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea77c397bff8b6d59f6d83dae1425b08f465e8b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-03T09:15:26Z"
+  }
+}

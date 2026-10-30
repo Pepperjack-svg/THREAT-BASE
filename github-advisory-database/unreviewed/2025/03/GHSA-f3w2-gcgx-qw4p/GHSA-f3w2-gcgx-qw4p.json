@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f3w2-gcgx-qw4p",
+  "modified": "2025-03-10T21:31:11Z",
+  "published": "2025-03-10T21:31:11Z",
+  "aliases": [
+    "CVE-2022-49586"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: Fix data-races around sysctl_tcp_fastopen.\n\nWhile reading sysctl_tcp_fastopen, it can be changed concurrently.\nThus, we need to add READ_ONCE() to its readers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49586"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03da610696a32578fc4f986479341ce9d430df08"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22938534c611136f35e2ca545bb668073ca5ef49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/25d53d858a6c0b89a6e69e376c2a57c4f4c2c8cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/448ab998947996a0a451f8229f19087964cf2670"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/539d9ab79eba3974b479cad61a8688c41fe62e12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a54213318c43f4009ae158347aa6016e3b9b55a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:34Z"
+  }
+}

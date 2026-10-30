@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4x4p-8hj2-h92h",
+  "modified": "2025-12-12T12:30:25Z",
+  "published": "2025-12-12T12:30:25Z",
+  "aliases": [
+    "CVE-2025-14159"
+  ],
+  "details": "The Secure Copy Content Protection and Content Locking plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 4.9.2. This is due to missing nonce validation on the 'ays_sccp_results_export_file' AJAX action. This makes it possible for unauthenticated attackers to export sensitive plugin data including email addresses, IP addresses, physical addresses, user IDs, and other user information via a forged request granted they can trick a site administrator into performing an action such as clicking on a link. The exported data is stored in a publicly accessible file, allowing attackers to receive the sensitive information even though they are not authenticated.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/secure-copy-content-protection/tags/4.8.7/admin/class-secure-copy-content-protection-admin.php#L645"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/secure-copy-content-protection/tags/4.9.3/admin/class-secure-copy-content-protection-admin.php#L696"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/secure-copy-content-protection/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/7cffe04e-a2e5-4752-a5c1-7c95f0007e0b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-12T12:15:46Z"
+  }
+}

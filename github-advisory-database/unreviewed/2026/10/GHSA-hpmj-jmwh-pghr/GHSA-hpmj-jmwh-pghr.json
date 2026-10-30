@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hpmj-jmwh-pghr",
+  "modified": "2026-10-22T03:33:37Z",
+  "published": "2026-10-22T03:33:37Z",
+  "aliases": [
+    "CVE-2026-114726"
+  ],
+  "details": "Roundcube Webmail before 1.6.20 and 1.7.x before 1.7.5 is affected by a mail header injection vulnerability in the Bounce (resend) action. rcube_mime::decode_address_list() did not strip control characters from the decoded display name, so a received message whose From display-name carries CRLF sequences in an encoded word could inject arbitrary headers into the message emitted when the user bounces it. Upstream fixed this in the commit “Fix mail header injection via the From display-name in the Bounce (resend) action”.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114726"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/3a136465c965776a5f636587187626985dae4f3b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/d3a35545fdaf72b02a9a4d670064895488e9d9d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.debian.org/1151279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.6.20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.7.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://roundcube.net/news/2026/10/19/security-updates-1.6.20-and-1.7.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-99"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T02:17:00Z"
+  }
+}

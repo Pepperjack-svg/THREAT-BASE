@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pw86-qvx9-34r7",
+  "modified": "2025-12-17T00:00:18Z",
+  "published": "2025-09-30T21:31:16Z",
+  "aliases": [
+    "CVE-2025-43827"
+  ],
+  "summary": "Liferay Portal Vulnerable to IDOR via audit events",
+  "details": "Insecure Direct Object Reference (IDOR) vulnerability with audit events in Liferay Portal 7.4.0 through 7.4.3.117, and older unsupported versions, and Liferay DXP 2024.Q1.1 through 2024.Q1.5, 2023.Q4.0 through 2023.Q4.10, 2023.Q3.1 through 2023.Q3.10, 7.4 GA through update 92, and older unsupported versions allows remote authenticated users to from one virtual instance to view the audit events from a different virtual instance via the `_com_liferay_portal_security_audit_web_portlet_AuditPortlet_auditEventId` parameter.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay:com.liferay.portal.security.audit.web"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.1"
+            },
+            {
+              "fixed": "5.0.33"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay:com.liferay.portal.security.audit.storage.service"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.4"
+            },
+            {
+              "fixed": "6.0.41"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-43827"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/a14427e2338477001f86a9e65fdddb843c319818"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/d85c2f24397dcb7d9e51e7bd292dd29268efb132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/f99602a23ce1b3aa12b2625441cfaa17bfbd22b6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/liferay/liferay-portal"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.atlassian.net/browse/LPE-17938"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.dev/portal/security/known-vulnerabilities/-/asset_publisher/jekt/content/CVE-2025-43827"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-01T15:56:54Z",
+    "nvd_published_at": "2025-09-30T19:15:37Z"
+  }
+}

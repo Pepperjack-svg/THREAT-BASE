@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vq86-jjfm-j2v6",
+  "modified": "2025-03-10T21:31:09Z",
+  "published": "2025-03-10T21:31:09Z",
+  "aliases": [
+    "CVE-2022-49550"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: provide block_invalidate_folio to fix memory leak\n\nThe ntfs3 filesystem lacks the 'invalidate_folio' method and it causes\nmemory leak. If you write to the filesystem and then unmount it, the\ncached written data are not freed and they are permanently leaked.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49550"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0753245a72ec99824677586499ee2e0919164b3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/724bbe49c5e427cb077357d72d240a649f2e4054"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:30Z"
+  }
+}

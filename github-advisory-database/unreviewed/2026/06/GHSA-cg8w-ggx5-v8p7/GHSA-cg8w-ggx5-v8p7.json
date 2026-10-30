@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cg8w-ggx5-v8p7",
+  "modified": "2026-06-30T18:31:40Z",
+  "published": "2026-06-30T18:31:40Z",
+  "aliases": [
+    "CVE-2026-58375"
+  ],
+  "details": "JimuReport through 2.5.0 exposes the POST /jmreport/auto/export endpoint without authentication: the handler is annotated @JimuNoLoginRequired, so JimuReportTokenInterceptor skips all authentication and authorization, and the export service streams the rendered report for any supplied report id without verifying the auto-export configuration flag. An unauthenticated remote attacker can enumerate Snowflake report identifiers and export the full contents of any report, including the data returned by the report configured SQL queries and any credentials embedded in its data sources.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58375"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jeecgboot/jimureport/issues/4694"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jimureport-unauthenticated-report-export-via-jmreport-auto-export"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-30T17:16:25Z"
+  }
+}

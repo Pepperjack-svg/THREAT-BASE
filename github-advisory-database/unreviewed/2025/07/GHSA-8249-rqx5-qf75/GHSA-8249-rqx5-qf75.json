@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8249-rqx5-qf75",
+  "modified": "2025-12-23T21:30:22Z",
+  "published": "2025-07-25T15:30:54Z",
+  "aliases": [
+    "CVE-2025-38420"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: carl9170: do not ping device which has failed to load firmware\n\nSyzkaller reports [1, 2] crashes caused by an attempts to ping\nthe device which has failed to load firmware. Since such a device\ndoesn't pass 'ieee80211_register_hw()', an internal workqueue\nmanaged by 'ieee80211_queue_work()' is not yet created and an\nattempt to queue work on it causes null-ptr-deref.\n\n[1] https://syzkaller.appspot.com/bug?extid=9a4aec827829942045ff\n[2] https://syzkaller.appspot.com/bug?extid=0d8afba53e8fb2633217",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38420"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0140d3d37f0f1759d1fdedd854c7875a86e15f8d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11ef72b3312752c2ff92f3c1e64912be3228ed36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15d25307692312cec4b57052da73387f91a2e870"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/301268dbaac8e9013719e162a000202eac8054be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e9ab5c48ad5153cc908dd29abad0cd2a92951e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/527fad1ae32ffa2d4853a1425fe1c8dbb8c9744c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a3734a6f4c05fd24605148f21fb2066690d61b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bfeede26e97ce4a15a0b961118de4a0e28c9907a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T15:15:26Z"
+  }
+}

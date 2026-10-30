@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g76p-4vg5-f4qh",
+  "modified": "2026-05-27T22:22:41Z",
+  "published": "2026-05-12T18:30:41Z",
+  "aliases": [
+    "CVE-2026-31236"
+  ],
+  "summary": "llm CLI tool contains a code injection vulnerability via `--functions` command-line argument",
+  "details": "The llm CLI tool thru 0.27.1 contains a critical code injection vulnerability via its --functions command-line argument. This argument is intended to allow users to provide custom Python function definitions. However, the tool directly executes the provided code using the unsafe exec() function without any sanitization, sandboxing, or security restrictions. An attacker can exploit this by crafting a malicious llm command with arbitrary Python code in the --functions argument and using social engineering to trick a victim into running it. This leads to arbitrary code execution on the victim's system, potentially granting the attacker full control.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "llm"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.27.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31236"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/simonw/llm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.notion.so/CVE-2026-31236-35d1e139318881a4a0f1fffcf671f7e3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-27T22:22:41Z",
+    "nvd_published_at": "2026-05-12T18:16:51Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jj37-jg79-p9qw",
+  "modified": "2026-10-21T03:32:06Z",
+  "published": "2026-10-16T00:31:54Z",
+  "aliases": [
+    "CVE-2026-111275"
+  ],
+  "details": "nifti_clib through 3.0.1 contains a stack-based out-of-bounds read and write vulnerability in nifti_convert_n2hdr2nim() because the NIfTI-2 dim[0] value is never range-checked. Attackers can supply a crafted 540-byte NIfTI-2 header read via nifti_image_read() to crash applications or corrupt stack memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111275"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NIFTI-Imaging/nifti_clib/issues/195"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NIFTI-Imaging/nifti_clib/pull/197"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NIFTI-Imaging/nifti_clib"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NIFTI-Imaging/nifti_clib/blob/96b9954fafcf3bd69a4ee2091b0d707ed2077697/nifti2/nifti2_io.c#L4985-L5026"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/cve-2026-111275-nifticlib-nifti2-dim0-oob"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/nifticlib-nifti2-dim0-oob"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nifti-clib-through-3.0.1-stack-out-of-bounds-access-via-nifti-convert-n2hdr2nim"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T22:19:28Z"
+  }
+}

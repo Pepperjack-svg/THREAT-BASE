@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r7h5-5g56-gv3h",
+  "modified": "2025-07-10T18:31:27Z",
+  "published": "2025-07-10T18:31:27Z",
+  "aliases": [
+    "CVE-2025-47811"
+  ],
+  "details": "In Wing FTP Server through 7.4.4, the administrative web interface (listening by default on port 5466) runs as root or SYSTEM by default. The web application itself offers several legitimate ways to execute arbitrary system commands (i.e., through the web console or the task scheduler), and they are automatically executed in the highest possible privilege context. Because administrative users of the web interface are not necessarily also system administrators, one might argue that this is a privilege escalation. (If a privileged application role is not available to an attacker, CVE-2025-47812 can be leveraged.) NOTE: the vendor reportedly considers this behavior \"fine to keep.\"",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-47811"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.rcesecurity.com/2025/06/what-the-null-wing-ftp-server-rce-cve-2025-47812"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wftpserver.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-267"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-10T17:15:46Z"
+  }
+}

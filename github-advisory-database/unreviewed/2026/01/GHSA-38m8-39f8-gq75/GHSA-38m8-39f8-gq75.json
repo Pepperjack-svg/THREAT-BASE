@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-38m8-39f8-gq75",
+  "modified": "2026-01-30T21:30:21Z",
+  "published": "2026-01-20T21:31:35Z",
+  "aliases": [
+    "CVE-2025-59464"
+  ],
+  "details": "A memory leak in Node.js’s OpenSSL integration occurs when converting `X.509` certificate fields to UTF-8 without freeing the allocated buffer. When applications call `socket.getPeerCertificate(true)`, each certificate field leaks memory, allowing remote clients to trigger steady memory growth through repeated TLS connections. Over time this can lead to resource exhaustion and denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59464"
+    },
+    {
+      "type": "WEB",
+      "url": "https://nodejs.org/en/blog/vulnerability/december-2025-security-releases"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-20T21:16:03Z"
+  }
+}

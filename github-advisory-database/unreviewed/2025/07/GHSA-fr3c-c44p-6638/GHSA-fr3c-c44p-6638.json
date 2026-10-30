@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fr3c-c44p-6638",
+  "modified": "2026-05-12T15:30:58Z",
+  "published": "2025-07-25T18:30:40Z",
+  "aliases": [
+    "CVE-2025-38466"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Revert to requiring CAP_SYS_ADMIN for uprobes\n\nJann reports that uprobes can be used destructively when used in the\nmiddle of an instruction. The kernel only verifies there is a valid\ninstruction at the requested offset, but due to variable instruction\nlength cannot determine if this is an instruction as seen by the\nintended execution stream.\n\nAdditionally, Mark Rutland notes that on architectures that mix data\nin the text segment (like arm64), a similar things can be done if the\ndata word is 'mistaken' for an instruction.\n\nAs such, require CAP_SYS_ADMIN for uprobes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38466"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/183bdb89af1b5193b1d1d9316986053b15ca6fa4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e8bf7bc6aa6f583336c2fda280b6cea0aed5612"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0a8009083e569b5526c64f7d3f2a62baca95164"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba677dbe77af5ffe6204e0f3f547f3ba059c6302"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0aec35f861fa746ca45aa816161c74352e6ada8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5074256b642cdeb46a70ce2f15193e766edca68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7ef1afd5b3f43f4924326164cee5397b66abd9c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T16:15:32Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-prrg-pvxw-q4m2",
+  "modified": "2026-01-16T21:30:29Z",
+  "published": "2025-10-01T12:30:29Z",
+  "aliases": [
+    "CVE-2023-53459"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: mcp-2221: prevent UAF in delayed work\n\nIf the device is plugged/unplugged without giving time for mcp_init_work()\nto complete, we might kick in the devm free code path and thus have\nunavailable struct mcp_2221 while in delayed work.\n\nCanceling the delayed_work item is enough to solve the issue, because\ncancel_delayed_work_sync will prevent the work item to requeue itself.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53459"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47e91fdfa511139f2549687edb0d8649b123227b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5dc297652dbc557eba7ca7d6a4c5f1940dffffb1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:47Z"
+  }
+}

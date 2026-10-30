@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hcpj-xwwg-jgh9",
+  "modified": "2025-12-24T12:30:28Z",
+  "published": "2025-12-24T12:30:28Z",
+  "aliases": [
+    "CVE-2023-54033"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: fix a memory leak in the LRU and LRU_PERCPU hash maps\n\nThe LRU and LRU_PERCPU maps allocate a new element on update before locking the\ntarget hash table bucket. Right after that the maps try to lock the bucket.\nIf this fails, then maps return -EBUSY to the caller without releasing the\nallocated element. This makes the element untracked: it doesn't belong to\neither of free lists, and it doesn't belong to the hash table, so can't be\nre-used; this eventually leads to the permanent -ENOMEM on LRU map updates,\nwhich is unexpected. Fix this by returning the element to the local free list\nif bucket locking fails.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54033"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a9e80f757bbb1562d82e350afce2bb2f712cc3d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79ea1a12fb9a8275b6e19d4ca625dd872dedcbb9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/965e9cccbe6b9c7b379908cebcb5e3a47f20dd5e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b34ffb0c6d23583830f9327864b9c1f486003305"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:15:56Z"
+  }
+}

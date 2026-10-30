@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9q2h-qvmx-46mv",
+  "modified": "2026-10-18T18:31:51Z",
+  "published": "2026-10-18T18:31:51Z",
+  "aliases": [
+    "CVE-2026-98494"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: atl1: fix soft lockup on out-of-range cmb_tpd_next_to_clean read\n\nSame issue as atl1c (see the first commit in this series, \"net:\natl1c: fix soft lockup on out-of-range tpd_cons read\"): the hardware\ncan report an out-of-range cmb_tpd_next_to_clean (seen as 0xffff)\nwhile the PCIe link/MAC is resetting. An out-of-range value can\nnever be reached and the loop below would spin forever. Treat it as\n\"nothing new to clean\" instead.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f573b0576252d44fb27ab8470ea873bc6408ef3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/43e746821f5f5afbbf68e388bf9fbe221e03bfca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d7ac337d37cb97d77e4c910d37746694b606661"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6285919d4c06254d257d24dc980f6332e1984a82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/632cd7b81cb7bab36112f02eb2ee7f7cc1214fb1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ab9f61ca851f02ae4398cebaf00735a22e1d6ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79e2447b11322c27ef9ac423be0a94efc7691f02"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c55e51d5899e80f9593b26985ed0b89e0c828a5e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:00Z"
+  }
+}

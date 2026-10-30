@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hmr5-2xcr-v8pp",
+  "modified": "2026-05-27T21:10:44Z",
+  "published": "2026-05-27T21:10:44Z",
+  "aliases": [
+    "CVE-2026-45072"
+  ],
+  "summary": "Symfony Vulnerable to stored XSS in WebProfiler CodeExtension::fileExcerpt() — Unescaped Non-PHP File Rendering",
+  "details": "### Description\n\nSymfony's profiler, a development only debug UI, renders source-code excerpts on several pages using Twig's custom `file_excerpt` filter. This filter renders PHP files via `highlight_string()` (which escapes HTML), but renders **non-PHP files** by splitting on `\\n` and interpolating each line directly into `<code>{$line}</code>` with no escaping. \n\nAn attacker who can write arbitrary bytes into any file under the project root (including e.g. `var/log/dev.log`), achieves **stored XSS** against any developer who later opens that file in the profiler.\n\n### Resolution\n\nThe `file_excerpt` filter now properly escapes each line of non-PHP files using `htmlspecialchars()` before concatenating them.\n\nThe patch for this issue is available [here](https://github.com/symfony/symfony/commit/863aa81c61166f1aa74b7732df316f76113acbdb) for branch 6.4.\n\n### Credits\n\nSymfony would like to thank Claude Mythos Preview (via Project Glasswing) for reporting the issue and providing the fix.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "symfony/symfony"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.4.24"
+            },
+            {
+              "fixed": "6.4.40"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "symfony/symfony"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.2.9"
+            },
+            {
+              "fixed": "7.4.12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "symfony/symfony"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.0.0"
+            },
+            {
+              "fixed": "8.0.12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "symfony/twig-bridge"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.4.24"
+            },
+            {
+              "fixed": "6.4.40"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "symfony/web-profiler-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.2.9"
+            },
+            {
+              "fixed": "7.4.12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "symfony/web-profiler-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.0.0"
+            },
+            {
+              "fixed": "8.0.12"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/symfony/symfony/security/advisories/GHSA-hmr5-2xcr-v8pp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/symfony/symfony/commit/863aa81c61166f1aa74b7732df316f76113acbdb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FriendsOfPHP/security-advisories/blob/master/symfony/symfony/CVE-2026-45072.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FriendsOfPHP/security-advisories/blob/master/symfony/twig-bridge/CVE-2026-45072.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FriendsOfPHP/security-advisories/blob/master/symfony/web-profiler-bundle/CVE-2026-45072.yaml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/symfony/symfony"
+    },
+    {
+      "type": "WEB",
+      "url": "https://symfony.com/cve-2026-45072"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-27T21:10:44Z",
+    "nvd_published_at": null
+  }
+}

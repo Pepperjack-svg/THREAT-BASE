@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-74r7-3mjm-jc5v",
+  "modified": "2026-05-18T15:35:42Z",
+  "published": "2026-05-18T15:35:42Z",
+  "aliases": [],
+  "summary": "eduMFA: Unauthenticated Failcounter Increment on Resolver Tokens via /validate/check",
+  "details": "### Impact\nIf the resolver parameter is passed, but the user does not exist, all failcounters of tokens in that resolver will be increased.\n\n### Patches\nThis, along with other issues, was fixed in eduMFA v2.9.1.\n\n### Workarounds\nLimiting access to `/validate/check` to client applications (i.e. Shibboleth/FreeRADIUS) using an authorization policy with `api_key_required` or using e.g. the reverse proxy.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "edumfa"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.9.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/eduMFA/eduMFA/security/advisories/GHSA-74r7-3mjm-jc5v"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/eduMFA/eduMFA"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-18T15:35:42Z",
+    "nvd_published_at": null
+  }
+}

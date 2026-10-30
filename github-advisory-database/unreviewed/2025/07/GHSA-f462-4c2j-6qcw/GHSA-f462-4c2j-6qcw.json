@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f462-4c2j-6qcw",
+  "modified": "2025-12-23T21:30:20Z",
+  "published": "2025-07-25T15:30:52Z",
+  "aliases": [
+    "CVE-2025-38391"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: altmodes/displayport: do not index invalid pin_assignments\n\nA poorly implemented DisplayPort Alt Mode port partner can indicate\nthat its pin assignment capabilities are greater than the maximum\nvalue, DP_PIN_ASSIGN_F. In this case, calls to pin_assignment_show\nwill cause a BRK exception due to an out of bounds array access.\n\nPrevent for loop in pin_assignment_show from accessing\ninvalid values in pin_assignments by adding DP_PIN_ASSIGN_MAX\nvalue in typec_dp.h and using i < DP_PIN_ASSIGN_MAX as a loop\ncondition.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/114a977e0f6bf278e05eade055e13fc271f69cf7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f535517b5611b7221ed478527e4b58e29536ddf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45e9444b3b97eaf51a5024f1fea92f44f39b50c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47cb5d26f61d80c805d7de4106451153779297a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5581e694d3a1c2f32c5a51d745c55b107644e1f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/621d5a3ef0231ab242f2d31eecec40c38ca609c5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af4db5a35a4ef7a68046883bfd12468007db38f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c93bc959788ed9a1af7df57cb539837bdf790cee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T13:15:28Z"
+  }
+}

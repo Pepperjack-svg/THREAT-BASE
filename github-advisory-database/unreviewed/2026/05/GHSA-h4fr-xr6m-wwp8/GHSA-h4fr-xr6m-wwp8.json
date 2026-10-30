@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h4fr-xr6m-wwp8",
+  "modified": "2026-05-11T09:30:29Z",
+  "published": "2026-05-08T15:31:22Z",
+  "aliases": [
+    "CVE-2026-43304"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: define and enforce CEPH_MAX_KEY_LEN\n\nWhen decoding the key, verify that the key material would fit into\na fixed-size buffer in process_auth_done() and generally has a sane\nlength.\n\nThe new CEPH_MAX_KEY_LEN check replaces the existing check for a key\nwith no key material which is a) not universal since CEPH_CRYPTO_NONE\nhas to be excluded and b) doesn't provide much value since a smaller\nthan needed key is just as invalid as no key -- this has to be handled\nelsewhere anyway.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b275bd49e58752efb83767a5d1aed41356c5e64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6405e8c680974bb74e2c98d5249fb52c7b12a6c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d745d38c88ecbed95f6b2b39857bf89f35a3244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac431d597a9bdfc2ba6b314813f29a6ef2b4a3bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1a0f5f1e5e7e98c36a362ec3d1fcfd9932931ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d82467c07b03a27c3c5469b62bb3b726305a80bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e1dc45d97975f9db65694d234fbddf1915176e16"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:37Z"
+  }
+}

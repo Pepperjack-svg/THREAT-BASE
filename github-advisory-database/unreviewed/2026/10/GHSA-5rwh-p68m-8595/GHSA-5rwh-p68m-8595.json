@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5rwh-p68m-8595",
+  "modified": "2026-10-12T18:31:46Z",
+  "published": "2026-10-12T18:31:46Z",
+  "aliases": [
+    "CVE-2026-109302"
+  ],
+  "details": "Parse Server 8.2.2 before 8.6.94 and 9.0.0 before 9.10.1-alpha.14 applies its GraphQL introspection control only to operation text sent directly with a request, not to operations resolved from Apollo Server's automatic persisted query cache. Unauthenticated attackers holding the public Application Id and client key can replay an introspection query previously cached by a master or maintenance key client to retrieve the schema, including private class and field names.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/parse-community/parse-server/security/advisories/GHSA-gxxq-pghq-9vrc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109302"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/parse-server-8.2.2-before-8.6.94-and-9.0.0-before-9.10.1-alpha.14-graphql-schema-disclosure-via-persisted-queries"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T17:17:24Z"
+  }
+}

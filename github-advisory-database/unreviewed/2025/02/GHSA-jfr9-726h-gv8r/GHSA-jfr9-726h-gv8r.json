@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jfr9-726h-gv8r",
+  "modified": "2025-02-27T21:32:15Z",
+  "published": "2025-02-27T03:34:06Z",
+  "aliases": [
+    "CVE-2025-21786"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nworkqueue: Put the pwq after detaching the rescuer from the pool\n\nThe commit 68f83057b913(\"workqueue: Reap workers via kthread_stop() and\nremove detach_completion\") adds code to reap the normal workers but\nmistakenly does not handle the rescuer and also removes the code waiting\nfor the rescuer in put_unbound_pool(), which caused a use-after-free bug\nreported by Cheung Wall.\n\nTo avoid the use-after-free bug, the pool’s reference must be held until\nthe detachment is complete. Therefore, move the code that puts the pwq\nafter detaching the rescuer from the pool.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21786"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/835b69c868f53f959d4986bbecd561ba6f38e492"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e76946110137703c16423baf6ee177b751a34b7e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7c16028a424dd35be1064a68fa318be4359310f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T03:15:19Z"
+  }
+}

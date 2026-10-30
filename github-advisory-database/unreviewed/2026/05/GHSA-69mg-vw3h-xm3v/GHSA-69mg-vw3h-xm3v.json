@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-69mg-vw3h-xm3v",
+  "modified": "2026-06-25T21:31:21Z",
+  "published": "2026-05-27T15:33:24Z",
+  "aliases": [
+    "CVE-2026-46097"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: edt-ft5x06 - fix use-after-free in debugfs teardown\n\nThe commit 68743c500c6e (\"Input: edt-ft5x06 - use per-client debugfs\ndirectory\") removed the manual debugfs teardown, relying on the I2C core\nto handle it. However, this creates a window where debugfs files are\nstill accessible after edt_ft5x06_ts_teardown_debugfs() frees\ntsdata->raw_buffer.\n\nTo prevent a use-after-free, protect the freeing of raw_buffer with the\ndevice mutex and set raw_buffer to NULL. The debugfs read function\nalready checks if raw_buffer is NULL under the same mutex, so this\nsafely avoids the use-after-free.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46097"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f6c5e7b747d40e1c65cbfcb975857d25154c075"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a516d43886623e3cca5fa3446bed8fc7c7982be2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f5f9e07060519e2287e99019a6de1eb3ebb65c37"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:31Z"
+  }
+}

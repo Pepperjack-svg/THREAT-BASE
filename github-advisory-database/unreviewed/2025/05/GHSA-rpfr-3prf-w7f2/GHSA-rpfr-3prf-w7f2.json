@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rpfr-3prf-w7f2",
+  "modified": "2025-11-13T00:30:16Z",
+  "published": "2025-05-08T09:30:24Z",
+  "aliases": [
+    "CVE-2025-37810"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: dwc3: gadget: check that event count does not exceed event buffer length\n\nThe event count is read from register DWC3_GEVNTCOUNT.\nThere is a check for the count being zero, but not for exceeding the\nevent buffer length.\nCheck that event count does not exceed event buffer length,\navoiding an out-of-bounds access when memcpy'ing the event.\nCrash log:\nUnable to handle kernel paging request at virtual address ffffffc0129be000\npc : __memcpy+0x114/0x180\nlr : dwc3_check_event_buf+0xec/0x348\nx3 : 0000000000000030 x2 : 000000000000dfc4\nx1 : ffffffc0129be000 x0 : ffffff87aad60080\nCall trace:\n__memcpy+0x114/0x180\ndwc3_interrupt+0x24/0x34",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37810"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/015c39f38e69a491d2abd5e98869a500a9459b3b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52a7c9d930b95aa8b1620edaba4818040c32631f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63ccd26cd1f6600421795f6ca3e625076be06c9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/99d655119b870ee60e4dbf310aa9a1ed8d9ede3d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a44547015287a19001384fe94dbff84c92ce4ee1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b43225948b231b3f331194010f84512bee4d9f59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0079630f268843a25ed75226169cba40e0d8880"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4d80e41cb42008dceb35e5dbf52574d93beac0d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-08T07:15:52Z"
+  }
+}

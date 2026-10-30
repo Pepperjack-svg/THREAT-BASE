@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q4cx-mm7j-89xj",
+  "modified": "2026-06-09T06:31:59Z",
+  "published": "2026-06-09T06:31:59Z",
+  "aliases": [
+    "CVE-2026-9185"
+  ],
+  "details": "The 6Storage Rentals plugin for WordPress is vulnerable to Authorization Bypass Through User-Controlled Key in all versions up to and including 2.22.0 via the `userId` parameter of the `six_storage_get_user_info` and `six_storage_update_profile` AJAX actions. This is due to the `six_storage_getUserInfo()` and `six_storage_updateProfile()` functions being registered on `wp_ajax_nopriv_*` hooks and accepting a tenant identifier directly from `$_POST['userId']` without performing any ownership verification, session binding, or nonce validation to confirm the requester has a legitimate relationship to the supplied ID. This makes it possible for unauthenticated attackers to read and modify arbitrary tenants' profile data — including name, email address, phone number, physical address, and SSN — by supplying an enumerated `userId` value in a crafted request to either handler.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9185"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.20.2/inc/Base/Six_Storage_DashboardController.php#L11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.20.2/inc/Base/Six_Storage_DashboardController.php#L1931"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.20.2/inc/Base/Six_Storage_DashboardController.php#L1955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.20.2/inc/Base/Six_Storage_DashboardController.php#L995"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.20.2/inc/Base/Six_Storage_DashboardController.php#L998"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.22.0/inc/Base/Six_Storage_DashboardController.php#L11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.22.0/inc/Base/Six_Storage_DashboardController.php#L1931"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.22.0/inc/Base/Six_Storage_DashboardController.php#L1955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.22.0/inc/Base/Six_Storage_DashboardController.php#L995"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.22.0/inc/Base/Six_Storage_DashboardController.php#L998"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/74fa4240-6f62-4db6-b7e7-56998fc29e42?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-09T05:16:41Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9j6f-8rw3-93c4",
+  "modified": "2026-10-24T15:32:53Z",
+  "published": "2026-10-24T15:32:53Z",
+  "aliases": [
+    "CVE-2026-115933"
+  ],
+  "details": "Postiz signs its session, invitation and password reset tokens with one shared secret and without any marker of what a token is for. A route that refreshes the credentials of a browser-extension channel signed data taken from the request itself and stored the result where the requesting user can read it back. A user could therefore obtain a validly signed token containing any claims they choose, which the application accepts as a session, as an organization invitation with a chosen role, as a password reset or as an enterprise provisioning token.\n\nA second, narrower route that creates team invitations signs extra fields from the request body in the same way.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115933"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitroomhq/postiz-app/commit/a5affe62c74e39c1e7ac960d50d8418b807d532c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gadvisory.org/advisories/PSA-2026-YT2HMH"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitroomhq/postiz-app"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitroomhq/postiz-app/releases/tag/v2.25.3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-290"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-24T15:17:33Z"
+  }
+}

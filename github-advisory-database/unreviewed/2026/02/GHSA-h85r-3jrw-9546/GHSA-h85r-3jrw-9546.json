@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h85r-3jrw-9546",
+  "modified": "2026-10-21T15:40:17Z",
+  "published": "2026-02-18T15:31:27Z",
+  "aliases": [
+    "CVE-2026-23213"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/pm: Disable MMIO access during SMU Mode 1 reset\n\nDuring Mode 1 reset, the ASIC undergoes a reset cycle and becomes\ntemporarily inaccessible via PCIe. Any attempt to access MMIO registers\nduring this window (e.g., from interrupt handlers or other driver threads)\ncan result in uncompleted PCIe transactions, leading to NMI panics or\nsystem hangs.\n\nTo prevent this, set the `no_hw_access` flag to true immediately after\ntriggering the reset. This signals other driver components to skip\nregister accesses while the device is offline.\n\nA memory barrier `smp_mb()` is added to ensure the flag update is\nglobally visible to all cores before the driver enters the sleep/wait\nstate.\n\n(cherry picked from commit 7edb503fe4b6d67f47d8bb0dfafb8e699bb0f8a4)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0de604d0357d0d22cbf03af1077d174b641707b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2b9ac2bb2c5b5b0a39f7f422bbe12d3ea4ccf34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1853ebbec980d5c05d431bfd6ded73b1363fd00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd7ff7fd3e4b77f0b5a292e0926532eaa07c5162"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-18T15:18:42Z"
+  }
+}

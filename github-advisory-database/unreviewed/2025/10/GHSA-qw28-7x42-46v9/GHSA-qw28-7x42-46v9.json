@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qw28-7x42-46v9",
+  "modified": "2026-02-04T00:30:27Z",
+  "published": "2025-10-07T18:31:10Z",
+  "aliases": [
+    "CVE-2023-53654"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-af: Add validation before accessing cgx and lmac\n\nwith the addition of new MAC blocks like CN10K RPM and CN10KB\nRPM_USX, LMACs are noncontiguous and CGX blocks are also\nnoncontiguous. But during RVU driver initialization, the driver\nis assuming they are contiguous and trying to access\ncgx or lmac with their id which is resulting in kernel panic.\n\nThis patch fixes the issue by adding proper checks.\n\n[   23.219150] pc : cgx_lmac_read+0x38/0x70\n[   23.219154] lr : rvu_program_channels+0x3f0/0x498\n[   23.223852] sp : ffff000100d6fc80\n[   23.227158] x29: ffff000100d6fc80 x28: ffff00010009f880 x27:\n000000000000005a\n[   23.234288] x26: ffff000102586768 x25: 0000000000002500 x24:\nfffffffffff0f000",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79ebb53772c95d3a6ae51b3c65f9985fdd430df6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5485a943193e55c79150382e6461e8ea759e96e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b04872e15f3df62cb2fd530950f769626e1ef489"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e425e2ba933618ee5ec8e4f3eb341efeb6c9ddef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:48Z"
+  }
+}

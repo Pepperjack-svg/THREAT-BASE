@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-55j9-gcm2-jr73",
+  "modified": "2025-10-21T12:31:26Z",
+  "published": "2025-10-21T12:31:26Z",
+  "aliases": [
+    "CVE-2022-49399"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: goldfish: Use tty_port_destroy() to destroy port\n\nIn goldfish_tty_probe(), the port initialized through tty_port_init()\nshould be destroyed in error paths.In goldfish_tty_remove(), qtty->port\nalso should be destroyed or else might leak resources.\n\nFix the above by calling tty_port_destroy().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49399"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/241fcb79dd1df276d80b19f5f6acc9eaaaa63309"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/326192b99c903a2193d820c30ed936cc2402382c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45f6ce70abfb7ccf9d787781cbc4c03294a775a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4639d1b992de8f37d66f698056875c274efcd45f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/507b05063d1b7a1fcb9f7d7c47586fc4f3508f98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ae3d073f7db5578ae1907544f0c15947e9678e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da64f419d7f78272bfe40dde1262602d4ff6b32c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee6c33b29e624f515202a31bf6ef0437f26a1867"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:16Z"
+  }
+}

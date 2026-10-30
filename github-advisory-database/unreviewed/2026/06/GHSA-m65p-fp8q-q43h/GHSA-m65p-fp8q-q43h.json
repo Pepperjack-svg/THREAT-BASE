@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m65p-fp8q-q43h",
+  "modified": "2026-06-25T21:31:30Z",
+  "published": "2026-06-25T21:31:30Z",
+  "aliases": [
+    "CVE-2026-56788"
+  ],
+  "details": "RTKLIB through 2.4.3 contains an out-of-bounds read vulnerability in getcodepri function when processing unrecognized RINEX observation codes, allowing attackers to trigger denial of service. Crafted RINEX files with unknown observation types cause negative array indexing into the codepris table, resulting in reliable crashes and potential memory disclosure of adjacent global data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56788"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tomojitakasu/RTKLIB/issues/797"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rtklib-out-of-bounds-read-via-negative-array-index-in-getcodepri"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T19:16:45Z"
+  }
+}

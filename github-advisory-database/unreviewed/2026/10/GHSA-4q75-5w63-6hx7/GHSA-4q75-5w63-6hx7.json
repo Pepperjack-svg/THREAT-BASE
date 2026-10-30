@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4q75-5w63-6hx7",
+  "modified": "2026-10-25T18:31:41Z",
+  "published": "2026-10-25T18:31:41Z",
+  "aliases": [
+    "CVE-2026-115823"
+  ],
+  "details": "Starman versions before 0.4019 for Perl send response bodies for HEAD requests, desynchronizing responses on keep-alive connections.\n\nFor a HEAD request Starman omits chunked framing but still writes the body returned by the application, on both the array and streaming response paths. Responses with a 1xx, 204 or 304 status also carry the body.\n\nOn a keep-alive or pipelined connection the client reads those bytes as the start of the next response. A front-end proxy that reuses upstream connections may then pair responses with the wrong requests.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115823"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/miyagawa/Starman/commit/91c47c529cd1e100f938486896ea9083ec3ec7bf.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/MIYAGAWA/Starman-0.4019/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-444"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-25T17:17:01Z"
+  }
+}

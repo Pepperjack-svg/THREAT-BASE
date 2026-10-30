@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9r78-47qh-www2",
+  "modified": "2026-06-02T15:31:51Z",
+  "published": "2025-12-12T18:30:35Z",
+  "aliases": [
+    "CVE-2025-40345"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: storage: sddr55: Reject out-of-bound new_pba\n\nDiscovered by Atuin - Automated Vulnerability Discovery Engine.\n\nnew_pba comes from the status packet returned after each write.\nA bogus device could report values beyond the block count derived\nfrom info->capacity, letting the driver walk off the end of\npba_to_lba[] and corrupt heap memory.\n\nReject PBAs that exceed the computed block count and fail the\ntransfer so we avoid touching out-of-range mapping entries.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40345"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-253495.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04a8a6393f3f2f471e05eacca33282dd30b01432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26e9b5da3231da7dc357b363883b5b7b51a64092"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ebe8d479aaf4f41ac35e6955332304193c646f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a20f1dd19d21dcb70140ea5a71b1f8cbe0c7e68f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa64e0e17e3a5991a25e6a46007770c629039869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b59d4fda7e7d0aff1043a7f742487cb829f5aac1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d00a6c04a502cd52425dbf35588732c652b16490"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-12T18:15:39Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5f2m-5gjf-8mqg",
+  "modified": "2025-04-11T15:32:27Z",
+  "published": "2025-04-01T18:30:51Z",
+  "aliases": [
+    "CVE-2025-21923"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: hid-steam: Fix use-after-free when detaching device\n\nWhen a hid-steam device is removed it must clean up the client_hdev used for\nintercepting hidraw access. This can lead to scheduling deferred work to\nreattach the input device. Though the cleanup cancels the deferred work, this\nwas done before the client_hdev itself is cleaned up, so it gets rescheduled.\nThis patch fixes the ordering to make sure the deferred work is properly\ncanceled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21923"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/026714ec7546de741826324a6a1914c91024d06c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a899adf7063c6745aaff1ec869f3c7f6329ed0a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e53fc232a65f7488ab75d03a5b95f06aaada7262"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea3f18d2f02629653b7bfe42607737ccd1343e54"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-01T16:15:23Z"
+  }
+}

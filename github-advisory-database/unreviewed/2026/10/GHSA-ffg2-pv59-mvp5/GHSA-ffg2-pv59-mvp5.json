@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ffg2-pv59-mvp5",
+  "modified": "2026-10-27T00:32:47Z",
+  "published": "2026-10-27T00:32:47Z",
+  "aliases": [
+    "CVE-2026-116733"
+  ],
+  "details": "flatcc through 0.6.4 contains an out-of-bounds read vulnerability in __flatcc_json_parser_number that allows attackers to read past the input buffer via numbers ending in a decimal point. Attackers can supply untrusted JSON ending immediately after a decimal point to generated parsers, crashing applications when the buffer ends at an unmapped page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116733"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dvidelabs/flatcc/commit/356792dc155a9e685acdfe0ec1e209bdadcb4ab9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dvidelabs/flatcc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dvidelabs/flatcc/blob/v0.6.4/src/runtime/json_parser.c#L539-L543"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/flatcc-json-number-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flatcc-through-0.6.4-out-of-bounds-read-via-flatcc-json-parser-number"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T22:16:57Z"
+  }
+}

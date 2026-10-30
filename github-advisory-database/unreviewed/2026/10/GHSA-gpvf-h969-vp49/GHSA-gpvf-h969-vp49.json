@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gpvf-h969-vp49",
+  "modified": "2026-10-06T09:31:30Z",
+  "published": "2026-10-06T09:31:29Z",
+  "aliases": [
+    "CVE-2026-98191"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: wlcore: release runtime PM ref on regdomain config failure\n\nwlcore_regdomain_config() gets a runtime PM reference before sending\nthe regulatory-domain command. When\nwlcore_cmd_regdomain_config_locked() fails, the function queues recovery\nand returns without dropping that reference.\n\nRelease the reference after handling the command result so both success\nand failure paths balance the preceding\npm_runtime_resume_and_get(). The recovery worker takes a separate\nruntime PM reference and cannot release the reference held here.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05b5e297bbf46f92c80da4c2ebe67828ca0d0247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/18eb148105f1af9163f5e9758f0a7bc6ab042423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3fbaae01bb7847d8b0124a8bbdb3af865e388d53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f1f25b2db14683ab75d0d22c00d6a75ba988b83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85ec6c451fe681ac3135dfa43a519f1404ae63ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a1f3cf89ddcc700e25afe42cfad333059adcc94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6bb6ad517a0d4db33a0cac9448e3ae9f4008fb4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c02352e2b5a241c8da89b5f5f1a0ae4d403120ed"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:04Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rw7c-q4g4-f6m7",
+  "modified": "2025-12-08T03:31:04Z",
+  "published": "2025-12-08T03:31:04Z",
+  "aliases": [
+    "CVE-2023-53767"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: fix memory leak in ath12k_qmi_driver_event_work()\n\nCurrently the buffer pointed by event is not freed in case\nATH12K_FLAG_UNREGISTERING bit is set, this causes memory leak.\n\nAdd a goto skip instead of return, to ensure event and all the\nlist entries are freed properly.\n\nTested-on: QCN9274 hw2.0 PCI WLAN.WBE.1.0.1-00029-QCAHKSWPL_SILICONZ-1",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53767"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/960412bee0ea75f6b3c2dca4a3535795ee84c47a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a87f59041a7f77b4bdab05cea60ac6adc69dc5d2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-08T02:15:52Z"
+  }
+}

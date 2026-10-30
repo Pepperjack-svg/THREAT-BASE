@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-crf3-5v2r-wq3r",
+  "modified": "2025-10-24T21:31:08Z",
+  "published": "2025-10-24T21:31:08Z",
+  "aliases": [
+    "CVE-2022-49698"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: use get_random_u32 instead of prandom\n\nbh might occur while updating per-cpu rnd_state from user context,\nie. local_out path.\n\nBUG: using smp_processor_id() in preemptible [00000000] code: nginx/2725\ncaller is nft_ng_random_eval+0x24/0x54 [nft_numgen]\nCall Trace:\n check_preemption_disabled+0xde/0xe0\n nft_ng_random_eval+0x24/0x54 [nft_numgen]\n\nUse the random driver instead, this also avoids need for local prandom\nstate. Moreover, prandom now uses the random driver since d4150779e60f\n(\"random32: use real rng for non-deterministic randomness\").\n\nBased on earlier patch from Pablo Neira.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49698"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15cc30ac2a8d7185f8ebf97dd1ddd90a7c79783b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ce71f83f798be7e1ca68707fec449fbecb38852"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1fd94e704571f98b21027340eecf821b2bdffba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0906b0fffc9f19bc42708ca3e84e2089088386c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:44Z"
+  }
+}

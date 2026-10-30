@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7m2c-2c8h-4626",
+  "modified": "2026-06-02T18:31:28Z",
+  "published": "2026-06-01T21:30:42Z",
+  "aliases": [
+    "CVE-2026-37226"
+  ],
+  "details": "FlexRIC v2.0.0 crashes when the iApp receives an E42_RIC_SUBSCRIPTION_REQUEST referencing a non-existent E2 Node. The lookup function returns NULL, which is enforced by assert() in Debug builds (SIGABRT) and dereferenced in Release builds (SIGSEGV). A remote unauthenticated attacker can crash the iApp process (port 36422) by sending a subscription request with an arbitrary global_e2_node_id.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-37226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MinamiKotor1/oran-security-advisories-zhongnan-luo/blob/main/advisories/CVE-2026-37226.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eurecom.fr/mosaic5g/flexric"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-01T19:16:33Z"
+  }
+}

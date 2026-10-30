@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3ffw-9f6g-j2rr",
+  "modified": "2026-02-06T15:30:58Z",
+  "published": "2025-10-04T18:31:15Z",
+  "aliases": [
+    "CVE-2023-53572"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nclk: imx: scu: use _safe list iterator to avoid a use after free\n\nThis loop is freeing \"clk\" so it needs to use list_for_each_entry_safe().\nOtherwise it dereferences a freed variable to get the next item on the\nloop.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53572"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08cc7cd2c2a29a2abf5bceb8f048c0734d3694ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a719f0e4b6f233979e219baff73923e76a96e09"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d90921f91fc6a8c801d527bb5848c99e335c1cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/632c60ecd25dbacee54d5581fe3aeb834b57010a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f95ff838ac39f861d1f95a0f3bbb1e01c2517d79"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-04T16:15:52Z"
+  }
+}

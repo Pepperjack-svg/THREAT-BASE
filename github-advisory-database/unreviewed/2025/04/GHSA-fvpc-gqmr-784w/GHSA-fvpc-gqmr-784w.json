@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fvpc-gqmr-784w",
+  "modified": "2025-04-15T15:30:53Z",
+  "published": "2025-04-15T15:30:53Z",
+  "aliases": [
+    "CVE-2025-32944"
+  ],
+  "details": "The vulnerability allows any authenticated user to cause the PeerTube server to stop functioning in a persistent manner.  If user import is enabled (which is the default setting), any registered user can upload an archive for importing. The code uses the yauzl library for reading the archive. If the yauzl library encounters a filename that is considered illegal, it raises an exception that is uncaught by PeerTube, leading to a crash which repeats infinitely on startup.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-32944"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Chocobozzz/PeerTube/releases/tag/v7.1.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://research.jfrog.com/vulnerabilities/peertube-archive-persistent-dos"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-248"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-15T13:15:55Z"
+  }
+}

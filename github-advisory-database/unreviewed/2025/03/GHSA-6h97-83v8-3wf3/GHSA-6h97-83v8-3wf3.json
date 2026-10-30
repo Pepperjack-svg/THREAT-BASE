@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6h97-83v8-3wf3",
+  "modified": "2025-03-12T00:31:48Z",
+  "published": "2025-03-12T00:31:48Z",
+  "aliases": [
+    "CVE-2022-49653"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: piix4: Fix a memory leak in the EFCH MMIO support\n\nThe recently added support for EFCH MMIO regions introduced a memory\nleak in that code path. The leak is caused by the fact that\nrelease_resource() merely removes the resource from the tree but does\nnot free its memory. We need to call release_mem_region() instead,\nwhich does free the memory. As a nice side effect, this brings back\nsome symmetry between the legacy and MMIO paths.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49653"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ad59b397f86a4d8014966fdc0552095a0c4fb2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3263e4cf8265f0c9eb0ed8a9b50f132c7a42e19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2bf1a6480e8d44658a8ac3bdcec081238873212"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:40Z"
+  }
+}

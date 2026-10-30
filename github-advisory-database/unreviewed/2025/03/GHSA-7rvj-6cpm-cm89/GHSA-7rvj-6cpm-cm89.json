@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7rvj-6cpm-cm89",
+  "modified": "2025-03-17T18:31:50Z",
+  "published": "2025-03-17T18:31:49Z",
+  "aliases": [
+    "CVE-2022-49454"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: mediatek: Fix refcount leak in mtk_pcie_subsys_powerup()\n\nThe of_find_compatible_node() function returns a node pointer with\nrefcount incremented, We should use of_node_put() on it when done\nAdd the missing of_node_put() to release the refcount.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49454"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09b2d906d78ddf5042b1f3e0091835fc6997e8a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/214e0d8fe4a813ae6ffd62bc2dfe7544c20914f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4cef4237d6c37257cb6ddc397723e9c0dded0efe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ad1c9d13e04509ae24fae8dd2897148657323519"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:21Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h249-j3v7-74fw",
+  "modified": "2026-10-13T21:33:40Z",
+  "published": "2026-10-13T21:33:40Z",
+  "aliases": [
+    "CVE-2026-110234"
+  ],
+  "details": "Elio through 1.13.0 contains an insecure temporary file vulnerability that allows local users to overwrite another user's files by pre-creating symbolic links at predictable capture paths. Attackers who know the victim's Elio process ID can plant a symlink so previewing media, fonts or archives truncates and overwrites victim-owned files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:A/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/elio-fm/elio/blob/e7daae44ce748310de441499576bdc31b936d54c/src/preview/archives/external_tools.rs#L30-L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/elio-fm/elio/blob/e7daae44ce748310de441499576bdc31b936d54c/src/preview/external_commands.rs#L14-L47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/elio-fm/elio/blob/e7daae44ce748310de441499576bdc31b936d54c/src/preview/external_commands.rs#L92-L95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/elio-fm/elio/releases/tag/v1.13.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/r1d_wQojfg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/elio-through-1.13.0-insecure-temporary-file-creation-in-external-preview-command-capture"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-377"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:48Z"
+  }
+}

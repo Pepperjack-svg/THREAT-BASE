@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xj2g-87r9-g689",
+  "modified": "2026-10-22T00:31:59Z",
+  "published": "2026-10-22T00:31:59Z",
+  "aliases": [
+    "CVE-2026-76290"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.4, 10.2.8, and 10.0.11, an unauthenticated user could send repeated requests to the Edge Processor package download endpoint in the Splunk Pipeline Builders app. The requests could cause the Splunk daemon to consume excessive system resources and potentially stop responding.\nThe vulnerability is possible because the endpoint accepts package download requests without authentication and reads and base64-encodes the complete package in memory for each request.\nAfter upgrading, prepare all existing Edge Processor instances, turn on authentication for Edge Processor package downloads, and restart Splunk Enterprise. For more information, see Enable authentication for Edge Processor package downloads (https://help.splunk.com/en/data-management/process-data-at-the-edge/use-edge-processors-for-splunk-enterprise/10.4/administer-edge-processors/enable-authentication-for-edge-processor-package-downloads).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76290"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-1007"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T23:17:26Z"
+  }
+}

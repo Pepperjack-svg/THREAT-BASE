@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hvj9-4j33-rmxc",
+  "modified": "2025-12-30T15:30:34Z",
+  "published": "2025-12-30T15:30:34Z",
+  "aliases": [
+    "CVE-2023-54255"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsh: dma: Fix DMA channel offset calculation\n\nVarious SoCs of the SH3, SH4 and SH4A family, which use this driver,\nfeature a differing number of DMA channels, which can be distributed\nbetween up to two DMAC modules. The existing implementation fails to\ncorrectly accommodate for all those variations, resulting in wrong\nchannel offset calculations and leading to kernel panics.\n\nRewrite dma_base_addr() in order to properly calculate channel offsets\nin a DMAC module. Fix dmaor_read_reg() and dmaor_write_reg(), so that\nthe correct DMAC module base is selected for the DMAOR register.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54255"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/196f6c71905aa384c0177acf194a1144d480333b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/479380acfa63247b5ac62476138f847aefc62692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4989627157735c1f1619f08e5bc1592418e7c878"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8fb11fa4805699c6b73a9c8a9d45807f9874abe3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bca700b48c72f4ffeee977a2ed0eb4a6b4b7b8ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1c946552af299f4fa85bf7da15e328123771128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e82e47584847129a20b8c9f4a1dcde09374fb0e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e9e33faea104381bac80ac79328f0540fc2969f2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:14Z"
+  }
+}

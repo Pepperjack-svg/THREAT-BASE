@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f6pj-wrqm-mccq",
+  "modified": "2026-05-08T18:31:26Z",
+  "published": "2026-05-01T15:30:35Z",
+  "aliases": [
+    "CVE-2026-31764"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: imu: st_lsm6dsx: Set buffer sampling frequency for accelerometer only\n\nThe st_lsm6dsx_hwfifo_odr_store() function, which is called when userspace\nwrites the buffer sampling frequency sysfs attribute, calls\nst_lsm6dsx_check_odr(), which accesses the odr_table array at index\n`sensor->id`; since this array is only 2 entries long, an access for any\nsensor type other than accelerometer or gyroscope is an out-of-bounds\naccess.\n\nThe motivation for being able to set a buffer frequency different from the\nsensor sampling frequency is to support use cases that need accurate event\ndetection (which requires a high sampling frequency) while retrieving\nsensor data at low frequency. Since all the supported event types are\ngenerated from acceleration data only, do not create the buffer sampling\nfrequency attribute for sensor types other than the accelerometer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31764"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3225a81e8d264442b14c7c1bc965ebafa3c0ee01"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/679c04c10d65d32a3f269e696b22912ff0a001b9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-129"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:39Z"
+  }
+}

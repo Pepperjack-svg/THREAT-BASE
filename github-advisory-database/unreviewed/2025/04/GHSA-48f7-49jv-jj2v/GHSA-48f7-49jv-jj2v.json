@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-48f7-49jv-jj2v",
+  "modified": "2026-09-14T12:31:26Z",
+  "published": "2025-04-16T15:34:45Z",
+  "aliases": [
+    "CVE-2025-22124"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/md-bitmap: fix wrong bitmap_limit for clustermd when write sb\n\nIn clustermd, separate write-intent-bitmaps are used for each cluster\nnode:\n\n0                    4k                     8k                    12k\n-------------------------------------------------------------------\n| idle                | md super            | bm super [0] + bits |\n| bm bits[0, contd]   | bm super[1] + bits  | bm bits[1, contd]   |\n| bm super[2] + bits  | bm bits [2, contd]  | bm super[3] + bits  |\n| bm bits [3, contd]  |                     |                     |\n\nSo in node 1, pg_index in __write_sb_page() could equal to\nbitmap->storage.file_pages. Then bitmap_limit will be calculated to\n0. md_super_write() will be called with 0 size.\nThat means the first 4k sb area of node 1 will never be updated\nthrough filemap_write_page().\nThis bug causes hang of mdadm/clustermd_tests/01r1_Grow_resize.\n\nHere use (pg_index % bitmap->storage.file_pages) to make calculation\nof bitmap_limit correct.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22124"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5eaf57fdfa37c869e61e9908e03edd707f9145b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60196f92bbc7901eb5cfa5d456651b87ea50a4a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6130825f34d41718c98a9b1504a79a23e379701e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc3a9788961631359527763d7e1fcf26554c7cb1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:16:06Z"
+  }
+}

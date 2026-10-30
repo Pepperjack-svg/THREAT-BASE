@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r3jf-hm7q-qfw5",
+  "modified": "2025-11-04T16:55:30Z",
+  "published": "2025-11-03T17:07:39Z",
+  "aliases": [
+    "CVE-2025-46556"
+  ],
+  "summary": "MantisBT Vulnerable to Denial-of-Service (DoS) via Excessive Note Length",
+  "details": "A lack of server-side validation for note length in MantisBT allows attackers to permanently corrupt issue activity logs by submitting extremely long notes (tested with 4,788,761 characters). Once such a note is added:\n\n### Impact\n- The entire activity stream becomes unviewable (UI fails to render).\n- New notes cannot be displayed, effectively breaking all future collaboration on the issue.\n\n### Patches\nFixed in 2.27.2.\n\n### Workarounds\nNone\n\n### Credits\nThanks to Mazen Mahmoud (@TheAmazeng) for reporting the vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mantisbt/mantisbt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.27.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/security/advisories/GHSA-r3jf-hm7q-qfw5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-46556"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/commit/c99a41272532ba49b5c8dccb7797afead9864234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/commit/d5cec6bffb44d54bd412c186b9baa409b1aa4238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/commit/e9119c68b4a0eaa0bbde3deb121e81f5f7157361"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mantisbt/mantisbt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-11-03T17:07:39Z",
+    "nvd_published_at": "2025-11-04T01:15:33Z"
+  }
+}

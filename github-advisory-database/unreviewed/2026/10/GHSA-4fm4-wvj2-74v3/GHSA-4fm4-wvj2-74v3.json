@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4fm4-wvj2-74v3",
+  "modified": "2026-10-09T00:31:46Z",
+  "published": "2026-10-09T00:31:46Z",
+  "aliases": [
+    "CVE-2026-107831"
+  ],
+  "details": "Jivejdon through 5.0 contains a cross-site request forgery vulnerability that allows remote attackers to perform state-changing actions by abusing GET endpoints lacking anti-CSRF tokens. Attackers can lure authenticated users to crafted links targeting /account/protected/delAll, /account/protected/sub/delSub, or /message/updateAction to delete private messages and subscriptions or rename threads.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107831"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/banq/jivejdon/issues/28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/banq/jivejdon"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/banq/jivejdon/blob/ee67a65e65228644a71c8317d7e34deea50f95ef/application/WEB-INF/struts-config-shortmessage.xml#L112-L118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/banq/jivejdon/blob/ee67a65e65228644a71c8317d7e34deea50f95ef/application/WEB-INF/struts-config-subscription.xml#L75-L79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/banq/jivejdon/blob/ee67a65e65228644a71c8317d7e34deea50f95ef/src/main/java/com/jdon/jivejdon/presentation/action/message/UpdateThreadNameAction.java#L19-L36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jivejdon-through-5.0-csrf-via-get-based-account-and-thread-actions"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T22:17:30Z"
+  }
+}

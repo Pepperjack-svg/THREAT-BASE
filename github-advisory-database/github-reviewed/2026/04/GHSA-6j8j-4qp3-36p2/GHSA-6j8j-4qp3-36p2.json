@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6j8j-4qp3-36p2",
+  "modified": "2026-05-08T21:47:33Z",
+  "published": "2026-04-30T17:28:02Z",
+  "aliases": [
+    "CVE-2026-41519"
+  ],
+  "summary": "Weblate Doesn't Invalidate API Token on Password Change",
+  "details": "### Impact\nWhen a user changes their password, browser sessions are correctly invalidated via `cycle_session_keys()`, but DRF API tokens (`wlu_*` prefix) stored in `authtoken_token` are not revoked.\n\n### Patches\n* https://github.com/WeblateOrg/weblate/pull/19057\n\n### Resources\nWeblate thanks Sang Yu Jeon for reporting this via GitHub.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "weblate"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.17.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/security/advisories/GHSA-6j8j-4qp3-36p2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41519"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/pull/19057"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/commit/649a2da81700542f95c0807b3c625fc3bb0eaf95"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/WeblateOrg/weblate"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/releases/tag/weblate-5.17.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-30T17:28:02Z",
+    "nvd_published_at": "2026-05-07T15:16:07Z"
+  }
+}

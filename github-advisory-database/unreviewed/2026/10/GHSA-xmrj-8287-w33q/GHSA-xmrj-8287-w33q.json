@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xmrj-8287-w33q",
+  "modified": "2026-10-26T15:34:48Z",
+  "published": "2026-10-26T15:34:48Z",
+  "aliases": [
+    "CVE-2026-77058"
+  ],
+  "details": "boneIO Black is vulnerable to Cross-Site Request Forgery (CSRF) on all state-changing API endpoints because it lacks CSRF tokens and does not validate Origin or Referer headers. A remote attacker can craft a malicious webpage that, when visited by a user on the internal network, sends cross-origin requests to the device. This allows the attacker to reboot the controller, toggle relay circuits, control gates and blinds, or shut down the device, causing loss of integrity and availability. Critically, due to CVE-2026-77053 (authentication disabled by default), any user on the same internal network can trigger attacker-controlled actions by visiting the malicious website.\n\nThis issue was fixed in version 1.6.0.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77058"
+    },
+    {
+      "type": "WEB",
+      "url": "https://boneio.eu/en/docs/black"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2026/10/CVE-2026-77052"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T15:16:43Z"
+  }
+}

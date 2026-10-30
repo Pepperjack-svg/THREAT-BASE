@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wr27-gh7c-5q9v",
+  "modified": "2026-09-30T15:31:34Z",
+  "published": "2026-09-30T15:31:34Z",
+  "aliases": [
+    "CVE-2026-103396"
+  ],
+  "details": "bbs-go through 4.4.6 contains a permission bypass vulnerability in the AdminMiddleware authorization logic where the read-only dashboard.user.view permission rule matches the /api/admin/user/synccount endpoint before the intended dashboard.user.update rule. Authenticated users with only view permissions can call the synccount endpoint to trigger expensive full-table user recounts and cache invalidations, causing denial of service through repeated concurrent database operations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103396"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mlogclub/bbs-go/issues/303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mlogclub/bbs-go/commit/97d0bb3dcbacd686fd5300295afbf4f4a5da7609"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mlogclub/bbs-go"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mlogclub/bbs-go/blob/v4.4.6/internal/handlers/admin/user_handlers.go#L47-L59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mlogclub/bbs-go/blob/v4.4.6/internal/permissions/admin_permission_registry.go#L59-L60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bbs-go-through-4.4.6-incorrect-authorization-via-api-admin-user-synccount"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T15:22:28Z"
+  }
+}

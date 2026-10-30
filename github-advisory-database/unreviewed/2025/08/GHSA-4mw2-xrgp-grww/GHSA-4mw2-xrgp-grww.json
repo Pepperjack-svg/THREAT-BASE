@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4mw2-xrgp-grww",
+  "modified": "2025-08-21T21:32:06Z",
+  "published": "2025-08-21T21:32:06Z",
+  "aliases": [
+    "CVE-2010-20112"
+  ],
+  "details": "Amlib’s NetOpacs webquery.dll contains a stack-based buffer overflow vulnerability triggered by improper handling of HTTP GET parameters. Specifically, the application fails to enforce bounds on input supplied to the app parameter, allowing excessive data to overwrite memory structures including the Structured Exception Handler (SEH). Additionally, malformed parameter names followed by an equals sign may result in unintended control flow behavior. This vulnerability is exposed through IIS and affects legacy Windows deployments",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2010-20112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisories.checkpoint.com/defense/advisories/public/2013/cpai-2013-1344.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/http/amlibweb_webquerydll_app.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.amlib.co.uk/product/product.aspx?menuId=top_products"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/16793"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.fortiguard.com/encyclopedia/ips/24002"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/amlibweb-netopacs-stack-buffer-overflow"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-21T20:15:31Z"
+  }
+}

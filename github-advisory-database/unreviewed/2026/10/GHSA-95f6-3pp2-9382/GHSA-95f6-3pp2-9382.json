@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-95f6-3pp2-9382",
+  "modified": "2026-10-18T18:32:04Z",
+  "published": "2026-10-18T18:32:04Z",
+  "aliases": [
+    "CVE-2026-98820"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-mq: set RQF_USE_SCHED when the operation is known\n\nThe cached requests are allocated for one operation but can be handed\nout for another. A passthrough command has RQF_USE_SCHED cleared, so\nusing those flags for a subsequent read/write bio will insert it into\nthe scheduler without ->prepare_request() and frees it without\n->finish_request(). For kyber, this leaks the domain token acquired at\ndispatch and stalls the queue.\n\nDon't set RQF_USE_SCHED based on the first operation the batch happened\nto be allocated for. Instead, set it after the request is claimed by an\noperation. Introduce a helper function, blk_mq_rq_late_init() for this,\nand absorb blk_mq_rq_time_init() since the two run together.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98820"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c47ebc27fa72078e26177cd458cdaf3006a9685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/790730e4d95de8356a573d4b4864486bba731863"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab6c756f28c741d704a7c3e04814bfc3adf6f818"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:36Z"
+  }
+}

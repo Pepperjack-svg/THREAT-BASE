@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h255-j2q2-5hrg",
+  "modified": "2026-04-27T15:30:31Z",
+  "published": "2026-04-03T18:31:22Z",
+  "aliases": [
+    "CVE-2026-23453"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ti: icssg-prueth: Fix memory leak in XDP_DROP for non-zero-copy mode\n\nPage recycling was removed from the XDP_DROP path in emac_run_xdp() to\navoid conflicts with AF_XDP zero-copy mode, which uses xsk_buff_free()\ninstead.\n\nHowever, this causes a memory leak when running XDP programs that drop\npackets in non-zero-copy mode (standard page pool mode). The pages are\nnever returned to the page pool, leading to OOM conditions.\n\nFix this by handling cleanup in the caller, emac_rx_packet().\nWhen emac_run_xdp() returns ICSSG_XDP_CONSUMED for XDP_DROP, the\ncaller now recycles the page back to the page pool. The zero-copy\npath, emac_rx_packet_zc() already handles cleanup correctly with\nxsk_buff_free().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/719d3e71691db7c4f1658ba5a6d1472928121594"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d16d57dedcb69c1a1257e0638f8698ce1f0ccbe5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-03T16:16:31Z"
+  }
+}

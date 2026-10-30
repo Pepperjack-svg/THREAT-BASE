@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fp33-g9vp-3ffr",
+  "modified": "2026-10-14T15:32:18Z",
+  "published": "2026-10-14T15:32:18Z",
+  "aliases": [
+    "CVE-2026-82026"
+  ],
+  "details": "Radar before 1.12.2 contains a missing authorization vulnerability in the handleLocalTerminal WebSocket endpoint (/api/local-terminal) that allows authenticated or unauthenticated attackers to spawn a privileged shell by relying only on a runtime-mode check instead of role-based access control. Attackers can connect to the endpoint to execute /bin/bash -l on the Radar host with Radar's own kubeconfig and process credentials injected into the shell environment, achieving remote code execution with Radar's privileges even when the --disable-local-terminal flag is set.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82026"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/skyhook-io/radar/pull/1534"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/skyhook-io/radar/pull/1537"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/skyhook-io/radar/releases/tag/v1.12.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/radar-missing-authorization-via-api-local-terminal"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T13:17:28Z"
+  }
+}

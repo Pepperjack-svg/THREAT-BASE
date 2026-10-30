@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m592-cr2f-4qg5",
+  "modified": "2026-01-16T00:30:54Z",
+  "published": "2026-01-13T00:30:46Z",
+  "aliases": [
+    "CVE-2024-14021"
+  ],
+  "details": "LlamaIndex (run-llama/llama_index) versions up to and including 0.11.6 contain an unsafe deserialization vulnerability in BGEM3Index.load_from_disk() in llama_index/indices/managed/bge_m3/base.py. The function uses pickle.load() to deserialize multi_embed_store.pkl from a user-supplied persist_dir without validation. An attacker who can provide a crafted persist directory containing a malicious pickle file can trigger arbitrary code execution when the victim loads the index from disk.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-14021"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/run-llama/llama_index"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/ab4ceeb4-aa85-4d1c-aaca-4eda1b71fc12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.llamaindex.ai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/llamaindex-bgem3index-unsafe-deserialization"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-12T23:15:51Z"
+  }
+}

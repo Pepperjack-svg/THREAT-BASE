@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m6wr-6wgx-82mm",
+  "modified": "2026-10-12T21:31:59Z",
+  "published": "2026-10-12T21:31:59Z",
+  "aliases": [
+    "CVE-2026-109380"
+  ],
+  "details": "modern-tar 0.3.5 through 0.8.5 contains a memory exhaustion vulnerability that allows attackers to produce negative entry sizes via non-octal bytes parsed by readOctal(). Attackers can supply a crafted, optionally gzip-compressed, archive to unpackTar() that buffers chunks indefinitely, exhausting process memory and suppressing later entries.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109380"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ayuhito/modern-tar/pull/195"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ayuhito/modern-tar/commit/181c8cb75351867535057817ada4802a90fe416e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ayuhito/modern-tar"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ayuhito/modern-tar/blob/v0.8.5/src/tar/encoding.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/modern-tar-0.3.5-through-0.8.5-memory-exhaustion-via-malformed-octal-size-field"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1284"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T21:17:11Z"
+  }
+}

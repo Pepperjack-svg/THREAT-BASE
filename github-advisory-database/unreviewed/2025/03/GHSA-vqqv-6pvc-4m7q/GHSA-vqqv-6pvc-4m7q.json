@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vqqv-6pvc-4m7q",
+  "modified": "2025-03-20T12:32:52Z",
+  "published": "2025-03-20T12:32:52Z",
+  "aliases": [
+    "CVE-2025-0281"
+  ],
+  "details": "A stored cross-site scripting (XSS) vulnerability exists in lunary-ai/lunary versions 1.6.7 and earlier. An attacker can inject malicious JavaScript into the SAML IdP XML metadata, which is used to generate the SAML login redirect URL. This URL is then set as the value of `window.location.href` without proper validation or sanitization. This vulnerability allows the attacker to execute arbitrary JavaScript in the context of the user's browser, potentially leading to session hijacking, data theft, or other malicious actions. The issue is fixed in version 1.7.10.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-0281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lunary-ai/lunary/commit/fa0fd7742ae029ed934690d282519263f5d838de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/b3f4a655-5b08-4fef-be2c-aac8703ad5d0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-20T10:15:52Z"
+  }
+}

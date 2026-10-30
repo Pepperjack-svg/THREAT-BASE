@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5q49-7p5p-mjwf",
+  "modified": "2026-10-22T03:33:32Z",
+  "published": "2026-10-22T00:31:59Z",
+  "aliases": [
+    "CVE-2026-94423"
+  ],
+  "details": "Net::LibSSH versions before 0.004 for Perl authenticate to an unverified server because connect never checks the host key against known_hosts.\n\nconnect reports success as soon as ssh_connect returns SSH_OK. libssh leaves the known-hosts check to the application, and this binding never makes it, so the strict_hostkeycheck and knownhosts options are set on the session and then decide nothing.\n\nPassword, agent and public-key authentication, channel and SFTP operations all run on a session whose peer was never identified, so an attacker who can redirect the connection receives the password when password authentication is used, and commands and data sent over the session.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Getty/p5-net-libssh/commit/29f509aacddb4b282ac9eb716d5ab326686d09a4.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/GETTY/Net-LibSSH-0.004/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/21/29"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-322"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T22:16:50Z"
+  }
+}

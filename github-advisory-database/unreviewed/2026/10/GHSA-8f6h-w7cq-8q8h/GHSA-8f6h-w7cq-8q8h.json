@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8f6h-w7cq-8q8h",
+  "modified": "2026-10-22T03:33:49Z",
+  "published": "2026-10-22T03:33:49Z",
+  "aliases": [
+    "CVE-2026-114730"
+  ],
+  "details": "Roundcube Webmail 1.6.14 before 1.6.20 and 1.7.0 before 1.7.5 is affected by a server-side request forgery filter bypass. The network blocklist used by rcube_utils::is_local_url() omitted the RFC 6052 NAT64 prefix 64:ff9b::/96, the RFC 8215 local-use NAT64 prefix 64:ff9b:1::/48 and the unspecified address ::/128, so URLs such as http://[64:ff9b::7f00:1]/ passed the filter and reached loopback, link-local and cloud metadata addresses. Upstream fixed this in the commit “Fix SSRF filter (is_local_url()) bypass via NAT64 64:ff9b::/96”.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114730"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/3c3a65f66b53b7aaf3d720acd06e0b102eceb090"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/6e1d480e730a45f29829b6a11af608d5d6eb3db6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.debian.org/1151279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.6.20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.7.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://roundcube.net/news/2026/10/19/security-updates-1.6.20-and-1.7.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T03:16:38Z"
+  }
+}

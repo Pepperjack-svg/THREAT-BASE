@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rxrm-m4vp-vchq",
+  "modified": "2026-02-05T15:31:07Z",
+  "published": "2025-10-07T18:31:07Z",
+  "aliases": [
+    "CVE-2022-50510"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf/smmuv3: Fix hotplug callback leak in arm_smmu_pmu_init()\n\narm_smmu_pmu_init() won't remove the callback added by\ncpuhp_setup_state_multi() when platform_driver_register() failed. Remove\nthe callback by cpuhp_remove_multi_state() in fail path.\n\nSimilar to the handling of arm_ccn_init() in commit 26242b330093 (\"bus:\narm-ccn: Prevent hotplug callback leak\")",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50510"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/359286f886feef38536eaa7e673dc3440f03b0a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/582babe17ea878ec1d76f30e03f3a6ce6e30eb91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f2d566b46436a50a80d6445e82879686b89588c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b131304fe722853cf26e55c4fa21fc58a36e7f21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d69bdb61d577297d3851fc9f6403574bf73ef41f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f245ca9a0fe7f794a8187ad803d5e2ced5a11cb2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:34Z"
+  }
+}

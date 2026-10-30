@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jg35-cc9w-63m9",
+  "modified": "2026-10-22T03:33:37Z",
+  "published": "2026-10-22T03:33:37Z",
+  "aliases": [
+    "CVE-2026-114722"
+  ],
+  "details": "Roundcube Webmail before 1.6.20 and 1.7.x before 1.7.5 is affected by a CSS scoping bypass in HTML messages. rcube_utils::mod_css_styles() did not treat an at-rule prologue such as @layer a; as a selector boundary, and did not handle selectors beginning with ::, so selectors following an at-rule were left unscoped and applied to the whole Roundcube interface instead of being confined to the message body. This allows an HTML message to restyle application chrome for UI redressing and spoofing. Upstream fixed this in the commit “Fix CSS scoping bypass in HTML messages using at-rules”.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114722"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/95b81ae12e2819a9b7e8636b5859b6244cda383e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/ff9cf4a9bf3b7c66db9afe43fe5f1cc73b47ed35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.debian.org/1151279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.6.20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.7.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://roundcube.net/news/2026/10/19/security-updates-1.6.20-and-1.7.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-669"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T02:17:00Z"
+  }
+}

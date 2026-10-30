@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jqgc-vg5q-wcg4",
+  "modified": "2026-10-11T00:30:58Z",
+  "published": "2026-10-11T00:30:58Z",
+  "aliases": [
+    "CVE-2026-108647"
+  ],
+  "details": "JeecgBoot through 3.9.5 contains a missing authorization vulnerability that allows low-privileged authenticated users to create validation rules through the SysCheckRuleController importExcel handler. Attackers can upload a crafted Excel workbook to bypass the system:checkRule:add permission and bulk-create system-wide encoding validation rules with arbitrary regular expression patterns.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108647"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AnkesKasty/cve-request-poc/blob/a7b6d1423555812d8efa26c91c5d0683164b31e5/JeecgBoot/poc_c084_checkrule_import_xlsx.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jeecgboot/JeecgBoot/blob/e3b9dc0aefe1943d9772b026f64ed671a7c82802/jeecg-boot/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/SysCheckRuleController.java#L192-L208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jeecgboot-through-3.9.5-missing-authorization-via-sys-checkrule-importexcel"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T22:16:40Z"
+  }
+}

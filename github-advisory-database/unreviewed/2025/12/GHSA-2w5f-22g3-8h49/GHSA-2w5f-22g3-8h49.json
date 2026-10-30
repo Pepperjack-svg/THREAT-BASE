@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2w5f-22g3-8h49",
+  "modified": "2025-12-08T21:30:19Z",
+  "published": "2025-12-04T21:31:06Z",
+  "aliases": [
+    "CVE-2025-55948"
+  ],
+  "details": "This vulnerability fundamentally arises from yzcheng90 X-SpringBoot 6.0's implementation of role-based access control (RBAC) through dual dependency on frontend menu systems and backend permission tables, without enforcing atomic synchronization between these components. The critical flaw manifests when frontend menu updates (such as privilege revocation) fail to propagate to the backend permission table in real-time, creating a dangerous desynchronization. While users lose access to restricted functions through the web interface (as UI elements properly disappear), the stale permission records still validate unauthorized API requests when accessed directly through tools like Postman. Attackers exploiting this inconsistency can perform privileged operations including but not limited to: creating high-permission user accounts, accessing sensitive data beyond their clearance level, and executing admin-level commands.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-55948"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liuchengjie01/vuln_db/blob/master/x-springboot3x-vul/x-springboot3x-vul.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yzcheng90/X-SpringBoot"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-266"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-04T21:16:08Z"
+  }
+}

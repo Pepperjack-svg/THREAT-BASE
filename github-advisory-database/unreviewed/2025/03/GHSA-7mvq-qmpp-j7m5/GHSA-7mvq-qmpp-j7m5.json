@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7mvq-qmpp-j7m5",
+  "modified": "2025-03-12T00:31:49Z",
+  "published": "2025-03-12T00:31:49Z",
+  "aliases": [
+    "CVE-2022-49680"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nARM: exynos: Fix refcount leak in exynos_map_pmu\n\nof_find_matching_node() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nAdd missing of_node_put() to avoid refcount leak.\nof_node_put() checks null pointer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49680"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/31d09571bb071c20f6bdc0bb7ac1ef8dd2987c04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/545ae5cbae839ce39bfe09828e413f1c916082de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/68f28d52e6cbab8dcfa249cac4356d1d0573e868"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7571bcecf01b69f0d3ec60ca41ce5d4c75411a4a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4c79525042a4a7df96b73477feaf232fe44ae81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d23f76018e17618559da9eea179d137362023f95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9b77a52937582a5b99a5a07e4ef1e2f48f87347"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc354856e9fad9cd36e2ad28f9da70716025055a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:42Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8m2x-x5mf-xm4c",
+  "modified": "2026-10-16T18:33:08Z",
+  "published": "2026-10-10T15:30:22Z",
+  "aliases": [
+    "CVE-2013-10076"
+  ],
+  "details": "ExtUtils::Typemaps::STL::Vector versions before 1.05 for Perl allocate a 32 GiB array on an empty list.\n\nThe OUTPUT typemaps call av_extend( av, len-1 ). On an empty list, this undeflows, and av_extend will allocate an array with 2^32 slots, leading to memory exhaustion.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2013-10076"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tsee/extutils-typemap-default/commit/0eb696b75afcfedbf87a72e11d44d98110863934.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/SMUELLER/ExtUtils-Typemaps-Default-1.05/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rt.cpan.org/Public/Bug/Display.html?id=91213"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T13:17:30Z"
+  }
+}

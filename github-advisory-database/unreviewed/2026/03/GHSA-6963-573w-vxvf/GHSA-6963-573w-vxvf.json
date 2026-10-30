@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6963-573w-vxvf",
+  "modified": "2026-03-26T06:30:21Z",
+  "published": "2026-03-26T06:30:21Z",
+  "aliases": [
+    "CVE-2026-1206"
+  ],
+  "details": "The Elementor Website Builder plugin for WordPress is vulnerable to Incorrect Authorization to Sensitive Information Exposure in all versions up to, and including, 3.35.7. This is due to a logic error in the is_allowed_to_read_template() function permission check that treats non-published templates as readable without verifying edit capabilities. This makes it possible for authenticated attackers, with contributor-level access and above, to read private or draft Elementor template content via the 'template_id' supplied to the 'get_template_data' action of the 'elementor_ajax' endpoint.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3489160/elementor/trunk/includes/template-library/sources/local.php?old=3473768&old_path=elementor%2Ftrunk%2Fincludes%2Ftemplate-library%2Fsources%2Flocal.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a4420935-4952-4460-afc2-1c6df6965b3d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-26T06:16:09Z"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2c6m-5vjc-xqc6",
+  "modified": "2026-10-07T09:32:12Z",
+  "published": "2026-10-06T09:31:28Z",
+  "aliases": [
+    "CVE-2026-98169"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix potential OOB read in smb3_enum_snapshots()\n\nIf snapshot_array_size is smaller than GMT_TOKEN_SIZE,\nsmb3_enum_snapshots() sets ret_data_len to\nsizeof(struct smb_snapshot_array) without verifying the actual length\nof the server's reply.\n\nBecause SMB2_ioctl() places no lower bound on the server-supplied\nOutputCount and allocates retbuf to exactly that length, a short reply\nresults in ret_data_len exceeding the size of retbuf. The subsequent\ncopy_to_user() then reads past the end of retbuf, leaking adjacent slab\nmemory to userspace.  The subsequent clamp check is ineffective as it\nonly reduces ret_data_len.\n\nFix this by rejecting replies shorter than\nsizeof(struct smb_snapshot_array) with -EIO. Note that the bound is set\nto the 12-byte struct size rather than the 16-byte\nMIN_SNAPSHOT_ARRAY_SIZE defined in MS-SMB2 3.3.5.15.1, because 12 bytes\nis exactly what copy_to_user() attempts to read.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98169"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15a221c734b9d044ab769e7e3606b2cab96fb65a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1cdf0d304d820fb13bf0faf532c3459600f9ea43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/210f0f1f67817e7d2348b86b5115a9b85ef5c98b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4775c3b7a597907e0b97556c7986fda238a377ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74995ee8305a7c4d76ee70d6acd996a75eda3c03"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dbe452a905dfe2804647530a9ff3d7e3826ed04d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:17:58Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-777q-xq36-w3q5",
+  "modified": "2025-11-13T18:31:05Z",
+  "published": "2025-11-13T18:31:05Z",
+  "aliases": [
+    "CVE-2025-60695"
+  ],
+  "details": "A stack-based buffer overflow vulnerability exists in the mtk_dut binary of Linksys E7350 routers (Firmware 1.1.00.032). The function sub_4045A8 reads up to 256 bytes from /sys/class/net/%s/address into a local buffer and then copies it into caller-provided buffer a1 using strcpy without boundary checks. Since a1 is often allocated with significantly smaller sizes (20-32 bytes), local attackers controlling the contents of /sys/class/net/%s/address can trigger buffer overflows, leading to memory corruption, denial of service, or potential arbitrary code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-60695"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yifan20020708/SGTaint-0-day/blob/main/Linksys/Linksys-E7350/CVE-2025-60695.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.linksys.com"
+    },
+    {
+      "type": "WEB",
+      "url": "http://linksys.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-13T17:15:49Z"
+  }
+}

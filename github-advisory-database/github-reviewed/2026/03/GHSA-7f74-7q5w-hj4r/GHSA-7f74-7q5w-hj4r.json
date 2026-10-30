@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7f74-7q5w-hj4r",
+  "modified": "2026-03-27T21:50:33Z",
+  "published": "2026-03-26T19:05:57Z",
+  "aliases": [
+    "CVE-2026-33885"
+  ],
+  "summary": "Statamic has an Open Redirect on unauthenticated endpoints via URL parsing differential",
+  "details": "### Impact\nThe external URL detection used for redirect validation on unauthenticated endpoints could be bypassed, allowing users to be redirected to external URLs after actions like form submissions and authentication flows.\n\n### Patches\nThis has been fixed in 5.73.16 and 6.7.2.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.73.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0.alpha.1"
+            },
+            {
+              "fixed": "6.7.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/security/advisories/GHSA-7f74-7q5w-hj4r"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33885"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/statamic/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-26T19:05:57Z",
+    "nvd_published_at": "2026-03-27T21:17:25Z"
+  }
+}

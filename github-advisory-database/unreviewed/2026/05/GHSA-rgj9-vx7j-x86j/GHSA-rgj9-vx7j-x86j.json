@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rgj9-vx7j-x86j",
+  "modified": "2026-10-21T15:40:31Z",
+  "published": "2026-05-27T15:33:21Z",
+  "aliases": [
+    "CVE-2026-46032"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: nSVM: Triple fault if restore host CR3 fails on nested #VMEXIT\n\nIf loading L1's CR3 fails on a nested #VMEXIT, nested_svm_vmexit()\nreturns an error code that is ignored by most callers, and continues to\nrun L1 with corrupted state. A sane recovery is not possible in this\ncase, and HW behavior is to cause a shutdown. Inject a triple fault\ninstead, and do not return early from nested_svm_vmexit(). Continue\ncleaning up the vCPU state (e.g. clear pending exceptions), to handle\nthe failure as gracefully as possible.\n\nFrom the APM:\n\n  Upon #VMEXIT, the processor performs the following actions in order to\n  return to the host execution context:\n\n  ...\n\n  if (illegal host state loaded, or exception while loading host state)\n      shutdown\n  else\n      execute first host instruction following the VMRUN\n\nRemove the return value of nested_svm_vmexit(), which is mostly\nunchecked anyway.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46032"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e661773890e6ba6b16064fad961da3dd311be43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d291ef0585ed880ed4dd71ea1a5965e0a65fb53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a738cf170a4a2332ea3a15e23ec65b5757fe4a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af79992ecdb6817970d757fb5d853b8d9b55a0d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0eb0a8959ac2b808eb11548d002fe1f9b5650cc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:22Z"
+  }
+}

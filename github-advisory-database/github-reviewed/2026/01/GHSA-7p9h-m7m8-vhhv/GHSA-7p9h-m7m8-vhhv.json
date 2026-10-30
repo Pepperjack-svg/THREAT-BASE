@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7p9h-m7m8-vhhv",
+  "modified": "2026-01-28T04:43:20Z",
+  "published": "2026-01-23T20:17:16Z",
+  "aliases": [
+    "CVE-2026-24420"
+  ],
+  "summary": "phpMyFAQ: Attachment download allowed without dlattachment right (broken access control)",
+  "details": "### Summary\nA logged‑in user without the dlattachment right can download FAQ attachments. This is due to a permissive permission check in attachment.php that treats the mere presence of a right key as authorization and a flawed group/user logic expression.\n\n### Details\nIn attachment.php, the access decision uses:\n```($groupPermission || ($groupPermission && $userPermission)) && isset($permission['dlattachment'])```\nisset() returns true even when the right value is false, and the logic simplifies to $groupPermission for some permission modes. As a result, a user without dlattachment can still access the attachment.\n\n### PoC\nPrecondition: A non‑admin user exists; an attachment is associated to a FAQ record; records.allowDownloadsForGuests = false.\nLog in as a non‑admin user without dlattachment.\nRequest the attachment download endpoint.\n```\ncurl -c /tmp/pmf_api_cookies.txt \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"username\":\"tester\",\"password\":\"Test1234!\"}' \\\n  http://192.168.40.16/phpmyfaq/api/v3.0/login\n\ncurl -i -b /tmp/pmf_api_cookies.txt \\\n  \"http://192.168.40.16/phpmyfaq/index.php?action=attachment&id=1\"\n```\n\n### Impact\nUnauthorized users can download attachments (confidentiality breach). Depending on content, this may expose sensitive documents.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "phpmyfaq/phpmyfaq"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.0.17"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.0.16"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "thorsten/phpmyfaq"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.0.17"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.0.16"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thorsten/phpMyFAQ/security/advisories/GHSA-7p9h-m7m8-vhhv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24420"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/thorsten/phpMyFAQ"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-23T20:17:16Z",
+    "nvd_published_at": "2026-01-24T03:16:00Z"
+  }
+}

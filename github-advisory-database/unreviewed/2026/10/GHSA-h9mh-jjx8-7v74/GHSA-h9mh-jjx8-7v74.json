@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h9mh-jjx8-7v74",
+  "modified": "2026-10-06T09:31:31Z",
+  "published": "2026-10-06T09:31:31Z",
+  "aliases": [
+    "CVE-2026-98223"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: filemap: retain mapped dropbehind folios\n\nFault-around can map ready dropbehind folios without going through the\nnormal page-cache lookup that clears dropbehind.  A mapping represents a\ncompeting cached user, so retain the folio instead of forcibly unmapping\nit when writeback completes.\n\nFor a mapped folio, folio_unmap_invalidate() can call\nunmap_mapping_folio(), which takes i_mmap_rwsem and may sleep.  Retaining\nmapped folios avoids this path when folio_end_dropbehind() runs in\nnon-preemptible task context.\n\nTal was able to trigger a sleeping-in-atomic warning due to this [1].\n\nUnmapped dropbehind folios continue through the existing invalidation path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98223"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2897601dffe576fcd87a4259102f41f7fb0cbfc8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77c0fade37c80e8aa16ac048a9828249055e3f66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/848d2ce2fce15fbdc083fbf9691bfa72911033c4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:09Z"
+  }
+}

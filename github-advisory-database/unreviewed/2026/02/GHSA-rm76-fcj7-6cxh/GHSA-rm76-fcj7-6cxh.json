@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rm76-fcj7-6cxh",
+  "modified": "2026-02-27T12:31:25Z",
+  "published": "2026-02-27T12:31:25Z",
+  "aliases": [
+    "CVE-2026-1305"
+  ],
+  "details": "The Japanized for WooCommerce plugin for WordPress is vulnerable to Improper Authentication in versions up to, and including, 2.8.4. This is due to a flawed permission check in the `paidy_webhook_permission_check` function that unconditionally returns `true` when the webhook signature header is omitted. This makes it possible for unauthenticated attackers to bypass payment verification and fraudulently mark orders as \"Processing\" or \"Completed\" without actual payment via a crafted POST request to the Paidy webhook endpoint.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1305"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-for-japan/tags/2.8.2/includes/gateways/paidy/class-wc-paidy-endpoint.php#L108"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-for-japan/tags/2.8.2/includes/gateways/paidy/class-wc-paidy-endpoint.php#L63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-for-japan/trunk/includes/gateways/paidy/class-wc-paidy-endpoint.php#L108"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-for-japan/trunk/includes/gateways/paidy/class-wc-paidy-endpoint.php#L63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3464868/woocommerce-for-japan/trunk/includes/gateways/paidy/class-wc-paidy-endpoint.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/8cef4b2b-ae8d-4e18-b763-6960a0b944f7?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-27T10:16:21Z"
+  }
+}

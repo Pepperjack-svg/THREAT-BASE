@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x552-5vh8-qccx",
+  "modified": "2025-03-20T12:32:50Z",
+  "published": "2025-03-20T12:32:50Z",
+  "aliases": [
+    "CVE-2024-9000"
+  ],
+  "details": "In lunary-ai/lunary before version 1.4.26, the checklists.post() endpoint allows users to create or modify checklists without validating whether the user has proper permissions. This missing access control permits unauthorized users to create checklists, bypassing intended permission checks. Additionally, the endpoint does not validate the uniqueness of the slug field when creating a new checklist, allowing an attacker to spoof existing checklists by reusing the slug of an already-existing checklist. This can lead to significant data integrity issues, as legitimate checklists can be replaced with malicious or altered data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-9000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lunary-ai/lunary/commit/a02861ef9bb6ce860a35f7b8f178d58859cd85f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/f5fca549-0a4a-4f64-8ccf-d4e108856da4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285",
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-20T10:15:45Z"
+  }
+}

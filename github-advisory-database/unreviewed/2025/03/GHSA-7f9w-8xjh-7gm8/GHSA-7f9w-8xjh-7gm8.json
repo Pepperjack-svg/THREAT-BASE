@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7f9w-8xjh-7gm8",
+  "modified": "2025-03-12T00:31:50Z",
+  "published": "2025-03-12T00:31:50Z",
+  "aliases": [
+    "CVE-2022-49716"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/gic-v3: Fix error handling in gic_populate_ppi_partitions\n\nof_get_child_by_name() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nWhen kcalloc fails, it missing of_node_put() and results in refcount\nleak. Fix this by goto out_put_node label.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49716"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b325d993995a321f6ab4e6c51f0504ec092bf5b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58e67c81e229351027d28c610638378606e33a08"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c9dd9d23f26dabcfb14148b9acdfba540418b19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c83c34c57798fc41faefcf078be78683db2f4beb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec8401a429ffee34ccf38cebf3443f8d5ae6cb0d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:47Z"
+  }
+}

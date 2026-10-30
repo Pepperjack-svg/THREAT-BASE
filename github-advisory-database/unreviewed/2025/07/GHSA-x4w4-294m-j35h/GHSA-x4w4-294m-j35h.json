@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x4w4-294m-j35h",
+  "modified": "2025-11-21T00:30:20Z",
+  "published": "2025-07-03T09:30:33Z",
+  "aliases": [
+    "CVE-2025-38128"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: reject malformed HCI_CMD_SYNC commands\n\nIn 'mgmt_hci_cmd_sync()', check whether the size of parameters passed\nin 'struct mgmt_cp_hci_cmd_sync' matches the total size of the data\n(i.e. 'sizeof(struct mgmt_cp_hci_cmd_sync)' plus trailing bytes).\nOtherwise, large invalid 'params_len' will cause 'hci_cmd_sync_alloc()'\nto do 'skb_put_data()' from an area beyond the one actually passed to\n'mgmt_hci_cmd_sync()'.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03f1700b9b4d4f2fed3165370f3c23db76553178"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9eeafd16d76a7642d12b3442a26c15cd345e12f7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-03T09:15:27Z"
+  }
+}

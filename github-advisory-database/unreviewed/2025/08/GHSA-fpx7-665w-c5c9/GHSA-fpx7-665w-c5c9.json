@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpx7-665w-c5c9",
+  "modified": "2026-08-19T18:31:58Z",
+  "published": "2025-08-28T15:30:39Z",
+  "aliases": [
+    "CVE-2024-58240"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntls: separate no-async decryption request handling from async\n\nIf we're not doing async, the handling is much simpler. There's no\nreference counting, we just need to wait for the completion to wake us\nup and return its result.\n\nWe should preferably also use a separate crypto_wait. I'm not seeing a\nUAF as I did in the past, I think aec7961916f3 (\"tls: fix race between\nasync notify and socket close\") took care of it.\n\nThis will make the next fix easier.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58240"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41532b785e9d79636b3815a64ddf6a096647d011"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48905146d11dbf1ddbb2967319016a83976953f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5f7761c94b1db7570cab328c9f940a33284509b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/999115298017a675d8ddf61414fc7a85c89f1186"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dec5b6e7b211e405d3bcb504562ab21aa7e5a64d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f32ab6cb544d01cdc150de5df389ac685aa507b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-28T10:15:31Z"
+  }
+}

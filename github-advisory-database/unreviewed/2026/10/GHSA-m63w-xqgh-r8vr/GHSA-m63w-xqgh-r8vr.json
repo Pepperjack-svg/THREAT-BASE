@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m63w-xqgh-r8vr",
+  "modified": "2026-10-16T18:34:52Z",
+  "published": "2026-10-16T18:34:52Z",
+  "aliases": [
+    "CVE-2026-111695"
+  ],
+  "details": "Shaiwz data-platform-open through commit efeacd3 contains an insecure direct object reference vulnerability that allows authenticated workspace members to access other workspaces' datasources by numeric id. Attackers can send foreign sequential ids to /datasource/detail, /listSchemaTable, /tableDetail, /update or /delete to obtain JDBC credentials, enumerate database schemas, and modify or delete datasources.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111695"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shaiwz/data-platform-open/blob/efeacd35e8450b7a084fa2134d292cd058cf605b/data-platform-open-web/src/main/java/cn/dataplatform/open/web/controller/source/DataSourceController.java#L84-L142"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shaiwz/data-platform-open/blob/efeacd35e8450b7a084fa2134d292cd058cf605b/data-platform-open-web/src/main/java/cn/dataplatform/open/web/service/datasource/impl/DataSourceServiceImpl.java#L300-L316"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/data-platform-open-datasource-cross-workspace-idor-and-hardcoded-aes-key"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/shaiwz-data-platform-open-through-commit-efeacd3-idor-in-datasource-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:53Z"
+  }
+}

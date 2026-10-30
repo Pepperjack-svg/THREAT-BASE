@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-34hc-fwhq-c7v8",
+  "modified": "2026-10-28T21:31:14Z",
+  "published": "2026-10-28T18:32:10Z",
+  "aliases": [
+    "CVE-2026-83525"
+  ],
+  "details": "Incorrect operator (CWE-480) in the FetchSnapshot RPC handler\nin Apache Kafka from 2.8.0 before 4.2.2, and from 4.3.0 before 4.3.2\non all platforms allows an authenticated attacker with\nCLUSTER_ACTION privilege to cause a denial of service\n(controller process termination) via a crafted\nFetchSnapshotRequest with an empty topics array or a topic\nwith no partitions.\n\nUsers are recommended to upgrade to version 4.2.2, 4.3.2, or\n4.4.0, which fix this issue. Users on unsupported branches\n(4.1.x and earlier) should upgrade to 4.2.2 or later.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83525"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/kafka/pull/23185"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kafka.apache.org/cve-list"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/28/7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-480"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T17:18:43Z"
+  }
+}

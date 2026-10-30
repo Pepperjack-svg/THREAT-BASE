@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9766-cj6r-v242",
+  "modified": "2025-11-14T18:31:21Z",
+  "published": "2025-06-18T12:30:32Z",
+  "aliases": [
+    "CVE-2025-38045"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: fix debug actions order\n\nThe order of actions taken for debug was implemented incorrectly.\nNow we implemented the dump split and do the FW reset only in the\nmiddle of the dump (rather than the FW killing itself on error.)\nAs a result, some of the actions taken when applying the config\nwill now crash the device, so we need to fix the order.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38045"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/181e8b56b74ad3920456dcdc8a361520d9007956"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b790fe67ed483d86c1aeb8be6735bf792caa7e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/328fbc96ecbee16c5fcbfcb3ac57b476f94da2f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb29b4ffafb20281624dcd2cbb768d6f30edf600"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T10:15:37Z"
+  }
+}

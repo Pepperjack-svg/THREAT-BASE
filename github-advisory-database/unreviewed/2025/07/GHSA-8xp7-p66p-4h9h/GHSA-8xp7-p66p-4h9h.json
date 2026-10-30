@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8xp7-p66p-4h9h",
+  "modified": "2025-07-16T18:32:33Z",
+  "published": "2025-07-09T03:30:22Z",
+  "aliases": [
+    "CVE-2025-34085"
+  ],
+  "details": "An unrestricted file upload vulnerability in the WordPress Simple File List plugin prior to version 4.2.3 allows unauthenticated remote attackers to achieve remote code execution. The plugin's upload endpoint (ee-upload-engine.php) restricts file uploads based on extension, but lacks proper validation after file renaming. An attacker can first upload a PHP payload disguised as a .png file, then use the plugin’s ee-file-engine.php rename functionality to change the extension to .php. This bypasses upload restrictions and results in the uploaded payload being executable on the server.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34085"
+    },
+    {
+      "type": "WEB",
+      "url": "https://packetstorm.news/files/id/160221"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/2286920/simple-file-list"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/multi/http/wp_simple_file_list_rce.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://simplefilelist.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vulncheck.com/advisories/wordpress-simple-file-list-plugin-rce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web.archive.org/web/20220426044003/https://wpscan.com/vulnerability/10192"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/simple-file-list"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cybersecurity-help.cz/vdb/SB2020042711"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/simple-file-list/simple-file-list-423-remote-code-execution"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-09T01:15:50Z"
+  }
+}

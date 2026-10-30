@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cx66-wgv6-fpfh",
+  "modified": "2025-03-20T12:32:51Z",
+  "published": "2025-03-20T12:32:51Z",
+  "aliases": [
+    "CVE-2024-9437"
+  ],
+  "details": "SuperAGI version v0.0.14 is vulnerable to an unauthenticated Denial of Service (DoS) attack. The vulnerability exists in the resource upload request, where appending characters, such as dashes (-), to the end of a multipart boundary in an HTTP request causes the server to continuously process each character. This leads to excessive resource consumption and renders the service unavailable. The issue is unauthenticated and does not require any user interaction, impacting all users of the service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-9437"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/27404e9c-eb3d-4626-a9d9-8dc1b3295ce0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400",
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-20T10:15:48Z"
+  }
+}

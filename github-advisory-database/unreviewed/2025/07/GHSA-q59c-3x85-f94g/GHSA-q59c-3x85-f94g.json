@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q59c-3x85-f94g",
+  "modified": "2025-12-16T18:31:28Z",
+  "published": "2025-07-03T09:30:32Z",
+  "aliases": [
+    "CVE-2025-38095"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndma-buf: insert memory barrier before updating num_fences\n\nsmp_store_mb() inserts memory barrier after storing operation.\nIt is different with what the comment is originally aiming so Null\npointer dereference can be happened if memory update is reordered.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38095"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08680c4dadc6e736c75bc2409d833f03f9003c51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3becc659f9cb76b481ad1fb71f54d5c8d6332d3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72c7d62583ebce7baeb61acce6057c361f73be4a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90eb79c4ed98a4e24a62ccf61c199ab0f680fa8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9d2b9a80d06a58f37e0dc8c827075639b443927"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0b7f11dd68b593bd970e5735be00e8d89bace30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe1bebd0edb22e3536cbc920ec713331d1367ad4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/08/msg00010.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-03T08:15:26Z"
+  }
+}

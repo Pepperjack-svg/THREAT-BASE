@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9rc4-73xm-7x5m",
+  "modified": "2025-11-13T21:31:18Z",
+  "published": "2025-06-18T12:30:44Z",
+  "aliases": [
+    "CVE-2022-50042"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: genl: fix error path memory leak in policy dumping\n\nIf construction of the array of policies fails when recording\nnon-first policy we need to unwind.\n\nnetlink_policy_dump_add_policy() itself also needs fixing as\nit currently gives up on error without recording the allocated\npointer in the pstate pointer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50042"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/249801360db3dec4f73768c502192020bfddeacc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26b6acd365823e99e46be3b27500f5dc235dda5e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83411c9f05d5a8b637293b3389eca3d378197c04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0672895d8be5d19d4b05ac83f807026fc791037"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:32Z"
+  }
+}

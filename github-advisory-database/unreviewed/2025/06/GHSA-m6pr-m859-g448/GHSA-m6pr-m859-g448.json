@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m6pr-m859-g448",
+  "modified": "2025-11-18T18:32:45Z",
+  "published": "2025-06-18T12:30:48Z",
+  "aliases": [
+    "CVE-2022-50113"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoc: audio-graph-card2: Fix refcount leak bug in __graph_get_type()\n\nWe should call of_node_put() for the reference before its replacement\nas it returned by of_get_parent() which has increased the refcount.\nBesides, we should also call of_node_put() before return.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50113"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3bb0c0b5f0f866fc3785380e0860dc37ceacf342"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a63a8c253bf57dfd9fa3ee2a7f1a3727505f947"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eda26893dabfc6da7a1e1ff5f8628ed9faab3ab9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:40Z"
+  }
+}

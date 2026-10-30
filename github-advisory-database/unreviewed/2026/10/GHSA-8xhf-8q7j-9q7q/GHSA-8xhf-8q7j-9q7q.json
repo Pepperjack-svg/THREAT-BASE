@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8xhf-8q7j-9q7q",
+  "modified": "2026-10-16T18:34:52Z",
+  "published": "2026-10-16T18:34:52Z",
+  "aliases": [
+    "CVE-2026-111692"
+  ],
+  "details": "DataBuff ai-apm-web through 0.1.10 contains an authentication bypass vulnerability that allows unauthenticated attackers to forge admin session tokens by using the hardcoded HMAC secret in JwtTokenService. Attackers can sign a payload of admin and a future expiry with the default dev-secret to gain full administrative access to protected /webapi routes, including the Doris SQL query API.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/databufflabs/databuff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/databufflabs/databuff/blob/v0.1.10/ai-apm-web/src/main/java/com/databuff/apm/web/auth/JwtTokenService.java#L36-L60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/databufflabs/databuff/blob/v0.1.10/ai-apm-web/src/main/java/com/databuff/apm/web/config/JwtProperties.java#L8-L15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/databufflabs/databuff/blob/v0.1.10/ai-apm-web/src/main/resources/application.yml#L54-L59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/databuff-default-jwt-secret-auth-bypass"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/databuff-ai-apm-web-through-0.1.10-authentication-bypass-via-hardcoded-hmac-secret"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-321"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:52Z"
+  }
+}

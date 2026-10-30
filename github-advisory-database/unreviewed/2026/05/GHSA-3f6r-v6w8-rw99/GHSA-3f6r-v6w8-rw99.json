@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3f6r-v6w8-rw99",
+  "modified": "2026-10-19T21:34:32Z",
+  "published": "2026-05-27T15:33:17Z",
+  "aliases": [
+    "CVE-2026-45945"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/vt-d: Fix race condition during PASID entry replacement\n\nThe Intel VT-d PASID table entry is 512 bits (64 bytes). When replacing\nan active PASID entry (e.g., during domain replacement), the current\nimplementation calculates a new entry on the stack and copies it to the\ntable using a single structure assignment.\n\n        struct pasid_entry *pte, new_pte;\n\n        pte = intel_pasid_get_entry(dev, pasid);\n        pasid_pte_config_first_level(iommu, &new_pte, ...);\n        *pte = new_pte;\n\nBecause the hardware may fetch the 512-bit PASID entry in multiple\n128-bit chunks, updating the entire entry while it is active (Present\nbit set) risks a \"torn\" read. In this scenario, the IOMMU hardware\ncould observe an inconsistent state — partially new data and partially\nold data — leading to unpredictable behavior or spurious faults.\n\nFix this by removing the unsafe \"replace\" helpers and following the\n\"clear-then-update\" flow, which ensures the Present bit is cleared and\nthe required invalidation handshake is completed before the new\nconfiguration is applied.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45945"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4718007870547e1efebbdd6745d9fce58f008fef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66a7aff480a82b8642b3991fed5fdc9780022157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3b1edea3791fa91ab7032faa90355913ad9451b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:10Z"
+  }
+}

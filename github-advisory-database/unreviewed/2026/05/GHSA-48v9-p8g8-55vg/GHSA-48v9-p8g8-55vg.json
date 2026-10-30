@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-48v9-p8g8-55vg",
+  "modified": "2026-06-22T18:34:00Z",
+  "published": "2026-05-18T15:30:38Z",
+  "aliases": [
+    "CVE-2026-41947"
+  ],
+  "details": "Dify version 1.14.1 and prior contains an authorization bypass vulnerability that allows authenticated editor users to set and enable trace configurations for any application regardless of tenant ownership. Attackers can exploit missing tenant ownership checks in the trace configuration endpoints to redirect all messages and responses from victim applications to attacker-controlled LLM trace providers. NOTE: Dify Cloud allows unauthenticated free self-registration, making account creation trivially accessible to any attacker.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41947"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/langgenius/dify/pull/35793"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/langgenius/dify/commit/55d05fe52de880cd8497df8cea052351c594fad8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/langgenius/dify/releases/tag/1.14.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/a43076b2-fbc8-4750-9647-89a036b52f52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dify-authorization-bypass-via-trace-configuration-endpoints"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zafran.io/resources/difytap-zafran-discovers-how-attackers-can-silently-wiretap-ai-data-across-tenants-on-a-platform-powering-1m-apps"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-18T15:16:25Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vvrp-cfq6-9c5c",
+  "modified": "2026-10-21T15:42:00Z",
+  "published": "2026-10-18T18:32:05Z",
+  "aliases": [
+    "CVE-2026-98831"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nof/overlay: don't leak fragment references when changeset init fails\n\ninit_overlay_changeset() stores the number of initialized fragments\nin ovcs->count only on full success. When find_target() or the\n__symbols__ lookup fails partway through, the target and overlay\nreferences taken for the fragments initialized so far are never\ndropped: free_overlay_changeset() bounds its cleanup loop by\novcs->count, which is still 0.\n\nStore the running count on the error path so free_overlay_changeset()\nputs whatever was set up. The store is guarded by ovcs->fragments\nbecause on the allocation-failure path cnt still holds the counting\npass total while there is no fragments array; everywhere else cnt\nonly counts fully-initialized fragments.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98831"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d62f0f2bc7edb12ed09f71203df0e47fa4efca4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a23fb158ba517b77a2e5258263bdfdaa480f758"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/702b5db6e7b3865be70675d57d6fd7dde80d02b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a46f1917b320cc8762183b802301da02a191b6a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/894573e2fdaeb1b15030b7eebc22615edf28a6cd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:37Z"
+  }
+}

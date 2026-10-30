@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9rj5-8f4h-5c5g",
+  "modified": "2025-12-16T15:30:46Z",
+  "published": "2025-12-16T15:30:46Z",
+  "aliases": [
+    "CVE-2025-68221"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: fix address removal logic in mptcp_pm_nl_rm_addr\n\nFix inverted WARN_ON_ONCE condition that prevented normal address\nremoval counter updates. The current code only executes decrement\nlogic when the counter is already 0 (abnormal state), while\nnormal removals (counter > 0) are ignored.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68221"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92e239e36d600002559074994a545fcfac9afd2d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7d953c38245c0e9d8e268fb6a9e524602fb44ec"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T14:15:55Z"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f3hm-2q4w-7w9x",
+  "modified": "2025-10-24T21:31:09Z",
+  "published": "2025-10-24T21:31:09Z",
+  "aliases": [
+    "CVE-2022-49725"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni40e: Fix call trace in setup_tx_descriptors\n\nAfter PF reset and ethtool -t there was call trace in dmesg\nsometimes leading to panic. When there was some time, around 5\nseconds, between reset and test there were no errors.\n\nProblem was that pf reset calls i40e_vsi_close in prep_for_reset\nand ethtool -t calls i40e_vsi_close in diag_test. If there was not\nenough time between those commands the second i40e_vsi_close starts\nbefore previous i40e_vsi_close was done which leads to crash.\n\nAdd check to diag_test if pf is in reset and don't start offline\ntests if it is true.\nAdd netif_info(\"testing failed\") into unhappy path of i40e_diag_test()",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49725"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a4e5a3dc5e41212870e6043895ae02455c93f63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15950157e2c24865b696db1c9ccc72743ae0e967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/322271351b0e41565171e4cce70ea41854fac115"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ba9956ca57e361fb13ea369bb753eb33177acc7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/814092927a215f5ca6c08249ec72a205e0b473cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd5855e6b1358e816710afee68a1d2bc685176ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff6e03fe84bc917bb0c907d02de668c2fe101712"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:48Z"
+  }
+}

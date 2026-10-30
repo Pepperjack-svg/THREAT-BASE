@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wr36-cvhp-r8q2",
+  "modified": "2026-10-23T15:31:32Z",
+  "published": "2026-10-23T15:31:32Z",
+  "aliases": [
+    "CVE-2026-98960"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: don't stash io_uring encoded data across -EAGAIN\n\nReturning -EAGAIN while leaving btrfs_uring_encoded_data in the cmd PDU\nleaks if the request is cancelled or the ring exits before reissue.\nio_uring does not free driver PDU allocations on cleanup.\n\nWrite: io_queue_sqe() always issues with IO_URING_F_NONBLOCK first, so\nreturn -EAGAIN before allocating and free data on every exit.\n\nRead: free on nowait -EAGAIN too; only -EIOCBQUEUED keeps the allocation\nfor btrfs_uring_read_finished().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98960"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d9c1e0a7fb2cfb1cc924acafc194d2c15c3e83e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51562a8cb11628d3a5e105b4c347ec5473e5745f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:17Z"
+  }
+}

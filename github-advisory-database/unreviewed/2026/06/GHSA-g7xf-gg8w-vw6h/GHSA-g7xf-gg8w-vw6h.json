@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g7xf-gg8w-vw6h",
+  "modified": "2026-06-28T09:31:42Z",
+  "published": "2026-06-25T09:31:18Z",
+  "aliases": [
+    "CVE-2026-53132"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/virtio: fix potential unbounded skb queue\n\nvirtio_transport_inc_rx_pkt() checks vvs->rx_bytes + len > vvs->buf_alloc.\n\nvirtio_transport_recv_enqueue() skips coalescing for packets\nwith VIRTIO_VSOCK_SEQ_EOM.\n\nIf fed with packets with len == 0 and VIRTIO_VSOCK_SEQ_EOM,\na very large number of packets can be queued\nbecause vvs->rx_bytes stays at 0.\n\nFix this by estimating the skb metadata size:\n\n\t(Number of skbs in the queue) * SKB_TRUESIZE(0)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/059b7dbd20a6f0c539a45ddff1573cb8946685b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/100d5b2ffdc6468b9e48532641f29e83efdcb63c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1eca304f97a34ed5e921e1f0e06c8b241f25bf12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9bdc637fde66b63d6cad0caacd034888bb7bf5f5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400",
+      "CWE-401"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:30Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8q3q-27hf-3cwh",
+  "modified": "2025-08-20T18:30:21Z",
+  "published": "2025-08-20T18:30:21Z",
+  "aliases": [
+    "CVE-2010-20045"
+  ],
+  "details": "FileWrangler <= 5.30 suffers from a stack-based buffer overflow vulnerability when parsing directory listings from an FTP server. A malicious server can send an overlong folder name in response to a LIST command, triggering memory corruption during client-side rendering. Exploitation requires passive user interaction—simply connecting to the server—without further input. Successful exploitation may lead to arbitrary code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2010-20045"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cursorarts.com/ca_fw.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/ftp/filewrangler_list_reply.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web.archive.org/web/20111016194057/https://www.corelan.be/index.php/2010/10/12/death-of-an-ftp-client"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/16721"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/filewrangler-stack-buffer-overflow"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-20T16:15:33Z"
+  }
+}

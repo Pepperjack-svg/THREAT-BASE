@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7m66-9h4j-25fj",
+  "modified": "2026-10-21T15:42:31Z",
+  "published": "2026-10-21T15:42:31Z",
+  "aliases": [
+    "CVE-2026-104948"
+  ],
+  "details": "WarehousePG (WHPG) 6.27.1 through 6.27.6 and 7.2.1 through 7.6.0 are affected by a missing authorization vulnerability (CWE-862) in the built-in cluster expansion functions gp_expand_lock_catalog() and gp_expand_bump_version(). Any authenticated database role can run them, and neither checks privileges. A low-privileged user can call gp_expand_lock_catalog() inside an open transaction to block all catalog changes across the cluster for every user, superusers included, until that transaction ends, which in practice requires a superuser to terminate the session. Blocked changes include DDL, temporary table creation, GRANT and CREATE ROLE. The same user can call gp_expand_bump_version() repeatedly. Each call disconnects sessions that hold temporary tables, with a FATAL error on their next catalog change, and makes every other session rebuild its segment connections.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104948"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.enterprisedb.com/docs/security/advisories/cve2026104948"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T14:17:09Z"
+  }
+}

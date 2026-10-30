@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q386-hr8c-6vwg",
+  "modified": "2025-11-15T00:30:26Z",
+  "published": "2025-11-14T21:30:30Z",
+  "aliases": [
+    "CVE-2025-64084"
+  ],
+  "details": "An authenticated SQL injection vulnerability exists in Cloudlog 2.7.5 and earlier. The vucc_details_ajax function in application/controllers/Awards.php does not properly sanitize the user-supplied Gridsquare POST parameter. This allows a remote, authenticated attacker to execute arbitrary SQL commands by injecting a malicious payload, which is then concatenated directly into a raw SQL query in the vucc_qso_details function.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/XY20130630/Cloudlog/security/advisories/GHSA-4r9r-3r3q-jg44"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-64084"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/magicbug/Cloudlog/commit/72a8c3d705c8629f60f64da9f37968417c980242"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/magicbug/Cloudlog/releases/tag/2.7.6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-14T21:15:45Z"
+  }
+}

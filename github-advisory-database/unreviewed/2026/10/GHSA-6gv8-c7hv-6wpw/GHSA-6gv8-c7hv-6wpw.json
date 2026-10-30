@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6gv8-c7hv-6wpw",
+  "modified": "2026-10-13T21:33:43Z",
+  "published": "2026-10-13T21:33:43Z",
+  "aliases": [
+    "CVE-2026-110239"
+  ],
+  "details": "Rapyd Admin before 9.20.0 contains a stored cross-site scripting vulnerability in the x-rpd::rich-text Blade component that outputs bound model values as raw HTML without sanitisation. Authenticated users can set the bound property through the Livewire client API to store JavaScript that executes when administrators open the record's form.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110239"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zofe/rapyd-admin/commit/acd6ee85f9e5ccec67199673b039c605d161406a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zofe/rapyd-admin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zofe/rapyd-admin/blob/v9.19.0/resources/views/components/rich-text.blade.php#L50-L61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zofe/rapyd-admin/blob/v9.19.0/src/helpers.php#L11-L29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zofe/rapyd-admin/releases/tag/v9.20.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rapyd-admin-before-9.20.0-stored-xss-via-rich-text-component"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:49Z"
+  }
+}

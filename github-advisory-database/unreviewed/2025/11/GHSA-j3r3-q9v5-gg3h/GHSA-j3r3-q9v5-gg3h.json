@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j3r3-q9v5-gg3h",
+  "modified": "2025-11-17T18:30:30Z",
+  "published": "2025-11-17T18:30:30Z",
+  "aliases": [
+    "CVE-2025-65083"
+  ],
+  "details": "GoSign Desktop through 2.4.1 disables TLS certificate validation when configured to use a proxy server. This can be problematic if the GoSign Desktop user selects an arbitrary proxy server without consideration of whether outbound HTTPS connections from the proxy server to Internet servers succeed even for untrusted or invalid server certificates. In this scenario (which is outside of the product's design objectives), integrity protection could be bypassed. In typical cases of a proxy server for outbound HTTPS traffic from an enterprise, those connections would not succeed. (Admittedly, the usual expectation is that a client application is configured to trust an enterprise CA and does not set SSL_VERIFY_NONE.) Also, it is of course unsafe to place ~/.gosign in the home directory of an untrusted user and then have other users execute downloaded files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-65083"
+    },
+    {
+      "type": "WEB",
+      "url": "https://securityaffairs.com/184672/hacking/multiple-vulnerabilities-in-gosign-desktop-lead-to-remote-code-execution.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.firma.infocert.it/prodotti/gosign"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-17T16:15:51Z"
+  }
+}

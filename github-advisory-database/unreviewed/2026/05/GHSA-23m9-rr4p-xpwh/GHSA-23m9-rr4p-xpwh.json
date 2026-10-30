@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-23m9-rr4p-xpwh",
+  "modified": "2026-05-14T21:30:47Z",
+  "published": "2026-05-14T21:30:47Z",
+  "aliases": [
+    "CVE-2026-8629"
+  ],
+  "details": "Crabbox prior to v0.12.0 contains a privilege escalation vulnerability that allows users with shared visibility-only access to obtain Code, WebVNC, and Egress agent tickets by sending POST requests to ticket endpoints. Attackers can exploit insufficient access control checks on the /v1/leases/:id/code/ticket, /v1/leases/:id/webvnc/ticket, and /v1/leases/:id/egress/ticket endpoints to obtain bridge-agent tickets and impersonate trusted lease-side bridges despite having only visibility permissions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8629"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/crabbox/pull/71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/crabbox/commit/95cb30dc7dbaa1fef690a42ef6ac1cb6e307a191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/crabbox/releases/tag/v0.12.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/crabbox-privilege-escalation-via-agent-ticket-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-14T20:17:21Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2729-w29v-p8pm",
+  "modified": "2025-12-12T06:31:12Z",
+  "published": "2025-12-12T06:31:12Z",
+  "aliases": [
+    "CVE-2025-12963"
+  ],
+  "details": "The LazyTasks – Project & Task Management with Collaboration, Kanban and Gantt Chart plugin for WordPress is vulnerable to privilege escalation via account takeover in all versions up to, and including, 1.2.29. This is due to the plugin not properly validating a user's identity via the 'wp-json/lazytasks/api/v1/user/role/edit/' REST API endpoint prior to updating their details like email address. This makes it possible for unauthenticated attackers to change arbitrary user's email addresses, including administrators, and leverage that to reset the user's password and gain access to their account. It is also possible for attackers to abuse this endpoint to grant users with access to additional roles within the plugin",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12963"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/lazytasks-project-task-management"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c6998185-0f9b-48ab-9dca-05adf5ae603a?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-12T04:15:40Z"
+  }
+}

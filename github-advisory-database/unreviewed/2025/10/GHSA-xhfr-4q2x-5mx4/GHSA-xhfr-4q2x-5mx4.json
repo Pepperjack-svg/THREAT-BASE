@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xhfr-4q2x-5mx4",
+  "modified": "2026-02-05T15:31:09Z",
+  "published": "2025-10-07T18:31:09Z",
+  "aliases": [
+    "CVE-2023-53624"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sch_fq: fix integer overflow of \"credit\"\n\nif sch_fq is configured with \"initial quantum\" having values greater than\nINT_MAX, the first assignment of \"credit\" does signed integer overflow to\na very negative value.\nIn this situation, the syzkaller script provided by Cristoph triggers the\nCPU soft-lockup warning even with few sockets. It's not an infinite loop,\nbut \"credit\" wasn't probably meant to be minus 2Gb for each new flow.\nCapping \"initial quantum\" to INT_MAX proved to fix the issue.\n\nv2: validation of \"initial quantum\" is done in fq_policy, instead of open\n    coding in fq_change() _ suggested by Jakub Kicinski",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53624"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2322462d6f9ad4874f4e3c63df3b5cc00cb1acbd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b8a05e3801661a0438fcd0cdef181030d966a5a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4fbefeab88c6e79753a25099d455d3d59d2946b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7041101ff6c3073fd8f2e99920f535b111c929cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85f24cb2f10b2b0f2882e5786a09b4790bb3a0ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0b43125ec892aeb1b03e5df5aab595097da225a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:45Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g3pf-jp95-cjc3",
+  "modified": "2025-12-08T03:31:01Z",
+  "published": "2025-12-08T03:31:01Z",
+  "aliases": [
+    "CVE-2025-40311"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/habanalabs: support mapping cb with vmalloc-backed coherent memory\n\nWhen IOMMU is enabled, dma_alloc_coherent() with GFP_USER may return\naddresses from the vmalloc range. If such an address is mapped without\nVM_MIXEDMAP, vm_insert_page() will trigger a BUG_ON due to the\nVM_PFNMAP restriction.\n\nFix this by checking for vmalloc addresses and setting VM_MIXEDMAP\nin the VMA before mapping. This ensures safe mapping and avoids kernel\ncrashes. The memory is still driver-allocated and cannot be accessed\ndirectly by userspace.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40311"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/513024d5a0e34fd34247043f1876b6138ca52847"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73c7c2cdb442fc4160d2a2a4bfffbd162af06cb9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ec8ac9f73d4a9438c2186768d6de27ace37531e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1dfe21a332d38a6a09658ec29a55940afb5fe36"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-08T01:16:03Z"
+  }
+}

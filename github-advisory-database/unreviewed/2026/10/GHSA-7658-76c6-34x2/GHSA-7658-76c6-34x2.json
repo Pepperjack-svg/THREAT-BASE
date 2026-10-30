@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7658-76c6-34x2",
+  "modified": "2026-10-08T12:34:27Z",
+  "published": "2026-10-08T12:34:27Z",
+  "aliases": [
+    "CVE-2026-107579"
+  ],
+  "details": "Inefficient algorithmic complexity in the bounce and complaint processing of Progressive Robot hMailServer 6.3.4 and 6.3.5 allows a remote unauthenticated attacker to stop mail delivery by sending messages, when bounce processing or complaint processing is enabled or a mailing list is managed by the server (none is by default). The readers of incoming delivery status notifications (RFC 3464) and abuse feedback reports (RFC 5965) removed the blank lines at the start of the returned headers part two bytes at a time, copying the rest of the part each time, so their work grew with the square of the number of blank lines. A message shaped like such a report, whose headers part begins with a very large number of blank lines within the reader's 2 MB limit, keeps a delivery thread busy for over a minute while it is delivered, and a few such messages a minute keep every delivery thread busy.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107579"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/hmailserver/hmailserver/-/work_items/70"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T12:17:15Z"
+  }
+}

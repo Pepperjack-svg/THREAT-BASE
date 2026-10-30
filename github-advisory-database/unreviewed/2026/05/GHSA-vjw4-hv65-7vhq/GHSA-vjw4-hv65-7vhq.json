@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vjw4-hv65-7vhq",
+  "modified": "2026-06-25T21:31:21Z",
+  "published": "2026-05-27T15:33:23Z",
+  "aliases": [
+    "CVE-2026-46094"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: fix bounds check in check_xattrs() to prevent out-of-bounds access\n\nThe bounds check for the next xattr entry in check_xattrs() uses\n(void *)next >= end, which allows next to point within sizeof(u32)\nbytes of end. On the next loop iteration, IS_LAST_ENTRY() reads 4\nbytes via *(__u32 *)(entry), which can overrun the valid xattr region.\n\nFor example, if next lands at end - 1, the check passes since\nnext < end, but IS_LAST_ENTRY() reads 4 bytes starting at end - 1,\naccessing 3 bytes beyond the valid region.\n\nFix this by changing the check to (void *)next + sizeof(u32) > end,\nensuring there is always enough space for the IS_LAST_ENTRY() read\non the subsequent iteration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/520986722dbf869c122252123fc161c7302eab7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/537e065977022aa22f2c2503e8accaf16622e0fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a5314d2387633a272a04d1bd8727f99058e4e68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab6da97bc310db35d4e4ef5354bc3ff626b0698c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eceafc31ea7b42c984ece10d79d505c0bb6615d5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:30Z"
+  }
+}

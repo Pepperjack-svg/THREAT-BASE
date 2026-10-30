@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fc6c-gr57-5x28",
+  "modified": "2026-10-18T18:31:51Z",
+  "published": "2026-10-18T18:31:51Z",
+  "aliases": [
+    "CVE-2026-98513"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/nouveau: Fix runtime PM leak in nouveau_connector_detect()\n\nIf nvif_outp_edid_get() fails, nouveau_connector_detect() returns\nearly without dropping the runtime PM reference taken at the start\nof the function, keeping the device powered on until the next\nsuccessful detect.\n\nBalance the reference on the error path like the other exit paths\ndo.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98513"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e04611d3735543bd80a67d9d13dc13f503746fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59aa1f8c95941e623891d46c805e8fb1257b5a3d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/780ad8e4df9f767806587d33b42372acf8fbe5e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87c2f8ce1100ccbbc40bfab067741edbd1f0ef02"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:02Z"
+  }
+}

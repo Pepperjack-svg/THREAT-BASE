@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcpw-j8r3-2wh6",
+  "modified": "2026-10-16T18:34:42Z",
+  "published": "2026-10-16T18:34:42Z",
+  "aliases": [
+    "CVE-2026-111611"
+  ],
+  "details": "roncoo-education through 25.0.0-RELEASE contains an insecure direct object reference vulnerability that allows authenticated users to cancel or continue payment on other users' orders. Attackers can supply another user's order number to the pay cancel or continue endpoints to close pending orders or read course ids and prices.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111611"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roncoo/roncoo-education"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roncoo/roncoo-education/blob/v25.0.0-RELEASE/roncoo-education-service/roncoo-education-service-user/src/main/java/com/roncoo/education/user/service/auth/biz/AuthOrderPayBiz.java#L131-L231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/roncoo-education-auth-order-cancel-continue-missing-ownership-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/roncoo-education-through-25.0.0-release-idor-via-order-pay-cancel-and-continue-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:40Z"
+  }
+}

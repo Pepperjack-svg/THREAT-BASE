@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pjmr-f3w6-46qx",
+  "modified": "2026-10-22T12:31:17Z",
+  "published": "2026-10-22T12:31:17Z",
+  "aliases": [
+    "CVE-2026-115329"
+  ],
+  "details": "Lotus through 0.10.2 contains an insecure direct object reference vulnerability in SubscriptionViewSet.get_object() that uses an unscoped queryset without organization filtering or permission checks. Authenticated users or API keys from any organization can supply another organization's subscription_id to read, cancel, update, switch plans, or modify addons, altering another tenant's billing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115329"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uselotus/lotus/issues/799"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uselotus/lotus/pull/802"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uselotus/lotus/commit/1375d5140795d72251c89f47200879b9bd1d6d96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uselotus/lotus"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uselotus/lotus/blob/0.10.2/backend/api/views.py#L754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lotus-through-0.10.2-cross-organization-idor-via-subscriptionviewset"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T11:17:52Z"
+  }
+}

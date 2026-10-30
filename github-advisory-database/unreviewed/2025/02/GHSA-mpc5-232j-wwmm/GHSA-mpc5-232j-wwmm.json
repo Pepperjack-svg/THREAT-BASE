@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mpc5-232j-wwmm",
+  "modified": "2025-02-27T21:32:14Z",
+  "published": "2025-02-27T21:32:14Z",
+  "aliases": [
+    "CVE-2022-49426"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/arm-smmu-v3-sva: Fix mm use-after-free\n\nWe currently call arm64_mm_context_put() without holding a reference to\nthe mm, which can result in use-after-free. Call mmgrab()/mmdrop() to\nensure the mm only gets freed after we unpinned the ASID.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49426"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9aa215450888cf29af0c479e14a712dc6b0c506c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cbd23144f7662b00bcde32a938c4a4057e476d68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3cbbdbff8a4db5d053c53fd71be62ccccdb52b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc90f13ea0dcd960e5002d204fa55cec4e0db2fa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:19Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cf4x-r2x9-wwh2",
+  "modified": "2026-05-26T18:31:40Z",
+  "published": "2026-05-26T13:30:20Z",
+  "aliases": [
+    "CVE-2026-42627"
+  ],
+  "details": "In Arm ArmNN through 2026-03-27, an integer overflow in TensorShape::GetNumElements() in armnn/Tensor.cpp allows a crafted TFLite model file to bypass buffer size validation and trigger a heap-based buffer over-read during model optimization. The overflow occurs when multiplying tensor dimensions using 32-bit unsigned arithmetic without overflow detection, causing GetNumBytes() to return an understated allocation size. During Optimize()->InferOutputShapes(), the BatchToSpaceNdLayer reads beyond the allocated buffer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42627"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ARM-software/armnn/blob/main/src/armnn/Tensor.cpp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ARM-software/armnn/blob/main/src/armnnTfLiteParser/TfLiteParser.cpp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-22T18:16:22Z"
+  }
+}

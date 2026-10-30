@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m3rw-wqqm-pcwv",
+  "modified": "2026-04-24T21:31:57Z",
+  "published": "2026-03-25T12:30:24Z",
+  "aliases": [
+    "CVE-2026-23366"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/client: Do not destroy NULL modes\n\n'modes' in drm_client_modeset_probe may fail to kcalloc.  If this\noccurs, we jump to 'out', calling modes_destroy on it, which\ndereferences it.  This may result in a NULL pointer dereference in the\nerror case.  Prevent that.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23366"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e3ca5f82346cc23c0a71f1ceb006115ff6b0745"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9aa3e33f0c7f2679ac599a09e3102c8f716a6321"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c601fd5414315fc515f746b499110e46272e7243"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:35Z"
+  }
+}

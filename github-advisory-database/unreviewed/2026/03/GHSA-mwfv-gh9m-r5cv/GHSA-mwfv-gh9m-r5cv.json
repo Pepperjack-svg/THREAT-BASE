@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mwfv-gh9m-r5cv",
+  "modified": "2026-03-19T15:31:15Z",
+  "published": "2026-03-18T18:31:15Z",
+  "aliases": [
+    "CVE-2025-55044"
+  ],
+  "details": "The Trash Restore CSRF vulnerability in MuraCMS through 10.1.10 allows attackers to restore deleted content from the trash to unauthorized locations through CSRF. The vulnerable cTrash.restore function lacks CSRF token validation, enabling malicious websites to forge requests that restore content to arbitrary parent locations when an authenticated administrator visits a crafted webpage. Successful exploitation of the Trash Restore CSRF vulnerability results in unauthorized restoration of deleted content to potentially inappropriate or malicious locations within the MuraCMS website structure. When an authenticated administrator visits a malicious webpage containing the CSRF exploit, their browser automatically submits a hidden form that restores specified content from the trash to a location determined by the attacker through the parentid parameter. This can lead to restoration of previously deleted malicious content, placement of sensitive documents in public areas, manipulation of website navigation structure, or restoration of outdated content that was intentionally removed for security or compliance reasons.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-55044"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.murasoftware.com/v10/release-notes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.murasoftware.com/v10/release-notes/#section-version-1014"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.murasoftware.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-18T16:16:23Z"
+  }
+}

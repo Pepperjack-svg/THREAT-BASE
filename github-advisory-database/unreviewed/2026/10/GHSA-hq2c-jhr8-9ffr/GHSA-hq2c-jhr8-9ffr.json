@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hq2c-jhr8-9ffr",
+  "modified": "2026-10-26T18:33:00Z",
+  "published": "2026-10-26T18:33:00Z",
+  "aliases": [
+    "CVE-2026-116612"
+  ],
+  "details": "A flaw was found in GStreamer Editing Services (gst-editing-services). A GES project file can embed an arbitrary GStreamer pipeline description as an effect definition. When such a file is loaded, either explicitly by an editing application or automatically by a media player or file-manager thumbnailing service that uses GStreamer autoplugging, the pipeline description is parsed and instantiated without restriction on which elements may be used or which properties may be set. A remote attacker who can deliver a crafted project file to a victim's system can trigger reading or writing of arbitrary local files, issue outbound network requests to attacker-controlled servers, or cause the application to crash. Under certain conditions the file-write capability may be leveraged to achieve code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116612"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/12647"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gstreamer.freedesktop.org/security/sa-2026-0090.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-913"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T17:17:27Z"
+  }
+}

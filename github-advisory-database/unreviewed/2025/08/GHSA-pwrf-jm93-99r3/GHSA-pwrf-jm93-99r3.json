@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pwrf-jm93-99r3",
+  "modified": "2026-05-19T15:31:19Z",
+  "published": "2025-08-20T15:31:41Z",
+  "aliases": [
+    "CVE-2025-4877"
+  ],
+  "details": "There's a vulnerability in the libssh package where when a libssh consumer passes in an unexpectedly large input buffer to ssh_get_fingerprint_hash() function. In such cases the bin_to_base64() function can experience an integer overflow leading to a memory under allocation, when that happens it's possible that the program perform out of bounds write leading to a heap corruption.\nThis issue affects only 32-bits builds of libssh.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-4877"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:18683"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2025-4877"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2376193"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.libssh.org/projects/libssh.git/commit/?h=stable-0.11&id=6fd9cc8ce3958092a1aae11f1f2e911b2747732d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.libssh.org/security/advisories/CVE-2025-4877.txt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-20T13:15:28Z"
+  }
+}

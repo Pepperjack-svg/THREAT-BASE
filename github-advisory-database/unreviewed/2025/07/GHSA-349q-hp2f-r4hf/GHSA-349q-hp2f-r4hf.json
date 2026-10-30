@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-349q-hp2f-r4hf",
+  "modified": "2026-09-02T15:33:17Z",
+  "published": "2025-07-04T15:31:09Z",
+  "aliases": [
+    "CVE-2025-38206"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nexfat: fix double free in delayed_free\n\nThe double free could happen in the following path.\n\nexfat_create_upcase_table()\n        exfat_create_upcase_table() : return error\n        exfat_free_upcase_table() : free ->vol_utbl\n        exfat_load_default_upcase_table : return error\n     exfat_kill_sb()\n           delayed_free()\n                  exfat_free_upcase_table() <--------- double free\nThis patch set ->vol_util as NULL after freeing it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13d8de1b6568dcc31a95534ced16bc0c9a67bc15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f3d9724e16d62c7d42c67d6613b8512f2887c22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29abaf93357f4a7d083cf399d4306999e20db31d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66e84439ec2af776ce749e8540f8fdd257774152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac65f76db9b2ff3fbc9e198c0e9aaf81b111b7d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3cef0e7a5c1aa6217c51faa9ce8ecac35d6e1fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea27703eb0efbadcd45b9949526160ed90536a72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-04T14:15:28Z"
+  }
+}

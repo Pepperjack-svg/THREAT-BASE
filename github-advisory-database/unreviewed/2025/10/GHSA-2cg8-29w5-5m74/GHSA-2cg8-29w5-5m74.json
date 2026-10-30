@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2cg8-29w5-5m74",
+  "modified": "2026-01-16T21:30:29Z",
+  "published": "2025-10-01T12:30:29Z",
+  "aliases": [
+    "CVE-2022-50464"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmt76: mt7915: Fix PCI device refcount leak in mt7915_pci_init_hif2()\n\nAs comment of pci_get_device() says, it returns a pci_device with its\nrefcount increased. We need to call pci_dev_put() to decrease the\nrefcount. Save the return value of pci_get_device() and call\npci_dev_put() to decrease the refcount.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50464"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d4b9c7e81f3a4df27749ebecb426b145e68be2a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5938196cc188ba4323bc6357f5ac55127d715888"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8abc6579667129afd13ff2ccb0319ba3f46e6995"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:39Z"
+  }
+}

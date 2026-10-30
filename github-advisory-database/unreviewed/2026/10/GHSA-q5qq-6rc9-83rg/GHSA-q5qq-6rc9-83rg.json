@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q5qq-6rc9-83rg",
+  "modified": "2026-10-19T21:36:28Z",
+  "published": "2026-10-19T21:36:28Z",
+  "aliases": [
+    "CVE-2026-110686"
+  ],
+  "details": "Cpanel::JSON::XS versions before 4.80 for Perl use freed filter callbacks when a filter removes itself during decoding in decode_hv.\n\nA decode copies the parser's filter_json_object and filter_json_single_key_object callbacks without taking references to them. A filter callback that removes the last single-key filter frees the callback table while the decode in progress still uses it. The next object is dispatched through freed memory and can crash the process.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110686"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rurban/Cpanel-JSON-XS/commit/c3e7e3c5b0b72d82b072c6a7cfb8c34cec4c7ea2.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T19:17:22Z"
+  }
+}

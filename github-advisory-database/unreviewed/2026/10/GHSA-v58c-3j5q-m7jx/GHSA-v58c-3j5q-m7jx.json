@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v58c-3j5q-m7jx",
+  "modified": "2026-10-12T15:32:16Z",
+  "published": "2026-10-12T15:32:15Z",
+  "aliases": [
+    "CVE-2026-109188"
+  ],
+  "details": "jshERP through 3.6 contains a missing authorization vulnerability that allows low-privilege authenticated users to create tenant-wide master data via add and import endpoints lacking role checks. Attackers can send POST requests to endpoints like /account/add, /material/add, or /material/importExcel to create settlement accounts, products with initial stock, departments and dictionary entries.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109188"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AnkesKasty/cve-request-poc/blob/a7b6d1423555812d8efa26c91c5d0683164b31e5/jshERP/poc_dictionary_and_config_write.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AnkesKasty/cve-request-poc/blob/a7b6d1423555812d8efa26c91c5d0683164b31e5/jshERP/poc_global_config_and_enumeration.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AnkesKasty/cve-request-poc/blob/a7b6d1423555812d8efa26c91c5d0683164b31e5/jshERP/poc_master_data_write_authorization.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AnkesKasty/cve-request-poc/blob/a7b6d1423555812d8efa26c91c5d0683164b31e5/jshERP/poc_material_dictionary_write.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/controller/AccountController.java#L72-L78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/controller/InOutItemController.java#L64-L70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/controller/MaterialAttributeController.java#L63-L69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/controller/MaterialCategoryController.java#L66-L72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/controller/MaterialController.java#L111-L117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/controller/MaterialController.java#L496-L507"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/controller/MaterialPropertyController.java#L66-L72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/controller/OrganizationController.java#L58-L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/controller/PersonController.java#L65-L71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/controller/UnitController.java#L62-L68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jsherp-through-3.6-missing-authorization-in-master-data-add-and-import-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T13:17:32Z"
+  }
+}

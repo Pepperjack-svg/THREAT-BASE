@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-55r6-rg38-gm55",
+  "modified": "2026-10-08T06:31:12Z",
+  "published": "2026-10-02T18:31:30Z",
+  "aliases": [
+    "CVE-2026-59265"
+  ],
+  "details": "A code execution issue in the Java integration in Apache OpenOffice v4.1.16 and earlier allows a crafted untrusted document to trigger executing arbitrary (even remote) code when opened by the user.\n\n\n\nThis issue is expected to be fixed in version 4.1.17, which is in the release candidate phase.\n\n\n\nUntil then, users can mitigate this issue by disabling Java runtime integration in the Preferences dialog. This prevents the attack. If this is not possible, or as an extra precaution, you can avoid opening open untrusted files entirely. Once 4.1.17 is released, upgrade to that version to fix the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59265"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/openoffice/commit/95923fd437e06edd38a4f0e139a27c755a6f3ba6.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/openoffice/commit/c699bed3f75e79bd64ddec9dec49f9e210eed281.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/svfdc1jtpqlw7mo6lgg9fthcmf754pl5"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/02/2"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/08/7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-426"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-02T18:17:03Z"
+  }
+}

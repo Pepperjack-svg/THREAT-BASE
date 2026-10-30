@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73gq-mxp2-9hwr",
+  "modified": "2025-12-03T18:30:20Z",
+  "published": "2025-09-16T15:32:32Z",
+  "aliases": [
+    "CVE-2023-53267"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndriver: soc: xilinx: fix memory leak in xlnx_add_cb_for_notify_event()\n\nThe kfree() should be called when memory fails to be allocated for\ncb_data in xlnx_add_cb_for_notify_event(), otherwise there will be\na memory leak, so add kfree() to fix it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53267"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1bea534991b9b35c41848a397666ada436456beb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9dfb6c784e385f6e61994bb4e16ce12f3e4940be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d35290addcbac94b076babe0a798a8c043421812"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T08:15:35Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4mvj-f57c-hqc9",
+  "modified": "2025-10-18T09:30:51Z",
+  "published": "2025-10-18T09:30:51Z",
+  "aliases": [
+    "CVE-2025-10750"
+  ],
+  "details": "The PowerBI Embed Reports plugin for WordPress is vulnerable to Sensitive Information Disclosure in all versions up to, and including, 1.2.0. This is due to missing capability checks and authentication verification on the 'testUser' endpoint accessible via the mo_epbr_admin_observer() function hooked on 'init'. This makes it possible for unauthenticated attackers to access sensitive Azure AD user information including personal identifiable information (PII) such as displayName, mail, phones, department, or detailed OAuth error data including Azure AD Application/Client IDs, error codes, trace IDs, and correlation IDs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-10750"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/embed-power-bi-reports/tags/1.2.0/Observer/adminObserver.php#L265"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/embed-power-bi-reports/tags/1.2.0/Observer/adminObserver.php#L54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/embed-power-bi-reports/tags/1.2.0/embed-microsoft-power-bi-reports.php#L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3369956%40embed-power-bi-reports&new=3369956%40embed-power-bi-reports&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d830c2eb-16e8-425c-ac46-a467a2fd0133?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-18T08:15:32Z"
+  }
+}

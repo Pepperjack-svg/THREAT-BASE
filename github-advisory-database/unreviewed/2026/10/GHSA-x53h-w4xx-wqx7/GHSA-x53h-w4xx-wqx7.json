@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x53h-w4xx-wqx7",
+  "modified": "2026-10-16T06:30:28Z",
+  "published": "2026-10-16T06:30:28Z",
+  "aliases": [
+    "CVE-2026-95686"
+  ],
+  "details": "The Opti-Behavior – Self-Hosted Heatmaps, Session Recordings, Funnels, A/B Testing & Smart Insights plugin for WordPress is vulnerable to Stored DOM-Based Cross-Site Scripting via the 'targetUrl' parameter in all versions up to, and including, 1.9.2.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The ingest endpoint is gated only by a nonce that is publicly emitted to every anonymous visitor on tracked pages via optiBehaviorHeatmapConfig.nonce, meaning no account or authentication of any kind is required to write the malicious payload.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95686"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.svn.wordpress.org/opti-behavior"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/opti-behavior/tags/1.9.1/admin/class-opti-behavior-heatmap-ajax-handler.php#L1652"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/opti-behavior/tags/1.9.1/admin/class-opti-behavior-heatmap-ajax-handler.php#L3455"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/opti-behavior/tags/1.9.1/admin/class-opti-behavior-heatmap-post-metabox.php#L1389"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/opti-behavior/tags/1.9.1/assets/js/metabox-analytics.js#L553"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/opti-behavior/tags/1.9.1/public/class-opti-behavior-heatmap-frontend.php#L905"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3738510/opti-behavior/trunk/assets/js/metabox-analytics.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/41f6939d-d87a-47e5-979f-2cad021c6e81?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T06:17:12Z"
+  }
+}

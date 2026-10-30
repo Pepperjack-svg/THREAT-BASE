@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q4g4-gmvw-9fqc",
+  "modified": "2025-11-03T21:33:07Z",
+  "published": "2025-03-06T18:31:09Z",
+  "aliases": [
+    "CVE-2024-58055"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_tcm: Don't free command immediately\n\nDon't prematurely free the command. Wait for the status completion of\nthe sense status. It can be freed then. Otherwise we will double-free\nthe command.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58055"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16907219ad6763f401700e1b57b2da4f3e07f047"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38229c35a6d7875697dfb293356407330cfcd23e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7cb72dc08ed8da60fd6d1f6adf13bf0e6ee0f694"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/929b69810eec132b284ffd19047a85d961df9e4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bbb7f49839b57d66ccaf7b5752d9b63d3031dd0a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c225d006a31949d673e646d585d9569bc28feeb9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6693595bd1b55af62d057a4136a89d5c2ddf0e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0c33e7d387ccbb6870e73a43c558fefede06614"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/03/msg00028.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-06T16:15:51Z"
+  }
+}

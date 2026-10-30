@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-87qr-3hp3-x583",
+  "modified": "2025-02-27T18:31:08Z",
+  "published": "2025-02-27T18:31:08Z",
+  "aliases": [
+    "CVE-2022-49288"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: pcm: Fix races among concurrent prealloc proc writes\n\nWe have no protection against concurrent PCM buffer preallocation\nchanges via proc files, and it may potentially lead to UAF or some\nweird problem.  This patch applies the PCM open_mutex to the proc\nwrite operation for avoiding the racy proc writes and the PCM stream\nopen (and further operations).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49288"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/37b12c16beb6f6c1c3c678c1aacbc46525c250f7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51fce708ab8986a9879ee5da946a2cc120f1036d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ed8f8e3c4e59d0396b9ccf2e639711e24295bb6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69534c48ba8ce552ce383b3dfdb271ffe51820c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a21d2f323b5a978dedf9ff1d50f101f85e39b3f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b560d670c87d7d40b3cf6949246fa4c7aa65a00a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e14dca613e0a6ddc2bf6e360f16936a9f865205b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7786c445bb67a9a6e64f66ebd6b7215b153ff7d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:05Z"
+  }
+}

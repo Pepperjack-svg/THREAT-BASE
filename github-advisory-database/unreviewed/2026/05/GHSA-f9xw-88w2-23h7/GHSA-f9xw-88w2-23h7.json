@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f9xw-88w2-23h7",
+  "modified": "2026-05-12T21:31:26Z",
+  "published": "2026-05-06T12:30:30Z",
+  "aliases": [
+    "CVE-2026-43137"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: SOF: Intel: hda: Fix NULL pointer dereference\n\nIf there's a mismatch between the DAI links in the machine driver and\nthe topology, it is possible that the playback/capture widget is not\nset, especially in the case of loopback capture for echo reference\nwhere we use the dummy DAI link. Return the error when the widget is not\nset to avoid a null pointer dereference like below when the topology is\nbroken.\n\nRIP: 0010:hda_dai_get_ops.isra.0+0x14/0xa0 [snd_sof_intel_hda_common]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10411f1f2c76be67103b1f95822ff629aa25e2aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16c589567a956d46a7c1363af3f64de3d420af20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42068f7dd42b559c4eeae645e1455ff36518866a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7750d78b4014902bc0ac03d4bb30faa076a913ab"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:31Z"
+  }
+}

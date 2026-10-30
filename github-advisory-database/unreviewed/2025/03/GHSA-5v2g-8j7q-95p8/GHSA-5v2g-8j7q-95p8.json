@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5v2g-8j7q-95p8",
+  "modified": "2025-03-10T21:31:10Z",
+  "published": "2025-03-10T21:31:10Z",
+  "aliases": [
+    "CVE-2022-49575"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: Fix a data-race around sysctl_tcp_thin_linear_timeouts.\n\nWhile reading sysctl_tcp_thin_linear_timeouts, it can be changed\nconcurrently.  Thus, we need to add READ_ONCE() to its reader.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/404c53ccdebd11f96954f4070cffac8e0b4d5cb6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/492f3713b282c0e67e951cd804edd22eccc25412"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c6f2a86ca590d5187a073d987e9599985fb1c7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0f96c4f179cb3560078cefccef105e8f1701210"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc133e4f4bc225079198192623945bb872c08143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4b0295be9a3c4260de4585fac4062e602a88ac7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:33Z"
+  }
+}

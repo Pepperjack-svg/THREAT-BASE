@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-63wh-p5fx-h4vc",
+  "modified": "2025-10-09T22:29:33Z",
+  "published": "2025-10-09T22:29:33Z",
+  "aliases": [
+    "CVE-2025-10281"
+  ],
+  "summary": "BBOT's git_clone.py can expose users' GitHub API keys to an attacker-controlled webserver",
+  "details": "### Summary\n\nDue to unsafe URL handling, bbot's `git_clone.py` can be made to leak a user's github.com API key to an attacker-controlled webserver.\n\n### Impact\n\nA user who has placed their github.com API key in the configuration for any of the following modules:\n\n* `github_codesearch`\n* `github_workflows`\n* `gitlab`\n* `git_clone`\n* `github_usersearch`\n* `github_org`\n\nmay leak it to an untrustworthy server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "bbot"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.7.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/blacklanternsecurity/bbot/security/advisories/GHSA-63wh-p5fx-h4vc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-10281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blacklanternsecurity/bbot/commit/0ede97fa887de33fcfd1378b4213a09c21dc6140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.blacklanternsecurity.com/p/bbot-security-advisory-gitdumper"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/blacklanternsecurity/bbot"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-09T22:29:33Z",
+    "nvd_published_at": "2025-10-09T16:15:42Z"
+  }
+}

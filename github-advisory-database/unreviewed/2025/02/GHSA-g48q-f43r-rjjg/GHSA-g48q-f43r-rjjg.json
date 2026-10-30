@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g48q-f43r-rjjg",
+  "modified": "2025-02-27T18:31:08Z",
+  "published": "2025-02-27T18:31:08Z",
+  "aliases": [
+    "CVE-2022-49136"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: Fix queuing commands when HCI_UNREGISTER is set\n\nhci_cmd_sync_queue shall return an error if HCI_UNREGISTER flag has\nbeen set as that means hci_unregister_dev has been called so it will\nlikely cause a uaf after the timeout as the hdev will be freed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b94f2651f56b9e4aa5f012b0d7eb57308c773cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c69ef84a808676cceb69210addf5df45b741323"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:50Z"
+  }
+}

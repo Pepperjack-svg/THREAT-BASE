@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x43q-w948-5wxq",
+  "modified": "2026-05-30T12:30:23Z",
+  "published": "2026-05-27T15:33:18Z",
+  "aliases": [
+    "CVE-2026-45958"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/exynos: vidi: fix to avoid directly dereferencing user pointer\n\nIn vidi_connection_ioctl(), vidi->edid(user pointer) is directly\ndereferenced in the kernel.\n\nThis allows arbitrary kernel memory access from the user space, so instead\nof directly accessing the user pointer in the kernel, we should modify it\nto copy edid to kernel memory using copy_from_user() and use it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45958"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13537f7f6d28a87ee2e496e071b6ad9541905f23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/235d702b771416b8a61e81bb09ba39282e4268fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e147aa3169b83eaf044776f81d86235bf147de1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4949e32387fe315b59ad5f422c9fc52836fbdd1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c4193829109f38b2855de77981adc2e066286c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7efb6a4e6b1b523e744d17e6249757ed97caae7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2914c0ca7557c6c5c845621cb6d6c9f26ab5a8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4c98c077c7fb2dfdece7d605e694b5ea2665085"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:12Z"
+  }
+}

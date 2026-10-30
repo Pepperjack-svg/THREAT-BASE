@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m2jh-hr35-v8vp",
+  "modified": "2026-10-23T12:31:32Z",
+  "published": "2026-10-23T12:31:32Z",
+  "aliases": [
+    "CVE-2026-115723"
+  ],
+  "details": "Snap7 through 1.4.3 contains an out-of-bounds write vulnerability in the passive partner that allows a malicious active partner to overflow application buffers by declaring an unvalidated BSend total length. Attackers connecting from the configured peer address can declare up to 65535 bytes and send a short fragment, causing BRecv to memcpy past the buffer and crash or corrupt SCADA, HMI or gateway processes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115723"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/davenardella/snap7/pull/41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/davenardella/snap7/blob/30f37da3114024a71ba93f7fd855c680b97a406f/src/core/s7_partner.cpp#L1126-L1166"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/davenardella/snap7/blob/30f37da3114024a71ba93f7fd855c680b97a406f/src/core/s7_partner.cpp#L850-L867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/snap7-through-1.4.3-out-of-bounds-write-via-brecv-and-checkasbrecvcompletion"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:12Z"
+  }
+}

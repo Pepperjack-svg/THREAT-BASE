@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7vwh-cmr7-5727",
+  "modified": "2025-10-22T18:30:32Z",
+  "published": "2025-10-22T18:30:31Z",
+  "aliases": [
+    "CVE-2022-49545"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb-audio: Cancel pending work at closing a MIDI substream\n\nAt closing a USB MIDI output substream, there might be still a pending\nwork, which would eventually access the rawmidi runtime object that is\nbeing released.  For fixing the race, make sure to cancel the pending\nwork at closing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49545"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0125de38122f0f66bf61336158d12a1aabfe6425"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11868ca21585561659c2575b0d6508ef8e9c4291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40bdb5ec957aca5c5c1924602bef6b0ab18e22d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/517dcef4d2dda0132648f1e4c079ed17bba4d1a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5e5fe2b6065541c6216a7a003b0cddf386be0d2d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:30Z"
+  }
+}

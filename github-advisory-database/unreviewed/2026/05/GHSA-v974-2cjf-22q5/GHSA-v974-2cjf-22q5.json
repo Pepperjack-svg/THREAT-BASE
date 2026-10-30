@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v974-2cjf-22q5",
+  "modified": "2026-05-17T18:30:27Z",
+  "published": "2026-05-06T12:30:33Z",
+  "aliases": [
+    "CVE-2026-43220"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/amd: serialize sequence allocation under concurrent TLB invalidations\n\nWith concurrent TLB invalidations, completion wait randomly gets timed out\nbecause cmd_sem_val was incremented outside the IOMMU spinlock, allowing\nCMD_COMPL_WAIT commands to be queued out of sequence and breaking the\nordering assumption in wait_on_sem().\nMove the cmd_sem_val increment under iommu->lock so completion sequence\nallocation is serialized with command queuing.\nAnd remove the unnecessary return.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48caa7542a795c9679ec1bd1bc2592e05a7369a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5000ce7fcb31067566a1a1a2e5b5bbff93625242"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e249c48412828e807afddc21527eb734dc9bd3d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d51bf43193b1e95dc4e34e540dc76e19def2ae5a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fca7aa0264ae99e5ff287d0ced5af0b82b121c4f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:41Z"
+  }
+}

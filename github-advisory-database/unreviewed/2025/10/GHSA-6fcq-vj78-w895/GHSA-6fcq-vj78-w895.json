@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6fcq-vj78-w895",
+  "modified": "2026-02-06T18:30:27Z",
+  "published": "2025-10-07T18:31:10Z",
+  "aliases": [
+    "CVE-2023-53662"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: fix memory leaks in ext4_fname_{setup_filename,prepare_lookup}\n\nIf the filename casefolding fails, we'll be leaking memory from the\nfscrypt_name struct, namely from the 'crypto_buf.name' member.\n\nMake sure we free it in the error path on both ext4_fname_setup_filename()\nand ext4_fname_prepare_lookup() functions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fb3f1bbfdb511034b0360dbeb0f6a8424ed2a5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36daf050be3f6f067631dc52054de2d3b7cc849f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ca4b085f430f3774c3838b3da569ceccd6a0177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98fc9c2cc45cfcb56961a73de3ec69b474063fc0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:49Z"
+  }
+}

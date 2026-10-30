@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q397-v647-xvh6",
+  "modified": "2026-04-18T09:30:18Z",
+  "published": "2026-03-25T12:30:24Z",
+  "aliases": [
+    "CVE-2026-31788"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen/privcmd: restrict usage in unprivileged domU\n\nThe Xen privcmd driver allows to issue arbitrary hypercalls from\nuser space processes. This is normally no problem, as access is\nusually limited to root and the hypervisor will deny any hypercalls\naffecting other domains.\n\nIn case the guest is booted using secure boot, however, the privcmd\ndriver would be enabling a root user process to modify e.g. kernel\nmemory contents, thus breaking the secure boot feature.\n\nThe only known case where an unprivileged domU is really needing to\nuse the privcmd driver is the case when it is acting as the device\nmodel for another guest. In this case all hypercalls issued via the\nprivcmd driver will target that other guest.\n\nFortunately the privcmd driver can already be locked down to allow\nonly hypercalls targeting a specific domain, but this mode can be\nactivated from user land only today.\n\nThe target domain can be obtained from Xenstore, so when not running\nin dom0 restrict the privcmd driver to that target domain from the\nbeginning, resolving the potential problem of breaking secure boot.\n\nThis is XSA-482\n\n---\nV2:\n- defer reading from Xenstore if Xenstore isn't ready yet (Jan Beulich)\n- wait in open() if target domain isn't known yet\n- issue message in case no target domain found (Jan Beulich)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31788"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1879319d790f7d57622cdc22807b60ea78b56b6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/389bae9a4409934e8b8d4dbdaaf02a3ae71cf8e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ee5b9e3de4b8bdd74183d83205481c91a9effc8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/453b8fb68f3641fea970db88b7d9a153ed2a37e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4eb245ff0d33b618e097a2c23de5df56d4ad6969"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78432d8f0372c71c518096395537fa12be7ff24e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87a803edb2ded911cb587c53bff179d2a2ed2a28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cbede2e833da1893afbea9b3ff29b5dda23a4a91"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/03/24/2"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/03/24/3"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/03/24/4"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/03/24/5"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/03/26/4"
+    },
+    {
+      "type": "WEB",
+      "url": "http://xenbits.xen.org/xsa/advisory-482.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:40Z"
+  }
+}

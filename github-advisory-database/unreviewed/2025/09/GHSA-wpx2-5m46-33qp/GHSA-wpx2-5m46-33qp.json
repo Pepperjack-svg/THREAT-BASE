@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wpx2-5m46-33qp",
+  "modified": "2025-12-12T21:31:32Z",
+  "published": "2025-09-23T06:30:28Z",
+  "aliases": [
+    "CVE-2025-39882"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mediatek: fix potential OF node use-after-free\n\nThe for_each_child_of_node() helper drops the reference it takes to each\nnode as it iterates over children and an explicit of_node_put() is only\nneeded when exiting the loop early.\n\nDrop the recently introduced bogus additional reference count decrement\nat each iteration that could potentially lead to a use-after-free.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39882"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4de37a48b6b58faaded9eb765047cf0d8785ea18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2fbe0f9f80b9cfa1e06ddcf8b863d918394ef1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b58a26cdd4795c1ce6a80e38e9348885555dacd6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4901802ed1ce859242e10af06e6a7752cba0497"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-23T06:15:47Z"
+  }
+}

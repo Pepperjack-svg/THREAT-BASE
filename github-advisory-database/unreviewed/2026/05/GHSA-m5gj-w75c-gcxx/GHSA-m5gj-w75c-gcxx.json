@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m5gj-w75c-gcxx",
+  "modified": "2026-05-13T21:31:58Z",
+  "published": "2026-05-06T12:30:31Z",
+  "aliases": [
+    "CVE-2026-43162"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: tegra-video: Fix memory leak in __tegra_channel_try_format()\n\nThe state object allocated by __v4l2_subdev_state_alloc() must be freed\nwith __v4l2_subdev_state_free() when it is no longer needed.\n\nIn __tegra_channel_try_format(), two error paths return directly after\nv4l2_subdev_call() fails, without freeing the allocated 'sd_state'\nobject. This violates the requirement and causes a memory leak.\n\nFix this by introducing a cleanup label and using goto statements in the\nerror paths to ensure that __v4l2_subdev_state_free() is always called\nbefore the function returns.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43162"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2dff8966a3a889dd9d248a7e15d963b4097efcc5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ca2f09061736e72ef25eec2597d00f7f44094d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/43e5302d22334f1183dec3e0d5d8007eefe2817c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c6f419fa9c44a4b7149b0292e01bff47308ba14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca921be7a1174d5d58b28f84b683c2c0079f18c5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d92e9a18f97a1d19d4c2ff81dcfbe43591f75b5a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:34Z"
+  }
+}

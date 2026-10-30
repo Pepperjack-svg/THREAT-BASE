@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jqr3-3jm7-r6cm",
+  "modified": "2025-06-26T18:31:19Z",
+  "published": "2025-06-17T00:30:30Z",
+  "aliases": [
+    "CVE-2025-27587"
+  ],
+  "details": "OpenSSL 3.0.0 through 3.3.2 on the PowerPC architecture is vulnerable to a Minerva attack, exploitable by measuring the time of signing of random messages using the EVP_DigestSign API, and then using the private key to extract the K value (nonce) from the signatures. Next, based on the bit size of the extracted nonce, one can compare the signing time of full-sized nonces to signatures that used smaller nonces, via statistical tests. There is a side-channel in the P-364 curve that allows private key extraction (also, there is a dependency between the bit size of K and the size of the side channel). NOTE: This CVE is disputed because the OpenSSL security policy explicitly notes that any side channels which require same physical system to be detected are outside of the threat model for the software. The timing signal is so small that it is infeasible to be detected without having the attacking process running on the same physical system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-27587"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openssl/openssl/issues/24253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://minerva.crocs.fi.muni.cz"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-385"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-16T22:15:44Z"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xpf3-p7gm-7756",
+  "modified": "2026-10-14T19:34:31Z",
+  "published": "2026-10-14T19:34:31Z",
+  "aliases": [
+    "CVE-2026-14966"
+  ],
+  "summary": "BBOT's Symlink guard bypass in unarchive module allows planting symlinks during extraction",
+  "details": "BBOT's `unarchive` module rejects archives containing symlink entries before extraction, but for zip and 7z archives it failed to detect symlinks whose listing carries a DOS-attribute prefix before the unix mode, as produced by legacy versions of p7zip. Such an archive, downloaded and extracted during a scan (for example via `filedownload`), bypassed the guard and caused an attacker-controlled symlink to be written into the extraction directory. The effect is limited to planting the symlink (its target is not written through), and only hosts using such a legacy p7zip build are affected; current mainline 7-Zip is not.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "bbot"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.3.1"
+            },
+            {
+              "fixed": "3.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/blacklanternsecurity/bbot/security/advisories/GHSA-xpf3-p7gm-7756"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14966"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blacklanternsecurity/bbot/commit/3bc8d3a96f34f312853c9fcf8decee2a4e905f26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blacklanternsecurity/bbot/commit/a3f1a2292e2b0a553827c6175b761abe28807735"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/blacklanternsecurity/bbot"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/bbot/PYSEC-2026-3719.yaml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-59"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-14T19:34:31Z",
+    "nvd_published_at": "2026-07-08T16:16:27Z"
+  }
+}

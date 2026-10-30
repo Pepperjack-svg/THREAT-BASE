@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q9qg-fj9x-mqhg",
+  "modified": "2025-11-03T21:33:35Z",
+  "published": "2025-04-16T15:34:40Z",
+  "aliases": [
+    "CVE-2025-22040"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix session use-after-free in multichannel connection\n\nThere is a race condition between session setup and\nksmbd_sessions_deregister. The session can be freed before the connection\nis added to channel list of session.\nThis patch check reference count of session before freeing it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22040"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3980770cb1470054e6400fd97668665975726737"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/596407adb9af1ee75fe7c7529607783d31b66e7f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7dfbd4c43eed91dd2548a95236908025707a8dfd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9069939d762138e232a6f79e3e1462682ed6a17d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94c281721d4ed2d972232414b91d98a6f5bdb16b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa4cdb8cbca7d6cb6aa13e4d8d83d1103f6345db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:15:56Z"
+  }
+}

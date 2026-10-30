@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wxwq-c95x-686r",
+  "modified": "2026-10-15T03:35:59Z",
+  "published": "2026-05-27T15:33:23Z",
+  "aliases": [
+    "CVE-2026-46092"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw88: check for PCI upstream bridge existence\n\npci_upstream_bridge() returns NULL if the device is on a root bus.  If\n8821CE is installed in the system with such a PCI topology, the probing\nroutine will crash.  This has probably been unnoticed as 8821CE is mostly\nsupplied in laptops where there is a PCI-to-PCI bridge located upstream\nfrom the device.  However the card might be installed on a system with\ndifferent configuration.\n\nCheck if the bridge does exist for the specific workaround to be applied.\n\nFound by Linux Verification Center (linuxtesting.org) with Svace static\nanalysis tool.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46092"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/000134a20bbf89b1152520a2eef71f91fdb83a5b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b89b4c095804c478d50376285e66700cf3c045f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3bbbb56204f7359ce2139a9341b43b52a186261c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c53d68e3bcfc8faccdd76c3383a9232b05c9ae6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/959c13da6c36167ce1016d400a6104d2367f686e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc9b6303e7ea91bc360b42c7edc1fe9ceb2f47fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb101d2abdcccb514ca4fccd3b278dd8267374f6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:30Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3rxx-xp85-4r8j",
+  "modified": "2026-10-14T15:32:18Z",
+  "published": "2026-10-14T15:32:18Z",
+  "aliases": [
+    "CVE-2026-110690"
+  ],
+  "details": "Cloud Commander (cloudcmd) versions 19.20.2 through 19.21.1 contains a path traversal vulnerability in the GET /api/v1/pack endpoint where the onGET handler at server/rest/index.js:130 calls the unguarded root() function instead of the root.resolve() validation wrapper used elsewhere. Attackers can send percent-encoded directory traversal sequences in the pack request path to read arbitrary files outside the configured --root directory, such as /etc/passwd or SSH private keys, which are archived and streamed back as a downloadable tar.gz file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110690"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/coderaiser/cloudcmd/commit/91c024591f425e26200884d5e1d5ba972377968b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/mansurmavlankulov/5a0c4cbab8e49ac0669d126c854da95e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/coderaiser/cloudcmd/releases/tag/v19.21.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cloud-commander-through-path-traversal-via-get-api-v1-pack"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-23"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T14:17:44Z"
+  }
+}

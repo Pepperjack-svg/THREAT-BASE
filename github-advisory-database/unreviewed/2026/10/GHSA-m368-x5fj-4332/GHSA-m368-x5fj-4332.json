@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m368-x5fj-4332",
+  "modified": "2026-10-16T18:34:42Z",
+  "published": "2026-10-16T18:34:42Z",
+  "aliases": [
+    "CVE-2026-111610"
+  ],
+  "details": "B3log Solo through 4.4.0 contains a missing authorization vulnerability in ArticleConsole that allows authenticated authors to access other authors' articles by omitting per-author ownership checks. Attackers can query the console articles status endpoint to list other authors' drafts, probe draft content via the k parameter, and use push2rhy to push others' articles to the Rhythm community.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111610"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/88250/solo"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/88250/solo/blob/v4.4.0/src/main/java/org/b3log/solo/processor/console/ArticleConsole.java#L87-L92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/88250/solo/blob/v4.4.0/src/main/java/org/b3log/solo/service/ArticleQueryService.java#L485-L519"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/solo-article-console-cross-author-authz"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/b3log-solo-through-4.4.0-missing-authorization-in-articleconsole"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:40Z"
+  }
+}

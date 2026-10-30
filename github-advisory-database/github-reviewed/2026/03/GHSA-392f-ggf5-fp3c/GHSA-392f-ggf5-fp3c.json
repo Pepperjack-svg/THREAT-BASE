@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-392f-ggf5-fp3c",
+  "modified": "2026-03-02T21:49:33Z",
+  "published": "2026-03-02T21:49:33Z",
+  "aliases": [],
+  "summary": "OpenClaw: Unicode canonicalization drift in node metadata policy classification could broaden node allowlists",
+  "details": "### Summary\nA paired node could supply Unicode-confusable `platform` or `deviceFamily` metadata that passed metadata pinning but classified differently for command policy resolution, broadening default node command allowlists.\n\n### Impact\nThis is a policy-bypass issue within the paired-node trust boundary and can expand node command availability beyond intended defaults.\n\n### Fix\nNode metadata canonicalization was hardened against confusables, and unknown platform defaults were made conservative (excluding `system.run` and `system.which` unless explicitly allowlisted).\n\n### Affected and Patched Versions\n- Affected: `<= 2026.2.26`\n- Patched: `2026.3.1`",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "openclaw"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2026.3.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-392f-ggf5-fp3c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/openclaw/openclaw"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-176",
+      "CWE-436"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-02T21:49:33Z",
+    "nvd_published_at": null
+  }
+}

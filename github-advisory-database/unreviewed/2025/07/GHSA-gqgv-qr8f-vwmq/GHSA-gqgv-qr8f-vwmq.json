@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gqgv-qr8f-vwmq",
+  "modified": "2026-10-21T15:40:04Z",
+  "published": "2025-07-03T09:30:34Z",
+  "aliases": [
+    "CVE-2025-38132"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncoresight: holding cscfg_csdev_lock while removing cscfg from csdev\n\nThere'll be possible race scenario for coresight config:\n\nCPU0                                          CPU1\n(perf enable)                                 load module\n                                              cscfg_load_config_sets()\n                                              activate config. // sysfs\n                                              (sys_active_cnt == 1)\n...\ncscfg_csdev_enable_active_config()\n  lock(csdev->cscfg_csdev_lock)\n                                              deactivate config // sysfs\n                                              (sys_activec_cnt == 0)\n                                              cscfg_unload_config_sets()\n  <iterating config_csdev_list>               cscfg_remove_owned_csdev_configs()\n  // here load config activate by CPU1\n  unlock(csdev->cscfg_csdev_lock)\n\niterating config_csdev_list could be raced with config_csdev_list's\nentry delete.\n\nTo resolve this race , hold csdev->cscfg_csdev_lock() while\ncscfg_remove_owned_csdev_configs()",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1cd09aaf47a570bf6b05a7cd06b98e9d35fe82c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42f8afb0b161631fd1d814d017f75f955475ad41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53b9e2659719b04f5ba7593f2af0f2335f75e94a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f16b9caf0bdba46044e1d3727ee78291aa36347"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-03T09:15:27Z"
+  }
+}

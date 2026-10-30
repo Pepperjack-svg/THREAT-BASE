@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-48wv-cp4q-qcjc",
+  "modified": "2025-09-30T12:30:52Z",
+  "published": "2025-09-30T12:30:52Z",
+  "aliases": [
+    "CVE-2025-7038"
+  ],
+  "details": "The LatePoint plugin for WordPress is vulnerable to Authentication Bypass due to insufficient identity verification within the steps__load_step route of the latepoint_route_call AJAX endpoint in all versions up to, and including, 5.1.94. The endpoint reads the client-supplied customer email and related customer fields before invoking the internal login handler without verifying login status, capability checks, or a valid AJAX nonce. This makes it possible for unauthenticated attackers to log into any customer’s account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-7038"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.1.93/latepoint.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.1.93/lib/controllers/steps_controller.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3366851%40latepoint&new=3366851%40latepoint&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/latepoint/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d7389e17-a357-481a-8716-3a93cb6afa7c?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-288"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-30T11:37:43Z"
+  }
+}

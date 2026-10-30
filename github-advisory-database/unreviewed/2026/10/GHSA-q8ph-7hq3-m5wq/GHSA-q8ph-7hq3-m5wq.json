@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q8ph-7hq3-m5wq",
+  "modified": "2026-10-11T15:31:06Z",
+  "published": "2026-10-11T15:31:06Z",
+  "aliases": [
+    "CVE-2026-108758"
+  ],
+  "details": "Easy!Appointments through 1.6.0 contains an authorization bypass vulnerability in Booking::register() that allows unauthenticated attackers to modify any appointment by supplying an appointment id without its hash. Attackers can enumerate sequential appointment ids with a self-asserted manage_mode flag to rewrite appointment details, rebind them to attacker-controlled customers, and obtain management hashes for rescheduling or cancellation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108758"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/alextselegidis/easyappointments/commit/09c6fb30b6aac0830a820d6bec3d2eb241daf150"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/alextselegidis/easyappointments"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/alextselegidis/easyappointments/blob/4bc7ecd51f3dade8e041558f2c23dda65bd6c43e/application/controllers/Booking.php#L368-L587"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind/easyappointments-booking-register-appointment-takeover"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/easy-appointments-through-1.6.0-authorization-bypass-via-booking-register-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T13:17:21Z"
+  }
+}

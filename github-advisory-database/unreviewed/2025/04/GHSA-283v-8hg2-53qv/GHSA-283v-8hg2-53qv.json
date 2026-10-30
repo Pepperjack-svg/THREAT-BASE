@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-283v-8hg2-53qv",
+  "modified": "2025-04-14T21:32:21Z",
+  "published": "2025-04-14T21:32:21Z",
+  "aliases": [
+    "CVE-2022-49305"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrivers: staging: rtl8192u: Fix deadlock in ieee80211_beacons_stop()\n\nThere is a deadlock in ieee80211_beacons_stop(), which is shown below:\n\n   (Thread 1)              |      (Thread 2)\n                           | ieee80211_send_beacon()\nieee80211_beacons_stop()   |  mod_timer()\n spin_lock_irqsave() //(1) |  (wait a time)\n ...                       | ieee80211_send_beacon_cb()\n del_timer_sync()          |  spin_lock_irqsave() //(2)\n (wait timer to stop)      |  ...\n\nWe hold ieee->beacon_lock in position (1) of thread 1 and use\ndel_timer_sync() to wait timer to stop, but timer handler\nalso need ieee->beacon_lock in position (2) of thread 2.\nAs a result, ieee80211_beacons_stop() will block forever.\n\nThis patch extracts del_timer_sync() from the protection of\nspin_lock_irqsave(), which could let timer handler to obtain\nthe needed lock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49305"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/042915c1bfedd684c1d98a841794ee203200571a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fbe033c52480f7954c057510040fa6286c4ea25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66f769762f65d957f688f3258755c6ec410bf710"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/806c7b53414934ba2a39449b31fd1a038e500273"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b34cb54923a6e5ddefbaf358c85c922c6ab456e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b465bb2ebf666116c1ac745cb80c65154dc0d27e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ffc9cab7243f8151be37966301307bfd3cda2db3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:07Z"
+  }
+}

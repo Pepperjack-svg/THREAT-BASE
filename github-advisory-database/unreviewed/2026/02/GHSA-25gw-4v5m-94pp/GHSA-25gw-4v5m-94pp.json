@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-25gw-4v5m-94pp",
+  "modified": "2026-03-18T15:30:39Z",
+  "published": "2026-02-04T18:30:43Z",
+  "aliases": [
+    "CVE-2026-23078"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: scarlett2: Fix buffer overflow in config retrieval\n\nThe scarlett2_usb_get_config() function has a logic error in the\nendianness conversion code that can cause buffer overflows when\ncount > 1.\n\nThe code checks `if (size == 2)` where `size` is the total buffer size in\nbytes, then loops `count` times treating each element as u16 (2 bytes).\nThis causes the loop to access `count * 2` bytes when the buffer only\nhas `size` bytes allocated.\n\nFix by checking the element size (config_item->size) instead of the\ntotal buffer size. This ensures the endianness conversion matches the\nactual element type.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23078"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27049f50be9f5ae3a62d272128ce0b381cb26a24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/31a3eba5c265a763260976674a22851e83128f6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51049f6e3f05d70660e2458ad3bb302a3721b751"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f5c69f72e50d51be3a8c028ae7eda42c82902cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91a756d22f0482eac5bedb113c8922f90b254449"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5e80d1f97ae55bcea1426f551e4419245b41b9c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-04T17:16:18Z"
+  }
+}

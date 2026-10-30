@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-47cv-h282-xh6p",
+  "modified": "2026-10-17T21:31:20Z",
+  "published": "2026-10-17T21:31:20Z",
+  "aliases": [
+    "CVE-2026-111927"
+  ],
+  "details": "Coder before 2.29.20, 2.33.0 before 2.33.12, 2.34.0 before 2.34.8, and 2.35.0 before 2.35.4 contains an improper hostname validation flaw in GetWorkspaceProxyByHostname whose SIMILAR TO pattern performs a prefix match, so any domain that is a string prefix of a workspace-proxy access URL is trusted as a proxy. Attackers owning such a domain can lure an authenticated victim to a crafted /api/v2/applications/auth-redirect link, capture the redirected application_connect API key, and replay it to access the victim's workspace apps.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:P/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/coder/coder/security/advisories/GHSA-h58h-qvv5-xvwg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111927"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/coder-before-2.35.4-credential-theft-via-workspace-proxy-hostname-prefix-match"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-522"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-17T19:16:35Z"
+  }
+}

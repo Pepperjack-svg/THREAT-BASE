@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mgww-4g2j-r877",
+  "modified": "2026-10-28T12:31:04Z",
+  "published": "2026-10-28T12:31:04Z",
+  "aliases": [
+    "CVE-2026-99136"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-crypt: fix a tiny race condition in crypt_dec_pending\n\ncrypt_dec_pending reads io->error before calling atomic_dec_and_test.\nAnother context, for example crypt_endio called from an interrupt, may\nset io->error and drop its reference between the read and the\ndecrement. crypt_dec_pending then drops the last reference and completes\nthe bio with the stale status - so a read that failed and was never\ndecrypted, or a write that failed, is reported as successful.\n\nThe read was placed before the decrement by commit b35f8caa0890 (\"dm\ncrypt: wait for endio to complete before destruction\"), because that\ncommit freed dm_crypt_io before calling bio_endio. This is no longer the\ncase, dm_crypt_io lives in the per-bio data now.\n\nRead io->error after atomic_dec_and_test instead. atomic_dec_and_test is\nfully ordered, so no additional barrier is needed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/148845aa1921d95ef5dc851c76e6a284f6657df6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f16bb982b27b9f5a15301f622c318001fe521f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac5d887ab93592fc5e3605fe30c1d8d232d609b3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T11:17:33Z"
+  }
+}

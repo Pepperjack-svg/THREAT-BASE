@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f2m9-wcf4-cwwx",
+  "modified": "2026-09-01T01:05:34Z",
+  "published": "2026-05-18T21:31:53Z",
+  "aliases": [
+    "CVE-2026-4137"
+  ],
+  "summary": "MLFlow Creates a Temporary File With Insecure Permissions ",
+  "details": "In mlflow/mlflow versions prior to 3.11.0, the `get_or_create_nfs_tmp_dir()` function in `mlflow/utils/file_utils.py` creates temporary directories with world-writable permissions (0o777), and the `_create_model_downloading_tmp_dir()` function in `mlflow/pyfunc/__init__.py` creates directories with group-writable permissions (0o770). These insecure permissions allow local attackers to tamper with model artifacts, such as cloudpickle-serialized Python objects, and achieve arbitrary code execution when the tampered artifacts are deserialized via `cloudpickle.load()`. This vulnerability is particularly critical in environments with shared NFS mounts, such as Databricks, where NFS is enabled by default. The issue is a continuation of the vulnerability class addressed in CVE-2025-10279, which was only partially fixed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mlflow"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.26.0"
+            },
+            {
+              "fixed": "3.11.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mlflow/mlflow/commit/1dcbb0c2fbd1f446c328830e601ca13a28219b8a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mlflow/mlflow/commit/bd8854fb2b4b168a4384ebddc6c4a0b5d56aff01"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://github.com/advisories/GHSA-4x5p-f36r-mxxr"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mlflow/mlflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/mlflow/PYSEC-2026-2655.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/648dc30b-76c7-4433-86b8-f43d926fd8d6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-378"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-29T19:53:36Z",
+    "nvd_published_at": "2026-05-18T21:16:40Z"
+  }
+}

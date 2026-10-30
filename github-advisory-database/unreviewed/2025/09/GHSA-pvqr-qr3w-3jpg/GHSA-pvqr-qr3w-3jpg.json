@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pvqr-qr3w-3jpg",
+  "modified": "2025-09-08T21:30:58Z",
+  "published": "2025-09-08T21:30:58Z",
+  "aliases": [
+    "CVE-2025-52494"
+  ],
+  "details": "Adacore Ada Web Server (AWS) before 25.2 is vulnerable to a denial-of-service (DoS) condition due to improper handling of SSL handshakes during connection initialization. When a client initiates an HTTPS connection, the server performs the SSL handshake before assigning the connection to a processing slot. However, there is no specific timeout set for this phase, and the server uses the default socket timeout, which is effectively infinite. An attacker can exploit this by sending a malformed TLS ClientHello message with incorrect length values. This causes the server to wait indefinitely for data that never arrives, blocking the worker thread (Line) handling the connection. By opening multiple such connections, up to the server's maximum limit, the attacker can exhaust all available working threads, preventing the server from handling new, legitimate requests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-52494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://adacore.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.adacore.com/corp/security-advisories/SEC.AWS-0095-v1.pdf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-03T18:15:35Z"
+  }
+}

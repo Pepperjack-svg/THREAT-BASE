@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6fh9-96ww-pvwq",
+  "modified": "2026-10-15T03:35:52Z",
+  "published": "2026-05-08T15:31:22Z",
+  "aliases": [
+    "CVE-2026-43303"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/page_alloc: clear page->private in free_pages_prepare()\n\nSeveral subsystems (slub, shmem, ttm, etc.) use page->private but don't\nclear it before freeing pages.  When these pages are later allocated as\nhigh-order pages and split via split_page(), tail pages retain stale\npage->private values.\n\nThis causes a use-after-free in the swap subsystem.  The swap code uses\npage->private to track swap count continuations, assuming freshly\nallocated pages have page->private == 0.  When stale values are present,\nswap_count_continued() incorrectly assumes the continuation list is valid\nand iterates over uninitialized page->lru containing LIST_POISON values,\ncausing a crash:\n\n  KASAN: maybe wild-memory-access in range [0xdead000000000100-0xdead000000000107]\n  RIP: 0010:__do_sys_swapoff+0x1151/0x1860\n\nFix this by clearing page->private in free_pages_prepare(), ensuring all\nfreed pages have clean state regardless of previous use.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23b82b7a26182ad840ae67d390d7ec9771e8c00f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3edb8ebbf79b9016040e8f3421d723ae3d542b32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac1ea219590c09572ed5992dc233bbf7bb70fef9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d757c793853ec5483eb41ec2942c300b8fa720fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7790ab165713b79b1617ce659742ceb3a859d05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9719e32a67b4b00b3c9b133e8b5ffa72a26b67b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416",
+      "CWE-457"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:37Z"
+  }
+}

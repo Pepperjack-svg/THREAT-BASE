@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-www3-7cx8-9832",
+  "modified": "2025-12-30T15:30:28Z",
+  "published": "2025-12-30T15:30:28Z",
+  "aliases": [
+    "CVE-2022-50855"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: prevent leak of lsm program after failed attach\n\nIn [0], we added the ability to bpf_prog_attach LSM programs to cgroups,\nbut in our validation to make sure the prog is meant to be attached to\nBPF_LSM_CGROUP, we return too early if the check fails. This results in\nlack of decrementing prog's refcnt (through bpf_prog_put)\nleaving the LSM program alive past the point of the expected lifecycle.\nThis fix allows for the decrement to take place.\n\n[0] https://lore.kernel.org/all/20220628174314.1216643-4-sdf@google.com/",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50855"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a1504dd36cd9a0a69250d61da8bdb17b29f1fe8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82b39df5ddb298daaf6dc504032ff7eb027fa106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e89f3edffb860a0f54a9ed16deadb7a4a1fa3862"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:00Z"
+  }
+}

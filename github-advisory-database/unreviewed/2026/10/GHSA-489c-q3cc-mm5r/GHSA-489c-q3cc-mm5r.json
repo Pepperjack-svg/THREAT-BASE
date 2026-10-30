@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-489c-q3cc-mm5r",
+  "modified": "2026-10-18T18:31:54Z",
+  "published": "2026-10-18T18:31:54Z",
+  "aliases": [
+    "CVE-2026-98568"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: use one headroom snapshot for neighbour replies\n\nvxlan_na_create() samples LL_RESERVED_SPACE() to size the reply skb and then\nsamples it again to reserve headroom. A concurrent vxlan_changelink() can\nupdate needed_headroom between the two reads, creating a TOCTOU race. The\nsecond value can exceed the allocation and make the Ethernet header write out\nof bounds.\n\nThe race is reproducible on the unpatched kernel. It occurred when\nvxlan_na_create() generated a neighbour reply while vxlan_changelink() changed\nthe link headroom. KASAN caught a four-byte write two bytes beyond a 704-byte\nskbuff_small_head allocation.\n\nSnapshot the headroom once and use that value for both allocation and\nreservation.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98568"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/315d42ca39f69846662961c25dcf2bb07c350d14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45a67662bf8ce3aa5643accf98d328dfbb47eaf6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/481506a756dcd828ef42391cb08f38d8d96d38fc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3c5eb6e382dd426a5e7eb08608897ed57167ff7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff022fd9d0f0282c575e11778b96bd1b637503eb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:09Z"
+  }
+}

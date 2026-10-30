@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9ghj-mrhr-8wxx",
+  "modified": "2025-11-07T00:30:26Z",
+  "published": "2025-04-18T15:31:38Z",
+  "aliases": [
+    "CVE-2025-38637"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet_sched: skbprio: Remove overly strict queue assertions\n\nIn the current implementation, skbprio enqueue/dequeue contains an assertion\nthat fails under certain conditions when SKBPRIO is used as a child qdisc under\nTBF with specific parameters. The failure occurs because TBF sometimes peeks at\npackets in the child qdisc without actually dequeuing them when tokens are\nunavailable.\n\nThis peek operation creates a discrepancy between the parent and child qdisc\nqueue length counters. When TBF later receives a high-priority packet,\nSKBPRIO's queue length may show a different value than what's reflected in its\ninternal priority queue tracking, triggering the assertion.\n\nThe fix removes this overly strict assertions in SKBPRIO, they are not\nnecessary at all.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/034b293bf17c124fec0f0e663f81203b00aa7a50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1284733bab736e598341f1d3f3b94e2a322864a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1dcc144c322a8d526b791135604c0663f1af9d85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2286770b07cb5268c03d11274b8efd43dff0d380"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f35b7673a3aa3d09b3eb05811669622ebaa98ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32ee79682315e6d3c99947b3f38b078a09a66919"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7abc8318ce0712182bf0783dcfdd9a6a8331160e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/864ca690ff135078d374bd565b9872f161c614bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce8fe975fd99b49c29c42e50f2441ba53112b2e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-617"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-18T07:15:43Z"
+  }
+}

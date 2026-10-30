@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3q7p-hhhj-qh4p",
+  "modified": "2026-10-16T00:31:56Z",
+  "published": "2026-10-16T00:31:56Z",
+  "aliases": [
+    "CVE-2026-111322"
+  ],
+  "details": "Archon 0.2.13 through 0.11.1 contains a missing authentication vulnerability that allows unauthenticated attackers to access the /api/* control API, which binds to 0.0.0.0 by default. Attackers with network access can send messages to the AI coding agent, which runs with bypassPermissions, to execute commands on the host as the Archon user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/coleam00/Archon"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/coleam00/Archon/blob/v0.11.1/packages/server/src/auth/config.ts#L25-L27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/coleam00/Archon/blob/v0.11.1/packages/server/src/index.ts#L909"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/coleam00/Archon/blob/v0.11.1/packages/server/src/routes/api.ts#L1749-L1756"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/archon-os-api-missing-authentication-default"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/archon-0.2.13-through-0.11.1-missing-authentication-via-api-control-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T22:19:30Z"
+  }
+}

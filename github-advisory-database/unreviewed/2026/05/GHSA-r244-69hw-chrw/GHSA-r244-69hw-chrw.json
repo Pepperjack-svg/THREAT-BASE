@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r244-69hw-chrw",
+  "modified": "2026-05-08T18:31:26Z",
+  "published": "2026-05-01T15:30:35Z",
+  "aliases": [
+    "CVE-2026-31763"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: gyro: mpu3050: Fix incorrect free_irq() variable\n\nThe handler for the IRQ part of this driver is mpu3050->trig but,\nin the teardown free_irq() is called with handler mpu3050.\n\nUse correct IRQ handler when calling free_irq().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31763"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11f7cd960f05b3f06747abfdc4e56dd0d8b8a157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2821f7b62c5b3633c4923c7e4f742380897cd511"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8001b42fbd5e510dced3a25665019982c99bc708"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8631e755fc07b651b5d158cc3656ef76cc874068"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a09171d3f23e13bccd3dc34863186707c6301071"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac1233397f4cfe55d71f6aa459b42c256c951531"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/edb11a1aef4011a4b7b22cc3c3396c6fe371f4a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fdbe4b5268cd41f9953d25a67d139e47cac34519"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:39Z"
+  }
+}

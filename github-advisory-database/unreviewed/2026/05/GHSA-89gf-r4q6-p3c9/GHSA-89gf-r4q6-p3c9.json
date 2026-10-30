@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-89gf-r4q6-p3c9",
+  "modified": "2026-10-15T03:36:04Z",
+  "published": "2026-05-28T12:30:32Z",
+  "aliases": [
+    "CVE-2026-46185"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/client: fix out-of-bounds read in symlink_data()\n\nSince smb2_check_message() returns success without length validation for\nthe symlink error response, in symlink_data() it is possible for\niov->iov_len to be smaller than sizeof(struct smb2_err_rsp). If the buffer\nonly contains the base SMB2 header (64 bytes), accessing\nerr->ErrorContextCount (at offset 66) or err->ByteCount later in\nsymlink_data() will cause an out-of-bounds read.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46185"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15dc0a4de743a1aaa7b859b3aea79f08c695396c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2be11faf79e49fb8250a181ff0b4d2b2f084af83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8c8a704f0bc133deb171f6aeb6f3a684203e212"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9561402489d41149f63e001a74384863b7b30a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d62b8d236fab503c6fec1d3e9a38bea71feaca20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ef6495d4df6e7af8f3de67e65150881c880f696c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:34Z"
+  }
+}

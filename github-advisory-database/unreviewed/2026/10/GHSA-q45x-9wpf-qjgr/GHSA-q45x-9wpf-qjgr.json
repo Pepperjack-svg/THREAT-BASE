@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q45x-9wpf-qjgr",
+  "modified": "2026-10-16T15:38:46Z",
+  "published": "2026-10-16T15:38:46Z",
+  "aliases": [
+    "CVE-2026-106705"
+  ],
+  "details": "ELADMIN (eladmin-mp) up to 2.7 contains an improper access control vulnerability in the role management module. The endpoint PUT /api/roles/menu (RoleController.updateRoleMenu) authorizes the request only by comparing the target role's level with the caller's minimum level. The application neither validates the granted menu set nor prevents a caller from modifying its own role. A logged-in non-admin user whose role holds the delegated `roles:edit` permission can submit its own role id together with an arbitrary list of menu ids.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106705"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/elunez/eladmin-mp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tao0845/CVE-Request/blob/main/CVE-2026-106705.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T15:17:04Z"
+  }
+}

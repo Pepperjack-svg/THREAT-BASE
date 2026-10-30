@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-86rg-8hc8-v82p",
+  "modified": "2025-10-14T00:55:38Z",
+  "published": "2025-10-13T22:11:25Z",
+  "aliases": [
+    "CVE-2025-62365"
+  ],
+  "summary": "LibreNMS is vulnerable to Reflected-XSS in `report_this` function",
+  "details": "### Summary\nReflected-XSS in `report_this` function in `librenms/includes/functions.php`\n\n### Details\nRecently, it was discovered that  the `report_this` function had improper filtering (`htmlentities` function was incorrectly used in a href environment), which caused the `project_issues` parameter to trigger an XSS vulnerability.\n\nThe Vulnerable Sink:\nhttps://github.com/librenms/librenms/blob/master/includes/functions.php#L444\n\n### PoC\nGET\n`project_issues=javascript:alert(document.cookie)`\n\n### Impact\nXSS vulnerabilities allow attackers to execute malicious scripts in users' browsers, enabling unauthorized access to sensitive data, session hijacking, or malware distribution.\n\n### Suggestion\nIt is recommended to filter dangerous protocols, e.g. `javascript:`/`file:`.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "librenms/librenms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "25.7.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 25.6.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/librenms/librenms/security/advisories/GHSA-86rg-8hc8-v82p"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-62365"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/librenms/librenms/commit/30d3dd7e5f5e22a8c23c9db3ad90a731c005b008"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/librenms/librenms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-13T22:11:25Z",
+    "nvd_published_at": "2025-10-13T22:15:34Z"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3c28-g28m-gm93",
+  "modified": "2026-05-06T21:31:31Z",
+  "published": "2026-04-30T12:33:12Z",
+  "aliases": [
+    "CVE-2026-31787"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen/privcmd: fix double free via VMA splitting\n\nprivcmd_vm_ops defines .close (privcmd_close), but neither .may_split\nnor .open. When userspace does a partial munmap() on a privcmd mapping,\nthe kernel splits the VMA via __split_vma(). Since may_split is NULL,\nthe split is allowed. vm_area_dup() copies vm_private_data (a pages\narray allocated in alloc_empty_pages()) into the new VMA without any\nfixup, because there is no .open callback.\n\nBoth VMAs now point to the same pages array. When the unmapped portion\nis closed, privcmd_close() calls:\n    - xen_unmap_domain_gfn_range()\n    - xen_free_unpopulated_pages()\n    - kvfree(pages)\n\nThe surviving VMA still holds the dangling pointer. When it is later\ndestroyed, the same sequence runs again, which leads to a double free.\n\nFix this issue by adding a .may_split callback denying the VMA split.\n\nThis is XSA-487 / CVE-2026-31787",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31787"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1576ff3869cbd3620717195f971c85b7d7fd62b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24daca4fc07f3ff8cd0e3f629cd982187f48436a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2894a351fe2ea8684919d36df3188b9a35e3926f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b985d3a024b9e8c24e21671b34e855569763808"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/402d84ad9e89bd4cbfd07ca8598532b7021daf95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/446ee446d9ae66f36e95c3c90bbcc4e56b94cde0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71bf829800758a6e3889096e4754ef47ba7fc850"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dbf862ce9f009128ab86b234d91413a3e450beb4"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/04/28/14"
+    },
+    {
+      "type": "WEB",
+      "url": "http://xenbits.xen.org/xsa/advisory-487.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-30T11:16:21Z"
+  }
+}

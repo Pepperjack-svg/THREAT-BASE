@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c3cw-2pj9-44qj",
+  "modified": "2026-10-18T18:32:03Z",
+  "published": "2026-10-18T18:32:03Z",
+  "aliases": [
+    "CVE-2026-98787"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix missing migration protection in __rhtab_map_lookup_and_delete_batch()\n\nbpf_mem_cache_free_rcu() uses this_cpu_ptr() which requires migration\nto be disabled. All callers of rhtab_delete_elem() disable migration\nexcept __rhtab_map_lookup_and_delete_batch(), which calls it under\nrcu_read_lock() only.\n\nOn CONFIG_PREEMPT_RCU, rcu_read_lock() does not disable preemption or\nmigration, so the task can migrate between CPUs during the delete loop,\ncausing this_cpu_ptr() to trigger:\n\n  BUG: using smp_processor_id() in preemptible [00000000] code\n\nFix by wrapping the delete loop in migrate_disable()/migrate_enable()\nin __rhtab_map_lookup_and_delete_batch(), matching the migration\nprotection that the other callers already provide.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98787"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94f41ec5fa578765b74ad5736c2f029e7aabc46d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de020dc8049bfb2b22e3b6d99c031feb2e22d112"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:32Z"
+  }
+}

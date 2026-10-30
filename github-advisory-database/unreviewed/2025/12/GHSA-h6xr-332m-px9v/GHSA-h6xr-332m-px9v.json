@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h6xr-332m-px9v",
+  "modified": "2026-07-30T06:32:25Z",
+  "published": "2025-12-24T12:30:29Z",
+  "aliases": [
+    "CVE-2025-68347"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: firewire-motu: fix buffer overflow in hwdep read for DSP events\n\nThe DSP event handling code in hwdep_read() could write more bytes to\nthe user buffer than requested, when a user provides a buffer smaller\nthan the event header size (8 bytes).\n\nFix by using min_t() to clamp the copy size, This ensures we never copy\nmore than the user requested.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68347"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/161291bac551821bba98eb4ea84c82338578d1b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16620f0617400746984362c3d6ac547eeae1d35f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/210d77cca3d0494ed30a5c628b20c1d95fa04fb1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6275fd726d53a8ec724f20201cf3bd862711e17b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cdda0d06f8650e33255f79839f188bbece44117c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ddd32ec66bc4eb6969fe835e4cc1c0706c6348fe"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:15:58Z"
+  }
+}

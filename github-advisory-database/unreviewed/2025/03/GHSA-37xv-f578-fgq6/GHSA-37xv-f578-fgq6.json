@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-37xv-f578-fgq6",
+  "modified": "2025-03-27T18:31:29Z",
+  "published": "2025-03-27T18:31:28Z",
+  "aliases": [
+    "CVE-2023-53025"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: fix use-after-free in nfsd4_ssc_setup_dul()\n\nIf signal_pending() returns true, schedule_timeout() will not be executed,\ncausing the waiting task to remain in the wait queue.\nFixed by adding a call to finish_wait(), which ensures that the waiting\ntask will always be removed from the wait queue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53025"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a27dcd5343026ac0cb168ee63304255372b7a36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32d5eb95f8f0e362e37c393310b13b9e95404560"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ac4c383c39f8f2f955f868d1ad9365c2363e80b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6cf91b7b47ff82b624bdfe2fdcde32bb52e71dd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-27T17:15:52Z"
+  }
+}

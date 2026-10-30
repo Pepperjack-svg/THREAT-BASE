@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2x24-vjrm-p9g2",
+  "modified": "2026-08-04T12:34:48Z",
+  "published": "2025-12-30T15:30:31Z",
+  "aliases": [
+    "CVE-2023-54202"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915: fix race condition UAF in i915_perf_add_config_ioctl\n\nUserspace can guess the id value and try to race oa_config object creation\nwith config remove, resulting in a use-after-free if we dereference the\nobject after unlocking the metrics_lock.  For that reason, unlocking the\nmetrics_lock must be done after we are done dereferencing the object.\n\n[tursulin: Manually added stable tag.]\n(cherry picked from commit 49f6f6483b652108bcb73accd0204a464b922395)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54202"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/240b1502708858b5e3f10b6dc5ca3f148a322fef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6eeb1cba4c9dc47656ea328afa34953c28783d8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7eb98f5ac551863efe8be810cea1cd5411d677b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc30c011469165d57af9adac5baff7d767d20e5c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:08Z"
+  }
+}

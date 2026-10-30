@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pqwg-4rrm-3fg7",
+  "modified": "2026-06-25T21:31:18Z",
+  "published": "2026-05-27T15:33:13Z",
+  "aliases": [
+    "CVE-2026-45858"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: don't zero the entire extent if EXT4_EXT_DATA_PARTIAL_VALID1\n\nWhen allocating initialized blocks from a large unwritten extent, or\nwhen splitting an unwritten extent during end I/O and converting it to\ninitialized, there is currently a potential issue of stale data if the\nextent needs to be split in the middle.\n\n       0  A      B  N\n       [UUUUUUUUUUUU]    U: unwritten extent\n       [--DDDDDDDD--]    D: valid data\n          |<-  ->| ----> this range needs to be initialized\n\next4_split_extent() first try to split this extent at B with\nEXT4_EXT_DATA_ENTIRE_VALID1 and EXT4_EXT_MAY_ZEROOUT flag set, but\next4_split_extent_at() failed to split this extent due to temporary lack\nof space. It zeroout B to N and mark the entire extent from 0 to N\nas written.\n\n       0  A      B  N\n       [WWWWWWWWWWWW]    W: written extent\n       [SSDDDDDDDDZZ]    Z: zeroed, S: stale data\n\next4_split_extent() then try to split this extent at A with\nEXT4_EXT_DATA_VALID2 flag set. This time, it split successfully and left\na stale written extent from 0 to A.\n\n       0  A      B   N\n       [WW|WWWWWWWWWW]\n       [SS|DDDDDDDDZZ]\n\nFix this by pass EXT4_EXT_DATA_PARTIAL_VALID1 to ext4_split_extent_at()\nwhen splitting at B, don't convert the entire extent to written and left\nit as unwritten after zeroing out B to N. The remaining work is just\nlike the standard two-part split. ext4_split_extent() will pass the\nEXT4_EXT_DATA_VALID2 flag when it calls ext4_split_extent_at() for the\nsecond time, allowing it to properly handle the split. If the split is\nsuccessful, it will keep extent from 0 to A as unwritten.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45858"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1bf6974822d1dba86cf11b5f05498581cf3488a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58ddae5d77b1db3a27b891c75a8fa120239ac092"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7015fcf473796e1d2d876f241bd9e0c36f3d4eef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d17857b4fb9ba5745b59be0ef38fd532991fccbf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d67c8ecf3d8fda9b8ef80e6f665d84b6d6ac9d88"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:16:57Z"
+  }
+}

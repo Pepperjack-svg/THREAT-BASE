@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pff7-36wv-mf7h",
+  "modified": "2026-10-28T09:31:55Z",
+  "published": "2026-10-28T09:31:55Z",
+  "aliases": [
+    "CVE-2026-111068"
+  ],
+  "details": "The DesignSetGo plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'tagName' parameter in all versions up to, and including, 2.11.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Successful exploitation requires an administrator to run the plugin's block-conversion migration (\"Scan & Convert Blocks\" during deactivation), which triggers the vulnerable build_group_block() function and promotes the dormant payload from a block delimiter comment into live post_content HTML. Successful exploitation additionally requires an action by an administrator — the attacker cannot trigger the vulnerability on their own.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111068"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jnealey-godaddy/designsetgo/pull/659"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/designsetgo/tags/2.11.0/includes/admin/class-block-migrator.php#L1134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/designsetgo/tags/2.11.0/includes/admin/class-block-migrator.php#L1229"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/designsetgo/tags/2.11.0/includes/admin/class-block-migrator.php#L144"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3762066/designsetgo/trunk/includes/admin/class-block-migrator.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2314df91-4e0a-4c8b-8f8e-8b8ae1b88524?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T07:16:46Z"
+  }
+}

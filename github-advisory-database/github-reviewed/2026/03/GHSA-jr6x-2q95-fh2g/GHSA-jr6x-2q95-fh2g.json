@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jr6x-2q95-fh2g",
+  "modified": "2026-03-02T21:59:51Z",
+  "published": "2026-03-02T21:59:51Z",
+  "aliases": [],
+  "summary": "OpenClaw's authorization mismatch allowed write-scope agent runs to reach owner-only tools",
+  "details": "### Summary\nAn authorization mismatch allowed authenticated callers with `operator.write` access to invoke owner-only tool surfaces (`gateway`, `cron`) through `agent` runs in scoped-token deployments.\n\n### Impact\nOn affected deployments, write-scoped callers could perform control-plane actions beyond intended write scope.\n\n### Fix\nOwner-only gating is now enforced consistently for owner-only tool surfaces during agent execution, and tool scope classification was tightened to remove the privilege mismatch.\n\n### Affected and Patched Versions\n- Affected: `<= 2026.2.26`\n- Patched: `2026.3.1`",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "openclaw"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2026.3.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-jr6x-2q95-fh2g"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/openclaw/openclaw"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269",
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-02T21:59:51Z",
+    "nvd_published_at": null
+  }
+}

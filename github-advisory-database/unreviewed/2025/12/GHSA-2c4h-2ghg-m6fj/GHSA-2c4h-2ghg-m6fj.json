@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2c4h-2ghg-m6fj",
+  "modified": "2025-12-24T15:30:38Z",
+  "published": "2025-12-24T15:30:38Z",
+  "aliases": [
+    "CVE-2023-54106"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5: fix potential memory leak in mlx5e_init_rep_rx\n\nThe memory pointed to by the priv->rx_res pointer is not freed in the error\npath of mlx5e_init_rep_rx, which can lead to a memory leak. Fix by freeing\nthe memory in the error path, thereby making the error path identical to\nmlx5e_cleanup_rep_rx().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0582a3caaa3e2f7b80bcb113ad3c910eac15a63e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c265d8c2e25546a6b7ee16d36f2bb79b6160c2c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c6cf0b6097bf1bf1b2a89b521e9ecd26b581a93a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:12Z"
+  }
+}

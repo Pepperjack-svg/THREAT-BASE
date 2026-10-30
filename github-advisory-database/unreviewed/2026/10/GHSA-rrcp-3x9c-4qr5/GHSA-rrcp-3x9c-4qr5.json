@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rrcp-3x9c-4qr5",
+  "modified": "2026-10-13T18:30:56Z",
+  "published": "2026-10-13T18:30:56Z",
+  "aliases": [
+    "CVE-2026-110126"
+  ],
+  "details": "waynboot-mall through 2.0.0 contains an insecure direct object reference vulnerability in AddressController that allows authenticated members to modify or delete other members' shipping addresses. Attackers can enumerate auto-increment address ids and send POST /address or DELETE /address/{addressId} requests to overwrite or remove victims' saved addresses.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110126"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wayn111/waynboot-mall/commit/0ef8fa4a951fc1f6d57f3e12e37c31490e886a64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wayn111/waynboot-mall/blob/v2.0.0/waynboot-mobile-api/src/main/java/com/wayn/mobile/api/controller/AddressController.java#L44-L67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wayn111/waynboot-mall/releases/tag/v2.0.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/waynboot-mall-mobile-member-ownership-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/waynboot-mall-through-2.0.0-idor-via-mobile-address-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T17:17:38Z"
+  }
+}

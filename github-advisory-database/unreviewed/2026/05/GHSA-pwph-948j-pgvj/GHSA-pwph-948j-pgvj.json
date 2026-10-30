@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pwph-948j-pgvj",
+  "modified": "2026-05-21T15:34:07Z",
+  "published": "2026-05-21T12:31:44Z",
+  "aliases": [
+    "CVE-2026-39461"
+  ],
+  "details": "libcasper(3) communicates with helper processes via UNIX domain sockets, and uses the select(2) system call to wait for data to become available.  However, it does not verify that its socket descriptor fits within select(2)'s descriptor set size limit of FD_SETSIZE (1024).\n\nAn attacker able to cause an application using libcasper(3) to allocate large file descriptors, e.g., by opening many descriptors and executing a program which is not careful to close them upon startup, may trigger stack corruption.  If the target application runs with setuid root privileges, this could be used to escalate local privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-26:22.libcasper.asc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-21T10:16:25Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8v8q-vxfm-pcf6",
+  "modified": "2026-10-01T18:32:42Z",
+  "published": "2026-09-30T21:32:12Z",
+  "aliases": [
+    "CVE-2026-51856"
+  ],
+  "details": "In agentscope 1.0.18, 1.0.19, and 1.0.19 when the RealtimeAgent session exposes execute_python_code as an available tool, a remote WebSocket user can prompt the agent to call that tool and run Python code in the service environment. In the validated path, RealtimeAgent._acting forwards the model-produced tool call to Toolkit.call_tool_function, which invokes execute_python_code without an additional approval or isolation boundary on that path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51856"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentscope-ai/agentscope/issues/1563"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/Ro1ME/c383f66d1fd6de40b6693f9b6cc181e7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T21:17:11Z"
+  }
+}

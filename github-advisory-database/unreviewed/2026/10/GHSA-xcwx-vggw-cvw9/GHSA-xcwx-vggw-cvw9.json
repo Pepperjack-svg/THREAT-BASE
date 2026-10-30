@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xcwx-vggw-cvw9",
+  "modified": "2026-10-28T18:32:12Z",
+  "published": "2026-10-28T18:32:12Z",
+  "aliases": [
+    "CVE-2026-116133"
+  ],
+  "details": "HTTP::Body versions before 1.23_01 for Perl allow CPU exhaustion via quadratic rescanning of a multipart body with a missing or malformed boundary.\n\nBefore the first part, and between parts, the multipart parser searches the whole buffered body for the next boundary. On a miss it keeps everything and searches again from the start when the next chunk arrives. A body with no boundary, or with a delimiter followed by neither CRLF nor \"--\", is therefore rescanned on every chunk, taking time quadratic in its size.\n\nA remote attacker can exhaust worker CPU with a few such requests.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libwww-perl/HTTP-Body/commit/bf77eb959bbe1641b77f69eefe98d58ce4c4ec79.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/GETTY/HTTP-Body-1.24/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T18:17:12Z"
+  }
+}

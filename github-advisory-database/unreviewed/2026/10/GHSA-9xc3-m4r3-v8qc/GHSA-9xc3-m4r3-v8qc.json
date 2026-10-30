@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9xc3-m4r3-v8qc",
+  "modified": "2026-10-11T15:31:04Z",
+  "published": "2026-10-11T15:31:04Z",
+  "aliases": [
+    "CVE-2026-108731"
+  ],
+  "details": "Raven 2.0.0 through 3.0.0 contains a missing authorization vulnerability that allows authenticated users to join invite-only Public workspaces by ignoring the can_only_join_via_invite setting. Attackers with the Raven User role can call the join_workspace method to become persistent members, reading and posting in Public and Open channels.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108731"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-Commit-Company/raven"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-Commit-Company/raven/blob/a732e10f9c8b2ab3446038396e3eea763da617e7/raven/api/workspaces.py#L58-L67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-Commit-Company/raven/blob/a732e10f9c8b2ab3446038396e3eea763da617e7/raven/permissions.py#L74-L90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind03/frappe-raven-invite-only-workspace-flag-unenforced-20261010"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/raven-2.0.0-through-3.0.0-missing-authorization-via-join-workspace-invite-only-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T13:17:17Z"
+  }
+}

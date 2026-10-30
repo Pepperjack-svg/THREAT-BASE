@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9qmf-mrc9-rwrx",
+  "modified": "2025-04-14T21:32:21Z",
+  "published": "2025-04-14T21:32:21Z",
+  "aliases": [
+    "CVE-2022-49303"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrivers: staging: rtl8192eu: Fix deadlock in rtw_joinbss_event_prehandle\n\nThere is a deadlock in rtw_joinbss_event_prehandle(), which is shown below:\n\n   (Thread 1)                |      (Thread 2)\n                             | _set_timer()\nrtw_joinbss_event_prehandle()|  mod_timer()\n spin_lock_bh() //(1)        |  (wait a time)\n ...                         | rtw_join_timeout_handler()\n                             |  _rtw_join_timeout_handler()\n del_timer_sync()            |   spin_lock_bh() //(2)\n (wait timer to stop)        |   ...\n\nWe hold pmlmepriv->lock in position (1) of thread 1 and\nuse del_timer_sync() to wait timer to stop, but timer handler\nalso need pmlmepriv->lock in position (2) of thread 2.\nAs a result, rtw_joinbss_event_prehandle() will block forever.\n\nThis patch extracts del_timer_sync() from the protection of\nspin_lock_bh(), which could let timer handler to obtain\nthe needed lock. What`s more, we change spin_lock_bh() to\nspin_lock_irq() in _rtw_join_timeout_handler() in order to\nprevent deadlock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fcddf9c7c10202946d5b19409efbdff744fba88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/25cf414b0610fea29d8e045f315648d9007c9a46"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:07Z"
+  }
+}

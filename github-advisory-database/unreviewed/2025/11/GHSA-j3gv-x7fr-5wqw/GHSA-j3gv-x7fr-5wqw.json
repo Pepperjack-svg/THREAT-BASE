@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j3gv-x7fr-5wqw",
+  "modified": "2025-11-10T18:30:35Z",
+  "published": "2025-11-10T18:30:35Z",
+  "aliases": [
+    "CVE-2025-43079"
+  ],
+  "details": "The Qualys Cloud Agent included a bundled uninstall script (qagent_uninstall.sh), specific to MacOS and Linux supported versions that invoked multiple system commands without using absolute paths and without sanitizing the $PATH environment. If the uninstall script is executed with elevated privileges (e.g., via sudo) in an environment where $PATH has been manipulated, an attacker with root/sudo privileges could cause malicious executables to be run in place of the intended system binaries. This behavior can be leveraged for local privilege escalation and arbitrary command execution under elevated privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-43079"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.qualys.com/security-advisories/cve-2025-43079"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-426",
+      "CWE-732"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-10T18:16:06Z"
+  }
+}

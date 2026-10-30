@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cgx3-p97x-fhh8",
+  "modified": "2026-05-08T15:31:14Z",
+  "published": "2026-05-01T15:30:36Z",
+  "aliases": [
+    "CVE-2026-43017"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: validate mesh send advertising payload length\n\nmesh_send() currently bounds MGMT_OP_MESH_SEND by total command\nlength, but it never verifies that the bytes supplied for the\nflexible adv_data[] array actually match the embedded adv_data_len\nfield. MGMT_MESH_SEND_SIZE only covers the fixed header, so a\ntruncated command can still pass the existing 20..50 byte range\ncheck and later drive the async mesh send path past the end of the\nqueued command buffer.\n\nKeep rejecting zero-length and oversized advertising payloads, but\nvalidate adv_data_len explicitly and require the command length to\nexactly match the flexible array size before queueing the request.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43017"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b706fb2294aff3adfd54653bda1b5e356ad4566"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/244b639e6a3a8e26241e201004a3a9f764476631"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24fa32369cf15d8fc918bdfe94097b12e6acada0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/562ed1954f0c1bff3422b7b752bd3dacf185edbf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bda93eec78cdbfe5cda00785cefebd443e56b88b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/edb5898cfa91afe7e8f83eda18d93034c953d632"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:45Z"
+  }
+}

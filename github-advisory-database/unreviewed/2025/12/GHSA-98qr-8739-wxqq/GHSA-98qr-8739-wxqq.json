@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-98qr-8739-wxqq",
+  "modified": "2025-12-02T03:31:44Z",
+  "published": "2025-12-02T03:31:44Z",
+  "aliases": [
+    "CVE-2025-12529"
+  ],
+  "details": "The Cost Calculator Builder plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the deleteOrdersFiles() function in all versions up to, and including, 3.6.3. This makes it possible for unauthenticated attackers to inject arbitrary file paths into the orders that are removed, when an administrator deletes them. This can lead to remote code execution when the right file is deleted (such as wp-config.php). This vulnerability requires the Cost Calculator Builder Pro version to be installed along with the free version in order to be exploitable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12529"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cost-calculator-builder/tags/3.6.1/includes/classes/CCBOrderController.php#L262"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cost-calculator-builder/tags/3.6.1/includes/classes/CCBOrderController.php#L513"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4154684d-3f9b-418f-b9d1-a5d22d4d84d3?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-02T03:16:15Z"
+  }
+}

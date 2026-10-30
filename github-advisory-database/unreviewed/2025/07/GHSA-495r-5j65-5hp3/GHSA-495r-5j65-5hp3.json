@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-495r-5j65-5hp3",
+  "modified": "2025-11-05T00:31:18Z",
+  "published": "2025-07-02T12:32:12Z",
+  "aliases": [
+    "CVE-2025-46647"
+  ],
+  "details": "A vulnerability of plugin openid-connect in Apache APISIX.\n\nThis vulnerability will only have an impact if all of the following conditions are met:\n1. Use the openid-connect plugin with introspection mode\n2. The auth service connected to openid-connect provides services to multiple issuers\n3. Multiple issuers share the same private key and relies only on the issuer being different\n\nIf affected by this vulnerability, it would allow an attacker with a valid account on one of the issuers to log into the other issuer.\n\n\n\n\nThis issue affects Apache APISIX: until 3.12.0.\n\nUsers are recommended to upgrade to version 3.12.0 or higher.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-46647"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/yrpp2cd3o4qkxlrh421mq8gsrt0k4x0w"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/07/02/1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-302"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-02T12:15:28Z"
+  }
+}

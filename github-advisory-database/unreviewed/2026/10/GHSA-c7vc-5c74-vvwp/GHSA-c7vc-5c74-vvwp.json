@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c7vc-5c74-vvwp",
+  "modified": "2026-10-15T18:31:45Z",
+  "published": "2026-10-12T15:32:20Z",
+  "aliases": [
+    "CVE-2026-103528"
+  ],
+  "details": "Thelia 2.6.0 uses Smarty for email templates without properly restricting access to dangerous PHP functions. An authenticated administrator can inject malicious Smarty expressions into email templates via the messages configuration interface, and when the template is previewed or rendered, functions such as system(), exec(), file_put_contents(), and file_get_contents() can be executed with the privileges of the web process. This allows arbitrary OS command execution, file read/write operations, and RCE on the underlying server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103528"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.cert.org/vuls/id/162329"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T15:17:06Z"
+  }
+}

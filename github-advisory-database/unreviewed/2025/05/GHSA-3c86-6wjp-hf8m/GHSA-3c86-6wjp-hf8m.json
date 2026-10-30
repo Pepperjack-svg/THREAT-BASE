@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3c86-6wjp-hf8m",
+  "modified": "2025-11-13T00:30:16Z",
+  "published": "2025-05-08T09:30:24Z",
+  "aliases": [
+    "CVE-2025-37815"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: microchip: pci1xxxx: Fix Kernel panic during IRQ handler registration\n\nResolve kernel panic while accessing IRQ handler associated with the\ngenerated IRQ. This is done by acquiring the spinlock and storing the\ncurrent interrupt state before handling the interrupt request using\ngeneric_handle_irq.\n\nA previous fix patch was submitted where 'generic_handle_irq' was\nreplaced with 'handle_nested_irq'. However, this change also causes\nthe kernel panic where after determining which GPIO triggered the\ninterrupt and attempting to call handle_nested_irq with the mapped\nIRQ number, leads to a failure in locating the registered handler.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37815"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1263d5f581908602c618c6665e683c4436383a09"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12cc2193f2b9548e8ea5fbce8201b44158222edf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/18eb77c75ed01439f96ae5c0f33461eb5134b907"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e02059dc91068bc5017b8546f9ec3b930f6d6a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62957f58ab3aa7fa792dc6ff3575624062539a4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-08T07:15:52Z"
+  }
+}

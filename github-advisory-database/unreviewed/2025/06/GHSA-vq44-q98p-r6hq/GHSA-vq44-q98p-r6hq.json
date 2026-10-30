@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vq44-q98p-r6hq",
+  "modified": "2025-11-14T21:30:27Z",
+  "published": "2025-06-18T12:30:37Z",
+  "aliases": [
+    "CVE-2022-49954"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: iforce - wake up after clearing IFORCE_XMIT_RUNNING flag\n\nsyzbot is reporting hung task at __input_unregister_device() [1], for\niforce_close() waiting at wait_event_interruptible() with dev->mutex held\nis blocking input_disconnect_device() from __input_unregister_device().\n\nIt seems that the cause is simply that commit c2b27ef672992a20 (\"Input:\niforce - wait for command completion when closing the device\") forgot to\ncall wake_up() after clear_bit().\n\nFix this problem by introducing a helper that calls clear_bit() followed\nby wake_up_all().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49954"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98e01215708b6d416345465c09dce2bd4868c67a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b271090eea3899399e2adcf79c9c95367d472b03"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b533b9d3a0d1327cbb31c201dc8dbbf98c8bfe3c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d186c65599bff0222da37b9215784ddfe39f9e1b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df1b53bc799d58f79701c465505a206c72ad4ab8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:22Z"
+  }
+}

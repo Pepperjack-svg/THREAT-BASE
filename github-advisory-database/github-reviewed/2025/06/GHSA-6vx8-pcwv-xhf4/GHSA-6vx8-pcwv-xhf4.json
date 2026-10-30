@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vx8-pcwv-xhf4",
+  "modified": "2025-06-05T00:38:20Z",
+  "published": "2025-06-05T00:38:20Z",
+  "aliases": [
+    "CVE-2025-48994"
+  ],
+  "summary": "SignXML's signature verification with HMAC is vulnerable to an algorithm confusion attack",
+  "details": "When verifying signatures with X509 certificate validation turned off and HMAC shared secret set (`signxml.XMLVerifier.verify(require_x509=False, hmac_key=...`), prior versions of SignXML are vulnerable to a potential algorithm confusion attack. Unless the user explicitly limits the expected signature algorithms using the `signxml.XMLVerifier.verify(expect_config=...)` setting, an attacker may supply a signature unexpectedly signed with a key other than the provided HMAC key, using a different (asymmetric key) signature algorithm.\n\nStarting with signxml 4.0.4, specifying `hmac_key` causes the set of accepted signature algorithms to be restricted to HMAC only, if not already restricted by the user.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "signxml"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.0.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/XML-Security/signxml/security/advisories/GHSA-6vx8-pcwv-xhf4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-48994"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/XML-Security/signxml/commit/e3c0c2b82a3329a65d917830657649c98b8c7600"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/XML-Security/signxml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-303"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-06-05T00:38:20Z",
+    "nvd_published_at": "2025-06-02T17:15:40Z"
+  }
+}

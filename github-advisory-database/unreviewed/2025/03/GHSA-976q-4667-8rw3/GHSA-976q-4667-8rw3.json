@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-976q-4667-8rw3",
+  "modified": "2025-03-14T00:30:49Z",
+  "published": "2025-03-14T00:30:49Z",
+  "aliases": [
+    "CVE-2022-49105"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: wfx: fix an error handling in wfx_init_common()\n\nOne error handler of wfx_init_common() return without calling\nieee80211_free_hw(hw), which may result in memory leak. And I add\none err label to unify the error handler, which is useful for the\nsubsequent changes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49105"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60f1d3c92dc1ef1026e5b917a329a7fa947da036"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86efcb524ae1889ae73f2a2f0bb7fff2ec757ab0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93498c6e775ae91732a8109dba1bdcd324908f84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9727912e906762a63c1a667c84731d3427653f88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab0fed1fa744173433cfd1dbaf9239f200ded650"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:47Z"
+  }
+}

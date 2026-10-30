@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-px32-v334-cgrw",
+  "modified": "2026-05-14T06:31:33Z",
+  "published": "2026-05-14T06:31:33Z",
+  "aliases": [
+    "CVE-2026-5396"
+  ],
+  "details": "The Fluent Forms plugin for WordPress is vulnerable to Authorization Bypass Through User-Controlled Key in all versions up to, and including, 6.1.21. This is due to the SubmissionPolicy class authorizing submission-level actions (read, modify, delete, add notes) based on a user-supplied `form_id` query parameter. This makes it possible for authenticated attackers, with Fluent Forms Manager access restricted to specific forms, to read, modify status, add notes to, and permanently delete form submissions belonging to any other form by spoofing the form_id parameter to a form they are authorized for.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5396"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?old_path=/fluentform/tags/6.1.21/app/Http/Policies/SubmissionPolicy.php&new_path=/fluentform/tags/6.2.0/app/Http/Policies/SubmissionPolicy.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/81aad41e-0330-4dff-a5f8-08a108d724f5?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-14T06:16:24Z"
+  }
+}

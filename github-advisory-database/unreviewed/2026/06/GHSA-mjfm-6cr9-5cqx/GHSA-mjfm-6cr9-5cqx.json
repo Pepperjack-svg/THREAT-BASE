@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mjfm-6cr9-5cqx",
+  "modified": "2026-10-21T15:40:38Z",
+  "published": "2026-06-24T18:32:46Z",
+  "aliases": [
+    "CVE-2026-53091"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: pull headers in qdisc_pkt_len_segs_init()\n\nMost ndo_start_xmit() methods expects headers of gso packets\nto be already in skb->head.\n\nnet/core/tso.c users are particularly at risk, because tso_build_hdr()\ndoes a memcpy(hdr, skb->data, hdr_len);\n\nqdisc_pkt_len_segs_init() already does a dissection of gso packets.\n\nUse pskb_may_pull() instead of skb_header_pointer() to make\nsure drivers do not have to reimplement this.\n\nSome malicious packets could be fed, detect them so that we can\ndrop them sooner with a new SKB_DROP_REASON_SKB_BAD_GSO drop_reason.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:65334"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:66324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:66325"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:67150"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-53091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2492270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5895cfc76924a629c6eaa5e5f049de642860045f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7564dc804d8289d2e5c6edb8173754051b71bff4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7fb4c19670110f052c04e1ec1d2b953b9f4f57e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9d4f5c68f5ad4ab425f3ce1500c97c9f9743999a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-53091.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-131"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-24T17:17:23Z"
+  }
+}

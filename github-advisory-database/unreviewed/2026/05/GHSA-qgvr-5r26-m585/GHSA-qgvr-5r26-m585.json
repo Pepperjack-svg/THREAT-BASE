@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qgvr-5r26-m585",
+  "modified": "2026-10-21T15:40:21Z",
+  "published": "2026-05-01T15:30:36Z",
+  "aliases": [
+    "CVE-2026-43022"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: hci_cmd_sync_queue_once() return -EEXIST if exists\n\nhci_cmd_sync_queue_once() needs to indicate whether a queue item was\nadded, so caller can know if callbacks are called, so it can avoid\nleaking resources.\n\nChange the function to return -EEXIST if queue item already exists.\n\nModify all callsites to handle that.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43022"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ad2ce230b38cd4b3f6732cc609e270461e626e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2969554bcfccb5c609f6b6cd4a014933f3a66dd0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5cfa4f537a056c91ac6c09bc3ab58a4455217df7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/799e2e5fbf3f14874b5c6cc289a0dd68b2ca1979"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dfee8da127bafa46530b72347bce3ccae736296d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:46Z"
+  }
+}

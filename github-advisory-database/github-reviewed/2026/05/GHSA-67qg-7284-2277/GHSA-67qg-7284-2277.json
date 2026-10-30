@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-67qg-7284-2277",
+  "modified": "2026-10-27T16:22:32Z",
+  "published": "2026-05-05T20:05:49Z",
+  "aliases": [
+    "CVE-2026-42196"
+  ],
+  "summary": "django-s3file is vulnerable to relative path traversal",
+  "details": "### Impact\n`S3FileMiddleware` is vulnerable to relative path traversal attacks, where an attacker can use a modified request to escape pre-signed upload locations and have the Django application load files from random locations into `request.FILES`\n\nDepending on how files are handled, this may lead to confidentiality and integrity issues.\n\n### Patches\nDjango-S3File urges all users to update to a patched version >=7.0.2.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "django-s3file"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "7.0.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 7.0.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/codingjoe/django-s3file/security/advisories/GHSA-67qg-7284-2277"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42196"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/codingjoe/django-s3file"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/django-s3file/PYSEC-2026-328.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/django-s3file"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-23",
+      "CWE-26"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-05T20:05:49Z",
+    "nvd_published_at": "2026-05-12T22:16:34Z"
+  }
+}

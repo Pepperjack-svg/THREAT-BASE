@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gmrm-qq98-m6xv",
+  "modified": "2026-03-18T18:31:16Z",
+  "published": "2026-03-18T18:31:16Z",
+  "aliases": [
+    "CVE-2026-2559"
+  ],
+  "details": "The Post SMTP plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the `handle_office365_oauth_redirect()` function in all versions up to, and including, 3.8.0. This is due to the function being hooked to `admin_init` without any `current_user_can()` check or nonce verification. This makes it possible for authenticated attackers, with Subscriber-level access and above, to overwrite the site's Office 365 OAuth mail configuration (access token, refresh token, and user email) via a crafted URL. The configuration option is used during wizard setup of Microsoft365 SMTP, only available in the Pro option of the plugin. This could cause an Administrator to believe an attacker-controlled Azure app is their own, and lead them to connect the plugin to the attacker's account during configuration after upgrading to Pro.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2559"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/post-smtp/trunk/Postman/Wizard/NewWizard.php#L104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/post-smtp/trunk/Postman/Wizard/NewWizard.php#L2109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3484515"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/323436b5-fbfe-4923-8b08-93c1fcabc016?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-18T16:16:27Z"
+  }
+}

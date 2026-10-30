@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w4hv-c72g-pqx6",
+  "modified": "2026-10-08T21:33:19Z",
+  "published": "2026-10-08T15:33:10Z",
+  "aliases": [
+    "CVE-2026-93034"
+  ],
+  "details": "SGLang contains an arbitrary code execution vulnerability caused by the ZMQ message decoder unconditionally deserializing PickleWrapper payloads via pickle.loads() in _maybe_unwrap_pickle without type allowlisting or authentication; this vulnerability persists via the msgpack path even when SGLANG_USE_PICKLE_IPC is disabled, and becomes remotely exploitable if data-parallel attention is enabled with a non-loopback --dist-init-addr setting.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93034"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/tree/main"
+    },
+    {
+      "type": "WEB",
+      "url": "https://m00dy.sh/notes/disabling-pickle-did-not-remove-pickle?palette=mineral"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T15:17:57Z"
+  }
+}

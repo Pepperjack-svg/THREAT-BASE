@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9w48-f7hv-5x3j",
+  "modified": "2026-06-16T03:30:33Z",
+  "published": "2026-05-27T15:33:18Z",
+  "aliases": [
+    "CVE-2026-45967"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Return proper address for non-zero offsets in insn array\n\nThe map_direct_value_addr() function of the instruction\narray map incorrectly adds offset to the resulting address.\nThis is a bug, because later the resolve_pseudo_ldimm64()\nfunction adds the offset. Fix it. Corresponding selftests\nare added in a consequent commit.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73ef43202a37d779a8e665a0acae214fa59df9fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3bd7bdf5ffe49d8381e42843f6e98cd0c78a1e8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:13Z"
+  }
+}

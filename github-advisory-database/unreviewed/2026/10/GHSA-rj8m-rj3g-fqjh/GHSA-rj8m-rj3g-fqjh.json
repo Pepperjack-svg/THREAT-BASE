@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rj8m-rj3g-fqjh",
+  "modified": "2026-10-24T15:32:49Z",
+  "published": "2026-10-23T15:31:34Z",
+  "aliases": [
+    "CVE-2026-99006"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/gem: Prevent overstepping exec array boundary\n\nIt is possible for eb_relocate_parse_slow() to call kvfree() on\nentries outside the original exec array during following\nscenario inside eb_relocate_parse_slow():\n\n1) eb_copy_relocations() allocates as many as eb->buffer_count\n   copies for exec entries;\n2) eb_parse() appends up to two VMAs, right after incrementing\n   eb->buffer_count;\n3) cleanup under \"out\" label uses this incremented buffer_count\n   to release relocation pointers from exec array via kvfree(),\n   not from VMA array.\n\nTo amend this problem, ensure that relocation cleanup uses the\noriginal exec object count, excluding the VMAs appended by the\ncommand parser.\n\n(cherry picked from commit 2a0158925fb943c7ba8f3216e2734952128defc9)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99006"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/152fb5083b9333a1cb8629572f9e0f276a404ba6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24c04e80c35ff36947366f6deafddb522eea080c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72d5cbb10d4916a3f8ef9da516c5c0634aca8439"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1c357131fc467c579f65e9a9d1fdc1a6273ae1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ebe162db655881a38de43301151ff7ac940602b5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:23Z"
+  }
+}

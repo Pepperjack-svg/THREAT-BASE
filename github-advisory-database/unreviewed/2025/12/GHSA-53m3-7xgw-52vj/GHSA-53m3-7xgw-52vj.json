@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-53m3-7xgw-52vj",
+  "modified": "2025-12-30T15:30:34Z",
+  "published": "2025-12-30T15:30:34Z",
+  "aliases": [
+    "CVE-2023-54260"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: Fix lost destroy smbd connection when MR allocate failed\n\nIf the MR allocate failed, the smb direct connection info is NULL,\nthen smbd_destroy() will directly return, then the connection info\nwill be leaked.\n\nLet's set the smb direct connection info to the server before call\nsmbd_destroy().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54260"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04b7e13b8a13264282f874db5378fc3d3253cfac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/324c0c34fff1affd436e509325cb46739209704e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46cd6c639cddba2bd2d810ceb16bb20374ad75b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c51ae01104b318bf15f3c5097faba5c72addba7a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/caac205e0d5b44c4c23a10c6c0976d50ebe16ac2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d303e25887127364a6765eaf7ac68aa2bac518a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e9d3401d95d62a9531082cd2453ed42f2740e3fd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:14Z"
+  }
+}

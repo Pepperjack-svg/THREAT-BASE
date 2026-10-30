@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8v7v-hv29-cp2f",
+  "modified": "2025-10-03T18:31:24Z",
+  "published": "2025-09-29T21:30:26Z",
+  "aliases": [
+    "CVE-2025-34207"
+  ],
+  "details": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host prior to 22.0.1049 and Application prior to 20.0.2786 (VA and SaaS deployments) configure the SSH client within Docker instances with the following options: `UserKnownHostsFile=/dev/null`, `StrictHostKeyChecking=no`, and `ForwardAgent yes`.  These settings disable verification of the remote host’s SSH key and automatically forward the developer’s SSH‑agent to any host that matches the configured wildcard patterns.  As a result, an attacker who can reach a single compromised container can cause the container to connect to a malicious SSH server, capture the forwarded private keys, and use those keys for unrestricted lateral movement across the environment.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/saas/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/va/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pierrekim.github.io/blog/2025-04-08-vasion-printerlogic-83-vulnerabilities.html#va-insecure-ssh-config"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vasion-print-printerlogic-insecure-ssh-client-config"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-29T21:15:34Z"
+  }
+}

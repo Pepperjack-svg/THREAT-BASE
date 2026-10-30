@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8cmm-3crh-f6m2",
+  "modified": "2026-10-14T15:32:21Z",
+  "published": "2026-10-14T15:32:21Z",
+  "aliases": [
+    "CVE-2026-98429"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/efa: Keep EQ resources alive while IRQ is registered\n\nThe completion IRQ handler accesses the EQ state and DMA buffer. Its IRQ was\nregistered before that state was initialized, while teardown released the\nbuffer before free_irq() synchronized the handler.\n\nInitialize the EQ without arming it, register the IRQ, and then arm it.\nReverse the resource order during teardown by freeing the IRQ before\ndestroying the EQ.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98429"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38871ff47e2a02f8d9a333a65f358d987247b5b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cd652dfcd822af26ba75d6d2d245ea7f73b499e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/795eb34bfd8b1ab347adc41a11e4bb97c3ac0ce6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ecd3dcbdf1f315aadc049b291f59c79dc478062"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c767e2812cac83fef70fb8932c3f0fe97dff9388"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e22a3627b7151754f07f90ea3d1ab6e85f5d93f4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T14:17:54Z"
+  }
+}

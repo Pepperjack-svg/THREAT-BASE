@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hrp8-4956-5gr5",
+  "modified": "2026-06-29T18:31:54Z",
+  "published": "2026-06-29T18:31:54Z",
+  "aliases": [
+    "CVE-2026-13750"
+  ],
+  "details": "Insertion of sensitive information into log files in Snowflake CLI versions prior to 3.19 allowed plaintext credentials to be written to persistent local debug logs. An attacker could exploit this by obtaining read access to the affected user's local log files, causing credentials such as passwords, tokens, or private key material to be exposed without additional application-level safeguards. Successful exploitation requires credentials to be present in the affected connection context and the resulting logs to be accessible from the local environment. The fix is available in Snowflake CLI version 3.19, and users must manually upgrade.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13750"
+    },
+    {
+      "type": "WEB",
+      "url": "https://community.snowflake.com/s/article/Snowflake-CLI-Vulnerability-Advisory"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-29T16:16:39Z"
+  }
+}

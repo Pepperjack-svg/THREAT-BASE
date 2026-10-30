@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7qp5-57jr-xmpr",
+  "modified": "2026-10-16T18:34:42Z",
+  "published": "2026-10-16T18:34:42Z",
+  "aliases": [
+    "CVE-2026-111604"
+  ],
+  "details": "eladmin through 2.7 contains an authorization bypass vulnerability that allows department-scoped user managers to modify or delete accounts outside their data scope because write handlers skip department checks. Attackers with user:edit or user:del permissions can send PUT or DELETE requests to /api/users with target user ids to disable, reassign, alter, or delete accounts in other departments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111604"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/elunez/eladmin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/elunez/eladmin/blob/v2.7/eladmin-system/src/main/java/me/zhengjie/modules/system/rest/UserController.java#L118-L152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/eladmin-user-update-delete-missing-dept-data-scope"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/eladmin-through-2.7-broken-access-control-via-api-users-update-and-delete"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:39Z"
+  }
+}

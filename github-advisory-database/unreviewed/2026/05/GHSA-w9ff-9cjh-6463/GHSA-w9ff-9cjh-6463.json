@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9ff-9cjh-6463",
+  "modified": "2026-09-14T12:31:29Z",
+  "published": "2026-05-27T15:33:23Z",
+  "aliases": [
+    "CVE-2026-46090"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: aloop: Fix peer runtime UAF during format-change stop\n\nloopback_check_format() may stop the capture side when playback starts\nwith parameters that no longer match a running capture stream. Commit\n826af7fa62e3 (\"ALSA: aloop: Fix racy access at PCM trigger\") moved\nthe peer lookup under cable->lock, but the actual snd_pcm_stop() still\nruns after dropping that lock.\n\nA concurrent close can clear the capture entry from cable->streams[] and\ndetach or free its runtime while the playback trigger path still holds a\nstale peer substream pointer.\n\nKeep a per-cable count of in-flight peer stops before dropping\ncable->lock, and make free_cable() wait for those stops before\ndetaching the runtime. This preserves the existing behavior while\nmaking the peer runtime lifetime explicit.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46090"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-46090.json"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5c33cdc6f402eab8abd36ecf436b22c9d3a8aff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d258cdce50ff3e02392917258e81a0ce9555c327"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bdd9503c3d222d2735b56c7a8b4422ccf3de6e5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83bd62fa9620ac98d5d694bde14c50f98c8e7189"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d45e34bf001344e2966dabca1897561bbc9e913"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3727a3541788412c393eec236ad228d72efe19c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/345c24b2bcf0923dfae1ab41497351c68214ff76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03f52a9c170431e8f10e156b9dc0dae80b3e9198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2481980"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-46090"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:41236"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:35896"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:35863"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:35844"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:34443"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:34095"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:34094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:33900"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:33899"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:33685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:33215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:30848"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:27354"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:27353"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-364",
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:30Z"
+  }
+}

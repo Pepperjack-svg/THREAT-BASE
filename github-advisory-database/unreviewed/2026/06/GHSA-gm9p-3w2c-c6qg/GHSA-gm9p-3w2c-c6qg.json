@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gm9p-3w2c-c6qg",
+  "modified": "2026-06-28T09:31:44Z",
+  "published": "2026-06-25T09:31:21Z",
+  "aliases": [
+    "CVE-2026-53205"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/ivpu: Add bounds checks for firmware log indices\n\nAdd validation that read and write indices in the firmware log buffer\nare within valid bounds (< data_size) before using them. If\nout-of-bounds indices are encountered (from firmware), clamp them to\nsafe values instead of proceeding with invalid offsets.\n\nThis prevents potential out-of-bounds buffer access when firmware\nsupplies invalid log indices.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53205"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/535da9ad8420c3b686a642403d4147ff220255fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5961c703414048f46818be8bbb11075a9a63fb4e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ec70c0dbdf04392a26e03e38798a373934177be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd1311bcf0e62f0c515115f46a3813370f4a4bb1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125",
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:38Z"
+  }
+}

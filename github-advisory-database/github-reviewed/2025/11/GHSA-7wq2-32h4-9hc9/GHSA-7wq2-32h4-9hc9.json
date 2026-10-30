@@ -1,0 +1,234 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7wq2-32h4-9hc9",
+  "modified": "2026-05-06T23:24:24Z",
+  "published": "2025-11-13T22:22:34Z",
+  "aliases": [],
+  "summary": "AWS Advanced Go Wrapper: Privilege Escalation in Aurora PostgreSQL Instance",
+  "details": "### Description of Vulnerability: \nAn issue in AWS Wrappers for Amazon Aurora PostgreSQL may allow for privilege escalation to rds_superuser role. A low privilege authenticated user can create a crafted function that could be executed with permissions of other Amazon Relational Database Service (RDS) users.\n\nWe recommend customers upgrade to the following versions:  AWS Go Wrapper to 2025-10-17\n\n\n### Source of Vulnerability Report: \nAllistair Ishmael Hakim [allistair.hakim@gmail.com](mailto:allistair.hakim@gmail.com)\n\n\n### Affected products & versions: \nAWS Go Wrapper < 2025-10-17\n\n\n### Platforms:\n MacOS/Windows/Linux",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/aws/aws-advanced-go-wrapper/awssql"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.1.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/aws/aws-advanced-go-wrapper/auth-helpers"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/aws/aws-advanced-go-wrapper/aws-secrets-manager"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/aws/aws-advanced-go-wrapper/federated-auth"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/aws/aws-advanced-go-wrapper/iam"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/aws/aws-advanced-go-wrapper/mysql-driver"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/aws/aws-advanced-go-wrapper/okta"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/aws/aws-advanced-go-wrapper/otlp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/aws/aws-advanced-go-wrapper/pgx-driver"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/aws/aws-advanced-go-wrapper/xray"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/aws/aws-advanced-go-wrapper/security/advisories/GHSA-7wq2-32h4-9hc9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aws/aws-advanced-go-wrapper/pull/270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aws/aws-advanced-go-wrapper/commit/7b405f95fe71db644cd8336ba5fa28b41e89d03e"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/aws/aws-advanced-go-wrapper"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-470"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-11-13T22:22:34Z",
+    "nvd_published_at": null
+  }
+}

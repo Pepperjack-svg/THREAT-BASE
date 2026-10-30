@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r3f7-9rj4-j5fm",
+  "modified": "2026-03-18T15:30:40Z",
+  "published": "2026-02-14T18:30:15Z",
+  "aliases": [
+    "CVE-2026-23169"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: fix race in mptcp_pm_nl_flush_addrs_doit()\n\nsyzbot and Eulgyu Kim reported crashes in mptcp_pm_nl_get_local_id()\nand/or mptcp_pm_nl_is_backup()\n\nRoot cause is list_splice_init() in mptcp_pm_nl_flush_addrs_doit()\nwhich is not RCU ready.\n\nlist_splice_init_rcu() can not be called here while holding pernet->lock\nspinlock.\n\nMany thanks to Eulgyu Kim for providing a repro and testing our patches.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23169"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f1b9523527df02685dde603f20ff6e603d8e4a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/338d40bab283da2639780ee3e458fb61f1567d8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/455e882192c9833f176f3fbbbb2f036b6c5bf555"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51223bdd0f60b06cfc7f25885c4d4be917adba94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7896dbe990d56d5bb8097863b2645355633665eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2a9eeb69f7d4ca4cf4c70463af77664fdb6ab1d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T16:15:57Z"
+  }
+}

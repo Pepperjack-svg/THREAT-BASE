@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6wcw-jhw2-v4p6",
+  "modified": "2026-06-10T21:31:25Z",
+  "published": "2026-05-28T12:30:33Z",
+  "aliases": [
+    "CVE-2026-46211"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm/gem: fix error handling in msm_ioctl_gem_info_get_metadata()\n\nmsm_ioctl_gem_info_get_metadata() always returns 0 regardless of\nerrors. When copy_to_user() fails or the user buffer is too small,\nthe error code stored in ret is ignored because the function\nunconditionally returns 0. This causes userspace to believe the\nioctl succeeded when it did not.\n\nAdditionally, kmemdup() can return NULL on allocation failure, but\nthe return value is not checked. This leads to a NULL pointer\ndereference in the subsequent copy_to_user() call.\n\nAdd the missing NULL check for kmemdup() and return ret instead of 0.\n\nNote that the SET counterpart (msm_ioctl_gem_info_set_metadata)\ncorrectly returns ret.\n\nPatchwork: https://patchwork.freedesktop.org/patch/714478/",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46211"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47cbfe2608314b833ad61a65827d8fb363bc2d2d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/697e1a9559f6962f999cc4c748c2ffffcc0a7a7a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b079e85c91f446f29e808d8291189e897f1884ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c57c861956b89f2e2528e6384d51e2dedd915809"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:36Z"
+  }
+}

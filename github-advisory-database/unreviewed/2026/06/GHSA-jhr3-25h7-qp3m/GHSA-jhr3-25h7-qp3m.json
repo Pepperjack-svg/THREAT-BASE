@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jhr3-25h7-qp3m",
+  "modified": "2026-07-06T18:30:36Z",
+  "published": "2026-06-25T09:31:19Z",
+  "aliases": [
+    "CVE-2026-53169"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/ethosu: reject NPU_OP_RESIZE commands from userspace\n\nNPU_OP_RESIZE is a U85-only command that the driver does not yet\nimplement. The existing WARN_ON(1) placeholder fires unconditionally\nwhenever userspace submits this command via DRM_IOCTL_ETHOSU_GEM_CREATE,\ncausing unbounded kernel log spam.\n\nIf panic_on_warn is set the kernel panics, giving any unprivileged user\nwith access to the DRM device a trivial denial-of-service primitive.\n\nReplace the WARN_ON(1) with an explicit -EINVAL return so the ioctl\nrejects the command before it reaches hardware.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53169"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70090a32f56a4589e7e860e0f9a8fbe4417df0a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ef911805d86a05363d3ec2fa9835a41def83bb7e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-617"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:34Z"
+  }
+}

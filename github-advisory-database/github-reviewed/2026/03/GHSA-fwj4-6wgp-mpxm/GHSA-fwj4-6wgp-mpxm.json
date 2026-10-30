@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fwj4-6wgp-mpxm",
+  "modified": "2026-06-01T21:30:32Z",
+  "published": "2026-03-17T15:36:23Z",
+  "aliases": [
+    "CVE-2026-4324"
+  ],
+  "summary": "Katello: Denial of Service and potential information disclosure via SQL injection",
+  "details": "A flaw was found in the Katello plugin for Red Hat Satellite. This vulnerability, caused by improper sanitization of user-provided input, allows a remote attacker to inject arbitrary SQL commands into the sort_by parameter of the /api/hosts/bootc_images API endpoint. This can lead to a Denial of Service (DoS) by triggering database errors, and potentially enable Boolean-based Blind SQL injection, which could allow an attacker to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "katello"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.19.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Katello/katello/commit/a0a793b08d4f0a897ee985d79a687ad043f99e57"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:22326"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:5968"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:5970"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-4324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2448349"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Katello/katello"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-18T17:25:29Z",
+    "nvd_published_at": "2026-03-17T14:16:19Z"
+  }
+}

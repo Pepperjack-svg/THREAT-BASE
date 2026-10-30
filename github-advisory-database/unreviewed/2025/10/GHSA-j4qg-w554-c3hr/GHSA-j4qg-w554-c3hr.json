@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4qg-w554-c3hr",
+  "modified": "2026-01-16T21:30:29Z",
+  "published": "2025-10-01T12:30:29Z",
+  "aliases": [
+    "CVE-2023-53458"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: cx23885: Fix a null-ptr-deref bug in buffer_prepare() and buffer_finish()\n\nWhen the driver calls cx23885_risc_buffer() to prepare the buffer, the\nfunction call dma_alloc_coherent may fail, resulting in a empty buffer\nrisc->cpu. Later when we free the buffer or access the buffer, null ptr\nderef is triggered.\n\nThis bug is similar to the following one:\nhttps://git.linuxtv.org/media_stage.git/commit/?id=2b064d91440b33fba5b452f2d1b31f13ae911d71.\n\nWe believe the bug can be also dynamically triggered from user side.\nSimilarly, we fix this by checking the return value of cx23885_risc_buffer()\nand the value of risc->cpu before buffer free.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53458"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47e8b73bc35d7c54642f78e498697692f6358996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b8e5e28e85a546dfccc3895befe0e823fdd7c89"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6738841f6fcf23e9fc30e2449f32fc84ee19c6f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0a06203f2fe63f04311467200c99c4ee1926578"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:47Z"
+  }
+}

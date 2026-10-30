@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9f3-qc75-qgx9",
+  "modified": "2026-05-08T16:54:22Z",
+  "published": "2026-05-08T16:54:22Z",
+  "aliases": [
+    "CVE-2026-44212"
+  ],
+  "summary": "PrestaShop has a stored XSS executable in customer service view",
+  "details": "### Impact\n\nThis is a **stored Cross-site Scripting (XSS)** vulnerability in the PrestaShop back-office Customer Service view.\n\nAn unauthenticated attacker can submit the public Contact Us form with a malicious email address. The payload is stored in the database and executed when a back-office employee opens the affected customer thread, enabling session hijacking and full back-office takeover.\n\n### Patches\n\nPatched in PrestaShop 8.2.6 and 9.1.1.\n\n### Workarounds\n\nNone.\n\n### Resources\n\n- Reported by Savio at Doyensec (`anthropic@doyensec.com`) in collaboration with Anthropic Research.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "prestashop/prestashop"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.2.6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "prestashop/prestashop"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "9.0.0"
+            },
+            {
+              "fixed": "9.1.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/PrestaShop/PrestaShop/security/advisories/GHSA-w9f3-qc75-qgx9"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/PrestaShop/PrestaShop"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-08T16:54:22Z",
+    "nvd_published_at": null
+  }
+}

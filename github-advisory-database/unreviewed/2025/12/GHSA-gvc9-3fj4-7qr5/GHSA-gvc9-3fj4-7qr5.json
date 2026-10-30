@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gvc9-3fj4-7qr5",
+  "modified": "2025-12-24T15:30:34Z",
+  "published": "2025-12-24T15:30:34Z",
+  "aliases": [
+    "CVE-2022-50767"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: smscufx: Fix several use-after-free bugs\n\nSeveral types of UAFs can occur when physically removing a USB device.\n\nAdds ufx_ops_destroy() function to .fb_destroy of fb_ops, and\nin this function, there is kref_put() that finally calls ufx_free().\n\nThis fix prevents multiple UAFs.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50767"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f40852d671072836fb7ae331a1f28a24223c4e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5385af2f89bc352fb70753ab41b2bb036190141f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f2075ea883e5d7730d0c9ebb1bb8e7a1a7e953f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70faf9d9b6cc74418716bbf76fe75bd2da10ad4a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d924b262f3178a9b17c17d4306a9f426c508bd9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc67482c9e5f2c80d62f623bcc347c29f9f648e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc6a7249842fceda7574ceb63275a2d5e99d2862"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d9ddfeb01fb95ffbbc7031d46a5ee2a5e45cbb86"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:03Z"
+  }
+}

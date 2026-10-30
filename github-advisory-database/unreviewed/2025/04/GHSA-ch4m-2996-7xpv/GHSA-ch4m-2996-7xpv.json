@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ch4m-2996-7xpv",
+  "modified": "2025-04-08T18:34:16Z",
+  "published": "2025-04-07T15:31:10Z",
+  "aliases": [
+    "CVE-2024-57835"
+  ],
+  "details": "Amon2::Auth::Site::LINE uses the String::Random module to generate nonce values. \n\nString::Random defaults to Perl's built-in predictable random number generator, the rand() function, which is not cryptographically secure",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57835"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/SHLOMIF/String-Random-0.32/source/lib/String/Random.pm#L377"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/TANIGUCHI/Amon2-Auth-Site-LINE-0.04/source/lib/Amon2/Auth/Site/LINE.pm#L235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/TANIGUCHI/Amon2-Auth-Site-LINE-0.04/source/lib/Amon2/Auth/Site/LINE.pm#L255"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.metacpan.org/docs/guides/random-data-for-security.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-338"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-05T16:15:32Z"
+  }
+}

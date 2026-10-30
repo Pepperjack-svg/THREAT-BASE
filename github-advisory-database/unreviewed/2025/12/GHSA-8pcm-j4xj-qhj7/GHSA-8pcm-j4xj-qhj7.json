@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8pcm-j4xj-qhj7",
+  "modified": "2026-08-04T12:34:39Z",
+  "published": "2025-12-09T03:31:11Z",
+  "aliases": [
+    "CVE-2023-53806"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: populate subvp cmd info only for the top pipe\n\n[Why]\nSystem restart observed while changing the display resolution\nto 8k with extended mode. Sytem restart was caused by a page fault.\n\n[How]\nWhen the driver populates subvp info it did it for both the pipes using\nvblank which caused an outof bounds array access causing the page fault.\nadded checks to allow the top pipe only to fix this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53806"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/375d192eb1f1d9229a6d994da7ba31f3582b106b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92e6c79acad4b96efeff261d27bdbd8089a7dd24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9bb10b7aaec3b6278f9cc410c17dcaa129bbbbf0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T01:16:52Z"
+  }
+}

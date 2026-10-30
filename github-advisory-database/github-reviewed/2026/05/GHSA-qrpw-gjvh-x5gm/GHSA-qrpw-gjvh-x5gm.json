@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qrpw-gjvh-x5gm",
+  "modified": "2026-06-09T02:01:07Z",
+  "published": "2026-05-13T15:30:53Z",
+  "aliases": [
+    "CVE-2026-44796"
+  ],
+  "summary": "Nautobot: Object bulk rename UI actions vulnerable to denial of service by crafted regular expression (REDoS)",
+  "details": "### Impact\n\nNautobot UI object-bulk-rename endpoints (for example, `/dcim/interfaces/rename/`) were vulnerable to application-wide denial of service via maliciously crafted regular expressions in the `find` field in combination with the `use_regex` flag.\n\n### Patches\n\nA general-purpose timeout has been added to these endpoints in Nautobot v2.4.33 and v3.1.2, which ensures that the request will fail early with an appropriate message if regular expression evaluation takes more than a short period of time, instead of continuing to execute for an indefinite duration.\n\n### Workarounds\n\nNo known workaround has been identified at this time.\n\n### References\n\n- 2.4.33 (<a href=\"https://github.com/nautobot/nautobot/commit/c2b766966d814a7141f62c7bc90c85fefb7892ee\">patch</a>)\n- 3.1.2 (<a href=\"https://github.com/nautobot/nautobot/commit/5a30d0916953afbeedd24a784709e762cc3879cd\">patch</a>)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "nautobot"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0a2"
+            },
+            {
+              "fixed": "3.1.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "nautobot"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.4.33"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/nautobot/nautobot/security/advisories/GHSA-qrpw-gjvh-x5gm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44796"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nautobot/nautobot/commit/5a30d0916953afbeedd24a784709e762cc3879cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nautobot/nautobot/commit/c2b766966d814a7141f62c7bc90c85fefb7892ee"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/nautobot/nautobot"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nautobot/nautobot/releases/tag/v2.4.33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nautobot/nautobot/releases/tag/v3.1.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1333",
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-13T15:30:53Z",
+    "nvd_published_at": "2026-05-28T18:16:33Z"
+  }
+}

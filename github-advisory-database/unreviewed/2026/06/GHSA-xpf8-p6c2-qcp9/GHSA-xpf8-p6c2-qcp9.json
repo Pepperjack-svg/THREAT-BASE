@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xpf8-p6c2-qcp9",
+  "modified": "2026-06-16T12:32:01Z",
+  "published": "2026-06-16T12:32:01Z",
+  "aliases": [
+    "CVE-2026-2381"
+  ],
+  "details": "The WooCommerce Stripe Payment Gateway plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the `ajax_pay_for_order()` function in all versions up to, and including, 10.7.0 This is due to a missing order ownership or order_key verification when processing payment for an order via the `wc_stripe_pay_for_order` WC-AJAX endpoint. The function only validates a nonce (which is publicly available on any WooCommerce page where Express Checkout is enabled), but does not verify that the requesting user owns the target order and is allowed to modify it. This makes it possible for unauthenticated attackers to force any pending order into a failed status by providing a fake payment method, causing a payment exception that updates the order status to \"failed\" via sequential order ID enumeration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2381"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-gateway-stripe/tags/10.3.1/includes/class-wc-gateway-stripe.php#L523"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-gateway-stripe/tags/10.3.1/includes/payment-methods/class-wc-stripe-express-checkout-ajax-handler.php#L355"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3564842/woocommerce-gateway-stripe/trunk/includes/payment-methods/class-wc-stripe-express-checkout-ajax-handler.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?old_path=%2Fwoocommerce-gateway-stripe/tags/10.7.0&new_path=%2Fwoocommerce-gateway-stripe/tags/10.8.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://research.cleantalk.org/cve-2026-2381"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/ab3b52f7-e2c3-44f7-8e19-b6c51ccd50e0?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-16T10:16:26Z"
+  }
+}

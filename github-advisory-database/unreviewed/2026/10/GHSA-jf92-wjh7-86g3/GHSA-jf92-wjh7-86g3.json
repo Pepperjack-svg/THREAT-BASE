@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jf92-wjh7-86g3",
+  "modified": "2026-10-14T15:32:24Z",
+  "published": "2026-10-14T15:32:23Z",
+  "aliases": [
+    "CVE-2026-110597"
+  ],
+  "details": "Tinyexr through 3.2.0 contains a heap out-of-bounds read vulnerability in ParseEXRMultipartHeaderFromMemory() that allows attackers to read beyond buffers due to a stale remaining-size value. Attackers can supply a crafted multi-part EXR file whose later part headers bypass ReadAttribute() bounds checks, crashing applications or leaking adjacent heap memory into attribute values.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110597"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/syoyo/tinyexr/blob/6f470c9ab24bf3992bc512ce07e8ecb00d9bf105/tinyexr.h#L10551-L10621"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/syoyo/tinyexr/blob/6f470c9ab24bf3992bc512ce07e8ecb00d9bf105/tinyexr.h#L1207-L1266"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/tinyexr-multipart-header-stale-size-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/tinyexr-through-3.2.0-heap-out-of-bounds-read-via-parseexrmultipartheaderfrommemory"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T15:17:10Z"
+  }
+}

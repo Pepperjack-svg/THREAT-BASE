@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-59mx-mhm6-4342",
+  "modified": "2025-11-07T21:31:20Z",
+  "published": "2025-11-07T18:30:30Z",
+  "aliases": [
+    "CVE-2025-63690"
+  ],
+  "details": "In pig-mesh Pig versions 3.8.2 and below, when setting up scheduled tasks in the Quartz management function under the system management module, it is possible to execute any Java class with a parameterless constructor and its methods with parameter type String through reflection. At this time, the eval method in Tomcat's built-in class jakarta.el.ELProcessor can be used to execute commands, leading to a remote code execution vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-63690"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pig-mesh/pig/issues/1199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LockeTom/vulnerability/blob/main/md/pig_Remote_Code_Execution_Vulnerability.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-470"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-07T16:15:42Z"
+  }
+}

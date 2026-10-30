@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fc2v-vcwj-269v",
+  "modified": "2025-11-13T00:10:50Z",
+  "published": "2025-11-13T00:10:50Z",
+  "aliases": [
+    "CVE-2025-64508"
+  ],
+  "summary": "Bugsink is vulnerable to unauthenticated remote DoS via crafted Brotli input",
+  "details": "### Impact\n\nIn affected versions, brotli \"bombs\" (highly compressed brotli streams, such as many zeros) can be sent to the server. Since the server will attempt to decompress these streams before applying various maximums, this can lead to exhaustion of the available memory and thus a Denial of Service.\n\nThis can be done if the `DSN` is known, which it is in many common setups (JavaScript, Mobile Apps).\n\n### Patches\n\nPatched in Bugsink `2.0.5`",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "bugsink"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/bugsink/bugsink/security/advisories/GHSA-fc2v-vcwj-269v"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-64508"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/brotli/issues/1327"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/brotli/issues/1375"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bugsink/bugsink/pull/266"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/brotli/pull/1234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bugsink/bugsink/commit/3f65544aab3ad5303d97009136640de97b0676a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/brotli/commit/67d78bc41db1a0d03f2e763497748f2f69946627"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/bugsink/bugsink"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/brotli/releases/tag/v1.2.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-11-13T00:10:50Z",
+    "nvd_published_at": "2025-11-10T22:15:39Z"
+  }
+}

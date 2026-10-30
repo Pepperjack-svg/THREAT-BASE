@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rv3q-w2vv-wgf5",
+  "modified": "2026-02-04T21:30:24Z",
+  "published": "2025-10-07T18:31:09Z",
+  "aliases": [
+    "CVE-2022-50550"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-iolatency: Fix memory leak on add_disk() failures\n\nWhen a gendisk is successfully initialized but add_disk() fails such as when\na loop device has invalid number of minor device numbers specified,\nblkcg_init_disk() is called during init and then blkcg_exit_disk() during\nerror handling. Unfortunately, iolatency gets initialized in the former but\ndoesn't get cleaned up in the latter.\n\nThis is because, in non-error cases, the cleanup is performed by\ndel_gendisk() calling rq_qos_exit(), the assumption being that rq_qos\npolicies, iolatency being one of them, can only be activated once the disk\nis fully registered and visible. That assumption is true for wbt and iocost,\nbut not so for iolatency as it gets initialized before add_disk() is called.\n\nIt is desirable to lazy-init rq_qos policies because they are optional\nfeatures and add to hot path overhead once initialized - each IO has to walk\nall the registered rq_qos policies. So, we want to switch iolatency to lazy\ninit too. However, that's a bigger change. As a fix for the immediate\nproblem, let's just add an extra call to rq_qos_exit() in blkcg_exit_disk().\nThis is safe because duplicate calls to rq_qos_exit() become noop's.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50550"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/215f9437dda09531bcb80605298a24219f01cec5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a126e1db5553ce4498290df019866952f858954"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/813e693023ba10da9e75067780f8378465bf27cc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:40Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-43x5-8v25-7f24",
+  "modified": "2026-10-06T15:31:56Z",
+  "published": "2026-10-06T15:31:56Z",
+  "aliases": [
+    "CVE-2026-105836"
+  ],
+  "details": "QloApps through 1.7.0 contains an authorization bypass vulnerability in AdminProductsController::ajaxProcessBulkUpdateRooms that allows hotel-restricted back-office employees to modify rooms of other hotels. Attackers can submit foreign room IDs in the id_rooms parameter to change status, floor, comments, or inactive dates, disrupting availability and bookings.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105836"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/pull/1892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/blob/v1.7.0/controllers/admin/AdminProductsController.php#L5344"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@leediay/H189W20qfg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/qloapps-through-1.7.0-authorization-bypass-via-ajaxprocessbulkupdaterooms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T13:16:46Z"
+  }
+}

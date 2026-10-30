@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6p9w-8r99-f39c",
+  "modified": "2025-12-23T21:30:23Z",
+  "published": "2025-07-25T15:30:54Z",
+  "aliases": [
+    "CVE-2025-38424"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Fix sample vs do_exit()\n\nBaisheng Gao reported an ARM64 crash, which Mark decoded as being a\nsynchronous external abort -- most likely due to trying to access\nMMIO in bad ways.\n\nThe crash further shows perf trying to do a user stack sample while in\nexit_mmap()'s tlb_finish_mmu() -- i.e. while tearing down the address\nspace it is trying to access.\n\nIt turns out that we stop perf after we tear down the userspace mm; a\nreceipie for disaster, since perf likes to access userspace for\nvarious reasons.\n\nFlip this order by moving up where we stop perf in do_exit().\n\nAdditionally, harden PERF_SAMPLE_CALLCHAIN and PERF_SAMPLE_STACK_USER\nto abort when the current task does not have an mm (exit_mm() makes\nsure to set current->mm = NULL; before commencing with the actual\nteardown). Such that CPU wide events don't trip on this same problem.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38424"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ee6044a693735396bb47eeaba1ac3ae26c1c99b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/456019adaa2f5366b89c868dea9b483179bece54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f6fc782128355931527cefe3eb45338abd8ab39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/507c9a595bad3abd107c6a8857d7fd125d89f386"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7311970d07c4606362081250da95f2c7901fc0db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b8f3c72175c6a63a95cf2e219f8b78e2baad34e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/975ffddfa2e19823c719459d2364fcaa17673964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9f6aab7910a0ef2895797f15c947f6d1053160f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T15:15:27Z"
+  }
+}

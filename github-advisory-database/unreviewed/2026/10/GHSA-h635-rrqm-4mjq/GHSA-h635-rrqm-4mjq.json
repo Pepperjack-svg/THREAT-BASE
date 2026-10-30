@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h635-rrqm-4mjq",
+  "modified": "2026-10-26T15:34:44Z",
+  "published": "2026-10-26T15:34:44Z",
+  "aliases": [
+    "CVE-2026-116486"
+  ],
+  "details": "Objenesis before 3.6 contains a type confusion vulnerability that allows code in one class loader to substitute objects into another by exploiting instantiator caching keyed on class name. When a shared ObjenesisStd instance caches instantiators by clazz.getName() in ObjenesisBase.getInstantiatorOf(), same-named classes collide, causing newInstance() to return wrong-class objects and ClassCastException failures.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/easymock/objenesis/security/advisories/GHSA-743r-26gf-97ff"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116486"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/easymock/objenesis/commit/40f90f435a06b16af74a7398f0007faeaa52c00c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/easymock/objenesis"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/easymock/objenesis/blob/fb36e5c377ed1bf57a18386fa79d2eed4ddfcfac/main/src/main/java/org/objenesis/ObjenesisBase.java#L92-L95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/objenesis-before-3.6-type-confusion-via-class-name-instantiator-cache"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-386"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T14:16:37Z"
+  }
+}

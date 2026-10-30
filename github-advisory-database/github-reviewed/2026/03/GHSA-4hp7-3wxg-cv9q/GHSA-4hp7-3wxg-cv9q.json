@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4hp7-3wxg-cv9q",
+  "modified": "2026-03-27T21:50:44Z",
+  "published": "2026-03-26T19:07:23Z",
+  "aliases": [
+    "CVE-2026-33887"
+  ],
+  "summary": "Statamic allows unauthorized content access through missing authorization in its revision controllers ",
+  "details": "### Impact\nAuthenticated Control Panel users could view entry revisions for any collection with revisions enabled, regardless of whether they had the required collection permissions. This bypasses the authorization checks that the main entry controllers enforce, exposing entry field values and blueprint data.\n\nUsers could also create entry revisions without edit permission, though this only snapshots the existing content state and does not affect published content.\n\n### Patches\nThis has been fixed in 5.73.16 and 6.7.2.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.73.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0-alpha.1"
+            },
+            {
+              "fixed": "6.7.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/security/advisories/GHSA-4hp7-3wxg-cv9q"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33887"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/statamic/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-26T19:07:23Z",
+    "nvd_published_at": "2026-03-27T21:17:25Z"
+  }
+}

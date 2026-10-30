@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qxc4-32hc-g366",
+  "modified": "2025-12-17T21:30:31Z",
+  "published": "2025-06-18T12:30:33Z",
+  "aliases": [
+    "CVE-2025-38068"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: lzo - Fix compression buffer overrun\n\nUnlike the decompression code, the compression code in LZO never\nchecked for output overruns.  It instead assumes that the caller\nalways provides enough buffer space, disregarding the buffer length\nprovided by the caller.\n\nAdd a safe compression interface that checks for the end of buffer\nbefore each write.  Use the safe interface in crypto/lzo.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38068"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0acdc4d6e679ba31d01e3e7e2e4124b76d6d8e2a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/167373d77c70c2b558aae3e327b115249bb2652c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b173bb2c4665c23f8fcf5241c7b06dfa6b5b111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7caad075acb634a74911830d6386c50ea12566cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a98bd864e16f91c70b2469adf013d713d04d1d13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc47f07234f72cbd8e2c973cdbf2a6730660a463"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T10:15:39Z"
+  }
+}

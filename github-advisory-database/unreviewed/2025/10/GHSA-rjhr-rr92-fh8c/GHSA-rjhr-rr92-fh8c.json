@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rjhr-rr92-fh8c",
+  "modified": "2026-10-15T03:34:58Z",
+  "published": "2025-10-24T15:31:25Z",
+  "aliases": [
+    "CVE-2025-40022"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: af_alg - Fix incorrect boolean values in af_alg_ctx\n\nCommit 1b34cbbf4f01 (\"crypto: af_alg - Disallow concurrent writes in\naf_alg_sendmsg\") changed some fields from bool to 1-bit bitfields of\ntype u32.\n\nHowever, some assignments to these fields, specifically 'more' and\n'merge', assign values greater than 1.  These relied on C's implicit\nconversion to bool, such that zero becomes false and nonzero becomes\ntrue.\n\nWith a 1-bit bitfields of type u32 instead, mod 2 of the value is taken\ninstead, resulting in 0 being assigned in some cases when 1 was intended.\n\nFix this by restoring the bool type.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40022"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/316b090c2fee964c307a634fecc7df269664b158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a21698ace915a445bce2d0dcfc84b6d2199baf7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/54506c6335690f4ef1b9f154e34f5a604c72c1ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8703940bd30b5ad94408d28d7192db2491cd3592"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0ca0df179c4b21e2a6c4a4fb637aa8fa14575cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d382d6daf0184490f366562469a5673f65ee2662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fbe96bd25423e61273d8831e995260b429d850b6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-24T13:15:47Z"
+  }
+}

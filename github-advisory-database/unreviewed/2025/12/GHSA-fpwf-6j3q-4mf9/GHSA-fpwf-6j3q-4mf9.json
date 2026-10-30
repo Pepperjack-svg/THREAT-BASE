@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpwf-6j3q-4mf9",
+  "modified": "2025-12-16T15:30:46Z",
+  "published": "2025-12-16T15:30:46Z",
+  "aliases": [
+    "CVE-2025-68228"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/plane: Fix create_in_format_blob() return value\n\ncreate_in_format_blob() is either supposed to return a valid\npointer or an error, but never NULL. The caller will dereference\nthe blob when it is not an error, and thus will oops if NULL\nreturned. Return proper error values in the failure cases.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/860f93f4fce1e733b8a2474f6bfa153243d775f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cead55e24cf9e092890cf51c0548eccd7569defa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T14:15:56Z"
+  }
+}

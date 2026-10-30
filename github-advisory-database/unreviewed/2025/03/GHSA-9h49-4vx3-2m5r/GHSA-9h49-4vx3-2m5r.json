@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9h49-4vx3-2m5r",
+  "modified": "2026-10-15T03:34:40Z",
+  "published": "2025-03-07T09:30:35Z",
+  "aliases": [
+    "CVE-2025-21838"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: core: flush gadget workqueue after device removal\n\ndevice_del() can lead to new work being scheduled in gadget->work\nworkqueue. This is observed, for example, with the dwc3 driver with the\nfollowing call stack:\n  device_del()\n    gadget_unbind_driver()\n      usb_gadget_disconnect_locked()\n        dwc3_gadget_pullup()\n\t  dwc3_gadget_soft_disconnect()\n\t    usb_gadget_set_state()\n\t      schedule_work(&gadget->work)\n\nMove flush_work() after device_del() to ensure the workqueue is cleaned\nup.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21838"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/399a45e5237ca14037120b1b895bd38a3b4492ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/859cb45aefa6de823b2fa7f229fe6d9562c9f3b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97695b5a1b5467a4f91194db12160f56da445dfe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3bc1a9a67ce33a2e761e6e7b7c2afc6cb9b7266"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f894448f3904d7ad66fecef8f01fe0172629e091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-07T09:15:16Z"
+  }
+}

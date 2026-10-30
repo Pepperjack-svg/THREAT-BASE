@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cf8w-8g67-48gv",
+  "modified": "2026-10-15T03:35:31Z",
+  "published": "2026-04-06T09:31:42Z",
+  "aliases": [
+    "CVE-2026-31407"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: conntrack: add missing netlink policy validations\n\nHyunwoo Kim reports out-of-bounds access in sctp and ctnetlink.\n\nThese attributes are used by the kernel without any validation.\nExtend the netlink policies accordingly.\n\nQuoting the reporter:\n  nlattr_to_sctp() assigns the user-supplied CTA_PROTOINFO_SCTP_STATE\n  value directly to ct->proto.sctp.state without checking that it is\n  within the valid range. [..]\n\n  and: ... with exp->dir = 100, the access at\n  ct->master->tuplehash[100] reads 5600 bytes past the start of a\n  320-byte nf_conn object, causing a slab-out-of-bounds read confirmed by\n  UBSAN.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31407"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fbae1e74493d5a160a70c51aeba035d8266ea7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67c53c1978cef3c504237275e39c857e2f6af56e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78bba9f73942aa7dca47d817d8cec0fb9b443b70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9174d28f3f15d8c4962f5980c0be167633880443"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be88a337bf07afb1ee173f1099294d1b7ab3fefe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5e918390002edf0cff80a0e7ce1f86f16a9507c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7b5766693477c52424cc6c79dd30a7a9c7db52c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f900e1d77ee0ef87bfb5ab3fe60f0b3d8ad5ba05"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125",
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-06T08:16:38Z"
+  }
+}

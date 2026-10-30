@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vx8f-phpg-5qwp",
+  "modified": "2026-10-18T18:31:49Z",
+  "published": "2026-10-18T18:31:49Z",
+  "aliases": [
+    "CVE-2026-98445"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: don't let memory failures leak blocks and kill repairs\n\nLOLLM complains that a memory allocation failure in\nxrep_newbt_add_blocks results in online repair leaking blocks that were\npreviously allocated to write a new btree, but the problem is worse than\nthat -- a limitation of the codebase is that the callers cannot undo the\ntransaction /and/ return the error -- either you undo all changes and\ncommit the transaction, or you error out and the filesystem goes down.\n\nHowever, the new btree space reservation object isn't that big (~48\nbytes).  Let's just do a NOFAIL allocation and the problem goes away.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98445"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e0d3372a84029da1768c7a4c4601484af5b58a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3380151cf0ce8ad0c1d356fed51e4b69e1d28e50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab1c416d2377cdc16123ef521aac4da1c468c3d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b15c79fca28060fd9c7e77f2c3ebc4ba023974e8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:16:54Z"
+  }
+}

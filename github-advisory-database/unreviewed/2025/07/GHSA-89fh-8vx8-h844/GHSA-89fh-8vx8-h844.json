@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-89fh-8vx8-h844",
+  "modified": "2025-11-18T15:30:41Z",
+  "published": "2025-07-10T09:32:31Z",
+  "aliases": [
+    "CVE-2025-38341"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\neth: fbnic: avoid double free when failing to DMA-map FW msg\n\nThe semantics are that caller of fbnic_mbx_map_msg() retains\nthe ownership of the message on error. All existing callers\ndutifully free the page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38341"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a211e23852019ef55c70094524e87a944accbb5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5bd1bafd4474ee26f504b41aba11f3e2a1175b88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/670179265ad787b9dd8e701601914618b8927755"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-10T09:15:28Z"
+  }
+}

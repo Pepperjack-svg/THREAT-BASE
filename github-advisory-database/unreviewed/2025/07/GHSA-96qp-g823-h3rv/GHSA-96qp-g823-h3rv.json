@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-96qp-g823-h3rv",
+  "modified": "2025-12-18T21:31:33Z",
+  "published": "2025-07-03T09:30:35Z",
+  "aliases": [
+    "CVE-2025-38157"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath9k_htc: Abort software beacon handling if disabled\n\nA malicious USB device can send a WMI_SWBA_EVENTID event from an\nath9k_htc-managed device before beaconing has been enabled. This causes\na device-by-zero error in the driver, leading to either a crash or an\nout of bounds read.\n\nPrevent this by aborting the handling in ath9k_htc_swba() if beacons are\nnot enabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0281c19074976ec48f0078d50530b406ddae75bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40471b23147c86ea3ed97faee79937c618250bd0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5482ef9875eaa43f0435e14570e1193823de857e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a85c21f812e02cb00ca07007d88acdd42d08c46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ee3fb6258da8c890a51b514f60d7570dc703605"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac4e317a95a1092b5da5b9918b7118759342641c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5ce9df1d68094d37360dbd9b09289d42fa21e54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee5ee646385f5846dcbc881389f3c44a197c402a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-03T09:15:30Z"
+  }
+}

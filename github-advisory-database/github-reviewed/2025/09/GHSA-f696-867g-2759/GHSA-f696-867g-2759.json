@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f696-867g-2759",
+  "modified": "2025-11-05T20:43:47Z",
+  "published": "2025-09-03T15:30:34Z",
+  "aliases": [
+    "CVE-2025-58460"
+  ],
+  "summary": "Jenkins OpenTelemetry Plugin missing permission check allows capturing credentials",
+  "details": "A missing permission check in Jenkins OpenTelemetry Plugin 3.1543.v8446b_92b_cd64 and earlier allows attackers with Overall/Read permission to connect to an attacker-specified URL using attacker-specified credentials IDs obtained through another method, capturing credentials stored in Jenkins.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.jenkins.plugins:opentelemetry"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.1543.1545.vf5a"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-58460"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/opentelemetry-plugin/commit/f5a4ec123769096ad9a4930ede56588b0fee40f3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/opentelemetry-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/opentelemetry-plugin/releases/tag/3.1543.1545.vf5a_4ec123769"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2025-09-03/#SECURITY-3602"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/09/03/4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-09-03T22:23:42Z",
+    "nvd_published_at": "2025-09-03T15:15:39Z"
+  }
+}

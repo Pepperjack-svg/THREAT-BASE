@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9rf-wg9h-jgwf",
+  "modified": "2026-10-25T12:30:25Z",
+  "published": "2026-10-25T12:30:24Z",
+  "aliases": [
+    "CVE-2026-116068"
+  ],
+  "details": "Dokploy through 0.30.10 contains an authorization bypass vulnerability that allows owners or admins of any organization to control other tenants' applications by supplying foreign applicationId values. Attackers can call procedures like saveEnvironment, updateTraefikConfig, deploy, or stop to overwrite environment variables and build secrets, repoint sources, and disrupt other tenants' applications.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116068"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dokploy/dokploy/issues/5635"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dokploy/dokploy/commit/b3cd3c5061b9e4f9a786dc4a048765f79bae2523"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dokploy/dokploy"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dokploy/dokploy/blob/073713f0b863eca4285ad24db00550af1b39397a/apps/dokploy/server/api/routers/application.ts#L490-L501"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dokploy/dokploy/blob/073713f0b863eca4285ad24db00550af1b39397a/packages/server/src/services/permission.ts#L244-L261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dokploy-through-0.30.10-cross-organization-authorization-bypass-via-application-trpc-router"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-25T12:16:29Z"
+  }
+}

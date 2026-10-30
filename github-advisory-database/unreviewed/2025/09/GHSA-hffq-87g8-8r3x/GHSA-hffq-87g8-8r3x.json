@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hffq-87g8-8r3x",
+  "modified": "2025-12-11T18:30:33Z",
+  "published": "2025-09-18T15:30:32Z",
+  "aliases": [
+    "CVE-2022-50382"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npadata: Always leave BHs disabled when running ->parallel()\n\nA deadlock can happen when an overloaded system runs ->parallel() in the\ncontext of the current task:\n\n    padata_do_parallel\n      ->parallel()\n        pcrypt_aead_enc/dec\n          padata_do_serial\n            spin_lock(&reorder->lock) // BHs still enabled\n              <interrupt>\n                ...\n                  __do_softirq\n                    ...\n                      padata_do_serial\n                        spin_lock(&reorder->lock)\n\nIt's a bug for BHs to be on in _do_serial as Steffen points out, so\nensure they're off in the \"current task\" case like they are in\npadata_parallel_worker to avoid this situation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50382"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17afa98bccec4f52203508b3f49b5f948c6fd6ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34c3a47d20ae55b3600fed733bf96eafe9c500d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cfa9e60c0f88fdec6368e081ab968411cc706b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7337adb20fcc0aebb50eaff2bc5a8dd9a7c6743d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e0681dd4eee029eb1d533d06993f7cb091efb73"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T14:15:36Z"
+  }
+}

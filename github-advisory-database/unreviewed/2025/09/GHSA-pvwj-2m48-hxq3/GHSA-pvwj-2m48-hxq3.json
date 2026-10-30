@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pvwj-2m48-hxq3",
+  "modified": "2025-12-10T18:30:21Z",
+  "published": "2025-09-17T15:30:37Z",
+  "aliases": [
+    "CVE-2022-50366"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npowercap: intel_rapl: fix UBSAN shift-out-of-bounds issue\n\nWhen value < time_unit, the parameter of ilog2() will be zero and\nthe return value is -1. u64(-1) is too large for shift exponent\nand then will trigger shift-out-of-bounds:\n\nshift exponent 18446744073709551615 is too large for 32-bit type 'int'\nCall Trace:\n rapl_compute_time_window_core\n rapl_write_data_raw\n set_time_window\n store_constraint_time_window_us",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50366"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/139bbbd01114433b80fe59f5e1330615aadf9752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d94af37565e4d3c26b0d63428e093a37d5b4c32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d93540014387d1c73b9ccc4d7895320df66d01b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3eb0ba70376f6ee40fa843fc9cee49269370b0b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42f79dbb9514f726ff21df25f09cb0693b0b2445"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49a6ffdaed60f0eb52c198fafebc05994e16e305"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ebba43384722adbd325baec3a12c572d94488eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6216b685b8f48ab7b721a6fd5acbf526b41c13e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/708b9abe1b4a2f050a483db4b7edfc446b13df1f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-17T15:15:35Z"
+  }
+}

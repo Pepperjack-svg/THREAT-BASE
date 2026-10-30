@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mpm9-9fmw-j56f",
+  "modified": "2026-06-09T06:31:59Z",
+  "published": "2026-06-09T06:31:58Z",
+  "aliases": [
+    "CVE-2026-7662"
+  ],
+  "details": "The ePaperFlip Publisher plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'publicationid' attribute of the `epaperflip_embed` shortcode in all versions up to, and including, 1. This is due to insufficient input sanitization and output escaping on the shortcode attribute which is injected directly into inline JavaScript. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/epaperflip-publisher/trunk/ePaperFlip%20Publisher.php#L28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/epaperflip-publisher"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/93be1150-4c83-4fa3-8dc6-71e2f1ddaa66?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-09T05:16:39Z"
+  }
+}

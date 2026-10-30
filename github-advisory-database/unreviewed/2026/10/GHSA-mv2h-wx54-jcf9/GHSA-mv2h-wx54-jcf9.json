@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mv2h-wx54-jcf9",
+  "modified": "2026-10-19T21:36:28Z",
+  "published": "2026-10-19T21:36:28Z",
+  "aliases": [
+    "CVE-2026-110685"
+  ],
+  "details": "Cpanel::JSON::XS versions before 4.80 for Perl leak the decoded arguments of a tagged value when its THAW method dies in decode_tag.\n\nWith allow_tags, a tagged value's class name and argument array are decoded and passed to the class's THAW method. Both are released only after THAW returns, so a THAW that dies leaves the whole decoded argument structure allocated.\n\nEach rejected document leaks data of a size the sender chooses, so a process that catches the error and keeps running exhausts its memory.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rurban/Cpanel-JSON-XS/commit/9ab010221c069a7af9ef7463454ecd3b8ace9c58.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T19:17:22Z"
+  }
+}

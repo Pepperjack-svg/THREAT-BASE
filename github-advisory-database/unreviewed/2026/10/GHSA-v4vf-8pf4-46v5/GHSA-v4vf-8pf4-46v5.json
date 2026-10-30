@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v4vf-8pf4-46v5",
+  "modified": "2026-10-23T15:31:35Z",
+  "published": "2026-10-23T15:31:35Z",
+  "aliases": [
+    "CVE-2026-99029"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: sparx5: free the matchall entry on destroy\n\nsparx5_tc_matchall_replace() allocates a struct sparx5_mall_entry for\nevery offloaded matchall filter and adds it to sparx5->mall_entries.\nsparx5_tc_matchall_destroy() removes the entry from the list, but never\nfrees it, so the entry of every deleted mirror and goto matchall filter\nis leaked.\n\nFree the entry after unlinking it.\n\nThe leak was discovered by an AI code review agent, and reproduced with\nkmemleak on a lan969x EV board (EV23X71A) by repeatedly adding and\ndeleting matchall mirror and goto filters. With the fix, kmemleak no\nlonger reports the leak.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99029"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b82e16d6084cbc651e3c902198f1945408ee1a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44efb6d92dd5a2b1dd9553d92ef0eebde135fc6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc7cc5955d22ea90555f09a680d4bf56d4a0c24a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa0c27d9e17ee2e46d4b8274a6fde706f0d6725e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:25Z"
+  }
+}

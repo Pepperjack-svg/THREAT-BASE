@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8hc7-qrvq-37hg",
+  "modified": "2025-12-16T18:31:33Z",
+  "published": "2025-12-16T18:31:33Z",
+  "aliases": [
+    "CVE-2025-68290"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmost: usb: fix double free on late probe failure\n\nThe MOST subsystem has a non-standard registration function which frees\nthe interface on registration failures and on deregistration.\n\nThis unsurprisingly leads to bugs in the MOST drivers, and a couple of\nrecent changes turned a reference underflow and use-after-free in the\nUSB driver into several double free and a use-after-free on late probe\nfailures.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68290"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0dece48660be16918ecf2dbdc7193e8be03e1693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2274767dc02b756b25e3db1e31c0ed47c2a78442"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d8ffefe3d5d8b7b73efb866db61130107299c5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90e6ce2b1b19fb8b9d4afee69f40e4c6a4791154"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/993bfdc3842893c394de13c8200c338ebb979589"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4c4118c2af284835b16431bbfe77e0130c06fef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/baadf2a5c26e802a46573eaad331b427b49aaa36"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T16:16:07Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fq5x-p5vr-m6pg",
+  "modified": "2026-10-21T15:40:09Z",
+  "published": "2025-09-22T21:30:18Z",
+  "aliases": [
+    "CVE-2025-39859"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nptp: ocp: fix use-after-free bugs causing by ptp_ocp_watchdog\n\nThe ptp_ocp_detach() only shuts down the watchdog timer if it is\npending. However, if the timer handler is already running, the\ntimer_delete_sync() is not called. This leads to race conditions\nwhere the devlink that contains the ptp_ocp is deallocated while\nthe timer handler is still accessing it, resulting in use-after-free\nbugs. The following details one of the race scenarios.\n\n(thread 1)                           | (thread 2)\nptp_ocp_remove()                     |\n  ptp_ocp_detach()                   | ptp_ocp_watchdog()\n    if (timer_pending(&bp->watchdog))|   bp = timer_container_of()\n      timer_delete_sync()            |\n                                     |\n  devlink_free(devlink) //free       |\n                                     |   bp-> //use\n\nResolve this by unconditionally calling timer_delete_sync() to ensure\nthe timer is reliably deactivated, preventing any access after free.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39859"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bf935cf789872350b04c1a6468b0a509f67afb2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aad70bdfc8244616e48c434310cab241a3f17781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2a6eabe5304a789b7d40ce2576cd80154255e51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f10d3c7267ac7387a5129d5506c3c5f2460cfd9b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-19T16:15:44Z"
+  }
+}

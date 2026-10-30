@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpf5-4jw8-67x8",
+  "modified": "2026-05-07T01:54:57Z",
+  "published": "2026-05-07T01:54:57Z",
+  "aliases": [],
+  "summary": "rust-zserio has Unbounded Memory Allocation",
+  "details": "### Impact\n\nWhen deserializing arrays, strings or bytes (blob) types zserio first reads the size of the variable, and then allocates sufficient memory to load data. Since the size is always trusted this can be abused by creating a data file with a large size value, causing the zserio runtime to allocate large amounts of memory.\n\n### Patches\n\nPlease cherry-pick [57f5fb](https://github.com/Danaozhong/rust-zserio/commit/57f5fb4a2a8611d58dbcc1a9221349206dd99c3c).\n\n### Workarounds\n\n- Do not accept `zserio`-encoded messages from non-trusted sources.\n- Allocate a maximum heap amount to `rust-zerio` to avoid impacting other applications.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "crates.io",
+        "name": "rust-zserio"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.5.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.5.3"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Danaozhong/rust-zserio/security/advisories/GHSA-fpf5-4jw8-67x8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ndsev/zserio/security/advisories/GHSA-cwq5-8pvq-j65j"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Danaozhong/rust-zserio/commit/57f5fb4a2a8611d58dbcc1a9221349206dd99c3c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Danaozhong/rust-zserio"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-789"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-07T01:54:57Z",
+    "nvd_published_at": null
+  }
+}

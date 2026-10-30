@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3h64-fx5v-2f3q",
+  "modified": "2026-04-08T18:34:00Z",
+  "published": "2025-12-12T06:31:12Z",
+  "aliases": [
+    "CVE-2025-13320"
+  ],
+  "details": "The WP User Manager plugin for WordPress is vulnerable to Arbitrary File Deletion in all versions up to, and including, 2.9.12. This is due to insufficient validation of user-supplied file paths in the profile update functionality combined with improper handling of array inputs by PHP's filter_input() function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete arbitrary files on the server via the 'current_user_avatar' parameter in a two-stage attack which can make remote code execution possible. This only affects sites with the custom avatar setting enabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13320"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.12/includes/forms/trait-wpum-account.php#L70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.12/includes/forms/trait-wpum-account.php#L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.12/includes/forms/trait-wpum-account.php#L86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-manager/trunk/includes/forms/trait-wpum-account.php#L70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-manager/trunk/includes/forms/trait-wpum-account.php#L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-manager/trunk/includes/forms/trait-wpum-account.php#L86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3420956/wp-user-manager/trunk/includes/forms/trait-wpum-account.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/9d8304bf-bec2-4fcf-9fe2-46b626b3dae9?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-12T04:15:41Z"
+  }
+}

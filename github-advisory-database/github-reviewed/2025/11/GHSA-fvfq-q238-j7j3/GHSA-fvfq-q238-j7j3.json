@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fvfq-q238-j7j3",
+  "modified": "2025-11-06T15:12:30Z",
+  "published": "2025-11-05T18:31:31Z",
+  "aliases": [
+    "CVE-2025-10713"
+  ],
+  "summary": "WSO2 Carbon Mediation vulnerable to XML External Entity (XXE) attacks",
+  "details": "An XML External Entity (XXE) vulnerability exists in multiple WSO2 products due to improper configuration of the XML parser. The application parses user-supplied XML without applying sufficient restrictions, allowing resolution of external entities.\n\nA successful attack could enable a remote, unauthenticated attacker to read sensitive files from the server's filesystem or perform denial-of-service (DoS) attacks that render affected services unavailable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.wso2.carbon.mediation:org.wso2.carbon.localentry"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 4.7.259"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-10713"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wso2/carbon-mediation/pull/1784"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wso2/carbon-mediation/commit/b995b2f1db96a4697791f0202cc8713f15640fd5"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/wso2/carbon-mediation"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2025/WSO2-2025-4505"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-611"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-11-06T15:12:30Z",
+    "nvd_published_at": "2025-11-05T18:15:32Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-56xj-4g9m-2pgr",
+  "modified": "2026-01-16T21:30:30Z",
+  "published": "2025-10-01T12:30:30Z",
+  "aliases": [
+    "CVE-2023-53498"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Fix potential null dereference\n\nThe adev->dm.dc pointer can be NULL and dereferenced in amdgpu_dm_fini()\nwithout checking.\n\nAdd a NULL pointer check before calling dc_dmub_srv_destroy().\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53498"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/281933f36a53fed1c2993a92cf1edfb424595474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b1afffdd94093118b3cc235ef2b4d2520fb4950"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52f1783ff4146344342422c1cd94fcb4ce39b6fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/624a60911b71af08a912ee8a296b271b3e7b34ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b75aaebac265e3f29863699d9a929fdfba13d0a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4b749771fed3f99bbe8880eaab32a05ede0e5fa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:53Z"
+  }
+}

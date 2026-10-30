@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ppfj-6m85-xq47",
+  "modified": "2026-10-02T12:31:15Z",
+  "published": "2026-10-02T12:31:15Z",
+  "aliases": [
+    "CVE-2026-104431"
+  ],
+  "details": "Zebra before 6.0.0 contains a denial of service vulnerability that allows unauthenticated peers to stall Tokio workers by submitting mempool transactions requiring expensive synchronous script verification. Attackers can send non-standard high-sigop P2SH transactions that reach CachedFfiTransaction::is_valid() before standardness checks, saturating the verifier buffer and rendering the node unresponsive.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ZcashFoundation/zebra/security/advisories/GHSA-84j3-rw4c-gqmj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104431"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/zebra-before-6.0.0-denial-of-service-via-synchronous-script-ffi-verification"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-405"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-02T12:17:13Z"
+  }
+}

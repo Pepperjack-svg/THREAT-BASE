@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h4vv-pfp4-5x34",
+  "modified": "2026-10-20T12:31:36Z",
+  "published": "2026-10-20T12:31:36Z",
+  "aliases": [
+    "CVE-2026-105311"
+  ],
+  "details": "The StreamsHub Console operator acts as a confused deputy: a Kubernetes tenant with permission to create a Console custom resource can set spec.kafkaClusters[].credentials.kafkaUser.namespace to any namespace. The operator, running with cluster-wide Secrets RBAC, reads the victim-namespace KafkaUser Secret (SASL credentials or TLS private keys) and writes the plaintext material into a Secret in the attacker's namespace. No same-namespace check or allowlist exists anywhere in the code path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105311"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-105311"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2510875"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-441"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T12:17:28Z"
+  }
+}

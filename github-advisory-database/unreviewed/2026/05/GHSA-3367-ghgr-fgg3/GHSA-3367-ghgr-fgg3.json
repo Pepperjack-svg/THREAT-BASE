@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3367-ghgr-fgg3",
+  "modified": "2026-10-15T03:36:02Z",
+  "published": "2026-05-28T12:30:30Z",
+  "aliases": [
+    "CVE-2026-46128"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipmi: Check event message buffer response for bad data\n\nThe event message buffer response data size got checked later when\nprocessing, but check it right after the response comes back.  It\nappears some BMCs may return an empty message instead of an error\nwhen fetching events.\n\nThere are apparently some new BMCs that make this error, so we need to\ncompensate.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01f8387fa5b796f13cf50014c171f6da7abc46ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2418e4b21fb1355504d095da5d5f0a210564a43d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24269264c3d59a49eb09b10af2c75b14f2931482"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36920f30e78e69df01f9691c470b6f3ba8aebf98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42432b579a594b66ac32e5e7b7c26e6bc578ec89"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/474e53d4397087913a5b9c9eb90fa068da4808bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f7ada72c07a83b46045ddfeee526bd9e2e3c8f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf1ef30c42a7079e5bad863cd01c52aa3a17c3ac"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:28Z"
+  }
+}

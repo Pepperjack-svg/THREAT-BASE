@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-46wv-96pg-j3fc",
+  "modified": "2025-08-05T21:31:38Z",
+  "published": "2025-08-05T21:31:38Z",
+  "aliases": [
+    "CVE-2012-10032"
+  ],
+  "details": "Maxthon3 versions prior to 3.3 are vulnerable to cross context scripting (XCS) via the about:history page. The browser’s trusted zone improperly handles injected script content, allowing attackers to execute arbitrary JavaScript in a privileged context. This flaw enables modification of browser configuration and execution of arbitrary code through Maxthon’s exposed DOM APIs, including maxthon.program.Program.launch() and maxthon.io.writeDataURL(). Exploitation requires user interaction, typically by visiting a malicious webpage that triggers the injection.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2012-10032"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/browser/maxthon_history_xcs.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/23225"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.fortiguard.com/encyclopedia/ips/34203"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.maxthon.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/maxthon3-xcs-trusted-zone-code-exec"
+    },
+    {
+      "type": "WEB",
+      "url": "http://blog.malerisch.net/2012/12/maxthon-cross-context-scripting-xcs-about-history-rce.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-05T20:15:34Z"
+  }
+}

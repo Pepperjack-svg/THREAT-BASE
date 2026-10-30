@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4mjh-m2x6-5qg4",
+  "modified": "2026-05-03T09:33:11Z",
+  "published": "2026-05-01T15:30:37Z",
+  "aliases": [
+    "CVE-2026-43051"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: wacom: fix out-of-bounds read in wacom_intuos_bt_irq\n\nThe wacom_intuos_bt_irq() function processes Bluetooth HID reports\nwithout sufficient bounds checking. A maliciously crafted short report\ncan trigger an out-of-bounds read when copying data into the wacom\nstructure.\n\nSpecifically, report 0x03 requires at least 22 bytes to safely read\nthe processed data and battery status, while report 0x04 (which\nfalls through to 0x03) requires 32 bytes.\n\nAdd explicit length checks for these report IDs and log a warning if\na short report is received.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43051"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f1763f62909ccb6386ac50350fa0abbf5bb16a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d78386b144453c47e81bf62dc3601b757f02d99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41026bcc0fdf82605205c27935ef719cbc07193b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b5b9730111808410e404ceac2fabd32eef92fbd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bd690ac1242332c73cba10dacdad6c6642bbb94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8dc23c97680eebefde06da5858aaef1b37cf75d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0ae84b3c9f3ea1a564eb1b7612113ca9fe8aada"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa8901cb1f0b2113a342db93bd5684b59fe99dcf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:51Z"
+  }
+}

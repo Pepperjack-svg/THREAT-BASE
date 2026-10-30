@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5gjp-7788-qpxg",
+  "modified": "2026-04-01T18:36:36Z",
+  "published": "2026-04-01T15:31:15Z",
+  "aliases": [
+    "CVE-2026-30523"
+  ],
+  "details": "A Business Logic vulnerability exists in SourceCodester Loan Management System v1.0 due to the lack of proper input validation. The application allows administrators to define \"Loan Plans\" which determine the duration of a loan (in months). However, the backend fails to validate that the duration must be a positive integer. An attacker can submit a negative value for the months parameter. The system accepts this invalid data and creates a loan plan with a negative duration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-30523"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/meifukun/Web-Security-PoCs/blob/main/Loan-Management-System/BusinessLogic-LoanPlan-NegativeMonths.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-01T15:22:59Z"
+  }
+}

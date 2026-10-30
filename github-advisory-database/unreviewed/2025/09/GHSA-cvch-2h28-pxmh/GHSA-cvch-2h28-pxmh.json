@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cvch-2h28-pxmh",
+  "modified": "2026-10-15T03:34:56Z",
+  "published": "2025-09-05T18:31:17Z",
+  "aliases": [
+    "CVE-2025-38725"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: usb: asix_devices: add phy_mask for ax88772 mdio bus\n\nWithout setting phy_mask for ax88772 mdio bus, current driver may create\nat most 32 mdio phy devices with phy address range from 0x00 ~ 0x1f.\nDLink DUB-E100 H/W Ver B1 is such a device. However, only one main phy\ndevice will bind to net phy driver. This is creating issue during system\nsuspend/resume since phy_polling_mode() in phy_state_machine() will\ndirectly deference member of phydev->drv for non-main phy devices. Then\nNULL pointer dereference issue will occur. Due to only external phy or\ninternal phy is necessary, add phy_mask for ax88772 mdio bus to workarnoud\nthe issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38725"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4faff70959d51078f9ee8372f8cff0d7045e4114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59ed6fbdb1bc03316e09493ffde7066f031c7524"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75947d3200de98a9ded9ad8972e02f1a177097fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a754ab53993b1585132e871c5d811167ad3c52ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ad1f8313aeec0115f9978bd2d002ef4a8d96c773"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ccef5ee4adf56472aa26bdd1f821a6d0cd06089a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee2cd40b0bb46056949a2319084a729d95389386"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-04T16:15:42Z"
+  }
+}

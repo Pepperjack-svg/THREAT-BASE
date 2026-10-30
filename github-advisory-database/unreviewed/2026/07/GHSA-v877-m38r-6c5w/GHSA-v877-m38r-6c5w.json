@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v877-m38r-6c5w",
+  "modified": "2026-10-15T03:36:21Z",
+  "published": "2026-07-01T15:35:20Z",
+  "aliases": [
+    "CVE-2026-53356"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/gem: Fix phys BO pread/pwrite with offset\n\nsg_page() returns struct page pointer not (void *) so the scaling\nof pread/pwrite is wrong for phys BO and wrong parts of BO would be\naccessed if non-zero offset is used.\n\nLast impacted platform with overlay or cursor planes using phys\nmapping was Gen3/945G/Lakeport.\n\n(cherry picked from commit 3e49a2f85070b2fb672c1e0fdba281a4ea3aebe6)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53356"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07c33be968d9e0cab6cba38c81850a09942fcb2e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14469860e2e39b7095dcd658d2bad38a11110a68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ec8fc63e9cdb22da54e48e536c9204020416fc6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32d4c5d328a3ff995420f4f85163e1e403f43628"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3bd168dd835b93a3862cd05b0d13c432b115f9d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40f738991058eb3e3530c3006a5bd6fd5e29f035"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d21ad938398bca695a511307de38a65889e3b354"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd51a2eeb93bc6faa892ff9083911dd23f82c187"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1164"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-01T14:16:44Z"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpvf-fvp5-996r",
+  "modified": "2026-03-11T05:47:21Z",
+  "published": "2026-03-11T00:24:53Z",
+  "aliases": [
+    "CVE-2026-31832"
+  ],
+  "summary": "Umbraco Backoffice API Allows Unauthorized Modification of Domain Data",
+  "details": "### Description\nA broken object-level authorization vulnerability exists in a backoffice API endpoint that allows authenticated users to assign domain-related data to content nodes without proper authorization checks.\n\nThe issue is caused by insufficient authorization enforcement on the affected API endpoint, whereby via an API call, domains can be set on content nodes that the editor does not have permission to access (either via user group privileges or start nodes).\n\n### Impact\nAn attacker can modify domain configurations for content nodes they are not permitted to edit. This may result in malicious or unintended routing behaviour, service disruption, and potential disclosure of configuration-related information.\n\n### Patches\nThe issue is patched in 16.5.1 and 17.2.2.\n\n### Workarounds\nThere is no workaround other than upgrading.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Umbraco.Cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "14.0.0"
+            },
+            {
+              "fixed": "16.5.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Umbraco.Cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "17.0.0"
+            },
+            {
+              "fixed": "17.2.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/umbraco/Umbraco-CMS/security/advisories/GHSA-fpvf-fvp5-996r"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31832"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/umbraco/Umbraco-CMS"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-11T00:24:53Z",
+    "nvd_published_at": "2026-03-10T22:16:21Z"
+  }
+}

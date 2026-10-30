@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-826h-28h9-65hg",
+  "modified": "2026-10-07T18:01:02Z",
+  "published": "2026-10-07T18:01:02Z",
+  "aliases": [
+    "CVE-2026-106488"
+  ],
+  "summary": "Backstage: Improper authentication in the OIDC provider",
+  "details": "### Impact\n\nDeployments using OIDC email-based identity resolution with a provider that permits unverified email addresses may allow an authenticated provider user to assume another catalog identity. This may grant access and permissions associated with that user. No direct availability impact is demonstrated.\n\n### Patches\n\nPatched in `@backstage/plugin-auth-backend-module-oidc-provider` version `0.4.20`.\n\n### Workarounds\n\n- Disable email-based sign-in resolution for the OIDC provider, or require the identity provider to verify email addresses before allowing sign-in.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@backstage/plugin-auth-backend-module-oidc-provider"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.4.20"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/backstage/backstage/security/advisories/GHSA-826h-28h9-65hg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106488"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/backstage/backstage/commit/1b1f05e82161aaabc226c1d7d498d746956bf942"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/backstage/backstage"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/backstage/backstage/releases/tag/v1.54.6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-07T18:01:02Z",
+    "nvd_published_at": "2026-10-06T21:17:17Z"
+  }
+}

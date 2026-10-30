@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6368-3wvq-pchc",
+  "modified": "2025-11-12T21:31:01Z",
+  "published": "2025-05-02T18:31:36Z",
+  "aliases": [
+    "CVE-2023-53097"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npowerpc/iommu: fix memory leak with using debugfs_lookup()\n\nWhen calling debugfs_lookup() the result must have dput() called on it,\notherwise the memory will leak over time.  To make things simpler, just\ncall debugfs_lookup_and_remove() instead which handles all of the logic\nat once.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53097"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24c1bd1cd0d1ff821fd7d2f01a1e648c7882dfc2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4050498c0ae3946c223fc63e9dd7b878b76611e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b505063910c134778202dfad9332dfcecb76bab3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3a62a35f903fd8be5b44542fe3901ec45f16757"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-02T16:15:28Z"
+  }
+}

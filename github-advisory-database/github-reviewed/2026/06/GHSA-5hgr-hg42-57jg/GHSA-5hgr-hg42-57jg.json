@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5hgr-hg42-57jg",
+  "modified": "2026-06-16T13:46:42Z",
+  "published": "2026-06-16T13:46:42Z",
+  "aliases": [
+    "CVE-2026-49460"
+  ],
+  "summary": "pypdf: Inefficient decoding of FlateDecode PNG predictor streams",
+  "details": "### Impact\nAn attacker who uses this vulnerability can craft a PDF which leads to long runtimes. This requires accessing a stream which uses the `/FlateDecode` filter with a PNG predictor.\n\n### Patches\nThis has been fixed in [pypdf==6.12.2](https://github.com/py-pdf/pypdf/releases/tag/6.12.2).\n\n### Workarounds\nIf you cannot upgrade yet, consider applying the changes from PR [#3806](https://github.com/py-pdf/pypdf/pull/3806).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pypdf"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.12.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/security/advisories/GHSA-5hgr-hg42-57jg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/pull/3806"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/py-pdf/pypdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/releases/tag/6.12.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-16T13:46:42Z",
+    "nvd_published_at": null
+  }
+}

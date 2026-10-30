@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pvw4-cvr4-97p8",
+  "modified": "2026-05-20T15:33:04Z",
+  "published": "2026-05-20T15:33:04Z",
+  "aliases": [
+    "CVE-2026-46421"
+  ],
+  "summary": " Supply chain compromise via malicious package versions (@cap-js/sqlite,  @cap-js/postgres, @cap-js/db-service)",
+  "details": "## Impact\n\nOn April 29, 2026, compromised versions of `@cap-js/sqlite@2.2.2`, `@cap-js/postgres@2.2.2`, and `@cap-js/db-service@2.10.1` were published.\nThe malicious packages harvested credentials and attempted self-propagation.\nIf a compromised version was installed, all credentials accessible on that machine (npm tokens, cloud provider credentials, SSH keys, GitHub PATs) should be considered compromised.\n\n## Patches\n\nUpgrade to `@cap-js/sqlite` >= 2.4.0, `@cap-js/postgres` >= 2.3.0, `@cap-js/db-service` >= 2.11.0.\nIf a compromised version was ever installed, rotate all affected credentials.\n\n## Workarounds\n\nNo workarounds.",
+  "severity": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@cap-js/sqlite"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.2.2"
+            },
+            {
+              "fixed": "2.3.0"
+            }
+          ]
+        }
+      ],
+      "versions": [
+        "2.2.2"
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@cap-js/postgres"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.2.2"
+            },
+            {
+              "fixed": "2.3.0"
+            }
+          ]
+        }
+      ],
+      "versions": [
+        "2.2.2"
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@cap-js/db-service"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.10.1"
+            },
+            {
+              "fixed": "2.11.0"
+            }
+          ]
+        }
+      ],
+      "versions": [
+        "2.10.1"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/cap-js/cds-dbs/security/advisories/GHSA-pvw4-cvr4-97p8"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/cap-js/cds-dbs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://me.sap.com/notes/3747787"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.sap.com/documents/2026/05/8203a8b9-4d7f-0010-bca6-c68f7e60039b.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.stepsecurity.io/blog/a-mini-shai-hulud-has-appeared"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-506"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-20T15:33:04Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hm6g-hrhc-g7hv",
+  "modified": "2026-10-28T18:32:12Z",
+  "published": "2026-10-28T18:32:12Z",
+  "aliases": [
+    "CVE-2026-116134"
+  ],
+  "details": "HTTP::Body versions before 1.23_01 for Perl allow memory exhaustion via an unbounded multipart part header block.\n\nThe multipart parser takes everything up to the first blank line after a boundary as the part's header block, with no limit on its size or number of lines. Every line is stored in the part's header hash, so a block of short lines costs about 60 bytes of memory per input byte.\n\nA remote attacker can exhaust worker memory with a single request.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libwww-perl/HTTP-Body/commit/c5d13911aabfad4a7ae4b6ee98ac2315400e5ed5.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/GETTY/HTTP-Body-1.24/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T18:17:12Z"
+  }
+}

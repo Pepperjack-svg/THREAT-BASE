@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fvf2-2vh9-p4j4",
+  "modified": "2025-12-11T15:30:30Z",
+  "published": "2025-09-17T15:30:38Z",
+  "aliases": [
+    "CVE-2023-53356"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: u_serial: Add null pointer check in gserial_suspend\n\nConsider a case where gserial_disconnect has already cleared\ngser->ioport. And if gserial_suspend gets called afterwards,\nit will lead to accessing of gser->ioport and thus causing\nnull pointer dereference.\n\nAvoid this by adding a null pointer check. Added a static\nspinlock to prevent gser->ioport from becoming null after\nthe newly added null pointer check.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53356"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2788a3553f7497075653210b42e2aeb6ba95e28e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f6ecb89fe8feb2b60a53325b0eeb9866d88909a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/374447e3367767156405bedd230c5d391f4b7962"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a8ea7ed644cbf6314b5b0136b5398754b549fb8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e60a827ac074ce6bd58305fe5a86afab5fce6a04"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-17T15:15:39Z"
+  }
+}

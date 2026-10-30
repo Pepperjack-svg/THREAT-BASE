@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8293-64hg-p37m",
+  "modified": "2026-05-06T21:31:32Z",
+  "published": "2026-05-01T15:30:33Z",
+  "aliases": [
+    "CVE-2026-31710"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix dir separator in SMB1 UNIX mounts\n\nWhen calling cifs_mount_get_tcon() with SMB1 UNIX mounts,\n@cifs_sb->mnt_cifs_flags needs to be read or updated only after\ncalling reset_cifs_unix_caps(), otherwise it might end up with missing\nCIFS_MOUNT_POSIXACL and CIFS_MOUNT_POSIX_PATHS bits.\n\nThis fixes the wrong dir separator used in paths caused by the missing\nCIFS_MOUNT_POSIX_PATHS bit in cifs_sb_info::mnt_cifs_flags.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31710"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4d3fc5844d685441befd0caaab648321013cdfd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fbbfcf35e1ee3396631f3dc6214cb626aa9814c3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T14:16:21Z"
+  }
+}

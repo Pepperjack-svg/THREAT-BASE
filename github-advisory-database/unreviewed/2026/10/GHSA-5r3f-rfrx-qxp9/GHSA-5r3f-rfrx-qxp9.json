@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5r3f-rfrx-qxp9",
+  "modified": "2026-10-16T09:30:27Z",
+  "published": "2026-10-16T09:30:27Z",
+  "aliases": [
+    "CVE-2026-110664"
+  ],
+  "details": "The Premium Packages – Sell Digital Products Securely plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'note' parameter in all versions up to, and including, 7.2.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The exploit bypasses tag-based filtering because the payload is stored as a hex-escaped sequence (e.g., \\x3cimg onerror=...\\x3e) that sanitize_textarea_field does not strip, and is only decoded back into a live HTML tag by stripcslashes() during admin rendering — after all sanitization has occurred.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110664"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpdm-premium-packages"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpdm-premium-packages/tags/7.2.8/src/Admin/Order/views/order-notes.php#L28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpdm-premium-packages/tags/7.2.8/src/Api/Endpoints/OrderEndpoint.php#L101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpdm-premium-packages/tags/7.2.8/src/Api/Endpoints/OrderEndpoint.php#L501"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpdm-premium-packages/tags/7.2.8/src/Order/OrderService.php#L700"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3747528/wpdm-premium-packages/trunk/src/Admin/Order/views/order-notes.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/20042ecf-a8fd-4b36-80d9-d338c8795433?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T07:17:11Z"
+  }
+}

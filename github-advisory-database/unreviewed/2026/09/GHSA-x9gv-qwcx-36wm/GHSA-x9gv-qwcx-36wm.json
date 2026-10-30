@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x9gv-qwcx-36wm",
+  "modified": "2026-09-30T18:33:51Z",
+  "published": "2026-09-30T18:33:51Z",
+  "aliases": [
+    "CVE-2026-103472"
+  ],
+  "details": "restbed through 5.0.0 accepts WebSocket frames with declared payload lengths up to 2^63 bytes and buffers the payload without size limits in an unbounded stream buffer. Remote unauthenticated attackers can declare large frame sizes and stream payload data to exhaust server memory, causing denial of service through process crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103472"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Corvusoft/restbed/issues/558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Corvusoft/restbed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Corvusoft/restbed/blob/e1227a297ce6d4e9f78222456507b29bb8ab77e9/src/corvusoft/restbed/detail/web_socket_impl.cpp#L117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/restbed-through-5.0.0-websocket-memory-exhaustion-via-unbounded-frame-buffering"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T18:18:17Z"
+  }
+}

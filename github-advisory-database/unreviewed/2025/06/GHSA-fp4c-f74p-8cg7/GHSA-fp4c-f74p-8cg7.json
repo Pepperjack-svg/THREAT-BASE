@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fp4c-f74p-8cg7",
+  "modified": "2025-11-19T15:31:32Z",
+  "published": "2025-06-30T09:30:24Z",
+  "aliases": [
+    "CVE-2025-38087"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: fix use-after-free in taprio_dev_notifier\n\nSince taprio’s taprio_dev_notifier() isn’t protected by an\nRCU read-side critical section, a race with advance_sched()\ncan lead to a use-after-free.\n\nAdding rcu_read_lock() inside taprio_dev_notifier() prevents this.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38087"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a008c89e5e5c5332e4c0a33d707db9ddd529f8a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c5713ce1ced75f9e9ed5c642ea3d2ba06ead69c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1547d28ba468bc3b88764efd13e4319bab63be8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b160766e26d4e2e2d6fe2294e0b02f92baefcec5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-30T08:15:22Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hm6g-wrrh-5c5m",
+  "modified": "2026-10-13T21:33:38Z",
+  "published": "2026-10-13T21:33:38Z",
+  "aliases": [
+    "CVE-2026-110221"
+  ],
+  "details": "QloApps through 1.7.0 contains a reflected cross-site scripting vulnerability in the AdminHotelFeaturePricesSettings form that echoes feature_price_name and impact_value POST values unescaped after validation fails. Attackers can lure an authenticated back-office user into submitting a crafted request via a malicious link or auto-submitting form, executing JavaScript in their administrative session.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110221"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/blob/v1.7.0/modules/hotelreservationsystem/controllers/admin/AdminHotelFeaturePricesSettings.php#L401-L414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/blob/v1.7.0/modules/hotelreservationsystem/views/templates/admin/hotel_feature_prices_settings/helpers/form/form.tpl#L185"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/blob/v1.7.0/modules/hotelreservationsystem/views/templates/admin/hotel_feature_prices_settings/helpers/form/form.tpl#L43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@leediay/SyMoELioMx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/qloapps-through-1.7.0-reflected-xss-via-advanced-price-rule-name-and-impact-value"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:46Z"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f6vj-48fm-hmvx",
+  "modified": "2026-07-31T16:37:52Z",
+  "published": "2026-06-09T09:32:07Z",
+  "aliases": [
+    "CVE-2026-49818"
+  ],
+  "summary": "Apache Airflow has a Path Traversal issue",
+  "details": "The Apache Airflow Samba provider's `GCSToSambaOperator` joined GCS object names to the SMB destination path without a containment check, so an object named with `../` segments resolved a write path outside the configured `destination_path`. An attacker able to write objects into the source GCS bucket — typically an external data producer distinct from the trusted DAG author — could write files to arbitrary locations on the Samba target when the operator ran. Upgrade apache-airflow-providers-samba to 4.12.6 or later, which validates the resolved destination stays within `destination_path`.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "apache-airflow-providers-samba"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.12.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49818"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/67857"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/commit/bc1df029af15cb1d35d5ca0d33bf9235500137cc"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/airflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/apache-airflow-providers-samba/PYSEC-2026-208.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/3vs0m3p51psgf54tts18d6336g24x3sf"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/06/09/8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-31T16:37:52Z",
+    "nvd_published_at": "2026-06-09T09:16:30Z"
+  }
+}

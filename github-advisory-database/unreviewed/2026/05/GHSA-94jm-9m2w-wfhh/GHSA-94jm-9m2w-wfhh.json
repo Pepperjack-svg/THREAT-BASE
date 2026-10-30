@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-94jm-9m2w-wfhh",
+  "modified": "2026-10-21T15:40:26Z",
+  "published": "2026-05-08T15:31:23Z",
+  "aliases": [
+    "CVE-2026-43317"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmost: core: fix leak on early registration failure\n\nA recent commit fixed a resource leak on early registration failures but\nfor some reason left out the first error path which still leaks the\nresources associated with the interface.\n\nFix up also the first error path so that the interface is always\nreleased on errors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43317"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04474009a2ea7aa27c67d323952a23bb16d5acc5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c198c272f9c9213b0fdf6b4a879f445c574f416"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5fd4396c2e48e90cc2597a86c18227d56ea845f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bbfe49ffb892bddf32c34bea95b7ff0fc30affb5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1ba620f9e8d7291f80c0554e4b820f5fb30e819"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:40Z"
+  }
+}

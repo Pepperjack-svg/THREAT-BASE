@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6rpm-59f8-4x64",
+  "modified": "2025-11-18T18:32:48Z",
+  "published": "2025-08-16T12:30:32Z",
+  "aliases": [
+    "CVE-2025-38534"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfs: Fix copy-to-cache so that it performs collection with ceph+fscache\n\nThe netfs copy-to-cache that is used by Ceph with local caching sets up a\nnew request to write data just read to the cache.  The request is started\nand then left to look after itself whilst the app continues.  The request\ngets notified by the backing fs upon completion of the async DIO write, but\nthen tries to wake up the app because NETFS_RREQ_OFFLOAD_COLLECTION isn't\nset - but the app isn't waiting there, and so the request just hangs.\n\nFix this by setting NETFS_RREQ_OFFLOAD_COLLECTION which causes the\nnotification from the backing filesystem to put the collection onto a work\nqueue instead.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38534"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ebe58cef84eab22b41b4d5e72c2051ebf00af50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c238e30774e3022a505fa54311273add7570f13"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-16T12:15:29Z"
+  }
+}

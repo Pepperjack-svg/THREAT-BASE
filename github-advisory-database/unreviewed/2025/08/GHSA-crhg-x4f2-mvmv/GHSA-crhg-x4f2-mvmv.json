@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-crhg-x4f2-mvmv",
+  "modified": "2026-10-21T15:40:06Z",
+  "published": "2025-08-19T18:31:33Z",
+  "aliases": [
+    "CVE-2025-38597"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/rockchip: vop2: fail cleanly if missing a primary plane for a video-port\n\nEach window of a vop2 is usable by a specific set of video ports, so while\nbinding the vop2, we look through the list of available windows trying to\nfind one designated as primary-plane and usable by that specific port.\n\nThe code later wants to use drm_crtc_init_with_planes with that found\nprimary plane, but nothing has checked so far if a primary plane was\nactually found.\n\nFor whatever reason, the rk3576 vp2 does not have a usable primary window\n(if vp0 is also in use) which brought the issue to light and ended in a\nnull-pointer dereference further down.\n\nAs we expect a primary-plane to exist for a video-port, add a check at\nthe end of the window-iteration and fail probing if none was found.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38597"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38682edbbad272b5f8c7bf55128b42cd10626f73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45be183b9944f765b77623daffb024cb38d192bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8fc974776c668fef1fc73fefbf573a076bb073e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e1eef239399927b368f70a716044fb10085627c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9f68bf1d0efeadb6c427c9dbb30f307a7def19b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-19T17:15:37Z"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j9wq-vxxc-94wf",
+  "modified": "2026-06-26T21:58:59Z",
+  "published": "2026-06-26T21:58:59Z",
+  "aliases": [
+    "CVE-2026-47075"
+  ],
+  "summary": "Hackney has CR/LF injection in query parameter",
+  "details": "### Summary\n\n`hackney_url:make_url/3` passes the URL query component directly into the HTTP/1.1 request target without percent-encoding `\\r` or `\\n`. RFC 3986 §3.4 requires characters outside the query grammar to be percent-encoded, but no validation or escaping occurs. An attacker who controls any portion of the URL passed to hackney can inject raw CRLF sequences into the request line, enabling HTTP header injection or full request splitting.\n\n### Details\n\n`hackney_url:make_url/3` in `src/hackney_url.erl` builds the request target by concatenating the path and query binaries. The query string is used as-is — no character-class check, no percent-encoding of `\\r` or `\\n`. When hackney serializes the request, the query value lands verbatim in the `GET <path>?<query> HTTP/1.1\\r\\n` request line. A query value containing `\\r\\n` terminates the request line early; subsequent bytes are parsed by the server (or any intermediary proxy) as additional header lines or a second request.\n\nA concrete example: a URL with query `?q=x HTTP/1.1\\r\\nX-Injected: yes\\r\\nX:` produces the following on the wire:\n\n```\nGET /?q=x HTTP/1.1\nX-Injected: yes\nX: HTTP/1.1\nHost: ...\n```\n\nThe server sees `X-Injected: yes` as a legitimate request header that the client never intended to send.\n\n### PoC\n\n1. Listen on a raw TCP port: `nc -lvnp 8080`.\n2. Issue: `:hackney.get(\"http://127.0.0.1:8080/?q=x HTTP/1.1\\r\\nX-Injected: yes\\r\\nX:\")`.\n3. Observe the listener receives `X-Injected: yes` as a standalone header line in the request.\n\n### Impact\n\nHTTP header injection and request splitting against any server hackney connects to. Affects all released versions of hackney before 4.0.1. Exploitation requires an attacker-controlled URL (or URL component) to reach hackney without prior sanitization. Consequences include injecting arbitrary headers (`Authorization`, `Host`, `X-Forwarded-For`) and splitting requests through proxies. CVSS v4.0: **6.8 (MEDIUM)**.\n\n## Resources\n\n* Introduction commit: https://github.com/benoitc/hackney/commit/8bb1a359a81ae58567c84f8d24564e9742e6f2bd\n* Patch commit: https://github.com/benoitc/hackney/commit/ca73dd0aba0ed557449c18288bf07241671a43c9",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:A/VC:N/VI:H/VA:N/SC:N/SI:H/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Hex",
+        "name": "hackney"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/security/advisories/GHSA-j9wq-vxxc-94wf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47075"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/commit/ca73dd0aba0ed557449c18288bf07241671a43c9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cna.erlef.org/cves/CVE-2026-47075.html"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/benoitc/hackney"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osv.dev/vulnerability/EEF-CVE-2026-47075"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-93"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-26T21:58:59Z",
+    "nvd_published_at": "2026-05-25T15:16:22Z"
+  }
+}

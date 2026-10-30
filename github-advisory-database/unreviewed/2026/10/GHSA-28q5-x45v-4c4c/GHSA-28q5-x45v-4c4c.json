@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28q5-x45v-4c4c",
+  "modified": "2026-10-08T21:33:19Z",
+  "published": "2026-10-08T18:32:29Z",
+  "aliases": [
+    "CVE-2026-107709"
+  ],
+  "details": "A path traversal vulnerability exists in Bower decompress-zip through version 0.3.3. The vulnerability located in `lib/decompress-zip.js` improperly validates archive entry paths during ZIP extraction. A crafted ZIP archive containing entries that resolve to prefix-sibling directories can cause files to be written outside the intended extraction directory. Successful exploitation may allow arbitrary file overwrite, application compromise, or remote code execution depending on the target environment and writable sibling paths.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bower/decompress-zip"
+    },
+    {
+      "type": "WEB",
+      "url": "https://moizxsec.github.io/writeups/decompress-zip-zip-slip-sibling-prefix-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T17:17:16Z"
+  }
+}

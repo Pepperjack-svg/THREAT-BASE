@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-58w4-cf2c-hf22",
+  "modified": "2026-10-01T15:30:42Z",
+  "published": "2026-10-01T15:30:42Z",
+  "aliases": [
+    "CVE-2026-79900"
+  ],
+  "details": "boks_ksllogsd accepts a checksum algorithm name in the MD field of an authenticated KSL start message. Affected releases verify that OpenSSL recognizes the digest name but do not verify that the value fits in a fixed 16-byte checksum context field before copying it. An authenticated KSL client can supply an oversized, OpenSSL-recognized digest name and write beyond the end of the heap allocation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79900"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.fortra.com/security/advisories/product-security/fi-2026-013"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-01T15:17:31Z"
+  }
+}

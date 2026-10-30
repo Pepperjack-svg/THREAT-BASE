@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x696-vm39-cp64",
+  "modified": "2025-08-26T18:35:35Z",
+  "published": "2025-08-26T18:35:35Z",
+  "aliases": [],
+  "summary": "Picklescan has a missing detection when calling built-in python profile.Profile.run",
+  "details": "### Summary\n\nUsing profile.Profile.run, which is a built-in python library function to execute remote pickle file.\n\n### Details\n\nThe attack payload executes in the following steps:\n\nFirst, the attacker craft the payload by calling to profile.Profile.run function in reduce method\nThen when the victim after checking whether the pickle file is safe by using Picklescan library and this library doesn't dectect any dangerous functions, decide to pickle.load() this malicious pickle file, thus lead to remote code execution.\n\n### PoC\n\n```\nclass EvilProfileRun:\n    def __reduce__(self):\n        from profile import Profile\n        payload = \"__import__('os').system('whoami')\"\n        return Profile.run, (Profile(), payload)\n```\n\n### Impact\n\nWho is impacted? Any organization or individual relying on picklescan to detect malicious pickle files inside PyTorch models.\nWhat is the impact? Attackers can embed malicious code in pickle file that remains undetected but executes when the pickle file is loaded.\nSupply Chain Attack: Attackers can distribute infected pickle files across ML models, APIs, or saved Python objects.\n\n### Corresponding\n\nhttps://github.com/FredericDT\nhttps://github.com/Qhaoduoyu",
+  "severity": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "picklescan"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.0.29"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-x696-vm39-cp64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mmaitre314/picklescan/commit/aecd11be98702caa9ba9b12189d91ad596a36114"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mmaitre314/picklescan"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-08-26T18:35:35Z",
+    "nvd_published_at": null
+  }
+}

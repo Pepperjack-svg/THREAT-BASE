@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-96m5-4gq2-q3x9",
+  "modified": "2025-10-03T18:31:25Z",
+  "published": "2025-09-29T21:30:26Z",
+  "aliases": [
+    "CVE-2025-34209"
+  ],
+  "details": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host prior to 22.0.862 and Application prior to 20.0.2014 (VA and SaaS deployments) contain Docker images with the private GPG key and passphrase for the account *no‑reply+virtual‑appliance@printerlogic.com*. The key is stored in cleartext and the passphrase is hardcoded in files. An attacker with administrative access to the appliance can extract the private key, import it into their own system, and subsequently decrypt GPG-encrypted files and sign arbitrary firmware update packages. A maliciously signed update can be uploaded by an admin‑level attacker and will be executed by the appliance, giving the attacker full control of the virtual appliance.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34209"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/saas/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/va/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pierrekim.github.io/blog/2025-04-08-vasion-printerlogic-83-vulnerabilities.html#va-private-gpg-key"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vasion-print-printerlogic-hardcoded-gpg-private-key"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-798"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-29T21:15:34Z"
+  }
+}

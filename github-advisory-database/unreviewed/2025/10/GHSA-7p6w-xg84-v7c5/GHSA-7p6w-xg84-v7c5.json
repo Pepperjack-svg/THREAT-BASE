@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7p6w-xg84-v7c5",
+  "modified": "2025-10-20T06:30:17Z",
+  "published": "2025-10-20T06:30:17Z",
+  "aliases": [
+    "CVE-2025-40004"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/9p: Fix buffer overflow in USB transport layer\n\nA buffer overflow vulnerability exists in the USB 9pfs transport layer\nwhere inconsistent size validation between packet header parsing and\nactual data copying allows a malicious USB host to overflow heap buffers.\n\nThe issue occurs because:\n- usb9pfs_rx_header() validates only the declared size in packet header\n- usb9pfs_rx_complete() uses req->actual (actual received bytes) for\nmemcpy\n\nThis allows an attacker to craft packets with small declared size\n(bypassing validation) but large actual payload (triggering overflow\nin memcpy).\n\nAdd validation in usb9pfs_rx_complete() to ensure req->actual does not\nexceed the buffer capacity before copying data.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40004"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0da18d49f874d444ad83c8a546fa33bfcf2f582c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c04db81cd0288dfc68b7a0f7d09bd49b40bba451"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df8462f0fc045b4475dc494a5787a03c972ba2a2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-20T06:15:36Z"
+  }
+}

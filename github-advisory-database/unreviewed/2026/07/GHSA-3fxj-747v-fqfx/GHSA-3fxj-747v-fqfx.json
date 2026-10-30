@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3fxj-747v-fqfx",
+  "modified": "2026-07-22T21:31:46Z",
+  "published": "2026-07-01T15:35:19Z",
+  "aliases": [
+    "CVE-2026-53347"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/virtio: Fix driver removal with disabled KMS\n\nDRM atomic and modesetting aren't initialized if virtio-gpu driver built\nwith disabled KMS, leading to access of uninitialized data on driver\nremoval/unbinding and crashing kernel. Fix it by skipping shutting down\natomic core with unavailable KMS.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53347"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15e561869a8b4e4db69733be1d6f33770664f989"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19a6a00ff50c284f3a9818882ad2be58b33b790a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38a5f891cda6d121c149c94cda89c31ec7024ee3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed3e134700a2e07caa99b9bc0683ebbe0327c562"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f329e8325e054bd6d84d10904f8dd51137281b92"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-01T14:16:42Z"
+  }
+}

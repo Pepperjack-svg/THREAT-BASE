@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6fhj-vr9j-g45r",
+  "modified": "2025-11-15T02:46:38Z",
+  "published": "2025-11-10T21:04:03Z",
+  "aliases": [
+    "CVE-2025-64518"
+  ],
+  "summary": "CycloneDX Core (Java): BOM validation is vulnerable to XML External Entity injection ",
+  "details": "### Impact\n\nThe XML [`Validator`](https://docs.oracle.com/javase/8/docs/api/javax/xml/validation/Validator.html) used by cyclonedx-core-java was not configured securely, making the library vulnerable to XML External Entity (XXE) injection.\n\nThe fix for GHSA-683x-4444-jxh8 / CVE-2024-38374 has been incomplete in that it only fixed *parsing* of XML BOMs, but not *validation*.\n\n### Patches\n\nThe vulnerability has been fixed in cyclonedx-core-java version 11.0.1.\n\n### Workarounds\n\nIf feasible, applications can reject XML documents before handing them to cyclonedx-core-java for validation.\nThis may be an option if incoming CycloneDX BOMs are known to be in JSON format.\n\n### References\n\n* The issue was introduced via https://github.com/CycloneDX/cyclonedx-core-java/commit/162aa594f347b3f612fe0a45071693c3cd398ce9\n* The issue was fixed via https://github.com/CycloneDX/cyclonedx-core-java/pull/737\n* https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html#schemafactory",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.cyclonedx:cyclonedx-core-java"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.1.0"
+            },
+            {
+              "fixed": "11.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/CycloneDX/cyclonedx-core-java/security/advisories/GHSA-6fhj-vr9j-g45r"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-64518"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CycloneDX/cyclonedx-core-java/pull/737"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CycloneDX/cyclonedx-core-java/commit/162aa594f347b3f612fe0a45071693c3cd398ce9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CycloneDX/cyclonedx-core-java/commit/af0ec75c93c03f93733a070c5132554490af5314"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html#schemafactory"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/CycloneDX/cyclonedx-core-java"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-611"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-11-10T21:04:03Z",
+    "nvd_published_at": "2025-11-10T22:15:40Z"
+  }
+}

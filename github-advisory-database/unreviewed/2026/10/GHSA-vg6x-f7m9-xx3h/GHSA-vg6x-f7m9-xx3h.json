@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vg6x-f7m9-xx3h",
+  "modified": "2026-10-14T18:32:20Z",
+  "published": "2026-10-14T18:32:20Z",
+  "aliases": [
+    "CVE-2026-93683"
+  ],
+  "details": "A flaw was found in the DPDK vhost library. When handling a virtio indirect descriptor table, the host reads the table length more than once from guest memory and can allocate a host copy before validating that length. A guest that changes the length between those reads, or that supplies an out-of-range next index on a small host copy in the vDPA relay path, can cause the host vhost process to walk past the validated mapping or heap copy. That can crash or disrupt the vhost process. Out-of-bounds bytes are consumed as descriptor fields for GPA translation and are not returned to the guest as payload. This is a residual issue in the non-contiguous indirect descriptor copy path introduced as part of the CVE-2018-1059 fix.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:L/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93683"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-93683"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2537015"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T16:17:57Z"
+  }
+}

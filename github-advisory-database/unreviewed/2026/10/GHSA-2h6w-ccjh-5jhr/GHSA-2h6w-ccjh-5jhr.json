@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2h6w-ccjh-5jhr",
+  "modified": "2026-10-07T15:31:59Z",
+  "published": "2026-10-07T15:31:59Z",
+  "aliases": [
+    "CVE-2026-107181"
+  ],
+  "details": "Telegram Desktop before 7.2.9 contains an IPC record-separator injection vulnerability in Core::Sandbox that allows remote attackers to inject OPEN: records via crafted tg:// links containing unescaped semicolons. Attackers can reach the interpret: scheme handler to upload local files, including tdata session keys, to an attacker channel, enabling account takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107181"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/telegramdesktop/tdesktop/commit/db3405699f8fc3ae28a58d2348b7d13a43c0590a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://beaksec.github.io/posts/telegram-desktop-one-click-account-takeover"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/telegramdesktop/tdesktop"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/telegramdesktop/tdesktop/blob/v7.2.8/Telegram/SourceFiles/core/sandbox.cpp#L362-L364"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/telegramdesktop/tdesktop/blob/v7.2.8/Telegram/SourceFiles/support/support_helper.cpp#L673-L751"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/telegramdesktop/tdesktop/releases/tag/v7.2.9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/telegram-desktop-before-7.2.9-ipc-record-injection-file-exfiltration-via-interpret-scheme"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-143"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-07T14:17:08Z"
+  }
+}

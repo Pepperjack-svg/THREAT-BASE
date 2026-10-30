@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xfjg-jx94-93h4",
+  "modified": "2026-10-15T03:34:56Z",
+  "published": "2025-09-05T18:31:26Z",
+  "aliases": [
+    "CVE-2025-39681"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/cpu/hygon: Add missing resctrl_cpu_detect() in bsp_init helper\n\nSince\n\n  923f3a2b48bd (\"x86/resctrl: Query LLC monitoring properties once during boot\")\n\nresctrl_cpu_detect() has been moved from common CPU initialization code to\nthe vendor-specific BSP init helper, while Hygon didn't put that call in their\ncode.\n\nThis triggers a division by zero fault during early booting stage on our\nmachines with X86_FEATURE_CQM* supported, where get_rdt_mon_resources() tries\nto calculate mon_l3_config with uninitialized boot_cpu_data.x86_cache_occ_scale.\n\nAdd the missing resctrl_cpu_detect() in the Hygon BSP init helper.\n\n  [ bp: Massage commit message. ]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39681"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62f12cde10118253348a7540e85606869bd69432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7207923d8453ebfb35667c1736169f2dd796772e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/873f32201df8876bdb2563e3187e79149427cab4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9e5924daa954c9f585c1ca00358afe71d6781c4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d23264c257a70dbe021b43b3bc2ee16134cd2c69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8df126349dad855cdfedd6bbf315bad2e901c2f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb81222c1559f89bfe3aa1010f6d112531d55353"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-05T18:15:44Z"
+  }
+}

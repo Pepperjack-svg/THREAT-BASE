@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g6xq-6pmr-p37c",
+  "modified": "2026-10-07T21:33:24Z",
+  "published": "2026-10-07T09:32:21Z",
+  "aliases": [
+    "CVE-2026-97720"
+  ],
+  "details": "Incorrect implementation of JWT/OAuth authentication in Impala executors in Apache Impala versions up to and including 4.5.2 which allows attacked to access resources served by the executor's webserver when that webserver is configured to accept JWT/OAuth tokens.  Bearer token (JWT) signatures are not validated resulting in the webserver accepting any valid JWT.\nUsers are recommended to either disable JWT/OAuth auth for Impala executors or upgrade to version 4.5.3, which fixes this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97720"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/q2qkrnko9hdv2mhqy6prm06f65n2g3h2"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/07/22"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-303"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-07T09:17:06Z"
+  }
+}

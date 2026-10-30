@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wc7j-g8wx-m2qx",
+  "modified": "2026-07-10T19:08:21Z",
+  "published": "2026-05-27T17:17:18Z",
+  "aliases": [
+    "CVE-2026-45260"
+  ],
+  "summary": "Pimcore: Missing Authorization in WebDAV MOVE via unchecked asset move handling",
+  "details": "### Summary\nPimcore's WebDAV asset endpoint exposes a `MOVE` operation through `/asset/webdav{path}` without adding an authentication plugin in the WebDAV controller. The `Tree::move()` implementation then performs asset mutation and deletion before checking a current Pimcore user or any asset permissions.\n\nAn unauthenticated remote attacker who knows two existing asset paths in the same directory can send a WebDAV `MOVE` request that deletes the source asset. Authenticated low-privileged users may also be able to perform unauthorized asset move or overwrite operations because the move path does not enforce `rename`, `delete`, `create`, or `publish` permissions.\n\n### Details\nThe route for WebDAV is globally registered and accepts arbitrary trailing paths:\n\n```yaml\n# bundles/CoreBundle/config/routing.yaml\npimcore_webdav:\n    path: /asset/webdav{path}\n    defaults: { _controller: Pimcore\\Bundle\\CoreBundle\\Controller\\WebDavController::webdavAction }\n    requirements:\n        path: '.*'\n```\n\nThe controller constructs a SabreDAV server but only attaches lock and browser plugins. It does not attach an authentication plugin or perform an explicit user/session check before starting the server:\n\n```php\n# bundles/CoreBundle/src/Controller/WebDavController.php\n$publicDir = new Asset\\WebDAV\\Folder($homeDir);\n$objectTree = new Asset\\WebDAV\\Tree($publicDir);\n$server = new \\Sabre\\DAV\\Server($objectTree);\n$server->setBaseUri($this->generateUrl('pimcore_webdav', ['path' => '/']));\n$server->addPlugin($lockPlugin);\n$server->addPlugin(new \\Sabre\\DAV\\Browser\\Plugin());\n$server->start();\n```\n\nMost WebDAV file and folder operations perform permission checks through `isAllowed()`, but `Tree::move()` does not. In the overwrite path for a same-directory move, it deletes the source asset before resolving the current user:\n\n```php\n# models/Asset/WebDAV/Tree.php\nif (dirname($sourcePath) == dirname($destinationPath)) {\n    if ($asset = Asset::getByPath('/' . $destinationPath)) {\n        $sourceAsset = Asset::getByPath('/' . $sourcePath);\n        $asset->setData($sourceAsset->getData());\n        $sourceAsset->delete();\n    }\n    ...\n}\n\n$user = \\Pimcore\\Tool\\Admin::getCurrentUser();\n$asset->setUserModification($user->getId());\n$asset->save();\n```\n\n`Asset::delete()` removes the asset without an internal permission gate:\n\n```php\n# models/Asset.php\npublic function delete(bool $isNested = false): void\n{\n    ...\n    $this->getDao()->delete();\n    ...\n    $this->deletePhysicalFile();\n}\n```\n\nBecause the source asset deletion happens before `$user->getId()`, an unauthenticated request can still cause a deletion even if later execution fails when no current user is present.\n\n### PoC\nPrerequisites:\n\n- Pimcore 2026.1.0 with the built-in WebDAV route enabled.\n- Two existing asset paths in the same directory, for example `/products/source.jpg` and `/products/existing.jpg`.\n- No valid session is required for the unauthenticated deletion path.\n\nPoC request:\n\n```http\nMOVE /asset/webdav/products/source.jpg HTTP/1.1\nHost: target.example\nDestination: http://target.example/asset/webdav/products/existing.jpg\nOverwrite: T\n```\n\nResult:\n\nThe server will return an error after the deletion because `Tree::move()` later attempts to call `$user->getId()` when no current user exists. However, the source asset at `/products/source.jpg` has already been deleted by `$sourceAsset->delete()` before that failure point.\n\nFor an authenticated low-privileged backend user without sufficient asset permissions, the same request can also reach the unchecked move path and may overwrite the destination asset or move an asset without the expected per-asset permission checks.\n\n### Impact\nThis issue allows remote unauthorized destruction of assets when paths are known or guessable. In Pimcore deployments where assets represent product images, documents, media, or DAM-managed business content, deletion or unauthorized overwrite can cause data loss, content integrity loss, and service disruption.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "pimcore/pimcore"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "12.0.0-RC1"
+            },
+            {
+              "fixed": "12.3.7"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 12.3.6"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "pimcore/pimcore"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2026.1.0"
+            },
+            {
+              "fixed": "2026.1.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "pimcore/pimcore"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "11.5.17"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 11.5.16"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pimcore/pimcore/security/advisories/GHSA-wc7j-g8wx-m2qx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pimcore/pimcore/pull/19120"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pimcore/pimcore/commit/9d7c77fd9b19fa011ce470de95d4438e65007d99"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pimcore/pimcore"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pimcore/pimcore/releases/tag/v12.3.7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-27T17:17:18Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vq8v-xvjg-8pvf",
+  "modified": "2025-03-12T00:31:48Z",
+  "published": "2025-03-12T00:31:48Z",
+  "aliases": [
+    "CVE-2022-49638"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nicmp: Fix data-races around sysctl.\n\nWhile reading icmp sysctl variables, they can be changed concurrently.\nSo, we need to add READ_ONCE() to avoid data-races.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49638"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0cba7ca667ceb06934746ddd9833a25847bde81d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1740e5922fbb705637ae9fa5203db132fc45f9f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48d7ee321ea5182c6a70782aa186422a70e67e22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53ecd09ef2fb35fa69667ae8e414ef6b00fd3bf6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/798c2cf57c63ab39c8aac24d6a3d50f4fa5eeb06"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e088ceb73c24ab4774da391d54a6426f4bfaefce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2828e8c605853f71267825c9415437c0a93e4f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/edeec63b13c252193d626c2a48d7a2f0e7016dc2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:39Z"
+  }
+}

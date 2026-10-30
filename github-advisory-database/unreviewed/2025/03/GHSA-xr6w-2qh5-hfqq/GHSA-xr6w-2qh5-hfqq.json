@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xr6w-2qh5-hfqq",
+  "modified": "2025-04-15T21:31:30Z",
+  "published": "2025-03-27T18:31:28Z",
+  "aliases": [
+    "CVE-2023-53017"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: fix memory leak in hci_update_adv_data()\n\nWhen hci_cmd_sync_queue() failed in hci_update_adv_data(), inst_ptr is\nnot freed, which will cause memory leak, convert to use ERR_PTR/PTR_ERR\nto pass the instance to callback so no memory needs to be allocated.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53017"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ed8b37cbaf14574c779064ef1372af62e8ba6aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ac6043bd3e5b58d30f50737aedc2e58e8087ad5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-27T17:15:51Z"
+  }
+}

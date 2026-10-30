@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gfj4-2p4p-m25j",
+  "modified": "2025-04-07T21:32:07Z",
+  "published": "2025-04-07T15:31:10Z",
+  "aliases": [
+    "CVE-2024-57868"
+  ],
+  "details": "Web::API 2.8 and earlier for Perl uses the rand() function as the default source of entropy, which is not cryptographically secure, for cryptographic functions.\n\nSpecifically Web::API uses the Data::Random library which specifically states that it is \"Useful mostly for test programs\". Data::Random uses the rand() function.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57868"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/dist/Web-API/source/lib/Web/API.pm#L20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/dist/Web-API/source/lib/Web/API.pm#L348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/BAREFOOT/Data-Random-0.13/source/lib/Data/Random.pm#L537"
+    },
+    {
+      "type": "WEB",
+      "url": "https://perldoc.perl.org/functions/rand"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.metacpan.org/docs/guides/random-data-for-security.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-331",
+      "CWE-338"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-05T16:15:33Z"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mh5m-5hw4-5c69",
+  "modified": "2026-06-05T20:09:38Z",
+  "published": "2026-06-05T20:09:38Z",
+  "aliases": [
+    "CVE-2026-47760"
+  ],
+  "summary": "TinyMCE Cross-Site Scripting (XSS) vulnerability using sanitization bypass through nested SVGs",
+  "details": "### Impact\nTinyMCE 6.8.x contains an XSS vulnerability caused by improper SVG namespace scope handling in the sanitizer. A crafted payload using nested <svg> elements can bypass attribute sanitization and execute arbitrary JavaScript.\n\n### Patches\nThis issue affects TinyMCE 6.8.x-7.0.x. The vulnerability is fixed in TinyMCE 7.1.0 and later.\n\n### Workarounds\nNo official workaround available.\n\n### Acknowledgements\nTiny thanks [maple3142](https://github.com/maple3142) (<https://maple3142.net>) of DEVCORE for their help identifying this vulnerability.\n\n### References\nFix introduced in TinyMCE 7.1.0 though a rewrite of code causing the vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "tinymce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.8.0"
+            },
+            {
+              "fixed": "7.1.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "TinyMCE"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.8.0"
+            },
+            {
+              "fixed": "7.1.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "tinymce/tinymce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.8.0"
+            },
+            {
+              "fixed": "7.1.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinymce/tinymce/security/advisories/GHSA-mh5m-5hw4-5c69"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47760"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/tinymce/tinymce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-05T20:09:38Z",
+    "nvd_published_at": "2026-05-28T16:16:28Z"
+  }
+}

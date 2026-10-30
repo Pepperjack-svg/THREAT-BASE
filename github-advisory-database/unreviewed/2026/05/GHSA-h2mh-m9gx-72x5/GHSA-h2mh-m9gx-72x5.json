@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h2mh-m9gx-72x5",
+  "modified": "2026-05-08T21:31:21Z",
+  "published": "2026-05-06T12:30:35Z",
+  "aliases": [
+    "CVE-2026-43262"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngfs2: fiemap page fault fix\n\nIn gfs2_fiemap(), we are calling iomap_fiemap() while holding the inode\nglock.  This can lead to recursive glock taking if the fiemap buffer is\nmemory mapped to the same inode and accessing it triggers a page fault.\n\nFix by disabling page faults for iomap_fiemap() and faulting in the\nbuffer by hand if necessary.\n\nFixes xfstest generic/742.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43262"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e121c53b581e40397ae08090a7af4ed10781fbc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d2c4f182ea8516de8682e2b60411c03df00e3ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d5d9ec957bfa1eb2b05861c19f5d701dd006db7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9d15fee888f0e8938c9aeed71ec9c2cbba0c88ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cead3bebf3e318578b8a86a5472015d713d2a8a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e411d74cc5ba290f85d0dd5e4d1df8f1d6d975d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e428670cfb2993d8c224effd076242ca6b0950de"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:47Z"
+  }
+}

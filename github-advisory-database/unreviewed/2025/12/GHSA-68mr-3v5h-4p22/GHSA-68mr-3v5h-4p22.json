@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-68mr-3v5h-4p22",
+  "modified": "2025-12-05T21:30:22Z",
+  "published": "2025-12-03T18:30:26Z",
+  "aliases": [
+    "CVE-2025-65841"
+  ],
+  "details": "Aquarius Desktop 3.0.069 for macOS stores user authentication credentials in the local file ~/Library/Application Support/Aquarius/aquarius.settings using a weak obfuscation scheme. The password is \"encrypted\" through predictable byte-substitution that can be trivially reversed, allowing immediate recovery of the plaintext value. Any attacker who can read this settings file can fully compromise the victim's Aquarius account by importing the stolen configuration into their own client or login through the vendor website. This results in complete account takeover, unauthorized access to cloud-synchronized data, and the ability to perform authenticated actions as the user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-65841"
+    },
+    {
+      "type": "WEB",
+      "url": "https://almightysec.com/account-takeover-via-weak-encryption"
+    },
+    {
+      "type": "WEB",
+      "url": "http://acustica.com"
+    },
+    {
+      "type": "WEB",
+      "url": "http://aquarius.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-03T17:15:54Z"
+  }
+}

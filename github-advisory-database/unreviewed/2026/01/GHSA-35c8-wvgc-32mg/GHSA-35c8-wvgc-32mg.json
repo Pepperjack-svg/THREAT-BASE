@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-35c8-wvgc-32mg",
+  "modified": "2026-06-02T15:31:52Z",
+  "published": "2026-01-31T12:30:12Z",
+  "aliases": [
+    "CVE-2026-23037"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: etas_es58x: allow partial RX URB allocation to succeed\n\nWhen es58x_alloc_rx_urbs() fails to allocate the requested number of\nURBs but succeeds in allocating some, it returns an error code.\nThis causes es58x_open() to return early, skipping the cleanup label\n'free_urbs', which leads to the anchored URBs being leaked.\n\nAs pointed out by maintainer Vincent Mailhol, the driver is designed\nto handle partial URB allocation gracefully. Therefore, partial\nallocation should not be treated as a fatal error.\n\nModify es58x_alloc_rx_urbs() to return 0 if at least one URB has been\nallocated, restoring the intended behavior and preventing the leak\nin es58x_open().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23037"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-253495.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/611e839d2d552416b498ed5593e10670f61fcd4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c5124a60989051799037834f0a1a4b428718157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97250eb05e4b6afe787290e8fd97d0675116c61b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aec888f44853584b5a7cd01249806030cf94a73d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1979778e98569c1e78c2c7f16bb24d76541ab00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba45e3d6b02c97dbb4578fbae7027fd66f3caa10"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-31T12:16:07Z"
+  }
+}

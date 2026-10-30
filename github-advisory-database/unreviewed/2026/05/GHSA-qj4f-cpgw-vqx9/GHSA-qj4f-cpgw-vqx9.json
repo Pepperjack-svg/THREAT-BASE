@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qj4f-cpgw-vqx9",
+  "modified": "2026-05-21T15:34:08Z",
+  "published": "2026-05-21T12:31:45Z",
+  "aliases": [
+    "CVE-2026-45255"
+  ],
+  "details": "When bsdinstall or bsdconfig are prompted to scan for nearby Wi-Fi networks, they build up a list of network names and use bsddialog(1) to prompt the user to select a network.  This is implemented using a shell script, and the code which handled network names was not careful to prevent expansion by the shell.  As a result, a suitably crafted network name can be used to execute commands via a subshell.\n\nThe problem can be exploited to execute code as root on the system running bsdinstall or bsdconfig.  The attacker would need to create an access point with a specially crafted name and be within range of a Wi-Fi scan.  Note that bsdinstall and bsdconfig are vulnerable as soon as the user prompts them to scan for nearby networks; they do not need to actually select the malicious network.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45255"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-26:23.bsdinstall.asc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-21T10:16:26Z"
+  }
+}

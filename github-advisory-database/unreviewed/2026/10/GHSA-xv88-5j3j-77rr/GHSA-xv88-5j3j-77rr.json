@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xv88-5j3j-77rr",
+  "modified": "2026-10-13T21:33:35Z",
+  "published": "2026-10-13T21:33:35Z",
+  "aliases": [
+    "CVE-2026-110208"
+  ],
+  "details": "Wukong AICRM through 20260610 contains a missing authorization vulnerability in the /systemConfig controller that allows any authenticated user to read the stored AI provider API key. Attackers can request GET /systemConfig/byType/ai for the cleartext key, or send a chosen apiUrl to /systemConfig/ai/test, forwarding the stored key to their host.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WuKongOpenSource/Wukong-AICRM"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WuKongOpenSource/Wukong-AICRM/blob/20260610/backend/src/main/java/com/kakarote/ai_crm/controller/SystemConfigController.java#L53-L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WuKongOpenSource/Wukong-AICRM/blob/20260610/backend/src/main/java/com/kakarote/ai_crm/service/impl/SystemConfigServiceImpl.java#L143-L155"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WuKongOpenSource/Wukong-AICRM/blob/20260610/backend/src/main/java/com/kakarote/ai_crm/service/impl/SystemConfigServiceImpl.java#L260-L294"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WuKongOpenSource/Wukong-AICRM/blob/20260610/backend/src/main/java/com/kakarote/ai_crm/service/impl/SystemConfigServiceImpl.java#L607-L619"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/wukong-aicrm-api-wide-missing-authorization"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wukong-aicrm-through-20260610-missing-authorization-in-system-configuration-apis-exposes-stored-ai-provider-keys"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:44Z"
+  }
+}

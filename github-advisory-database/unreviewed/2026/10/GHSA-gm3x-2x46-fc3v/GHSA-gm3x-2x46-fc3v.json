@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gm3x-2x46-fc3v",
+  "modified": "2026-10-16T18:34:47Z",
+  "published": "2026-10-16T18:34:47Z",
+  "aliases": [
+    "CVE-2026-111654"
+  ],
+  "details": "FastBee through 2.1.0 contains an insecure direct object reference vulnerability that allows authenticated low-privilege users to access other users' device groups because GroupController queries lack owner checks. Attackers, including self-registered users, can supply sequential group IDs to read, overwrite, reassign, rewrite device associations of, or delete other users' groups.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kerwincui/FastBee/blob/v2.1.0/springboot/fastbee-open-api/src/main/java/com/fastbee/data/controller/GroupController.java#L70-L137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kerwincui/FastBee/blob/v2.1.0/springboot/fastbee-service/fastbee-iot-service/src/main/java/com/fastbee/iot/service/impl/GroupServiceImpl.java#L37-L143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kerwincui/FastBee/blob/v2.1.0/springboot/fastbee-service/fastbee-iot-service/src/main/resources/mapper/iot/GroupMapper.xml#L36-L109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/fastbee-device-group-cross-user-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/fastbee-through-2.1.0-idor-via-iot-group-by-id-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:46Z"
+  }
+}

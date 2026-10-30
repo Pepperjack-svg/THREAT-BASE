@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5m54-qph5-4wvp",
+  "modified": "2025-12-11T21:31:26Z",
+  "published": "2025-09-22T21:30:18Z",
+  "aliases": [
+    "CVE-2025-39856"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: ti: am65-cpsw-nuss: Fix null pointer dereference for ndev\n\nIn the TX completion packet stage of TI SoCs with CPSW2G instance, which\nhas single external ethernet port, ndev is accessed without being\ninitialized if no TX packets have been processed. It results into null\npointer dereference, causing kernel to crash. Fix this by having a check\non the number of TX packets which have been processed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39856"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/485302905bada953aadfe063320d73c892a66cbb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6099f263e1f408bcc7913c9df24b0677164fc5d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-19T16:15:44Z"
+  }
+}

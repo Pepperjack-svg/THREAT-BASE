@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7vq8-6v9j-p4jg",
+  "modified": "2026-05-08T15:31:14Z",
+  "published": "2026-05-01T15:30:36Z",
+  "aliases": [
+    "CVE-2026-43021"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: fix leaks when hci_cmd_sync_queue_once fails\n\nWhen hci_cmd_sync_queue_once() returns with error, the destroy callback\nwill not be called.\n\nFix leaking references / memory on these failures.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43021"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7fd74178d4b16dcf47179da634ea9d7c02e3608b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aca377208e7f7322bf4e107cdec6e7d7e8aa7a88"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:46Z"
+  }
+}

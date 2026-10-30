@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qc6m-xxcv-cwh2",
+  "modified": "2026-10-22T03:33:51Z",
+  "published": "2026-10-22T03:33:50Z",
+  "aliases": [
+    "CVE-2026-114732"
+  ],
+  "details": "Roundcube Webmail before 1.6.20 and 1.7.x before 1.7.5 is affected by an improper authentication vulnerability in multi-host installations. When a user logs in with an alias address, rcube_user::query() matched the address against identity records without qualifying the lookup by IMAP host, so a login could be resolved to a user account belonging to a different IMAP host. Upstream fixed this in the commit “Fix bug where an alias login wasn’t qualified by IMAP host”.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114732"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/453c413d6851cf603bebdb15e58381f5ef9b8094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/cb235cbfef88cbf78236dc67d3b667bf3dc61ddd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.debian.org/1151279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.6.20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.7.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://roundcube.net/news/2026/10/19/security-updates-1.6.20-and-1.7.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-288"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T03:16:38Z"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q9fm-mpg8-8jqm",
+  "modified": "2026-06-29T23:04:41Z",
+  "published": "2026-05-26T13:30:17Z",
+  "aliases": [
+    "CVE-2026-8353"
+  ],
+  "summary": "Concrete CMS is vulnerable to Stored XSS via page name in the Atomik theme",
+  "details": "Concrete CMS version 9.0 to 9.5.0 is vulnerable to Stored XSS via page name in the Atomik theme. A rogue editor can inject arbitrary JavaScript that executes in the context of any authenticated user visiting the affected account pages. This can lead to session hijacking, credential theft, malicious actions performed on behalf of users, and potential privilege escalation. Thanks Yonatan Drori (Tenzai) for reporting.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "concrete5/concrete5"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "9.0.0RC.1"
+            },
+            {
+              "fixed": "9.5.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8353"
+    },
+    {
+      "type": "WEB",
+      "url": "https://documentation.concretecms.org/9-x/developers/introduction/version-history/951-release-notes"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/concretecms/concretecms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-29T23:04:41Z",
+    "nvd_published_at": "2026-05-22T15:16:26Z"
+  }
+}

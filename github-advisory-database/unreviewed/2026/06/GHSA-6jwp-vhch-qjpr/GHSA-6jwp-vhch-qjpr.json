@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jwp-vhch-qjpr",
+  "modified": "2026-06-09T03:31:40Z",
+  "published": "2026-06-09T03:31:40Z",
+  "aliases": [
+    "CVE-2026-8795"
+  ],
+  "details": "A YAML injection vulnerability exists in the Windows.Collectors.Remapping artifact of Rapid7 Velociraptor before version 0.76.6. The hostname field in client_info.json inside a collection ZIP is inserted into a YAML template via Go's text/template without escaping. An attacker providing a crafted collection ZIP can leverage literal double quotes and newlines in the hostname to break out of the YAML quoted string and inject a new mount remapping entry. When an analyst applies the generated remapping file with --remap, arbitrary VQL executes on their machine with NullACLManager (all permissions granted, unsandboxed).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8795"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.velociraptor.app/announcements/advisories/cve-2026-8795"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-74"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-09T01:16:47Z"
+  }
+}

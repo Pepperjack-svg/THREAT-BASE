@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c4mr-qx6r-6753",
+  "modified": "2025-12-02T00:31:11Z",
+  "published": "2025-09-16T18:31:26Z",
+  "aliases": [
+    "CVE-2023-53310"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: axp288_fuel_gauge: Fix external_power_changed race\n\nfuel_gauge_external_power_changed() dereferences info->bat,\nwhich gets sets in axp288_fuel_gauge_probe() like this:\n\n  info->bat = devm_power_supply_register(dev, &fuel_gauge_desc, &psy_cfg);\n\nAs soon as devm_power_supply_register() has called device_add()\nthe external_power_changed callback can get called. So there is a window\nwhere fuel_gauge_external_power_changed() may get called while\ninfo->bat has not been set yet leading to a NULL pointer dereference.\n\nFixing this is easy. The external_power_changed callback gets passed\nthe power_supply which will eventually get stored in info->bat,\nso fuel_gauge_external_power_changed() can simply directly use\nthe passed in psy argument which is always valid.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53310"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0456b912121e45b3ef54abe3135e5dcb541f956c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a636c6ba9ce898207f283271cb28511206ab739b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8319774d6f1567d6e7d03653174ab0c82c5c66d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T17:15:36Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h47c-w329-qc9g",
+  "modified": "2025-03-06T09:31:53Z",
+  "published": "2025-03-06T09:31:53Z",
+  "aliases": [
+    "CVE-2024-13897"
+  ],
+  "details": "The Moving Media Library plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the generate_json_page function in all versions up to, and including, 1.22. This makes it possible for authenticated attackers, with Administrator-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13897"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/moving-media-library/trunk/lib/class-movingmedialibraryadmin.php#L166"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3244709/moving-media-library/trunk/lib/class-movingmedialibraryadmin.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/815ce00b-3753-4c38-8a30-5242a5841734?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-06T09:15:25Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f86f-gm48-j2g3",
+  "modified": "2025-11-03T21:32:53Z",
+  "published": "2025-02-27T03:34:01Z",
+  "aliases": [
+    "CVE-2024-57998"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nOPP: add index check to assert to avoid buffer overflow in _read_freq()\n\nPass the freq index to the assert function to make sure\nwe do not read a freq out of the opp->rates[] table when called\nfrom the indexed variants:\ndev_pm_opp_find_freq_exact_indexed() or\ndev_pm_opp_find_freq_ceil/floor_indexed().\n\nAdd a secondary parameter to the assert function, unused\nfor assert_single_clk() then add assert_clk_index() which\nwill check for the clock index when called from the _indexed()\nfind functions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57998"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/774dd6f0f0a61c9c3848e025d7d9eeed1a7ca4cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d68c20638e50d5eb4576492a7958328ae445248"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d659bc68ed489022ea33342cfbda2911a81e7a0d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da2a6acc73933b7812c94794726e438cde39e037"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb6ffa0192ba83ece1a318b956265519c5c7dcec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/03/msg00028.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T02:15:13Z"
+  }
+}

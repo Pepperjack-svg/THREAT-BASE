@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x75c-f5w5-hw79",
+  "modified": "2025-03-06T12:30:44Z",
+  "published": "2025-03-06T12:30:44Z",
+  "aliases": [
+    "CVE-2025-1696"
+  ],
+  "details": "A vulnerability exists in Docker Desktop prior to version 4.39.0 that could lead to the unintentional disclosure of sensitive information via application logs. In affected versions, proxy configuration data—potentially including sensitive details—was written to log files in clear text whenever an HTTP GET request was made through a proxy. An attacker with read access to these logs could obtain the proxy information and leverage it for further attacks or unauthorized access. Starting with version 4.39.0, Docker Desktop no longer logs the proxy string, thereby mitigating this risk.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-1696"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.docker.com/desktop/settings-and-maintenance/settings/#proxies"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/#check-the-logs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-06T12:15:36Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p87j-mfw6-x975",
+  "modified": "2026-10-13T21:33:40Z",
+  "published": "2026-10-13T21:33:40Z",
+  "aliases": [
+    "CVE-2026-110235"
+  ],
+  "details": "MP Manager through 1.1.0 contains a path traversal vulnerability that allows attackers to write files outside the extraction folder by bypassing the non-recursive sanitizeEntryName filter. Attackers can craft TAR, 7z or RAR entries named ....//file that become ../file, creating or overwriting files anywhere the app can write on shared storage.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AbdurazaaqMohammed/MP-Manager/blob/592107e4bbe9da26bf10b3e22b023696324fb99f/app/src/main/java/io/github/abdurazaaqmohammed/utils/ArchiveUtil.java#L134-L152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AbdurazaaqMohammed/MP-Manager/blob/592107e4bbe9da26bf10b3e22b023696324fb99f/app/src/main/java/io/github/abdurazaaqmohammed/utils/ArchiveUtil.java#L226-L231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AbdurazaaqMohammed/MP-Manager/releases/tag/1.1.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/S161BQjoMx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mp-manager-through-1.1.0-path-traversal-via-archive-extraction-sanitizeentryname-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:48Z"
+  }
+}

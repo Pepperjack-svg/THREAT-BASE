@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3c52-2wpc-wj62",
+  "modified": "2025-11-19T15:31:31Z",
+  "published": "2025-06-18T12:30:57Z",
+  "aliases": [
+    "CVE-2022-50222"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: vt: initialize unicode screen buffer\n\nsyzbot reports kernel infoleak at vcs_read() [1], for buffer can be read\nimmediately after resize operation. Initialize buffer using kzalloc().\n\n  ----------\n  #include <fcntl.h>\n  #include <unistd.h>\n  #include <sys/ioctl.h>\n  #include <linux/fb.h>\n\n  int main(int argc, char *argv[])\n  {\n    struct fb_var_screeninfo var = { };\n    const int fb_fd = open(\"/dev/fb0\", 3);\n    ioctl(fb_fd, FBIOGET_VSCREENINFO, &var);\n    var.yres = 0x21;\n    ioctl(fb_fd, FBIOPUT_VSCREENINFO, &var);\n    return read(open(\"/dev/vcsu\", O_RDONLY), &var, sizeof(var)) == -1;\n  }\n  ----------",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50222"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/446f123aa6021e5f75a20789f05ff3f7ae51a42f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c6c65681f39bf71bc72ed589dec3b8b20e75cac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/777a462e1ae50a01fc4a871efa8e34d596a1e17d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af77c56aa35325daa2bc2bed5c2ebf169be61b86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc9e874dace0c89ae535230c7da19b764746811e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e02fa87e572bb7d90dcdbce9c0f519f1eb992e96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0ef23e9b0ad18b9fd3741b0f1ad2282e4a18def"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:53Z"
+  }
+}

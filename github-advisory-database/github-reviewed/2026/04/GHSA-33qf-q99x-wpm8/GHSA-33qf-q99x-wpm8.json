@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-33qf-q99x-wpm8",
+  "modified": "2026-04-27T16:15:58Z",
+  "published": "2026-04-16T21:28:39Z",
+  "aliases": [
+    "CVE-2026-40602"
+  ],
+  "summary": "Home Assistant Command-line Interface: Handling of user-supplied Jinja2 templates",
+  "details": "### Impact\n\nUp to 1.0.0 of `home-assitant-cli` (or `hass-cli` for short) an unrestricted environment was used to handle Jninja2 templates instead of a sandboxed one. The user-supplied input within Jinja2 templates was rendered locally with no restrictions. This gave users access to Python's internals and extended the scope of templating beyond the intended usage.\n\nE. g., it was possible to render a template with `hass-cli template bad-template.j2 --local` that contained entries like\n\n````j2\n{%- set b   = environ.__globals__['__builtins__'] -%}\n{%- set os  = b['__import__']('os') -%}\n{%- set bio = b['__import__']('builtins') -%}\n...\n````\n\nor other malicious Jinja2 expressions. This can lead to arbitrary code execution on the local machine.\n\nIn a two step process an adversary could trick/convince an user to download third-party templates which contain harmful code (e. g., perform data manipulation or establish a remote shell)  then to render those templates unchecked/reviewed/verified with `--local`. \n\nThe issue only affect the local machine and not a remote Home Assistant instance. It also requires user interventions.\n\n### Patches\n\n1.0.0 uses `ImmutableSandboxedEnvironment` and restricts the usage of environment variables.\n\n### Workarounds\n\nEvaluate the Jninja2 templates manually or  tool-based before rendering with `hass-cli`.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "homeassistant-cli"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/home-assistant-ecosystem/home-assistant-cli/security/advisories/GHSA-33qf-q99x-wpm8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40602"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/home-assistant-ecosystem/home-assistant-cli/pull/453"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/home-assistant-ecosystem/home-assistant-cli"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336",
+      "CWE-94"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-16T21:28:39Z",
+    "nvd_published_at": "2026-04-21T18:16:51Z"
+  }
+}

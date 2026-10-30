@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hwmf-9wj8-35pw",
+  "modified": "2026-09-23T18:31:08Z",
+  "published": "2026-06-03T21:30:31Z",
+  "aliases": [
+    "CVE-2026-26824"
+  ],
+  "details": "libxls through version 1.6.3 contains a use of uninitialized memory vulnerability in the OLE container parser. Memory allocated for the Master Sector Allocation Table (MSAT) in read_MSAT() is not fully initialized before being consumed by ole2_validate_sector_chain(), which may result in application crashes or potential information disclosure when processing a crafted XLS file",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26824"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libxls/libxls/issues/153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libxls/libxls/issues/155"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libxls/libxls/commit/9adebc9b6d60db21f25ddc898e8760eeb69d6529"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-457"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-03T20:16:18Z"
+  }
+}

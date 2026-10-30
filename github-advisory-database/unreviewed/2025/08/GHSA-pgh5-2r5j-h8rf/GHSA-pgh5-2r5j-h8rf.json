@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pgh5-2r5j-h8rf",
+  "modified": "2025-08-14T18:31:28Z",
+  "published": "2025-08-14T18:31:28Z",
+  "aliases": [
+    "CVE-2025-20127"
+  ],
+  "details": "A vulnerability in the TLS 1.3 implementation for a specific cipher for Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software for Cisco Firepower 3100 and 4200 Series devices could allow an authenticated, remote attacker to consume resources that are associated with incoming TLS 1.3 connections, which eventually could cause the device to stop accepting any new SSL/TLS or VPN requests.\n\nThis vulnerability is due to the implementation of the TLS 1.3 Cipher TLS_CHACHA20_POLY1305_SHA256. An attacker could exploit this vulnerability by sending a large number of TLS 1.3 connections with the specific TLS 1.3 Cipher TLS_CHACHA20_POLY1305_SHA256. A successful exploit could allow the attacker to cause a denial of service (DoS) condition where no new incoming encrypted connections are accepted. The device must be reloaded to clear this condition.\nNote: These incoming TLS 1.3 connections include both data traffic and user-management traffic. After the device is in the vulnerable state, no new encrypted connections can be accepted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-20127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-3100_4200_tlsdos-2yNSCd54"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-404"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-14T17:15:33Z"
+  }
+}

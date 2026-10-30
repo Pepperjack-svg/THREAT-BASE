@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f85v-6xgf-cq2m",
+  "modified": "2026-02-19T18:31:51Z",
+  "published": "2026-02-19T18:31:50Z",
+  "aliases": [
+    "CVE-2026-2284"
+  ],
+  "details": "The News Element Elementor Blog Magazine plugin for WordPress is vulnerable to Missing Authorization in all versions up to, and including, 1.0.8. This is due to a missing capability check and nonce verification on the 'ne_clean_data' AJAX action. This makes it possible for authenticated attackers, with Subscriber-level access and above, to truncate 8 core WordPress database tables (posts, comments, terms, term_relationships, term_taxonomy, postmeta, commentmeta, termmeta) and delete the entire WordPress uploads directory, resulting in complete data loss.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2284"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/news-element/tags/1.0.8/admin/inc/dash.php#L206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/news-element/trunk/admin/inc/dash.php#L206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e5d81318-c9da-4626-acfa-f092d2ce5fe9?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-19T07:17:46Z"
+  }
+}

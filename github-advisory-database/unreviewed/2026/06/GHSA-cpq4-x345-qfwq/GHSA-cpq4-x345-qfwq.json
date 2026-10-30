@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cpq4-x345-qfwq",
+  "modified": "2026-07-08T06:31:35Z",
+  "published": "2026-06-26T21:32:17Z",
+  "aliases": [
+    "CVE-2026-53299"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: airoha: Move ndesc initialization at end of airoha_qdma_init_tx()\n\nIf queue entry list allocation fails in airoha_qdma_init_tx_queue routine,\nairoha_qdma_cleanup_tx_queue() will trigger a NULL pointer dereference\naccessing the queue entry array. The issue is due to the early ndesc\ninitialization in airoha_qdma_init_tx_queue(). Fix the issue moving ndesc\ninitialization at end of airoha_qdma_init_tx routine.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53299"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90619fdedfb9cc8a80f217d882ee7a84d3703e72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ece31f9dae0c3cd3277e66667e7b8ab2577cf34a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f329924bb49458c65297f1361f545816a5b90998"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-26T20:17:23Z"
+  }
+}

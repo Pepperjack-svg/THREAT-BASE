@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p8f3-3m4r-p796",
+  "modified": "2026-10-19T15:32:38Z",
+  "published": "2026-10-19T15:32:38Z",
+  "aliases": [
+    "CVE-2026-111925"
+  ],
+  "details": "Mopidy before 4.0.5 contains a path traversal vulnerability that allows unauthenticated clients to access local files outside file/media_dirs because FileLibraryProvider.lookup() lacks a containment check. Attackers can call core.library.lookup or core.tracklist.add over JSON-RPC or WebSocket with file:// URIs to probe file existence, read tag metadata, and play out-of-sandbox files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111925"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mopidy/mopidy/issues/2350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mopidy/mopidy/commit/f23c1f8621c3f4eb07a35d37fccb597449d36415"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mopidy/mopidy/blob/v4.0.4/src/mopidy/_exts/file/library.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mopidy/mopidy/releases/tag/v4.0.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mopidy-before-4.0.5-path-traversal-via-file-backend-library-lookup"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T14:17:00Z"
+  }
+}

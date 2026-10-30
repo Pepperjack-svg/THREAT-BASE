@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fff7-gx98-vr3g",
+  "modified": "2026-06-04T21:31:21Z",
+  "published": "2026-06-04T18:30:32Z",
+  "aliases": [
+    "CVE-2026-49942"
+  ],
+  "details": "Net::CIDR::Set versions through 0.20 for Perl did not validate network masks.\n\nThe mask portion of a network mask could contain Unicode digits such as the Arabic-Indic One (U+0661), or non-digits, which were ignored.   This could allow network masks to accept larger networks.\n\nLeading zeros were also accepted, but treated as decimal instead of octal.  This could lead to confusion about what networks are acceptable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40911"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45191"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49942"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/RRWO/Net-CIDR-Set-0.21/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1289"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-04T17:16:33Z"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hf68-g98v-wp9g",
+  "modified": "2026-06-23T23:06:18Z",
+  "published": "2026-06-23T23:06:18Z",
+  "aliases": [
+    "CVE-2026-55483"
+  ],
+  "summary": "Snipe-IT Vulnerable to Privilege Escalation via Missing admin Permission Check in User Creation",
+  "details": "### Impact\nThe `store()` method in both the web and API `UsersController` only strips the superuser permission when a non-superuser creates a user. It does not strip the admin permission. This allows any authenticated user with the `users.create` permission to create a new user with full admin privileges.\n\nThe `users.create permission`  may commonly be delegated to HR staff, department leads, or similar roles.\n\n### Patches\nPatched in [aea3877718](https://github.com/grokability/snipe-it/commit/aea3877718158cc2a10c2dde4597b1f439f5f6cb)",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-hf68-g98v-wp9g"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/aea3877718158cc2a10c2dde4597b1f439f5f6cb"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-23T23:06:18Z",
+    "nvd_published_at": null
+  }
+}

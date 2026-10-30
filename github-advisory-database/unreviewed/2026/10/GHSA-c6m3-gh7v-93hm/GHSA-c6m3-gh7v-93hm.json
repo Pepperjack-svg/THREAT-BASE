@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c6m3-gh7v-93hm",
+  "modified": "2026-10-23T15:31:35Z",
+  "published": "2026-10-23T15:31:35Z",
+  "aliases": [
+    "CVE-2026-99026"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: team: free skb when broadcast has no txable port\n\nbc_transmit() sends the original skb through the last txable port.\nWhen no port is txable, it returns false without consuming the skb, but\nteam_xmit() still returns NETDEV_TX_OK. AF_PACKET sends then retain the\nskb and its socket write-memory charge.\n\nA TX-enabled, link-down port keeps the broadcast transmit op installed.\nCarrier can stay up through a second link-up, TX-disabled port or be\nforced on by userspace. Free the original skb on the no-port path while\nleaving the existing drop accounting intact.\n\nDiscovered by Sashiko during review of previous commit.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99026"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/489114c9ecae44e523361a4b3e610ee5ebd9189c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/961563117626f4681623077ec0cfd86f86da0d49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f34b1bcac4581a5bd3daf9eff90f175e736b54aa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:25Z"
+  }
+}

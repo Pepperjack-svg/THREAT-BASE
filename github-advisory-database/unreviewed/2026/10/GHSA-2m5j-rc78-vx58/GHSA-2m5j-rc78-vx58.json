@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2m5j-rc78-vx58",
+  "modified": "2026-10-19T18:32:05Z",
+  "published": "2026-10-18T15:30:31Z",
+  "aliases": [
+    "CVE-2026-112057"
+  ],
+  "details": "libdvdnav before 7.0.0 contains a heap out-of-bounds read vulnerability in dvdnav_describe_title_chapters that allows attackers to read beyond the part-of-title array by supplying an oversized vts_ttn value. Attackers can provide a crafted DVD or disc image declaring a larger VMGI title vts_ttn than the title set's entries to crash applications enumerating chapters.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112057"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.videolan.org/videolan/libdvdnav/-/blob/6.1.1/src/searching.c#L670"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.videolan.org/videolan/libdvdnav/-/commit/1d2af48d685911a169fe77d500b1d426910c6f77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/cve-2026-112057-112058-libdvdnav-navigation-index-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/libdvdnav-navigation-index-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libdvdnav-before-7.0.0-out-of-bounds-read-in-dvdnav-describe-title-chapters"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T13:16:38Z"
+  }
+}

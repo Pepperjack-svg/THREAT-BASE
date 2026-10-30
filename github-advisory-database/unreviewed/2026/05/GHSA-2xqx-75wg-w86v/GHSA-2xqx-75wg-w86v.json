@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2xqx-75wg-w86v",
+  "modified": "2026-05-07T18:30:35Z",
+  "published": "2026-05-03T03:30:28Z",
+  "aliases": [
+    "CVE-2026-40561"
+  ],
+  "details": "Starlet versions through 0.31 for Perl allows HTTP Request Smuggling via Improper Header Precedence.\n\nStarlet incorrectly prioritizes \"Content-Length\" over \"Transfer-Encoding: chunked\" when both headers are present in an HTTP request. Per RFC 7230 3.3.3, Transfer-Encoding must take precedence.\n\nAn attacker could exploit this to smuggle malicious HTTP requests via a front-end reverse proxy.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40561"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kazuho/Starlet/commit/a7d5dfd1862aafa43e5eaca0fdb6acf4cc15b2d0.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://datatracker.ietf.org/doc/html/rfc7230#section-3.3.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/KAZUHO/Starlet-0.32/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/05/03/1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-444"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-03T01:15:58Z"
+  }
+}

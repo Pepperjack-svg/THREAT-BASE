@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wfqx-5v3g-mpcg",
+  "modified": "2026-10-26T15:34:50Z",
+  "published": "2026-10-26T15:34:50Z",
+  "aliases": [
+    "CVE-2026-99098"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-integrity: fix buffer overflow in inline mode with large tag size\n\nIn inline mode, dm_integrity_check and dm_integrity_inline_recheck\ncompute the checksum of each block into an on-stack buffer of\nHASH_MAX_DIGESTSIZE bytes. integrity_sector_checksum pads its result\nwith zeroes up to the tag size, so if the tag size is larger than\nHASH_MAX_DIGESTSIZE, the padding runs past the end of the buffer. With\nCONFIG_STACKPROTECTOR the kernel panics in dm_integrity_check on the\nfirst read.\n\nEnlarge both buffers to hold MAX_TAG_SIZE bytes, as commit b93b6643e9b5\n(\"dm integrity: fix a crash with unusually large tag size\") did for\nintegrity_metadata.\n\nNote that this is not a security bug because the buffer overflow can only\nbe triggered by root.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99098"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c7aad85aeb9e28386672e3a009aa2e61f751b86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f0ee735dc68e3e6c4dd9a666d7f7047163c4165"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/764b683a6180fd72c931c13fea98d383506a3475"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f49cd7820cd0a96f20e1aa2708adb002124e38a7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T15:16:48Z"
+  }
+}

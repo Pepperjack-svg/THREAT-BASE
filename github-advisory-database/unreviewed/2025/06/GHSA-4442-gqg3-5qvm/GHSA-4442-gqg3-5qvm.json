@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4442-gqg3-5qvm",
+  "modified": "2025-11-14T21:30:27Z",
+  "published": "2025-06-18T12:30:36Z",
+  "aliases": [
+    "CVE-2022-49950"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: fastrpc: fix memory corruption on open\n\nThe probe session-duplication overflow check incremented the session\ncount also when there were no more available sessions so that memory\nbeyond the fixed-size slab-allocated session array could be corrupted in\nfastrpc_session_alloc() on open().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49950"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5cf2a57c7a01a0d7bdecf875a63682f542891b1b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf20c3533efc89578ace94fa20a9e63446223c72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d245f43aab2b61195d8ebb64cef7b5a08c590ab4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0578e603065f120a8759b75e0d6c216c7078a39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8632b8bb53ebc005d8f24a68a0c1f9678c0e908"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:22Z"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fccg-7w3p-w66f",
+  "modified": "2026-01-16T19:57:33Z",
+  "published": "2026-01-16T15:31:25Z",
+  "aliases": [
+    "CVE-2025-15104"
+  ],
+  "summary": "Nu Html Checker (vnu) contains a Server-Side Request Forgery (SSRF) vulnerability",
+  "details": "Nu Html Checker (validator.nu) contains a restriction bypass that allows remote attackers to make the server perform arbitrary HTTP/HTTPS requests to internal resources, including localhost services. While the validator implements hostname-based protections to block direct access to localhost and 127.0.0.1, these controls can be bypassed using DNS rebinding techniques or domains that resolve to loopback addresses.This issue affects The Nu Html Checker (vnu): latest (commit 23f090a11bab8d0d4e698f1ffc197a4fe226a9cd).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:L/SI:N/SA:N/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "nu.validator:validator"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "26.1.11"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "vnu-jar"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "26.1.11"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-15104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://fluidattacks.com/advisories/europe"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/validator/validator"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-16T19:57:33Z",
+    "nvd_published_at": "2026-01-16T14:15:54Z"
+  }
+}

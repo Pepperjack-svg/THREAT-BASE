@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9wq7-cgfv-cwx8",
+  "modified": "2026-10-21T09:30:29Z",
+  "published": "2026-10-21T09:30:29Z",
+  "aliases": [
+    "CVE-2026-111075"
+  ],
+  "details": "In Eclipse OpenJ9 versions prior to 0.63.0, the JITServer component fails to perform cross-field validation on attacker-controlled `_size`, `_paddingSize`, and `_dataOffset` fields during `DataDescriptor` message deserialization. An unauthenticated remote attacker can send a crafted network payload that triggers an unsigned integer underflow in `DataDescriptor::getPayloadSize()` and `DataDescriptor::getNextDescriptor()`. This results in an out-of-bounds heap read and an immediate process crash (SIGSEGV), causing a denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111075"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-openj9/openj9/pull/25009"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/941"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T08:16:42Z"
+  }
+}

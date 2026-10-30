@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rq5g-4m5j-8p36",
+  "modified": "2026-10-24T12:30:24Z",
+  "published": "2026-10-24T12:30:24Z",
+  "aliases": [
+    "CVE-2026-116018"
+  ],
+  "details": "ONEARMY community-platform before 2.165.2 contains an insecure direct object reference vulnerability that allows authenticated users to mark other users' notifications as read via POST /api/notifications/:id/read. Attackers can iterate sequential notification IDs to suppress unread indicators of users in the same tenant, causing them to miss replies, comments and new-content notices.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116018"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ONEARMY/community-platform/issues/5022"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ONEARMY/community-platform/pull/5011"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ONEARMY/community-platform/commit/571732c26caf1a0a46e5335d275cef2e19dfab08"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ONEARMY/community-platform/blob/v2.163.2/src/routes/api.notifications.$id.read.ts#L6-L22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ONEARMY/community-platform/releases/tag/v2.165.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/onearmy-community-platform-notification-read-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/onearmy-community-platform-before-2.165.2-idor-via-notification-read-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-24T12:16:58Z"
+  }
+}

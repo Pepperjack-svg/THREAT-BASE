@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8gg-qc8v-6jfx",
+  "modified": "2025-09-19T18:31:19Z",
+  "published": "2025-08-13T21:30:30Z",
+  "aliases": [
+    "CVE-2012-10054"
+  ],
+  "details": "Umbraco CMS versions prior to 4.7.1 are vulnerable to unauthenticated remote code execution via the codeEditorSave.asmx SOAP endpoint, which exposes a SaveDLRScript operation that permits arbitrary file uploads without authentication. By exploiting a path traversal flaw in the fileName parameter, attackers can write malicious ASPX scripts directly into the web-accessible /umbraco/ directory and execute them remotely.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2012-10054"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/umbraco/Umbraco-CMS"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/http/umbraco_upload_aspx.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web.archive.org/web/20111017174609/http://umbraco.codeplex.com/releases/view/73692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web.archive.org/web/20120707033729/http://blog.gdssecurity.com/labs/2012/7/3/find-bugs-faster-with-a-webmatrix-local-reference-instance.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/19671"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/umbraco-cms-rce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-434"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-13T21:15:29Z"
+  }
+}

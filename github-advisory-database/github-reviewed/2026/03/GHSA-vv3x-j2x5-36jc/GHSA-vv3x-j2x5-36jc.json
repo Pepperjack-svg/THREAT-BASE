@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vv3x-j2x5-36jc",
+  "modified": "2026-06-08T20:15:12Z",
+  "published": "2026-03-18T20:07:24Z",
+  "aliases": [
+    "CVE-2026-33080"
+  ],
+  "summary": "Filament Unvalidated Range and Values summarizer values can be used for XSS",
+  "details": "Two Table summarizers (`Range`, `Values`) render raw database values without escaping HTML. If there is a lack of validation for the data in the columns that use these summarizers, an attacker could plant malicious HTML / JavaScript and achieve stored XSS that executes for users who view the table with those summarizers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "filament/tables"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.8.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "filament/tables"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.3.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/filamentphp/filament/security/advisories/GHSA-vv3x-j2x5-36jc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33080"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/filamentphp/filament/commit/efa041aeeb4b1a99acd48aaa05584993c926d1ed"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/filamentphp/filament"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/filamentphp/filament/releases/tag/v4.8.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/filamentphp/filament/releases/tag/v5.3.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79",
+      "CWE-80"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-18T20:07:24Z",
+    "nvd_published_at": "2026-03-20T09:16:16Z"
+  }
+}

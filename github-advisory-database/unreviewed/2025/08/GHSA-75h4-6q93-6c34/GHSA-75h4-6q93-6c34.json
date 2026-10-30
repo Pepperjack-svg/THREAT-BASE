@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-75h4-6q93-6c34",
+  "modified": "2025-11-18T18:32:49Z",
+  "published": "2025-08-16T15:30:30Z",
+  "aliases": [
+    "CVE-2023-32246"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: call rcu_barrier() in ksmbd_server_exit()\n\nracy issue is triggered the bug by racing between closing a connection\nand rmmod. In ksmbd, rcu_barrier() is not called at module unload time,\nso nothing prevents ksmbd from getting unloaded while it still has RCU\ncallbacks pending. It leads to trigger unintended execution of kernel\ncode locally and use to defeat protections such as Kernel Lockdown",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-32246"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a7090ccc242ab009ee7769e9d7fad6644dbe9bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b80422474ffe44cb5e813cd6da1f1c6bc50fd9d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c053e389db0d892e2ff5a60ec5e533b976503795"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4174505016a3b2996eb7ff1530dcabbf15d47b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb307d09fe15844fdaebeb8cc8c9b9e925430aa5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-16T14:15:26Z"
+  }
+}

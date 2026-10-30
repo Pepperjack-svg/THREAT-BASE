@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-86qh-69c7-wj92",
+  "modified": "2026-10-22T12:31:15Z",
+  "published": "2026-10-22T12:31:14Z",
+  "aliases": [
+    "CVE-2021-48015"
+  ],
+  "details": "JeeWMS before commit 0a610e8 contains an unauthenticated path traversal vulnerability that allows remote attackers to read arbitrary files via the dbPath parameter. Attackers can send GET requests to /systemController/showOrDownByurl.do with ../ sequences in dbPath, which bypasses AuthInterceptor, to retrieve files like win.ini. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-17.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-48015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/erzhongxmu/JeeWMS/commit/0a610e8178a0a1197e9c6615b58faf67c406d2bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MrWQ/vulnerability-paper/blob/master/bugs/JEEWMS_%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%AD%98%E5%9C%A8%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87%E6%BC%8F%E6%B4%9E%E5%92%8C%E6%9C%AA%E6%8E%88%E6%9D%83%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/other/jeewms-lfi.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tzwlhack/Vulnerability/blob/main/JEEWMS%20%E6%9C%AA%E6%8E%88%E6%9D%83%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jeewms-path-traversal-via-showordownbyurl-do"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T11:17:04Z"
+  }
+}

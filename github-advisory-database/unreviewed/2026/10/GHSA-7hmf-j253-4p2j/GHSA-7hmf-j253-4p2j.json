@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7hmf-j253-4p2j",
+  "modified": "2026-10-12T18:31:53Z",
+  "published": "2026-10-12T18:31:53Z",
+  "aliases": [
+    "CVE-2026-109361"
+  ],
+  "details": "MONAI 1.2.0 before 1.6.1 contains an insecure deserialization vulnerability in nnUNetV2Runner that unpickles the postprocessing_file path read from inference_information.json without confining it to the results directory. Attackers who can modify inference_information.json can point it at a malicious pickle elsewhere on the filesystem to execute code when predict_ensemble_postprocessing runs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Project-MONAI/MONAI/security/advisories/GHSA-8f32-8649-rv87"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109361"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Project-MONAI/MONAI/commit/08576205c4de3c214976294d1dec8f7b2e78cdb9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/monai-1.2.0-before-1.6.1-insecure-deserialization-rce-via-nnunetv2runner-postprocessing-file-path"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T17:17:33Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f7m7-cgc5-xpx5",
+  "modified": "2026-10-28T12:31:05Z",
+  "published": "2026-10-28T12:31:05Z",
+  "aliases": [
+    "CVE-2026-99145"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: Don't transfer shrinker pages for pinned bos on purgeable state change\n\nPinned bos have their pages removed from the shrinker's shrinkable /\npurgeable counts on pin, and added back on unpin according to the\nbo's purgeable state at that time.\n\nHowever, xe_bo_set_purgeable_shrinker() unconditionally transfers\npages between the shrinkable and purgeable counts. If the purgeable\nstate of a pinned bo changes, for example by userspace madvising\nDONTNEED on a VMA of a bo that is also pinned as a scanout buffer,\nthis underflows one count and, after unpin, leaves the other one\npermanently inflated.\n\nOnly update the purgeable flag for pinned bos, and leave the page\naccounting to unpin.\n\n(cherry picked from commit afe6bc012034123fd838328668e609bf57e46bd3)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99145"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/135e998dd1e66b8854db7bd356b6563baf8b9d51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ffbfd3f98f4393e91dffce3a46ccb7cf5329cf2f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T11:17:34Z"
+  }
+}

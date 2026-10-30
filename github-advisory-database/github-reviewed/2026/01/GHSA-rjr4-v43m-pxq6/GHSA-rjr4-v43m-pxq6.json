@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rjr4-v43m-pxq6",
+  "modified": "2026-01-22T13:41:48Z",
+  "published": "2026-01-21T22:52:56Z",
+  "aliases": [],
+  "summary": "Triton VM has a Soundness Vulnerability due to Improper Sampling of Randomness",
+  "details": "In affected versions of Triton VM, the verifier failed to correctly sample randomness in the FRI sub-protocol.\n\nMalicious provers can exploit this to craft proofs for arbitrary statements that this verifier accepts as valid, undermining soundness.\n\nProtocols that rely on proofs and the supplied verifier of the affected versions of Triton VM are completely broken. Protocols implementing their own verifier might be unaffected.\n\nThe flaw was corrected in commit 3a045d63, where the relevant randomness is sampled correctly.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "crates.io",
+        "name": "triton-vm"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.41.0"
+            },
+            {
+              "fixed": "2.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/TritonVM/triton-vm/commit/3a045d636e97bb2eb628671db0001aa665c19dd8"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/TritonVM/triton-vm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TritonVM/triton-vm/releases/tag/v2.0.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rustsec.org/advisories/RUSTSEC-2026-0004.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-330"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-21T22:52:56Z",
+    "nvd_published_at": null
+  }
+}

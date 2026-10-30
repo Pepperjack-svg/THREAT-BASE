@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4w99-c287-2jvj",
+  "modified": "2025-12-09T03:31:09Z",
+  "published": "2025-12-09T03:31:09Z",
+  "aliases": [
+    "CVE-2022-50640"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: core: Fix kernel panic when remove non-standard SDIO card\n\nSDIO tuple is only allocated for standard SDIO card, especially it causes\nmemory corruption issues when the non-standard SDIO card has removed, which\nis because the card device's reference counter does not increase for it at\nsdio_init_func(), but all SDIO card device reference counter gets decreased\nat sdio_release_func().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50640"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e8cd93ae536581562bab4e1d8c5315bbc2548bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fb79478695d92bab1c120ad3dad05252b02a29d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66d461a92f32b6995b630625d350259b6b1f961b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a09c64b7da0abdec3919812e3d93ecc44069ed0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bf037279b5869ae9331c42bb1527d2680ebba96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9972e6b404884adae9eec7463e30d9b3c9a70b18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3275dde570b6420106a715bb58a0af041b94d95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8b2965932e702b21e335ff30e1bb550f5a23b6f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T01:16:46Z"
+  }
+}

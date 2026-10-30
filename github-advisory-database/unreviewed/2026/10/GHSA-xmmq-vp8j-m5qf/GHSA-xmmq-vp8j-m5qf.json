@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xmmq-vp8j-m5qf",
+  "modified": "2026-10-25T12:30:24Z",
+  "published": "2026-10-25T12:30:24Z",
+  "aliases": [
+    "CVE-2026-116066"
+  ],
+  "details": "Firecrawl before 2.11.586 contains a server-side request forgery vulnerability in the Playwright service SSRF proxy that allows attackers to bypass isInternalHost checks via DNS rebinding. Attackers controlling DNS for a scrape target can return a public address during validation and a private address at connect time, retrieving cloud metadata and internal resources through the scrape API.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116066"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/firecrawl/firecrawl/issues/5256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/firecrawl/firecrawl/commit/5e74ff37b41ac650d6bccff170a9be0a6decb946"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/firecrawl/firecrawl"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/firecrawl/firecrawl/blob/5c198a7d9376fef21a7f6d74313fc957842744ad/apps/playwright-service-ts/api.ts#L47-L117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/firecrawl-before-2.11.586-ssrf-protection-bypass-via-dns-rebinding-in-playwright-service"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-25T12:16:27Z"
+  }
+}

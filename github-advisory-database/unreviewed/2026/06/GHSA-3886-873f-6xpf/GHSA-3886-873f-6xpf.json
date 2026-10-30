@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3886-873f-6xpf",
+  "modified": "2026-07-02T21:32:05Z",
+  "published": "2026-06-25T09:31:21Z",
+  "aliases": [
+    "CVE-2026-53213"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vc4: fix krealloc() memory leak\n\nDon't just overwrite the original pointer passed to krealloc()\nwith its return value without checking latter:\n\n    MEM = krealloc(MEM, SZ, GFP);\n\nIf krealloc() returns NULL, that erases the pointer\nto the still allocated memory, hence leaks this memory.\nInstead, use a temporary variable, check it's not NULL\nand only then assign it to the original pointer:\n\n    TMP = krealloc(MEM, SZ, GFP);\n    if (!TMP) return;\n    MEM = TMP;\n\nWhile on it, use krealloc_array().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02f5e4db57c0cdd7bac89d503b301a093a0fa95c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30165a09f76eaf34951c818eb5d9d6e4771d76f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4fc692dc6df5bc777cc1bcebf95179e28594875f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d563a5da8717629ae72f9eadf1e0e340bd1658b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c034aa0b1ba5f49cbdf8ef193d6ec714d74aac27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0ce103e89d61eef70edc1d1ae3bfd4c0aacbc2e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd87d6966041e33ef7d2e5dc59f9a52b71c6ae5f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:38Z"
+  }
+}

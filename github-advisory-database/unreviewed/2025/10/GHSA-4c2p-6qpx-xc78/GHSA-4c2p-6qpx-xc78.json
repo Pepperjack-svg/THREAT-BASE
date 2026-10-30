@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4c2p-6qpx-xc78",
+  "modified": "2026-08-06T12:31:12Z",
+  "published": "2025-10-23T21:31:44Z",
+  "aliases": [
+    "CVE-2025-57848"
+  ],
+  "details": "A container privilege escalation flaw was found in certain Container-native Virtualization images. This issue stems from the /etc/passwd file being created with group-writable permissions during build time. In certain conditions, an attacker who can execute commands within an affected container, even as a non-root user, can leverage their membership in the root group to modify the /etc/passwd file. This could allow the attacker to add a new user with any arbitrary UID, including UID 0, leading to full root privileges within the container.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:L/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-57848"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHEA-2025:19904"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHEA-2025:21119"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHEA-2025:21677"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHEA-2025:22750"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHEA-2026:0511"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2025-57848"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2391099"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-276"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-23T20:15:40Z"
+  }
+}

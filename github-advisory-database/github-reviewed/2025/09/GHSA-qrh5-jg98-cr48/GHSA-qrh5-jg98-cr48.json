@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qrh5-jg98-cr48",
+  "modified": "2025-11-05T20:45:10Z",
+  "published": "2025-09-17T15:30:37Z",
+  "aliases": [
+    "CVE-2025-59476"
+  ],
+  "summary": "Jenkins has a log message injection vulnerability",
+  "details": "In Jenkins 2.527 and earlier, LTS 2.516.2 and earlier, the log formatter that prepares log messages for console output (including `jenkins.log` and equivalent) does not restrict or transform the characters that can be inserted from user-specified content in log messages.\n\nThis allows attackers able to control log message contents to insert line break characters, followed by forged log messages that may mislead administrators reviewing log output.\n\nJenkins 2.528, LTS 2.516.3 adds an indicator at the beginning of a line that was inserted as part of log message content: `[CR]`, `[LF]`, or `[CRLF]` (representing the kind of line break), followed by `>` .",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.main:jenkins-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.516.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.main:jenkins-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.517"
+            },
+            {
+              "fixed": "2.528"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59476"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/jenkins"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2025-09-17/#SECURITY-3424"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/09/17/1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-117",
+      "CWE-74"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-09-17T20:35:34Z",
+    "nvd_published_at": "2025-09-17T14:15:41Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ccgc-4g65-v672",
+  "modified": "2026-07-27T21:31:21Z",
+  "published": "2026-07-27T18:31:47Z",
+  "aliases": [
+    "CVE-2026-51303"
+  ],
+  "details": "A use-after-free (UAF) vulnerability was discovered in the core parsing component of SQLite 3.41. The flaw occurs because the program frees an ExprList object via sqlite3ExprListDelete and then subsequently accesses the dangling pointer of the released object. A remote adversary can supply specially crafted SQL queries to trigger this vulnerability during SQL statement parsing. Successful exploitation may result in application crash (denial of service), sensitive memory information leakage, and in some scenarios, arbitrary code execution on the affected host.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/programmervuln/cveadvisory-/blob/main/CVE-2026-51303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sqlite/sqlite/blob/master/src/expr.c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-27T16:17:39Z"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g7rp-hwhp-qxc9",
+  "modified": "2026-10-15T03:35:47Z",
+  "published": "2026-05-01T15:30:35Z",
+  "aliases": [
+    "CVE-2026-31768"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: ti-adc161s626: use DMA-safe memory for spi_read()\n\nAdd a DMA-safe buffer and use it for spi_read() instead of a stack\nmemory. All SPI buffers must be DMA-safe.\n\nSince we only need up to 3 bytes, we just use a u8[] instead of __be16\nand __be32 and change the conversion functions appropriately.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31768"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/014c6d27878d3883f7bb065610768fd021de1a96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67b3a91bdc48220bfb67155ab528121b9c822782"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/768461517a28d80fe81ea4d5d03a90cd184ea6ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3bb8faeca1a2ef7be95ee8a512b639f9ffce947"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2d031b0786ea66ab0577c9d2d71435068d32199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa64aab25aba47296aa8d12bb4c88ec3fecb2054"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:39Z"
+  }
+}

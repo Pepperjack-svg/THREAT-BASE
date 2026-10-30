@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vjph-8cf6-48hw",
+  "modified": "2026-10-17T06:30:31Z",
+  "published": "2026-10-17T06:30:31Z",
+  "aliases": [
+    "CVE-2026-103899"
+  ],
+  "details": "The EU VAT Assistant for WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'vat_number' parameter in all versions up to, and including, 2.1.30.260413 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The stored payload executes in the administrator's browser context when reviewing an order via WooCommerce → Orders → Edit Order, enabling privilege escalation up to and including full site takeover via rogue administrator account creation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103899"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-eu-vat-assistant/tags/2.1.30.260413/src/lib/classes/integration/admin/orders_integration.php#L238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-eu-vat-assistant/tags/2.1.30.260413/src/lib/classes/integration/vat_number_validation/validators/vat_number_validator.php#L132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-eu-vat-assistant/tags/2.1.30.260413/src/lib/classes/order/order.php#L56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-eu-vat-assistant/tags/2.1.30.260413/src/plugin-main.php#L1655"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-eu-vat-assistant/tags/2.1.30.260413/src/plugin-main.php#L901"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-eu-vat-assistant/tags/2.1.30.260413/src/views/admin/order-vat-info-box.php#L173"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e2cd7c07-e119-4064-a7a9-08c81409f90a?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-17T04:16:47Z"
+  }
+}

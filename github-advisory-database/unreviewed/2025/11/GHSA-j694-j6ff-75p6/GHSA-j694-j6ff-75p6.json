@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j694-j6ff-75p6",
+  "modified": "2025-11-25T03:30:19Z",
+  "published": "2025-11-25T03:30:19Z",
+  "aliases": [
+    "CVE-2025-9803"
+  ],
+  "details": "lunary-ai/lunary version 1.9.34 is vulnerable to an account takeover due to improper authentication in the Google OAuth integration. The application fails to verify the 'aud' (audience) field in the access token issued by Google, which is crucial for ensuring the token is intended for the application. This oversight allows attackers to use tokens issued to malicious applications to gain unauthorized access to user accounts. The issue is resolved in version 1.9.35.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-9803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lunary-ai/lunary/commit/95a2cc8e012bf5f089edbfa072ba66dcb7e10d91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/4734f35f-514c-4d10-98fa-3a54514f6af6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287",
+      "CWE-863"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-25T01:15:47Z"
+  }
+}

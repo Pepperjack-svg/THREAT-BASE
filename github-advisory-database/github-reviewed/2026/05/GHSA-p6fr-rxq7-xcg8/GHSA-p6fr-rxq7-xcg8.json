@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p6fr-rxq7-xcg8",
+  "modified": "2026-06-09T10:24:02Z",
+  "published": "2026-05-11T19:40:43Z",
+  "aliases": [
+    "CVE-2026-44657"
+  ],
+  "summary": "MantisBT Vulnerable to Stored XSS in File Download",
+  "details": "Using *show_inline=1* parameter and a valid *file_show_inline_token* CSRF token on file_download.php, an attacker can execute code by uploading a crafted XHTML attachment referencing a JavaScript attachment.\n\n### Impact\nCross-site scripting\n\n### Patches\n- 26647b2e68ba30b9d7987d4e03d7a16416684bc2\n\n### Workarounds\nNone\n\n### Credits\nThanks to siunam (Tang Cheuk Hei) for discovering and responsibly reporting the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mantisbt/mantisbt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.28.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2.28.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/security/advisories/GHSA-9c3j-xm6v-j7j3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/security/advisories/GHSA-p6fr-rxq7-xcg8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44657"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/commit/26647b2e68ba30b9d7987d4e03d7a16416684bc2"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mantisbt/mantisbt"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mantisbt.org/bugs/view.php?id=37020"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-11T19:40:43Z",
+    "nvd_published_at": "2026-05-28T21:16:31Z"
+  }
+}

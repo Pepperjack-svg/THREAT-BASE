@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vv4j-q4m2-9gr7",
+  "modified": "2025-10-09T18:30:25Z",
+  "published": "2025-08-01T21:31:06Z",
+  "aliases": [
+    "CVE-2013-10051"
+  ],
+  "details": "A remote PHP code execution vulnerability exists in InstantCMS version 1.6 and earlier due to unsafe use of eval() within the search view handler. Specifically, user-supplied input passed via the look parameter is concatenated into a PHP expression and executed without proper sanitation. A remote attacker can exploit this flaw by sending a crafted HTTP GET request with a base64-encoded payload in the Cmd header, resulting in arbitrary PHP code execution within the context of the web server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2013-10051"
+    },
+    {
+      "type": "WEB",
+      "url": "https://packetstorm.news/files/id/122176"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/unix/webapp/instantcms_exec.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/26622"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/instantcms-remote-php-code-execution"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-95"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-01T21:15:27Z"
+  }
+}

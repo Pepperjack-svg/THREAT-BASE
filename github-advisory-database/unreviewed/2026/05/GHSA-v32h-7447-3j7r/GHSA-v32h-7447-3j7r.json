@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v32h-7447-3j7r",
+  "modified": "2026-06-25T21:31:18Z",
+  "published": "2026-05-27T15:33:12Z",
+  "aliases": [
+    "CVE-2026-45849"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mscc: ocelot: add missing lock protection in ocelot_port_xmit_inj()\n\nocelot_port_xmit_inj() calls ocelot_can_inject() and\nocelot_port_inject_frame() without holding the injection group lock.\nBoth functions contain lockdep_assert_held() for the injection lock,\nand the correct caller felix_port_deferred_xmit() properly acquires\nthe lock using ocelot_lock_inj_grp() before calling these functions.\n\nAdd ocelot_lock_inj_grp()/ocelot_unlock_inj_grp() around the register\ninjection path to fix the missing lock protection. The FDMA path is not\naffected as it uses its own locking mechanism.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45849"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/026f6513c5880c2c89e38ad66bbec2868f978605"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b217a40156f497e09dd20d3f7baec40c785f386"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51c32ae7fae14552d79f7139614b77c1bbd57a48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63da961381e0d979459dede713001f8452364477"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ac58d8832802ec89baa7539e13e6d58a88cce04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc1b179f778f98270bdbbb48d183b4b6427ae198"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:16:56Z"
+  }
+}

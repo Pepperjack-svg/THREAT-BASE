@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-55hf-cr49-h3r7",
+  "modified": "2026-01-19T15:30:34Z",
+  "published": "2026-01-05T12:30:29Z",
+  "aliases": [
+    "CVE-2025-68759"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtl818x: Fix potential memory leaks in rtl8180_init_rx_ring()\n\nIn rtl8180_init_rx_ring(), memory is allocated for skb packets and DMA\nallocations in a loop. When an allocation fails, the previously\nsuccessful allocations are not freed on exit.\n\nFix that by jumping to err_free_rings label on error, which calls\nrtl8180_free_rx_ring() to free the allocations. Remove the free of\nrx_ring in rtl8180_init_rx_ring() error path, and set the freed\npriv->rx_buf entry to null, to avoid double free.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68759"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3677c01891fb0239361e444afee8398868e34bdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/89caaeee8dd95fae8bb4f4964e6fe3ca688500c4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b5b9c042b30befc5b37e4539ace95af70843473"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4fb7cca9837378878e6c94d9e7af019c8fdfcdb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a813a74570212cb5f3a7d3b05c0cb0cd00bace1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf8513dfa31ea015c9cf415796dca2113d293840"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9d1c4152e6d32fa74034464854bee262a60bc43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee7db11742b30641f21306105ad27a275e3c61d7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-05T10:15:57Z"
+  }
+}

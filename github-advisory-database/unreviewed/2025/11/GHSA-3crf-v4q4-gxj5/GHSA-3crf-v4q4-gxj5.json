@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3crf-v4q4-gxj5",
+  "modified": "2025-11-13T18:31:05Z",
+  "published": "2025-11-13T18:31:05Z",
+  "aliases": [
+    "CVE-2025-60692"
+  ],
+  "details": "A stack-based buffer overflow vulnerability exists in the libshared.so library of Cisco Linksys E1200 v2 routers (Firmware E1200_v2.0.11.001_us.tar.gz). The functions get_mac_from_ip and get_ip_from_mac use sscanf with overly permissive \"%100s\" format specifiers to parse entries from /proc/net/arp into fixed-size buffers (v6: 50 bytes, v7 sub-arrays: 50 bytes). This allows local attackers controlling the contents of /proc/net/arp to overflow stack buffers, leading to memory corruption, denial of service, or potential arbitrary code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-60692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yifan20020708/SGTaint-0-day/blob/main/Linksys/Linksys-E1200/CVE-2025-60692.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.linksys.com"
+    },
+    {
+      "type": "WEB",
+      "url": "http://linksys.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-13T17:15:49Z"
+  }
+}

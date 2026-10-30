@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x2j2-wxw5-pjr8",
+  "modified": "2026-10-21T15:40:53Z",
+  "published": "2026-08-15T06:32:24Z",
+  "aliases": [
+    "CVE-2026-72423"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Guard conntrack opts error writes\n\nThe conntrack lookup and allocation kfuncs take an opts pointer\ntogether with an opts__sz argument. The verifier checks only the memory\nrange described by opts__sz, but the wrappers unconditionally write\nopts->error whenever the internal lookup or allocation helper returns an\nerror.\n\nFor an invalid size smaller than the end of opts->error, that write can\nland outside the verifier-checked range. Keep returning NULL for invalid\narguments, but only report the error through opts->error when the\nsupplied size includes the field.\n\nThis preserves error reporting for the supported 12-byte and 16-byte\nlayouts, and for other invalid sizes that still include opts->error.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/453f4f1e90de55b6bc297936031b68bef93f2e28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63d95c6bbd6fc0e411404188306a1fea456300b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/669bc3b345712112d3f033a1953f5a10b15e7c65"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f6183a39533d727deaa5061cadae6dd9e6744d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd74c80203842a21b2ebb9f70d1260d9aa20fa05"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:16Z"
+  }
+}

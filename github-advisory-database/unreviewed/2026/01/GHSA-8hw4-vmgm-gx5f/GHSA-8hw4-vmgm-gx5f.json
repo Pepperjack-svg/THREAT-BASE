@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8hw4-vmgm-gx5f",
+  "modified": "2026-02-26T21:31:26Z",
+  "published": "2026-01-23T15:31:34Z",
+  "aliases": [
+    "CVE-2025-71145"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: phy: isp1301: fix non-OF device reference imbalance\n\nA recent change fixing a device reference leak in a UDC driver\nintroduced a potential use-after-free in the non-OF case as the\nisp1301_get_client() helper only increases the reference count for the\nreturned I2C device in the OF case.\n\nIncrement the reference count also for non-OF so that the caller can\ndecrement it unconditionally.\n\nNote that this is inherently racy just as using the returned I2C device\nis since nothing is preventing the PHY driver from being unbound while\nin use.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71145"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03bbdaa4da8c6ea0c8431a5011db188a07822c8a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/43e58abad6c08c5f0943594126ef4cd6559aac0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d3df03f70547d4e3fc10ed4381c052eff51b157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7501ecfe3e5202490c2d13dc7e181203601fcd69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75c5d9bce072abbbc09b701a49869ac23c34a906"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b4b64fda4d30a83a7f00e92a0c8a1d47699609f3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-23T14:16:12Z"
+  }
+}

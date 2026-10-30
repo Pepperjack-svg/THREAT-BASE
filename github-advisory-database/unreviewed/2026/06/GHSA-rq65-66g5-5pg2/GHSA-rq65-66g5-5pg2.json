@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rq65-66g5-5pg2",
+  "modified": "2026-06-23T15:32:35Z",
+  "published": "2026-06-23T09:32:23Z",
+  "aliases": [
+    "CVE-2026-9733"
+  ],
+  "details": "Mojolicious::Plugin::Web::Auth::OAuth2 versions through 0.17 for Perl have an insecure default state parameter.\n\nWhen no state generator is specified in the constructor, the module defaults to using a SHA-1 hash of predictable and low-entropy sources, including the epoch time (which is leaked via the HTTP Date header) and a call to Perl's built-in rand function.\n\nA predictable state allows an attacker to hijack another user's session through cross site request forgery (CSRF).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9733"
+    },
+    {
+      "type": "WEB",
+      "url": "https://datatracker.ietf.org/doc/html/rfc6749#section-10.12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/HAYAJO/Mojolicious-Plugin-Web-Auth-0.17/source/lib/Mojolicious/Plugin/Web/Auth/OAuth2.pm#L129-131"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.metacpan.org/patches/M/Mojolicious-Plugin-Web-Auth/0.17/CVE-2026-9733-r2.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/06/23/1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-338"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-23T08:16:26Z"
+  }
+}

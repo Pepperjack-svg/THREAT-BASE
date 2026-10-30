@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xp33-mgvv-9242",
+  "modified": "2026-07-30T06:32:17Z",
+  "published": "2025-11-13T00:30:17Z",
+  "aliases": [
+    "CVE-2025-40187"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sctp: fix a null dereference in sctp_disposition sctp_sf_do_5_1D_ce()\n\nIf new_asoc->peer.adaptation_ind=0 and sctp_ulpevent_make_authkey=0\nand sctp_ulpevent_make_authkey() returns 0, then the variable\nai_ev remains zero and the zero will be dereferenced\nin the sctp_ulpevent_free() function.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40187"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/025419f4e216a3ae0d0cec622262e98e8078c447"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1014b83778c8677f1d7a57c26dc728baa801ac62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f3119686ef50319490ccaec81a575973da98815"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f702f85df0266ed7b5bab81ba50394c92f3c928"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/badbd79313e6591616c1b78e29a9b71efed7f035"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c21f45cfa4a9526b34d76b397c9ef080668b6e73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0e8f1445c19b1786759ba72a38267e1449bab7e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dbceedc0213e75bf3e9f9f9e2f66b10699d004fe"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-12T22:15:45Z"
+  }
+}

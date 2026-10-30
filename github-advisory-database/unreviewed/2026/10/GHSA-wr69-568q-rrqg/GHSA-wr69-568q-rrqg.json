@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wr69-568q-rrqg",
+  "modified": "2026-10-29T00:31:24Z",
+  "published": "2026-10-29T00:31:24Z",
+  "aliases": [
+    "CVE-2026-118753"
+  ],
+  "details": "FreeImage (danoli3 fork) before 3.19.25 contains a heap buffer overflow vulnerability in PluginGIF.cpp that allows attackers to write past the canvas allocation via unclipped GIF frame rectangles. Attackers can craft a GIF whose frame left plus width exceeds the logical screen width, causing GifPlaybackCompositeFrame() and GifPlaybackFillRect() to corrupt heap memory when loaded with GIF_PLAYBACK.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118753"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage/pull/183"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage/commit/0da5ddb4d311e5222251348cca1aa988478b1034"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage/commit/96f4099f8e307484ba69b4aa14d772b7679a1bfb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage/blob/3.19.24/Source/FreeImage/PluginGIF.cpp#L719-L772"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage/releases/tag/3.19.25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/freeimage-danoli3-fork-before-3.19.25-heap-buffer-overflow-via-gif-playback-compositing"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T22:17:14Z"
+  }
+}

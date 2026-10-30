@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2gvx-55m9-gpjj",
+  "modified": "2026-05-04T15:31:11Z",
+  "published": "2026-05-03T09:33:11Z",
+  "aliases": [
+    "CVE-2026-5337"
+  ],
+  "details": "During the analysis, it was identified that authenticated attackers with Subscriber-level access or higher are able to perform an Insecure Direct Object Reference (IDOR) attack. This vulnerability exists because the Frontend File Manager Plugin WordPress plugin through 23.6 does not properly validate user authorization for the requested uploaded file when processing download requests. By modifying the value of the 'file_id' parameter in the download endpoint (e.g., http://localhost/?do=wpfm_download&file_id=40&nm_file_nonce=a36fb893f1), an attacker can access files belonging to other users, including privileged users such as administrators. This allows unauthorized access/read to sensitive data stored  within the application.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5337"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/3e28aa78-3227-474a-b1db-1f5ea2c42d14"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-03T07:16:24Z"
+  }
+}

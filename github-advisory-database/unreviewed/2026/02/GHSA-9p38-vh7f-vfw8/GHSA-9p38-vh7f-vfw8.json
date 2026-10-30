@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9p38-vh7f-vfw8",
+  "modified": "2026-02-03T06:31:04Z",
+  "published": "2026-02-03T06:31:04Z",
+  "aliases": [
+    "CVE-2026-0909"
+  ],
+  "details": "The WP ULike plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.8.3.1. This is due to the `wp_ulike_delete_history_api` AJAX action not verifying that the log entry being deleted belongs to the current user. This makes it possible for authenticated attackers, with Subscriber-level access and above (granted the 'stats' capability is assigned to their role), to delete arbitrary log entries belonging to other users via the 'id' parameter.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0909"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-ulike/tags/4.8.3.1/admin/admin-ajax.php#L94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-ulike/trunk/admin/admin-ajax.php#L94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3451296/wp-ulike/trunk/admin/admin-ajax.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/bee2e520-46cc-4b54-9849-fafb9b37ba19?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-03T04:15:56Z"
+  }
+}

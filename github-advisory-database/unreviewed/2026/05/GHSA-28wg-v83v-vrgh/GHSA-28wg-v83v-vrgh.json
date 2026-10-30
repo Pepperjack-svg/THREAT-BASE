@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28wg-v83v-vrgh",
+  "modified": "2026-05-07T21:30:23Z",
+  "published": "2026-05-01T15:30:34Z",
+  "aliases": [
+    "CVE-2026-31747"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncomedi: me4000: Fix potential overrun of firmware buffer\n\n`me4000_xilinx_download()` loads the firmware that was requested by\n`request_firmware()`.  It is possible for it to overrun the source\nbuffer because it blindly trusts the file format.  It reads a data\nstream length from the first 4 bytes into variable `file_length` and\nreads the data stream contents of length `file_length` from offset 16\nonwards.\n\nAdd a test to ensure that the supplied firmware is long enough to\ncontain the header and the data stream.  On failure, log an error and\nreturn `-EINVAL`.\n\nNote: The firmware loading was totally broken before commit ac584af59945\n(\"staging: comedi: me4000: fix firmware downloading\"), but that is the\nmost sensible target for this fix.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1603dd471f47762e9d1f52304edb3e49a7e62655"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3fb43a7a5b44713f892c58ead2e5f3a1bc9f4ee7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64b24b713e1a3ea6624480594b4f8c2ff86502f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ddfe6495c245226a30d8b36e2f4a7aa7712e8d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/99f31aa98ab6e3805c455b65bcd01b3d48bdf1a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de3f923ae7d91480ed3ecea1b1e1fc0dc25b597d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eae19cab44204537f79146f15a51811b13227c38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f72b5567f7c117b46b4058dc6a0c7554f8565561"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:37Z"
+  }
+}

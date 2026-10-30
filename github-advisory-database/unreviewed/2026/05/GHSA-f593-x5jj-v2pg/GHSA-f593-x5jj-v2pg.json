@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f593-x5jj-v2pg",
+  "modified": "2026-05-11T09:30:30Z",
+  "published": "2026-05-08T15:31:26Z",
+  "aliases": [
+    "CVE-2026-43370"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix use-after-free race in VM acquire\n\nReplace non-atomic vm->process_info assignment with cmpxchg()\nto prevent race when parent/child processes sharing a drm_file\nboth try to acquire the same VM after fork().\n\n(cherry picked from commit c7c573275ec20db05be769288a3e3bb2250ec618)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43370"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c1030f2e84885cc58bffef6af67d5b9d2e7098f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46d309996bd9251792d7dafdbaf615cf202b4447"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7885eb335d8f9e9942925d57e300a85e3f82ded4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/904025fa8bba1d028adade33346372b4ac1a9249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94b7782d0c8024f5b88454241c8d4777076c3786"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae87aea330c24f462fc7058ed543ba8bc6798447"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c658c1c85ec235b7ecfbf8dbfee385b1332088f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e61e355cbe49e585097eee28c15b862bfb1c0668"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362",
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T15:16:48Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-68m3-8x64-fhgg",
+  "modified": "2026-10-16T18:34:47Z",
+  "published": "2026-10-16T18:34:47Z",
+  "aliases": [
+    "CVE-2026-111651"
+  ],
+  "details": "Risesoft Digital-Infrastructure through 9.6.11 contains a missing authorization vulnerability in the log module DownloadController that allows authenticated users to export any tenant's personnel directory. Attackers can supply another tenant's tenantId to exportLoginXLS or exportNotLoginXLS to obtain XLSX files with names, login names, organization paths, mobile numbers, and emails.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111651"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/risesoft-y9/Digital-Infrastructure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/risesoft-y9/Digital-Infrastructure/blob/v9.6.11/y9-digitalbase-module/y9-module-log/risenet-y9boot-support-log-web/src/main/java/net/risesoft/controller/DownloadController.java#L47-L82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/digital-infrastructure-log-download-cross-tenant-person-export"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/risesoft-digital-infrastructure-through-9.6.11-cross-tenant-data-exposure-via-downloadcontroller"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:46Z"
+  }
+}

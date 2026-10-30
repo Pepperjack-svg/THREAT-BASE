@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p7j9-4392-6r7p",
+  "modified": "2025-11-03T21:33:08Z",
+  "published": "2025-03-06T18:31:10Z",
+  "aliases": [
+    "CVE-2024-58069"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtc: pcf85063: fix potential OOB write in PCF85063 NVMEM read\n\nThe nvmem interface supports variable buffer sizes, while the regmap\ninterface operates with fixed-size storage. If an nvmem client uses a\nbuffer size less than 4 bytes, regmap_read will write out of bounds\nas it expects the buffer to point at an unsigned int.\n\nFix this by using an intermediary unsigned int to hold the value.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58069"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21cd59fcb9952eb7505da2bdfc1eb9c619df3ff4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ab8c5ed4f84fa20cd16794fe8dc31f633fbc70c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/517aedb365f2c94e2d7e0b908ac7127df76203a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f2a8ca9a0a38589f52a7f0fb9425b9ba987ae7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9adefa7b9559d0f21034a5d5ec1b55840c9348b9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c72b7a474d3f445bf0c5bcf8ffed332c78eb28a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5536677da803ed54a29a446515c28dce7d3d574"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5e06455760f2995b16a176033909347929d1128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/03/msg00028.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-06T16:15:53Z"
+  }
+}

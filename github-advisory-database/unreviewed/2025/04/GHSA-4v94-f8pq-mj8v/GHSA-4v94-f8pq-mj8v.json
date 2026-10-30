@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4v94-f8pq-mj8v",
+  "modified": "2025-04-15T18:31:42Z",
+  "published": "2025-04-01T18:30:51Z",
+  "aliases": [
+    "CVE-2025-21915"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncdx: Fix possible UAF error in driver_override_show()\n\nFixed a possible UAF problem in driver_override_show() in drivers/cdx/cdx.c\n\nThis function driver_override_show() is part of DEVICE_ATTR_RW, which\nincludes both driver_override_show() and driver_override_store().\nThese functions can be executed concurrently in sysfs.\n\nThe driver_override_store() function uses driver_set_override() to\nupdate the driver_override value, and driver_set_override() internally\nlocks the device (device_lock(dev)). If driver_override_show() reads\ncdx_dev->driver_override without locking, it could potentially access\na freed pointer if driver_override_store() frees the string\nconcurrently. This could lead to printing a kernel address, which is a\nsecurity risk since DEVICE_ATTR can be read by all users.\n\nAdditionally, a similar pattern is used in drivers/amba/bus.c, as well\nas many other bus drivers, where device_lock() is taken in the show\nfunction, and it has been working without issues.\n\nThis potential bug was detected by our experimental static analysis\ntool, which analyzes locking APIs and paired functions to identify\ndata races and atomicity violations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21915"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0439d541aa8d3444ad41c39e39eb71acb57acde3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8473135f89c0949436a22adb05b8cece2fb3da91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91d44c1afc61a2fec37a9c7a3485368309391e0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7b339bbc887bcfc1a5b620bfc70c6fbb8f733bf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-01T16:15:22Z"
+  }
+}

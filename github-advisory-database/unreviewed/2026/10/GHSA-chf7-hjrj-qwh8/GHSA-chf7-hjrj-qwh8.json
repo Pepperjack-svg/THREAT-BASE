@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-chf7-hjrj-qwh8",
+  "modified": "2026-10-14T15:32:27Z",
+  "published": "2026-10-14T15:32:27Z",
+  "aliases": [
+    "CVE-2026-110639"
+  ],
+  "details": "@mborne/extract before 0.2.1 contains an OS command injection vulnerability that allows attackers to execute commands by supplying shell metacharacters in archivePath or targetDir options. Attackers controlling these values passed to extract() can inject commands into unquoted shelljs exec() strings in the unzip, 7z, tar-bz2 and gz extractors, running them with Node.js process privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110639"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mborne/node-extract/pull/8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mborne/node-extract/commit/585e5b29657379e73c04f6f950ea8dc5319f8ae1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mborne/node-extract/blob/v0.2.0/src/extractor/unzip.js#L17-L19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mborne/node-extract/releases/tag/v0.2.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mborne-extract-before-0.2.1-os-command-injection-via-archivepath-and-targetdir"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T15:17:17Z"
+  }
+}

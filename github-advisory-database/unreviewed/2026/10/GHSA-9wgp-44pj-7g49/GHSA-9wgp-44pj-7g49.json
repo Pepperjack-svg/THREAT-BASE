@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9wgp-44pj-7g49",
+  "modified": "2026-10-23T12:31:37Z",
+  "published": "2026-10-23T12:31:37Z",
+  "aliases": [
+    "CVE-2026-98910"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Unwind debug trap enable on copy_to_user failure\n\nIf kfd_dbg_trap_enable() fails while copying runtime_info to userspace,\nit had already activated the trap, set debug_trap_enabled, taken an extra\nprocess reference, and opened the debug event file. Return -EFAULT without\nunwinding that state, leaving inconsistent trap state and a refcount\nimbalance that could break later DISABLE/ENABLE.\n\nOn copy_to_user failure, deactivate the trap and undo the rest of the\nenable setup before returning.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98910"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01112e241e37f9ac98b6f418d93ce2e0b87b7ee0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b39f46eec2f907417d4955bb88434170f94a8d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/641be20110cdfb6d921605adb42a764a0fccac54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/656a40bdc20def58790b8512e6000195436d8855"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:25Z"
+  }
+}

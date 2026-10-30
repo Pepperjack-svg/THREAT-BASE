@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-44pj-mggw-c3m7",
+  "modified": "2026-03-18T15:30:40Z",
+  "published": "2026-02-14T15:32:18Z",
+  "aliases": [
+    "CVE-2026-23116"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npmdomain: imx8m-blk-ctrl: Remove separate rst and clk mask for 8mq vpu\n\nFor i.MX8MQ platform, the ADB in the VPUMIX domain has no separate reset\nand clock enable bits, but is ungated and reset together with the VPUs.\nSo we can't reset G1 or G2 separately, it may led to the system hang.\nRemove rst_mask and clk_mask of imx8mq_vpu_blk_ctl_domain_data.\nLet imx8mq_vpu_power_notifier() do really vpu reset.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23116"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3de49966499634454fd59e0e6fecd50baab7febd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c56a6f4b5a4f87c094c92a30fa17e28e37ec2ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8859e336d233e61a4c40d40dc6a9f21e8b9b719c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cad7003d951e8899db58ee2fef211586af726f09"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd675de6bddf7e9bdf42ae3929d4c27ba6d1ef76"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T15:16:06Z"
+  }
+}

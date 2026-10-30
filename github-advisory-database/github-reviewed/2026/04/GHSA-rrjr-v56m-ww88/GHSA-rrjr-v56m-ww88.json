@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rrjr-v56m-ww88",
+  "modified": "2026-05-11T13:29:39Z",
+  "published": "2026-04-24T16:39:55Z",
+  "aliases": [
+    "CVE-2026-42241"
+  ],
+  "summary": "ParquetSharp: Possible Stack Overflow When Reading a ParquetFile with Large Decimal Type Width",
+  "details": "`DecimalConverter.ReadDecimal` makes a stackalloc using what might be an attacker-supplied value. If an attacker declares a decimal column with some unreasonable width, this could lead to a stack overflow. In a service environment, this would potentially take down a service.\n\nThis affects applications using ParquetSharp to read untrusted Parquet files in a network service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "ParquetSharp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "18.1.0"
+            },
+            {
+              "fixed": "23.0.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/G-Research/ParquetSharp/security/advisories/GHSA-rrjr-v56m-ww88"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42241"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/G-Research/ParquetSharp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/G-Research/ParquetSharp/releases/tag/23.0.0.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-789"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-24T16:39:55Z",
+    "nvd_published_at": "2026-05-07T20:16:44Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8wj8-f84m-9qv6",
+  "modified": "2026-10-28T12:31:07Z",
+  "published": "2026-10-28T12:31:07Z",
+  "aliases": [
+    "CVE-2026-99190"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpiolib: fix memory leak in gpiod_set_array_value_complex() on error paths\n\nA drive-by review by Sashiko reports that, after a failed call to\ngpiochip_set_multiple(), gpiod_set_array_value() returns abruptly,\nbypassing the freeing of possibly alloced bitmaps, potentially leaking\nmemory. It is an unlikely error path, but is possible.\n\nDefer the return code check until after the bitmap_free() block.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99190"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78189c0e35abbcdab3b8ab0b764d578c02900734"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/890c3bf08e0fc09eff788a6cfeded7d21b4d3e9d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c28846ca1ac6134881114d272314623c8433e372"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T11:17:39Z"
+  }
+}

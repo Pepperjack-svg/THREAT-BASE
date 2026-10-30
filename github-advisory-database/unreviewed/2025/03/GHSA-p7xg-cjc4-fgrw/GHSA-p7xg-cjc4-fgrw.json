@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p7xg-cjc4-fgrw",
+  "modified": "2025-03-10T21:31:10Z",
+  "published": "2025-03-10T21:31:10Z",
+  "aliases": [
+    "CVE-2022-49580"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: Fix a data-race around sysctl_fib_multipath_use_neigh.\n\nWhile reading sysctl_fib_multipath_use_neigh, it can be changed\nconcurrently.  Thus, we need to add READ_ONCE() to its reader.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49580"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14e996577ed2799a1ed6ffeb71c76d63acb28444"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6727f39e99e0f545d815edebb6c94228485427ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87507bcb4f5de16bb419e9509d874f4db6c0ad0f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8d345db03b4deffb4f04219a51d3b1e94171b76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e045d672ba06e1d35bacb56374d350de0ac99066"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:33Z"
+  }
+}

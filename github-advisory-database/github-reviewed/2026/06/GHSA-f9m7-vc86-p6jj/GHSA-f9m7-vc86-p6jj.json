@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f9m7-vc86-p6jj",
+  "modified": "2026-06-19T21:15:31Z",
+  "published": "2026-06-19T21:15:31Z",
+  "aliases": [
+    "CVE-2026-55828"
+  ],
+  "summary": "go.qbee.io/transport: Symlink-chain path traversal in tar extraction (one level outside destination)",
+  "details": "### Impact\n\nThe go.qbee.io/transport library is affected by a symlink-chain path traversal vulnerability in its extractTar routine. The library's path validation is strictly lexical and fails to account for on-disk symlinks created earlier in the extraction process. Consequently, a crafted tar archive can be used to write or overwrite files one directory level above the intended extraction path. In the case of qbee-agent, which runs with root privileges, this vulnerability permits a root-privileged file write outside the intended destination.\n\n### Patches\n\nThe issue has been addressed in version v1.26.25",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "go.qbee.io/transport"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.26.25"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/qbee-io/transport/security/advisories/GHSA-f9m7-vc86-p6jj"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/qbee-io/transport"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-59"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-19T21:15:31Z",
+    "nvd_published_at": null
+  }
+}

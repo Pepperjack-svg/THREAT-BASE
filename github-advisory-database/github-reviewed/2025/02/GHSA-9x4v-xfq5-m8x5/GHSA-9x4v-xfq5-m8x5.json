@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9x4v-xfq5-m8x5",
+  "modified": "2025-12-09T16:26:23Z",
+  "published": "2025-02-05T21:49:39Z",
+  "aliases": [],
+  "summary": "Better Auth URL parameter HTML Injection (Reflected Cross-Site scripting)",
+  "details": "### Summary\nThe better-auth `/api/auth/error` page was vulnerable to HTML injection, resulting in a reflected cross-site scripting (XSS) vulnerability.\n\n### Details\nThe value of `error` URL parameter was reflected as HTML on the error page: https://github.com/better-auth/better-auth/blob/05ada0b79dbcac93cc04ceb79b23ca598d07830c/packages/better-auth/src/api/routes/error.ts#L81\n\n### Impact\nAn attacker who exploited this vulnerability by coercing a user to visit a specially-crafted URL could execute arbitrary JavaScript in the context of the user's browser.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "better-auth"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.0.2"
+            },
+            {
+              "fixed": "1.1.16"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/better-auth/better-auth/security/advisories/GHSA-9x4v-xfq5-m8x5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/better-auth/better-auth/commit/7ae340e2eddad641b7e43d24d37c58a66ce9ddcf"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/better-auth/better-auth"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/better-auth/better-auth/blob/05ada0b79dbcac93cc04ceb79b23ca598d07830c/packages/better-auth/src/api/routes/error.ts#L81"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-02-05T21:49:39Z",
+    "nvd_published_at": null
+  }
+}

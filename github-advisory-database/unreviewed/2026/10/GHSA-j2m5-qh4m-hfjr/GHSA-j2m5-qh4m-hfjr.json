@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j2m5-qh4m-hfjr",
+  "modified": "2026-10-16T12:31:21Z",
+  "published": "2026-10-14T15:32:23Z",
+  "aliases": [
+    "CVE-2026-110593"
+  ],
+  "details": "BottleCRM through 1.14.5 contains a server-side template injection vulnerability in the send_email Celery task, which compiles the user-supplied AccountEmail message_body with django.template.Template(). Authenticated organization members can submit template tags through POST /api/accounts/<id>/create_mail/ to disclose the rendering context and loaded Python modules, or block the shared Celery worker with nested loops.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Django-CRM/Django-CRM/issues/826"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Django-CRM/Django-CRM/blob/v1.14.5/backend/accounts/tasks.py#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aaronamran/CVE-Disclosures/tree/main/CVE-2026/CVE-2026-110593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bottlecrm-through-1.14.5-server-side-template-injection-via-account-email-create-mail"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T15:17:10Z"
+  }
+}

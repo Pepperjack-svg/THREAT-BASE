@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8vfx-6h25-h9h3",
+  "modified": "2025-03-10T21:31:10Z",
+  "published": "2025-03-10T21:31:10Z",
+  "aliases": [
+    "CVE-2022-49577"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nudp: Fix a data-race around sysctl_udp_l3mdev_accept.\n\nWhile reading sysctl_udp_l3mdev_accept, it can be changed concurrently.\nThus, we need to add READ_ONCE() to its reader.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49577"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d72bb4188c708bb16758c60822fc4dda7a95174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f2ac2d6511bb0652abf4d7388d65bb9ff1c641c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb0d28934ca10f99c47e2c6f451405d6c954fe48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f39b03bd727a8fea62e82f10fe2e0d753b9930ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fcaef69c79ec222e55643e666b80b221e70fa6a8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:33Z"
+  }
+}

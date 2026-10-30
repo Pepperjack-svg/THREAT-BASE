@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m4x2-65hq-rqw6",
+  "modified": "2026-10-23T15:31:38Z",
+  "published": "2026-10-23T15:31:38Z",
+  "aliases": [
+    "CVE-2026-115785"
+  ],
+  "details": "An SMTP command injection vulnerability in the data-source testing functionality of Zimbra Collaboration Suite (ZCS) allows an ordinary authenticated user with account options enabled to inject CR/LF into the emailAddress inserted into an SMTP envelope command by a JSON SOAP request. After a successful preliminary POP3 or IMAP login, Zimbra sends the injected commands to the selected SMTP service. If that service accepts the pipelined transaction, the attacker can submit mail with attacker-selected recipients, headers and body content without victim interaction. The vulnerable command-construction path is present in ZCS 10.1.16 and 10.1.20.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115785"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wiki.zimbra.com/wiki/Zimbra_Security_Advisories"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.rapid7.com/blog/post/ve-breaking-zimbra-identity-boundaries-part-1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-93"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T14:17:52Z"
+  }
+}

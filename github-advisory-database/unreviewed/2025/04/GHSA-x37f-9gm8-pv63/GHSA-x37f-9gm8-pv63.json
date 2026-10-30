@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x37f-9gm8-pv63",
+  "modified": "2025-11-03T21:33:26Z",
+  "published": "2025-04-01T18:30:54Z",
+  "aliases": [
+    "CVE-2025-21978"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/hyperv: Fix address space leak when Hyper-V DRM device is removed\n\nWhen a Hyper-V DRM device is probed, the driver allocates MMIO space for\nthe vram, and maps it cacheable. If the device removed, or in the error\npath for device probing, the MMIO space is released but no unmap is done.\nConsequently the kernel address space for the mapping is leaked.\n\nFix this by adding iounmap() calls in the device removal path, and in the\nerror path during device probing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21978"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/158242b56bf465a73e1edeac0fe828a8acad4499"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24f1bbfb2be77dad82489c1468bbb14312aab129"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ad27b4a51495490b815580d9b935e8eee14d1a9c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aed709355fd05ef747e1af24a1d5d78cd7feb81e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c40cd24bfb9bfbb315c118ca14ebe6cf52e2dd1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-01T16:15:29Z"
+  }
+}

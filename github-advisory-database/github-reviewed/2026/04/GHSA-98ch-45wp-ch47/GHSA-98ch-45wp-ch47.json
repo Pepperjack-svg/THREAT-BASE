@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-98ch-45wp-ch47",
+  "modified": "2026-04-07T18:15:48Z",
+  "published": "2026-04-07T18:15:48Z",
+  "aliases": [],
+  "summary": "OpenClaw: Windows-compatible env override keys could bypass system.run approval binding",
+  "details": "## Summary\n\nBefore OpenClaw 2026.4.2, system-run approval binding normalized environment override keys differently from host execution. Windows-compatible keys could be omitted from the approval binding while still being injected at execution time.\n\n## Impact\n\nAn approved command could run with attacker-chosen environment overrides that were not represented in the approval binding. This created an approval-integrity gap for affected host-exec flows.\n\n## Affected Packages / Versions\n\n- Package: `openclaw` (npm)\n- Affected versions: `<= 2026.4.1`\n- Patched versions: `>= 2026.4.2`\n- Latest published npm version: `2026.4.1`\n\n## Fix Commit(s)\n\n- `7eb094a00d80e9f6bf0e62f2c45d3b88ff67c04d` — align approval binding with execution-time env-key normalization\n\n## Release Process Note\n\nThe fix is present on `main` and is staged for OpenClaw `2026.4.2`. Publish this advisory after the `2026.4.2` npm release is live.\n\nThanks @iskindar for reporting, and thanks @wsparks-vc for coordination.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "openclaw"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2026.4.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2026.4.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-98ch-45wp-ch47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/commit/7eb094a00d80e9f6bf0e62f2c45d3b88ff67c04d"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/openclaw/openclaw"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-178"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-07T18:15:48Z",
+    "nvd_published_at": null
+  }
+}

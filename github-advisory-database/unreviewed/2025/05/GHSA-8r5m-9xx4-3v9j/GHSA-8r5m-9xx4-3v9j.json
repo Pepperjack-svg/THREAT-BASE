@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8r5m-9xx4-3v9j",
+  "modified": "2025-05-07T15:31:27Z",
+  "published": "2025-05-01T15:31:53Z",
+  "aliases": [
+    "CVE-2022-49920"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: netlink notifier might race to release objects\n\ncommit release path is invoked via call_rcu and it runs lockless to\nrelease the objects after rcu grace period. The netlink notifier handler\nmight win race to remove objects that the transaction context is still\nreferencing from the commit release path.\n\nCall rcu_barrier() to ensure pending rcu callbacks run to completion\nif the list of transactions to be destroyed is not empty.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49920"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ffe7100411a8b9015115ce124cd6c9c9da6f8e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4bc8271db21ea9f1c86a1ca4d64999f184d4aae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e40b7c44d19e327ad8b49a491ef1fa8dcc4566e0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:17Z"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cc4m-mp48-x7qg",
+  "modified": "2026-06-30T16:50:37Z",
+  "published": "2026-05-26T13:30:39Z",
+  "aliases": [
+    "CVE-2026-41863"
+  ],
+  "summary": "Spring AI's support for Anthropic's Skills API used LLM-influenced filenames unsanitized in Path.resolve before writing files to disk",
+  "details": "Spring AI's support for Anthropic's Skills API used LLM-influenced filenames unsanitized in Path.resolve before writing files to disk. This could allow a malicious user to write files outside the intended target directory, including restricted directories.\n\nAffected versions:\nSpring AI: 1.1.0 through 1.1.7",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.ai:spring-ai-anthropic"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.1.0"
+            },
+            {
+              "fixed": "1.1.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41863"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/spring-projects/spring-ai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://spring.io/security/cve-2026-41863"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-30T16:50:37Z",
+    "nvd_published_at": "2026-05-25T07:16:16Z"
+  }
+}

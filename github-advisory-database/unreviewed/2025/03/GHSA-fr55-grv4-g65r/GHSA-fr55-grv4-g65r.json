@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fr55-grv4-g65r",
+  "modified": "2025-10-28T03:30:13Z",
+  "published": "2025-03-06T18:31:09Z",
+  "aliases": [
+    "CVE-2024-58053"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrxrpc: Fix handling of received connection abort\n\nFix the handling of a connection abort that we've received.  Though the\nabort is at the connection level, it needs propagating to the calls on that\nconnection.  Whilst the propagation bit is performed, the calls aren't then\nwoken up to go and process their termination, and as no further input is\nforthcoming, they just hang.\n\nAlso add some tracing for the logging of connection aborts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58053"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e56ebde245e4799ce74d38419426f2a80d39950"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5842ce7b120c65624052a8da04460d35b26caac0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96d1d927c4d03ee9dcee7640bca70b74e63504fc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c6702260557c0183d8417c79a37777a3d3e58e8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-06T16:15:51Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jmqr-pj67-cqv5",
+  "modified": "2026-10-19T12:32:53Z",
+  "published": "2026-10-19T12:32:53Z",
+  "aliases": [
+    "CVE-2026-112210"
+  ],
+  "details": "A flaw was found in the rhc-canonical-facts.service systemd unit shipped with rhc. The service runs as root and operates on a file inside a directory owned by an unprivileged system user without verifying that the file is not a symbolic link. A local attacker who has already compromised the privileged yggdrasil system service account can exploit this to gain ownership of arbitrary files, leading to privilege escalation to root.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112210"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-112210"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2555474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RedHatInsights/rhc/blob/51928db/data/systemd/rhc-canonical-facts.service"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T12:17:01Z"
+  }
+}

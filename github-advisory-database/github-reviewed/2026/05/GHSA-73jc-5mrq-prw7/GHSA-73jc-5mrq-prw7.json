@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73jc-5mrq-prw7",
+  "modified": "2026-07-06T22:53:28Z",
+  "published": "2026-05-19T20:10:53Z",
+  "aliases": [
+    "CVE-2026-46374"
+  ],
+  "summary": "SQLFluff: Uncontrolled Resource Consumption in SQLFluff Parser",
+  "details": "### Impact\n\nIn deployments where untrusted users can provide SQL queries to be linted, an untrusted user can submit a malicious long query to any application using the parser to trigger a Denial of Service through resource exhaustion.\n\n### Patches\n\nVersions 4.2.0 and up contain a configurable parse node limit, which is enabled by default, to prevent this manner of exploit.\n\n### Credit\n\nOri Nakar from Imperva Threat Research Team.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "sqlfluff"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.2.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/sqlfluff/sqlfluff/security/advisories/GHSA-73jc-5mrq-prw7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46374"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/sqlfluff/PYSEC-2026-210.yaml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/sqlfluff/sqlfluff"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-19T20:10:53Z",
+    "nvd_published_at": "2026-06-09T23:16:59Z"
+  }
+}

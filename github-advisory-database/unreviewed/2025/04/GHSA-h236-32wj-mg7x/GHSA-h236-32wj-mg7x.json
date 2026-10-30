@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h236-32wj-mg7x",
+  "modified": "2025-04-14T18:31:48Z",
+  "published": "2025-04-05T21:30:22Z",
+  "aliases": [
+    "CVE-2024-56370"
+  ],
+  "details": "Net::Xero 0.044 and earlier for Perl uses the rand() function as the default source of entropy, which is not cryptographically secure, for cryptographic functions.\n\nSpecifically Net::Xero uses the Data::Random library which specifically states that it is \"Useful mostly for test programs\". Data::Random uses the rand() function.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56370"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/BAREFOOT/Data-Random-0.13/source/lib/Data/Random.pm#L537"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/ELLIOTT/Net-Xero-0.44/source/lib/Net/Xero.pm#L58"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/ELLIOTT/Net-Xero-0.44/source/lib/Net/Xero.pm#L9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://perldoc.perl.org/functions/rand"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.metacpan.org/docs/guides/random-data-for-security.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-331",
+      "CWE-338"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-05T19:15:38Z"
+  }
+}

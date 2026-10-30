@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4jhw-j7jr-j479",
+  "modified": "2026-10-09T00:31:47Z",
+  "published": "2026-10-09T00:31:47Z",
+  "aliases": [
+    "CVE-2026-89091"
+  ],
+  "details": "A flaw was found in ansible-core. When installing a collection with\n`ansible-galaxy collection install`, the archive extractor validates member\npaths using lexical path normalisation (os.path.abspath) instead of resolving\nsymbolic links (os.path.realpath), and it performs no containment check on\nsymlink-typed directory members before creating them. A crafted collection\ntarball can chain symlink directory entries so that a subsequent file member is\nwritten outside the intended destination directory. This allows an attacker who\ncan get a victim to install a malicious collection to overwrite arbitrary files\nwith the privileges of the user running ansible-galaxy, leading to code\nexecution on the control node. This is a bypass of the fix for CVE-2020-10691.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-89091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2531646"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T22:17:35Z"
+  }
+}

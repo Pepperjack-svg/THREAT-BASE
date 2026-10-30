@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wg5c-63h4-vxh8",
+  "modified": "2026-10-16T18:34:52Z",
+  "published": "2026-10-16T18:34:52Z",
+  "aliases": [
+    "CVE-2026-111694"
+  ],
+  "details": "qKnow through 2.4.3 contains a missing authentication vulnerability that allows unauthenticated remote attackers to access /flyflow workflow integration endpoints permitted in SecurityConfig. Attackers can POST sequential userId values to /flyflow/userById or call roleAll and deptListByParentDeptId to enumerate user phone numbers, roles, and department structure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111694"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/qiantongtech/qKnow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/qiantongtech/qKnow/blob/v2.4.3/qknow-framework/qknow-security/src/main/java/tech/qiantong/qknow/security/config/SecurityConfig.java#L133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/qiantongtech/qKnow/blob/v2.4.3/qknow-module-system/qknow-module-system-biz/src/main/java/tech/qiantong/qknow/module/system/controller/admin/flyflow/FlyFlowController.java#L77-L99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/qknow-flyflow-unauth-user-directory-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/qknow-through-2.4.3-missing-authentication-via-flyflow-workflow-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:52Z"
+  }
+}

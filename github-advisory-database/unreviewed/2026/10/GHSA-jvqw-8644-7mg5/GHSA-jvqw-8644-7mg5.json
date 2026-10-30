@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jvqw-8644-7mg5",
+  "modified": "2026-10-22T03:33:27Z",
+  "published": "2026-10-18T15:30:31Z",
+  "aliases": [
+    "CVE-2026-112059"
+  ],
+  "details": "libLAS through 1.8.1 contains a heap out-of-bounds write vulnerability in the point record reader caused by truncating the schema byte size to 16 bits when sizing the point buffer. Attackers can craft a .las file with a LASSchema variable length record whose schema exceeds 65535 bytes, so tools like lasinfo, las2las, or las2txt write attacker-controlled bytes past the heap buffer, causing memory corruption and crashes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libLAS/libLAS/blob/1.8.1/src/detail/reader/reader.cpp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libLAS/libLAS/blob/1.8.1/src/header.cpp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/cve-2026-112059-liblas-record-length-truncation-heap-overflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/liblas-record-length-truncation-heap-overflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/liblas-through-1.8.1-heap-out-of-bounds-write-via-lasschema-vlr"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T13:16:38Z"
+  }
+}

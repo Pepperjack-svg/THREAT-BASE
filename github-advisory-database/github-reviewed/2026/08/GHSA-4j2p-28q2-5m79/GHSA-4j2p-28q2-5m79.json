@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4j2p-28q2-5m79",
+  "modified": "2026-09-08T18:45:47Z",
+  "published": "2026-08-10T21:32:04Z",
+  "aliases": [
+    "CVE-2026-69112"
+  ],
+  "summary": "Accelerate path traversal and denial of service via sharded checkpoint weight_map entries",
+  "details": "Hugging Face Accelerate through 1.14.0 contains a path traversal vulnerability in load_checkpoint_in_model and load_checkpoint_and_dispatch functions that fail to sanitize weight_map entries from sharded checkpoint indexes. Attackers can supply relative paths with ../ sequences or absolute paths to read arbitrary files, or point shard entries at named pipes to cause indefinite blocking and denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "accelerate"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "1.14.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/accelerate/issues/4067"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/accelerate/pull/4070"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/accelerate/pull/4138"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/huggingface/accelerate"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hugging-face-accelerate-path-traversal-and-dos-via-weight-map"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-08T18:45:47Z",
+    "nvd_published_at": "2026-08-10T20:17:31Z"
+  }
+}

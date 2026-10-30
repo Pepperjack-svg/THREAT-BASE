@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v498-rhc6-28g9",
+  "modified": "2025-11-28T18:30:22Z",
+  "published": "2025-11-24T15:30:29Z",
+  "aliases": [
+    "CVE-2025-12977"
+  ],
+  "details": "Fluent Bit in_http, in_splunk, and in_elasticsearch input plugins fail to sanitize tag_key inputs. An attacker with network access or the ability to write records into Splunk or Elasticsearch can supply tag_key values containing special characters such as newlines or ../ that are treated as valid tags. Because tags influence routing and some outputs derive filenames or contents from tags, this can allow newline injection, path traversal, forged record injection, or log misrouting, impacting data integrity and log routing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12977"
+    },
+    {
+      "type": "WEB",
+      "url": "https://fluentbit.io/announcements/v4.1.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://fluentbit.io/blog/2025/10/28/security-vulnerabilities-addressed-in-fluent-bit-v4.1-and-backported-to-v4.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.oligo.security/blog/critical-vulnerabilities-in-fluent-bit-expose-cloud-environments-to-remote-takeover"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1287"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-24T15:15:46Z"
+  }
+}

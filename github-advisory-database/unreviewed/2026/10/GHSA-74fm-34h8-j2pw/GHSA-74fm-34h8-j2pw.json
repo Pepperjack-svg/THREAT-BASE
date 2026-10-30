@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-74fm-34h8-j2pw",
+  "modified": "2026-10-26T15:34:44Z",
+  "published": "2026-10-26T15:34:44Z",
+  "aliases": [
+    "CVE-2026-116487"
+  ],
+  "details": "NXP MCUXpresso SDK USB middleware (mcuxsdk-middleware-usb) before 2.13.0 contains an out-of-bounds read vulnerability in USB_DeviceCdcRndisSetCommand() that trusts a host-supplied informationBufferOffset. A malicious USB host can send RNDIS SET messages for OID_GEN_CURRENT_PACKET_FILTER or OID_802_3_MULTICAST_LIST with an out-of-range offset to read and disclose device memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:P/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116487"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nxp-mcuxpresso/mcuxsdk-middleware-usb/commit/209dd79f22755de93751d6f237d3bae5511046cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nxp-mcuxpresso/mcuxsdk-middleware-usb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nxp-mcuxpresso/mcuxsdk-middleware-usb/blob/release/26.06.00/device/class/usb_device_cdc_rndis.c#L956-L964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mcuxpresso.nxp.com/mcuxsdk/latest/release/index.html#release-highlights"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nxp-mcuxpresso-sdk-usb-middleware-before-2.13.0-rndis-out-of-bounds-read"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T14:16:37Z"
+  }
+}

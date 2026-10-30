@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-96x2-4759-fjj4",
+  "modified": "2026-10-16T18:34:43Z",
+  "published": "2026-10-16T18:34:42Z",
+  "aliases": [
+    "CVE-2026-111615"
+  ],
+  "details": "Mall4cloud through 4.0 contains an insecure direct object reference vulnerability that allows authenticated merchants to read other shops' buyer shipping addresses via the multishop OrderController getOrderAddr handler. Attackers can enumerate auto-increment orderAddrId values in GET /m/order/order_addr/{orderAddrId} requests to obtain consignee names, mobile numbers, addresses and post codes platform-wide.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111615"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gz-yami/mall4cloud/blob/v4.0/mall4cloud-order/src/main/java/com/mall4j/cloud/order/controller/multishop/OrderController.java#L75-L80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gz-yami/mall4cloud/blob/v4.0/mall4cloud-order/src/main/resources/mapper/OrderAddrMapper.xml#L27-L29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/mall4cloud-multishop-order-addr-cross-shop-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mall4cloud-through-4.0-idor-exposing-buyer-addresses-via-order-addr-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:40Z"
+  }
+}

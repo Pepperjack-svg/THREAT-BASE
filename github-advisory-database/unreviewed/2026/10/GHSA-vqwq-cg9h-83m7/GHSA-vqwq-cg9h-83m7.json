@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vqwq-cg9h-83m7",
+  "modified": "2026-10-16T18:34:50Z",
+  "published": "2026-10-16T18:34:50Z",
+  "aliases": [
+    "CVE-2026-111685"
+  ],
+  "details": "IceCMS through 4.1.5 contains an unauthenticated sql injection vulnerability that allows remote attackers to inject SQL by supplying a crafted num path parameter to /WebResource/findresourcebynum. Attackers can append SQL after the LIMIT clause concatenated via QueryWrapper.last() to extract database contents using union-based or blind techniques.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Thecosy/IceCMS"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Thecosy/IceCMS/blob/afd7a9f0d04a714e7c7e735e566c27f54b5d5201/IceCMS-ment/src/main/java/com/ttice/icewkment/controller/frontend/WebResourceController.java#L128-L134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/icecms-webresource-webarticle-findbynum-limit-sqli"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/icecms-through-4.1.5-sql-injection-via-webresource-findresourcebynum"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:51Z"
+  }
+}

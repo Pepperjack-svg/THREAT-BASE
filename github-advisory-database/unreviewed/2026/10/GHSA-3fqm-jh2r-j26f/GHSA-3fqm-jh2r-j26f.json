@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3fqm-jh2r-j26f",
+  "modified": "2026-10-07T18:32:09Z",
+  "published": "2026-10-07T18:32:09Z",
+  "aliases": [
+    "CVE-2026-107278"
+  ],
+  "details": "MISP contains a validation flaw in its object synchronization logic. When a MISP Object is created without a description, it is stored correctly on the originating instance. However, when that object is replicated to another MISP instance via the sync mechanism, the receiving instance's validation rule rejects the object because the description field is empty. As a result, the receiving instance silently drops the object along with all of its associated attributes, leading to loss of threat-intelligence data.\n\nPreconditions:\n\n- Two or more MISP instances are configured to synchronize objects.\n\n- A user with object-creation privileges creates an object without supplying a description.\n\n- The object is subsequently synced to a peer instance.\n\nImpact:\n\n- Valid objects and their attributes are silently discarded on receiving instances, causing data-integrity loss in the threat-intelligence pipeline.\n\n- The issue is not externally exploitable in a traditional sense but can be triggered by any authorized user who creates objects without descriptions, resulting in unintended data loss across the sync topology.\n\nAffected: <2.5.48.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/6b1776f07"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-07T16:17:47Z"
+  }
+}

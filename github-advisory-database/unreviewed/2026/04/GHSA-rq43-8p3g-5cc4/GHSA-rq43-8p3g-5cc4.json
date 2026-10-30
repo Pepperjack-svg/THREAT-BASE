@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rq43-8p3g-5cc4",
+  "modified": "2026-10-15T03:35:36Z",
+  "published": "2026-04-22T15:31:41Z",
+  "aliases": [
+    "CVE-2026-31449"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: validate p_idx bounds in ext4_ext_correct_indexes\n\next4_ext_correct_indexes() walks up the extent tree correcting\nindex entries when the first extent in a leaf is modified. Before\naccessing path[k].p_idx->ei_block, there is no validation that\np_idx falls within the valid range of index entries for that\nlevel.\n\nIf the on-disk extent header contains a corrupted or crafted\neh_entries value, p_idx can point past the end of the allocated\nbuffer, causing a slab-out-of-bounds read.\n\nFix this by validating path[k].p_idx against EXT_LAST_INDEX() at\nboth access sites: before the while loop and inside it. Return\n-EFSCORRUPTED if the index pointer is out of range, consistent\nwith how other bounds violations are handled in the ext4 extent\ntree code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31449"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01bf1e0b997d82c0e353b51ed74ef99698043c33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10242e640b36b91ad03d25f3dc77854bbdff8358"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2acb5c12ebd860f30e4faf67e6cc8c44ddfe5fe8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39d6e2b67651614bac0dc6592fa9836321910067"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/407c944f217c17d4343148011acafebc604d55e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d08401aa13f1531216f1a7ae281ca4806e90a5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93f2e975ed658ce09db4d4c2877ca2c06540df83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5839b34704c9c2f47f079451bdbb22de0da1ed1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-22T14:16:38Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9v5-xxq6-jh2w",
+  "modified": "2026-10-21T15:40:12Z",
+  "published": "2025-12-09T18:30:36Z",
+  "aliases": [
+    "CVE-2025-40338"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: Intel: avs: Do not share the name pointer between components\n\nBy sharing 'name' directly, tearing down components may lead to\nuse-after-free errors. Duplicate the name to avoid that.\n\nAt the same time, update the order of operations - since commit\ncee28113db17 (\"ASoC: dmaengine_pcm: Allow passing component name via\nconfig\") the framework does not override component->name if set before\ninvoking the initializer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40338"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a187ea7a5b4e78b9be1f9c1507cff04f3ae4ab1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/128bf29c992988f8b4f3829227339908fde5ec86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4dee5c1cc439b0d5ef87f741518268ad6a95b23d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a80a82f567f7c6276d96409377d4691ea30d18a2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T16:17:44Z"
+  }
+}

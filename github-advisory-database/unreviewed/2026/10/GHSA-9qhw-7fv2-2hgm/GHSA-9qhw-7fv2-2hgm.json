@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9qhw-7fv2-2hgm",
+  "modified": "2026-10-19T15:32:39Z",
+  "published": "2026-10-19T15:32:39Z",
+  "aliases": [
+    "CVE-2026-112269"
+  ],
+  "details": "SGLang through 0.5.22 with the Mooncake disaggregation backend accepts unauthenticated decode registration messages on the Prefill rank ZMQ PULL socket, allowing denial of service. Network-adjacent attackers can send many registrations with unique mooncake_session_id values and large nested-buffer frames to exhaust Prefill memory until the scheduler is OOM-killed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112269"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/issues/45012"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/blob/v0.5.22/python/sglang/srt/disaggregation/common/utils.py#L47-L69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/blob/v0.5.22/python/sglang/srt/disaggregation/mooncake/conn.py#L2885-L2935"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/blob/v0.5.22/python/sglang/srt/disaggregation/mooncake/conn.py#L889-L909"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sglang-through-0.5.22-memory-exhaustion-via-unauthenticated-mooncake-decode-registrations"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T14:17:04Z"
+  }
+}

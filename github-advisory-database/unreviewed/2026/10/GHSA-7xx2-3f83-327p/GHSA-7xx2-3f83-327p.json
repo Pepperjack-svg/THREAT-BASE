@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7xx2-3f83-327p",
+  "modified": "2026-10-26T15:34:48Z",
+  "published": "2026-10-26T15:34:48Z",
+  "aliases": [
+    "CVE-2026-77057"
+  ],
+  "details": "boneIO Black does not limit authentication attempts on its web interface (POST /api/login) or SSH service, and does not enforce password complexity. An unauthenticated remote attacker can make unlimited brute-force login attempts, potentially compromising user accounts and gaining unauthorized access to the device.\n\nThis issue was fixed in version 1.6.0: web login attempts are rate-limited per source address and per account, panel passwords must be at least 8 characters long, and SSH allows three authentication attempts per connection with a shortened login grace time.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:P/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77057"
+    },
+    {
+      "type": "WEB",
+      "url": "https://boneio.eu/en/docs/black"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2026/10/CVE-2026-77052"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-307"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T15:16:43Z"
+  }
+}

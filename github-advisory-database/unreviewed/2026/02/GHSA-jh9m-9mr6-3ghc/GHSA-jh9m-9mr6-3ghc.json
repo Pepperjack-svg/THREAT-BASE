@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jh9m-9mr6-3ghc",
+  "modified": "2026-10-15T03:35:14Z",
+  "published": "2026-02-13T15:30:26Z",
+  "aliases": [
+    "CVE-2026-23111"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: fix inverted genmask check in nft_map_catchall_activate()\n\nnft_map_catchall_activate() has an inverted element activity check\ncompared to its non-catchall counterpart nft_mapelem_activate() and\ncompared to what is logically required.\n\nnft_map_catchall_activate() is called from the abort path to re-activate\ncatchall map elements that were deactivated during a failed transaction.\nIt should skip elements that are already active (they don't need\nre-activation) and process elements that are inactive (they need to be\nrestored). Instead, the current code does the opposite: it skips inactive\nelements and processes active ones.\n\nCompare the non-catchall activate callback, which is correct:\n\n  nft_mapelem_activate():\n    if (nft_set_elem_active(ext, iter->genmask))\n        return 0;   /* skip active, process inactive */\n\nWith the buggy catchall version:\n\n  nft_map_catchall_activate():\n    if (!nft_set_elem_active(ext, genmask))\n        continue;   /* skip inactive, process active */\n\nThe consequence is that when a DELSET operation is aborted,\nnft_setelem_data_activate() is never called for the catchall element.\nFor NFT_GOTO verdict elements, this means nft_data_hold() is never\ncalled to restore the chain->use reference count. Each abort cycle\npermanently decrements chain->use. Once chain->use reaches zero,\nDELCHAIN succeeds and frees the chain while catchall verdict elements\nstill reference it, resulting in a use-after-free.\n\nThis is exploitable for local privilege escalation from an unprivileged\nuser via user namespaces + nftables on distributions that enable\nCONFIG_USER_NS and CONFIG_NF_TABLES.\n\nFix by removing the negation so the check matches nft_mapelem_activate():\nskip active elements, process inactive ones.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-23111.json"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f41c5d151078c5348271ffaf8e7410d96f2d82f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9b6573421de51829f7ec1cce76d85f5f6fbbd7f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c760ba4e36c750379d13569f23f5a6e185333f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b68a45f9722f2babe9e7bad00aa74638addf081"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42c574c1504aa089a0a142e4c13859327570473d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1444ff890b4653add12f734ffeffc173d42862dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-253495.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2439687"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.exodusintel.com/2026/06/08/off-by-exploiting-a-use-after-free-in-the-linux-kernel"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-23111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:9112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:6570"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:62641"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:62639"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:18134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:10996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:10108"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416",
+      "CWE-672"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-13T14:16:10Z"
+  }
+}

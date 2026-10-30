@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fv92-j7fm-4rhq",
+  "modified": "2025-12-24T12:30:26Z",
+  "published": "2025-12-24T12:30:26Z",
+  "aliases": [
+    "CVE-2022-50707"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio-crypto: fix memory leak in virtio_crypto_alg_skcipher_close_session()\n\n'vc_ctrl_req' is alloced in virtio_crypto_alg_skcipher_close_session(),\nand should be freed in the invalid ctrl_status->status error handling\ncase. Otherwise there is a memory leak.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50707"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0871df190fe6723464efe0f493d476411616f553"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67fb59ff1384e338679c0eb7a43c83ce8868c9fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79026a2d0a1b080257773d22a493f9bcab8c65be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1d65f717cd6305a396a8738e022c6f7c65cfbe8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:15:50Z"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f2qx-66wf-wvvx",
+  "modified": "2026-05-08T18:24:30Z",
+  "published": "2026-05-08T18:24:30Z",
+  "aliases": [
+    "CVE-2024-27355"
+  ],
+  "summary": "phpseclib guardrails needed on OID length",
+  "details": "### Impact\nAny application using that loads untrusted ASN1 files (eg. X509 certificates, RSA PKCS8 private or public keys, etc).\n\n### Patches\nhttps://github.com/phpseclib/phpseclib/commit/e32531001b4d62c66c3d824ccef54ffad835eb59\n\n### Workarounds\nNo.\n\n### Resources\nhttps://github.com/phpseclib/phpseclib/commit/e32531001b4d62c66c3d824ccef54ffad835eb59\nhttps://www.usenix.org/system/files/conference/usenixsecurity25/sec25cycle1-prepub-599-shi-bing.pdf",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "phpseclib/phpseclib"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "2.0.47"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2.0.46"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "phpseclib/phpseclib"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.0.36"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.0.35"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "phpseclib/phpseclib"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.1.1"
+            },
+            {
+              "fixed": "1.0.23"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.0.22"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/phpseclib/phpseclib/security/advisories/GHSA-f2qx-66wf-wvvx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-27355"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phpseclib/phpseclib/commit/e32531001b4d62c66c3d824ccef54ffad835eb59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/katzj/ee72f3c2a00590812b2ea3c0c8890e0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FriendsOfPHP/security-advisories/blob/master/phpseclib/phpseclib/CVE-2024-27355.yaml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/phpseclib/phpseclib"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phpseclib/phpseclib/blob/978d081fe50ff92879c50ff143c62a143edb0117/phpseclib/File/ASN1.php#L1129"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2024/03/msg00002.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2024/03/msg00003.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-08T18:24:30Z",
+    "nvd_published_at": null
+  }
+}

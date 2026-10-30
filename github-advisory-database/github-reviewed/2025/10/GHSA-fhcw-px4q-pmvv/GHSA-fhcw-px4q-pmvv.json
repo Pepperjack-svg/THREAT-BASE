@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fhcw-px4q-pmvv",
+  "modified": "2025-11-17T13:49:54Z",
+  "published": "2025-10-13T21:31:10Z",
+  "aliases": [
+    "CVE-2025-62241"
+  ],
+  "summary": "Liferay Commerce Order Content Web is Vulnerable to Authorization Bypass Through User-Controlled Key",
+  "details": "Insecure Direct Object Reference (IDOR) vulnerability with shipment addresses in Liferay DXP 2023.Q4.1 through 2023.Q4.5 allows remote authenticated users to from one virtual instance to view the shipment addresses of different virtual instance via the _com_liferay_commerce_order_web_internal_portlet_CommerceOrderPortlet_commerceOrderId parameter.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay.commerce:com.liferay.commerce.order.content.web"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.0.114"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-62241"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/53401963f02f593bbf555b4b321fdaeb59e03a53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/75c39ea518eb91b3b5cbb0576074ebbbfd805401"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.atlassian.net/browse/LPE-17936"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.dev/portal/security/known-vulnerabilities/-/asset_publisher/jekt/content/CVE-2025-62241"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-13T22:55:26Z",
+    "nvd_published_at": "2025-10-13T20:15:34Z"
+  }
+}

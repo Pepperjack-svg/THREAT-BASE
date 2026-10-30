@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f582-6gf6-gx4g",
+  "modified": "2026-03-25T21:00:30Z",
+  "published": "2026-03-24T17:28:40Z",
+  "aliases": [
+    "CVE-2026-33162"
+  ],
+  "summary": "Craft CMS has an authorization bypass which allows any control panel user to move entries without permissions",
+  "details": "### Summary\n\nAn authenticated control panel user with only accessCp can move entries across sections via POST `/actions/entries/move-to-section`, even when they do not have `saveEntries:{sectionUid}` permission for either source or destination section.\n\n### Details\n\n#### Root-cause analysis\n\n  1. actionMoveToSection accepts sectionId and entryIds, loads entries, and iterates:\n`Craft::$app->getEntries()->moveEntryToSection($entry, $section)`.\n  2. The endpoint does not enforce per-entry or per-section authorization checks.\n  3. `moveEntryToSection()` also does not enforce current-user authorization.\n  4. There is a permission check in `actionMoveToSectionModalData` for building UI options, but that check is not enforced in the actual endpoint.\n  5. Therefore, a direct POST request can bypass UI filtering and perform unauthorized entry moves.\n\n ### Impact\n\n* This is an authorization bypass permitting unauthorized content changes.\n* Authenticated low-privileged control panel users can move entries they should not be able to manage, violating integrity and potentially disrupting routing/editorial controls.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.3.0"
+            },
+            {
+              "fixed": "5.9.14"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.9.13"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-f582-6gf6-gx4g"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33162"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/3c1ab1c4445dd9237855a66e6a06ecf3591a718e"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/releases/tag/5.9.14"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285",
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-24T17:28:40Z",
+    "nvd_published_at": "2026-03-24T18:16:10Z"
+  }
+}

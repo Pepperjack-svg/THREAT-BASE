@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cq9v-9ww6-phr8",
+  "modified": "2026-03-13T21:31:47Z",
+  "published": "2026-03-13T21:31:46Z",
+  "aliases": [
+    "CVE-2026-2257"
+  ],
+  "details": "The GetGenie plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.3.2 due to missing validation on a user controlled key in the `action` function. This makes it possible for authenticated attackers, with Author-level access and above, to update post metadata for arbitrary posts. Combined with a lack of input sanitization, this leads to Stored Cross-Site Scripting when a higher-privileged user (such as an Administrator) views the affected post's \"Competitor\" tab in the GetGenie sidebar.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2257"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/getgenie/tags/4.3.2/app/Api/Store.php#L32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/getgenie/tags/4.3.2/app/Api/Store.php#L74"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3479838%40getgenie%2Ftrunk&old=3446466%40getgenie%2Ftrunk&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/0f7b119d-ec56-40cb-80ef-67585dadad77?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-13T19:54:33Z"
+  }
+}

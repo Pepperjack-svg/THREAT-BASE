@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g66w-7p4m-7w28",
+  "modified": "2026-10-21T15:41:57Z",
+  "published": "2026-10-18T18:32:02Z",
+  "aliases": [
+    "CVE-2026-98755"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: vcc: zero-initialize control packet in vcc_send_ctl()\n\nThe stack-allocated struct vio_vcc pkt was partially initialized,\nleaving the tag.stype_env field uninitialized before being sent via\nldc_write(), potentially leaking kernel stack data to the LDC peer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98755"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f71f565e3585da1098ff19ca3c24687dab59185"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/399aa38af1d78001612e3130b2056ea392a355ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4335278d0e75395cbfaf71c84b521df56d69e936"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b59afc8af3143ae03e4f9b81ca66aa5a1c1ebed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f1a08ef02825b440126c406ea63ef6128888e15"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:29Z"
+  }
+}

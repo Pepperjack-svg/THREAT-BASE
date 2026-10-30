@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mqvv-vjpm-cprh",
+  "modified": "2026-10-15T03:35:05Z",
+  "published": "2026-01-13T18:31:06Z",
+  "aliases": [
+    "CVE-2025-71086"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: rose: fix invalid array index in rose_kill_by_device()\n\nrose_kill_by_device() collects sockets into a local array[] and then\niterates over them to disconnect sockets bound to a device being brought\ndown.\n\nThe loop mistakenly indexes array[cnt] instead of array[i]. For cnt <\nARRAY_SIZE(array), this reads an uninitialized entry; for cnt ==\nARRAY_SIZE(array), it is an out-of-bounds read. Either case can lead to\nan invalid socket pointer dereference and also leaks references taken\nvia sock_hold().\n\nFix the index to use i.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71086"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1418c12cd3bba79dc56b57b61c99efe40f579981"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6595beb40fb0ec47223d3f6058ee40354694c8e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/819fb41ae54960f66025802400c9d3935eef4042"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92d900aac3a5721fb54f3328f1e089b44a861c38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f6185a32496834d6980b168cffcccc2d6b17280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b409ba9e1e63ccf3ab4cc061e33c1f804183543e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed2639414d43ba037f798eaf619e878309310451"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-129"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-13T16:16:08Z"
+  }
+}

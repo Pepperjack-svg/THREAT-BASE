@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v38m-4hx4-9x2r",
+  "modified": "2026-10-15T00:31:17Z",
+  "published": "2026-10-15T00:31:17Z",
+  "aliases": [
+    "CVE-2026-110841"
+  ],
+  "details": "n8n before 2.41.4 and 2.42.0 contains an authorization bypass in the agent chat resume endpoint, which accepts a run identifier from the request body without verifying that the suspended checkpoint belongs to the caller. Authenticated project members can list and read other members' private agent conversations through project-scoped endpoints, then approve their pending tool calls, causing the tools to execute and write results into the victim's conversation.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:L/VA:L/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/n8n-io/n8n/security/advisories/GHSA-p3pg-xw4f-m72c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110841"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/n8n-before-2.41.4-and-2.42.0-authorization-bypass-in-agent-chat-resume-tool-approval"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T23:17:24Z"
+  }
+}

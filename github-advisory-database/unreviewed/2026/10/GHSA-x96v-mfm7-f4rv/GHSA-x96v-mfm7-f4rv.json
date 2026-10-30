@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x96v-mfm7-f4rv",
+  "modified": "2026-10-16T06:30:23Z",
+  "published": "2026-10-16T06:30:23Z",
+  "aliases": [
+    "CVE-2026-109990"
+  ],
+  "details": "The Flying Scripts: Delay JavaScript to Improve Site Speed & Performance plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 1.2.4 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The exploit bypasses WordPress core's save-time kses sanitization entirely because the payload uses only kses-allowed elements — an &lt;abbr title&gt; attribute and &lt;code&gt; text content — and the XSS is introduced post-save when the plugin's output-buffer rewriter substitutes a double-quote-bearing &lt;code&gt; body into the &lt;abbr title&gt; attribute via predictable, unsalted ___noise___ placeholder keys.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109990"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/flying-scripts/tags/1.2.4/html-rewrite.php#L36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/flying-scripts/tags/1.2.4/html-rewrite.php#L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/flying-scripts/tags/1.2.4/lib/dom-parser.php#L2112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/flying-scripts/tags/1.2.4/lib/dom-parser.php#L2207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/flying-scripts/tags/1.2.4/lib/dom-parser.php#L2226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/flying-scripts/tags/1.2.4/lib/dom-parser.php#L497"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3737597%40flying-scripts&new=3737597%40flying-scripts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/0ddc518c-02a0-46a5-93e9-0d92a045b35b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T04:18:26Z"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-63cx-g855-hvv4",
+  "modified": "2025-08-25T21:01:01Z",
+  "published": "2025-08-25T21:01:00Z",
+  "aliases": [],
+  "summary": "mitmproxy binaries embed a vulnerable python-hyper/h2 dependency",
+  "details": "mitmproxy 12.1.1 and below embed python-hyper/h2 ≤ v4.2.0, which has a gap in its HTTP/2 header validation. This enables request smuggling attacks when mitmproxy is in a configuration where it translates HTTP/2 to HTTP/1. For example, this affects reverse proxies to `http://` backends. It does not affect mitmproxy's regular mode.\n\nAll users are encouraged to upgrade to mitmproxy 12.1.2, which includes a fixed version of h2.\n\nMore details about the vulnerability itself can be found at https://github.com/python-hyper/h2/security/advisories/GHSA-847f-9342-265h.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mitmproxy"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "12.1.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 12.1.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mitmproxy/mitmproxy/security/advisories/GHSA-63cx-g855-hvv4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/python-hyper/h2/security/advisories/GHSA-847f-9342-265h"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mitmproxy/mitmproxy"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1395",
+      "CWE-444"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-08-25T21:01:00Z",
+    "nvd_published_at": null
+  }
+}

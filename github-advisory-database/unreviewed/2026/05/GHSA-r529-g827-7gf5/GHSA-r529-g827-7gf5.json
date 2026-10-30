@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r529-g827-7gf5",
+  "modified": "2026-10-21T15:40:24Z",
+  "published": "2026-05-06T12:30:27Z",
+  "aliases": [
+    "CVE-2026-43101"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: ioam: fix potential NULL dereferences in __ioam6_fill_trace_data()\n\nWe need to check __in6_dev_get() for possible NULL value, as\nsuggested by Yiming Qian.\n\nAlso add skb_dst_dev_rcu() instead of skb_dst_dev(),\nand two missing READ_ONCE().\n\nNote that @dev can't be NULL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34b8390ac0ba57004b90ea568ac06f50bf896a80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3719c234fa94c37c955b1ecd3742ef280ec135e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4198aab6f000b4febb18ea820fea20634dd789c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e65a8b8daa18d63255ec58964dd192c7fdd9f8b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f87aa5d1a7f56727a768757613a303b4245444a1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T10:16:23Z"
+  }
+}

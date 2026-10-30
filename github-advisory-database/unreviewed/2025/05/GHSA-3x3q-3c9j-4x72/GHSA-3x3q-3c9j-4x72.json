@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3x3q-3c9j-4x72",
+  "modified": "2025-11-05T15:31:01Z",
+  "published": "2025-05-01T15:31:47Z",
+  "aliases": [
+    "CVE-2022-49790"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: iforce - invert valid length check when fetching device IDs\n\nsyzbot is reporting uninitialized value at iforce_init_device() [1], for\ncommit 6ac0aec6b0a6 (\"Input: iforce - allow callers supply data buffer\nwhen fetching device IDs\") is checking that valid length is shorter than\nbytes to read. Since iforce_get_id_packet() stores valid length when\nreturning 0, the caller needs to check that valid length is longer than or\nequals to bytes to read.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49790"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24cc679abbf31477d0cc6106ec83c2fbae6b3cdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d53797ce7ce8fb1d95a5bebc5efa9418c4217a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6365569d62a75ddf53fb0c2936c16587a365984c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8ebf250997c5fb253582f42bfe98673801ebebd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fdd57c20d4408cac3c3c535c120d244e083406c9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:02Z"
+  }
+}

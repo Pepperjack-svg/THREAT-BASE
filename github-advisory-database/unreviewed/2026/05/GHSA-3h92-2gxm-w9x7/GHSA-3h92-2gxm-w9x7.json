@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3h92-2gxm-w9x7",
+  "modified": "2026-05-03T09:33:10Z",
+  "published": "2026-05-01T15:30:34Z",
+  "aliases": [
+    "CVE-2026-31735"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommupt: Fix short gather if the unmap goes into a large mapping\n\nunmap has the odd behavior that it can unmap more than requested if the\nending point lands within the middle of a large or contiguous IOPTE.\n\nIn this case the gather should flush everything unmapped which can be\nlarger than what was requested to be unmapped. The gather was only\nflushing the range requested to be unmapped, not extending to the extra\nrange, resulting in a short invalidation if the caller hits this special\ncondition.\n\nThis was found by the new invalidation/gather test I am adding in\npreparation for ARMv8. Claude deduced the root cause.\n\nAs far as I remember nothing relies on unmapping a large entry, so this is\nlikely not a triggerable bug.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31735"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/50ecd96a28f712f8b682c0441f4cb9b086d28816"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee6e69d032550687a3422504bfca3f834c7b5061"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:36Z"
+  }
+}

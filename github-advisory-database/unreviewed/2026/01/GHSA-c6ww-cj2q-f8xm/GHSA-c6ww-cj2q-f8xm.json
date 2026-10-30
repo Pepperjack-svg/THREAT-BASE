@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c6ww-cj2q-f8xm",
+  "modified": "2026-01-07T12:31:23Z",
+  "published": "2026-01-07T12:31:23Z",
+  "aliases": [
+    "CVE-2025-14802"
+  ],
+  "details": "The LearnPress – WordPress LMS Plugin for WordPress is vulnerable to unauthorized file deletion in versions up to, and including, 4.3.2.2 via the /wp-json/lp/v1/material/{file_id} REST API endpoint. This is due to a parameter mismatch between the DELETE operation and authorization check, where the endpoint uses file_id from the URL path but the permission callback validates item_id from the request body. This makes it possible for authenticated attackers, with teacher-level access, to delete arbitrary lesson material files uploaded by other teachers via sending a DELETE request with their own item_id (to pass authorization) while targeting another teacher's file_id.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14802"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.2.1/inc/rest-api/v1/frontend/class-lp-rest-material-controller.php#L405"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.2.1/inc/rest-api/v1/frontend/class-lp-rest-material-controller.php#L527"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.2.1/inc/rest-api/v1/frontend/class-lp-rest-material-controller.php#L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.2.3/inc/rest-api/v1/frontend/class-lp-rest-material-controller.php#L403"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/884c4508-1ee1-4384-9fc2-29e2c9042426?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-07T12:16:56Z"
+  }
+}

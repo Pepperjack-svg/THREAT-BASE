@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8v9m-p9fp-7pw5",
+  "modified": "2025-12-16T15:30:47Z",
+  "published": "2025-12-16T15:30:47Z",
+  "aliases": [
+    "CVE-2025-68247"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nposix-timers: Plug potential memory leak in do_timer_create()\n\nWhen posix timer creation is set to allocate a given timer ID and the\naccess to the user space value faults, the function terminates without\nfreeing the already allocated posix timer structure.\n\nMove the allocation after the user space access to cure that.\n\n[ tglx: Massaged change log ]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0fd4d42e27f761e9cc82801b3f183e658dc749d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f417f44524e7fc098e787c718d838b32723c0b2d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T15:15:53Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q6ch-8cp2-xfhp",
+  "modified": "2025-11-18T21:32:29Z",
+  "published": "2025-07-25T15:30:51Z",
+  "aliases": [
+    "CVE-2025-38369"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: idxd: Check availability of workqueue allocated by idxd wq driver before using\n\nRunning IDXD workloads in a container with the /dev directory mounted can\ntrigger a call trace or even a kernel panic when the parent process of the\ncontainer is terminated.\n\nThis issue occurs because, under certain configurations, Docker does not\nproperly propagate the mount replica back to the original mount point.\n\nIn this case, when the user driver detaches, the WQ is destroyed but it\nstill calls destroy_workqueue() attempting to completes all pending work.\nIt's necessary to check wq->wq and skip the drain if it no longer exists.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38369"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17502e7d7b7113346296f6758324798d536c31fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98fd66c8ba77e3a7137575f610271014bc0e701f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aee7a7439f8c0884da87694a401930204a57128f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0051a3daa8b2cb318b03b2f9317c3e40855847a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T13:15:25Z"
+  }
+}

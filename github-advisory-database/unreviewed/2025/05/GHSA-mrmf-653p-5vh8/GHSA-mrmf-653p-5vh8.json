@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrmf-653p-5vh8",
+  "modified": "2026-10-21T15:40:03Z",
+  "published": "2025-05-20T18:30:54Z",
+  "aliases": [
+    "CVE-2025-37906"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: fix race between io_uring_cmd_complete_in_task and ublk_cancel_cmd\n\nublk_cancel_cmd() calls io_uring_cmd_done() to complete uring_cmd, but\nwe may have scheduled task work via io_uring_cmd_complete_in_task() for\ndispatching request, then kernel crash can be triggered.\n\nFix it by not trying to canceling the command if ublk block request is\nstarted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37906"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/346b7d74c612234dae0878892682b9722e7c04c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f40139fde5278d81af3227444fd6e76a76b9506d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb2eb9ddf556f93fef45201e1f9d2b8674bcc975"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-20T16:15:27Z"
+  }
+}

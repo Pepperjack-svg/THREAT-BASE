@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xp6c-hp7c-5vjx",
+  "modified": "2026-02-03T15:30:22Z",
+  "published": "2026-02-02T15:30:34Z",
+  "aliases": [
+    "CVE-2026-24071"
+  ],
+  "details": "It was found that the XPC service offered by the privileged helper of Native Access  uses the PID of the connecting client to verify its code signature. This is considered insecure and can be exploited by PID reuse attacks. The connection handler function uses _xpc_connection_get_pid(arg2) as argument for the hasValidSignature function. This value can not be trusted since it is vulnerable to PID reuse attacks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24071"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec-consult.com/vulnerability-lab/advisory/multiple-vulnerabilities-in-native-instruments-native-access-macos"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-02T14:16:35Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r575-8hw6-vfq3",
+  "modified": "2026-10-08T15:32:58Z",
+  "published": "2026-10-08T15:32:58Z",
+  "aliases": [
+    "CVE-2026-107611"
+  ],
+  "details": "An out-of-bounds read vulnerability in the ZRLE decoder of GlavSoft TightVNC Viewer for Windows before 2.8.88 allows a malicious or compromised VNC server to read heap memory beyond the palette allocation and crash the viewer by sending ZRLE-encoded tiles whose palette indices exceed the declared palette size. readPaletteRleTile() and readPackedPaletteTile() use the attacker-supplied index to look up colours without validating it against the palette size; out-of-bounds heap data is copied into the framebuffer (garbled display) or the read faults, terminating the viewer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107611"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sourceforge.net/p/vnc-tight/bugs/1657"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tightvnc.com/whatsnew.php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T14:16:49Z"
+  }
+}

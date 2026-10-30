@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g38x-r7hr-wwff",
+  "modified": "2026-10-15T03:35:07Z",
+  "published": "2026-01-14T15:33:01Z",
+  "aliases": [
+    "CVE-2025-71114"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvia_wdt: fix critical boot hang due to unnamed resource allocation\n\nThe VIA watchdog driver uses allocate_resource() to reserve a MMIO\nregion for the watchdog control register. However, the allocated\nresource was not given a name, which causes the kernel resource tree\nto contain an entry marked as \"<BAD>\" under /proc/iomem on x86\nplatforms.\n\nDuring boot, this unnamed resource can lead to a critical hang because\nsubsequent resource lookups and conflict checks fail to handle the\ninvalid entry properly.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d56025a3af50db0f3da2792f41eb9943eee5324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47c910965c936724070d2a8094a4c3ed8f452856"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7aa31ee9ec92915926e74731378c009c9cc04928"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c6a2dd4f2e4e6cbdfe7a1618160281af897b75db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7b986adc9e9336066350542ac5a2005d305ae78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2c7c90aca7b37f60f16b2bedcfeb16204f2f35d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7b6370d0fbee06a867037d675797a606cb62e57"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20",
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-14T15:16:01Z"
+  }
+}

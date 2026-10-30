@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2jjf-r2xm-9jmp",
+  "modified": "2026-10-22T21:32:45Z",
+  "published": "2026-10-22T21:32:45Z",
+  "aliases": [
+    "CVE-2026-115397"
+  ],
+  "details": "Ghidra before 12.2 contains a resource allocation without limits vulnerability in ExtensionUtils.unzipToInstallationFolder() that extracts every extension ZIP entry without limiting file count. Attackers who persuade a user to install a crafted extension archive with many files can exhaust filesystem inodes, causing project writes and other processes to fail.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/NationalSecurityAgency/ghidra/security/advisories/GHSA-j5q9-fhqg-q995"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115397"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NationalSecurityAgency/ghidra/commit/7cb4e778efb69acb1919f841ad46d0da36e77eeb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NationalSecurityAgency/ghidra"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_12.2_build"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ghidra-before-12.2-denial-of-service-via-extension-archive-install"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T19:17:47Z"
+  }
+}

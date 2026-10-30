@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f85v-8gvj-9xjf",
+  "modified": "2025-11-12T21:31:01Z",
+  "published": "2025-05-02T18:31:35Z",
+  "aliases": [
+    "CVE-2023-53084"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/shmem-helper: Remove another errant put in error path\n\ndrm_gem_shmem_mmap() doesn't own reference in error code path, resulting\nin the dma-buf shmem GEM object getting prematurely freed leading to a\nlater use-after-free.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53084"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5cfb617967b05f8f27e862c97db1fabd8485f4db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/684c7372bbd6447c2e86a2a84e97a1478604d21f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77d26c824aa5a7e0681ef1d5b75fe538d746addc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dede8c14a37a7ac458f9add56154a074ed78e7cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee9adb7a45516cfa536ca92253d7ae59d56db9e4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-02T16:15:27Z"
+  }
+}

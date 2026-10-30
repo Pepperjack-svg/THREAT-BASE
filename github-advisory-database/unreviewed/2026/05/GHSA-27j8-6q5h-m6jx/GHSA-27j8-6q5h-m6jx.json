@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-27j8-6q5h-m6jx",
+  "modified": "2026-05-21T18:33:06Z",
+  "published": "2026-05-08T15:31:29Z",
+  "aliases": [
+    "CVE-2026-43458"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: caif: hold tty->link reference in ldisc_open and ser_release\n\nA reproducer triggers a KASAN slab-use-after-free in pty_write_room()\nwhen caif_serial's TX path calls tty_write_room(). The faulting access\nis on tty->link->port.\n\nHold an extra kref on tty->link for the lifetime of the caif_serial line\ndiscipline: get it in ldisc_open() and drop it in ser_release(), and\nalso drop it on the ldisc_open() error path.\n\nWith this change applied, the reproducer no longer triggers the UAF in\nmy testing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43458"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23a3ac2e2262a291498567418227b99e1f3606b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27e43356d0defb9fc7fa25265219a3ffeb7b3e98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/288598d80a068a0e9281de35bcb4ce495f189e2a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/35b58d3bc716ebb9ebd10fe1cac8c1177242511c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52135420e9f75853ea0c6cea7b736e3e98495f7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8460187b4852fd00bd1c76394358053f3fa4d089"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97a0bb491cae39478c6225381f14e9ac67b7bba7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca2ceba983bb23ea0202c2882d963253416654a3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T15:16:58Z"
+  }
+}

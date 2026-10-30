@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6cwx-3f6w-m5ch",
+  "modified": "2026-02-12T00:31:05Z",
+  "published": "2026-02-12T00:31:05Z",
+  "aliases": [
+    "CVE-2026-26215"
+  ],
+  "details": "manga-image-translator version beta-0.3 and prior in shared API mode contains an unsafe deserialization vulnerability that can lead to unauthenticated remote code execution. The FastAPI endpoints /simple_execute/{method} and /execute/{method} deserialize attacker-controlled request bodies using pickle.loads() without validation. Although a nonce-based authorization check is intended to restrict access, the nonce defaults to an empty string and the check is skipped, allowing remote attackers to execute arbitrary code in the server context by sending a crafted pickle payload.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zyddnys/manga-image-translator/issues/1116"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zyddnys/manga-image-translator/issues/946"
+    },
+    {
+      "type": "WEB",
+      "url": "https://chocapikk.com/posts/2026/manga-image-translator-pickle-rce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zyddnys/manga-image-translator/blob/a537cb12b41daf2065795058c2753d87e73fa0fe/manga_translator/mode/share.py#L112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zyddnys/manga-image-translator/blob/a537cb12b41daf2065795058c2753d87e73fa0fe/manga_translator/mode/share.py#L130"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/manga-image-translator-shared-api-unsafe-deserialization-rce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-11T23:16:10Z"
+  }
+}

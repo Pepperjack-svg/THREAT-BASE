@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j8xc-5qc2-7pc3",
+  "modified": "2026-10-16T00:31:57Z",
+  "published": "2026-10-16T00:31:56Z",
+  "aliases": [
+    "CVE-2026-111332"
+  ],
+  "details": "OxiCloud 0.9.1 through 0.9.3 contains an incorrect authorization vulnerability that allows anonymous visitors to keep share access after password protection is added. Attackers holding an existing oxi_shares share-ring cookie can request content via GET /api/files/{id} to read shared files or folder contents despite the new password.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111332"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AtalayaLabs/OxiCloud"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AtalayaLabs/OxiCloud/blob/v0.9.3/src/application/services/share_service.rs#L497-L538"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AtalayaLabs/OxiCloud/blob/v0.9.3/src/infrastructure/services/share_ring.rs#L173-L195"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/oxicloud-share-password-grant-not-revoked"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/oxicloud-0.9.1-through-0.9.3-incorrect-authorization-via-share-ring-cookie"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T22:19:31Z"
+  }
+}

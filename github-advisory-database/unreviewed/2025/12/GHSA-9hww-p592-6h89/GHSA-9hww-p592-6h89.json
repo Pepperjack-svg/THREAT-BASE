@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9hww-p592-6h89",
+  "modified": "2025-12-24T12:30:29Z",
+  "published": "2025-12-24T12:30:29Z",
+  "aliases": [
+    "CVE-2025-68348"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: fix memory leak in __blkdev_issue_zero_pages\n\nMove the fatal signal check before bio_alloc() to prevent a memory\nleak when BLKDEV_ZERO_KILLABLE is set and a fatal signal is pending.\n\nPreviously, the bio was allocated before checking for a fatal signal.\nIf a signal was pending, the code would break out of the loop without\nfreeing or chaining the just-allocated bio, causing a memory leak.\n\nThis matches the pattern already used in __blkdev_issue_write_zeroes()\nwhere the signal check precedes the allocation.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/453e4b0c84d0db1454ff0adf655d91179e6fca3a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7193407bc4457212fa38ec3aff9c640e63a8dbef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7957635c679e8a01147163a3a4a1f16e1210fa03"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7e3f852a42d7cd8f1af2c330d9d153e30c8adcf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:15:58Z"
+  }
+}

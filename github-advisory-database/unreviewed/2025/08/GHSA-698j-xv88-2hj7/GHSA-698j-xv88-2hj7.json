@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-698j-xv88-2hj7",
+  "modified": "2025-11-26T00:30:15Z",
+  "published": "2025-08-22T18:31:23Z",
+  "aliases": [
+    "CVE-2025-38675"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: state: initialize state_ptrs earlier in xfrm_state_find\n\nIn case of preemption, xfrm_state_look_at will find a different\npcpu_id and look up states for that other CPU. If we matched a state\nfor CPU2 in the state_cache while the lookup started on CPU1, we will\njump to \"found\", but the \"best\" state that we got will be ignored and\nwe will enter the \"acquire\" block. This block uses state_ptrs, which\nisn't initialized at this point.\n\nLet's initialize state_ptrs just after taking rcu_read_lock. This will\nalso prevent a possible misuse in the future, if someone adjusts this\nfunction.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38675"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/463562f9591742be62ddde3b426a0533ed496955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6bf2daafc51bcb9272c0fdff2afd38217337d0d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94d077c331730510d5611b438640a292097341f0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-22T16:15:43Z"
+  }
+}

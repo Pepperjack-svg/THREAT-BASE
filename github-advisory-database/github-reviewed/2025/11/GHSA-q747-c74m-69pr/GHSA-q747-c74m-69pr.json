@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q747-c74m-69pr",
+  "modified": "2025-11-04T22:16:29Z",
+  "published": "2025-11-03T20:12:18Z",
+  "aliases": [
+    "CVE-2025-55155"
+  ],
+  "summary": "MantisBT lacks verification when changing a user's email address",
+  "details": "When a user edits their profile to change their e-mail address, the system saves it without validating that it actually belongs to the user.\n\n### Impact\nThis could result in storing an invalid email address, preventing the user from receiving system notifications.\n\nNotifications sent to another person's email address could lead to information disclosure.\n\n### Patches\nFixed in 2.27.2.\n\n### Workarounds\nNone\n\n### Credits\n\nThanks to @ncrcs for discovering and reporting the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mantisbt/mantisbt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.27.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/security/advisories/GHSA-q747-c74m-69pr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-55155"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/commit/21e9fbedde8553c29c0d3156e84f78157fc4f22e"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mantisbt/mantisbt"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mantisbt.org/bugs/view.php?id=36005"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-201",
+      "CWE-345"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-11-03T20:12:18Z",
+    "nvd_published_at": "2025-11-04T21:15:39Z"
+  }
+}

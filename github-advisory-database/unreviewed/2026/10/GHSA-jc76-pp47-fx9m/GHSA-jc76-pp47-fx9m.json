@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jc76-pp47-fx9m",
+  "modified": "2026-10-06T09:31:33Z",
+  "published": "2026-10-06T09:31:33Z",
+  "aliases": [
+    "CVE-2026-98280"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/i2c: Disable IRQ on unbind\n\nCurrently, struct xe_i2c is freed before SGUnit IRQ is disabled in unbind\npath, leaving a potential UAF in case I2C IRQ is hit during this small\nwindow. Explicitly disable I2C IRQ in xe_i2c_remove() and fix this.\n\n(cherry picked from commit 8ba5c8b8ab3fd362267c11df2cd5a90ee46f6e24)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/571ccbc801aa4d22a22d9f924b826c77052330f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0e9f963a3d209d7dc7ddd61116118ab5da2797d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:17Z"
+  }
+}

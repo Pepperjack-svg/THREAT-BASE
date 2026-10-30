@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mpjf-v662-xm2m",
+  "modified": "2026-10-06T09:31:31Z",
+  "published": "2026-10-06T09:31:31Z",
+  "aliases": [
+    "CVE-2026-98224"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/vma: correctly unaccount on mmap_prepare() failure\n\n__mmap_setup() accounts memory for relevant mappings via:\n\nsecurity_vm_enough_memory_mm()\n  -> __vm_enough_memory()\n    -> vm_acct_memory()\n\nIf __mmap_setup() fails, this indicates that this accounting did not take\nplace, and thus it's appropriate for __mmap_region() to jump to\nabort_munmap.\n\nHowever if call_mmap_prepare() fails, it also jumps there and any accounted\nmemory is not correctly unaccounted.\n\nFix this by handling each error separately.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98224"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cc27d82196385fe06853319f74312a7d8019726"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8fdc521d438fbf0d22c13d51d55d5dd82d7202b2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb5400bff669c8bad3d4ec09287d9b461e89e5f1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:09Z"
+  }
+}

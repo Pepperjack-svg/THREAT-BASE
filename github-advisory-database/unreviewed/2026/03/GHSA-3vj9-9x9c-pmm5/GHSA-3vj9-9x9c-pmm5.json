@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3vj9-9x9c-pmm5",
+  "modified": "2026-03-27T21:31:34Z",
+  "published": "2026-03-27T15:30:26Z",
+  "aliases": [
+    "CVE-2026-30304"
+  ],
+  "details": "In its design for automatic terminal command execution, AI Code offers two options: Execute safe commands and execute all commands. The description for the former states that commands determined by the model to be safe will be automatically executed, whereas if the model judges a command to be potentially destructive, it still requires user approval. However, this design is highly susceptible to prompt injection attacks. An attacker can employ a generic template to wrap any malicious command and mislead the model into misclassifying it as a 'safe' command, thereby bypassing the user approval requirement and resulting in arbitrary command execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-30304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Secsys-FDU/LLM-Tool-Calling-CVEs/issues/2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://marketplace.visualstudio.com/items?itemName=tianguaduizhang.claude-dev-china"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-27T15:16:53Z"
+  }
+}

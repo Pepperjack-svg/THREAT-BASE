@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r5cv-c4h9-w3pm",
+  "modified": "2025-11-18T03:31:14Z",
+  "published": "2025-06-18T12:30:50Z",
+  "aliases": [
+    "CVE-2022-50141"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: sdhci-of-esdhc: Fix refcount leak in esdhc_signal_voltage_switch\n\nof_find_matching_node() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nAdd missing of_node_put() to avoid refcount leak.\nof_node_put() checks null pointer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50141"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/352377cf74710bc3368dddf78f17210dfe456933"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c472a2c9ed6ea9d272268d7f484d4303c549f1a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/547db1dd98d1815574ebea7358015a17199a93bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b902840f6a3584f702bcb59834691b30f3d7c5a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a63d5d01e83b984b1b9c7ae8fc9c8c93697a3820"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b074f1e8060836baeb0ee91181f4194b9a0ee16a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b305475df756256a186623f0991d05a816de881a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5899a3e2f783a27b268e38d37f9b24c71bddf45"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:44Z"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f958-2rwj-98rc",
+  "modified": "2026-10-06T09:31:34Z",
+  "published": "2026-10-06T09:31:34Z",
+  "aliases": [
+    "CVE-2026-98314"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: pcm: set timer->private_data before registering the PCM timer\n\nsnd_pcm_timer_init() calls snd_device_register() to link the new\nstruct snd_timer into the global timer list while it still carries\nhw.c_resolution = snd_pcm_timer_resolution (and hw.start/hw.stop),\nand only afterwards sets timer->private_data = substream.\n\nOnce the timer is on the list under register_mutex, a concurrent\nreader can already reach it through the same mutex and invoke these\ncallbacks. /proc/asound/timers does this via c_resolution(), and\nsnd_timer_open()+snd_timer_start() reach start()/stop() the same way.\nAll three dereference timer->private_data, which for this brief\nwindow is NULL, giving a NULL-pointer dereference:\n\n  substream = timer->private_data;\n  return substream->runtime ? ...   // substream is NULL\n\nMove the private_data/private_free assignment before\nsnd_device_register() so the timer is never visible on the list\nwithout its private_data set. On the snd_device_register() failure\npath, private_free() (snd_pcm_timer_free()) can now run, but it only\ndoes substream->timer = NULL, which is already NULL at that point\nsince substream->timer is set to the new timer just once, after a\nsuccessful registration -- so the failure path stays safe.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98314"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b349249d572633d7c8cdeb917623d1676a2b7c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e713f9bb2ac583521f06b0eb4e22440b1e3d078"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27f167e117eca310661fbcbacb352ea08face067"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/555d168bd98daa46daccc68c908201388c834293"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/686c7a6af1eea8d2a919303e4c6bbec3de79dbdc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c869d5cf5affb20994bdbb60e7d46d65c91b55f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d63f5a9f8121fb43c798056d7dd34c58f47185d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e1eee8f16628f8b6bcae0a366fd6a2dd65e71edd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:23Z"
+  }
+}

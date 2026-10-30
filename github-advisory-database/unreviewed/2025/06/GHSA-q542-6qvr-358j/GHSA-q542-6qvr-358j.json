@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q542-6qvr-358j",
+  "modified": "2025-11-17T21:31:17Z",
+  "published": "2025-06-18T12:30:46Z",
+  "aliases": [
+    "CVE-2022-50074"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\napparmor: Fix memleak in aa_simple_write_to_buffer()\n\nWhen copy_from_user failed, the memory is freed by kvfree. however the\nmanagement struct and data blob are allocated independently, so only\nkvfree(data) cause a memleak issue here. Use aa_put_loaddata(data) to\nfix this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50074"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/417ea9fe972d2654a268ad66e89c8fcae67017c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6500eb3a48ac221051b1791818a1ac74744ef617"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6583edbf459de2e06b9759f264c0ae27e452b97a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7db182a2ebeefded86fea542fcc5d6a68bb77f58"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8aab4295582eb397a125d2788b829fa62b88dbf7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf7ebebce2c25071c719fd8a2f1307e0c243c2d7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:36Z"
+  }
+}

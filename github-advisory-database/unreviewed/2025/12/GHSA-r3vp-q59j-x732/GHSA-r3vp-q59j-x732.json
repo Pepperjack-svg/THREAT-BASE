@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r3vp-q59j-x732",
+  "modified": "2025-12-24T12:30:26Z",
+  "published": "2025-12-24T12:30:26Z",
+  "aliases": [
+    "CVE-2022-50710"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: set tx_tstamps when creating new Tx rings via ethtool\n\nWhen the user changes the number of queues via ethtool, the driver\nallocates new rings. This allocation did not initialize tx_tstamps. This\nresults in the tx_tstamps field being zero (due to kcalloc allocation), and\nwould result in a NULL pointer dereference when attempting a transmit\ntimestamp on the new ring.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50710"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13180cb88a7be5ee389f65f6ab9f78e46f7722b2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/624f03a027f2b18647cc4f1a7a81920a1e4e0201"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9eb5fff6b0e78819c758892282da5faa915724d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3b173745c8cab1e24d6821488b60abed3acb24d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:15:51Z"
+  }
+}

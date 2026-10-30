@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f9jp-856v-8642",
+  "modified": "2026-04-06T22:54:14Z",
+  "published": "2026-04-06T22:54:14Z",
+  "aliases": [],
+  "summary": "PocketMine-MP: Player entities can still die and drop items in flaggedForDespawn state",
+  "details": "### Summary\nWhen an entity dies, the entity is flagged for despawn, but remains in the `World`'s entity table, meaning it's still accessible by doing `World->getEntity($entityId)` and other methods. The same is true of a player when quitting the server.\n\nWhen a network packet arrives from a client to attack an entity, the handler fetches the entity using `World->getEntity($entityId)` without any checks if the entity is already marked for despawning. Depending on the timing, the entity in question might already be in the flagged-for-despawn state when the action is processed. This means that the death handler for the entity might be run multiple times, causing loot and XP to be dropped multiple times, among other potential side effects.\n\n### Reproducing steps\nTo reproduce this vulnerability, two clients (Player A and Player B) are required.\n\nPrerequisites:\n    - Player A (Victim): Must have the valuable items to be duplicated in their inventory and 1 HP (to ensure instant death).\n    - Player B (Attacker): Must be equipped with a weapon capable of dealing at least 1 damage.\n\nSteps:\n    1. Player A and Player B stand next to each other.\n    2. Player A initiates the disconnect sequence (e.g., clicking \"Disconnect\" or \"Exit to Menu\").\n    3. Immediately after Player A triggers the disconnect (within a split-second window), Player B must attack and kill Player A.\n    4. Player A's character dies server-side, and their inventory drops on the ground.\n    5. Player B collects the dropped items.\n    6. Player A logs back into the server.\n    7. Result: Player A still possesses the original items in their inventory, while Player B holds the dropped copies.\n\n### Patches\nThe issue was fixed in https://github.com/pmmp/PocketMine-MP/commit/c0719b76b18f2508143134e79bc9f1aa39109683 by adding checks for flagged-for-despawn entities in several affected locations.\n\nWhile a cleaner fix would be to have `World`'s various entity accessing methods exclude flagged-for-despawn entities, this was deemed too risky for 5.x as it would require significant internal changes.\n\n### Workarounds\nPlugins can mitigate this issue on older versions by handling `EntityDamageByEntityEvent`, checking if the victim entity is flagged for despawn, and if so, cancelling the event.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "pocketmine/pocketmine-mp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.39.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/security/advisories/GHSA-f9jp-856v-8642"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/commit/c0719b76b18f2508143134e79bc9f1aa39109683"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pmmp/PocketMine-MP"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-664"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-06T22:54:14Z",
+    "nvd_published_at": null
+  }
+}

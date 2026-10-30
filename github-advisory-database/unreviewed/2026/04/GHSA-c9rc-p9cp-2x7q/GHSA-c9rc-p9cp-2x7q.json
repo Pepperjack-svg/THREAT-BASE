@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c9rc-p9cp-2x7q",
+  "modified": "2026-04-20T21:31:45Z",
+  "published": "2026-04-20T21:31:45Z",
+  "aliases": [
+    "CVE-2026-6257"
+  ],
+  "details": "Vvveb CMS v1.0.8 contains a remote code execution vulnerability in its media management functionality where a missing return statement in the file rename handler allows authenticated attackers to rename files to blocked extensions .php or .htaccess. Attackers can exploit this logic flaw by first uploading a text file and renaming it to .htaccess to inject Apache directives that register PHP-executable MIME types, then uploading another file and renaming it to .php to execute arbitrary operating system commands as the www-data user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6257"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/givanz/Vvveb/commit/6fb8eaa998265e33e8802cbc220d8859dbc144f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vvveb-cms-remote-code-execution-via-media-management"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-20T20:16:49Z"
+  }
+}

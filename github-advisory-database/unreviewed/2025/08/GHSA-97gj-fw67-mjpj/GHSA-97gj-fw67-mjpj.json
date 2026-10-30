@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-97gj-fw67-mjpj",
+  "modified": "2025-08-01T21:31:06Z",
+  "published": "2025-08-01T21:31:06Z",
+  "aliases": [
+    "CVE-2013-10046"
+  ],
+  "details": "A local privilege escalation vulnerability exists in Agnitum Outpost Internet Security 8.1 that allows an unprivileged user to execute arbitrary code with SYSTEM privileges. The flaw resides in the acs.exe component, which exposes a named pipe that accepts unauthenticated commands. By exploiting a directory traversal weakness in the pipe protocol, an attacker can instruct the service to load a malicious DLL from a user-controlled location. The DLL is then executed in the context of the privileged service.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2013-10046"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/local/agnitum_outpost_acs.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/27282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/28335"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/agnitum-outpost-internet-security-local-priv-esc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-01T21:15:26Z"
+  }
+}

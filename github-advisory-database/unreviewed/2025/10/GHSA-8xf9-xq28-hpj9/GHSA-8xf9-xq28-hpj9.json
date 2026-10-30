@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8xf9-xq28-hpj9",
+  "modified": "2025-11-03T18:31:46Z",
+  "published": "2025-10-21T12:31:26Z",
+  "aliases": [
+    "CVE-2025-10640"
+  ],
+  "details": "An unauthenticated attacker with access to TCP port 12306 of the WorkExaminer server can exploit missing server-side authentication checks to bypass the login prompt in the WorkExaminer Professional console to gain administrative access to the WorkExaminer server and therefore all sensitive monitoring data. This includes monitored screenshots and keystrokes of all users.\n\nThe WorkExaminer Professional console is used for administrative access to the server. Before access to the console is granted administrators must login. Internally, a custom protocol is used to call a respective stored procedure on the MSSQL database. The return value of the call is not validated on the server-side. Instead it is only validated client-side which allows to bypass authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-10640"
+    },
+    {
+      "type": "WEB",
+      "url": "https://r.sec-consult.com/workexaminer"
+    },
+    {
+      "type": "WEB",
+      "url": "http://seclists.org/fulldisclosure/2025/Oct/19"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-602"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-21T12:15:35Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q2xw-j7qq-rpp9",
+  "modified": "2026-06-09T06:31:59Z",
+  "published": "2026-06-09T06:31:58Z",
+  "aliases": [
+    "CVE-2026-8499"
+  ],
+  "details": "The Helpfulcrowd Product Reviews plugin for WordPress is vulnerable to Authorization Bypass via PHP Type Juggling in versions up to, and including, 1.2.9. This is due to the `helpfulcrowd_validate_token()` function using a loose comparison operator (`!=`) instead of a strict comparison (`!==`) when validating the `token` parameter, while the corresponding REST route `/wp-json/helpfulcrowd/v1/update-settings` is registered with a `permission_callback` of `__return_true`, making it reachable by unauthenticated users; submitting a JSON boolean `true` as the `token` value causes PHP's loose comparison to evaluate as equal to the non-empty base64-encoded secret string, bypassing the check entirely. This makes it possible for unauthenticated attackers to invoke `helpfulcrowd_settings_endpoint()` and write arbitrary attacker-controlled key-value pairs directly into the `helpfulcrowd_options` WordPress database option via `update_option()` without any sanitization or allowlist filtering, enabling full unauthenticated modification of the plugin's stored configuration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8499"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/helpfulcrowd-product-reviews/tags/1.2.9/includes/HelpfulcrowdCustomEndpoints.php#L13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/helpfulcrowd-product-reviews/tags/1.2.9/includes/HelpfulcrowdCustomEndpoints.php#L71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/helpfulcrowd-product-reviews/tags/1.2.9/includes/core.php#L122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/26f34aa0-8584-4156-b084-d34a0ab0a997?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-843"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-09T05:16:39Z"
+  }
+}

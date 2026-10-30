@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pmxj-m85w-6g4g",
+  "modified": "2026-10-14T21:33:43Z",
+  "published": "2026-10-14T21:33:43Z",
+  "aliases": [
+    "CVE-2026-110771"
+  ],
+  "details": "Shopizer through 3.2.5 contains an authorization bypass vulnerability that allows authenticated customers to post reviews as other customers by supplying a customerId field. Attackers can send crafted requests to POST /api/v1/auth/products/{id}/reviews to publish reviews and ratings attributed to other store customers, corrupting authorship and product ratings.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110771"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopizer-ecommerce/shopizer/issues/1112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopizer-ecommerce/shopizer"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopizer-ecommerce/shopizer/blob/9a1602a664ab882b5420ff4339db45af44a48423/sm-shop/src/main/java/com/salesmanager/shop/populator/catalog/PersistableProductReviewPopulator.java#L66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/shopizer-rest-product-review-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/shopizer-through-3.2.5-authorization-bypass-via-product-review-customerid"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T19:17:13Z"
+  }
+}

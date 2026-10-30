@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6cr7-7xqc-c37c",
+  "modified": "2026-10-19T18:32:12Z",
+  "published": "2026-10-19T18:32:12Z",
+  "aliases": [
+    "CVE-2026-112305"
+  ],
+  "details": "Semaphore UI through 2.19.16 contains a remote code execution vulnerability that allows users with the task_runner role to override protected Ansible variables by supplying arbitrary keys in the task environment JSON. Attackers can POST tasks setting ansible_ssh_common_args with a ProxyCommand or ansible_connection=local to execute commands as the Semaphore server user, exposing encryption keys, SSH keys and stored secrets.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112305"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/semaphoreui/semaphore/pull/3888"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/semaphoreui/semaphore"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/semaphoreui/semaphore/blob/v2.19.16/api/projects/tasks.go#L39-L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/semaphoreui/semaphore/blob/v2.19.16/services/tasks/TaskRunner.go#L395-L431"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/semaphore-ui-through-2.19.16-rce-via-task-environment-ansible-variable-override"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-915"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T16:17:06Z"
+  }
+}

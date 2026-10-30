@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xx77-8cp4-rx22",
+  "modified": "2026-10-21T15:40:18Z",
+  "published": "2026-04-03T18:31:22Z",
+  "aliases": [
+    "CVE-2026-23472"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: core: fix infinite loop in handle_tx() for PORT_UNKNOWN\n\nuart_write_room() and uart_write() behave inconsistently when\nxmit_buf is NULL (which happens for PORT_UNKNOWN ports that were\nnever properly initialized):\n\n- uart_write_room() returns kfifo_avail() which can be > 0\n- uart_write() checks xmit_buf and returns 0 if NULL\n\nThis inconsistency causes an infinite loop in drivers that rely on\ntty_write_room() to determine if they can write:\n\n  while (tty_write_room(tty) > 0) {\n      written = tty->ops->write(...);\n      // written is always 0, loop never exits\n  }\n\nFor example, caif_serial's handle_tx() enters an infinite loop when\nused with PORT_UNKNOWN serial ports, causing system hangs.\n\nFix by making uart_write_room() also check xmit_buf and return 0 if\nit's NULL, consistent with uart_write().\n\nReproducer: https://gist.github.com/mrpre/d9a694cc0e19828ee3bc3b37983fde13",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23472"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/455ce986fa356ff43a43c0d363ba95fa152f21d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc70f2b36cf474d5cc8ecbcaf57f3e326fdec67c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9e845014723d552944cec4e146ec7b841cda34d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d45cfa70bf0159afb31cb03d2d16ec5a5053460c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/efe85a557186b7fe915572ae93a8f3f78bfd9a22"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-03T16:16:34Z"
+  }
+}

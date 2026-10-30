@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4p4p-xgjx-qcc9",
+  "modified": "2026-02-14T09:31:33Z",
+  "published": "2026-02-14T09:31:33Z",
+  "aliases": [
+    "CVE-2026-1303"
+  ],
+  "details": "The MailChimp Campaigns plugin for WordPress is vulnerable to Missing Authorization in all versions up to, and including, 3.2.4. This is due to missing capability checks on the `mailchimp_campaigns_manager_disconnect_app` function that is hooked to the AJAX action of the same name. This makes it possible for authenticated attackers, with Subscriber-level access and above, to disconnect the site from its MailChimp synchronization app, disrupting automated email campaigns and marketing integrations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/olalaweb-mailchimp-campaign-manager/tags/3.2.4/mailchimp-campaigns-manager.php#L636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/olalaweb-mailchimp-campaign-manager/trunk/mailchimp-campaigns-manager.php#L636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c2057ec2-9f03-4ae9-b200-aa5a318b461e?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T07:16:09Z"
+  }
+}

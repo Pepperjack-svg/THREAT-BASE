@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hf4x-3pgg-4r9c",
+  "modified": "2026-05-27T09:31:14Z",
+  "published": "2026-05-27T09:31:14Z",
+  "aliases": [
+    "CVE-2026-3375"
+  ],
+  "details": "The LiteSpeed Cache plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the /wp-json/litespeed/v1/notify_ccss and /wp-json/litespeed/v1/notify_ucss REST API endpoints in all versions up to, and including, 7.7. These endpoints accept CSS content from QUIC.cloud callback notifications and store it to disk without sanitization. The stored content is later rendered inline frontend page loads without output escaping. The access control protecting these endpoints is IP-based validation that can potentially be bypassed when the WordPress site is deployed behind a reverse proxy, load balancer, or CDN with certain configurations. This makes it possible for unauthenticated attackers, under certain conditions, to inject arbitrary JavaScript into CCSS/UCSS content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3375"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/litespeed-cache/trunk/src/cloud.cls.php#L2085"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/litespeed-cache/trunk/src/css.cls.php#L401"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/litespeed-cache/trunk/src/css.cls.php#L595"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/litespeed-cache/trunk/src/optimize.cls.php#L477"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/litespeed-cache/trunk/src/rest.cls.php#L108"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/litespeed-cache/trunk/src/router.cls.php#L732"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3473912"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/40fa29f5-525a-4986-91f9-0210a7594e46?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T08:16:40Z"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pqxq-w44r-73xw",
+  "modified": "2026-10-20T19:52:22Z",
+  "published": "2026-10-20T19:52:21Z",
+  "aliases": [
+    "CVE-2026-111750"
+  ],
+  "summary": "AIOHTTP: Pure-Python parser request smuggling",
+  "details": "### Summary\n\nThe pure Python parser is vulnerable to an HTTP request smuggling attack.\n\n### Impact\n\nIf users are using the Python parser (`AIOHTTP_NO_EXTENSIONS`, or not a standard wheel installed), then an application may be vulnerable to a request smuggling attack.\n\n### Workaround\n\nSwitch to the default C parser.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:L/SA:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "aiohttp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.14.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.14.3"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/security/advisories/GHSA-pqxq-w44r-73xw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111750"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/commit/9b27347e61454d9f8ca2055f4c67a37dee336e83"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/aio-libs/aiohttp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/releases/tag/v3.14.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-444"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-20T19:52:21Z",
+    "nvd_published_at": "2026-10-19T17:17:04Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-54p7-3rpx-pjfc",
+  "modified": "2026-02-18T15:31:25Z",
+  "published": "2026-02-18T15:31:25Z",
+  "aliases": [
+    "CVE-2026-1317"
+  ],
+  "details": "The WP Import – Ultimate CSV XML Importer for WordPress plugin for WordPress is vulnerable to SQL Injection in all versions up to, and including, 7.37. This is due to insufficient escaping on the `file_name` parameter which is stored in the database during file upload and later used in raw SQL queries without proper sanitization. This makes it possible for authenticated attackers with Subscriber-level access or higher to append additional SQL queries into already existing queries via a malicious filename, which can be used to extract sensitive information from the database. The vulnerability can only be exploited when the 'Single Import/Export' option is enabled, and the server is running a PHP version < 8.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1317"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-ultimate-csv-importer/tags/7.34/managerExtensions/LogManager.php#L763"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-ultimate-csv-importer/tags/7.34/uploadModules/UrlUpload.php#L181"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3445414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/fd80133d-03c7-4ecb-ad2c-98950f788ca6?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-18T13:16:20Z"
+  }
+}

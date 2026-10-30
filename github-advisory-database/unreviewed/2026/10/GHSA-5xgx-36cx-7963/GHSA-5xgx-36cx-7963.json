@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5xgx-36cx-7963",
+  "modified": "2026-10-11T15:31:08Z",
+  "published": "2026-10-11T15:31:08Z",
+  "aliases": [
+    "CVE-2026-108862"
+  ],
+  "details": "APIPark through 1.9.7-beta contains an insecure direct object reference vulnerability that allows authenticated users to read other applications' credentials by supplying a foreign authorization UUID. Attackers with authorization-view permission on one application can query /api/v1/app/authorization or its details route to retrieve plaintext API keys regardless of HideCredential.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108862"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/APIParkLab/APIPark"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/APIParkLab/APIPark/blob/v1.9.7-beta/module/application-authorization/iml.go#L451-L511"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/apipark-cross-app-authorization-uuid"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/apipark-through-1.9.7-beta-idor-via-application-authorization-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T14:17:06Z"
+  }
+}

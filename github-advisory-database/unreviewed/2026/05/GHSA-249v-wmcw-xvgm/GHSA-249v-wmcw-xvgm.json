@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-249v-wmcw-xvgm",
+  "modified": "2026-10-21T15:40:23Z",
+  "published": "2026-05-01T15:30:37Z",
+  "aliases": [
+    "CVE-2026-43049"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: logitech-hidpp: Prevent use-after-free on force feedback initialisation failure\n\nPresently, if the force feedback initialisation fails when probing the\nLogitech G920 Driving Force Racing Wheel for Xbox One, an error number\nwill be returned and propagated before the userspace infrastructure\n(sysfs and /dev/input) has been torn down.  If userspace ignores the\nerrors and continues to use its references to these dangling entities, a\nUAF will promptly follow.\n\nWe have 2 options; continue to return the error, but ensure that all of\nthe infrastructure is torn down accordingly or continue to treat this\ncondition as a warning by emitting the message but returning success.\nIt is thought that the original author's intention was to emit the\nwarning but keep the device functional, less the force feedback feature,\nso let's go with that.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/772f99cc8d6e5d95613bce93c9624e154c1abe88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a793ac19eb84f44ed759c0fce80cf29bc2a2453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b846fb0a73e99174f08238e083e284c0463a2102"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df966f0def87550bd81d0892cdff992202de2712"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7a4c78bfeb320299c1b641500fe7761eadbd101"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:51Z"
+  }
+}

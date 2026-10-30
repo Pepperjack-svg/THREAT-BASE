@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p429-p65m-q8hj",
+  "modified": "2026-01-17T03:30:24Z",
+  "published": "2026-01-17T03:30:24Z",
+  "aliases": [
+    "CVE-2025-14075"
+  ],
+  "details": "The WP Hotel Booking plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 2.2.7. This is due to the plugin exposing the 'hotel_booking_fetch_customer_info' AJAX action to unauthenticated users without proper capability checks, relying only on a nonce for protection. This makes it possible for unauthenticated attackers to retrieve sensitive customer information including full names, addresses, phone numbers, and email addresses by providing a valid email address and a publicly accessible nonce.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14075"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-hotel-booking/tags/2.2.7/includes/class-wphb-ajax.php#L192"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-hotel-booking/tags/2.2.7/includes/class-wphb-ajax.php#L36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-hotel-booking/trunk/includes/class-wphb-ajax.php#L192"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3429399%40wp-hotel-booking&new=3429399%40wp-hotel-booking&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/1fc4eaec-b5d8-4707-9260-bac02a4b1866?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-17T03:16:03Z"
+  }
+}

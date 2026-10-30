@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h3hh-6rf8-4cq6",
+  "modified": "2026-10-21T15:41:50Z",
+  "published": "2026-10-18T18:31:58Z",
+  "aliases": [
+    "CVE-2026-98669"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: buffer: serialize buffer teardown with mode claims\n\nBuffer-mode claims hold mlock to guarantee that the device remains in\nbuffer mode until the claim is released. Normal buffer updates take\ninfo_exist_lock followed by mlock in iio_update_buffers().\n\nHowever, iio_device_unregister() disables and deactivates all buffers\nwithout taking mlock. This can invalidate buffer state, including\nactive_scan_mask, while a buffer-mode claim is held.\n\nTake mlock in iio_disable_all_buffers() so that unregister honors the\nmode-claim lifetime guarantee. The info_exist_lock -> mlock ordering\nmatches iio_update_buffers().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98669"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a728408ff522b749c2a3c7e68f44e861fa0dbfb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/84bb0fc46ccf6a545b8fdf57cda83770186ed8dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/89f3852a28fcf7bab599280cb082baa0675536db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b466db9e68b4741af85f6c017e2bb0a2f025053f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e63188d77e10c0951bf67da6c295f768fd1abf4b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:20Z"
+  }
+}

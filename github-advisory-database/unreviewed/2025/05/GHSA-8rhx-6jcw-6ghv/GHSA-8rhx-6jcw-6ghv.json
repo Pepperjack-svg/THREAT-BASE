@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8rhx-6jcw-6ghv",
+  "modified": "2025-11-14T21:30:27Z",
+  "published": "2025-05-09T09:33:19Z",
+  "aliases": [
+    "CVE-2025-37839"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\njbd2: remove wrong sb->s_sequence check\n\nJournal emptiness is not determined by sb->s_sequence == 0 but rather by\nsb->s_start == 0 (which is set a few lines above). Furthermore 0 is a\nvalid transaction ID so the check can spuriously trigger. Remove the\ninvalid WARN_ON.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37839"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b4643ffaf72d7a5a357e9bf68b1775f8cfe7e77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9eaec071f111cd2124ce9a5b93536d3f6837d457"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ad926f735b4d4f10768fec7d080cadeb6d075cac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0cca357f85beb6144ab60c62dcc98508cc044bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b479839525fe7906966cdc4b5b2afbca048558a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c88f7328bb0fff66520fc9164f02b1d06e083c1b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c98eb9ffb1d9c98237b5e1668eee17654e129fb0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf30432f5b3064ff85d85639c2f0106f89c566f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6eff39dd0fe4190c6146069cc16d160e71d1148"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-09T07:16:04Z"
+  }
+}

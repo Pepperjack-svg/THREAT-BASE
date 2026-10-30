@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xh3r-gpf9-2v95",
+  "modified": "2026-02-14T06:30:58Z",
+  "published": "2026-02-14T06:30:58Z",
+  "aliases": [
+    "CVE-2026-0692"
+  ],
+  "details": "The BlueSnap Payment Gateway for WooCommerce plugin for WordPress is vulnerable to Missing Authorization in all versions up to, and including, 3.3.0. This is due to the plugin relying on WooCommerce's `WC_Geolocation::get_ip_address()` function to validate IPN requests, which trusts user-controllable headers like X-Real-IP and X-Forwarded-For to determine the client IP address. This makes it possible for unauthenticated attackers to bypass IP allowlist restrictions by spoofing a whitelisted BlueSnap IP address and send forged IPN (Instant Payment Notification) data to manipulate order statuses (mark orders as paid, failed, refunded, or on-hold) without proper authorization.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bluesnap-payment-gateway-for-woocommerce/tags/3.4.0/includes/class-wc-bluesnap-ipn-webhooks.php#L417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bluesnap-payment-gateway-for-woocommerce/trunk/includes/class-wc-bluesnap-ipn-webhooks.php#L417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/dc676e18-c895-4f6a-bce9-1f92207af885?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T05:16:16Z"
+  }
+}

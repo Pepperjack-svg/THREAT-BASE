@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7r69-vgp4-2564",
+  "modified": "2026-10-06T09:31:33Z",
+  "published": "2026-10-06T09:31:33Z",
+  "aliases": [
+    "CVE-2026-98291"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btintel_pcie: fix off-by-one bounds check in RX submit\n\nbtintel_pcie_submit_rx() used frbd_index > rxq->count to guard the\nFRBD array access, allowing frbd_index == rxq->count to pass through\nand index one element past the end of the array. Change the check to\n>= rxq->count so every out-of-range index is rejected.\n\nThis issue was reported by Claude Mythos.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/18464860ce27af0dccd2fc72830610b85b518cff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ea5a87a5a7ae58cb2662b8a7d06f209383e1765"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5214d72bfdf8ef7744d0c8147e6ebb09b36b259"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de4c3c72bcc6e8474f70c22427f94ca44bccd890"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:19Z"
+  }
+}

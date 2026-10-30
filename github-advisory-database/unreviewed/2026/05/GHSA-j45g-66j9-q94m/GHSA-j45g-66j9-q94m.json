@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j45g-66j9-q94m",
+  "modified": "2026-10-21T15:40:22Z",
+  "published": "2026-05-01T15:30:37Z",
+  "aliases": [
+    "CVE-2026-43042"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmpls: add seqcount to protect the platform_label{,s} pair\n\nThe RCU-protected codepaths (mpls_forward, mpls_dump_routes) can have\nan inconsistent view of platform_labels vs platform_label in case of a\nconcurrent resize (resize_platform_label_table, under\nplatform_mutex). This can lead to OOB accesses.\n\nThis patch adds a seqcount, so that we get a consistent snapshot.\n\nNote that mpls_label_ok is also susceptible to this, so the check\nagainst RTA_DST in rtm_to_route_config, done outside platform_mutex,\nis not sufficient. This value gets passed to mpls_label_ok once more\nin both mpls_route_add and mpls_route_del, so there is no issue, but\nthat additional check must not be removed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43042"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d377825548fe598595b5a5fa4a309fb593d8fb4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5bb3caf0bbfb56f1a00d2af072ac3d8395a3b9ef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/629ec78ef8608d955ce217880cdc3e1873af3a15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8adc5b6fc876928d8c95555d30b66fa50b07421e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125",
+      "CWE-362"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:50Z"
+  }
+}

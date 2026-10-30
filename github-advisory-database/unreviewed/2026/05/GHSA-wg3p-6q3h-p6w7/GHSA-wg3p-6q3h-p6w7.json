@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wg3p-6q3h-p6w7",
+  "modified": "2026-05-13T18:30:46Z",
+  "published": "2026-05-12T18:30:40Z",
+  "aliases": [
+    "CVE-2026-31229"
+  ],
+  "details": "The Adversarial Robustness Toolbox (ART) thru 1.20.1 contains an insecure deserialization vulnerability (CWE-502) in its Kubeflow component's model loading functionality. When loading model weights from a file (e.g., model.pt) during robustness evaluation, the code uses torch.load() without the security-restrictive weights_only=True parameter. This allows the deserialization of arbitrary Python objects via the Pickle module. An attacker can exploit this by uploading a maliciously crafted model file to an object storage location referenced by the pipeline, or by controlling the model_id parameter to point to such a file. When the pipeline loads the model, the malicious payload is executed, leading to remote code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31229"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Trusted-AI/adversarial-robustness-toolbox"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.notion.so/CVE-2026-31229-35d1e13931888172863dcc20beeb6b70"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-12T18:16:51Z"
+  }
+}

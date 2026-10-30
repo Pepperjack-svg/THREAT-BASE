@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vjvq-84hj-h4xh",
+  "modified": "2026-10-06T09:31:22Z",
+  "published": "2026-10-06T09:31:22Z",
+  "aliases": [
+    "CVE-2026-105701"
+  ],
+  "details": "The ACPT (Premium) plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 2.0.66 via the render function. This is due to missing capability check on the REST API form creation endpoint and unsandboxed Twig environment rendering email templates. This makes it possible for authenticated attackers, with subscriber-level access and above, to execute code on the server. The exploit requires the attacker to first create a form with malicious email_settings via the REST API endpoint, then trigger form submission to execute the injected Twig expressions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105701"
+    },
+    {
+      "type": "WEB",
+      "url": "https://acpt.io/changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/9cd544ed-493e-4d4a-9eb8-ea83c47f3857?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T07:16:56Z"
+  }
+}

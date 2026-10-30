@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xjh5-97m9-9vqf",
+  "modified": "2026-10-19T15:32:41Z",
+  "published": "2026-10-19T15:32:41Z",
+  "aliases": [
+    "CVE-2026-112288"
+  ],
+  "details": "Krayin CRM 2.2.5 before 2.2.7 contains a server-side request forgery filter bypass that allows users with webhook permissions to reach internal addresses via DNS rebinding. Attackers can return a public address during WebhookService::isSafeEndpoint() validation and an internal address when Guzzle re-resolves, sending blind requests to internal services and cloud metadata endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:H/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112288"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/krayin/laravel-crm/pull/2683"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/krayin/laravel-crm/commit/64b9125f33a7eb2ef9916d0e5fd8215c7f6a8c28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/krayin/laravel-crm/blob/v2.2.6/packages/Webkul/Automation/src/Services/WebhookService.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/krayin/laravel-crm/releases/tag/v2.2.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/krayin-crm-2.2.5-before-2.2.7-ssrf-filter-bypass-via-dns-rebinding"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T14:17:07Z"
+  }
+}

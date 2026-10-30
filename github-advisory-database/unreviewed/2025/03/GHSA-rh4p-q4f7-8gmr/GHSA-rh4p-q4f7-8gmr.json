@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rh4p-q4f7-8gmr",
+  "modified": "2025-03-07T09:30:35Z",
+  "published": "2025-03-07T09:30:35Z",
+  "aliases": [
+    "CVE-2024-9658"
+  ],
+  "details": "The School Management System for Wordpress plugin for WordPress is vulnerable to privilege escalation via account takeover in all versions up to, and including, 93.0.0. This is due to the plugin not properly validating a user's identity prior to updating their details like email and password through the mj_smgt_update_user() and mj_smgt_add_admission() functions, along with a local file inclusion vulnerability. This makes it possible for authenticated attackers, with student-level access and above, to change arbitrary user's email addresses and passwords, including administrators, and leverage that to gain access to their account. This was escalated four months ago after no response to our initial outreach, yet it still vulnerable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-9658"
+    },
+    {
+      "type": "WEB",
+      "url": "https://codecanyon.net/item/school-management-system-for-wordpress/11470032"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b5fd7bca-7754-4f83-8e51-5278e6e8cc78?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-288",
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-07T09:15:15Z"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rcx5-mm72-w6xv",
+  "modified": "2026-01-22T18:50:53Z",
+  "published": "2025-08-19T18:31:32Z",
+  "aliases": [
+    "CVE-2025-38560"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/sev: Evict cache lines during SNP memory validation\n\nAn SNP cache coherency vulnerability requires a cache line eviction\nmitigation when validating memory after a page state change to private.\nThe specific mitigation is to touch the first and last byte of each 4K\npage that is being validated. There is no need to perform the mitigation\nwhen performing a page state change to shared and rescinding validation.\n\nCPUID bit Fn8000001F_EBX[31] defines the COHERENCY_SFW_NO CPUID bit\nthat, when set, indicates that the software mitigation for this\nvulnerability is not needed.\n\nImplement the mitigation and invoke it when validating memory (making it\nprivate) and the COHERENCY_SFW_NO bit is not set, indicating the SNP\nguest is vulnerable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38560"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fb873971e23c35c53823c62809a474a92bc3022"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fec416c03d0a64cc21aa04ce4aa14254b017e6a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b306dfa326f70114312b320d083b21fa9481e1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a762a4c8d9e768b538b3cc60615361a8cf377de8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aed15fc08f15dbb15822b2a0b653f67e76aa0fdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f92af52e6dbd8d066d77beba451e0230482dc45b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-19T17:15:32Z"
+  }
+}

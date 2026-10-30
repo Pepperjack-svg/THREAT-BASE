@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x9qw-9cw3-55vf",
+  "modified": "2025-04-15T18:31:42Z",
+  "published": "2025-04-01T18:30:50Z",
+  "aliases": [
+    "CVE-2025-21911"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/imagination: avoid deadlock on fence release\n\nDo scheduler queue fence release processing on a workqueue, rather\nthan in the release function itself.\n\nFixes deadlock issues such as the following:\n\n[  607.400437] ============================================\n[  607.405755] WARNING: possible recursive locking detected\n[  607.415500] --------------------------------------------\n[  607.420817] weston:zfq0/24149 is trying to acquire lock:\n[  607.426131] ffff000017d041a0 (reservation_ww_class_mutex){+.+.}-{3:3}, at: pvr_gem_object_vunmap+0x40/0xc0 [powervr]\n[  607.436728]\n               but task is already holding lock:\n[  607.442554] ffff000017d105a0 (reservation_ww_class_mutex){+.+.}-{3:3}, at: dma_buf_ioctl+0x250/0x554\n[  607.451727]\n               other info that might help us debug this:\n[  607.458245]  Possible unsafe locking scenario:\n\n[  607.464155]        CPU0\n[  607.466601]        ----\n[  607.469044]   lock(reservation_ww_class_mutex);\n[  607.473584]   lock(reservation_ww_class_mutex);\n[  607.478114]\n                *** DEADLOCK ***",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21911"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9bd8b8d34cf4efba18766d64f817c819ed1bbde7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d993ae7360923efd6ade43a32043459a121c28c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df1a1ed5e1bdd9cc13148e0e5549f5ebcf76cf13"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-01T16:15:21Z"
+  }
+}

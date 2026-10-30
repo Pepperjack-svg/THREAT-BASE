@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gmmh-f7fw-32mm",
+  "modified": "2026-05-08T21:31:19Z",
+  "published": "2026-05-01T15:30:34Z",
+  "aliases": [
+    "CVE-2026-31753"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nauxdisplay: line-display: fix NULL dereference in linedisp_release\n\nlinedisp_release() currently retrieves the enclosing struct linedisp via\nto_linedisp(). That lookup depends on the attachment list, but the\nattachment may already have been removed before put_device() invokes the\nrelease callback. This can happen in linedisp_unregister(), and can also\nbe reached from some linedisp_register() error paths.\n\nIn that case, to_linedisp() returns NULL and linedisp_release()\ndereferences it while freeing the display resources.\n\nThe struct device released here is the embedded linedisp->dev used by\nlinedisp_register(), so retrieve the enclosing object directly with\ncontainer_of() instead.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31753"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/625fdac41cfc4ca9e1774a0d31d7985aec2c1d66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f138de156b20d9f9da6f72f90b63c01941d97d3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:38Z"
+  }
+}

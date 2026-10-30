@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-75cp-gjjh-3r55",
+  "modified": "2025-09-23T03:30:26Z",
+  "published": "2025-09-23T03:30:26Z",
+  "aliases": [
+    "CVE-2025-9494"
+  ],
+  "details": "An OS command injection vulnerability has been discovered in the Vitogate 300, which can be exploited by malicious users to compromise affected installations. Specifically, the `/cgi-bin/vitogate.cgi` endpoint is affected, when the `form` JSON parameter is set to `form-0-2`. The vulnerability stems from the fact that that function at offset 0x21c24 does not properly sanitize supplied input before interpolating it into a format string which gets passed to `popen()`. Consequently, an authenticated attacker is able to inject arbitrary OS commands and thus gain code execution on affected devices.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-9494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.corporate.carrier.com/product-security/advisories-resources"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-23T02:15:47Z"
+  }
+}

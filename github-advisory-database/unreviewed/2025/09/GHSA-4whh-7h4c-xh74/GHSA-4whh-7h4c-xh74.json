@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4whh-7h4c-xh74",
+  "modified": "2026-05-12T15:31:05Z",
+  "published": "2025-09-05T18:31:27Z",
+  "aliases": [
+    "CVE-2025-39718"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/virtio: Validate length in packet header before skb_put()\n\nWhen receiving a vsock packet in the guest, only the virtqueue buffer\nsize is validated prior to virtio_vsock_skb_rx_put(). Unfortunately,\nvirtio_vsock_skb_rx_put() uses the length from the packet header as the\nlength argument to skb_put(), potentially resulting in SKB overflow if\nthe host has gone wonky.\n\nValidate the length as advertised by the packet header before calling\nvirtio_vsock_skb_rx_put().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39718"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0dab92484474587b82e8e0455839eaf5ac7bf894"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/676f03760ca1d69c2470cef36c44dc152494b47c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/969b06bd8b7560efb100a34227619e7d318fbe05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee438c492b2e0705d819ac0e25d04fae758d8f8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/faf332a10372390ce65d0b803888f4b25a388335"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-05T18:15:49Z"
+  }
+}

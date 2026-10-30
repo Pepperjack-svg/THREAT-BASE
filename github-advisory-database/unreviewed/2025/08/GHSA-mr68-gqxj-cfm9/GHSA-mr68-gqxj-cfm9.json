@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mr68-gqxj-cfm9",
+  "modified": "2025-11-18T18:32:49Z",
+  "published": "2025-08-16T15:30:30Z",
+  "aliases": [
+    "CVE-2023-3865"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix out-of-bound read in smb2_write\n\nksmbd_smb2_check_message doesn't validate hdr->NextCommand. If\n->NextCommand is bigger than Offset + Length of smb2 write, It will\nallow oversized smb2 write length. It will cause OOB read in smb2_write.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-3865"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3813eee5154d6a4c5875cb4444cb2b63bac8947f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58a9c41064df27632e780c5a3ae3e0e4284957d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5fe7f7b78290638806211046a99f031ff26164e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c86211159bc3178b891e0d60e586a32c7b6a231b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-16T14:15:27Z"
+  }
+}

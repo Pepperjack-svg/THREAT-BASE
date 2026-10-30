@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vpg6-7cch-gq2j",
+  "modified": "2025-03-20T12:32:48Z",
+  "published": "2025-03-20T12:32:48Z",
+  "aliases": [
+    "CVE-2024-8736"
+  ],
+  "details": "A Denial of Service (DoS) vulnerability exists in multiple file upload endpoints of parisneo/lollms-webui version V12 (Strawberry). The vulnerability can be exploited remotely via Cross-Site Request Forgery (CSRF). Despite CSRF protection preventing file uploads, the application still processes multipart boundaries, leading to resource exhaustion. By appending additional characters to the multipart boundary, an attacker can cause the server to parse each byte of the boundary, ultimately leading to service unavailability. This vulnerability is present in the `/upload_avatar`, `/upload_app`, and `/upload_logo` endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-8736"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/935dbc03-1b43-4dbb-b6cd-1aa95a789d4f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352",
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-20T10:15:43Z"
+  }
+}

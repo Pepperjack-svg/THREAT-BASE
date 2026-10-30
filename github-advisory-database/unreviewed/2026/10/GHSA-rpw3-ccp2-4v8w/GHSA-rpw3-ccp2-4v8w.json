@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rpw3-ccp2-4v8w",
+  "modified": "2026-10-18T12:30:29Z",
+  "published": "2026-10-18T12:30:28Z",
+  "aliases": [
+    "CVE-2026-112014"
+  ],
+  "details": "LobsterAI before 2026.10.16 contains a hardcoded password vulnerability that allows attackers to decrypt exported provider API keys encrypted with the constant 'lobsterai-APP'. Attackers who obtain a providers export file can derive the AES-GCM key via PBKDF2 using the embedded salt and recover every third-party AI provider API key.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112014"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netease-youdao/LobsterAI/issues/2851"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netease-youdao/LobsterAI/commit/1eb28c40d7e42d6cbade07874e6f6c068b6a9a64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netease-youdao/LobsterAI/blob/2026.9.23/src/renderer/components/Settings.tsx#L4324-L4331"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netease-youdao/LobsterAI/blob/2026.9.23/src/renderer/constants/app.ts#L4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netease-youdao/LobsterAI/releases/tag/2026.10.16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lobsterai-before-2026.10.16-hardcoded-password-in-provider-api-key-export"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-321"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T12:17:14Z"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m47f-j4g8-cj3f",
+  "modified": "2026-10-21T15:40:33Z",
+  "published": "2026-06-08T18:31:52Z",
+  "aliases": [
+    "CVE-2026-46302"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nselinux: allow multiple opens of /sys/fs/selinux/policy\n\nCurrently there can only be a single open of /sys/fs/selinux/policy at\nany time. This allows any process to block any other process from\nreading the kernel policy. The original motivation seems to have been\na mix of preventing an inconsistent view of the policy size and\npreventing userspace from allocating kernel memory without bound, but\nthis is arguably equally bad. Eliminate the policy_opened flag and\nshrink the critical section that the policy mutex is held. While we\nare making changes here, drop a couple of extraneous BUG_ONs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46302"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ed712134a3db0075bfe9a0f8536c48728ec745e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/714362f3779dfa453a78ced32396a72726962a41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a02cd6805562305f936e807da83e253b719dd965"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c24d2e190b955baf3a95e05d34b192f61bd201b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8cafd0226d5df682d1f4ea978a4318fe3a11210"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-08T17:16:48Z"
+  }
+}

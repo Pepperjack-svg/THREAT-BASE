@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6xx4-fvpc-r9qf",
+  "modified": "2025-12-17T18:31:31Z",
+  "published": "2025-06-18T12:30:34Z",
+  "aliases": [
+    "CVE-2025-38077"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: dell-wmi-sysman: Avoid buffer overflow in current_password_store()\n\nIf the 'buf' array received from the user contains an empty string, the\n'length' variable will be zero. Accessing the 'buf' array element with\nindex 'length - 1' will result in a buffer overflow.\n\nAdd a check for an empty string.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38077"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e89a4077490f52cde652d17e32519b666abf3a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60bd13f8c4b3de2c910ae1cdbef85b9bbc9685f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8594a123cfa23d708582dc6fb36da34479ef8a5b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97066373ffd55bd9af0b512ff3dd1f647620a3dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f86465626917df3b8bdd2756ec0cc9d179c5af0f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb7cde625872709b8cedad9b241e0ec3d82fa7d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T10:15:41Z"
+  }
+}

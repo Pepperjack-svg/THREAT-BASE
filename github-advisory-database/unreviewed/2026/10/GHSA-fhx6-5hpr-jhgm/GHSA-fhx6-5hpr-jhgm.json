@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fhx6-5hpr-jhgm",
+  "modified": "2026-10-11T15:31:07Z",
+  "published": "2026-10-11T15:31:07Z",
+  "aliases": [
+    "CVE-2026-108855"
+  ],
+  "details": "UnicomAI Wanwu through 0.6.5 contains a missing authorization vulnerability that allows any authenticated enabled user to revoke other users' AppKeys for arbitrary apps via the unpublish endpoint. Attackers can supply a target appId and appType from the exploration marketplace to delete other users' api_key rows across organizations, cutting off MCP and OpenAPI client access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108855"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/UnicomAI/wanwu"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/UnicomAI/wanwu/blob/v0.6.5/internal/app-service/client/orm/app.go#L48-L68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/unicomai-wanwu-unpublish-revokes-consumer-appkeys"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/unicomai-wanwu-through-0.6.5-missing-authorization-via-delete-v1-appspace-app-publish"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T14:17:05Z"
+  }
+}

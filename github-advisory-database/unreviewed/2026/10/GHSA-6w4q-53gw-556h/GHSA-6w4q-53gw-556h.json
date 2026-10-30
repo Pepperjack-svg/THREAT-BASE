@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6w4q-53gw-556h",
+  "modified": "2026-10-11T15:31:08Z",
+  "published": "2026-10-11T15:31:07Z",
+  "aliases": [
+    "CVE-2026-108857"
+  ],
+  "details": "Hugging Face Text Embeddings Inference through 1.9.4 contains a cleartext logging vulnerability that exposes the configured api_key because the router's Args struct lacks a redact attribute for it. Attackers with access to router logs, container output, or OTLP telemetry can recover the Bearer token and call the protected embedding and rerank endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108857"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/text-embeddings-inference"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/text-embeddings-inference/blob/e80ef225ed0e6cb1717ce632a6a84b6cf211bb67/router/src/main.rs#L170-L174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/text-embeddings-inference/blob/e80ef225ed0e6cb1717ce632a6a84b6cf211bb67/router/src/main.rs#L204-L216"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/huggingface-text-embeddings-inference-api-key-startup-log"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hugging-face-text-embeddings-inference-through-1.9.4-cleartext-api-key-logging"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T14:17:05Z"
+  }
+}

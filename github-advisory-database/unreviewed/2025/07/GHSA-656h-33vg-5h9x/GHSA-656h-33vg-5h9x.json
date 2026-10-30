@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-656h-33vg-5h9x",
+  "modified": "2025-12-17T18:31:31Z",
+  "published": "2025-07-03T09:30:33Z",
+  "aliases": [
+    "CVE-2025-38113"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nACPI: CPPC: Fix NULL pointer dereference when nosmp is used\n\nWith nosmp in cmdline, other CPUs are not brought up, leaving\ntheir cpc_desc_ptr NULL. CPU0's iteration via for_each_possible_cpu()\ndereferences these NULL pointers, causing panic.\n\nPanic backtrace:\n\n[    0.401123] Unable to handle kernel NULL pointer dereference at virtual address 00000000000000b8\n...\n[    0.403255] [<ffffffff809a5818>] cppc_allow_fast_switch+0x6a/0xd4\n...\nKernel panic - not syncing: Attempted to kill init!\n\n[ rjw: New subject ]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38113"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15eece6c5b05e5f9db0711978c3e3b7f1a2cfe12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a677d0ceb4a5d62117b711a8b2e0aee80d33015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32a48db4cf28ea087214c261da8476db218d08bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/356d09c7f5bf525086002a34f8bae40b134d1611"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c6dad167aade4bf0bef9130f2f149f4249fc4ad0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-03T09:15:25Z"
+  }
+}

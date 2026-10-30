@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q86w-66m5-qpj3",
+  "modified": "2025-11-03T21:33:24Z",
+  "published": "2025-04-01T18:30:52Z",
+  "aliases": [
+    "CVE-2025-21944"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix bug on trap in smb2_lock\n\nIf lock count is greater than 1, flags could be old value.\nIt should be checked with flags of smb_lock, not flags.\nIt will cause bug-on trap from locks_free_lock in error handling\nroutine.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21944"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11e0e74e14f1832a95092f2c98ed3b99f57797ee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b70e3ac79eacbdf32571f7af48dd81cdd957ca8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8994f0ce8259f812b4f4a681d8298c6ff682efaa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dbcd7fdd86f77529210fe8978154a81cd479844c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e26e2d2e15daf1ab33e0135caf2304a0cfa2744b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-01T16:15:25Z"
+  }
+}

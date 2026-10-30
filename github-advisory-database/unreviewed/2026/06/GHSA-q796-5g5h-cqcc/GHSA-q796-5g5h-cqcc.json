@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q796-5g5h-cqcc",
+  "modified": "2026-06-30T18:31:38Z",
+  "published": "2026-06-30T18:31:38Z",
+  "aliases": [
+    "CVE-2026-58169"
+  ],
+  "details": "Vibe-Trading before 0.1.10 contains a DNS rebinding authentication bypass vulnerability that allows remote attackers to bypass bearer-token authentication by exploiting the server's trust of TCP peer addresses for loopback clients combined with missing Host header validation while binding to 0.0.0.0 with credentialed CORS. Attackers can craft a malicious DNS rebinding page to issue authenticated requests to the local API server, reach the shell execution endpoint with a bash-enabled preset, and achieve remote code execution as the API process user while also overwriting LLM and data-source settings to exfiltrate credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58169"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/Vibe-Trading/pull/241"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/Vibe-Trading/pull/242"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/Vibe-Trading/pull/243"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/Vibe-Trading/pull/245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/Vibe-Trading/pull/293"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/Vibe-Trading/releases/tag/v0.1.10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vibe-trading-loopback-trust-and-missing-host-validation-enable-dns-rebinding-authentication-bypass-and-remote-code-execution"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-346"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-30T17:16:23Z"
+  }
+}

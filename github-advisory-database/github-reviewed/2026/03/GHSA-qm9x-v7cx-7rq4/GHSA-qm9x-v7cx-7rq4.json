@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qm9x-v7cx-7rq4",
+  "modified": "2026-04-10T19:37:43Z",
+  "published": "2026-03-26T19:08:45Z",
+  "aliases": [
+    "CVE-2026-35666"
+  ],
+  "summary": "OpenClaw's system.run allowlist can be bypassed through an unregistered time dispatch wrapper",
+  "details": "## Summary\nAllow-always exec approvals did not unwrap /usr/bin/time, so an unregistered time wrapper could bypass executable binding and reuse approval state for the inner command.\n\n## Affected Packages / Versions\n- Package: `openclaw` (npm)\n- Affected: < 2026.3.22\n- Fixed: >= 2026.3.22\n- Latest released tag checked: `v2026.3.23-2` (`630f1479c44f78484dfa21bb407cbe6f171dac87`)\n- Latest published npm version checked: `2026.3.23-2`\n\n## Fix Commit(s)\n- `39409b6a6dd4239deea682e626bac9ba547bfb14`\n\n## Release Status\nThe fix shipped in `v2026.3.22` and remains present in `v2026.3.23` and `v2026.3.23-2`.\n\n## Code-Level Confirmation\n- src/infra/dispatch-wrapper-resolution.ts now unwraps /usr/bin/time and binds approvals to the real inner executable.\n- src/infra/exec-approvals-allow-always.test.ts ships regression coverage for time-wrapper allow-always approval bypasses.\n\nOpenClaw thanks @YLChen-007 for reporting.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "openclaw"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2026.3.22"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-qm9x-v7cx-7rq4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-35666"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/commit/39409b6a6dd4239deea682e626bac9ba547bfb14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/commit/630f1479c44f78484dfa21bb407cbe6f171dac87"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/openclaw/openclaw"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-allowlist-bypass-via-unregistered-time-dispatch-wrapper"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-706",
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-26T19:08:45Z",
+    "nvd_published_at": "2026-04-10T17:17:08Z"
+  }
+}

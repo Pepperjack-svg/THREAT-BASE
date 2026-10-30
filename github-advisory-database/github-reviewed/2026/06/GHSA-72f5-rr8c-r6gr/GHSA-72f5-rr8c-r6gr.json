@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-72f5-rr8c-r6gr",
+  "modified": "2026-06-26T16:36:11Z",
+  "published": "2026-06-26T16:36:11Z",
+  "aliases": [
+    "CVE-2026-44161"
+  ],
+  "summary": "Fluentd is Vulnerable to Server-Side Request Forgery (SSRF) via Placeholder Expansion in `out_http`",
+  "details": "The `out_http` output plugin allows the use of placeholders (such as `${tag}`) in the `endpoint` configuration parameter.\nIt was discovered that if the placeholder value is derived from untrusted user input, an attacker can maliciously control the destination hostname of the outbound HTTP requests made by Fluentd.\n\n### Impact\nThis vulnerability allows for a **Server-Side Request Forgery (SSRF)** attack.\nAn unauthenticated attacker can force the Fluentd node to send HTTP requests to arbitrary internal services. This can lead to unauthorized access to internal APIs, data exfiltration, or the compromise of cloud metadata endpoints (e.g., AWS IMDS `169.254.169.254`).\n\n### Patches\nv1.19.3\n\n### Workarounds\nIf an immediate upgrade is not possible, users are strongly advised to apply the following mitigations:\n\n1. Avoid Dynamic Hostnames\n   * Do not use the placeholder in the endpoint parameter as hostname.\n\n2. Restrict Network Access \n   * Use firewall rules (e.g., iptables, AWS Security Groups) to block the Fluentd node from accessing sensitive internal IP addresses, specifically the cloud provider's metadata service and other internal microservices that Fluentd does not explicitly need to access.\n\n3. Restrict allowed hosts\n   * Inject filter to accept allowed hosts in placeholders explicitly if possible.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "fluentd"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.19.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.19.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/fluent/fluentd/security/advisories/GHSA-72f5-rr8c-r6gr"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/fluent/fluentd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fluent/fluentd/releases/tag/v1.19.3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-26T16:36:11Z",
+    "nvd_published_at": null
+  }
+}

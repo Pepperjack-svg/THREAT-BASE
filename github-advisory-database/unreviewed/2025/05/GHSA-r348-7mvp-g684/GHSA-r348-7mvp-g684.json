@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r348-7mvp-g684",
+  "modified": "2025-11-12T18:31:04Z",
+  "published": "2025-05-02T18:31:33Z",
+  "aliases": [
+    "CVE-2023-53047"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntee: amdtee: fix race condition in amdtee_open_session\n\nThere is a potential race condition in amdtee_open_session that may\nlead to use-after-free. For instance, in amdtee_open_session() after\nsess->sess_mask is set, and before setting:\n\n    sess->session_info[i] = session_info;\n\nif amdtee_close_session() closes this same session, then 'sess' data\nstructure will be released, causing kernel panic when 'sess' is\naccessed within amdtee_open_session().\n\nThe solution is to set the bit sess->sess_mask as the last step in\namdtee_open_session().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53047"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02b296978a2137d7128151c542e84dc96400bc00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a63cce9393e4e7dbc5af82dc87e68cb321cb1a78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3ef9e6fe09f1a132af28c623edcf4d4f39d9f35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f632a90f8e39db39b322107b9a8d438b826a7f4f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8502fba45bd30e1a6a354d9d898bc99d1a11e6d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-02T16:15:23Z"
+  }
+}

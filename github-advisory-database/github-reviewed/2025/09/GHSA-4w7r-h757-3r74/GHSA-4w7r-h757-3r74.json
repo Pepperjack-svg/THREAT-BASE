@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4w7r-h757-3r74",
+  "modified": "2025-09-23T17:37:49Z",
+  "published": "2025-09-23T15:31:09Z",
+  "aliases": [
+    "CVE-2025-6921"
+  ],
+  "summary": "Hugging Face Transformers vulnerable to Regular Expression Denial of Service (ReDoS) in the AdamWeightDecay optimizer",
+  "details": "The huggingface/transformers library, versions prior to 4.53.0, is vulnerable to Regular Expression Denial of Service (ReDoS) in the AdamWeightDecay optimizer. The vulnerability arises from the _do_use_weight_decay method, which processes user-controlled regular expressions in the include_in_weight_decay and exclude_from_weight_decay lists. Malicious regular expressions can cause catastrophic backtracking during the re.search call, leading to 100% CPU utilization and a denial of service. This issue can be exploited by attackers who can control the patterns in these lists, potentially causing the machine learning task to hang and rendering services unresponsive.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "transformers"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.53.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-6921"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/transformers/commit/47c34fba5c303576560cb29767efb452ff12b8be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/transformers/commit/d37f7517972f67e3f2194c000ed0f87f064e5099"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/huggingface/transformers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/287d15a7-6e7c-45d2-8c05-11e305776f1f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-09-23T17:37:49Z",
+    "nvd_published_at": "2025-09-23T14:15:41Z"
+  }
+}

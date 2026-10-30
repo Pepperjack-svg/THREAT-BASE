@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9qxq-33m2-8r47",
+  "modified": "2025-12-12T18:30:28Z",
+  "published": "2025-10-01T09:30:25Z",
+  "aliases": [
+    "CVE-2025-39912"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfs/localio: restore creds before releasing pageio data\n\nOtherwise if the nfsd filecache code releases the nfsd_file\nimmediately, it can trigger the BUG_ON(cred == current->cred) in\n__put_cred() when it puts the nfsd_file->nf_file->f-cred.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39912"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57c1bb02b4fc8eec6eb01736e7fad26dffacf18c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/992203a1fba51b025c60ec0c8b0d9223343dea95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c250be1d75bf80dc5ab46f0b434b746c1868a1ea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T08:15:34Z"
+  }
+}

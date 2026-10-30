@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4q89-7p83-q89w",
+  "modified": "2025-12-24T15:30:37Z",
+  "published": "2025-12-24T15:30:37Z",
+  "aliases": [
+    "CVE-2023-54093"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: anysee: fix null-ptr-deref in anysee_master_xfer\n\nIn anysee_master_xfer, msg is controlled by user. When msg[i].buf\nis null and msg[i].len is zero, former checks on msg[i].buf would be\npassed. Malicious data finally reach anysee_master_xfer. If accessing\nmsg[i].buf[0] without sanity check, null ptr deref would happen.\nWe add check on msg[i].len to prevent crash.\n\nSimilar commit:\ncommit 0ed554fd769a\n(\"media: dvb-usb: az6027: fix null-ptr-deref in az6027_i2c_xfer()\")\n\n[hverkuil: add spaces around +]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54093"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14b94154a72388b57221a2a73795c0ea61a95373"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3dd5846a873938ec7b6d404ec27662942cd8f2ef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a9763d2bc4a6d6fab42555b9c0b2eefa32585ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5975dbbb7ad0767eaabd15d2c37a739ac76acb00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73c0b224ceeba12dee2a7a8cbc147648da0b2e63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8dc5b370254abc10f0cb4141d90cecf7ce465472"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c30411266fd67ea3c02a05c157231654d5a3bdc9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e04affec2506ff5c12a18d78d7e694b3556a8982"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:11Z"
+  }
+}

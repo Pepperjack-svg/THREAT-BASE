@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8gmj-mrfm-vm8g",
+  "modified": "2026-10-21T15:42:00Z",
+  "published": "2026-10-18T18:32:05Z",
+  "aliases": [
+    "CVE-2026-98847"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtc: spear: initialize IRQ state before requesting alarm IRQ\n\ndevm_request_irq() enables the interrupt before it returns, so the handler\nmay run while probe is still initializing the device. Initialize the MMIO\naddress and spinlock before requesting the alarm IRQ.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98847"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/055ef5ce9f67a6a3a1363fa663007f8196cc0fb8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aeda50d645bbb55241be840602e338b3a16c24ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c02aa67ea34a826c2cb1aa65d77cf32fafb7eec3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb6d6a7fbff0414b9eed505d17687b4b7e38fee8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0cabda9b6f4dd276c55c40bdbb251e8507ae60e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:39Z"
+  }
+}

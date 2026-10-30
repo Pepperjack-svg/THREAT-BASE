@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3j7x-jqgv-84cm",
+  "modified": "2026-05-28T21:32:03Z",
+  "published": "2026-05-28T21:32:03Z",
+  "aliases": [
+    "CVE-2026-33462"
+  ],
+  "details": "A path traversal vulnerability was identified in Kibana's dashboard management functionality. An authenticated user with limited permissions could create a dashboard with a specially crafted identifier. When an administrator subsequently attempts to delete this dashboard through the Kibana interface, the deletion request is redirected to an unintended internal endpoint, potentially resulting in the unauthorized deletion of user accounts or other resources. Exploitation requires an administrator to perform a delete action on the maliciously crafted dashboard object.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-16-and-9-3-5-security-update-esa-2026-30/386545"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T20:16:22Z"
+  }
+}

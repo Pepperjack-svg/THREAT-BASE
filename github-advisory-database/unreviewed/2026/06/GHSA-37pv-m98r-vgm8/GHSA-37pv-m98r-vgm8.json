@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-37pv-m98r-vgm8",
+  "modified": "2026-06-28T09:31:44Z",
+  "published": "2026-06-25T09:31:21Z",
+  "aliases": [
+    "CVE-2026-53215"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mvpp2: refill RX buffers before XDP or skb use\n\nThe RX error path returns the current descriptor buffer to the hardware\nBM pool. That is only valid while the driver still owns the buffer.\n\nmvpp2_rx_refill() can fail after the current buffer has been handed to\nXDP or attached to an skb. In those cases mvpp2_run_xdp() may have\nrecycled, redirected, or queued the page for XDP_TX, and an skb free also\nretires the data buffer. Returning such a buffer to BM lets hardware DMA\ninto memory that is no longer owned by the RX ring.\n\nRefill the BM pool before handing the current buffer to XDP or to the\nskb. If the allocation fails there, drop the packet and return the\nstill-owned current buffer to BM, preserving the pool depth. Once the\nrefill succeeds, later local drops retire/free the current buffer instead\nof returning it to BM.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02e1b5c4d3b4c658b72c145427cded1bba613fc1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/580f92f27cb8724bcc4be98ee89890eab524a2ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5e8e2a9624df72fca7c736b2966b2cbf6c9c3ff6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a2126c5afe89f8ceeb60a3afb9f075b736194cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a03cdcedb2cbcc42551dc3e4746929e93c5352d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a88b3293b556f4d8fba11db9a8061a6b0d3b69e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0c8c4fbd22d260fe28530260656c5fb3c20ce84"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:39Z"
+  }
+}

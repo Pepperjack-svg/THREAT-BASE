@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-74jp-62v9-rvjf",
+  "modified": "2026-05-08T15:31:16Z",
+  "published": "2026-05-06T12:30:28Z",
+  "aliases": [
+    "CVE-2026-43120"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/irdma: Fix double free related to rereg_user_mr\n\nIf IB_MR_REREG_TRANS is set during rereg_user_mr, the\numem will be released and a new one will be allocated\nin irdma_rereg_mr_trans. If any step of irdma_rereg_mr_trans\nfails after the new umem is allocated, it releases the umem,\nbut does not set iwmr->region to NULL. The problem is that\nthis failure is propagated to the user, who will then call\nibv_dereg_mr (as they should). Then, the dereg_mr path will\nsee a non-NULL umem and attempt to call ib_umem_release again.\n\nFix this by setting iwmr->region to NULL after ib_umem_release.\n\nFixed: 5ac388db27c4 (\"RDMA/irdma: Add support to re-register a memory region\")",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43120"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c5d70bcb9d2275a1c8515a924016fcfeb4ab441"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f22c32141acdcda266b26cab2b830baf870f3e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29a3edd7004bb635d299fb9bc6f0ea4ef13ed5a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62298a48f8b8788ad8b8464e6ffdf1ddebd2217e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66964118f1f50ed85001c8fc9f7ab5bbdd021ee0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T10:16:25Z"
+  }
+}

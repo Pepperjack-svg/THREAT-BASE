@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gg78-p23v-xc7m",
+  "modified": "2025-08-05T21:31:37Z",
+  "published": "2025-08-05T18:30:44Z",
+  "aliases": [
+    "CVE-2025-50688"
+  ],
+  "details": "A command injection vulnerability exists in TwistedWeb (version 14.0.0) due to improper input sanitization in the file upload functionality. An attacker can exploit this vulnerability by sending a specially crafted HTTP PUT request to upload a malicious file (e.g., a reverse shell script). Once uploaded, the attacker can trigger the execution of arbitrary commands on the target system, allowing for remote code execution. This could lead to escalation of privileges depending on the privileges of the web server process. The attack does not require physical access and can be conducted remotely, posing a significant risk to the confidentiality and integrity of the system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-50688"
+    },
+    {
+      "type": "WEB",
+      "url": "https://medium.com/@Justinsecure/chained-rce-on-twistedweb-14-0-0-via-command-injection-and-unauthenticated-put-1aa657995b4e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://twisted.org/documents/14.0.0/index.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-05T18:15:32Z"
+  }
+}

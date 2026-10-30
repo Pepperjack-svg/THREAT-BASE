@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xxc7-55p3-gxvw",
+  "modified": "2026-10-16T00:31:57Z",
+  "published": "2026-10-16T00:31:57Z",
+  "aliases": [
+    "CVE-2026-111350"
+  ],
+  "details": "Papermark through 0.22.0 contains a missing authorization vulnerability in the data room viewer group API that allows authenticated users to delete other teams' viewer groups and share links. Attackers who know a victim team's data room and group identifiers can send DELETE requests, read group links, or rewrite group document permissions across teams.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/papermark/papermark/commit/7fa52b23944823a9e74402fca8e48d644239bc0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/papermark/papermark/commit/b81cf62f390cda112f35538eb09e54b5f728b74a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/papermark/papermark"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/papermark/papermark/blob/v0.22.0/pages/api/teams/%5BteamId%5D/datarooms/%5Bid%5D/groups/%5BgroupId%5D/index.ts#L155-L190"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/papermark/papermark/blob/v0.22.0/pages/api/teams/%5BteamId%5D/datarooms/%5Bid%5D/groups/%5BgroupId%5D/links.ts#L52-L56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/papermark-dataroom-group-delete-missing-authz"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/papermark-through-0.22.0-missing-authorization-in-data-room-viewer-group-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T22:19:32Z"
+  }
+}

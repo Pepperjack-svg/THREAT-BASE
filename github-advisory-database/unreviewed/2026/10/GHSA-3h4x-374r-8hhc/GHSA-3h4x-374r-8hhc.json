@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3h4x-374r-8hhc",
+  "modified": "2026-10-01T12:31:20Z",
+  "published": "2026-10-01T12:31:20Z",
+  "aliases": [
+    "CVE-2026-103754"
+  ],
+  "details": "A flaw was found in ansible-runner. The unstream_dir() function, which receives and extracts a streamed zip archive on the worker side of the ansible-runner transmit/worker protocol, re-creates symbolic links from archive content without validating the link target and applies chmod() and utime() to an unsanitized filesystem path derived from the archive member name. A crafted archive processed by a worker that consumes attacker-influenced input can create files, create symbolic links, or change permissions outside the intended target directory, which can be leveraged toward code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ansible/ansible-runner/pull/1550"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-103754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2544510"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-01T12:17:15Z"
+  }
+}

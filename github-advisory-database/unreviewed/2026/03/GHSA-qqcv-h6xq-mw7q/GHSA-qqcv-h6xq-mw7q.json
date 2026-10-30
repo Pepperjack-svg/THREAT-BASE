@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qqcv-h6xq-mw7q",
+  "modified": "2026-10-15T03:35:26Z",
+  "published": "2026-03-25T12:30:24Z",
+  "aliases": [
+    "CVE-2026-23391"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: xt_CT: drop pending enqueued packets on template removal\n\nTemplates refer to objects that can go away while packets are sitting in\nnfqueue refer to:\n\n- helper, this can be an issue on module removal.\n- timeout policy, nfnetlink_cttimeout might remove it.\n\nThe use of templates with zone and event cache filter are safe, since\nthis just copies values.\n\nFlush these enqueued packets in case the template rule gets removed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19a230dec6bb8928e3f96387f9085cf2c79bcef9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55445134d42b84cb0a272e42c98d233ca65eca83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63b8097cea1923fe82cd598068d0796da8c015ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/777d02efe3d630cca4c1b63962cec17c57711325"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb549925875fa06dd155e49db4ac2c5044c30f9c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc57506dd66555899560b9c0f24e813f034e12ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2d0bae0c9a2a17b6990a2966f5cdce0813d6256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f62a218a946b19bb59abdd5361da85fa4606b96b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:39Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6rxg-9w2c-f7x4",
+  "modified": "2026-10-19T15:32:41Z",
+  "published": "2026-10-19T15:32:41Z",
+  "aliases": [
+    "CVE-2026-112281"
+  ],
+  "details": "libaribb24 (aribb24) through 1.0.3 contains a stack-based buffer overflow vulnerability in decoder_handle_csi() in src/decoder.c that allows attackers to write past a fixed 256-entry array by supplying unbounded CSI parameter bytes. Attackers can embed a caption statement with a CSI introducer and over 256 parameter bytes in media files or broadcast streams to crash FFmpeg or VLC or corrupt the return address.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nkoriyama/aribb24/blob/v1.0.3/src/decoder.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/aribb24-caption-data-unit-and-csi-oob-write"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/cve-2026-112280-112281-aribb24-caption-data-unit-and-csi-oob-write"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libaribb24-through-1.0.3-stack-buffer-overflow-via-decoder-handle-csi"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T14:17:06Z"
+  }
+}

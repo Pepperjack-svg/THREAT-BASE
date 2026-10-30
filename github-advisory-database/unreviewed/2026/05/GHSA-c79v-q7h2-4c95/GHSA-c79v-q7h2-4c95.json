@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c79v-q7h2-4c95",
+  "modified": "2026-10-21T15:40:25Z",
+  "published": "2026-05-06T12:30:33Z",
+  "aliases": [
+    "CVE-2026-43204"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: qcom: q6asm: drop DSP responses for closed data streams\n\n'Commit a354f030dbce (\"ASoC: qcom: q6asm: handle the responses\nafter closing\")' attempted to ignore DSP responses arriving\nafter a stream had been closed.\n\nHowever, those responses were still handled, causing lockups.\n\nFix this by unconditionally dropping all DSP responses associated with\nclosed data streams.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43204"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3249251eac6081d5169ba09f2d9cca66ab0cab0d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a409a64b2d61430c63cbb15d51681f13b8b0acd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/414396c42ef20d2d0c9213adaf4dfa59490ca077"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a066a81ee0c1b6cdbd81393536c3b2d19ccef25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0b69245263ffa3db6f1be6e068528578fde635b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:39Z"
+  }
+}

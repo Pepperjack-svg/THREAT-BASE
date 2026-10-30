@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-283c-73pv-x3j2",
+  "modified": "2026-05-27T09:31:13Z",
+  "published": "2026-05-27T09:31:13Z",
+  "aliases": [
+    "CVE-2026-8846"
+  ],
+  "details": "The Tuxquote plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'TUXQUOTE' shortcode in versions up to, and including, 1.3. This is due to insufficient input sanitization and output escaping on user supplied attributes ('title', 'align', and 'width') in the tuxquote_build_format() function, which are concatenated into the rendered HTML without being passed through esc_attr() or esc_html(). This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8846"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tuxquote/tags/1.3/tuxquote.php#L81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tuxquote/tags/1.3/tuxquote.php#L91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/7ea6079f-45a1-438f-890f-36457b7468ec?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T07:16:15Z"
+  }
+}

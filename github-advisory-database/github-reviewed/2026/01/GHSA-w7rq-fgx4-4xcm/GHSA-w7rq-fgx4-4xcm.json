@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w7rq-fgx4-4xcm",
+  "modified": "2026-01-23T20:16:37Z",
+  "published": "2026-01-23T18:31:30Z",
+  "aliases": [
+    "CVE-2025-71177"
+  ],
+  "summary": "LavaLite CMS affected by a stored cross-site scripting vulnerability",
+  "details": "LavaLite CMS versions up to and including 10.1.0 contain a stored cross-site scripting vulnerability in the package creation and search functionality. Authenticated users can supply crafted HTML or JavaScript in the package Name or Description fields that is stored and later rendered without proper output encoding in package search results. When other users view search results that include the malicious package, the injected script executes in their browsers, potentially enabling session hijacking, credential theft, and unauthorized actions in the context of the victim.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "lavalite/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "10.1.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LavaLite/cms/issues/420"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/LavaLite/cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lavalite.org"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lavalite-cms-stored-xss-via-package-creation-and-search"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-23T20:16:37Z",
+    "nvd_published_at": "2026-01-23T17:16:08Z"
+  }
+}

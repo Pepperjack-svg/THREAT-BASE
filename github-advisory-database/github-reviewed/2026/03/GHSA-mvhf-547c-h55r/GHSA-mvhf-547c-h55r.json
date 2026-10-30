@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mvhf-547c-h55r",
+  "modified": "2026-03-31T23:24:12Z",
+  "published": "2026-03-25T18:31:47Z",
+  "aliases": [
+    "CVE-2026-26833"
+  ],
+  "summary": "thumbler allows OS Command Injection",
+  "details": "thumbler through 1.1.2 allows OS command injection via the input, output, time, or size parameter in the thumbnail() function because user input is concatenated into a shell command string passed to child_process.exec() without proper sanitization or escaping.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "thumbler"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "1.1.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26833"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mmahrous/thumbler"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mmahrous/thumbler/blob/master/lib/thumbler.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zebbernCVE/CVE-2026-26833"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.npmjs.com/package/thumbler"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78",
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-31T23:24:12Z",
+    "nvd_published_at": "2026-03-25T16:16:21Z"
+  }
+}

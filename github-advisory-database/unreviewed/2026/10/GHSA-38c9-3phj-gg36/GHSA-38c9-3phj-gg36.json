@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-38c9-3phj-gg36",
+  "modified": "2026-10-22T03:33:49Z",
+  "published": "2026-10-22T03:33:49Z",
+  "aliases": [
+    "CVE-2026-114729"
+  ],
+  "details": "Roundcube Webmail before 1.6.20 and 1.7.x before 1.7.5 is affected by a remote content blocking bypass. rcube_washtml inspected the SVG SMIL animation attributes `to`, `from` and values for URIs, but not `by`; so markup such as in an HTML message caused remote content to be loaded without the user's consent, disclosing the client IP address and confirming that the message was opened. Upstream fixed this in the commit “Fix remote-content blocker bypass via SVG SMIL `by` attribute”.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/2b6ff79d8b14f94b0ff04765b7f02dbfdfe98efa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/96d993b4ac57166a094b5774f4761e0b905d9a05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.debian.org/1151279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.6.20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.7.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://roundcube.net/news/2026/10/19/security-updates-1.6.20-and-1.7.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-184"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T03:16:38Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9554-w67x-xjxp",
+  "modified": "2026-01-27T21:31:35Z",
+  "published": "2025-10-04T09:30:20Z",
+  "aliases": [
+    "CVE-2025-39935"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: codec: sma1307: Fix memory corruption in sma1307_setting_loaded()\n\nThe sma1307->set.header_size is how many integers are in the header\n(there are 8 of them) but instead of allocating space of 8 integers\nwe allocate 8 bytes.  This leads to memory corruption when we copy data\nit on the next line:\n\n        memcpy(sma1307->set.header, data,\n               sma1307->set.header_size * sizeof(int));\n\nAlso since we're immediately copying over the memory in ->set.header,\nthere is no need to zero it in the allocator.  Use devm_kmalloc_array()\nto allocate the memory instead.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39935"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78338108b5a856dc98223a335f147846a8a18c51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd59ca8f75dbb42a67fcae975c766114644e36c4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-04T08:15:46Z"
+  }
+}

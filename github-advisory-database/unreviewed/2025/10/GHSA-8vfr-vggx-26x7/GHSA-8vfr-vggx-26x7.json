@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8vfr-vggx-26x7",
+  "modified": "2025-10-22T09:30:19Z",
+  "published": "2025-10-22T09:30:19Z",
+  "aliases": [
+    "CVE-2025-11866"
+  ],
+  "details": "The Photographers galleries plugin for WordPress is vulnerable to Stored Cross-Site Scripting via multiple shortcode attributes (`w`, `h`, `raw_css`, `look`, etc.) in all versions up to, and including, 1.1.8. This is due to the plugin not properly sanitizing user input or escaping output when inserting these values into HTML attributes and inline styles. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11866"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/photographers-galleries/tags/1.1.8/includes/shortcodes.php#L61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/9300af5d-7886-4f4e-8454-0dcf2d895fee?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-22T09:15:34Z"
+  }
+}

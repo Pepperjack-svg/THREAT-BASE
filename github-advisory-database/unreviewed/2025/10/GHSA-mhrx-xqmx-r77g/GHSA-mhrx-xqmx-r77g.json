@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mhrx-xqmx-r77g",
+  "modified": "2026-02-03T15:30:20Z",
+  "published": "2025-10-09T15:31:03Z",
+  "aliases": [
+    "CVE-2025-39962"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrxrpc: Fix untrusted unsigned subtract\n\nFix the following Smatch static checker warning:\n\n   net/rxrpc/rxgk_app.c:65 rxgk_yfs_decode_ticket()\n   warn: untrusted unsigned subtract. 'ticket_len - 10 * 4'\n\nby prechecking the length of what we're trying to extract in two places in\nthe token and decoding for a response packet.\n\nAlso use sizeof() on the struct we're extracting rather specifying the size\nnumerically to be consistent with the other related statements.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39962"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2429a197648178cd4dc930a9d87c13c547460564"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71571e187106631a8127f2dde780f35caa358d33"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-09T13:15:32Z"
+  }
+}

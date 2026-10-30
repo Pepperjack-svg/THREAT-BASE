@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xj9w-5r6q-x6v4",
+  "modified": "2026-05-06T23:25:17Z",
+  "published": "2026-04-03T02:59:03Z",
+  "aliases": [
+    "CVE-2026-41352"
+  ],
+  "summary": "OpenClaw: Device-Paired Node Skips Node Scope Gate → Host RCE.md",
+  "details": "## Summary\nDevice-Paired Node Skips Node Scope Gate → Host RCE.md\n\n## Current Maintainer Triage\n- Status: open\n- Normalized severity: high\n- Assessment: Real in shipped v2026.3.28 because a merely device-paired node could expose node commands without node pairing, but high is sufficient given the pairing/setup prerequisites.\n\n## Affected Packages / Versions\n- Package: `openclaw` (npm)\n- Latest published npm version: `2026.3.31`\n- Vulnerable version range: `<=2026.3.28`\n- Patched versions: `>= 2026.3.31`\n- First stable tag containing the fix: `v2026.3.31`\n\n## Fix Commit(s)\n- `3886b65ef21d02808c1a106fa1f9f69e22f71c32` — 2026-03-30T17:29:28+01:00\n\nOpenClaw thanks @AntAISecurityLab for reporting.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "openclaw"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2026.3.31"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2026.3.28"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-xj9w-5r6q-x6v4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41352"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/commit/3886b65ef21d02808c1a106fa1f9f69e22f71c32"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/openclaw/openclaw"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/releases/tag/v2026.3.31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-remote-code-execution-via-node-scope-gate-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862",
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-03T02:59:03Z",
+    "nvd_published_at": null
+  }
+}

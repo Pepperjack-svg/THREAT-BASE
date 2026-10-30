@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q977-85xc-w698",
+  "modified": "2026-05-20T09:30:34Z",
+  "published": "2026-05-20T09:30:34Z",
+  "aliases": [
+    "CVE-2026-9059"
+  ],
+  "details": "NextGEN Gallery version prior to 4.2.1 are vulnerable to authenticated SQL injection via the 'orderby' parameter on the REST API endpoints '/imagely/v1/galleries' and '/imagely/v1/albums'.\n\n\n\nThe root cause is an insufficient sanitization function ('_clean_column()') in the data mapper layer that uses a character blacklist instead of a whitelist approach. This allows an authenticated attacker with the 'NextGEN Gallery overview' capability (assigned to the Administrator role by default) to inject arbitrary SQL into the 'ORDER BY' clause.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:N/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tenable.com/security/research/tra-2026-42"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-20T09:16:27Z"
+  }
+}

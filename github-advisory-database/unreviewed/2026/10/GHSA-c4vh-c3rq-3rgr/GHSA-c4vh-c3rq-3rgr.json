@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c4vh-c3rq-3rgr",
+  "modified": "2026-10-05T18:34:22Z",
+  "published": "2026-10-05T18:34:22Z",
+  "aliases": [
+    "CVE-2026-86671"
+  ],
+  "details": "In Eclipse Che versions 7.29.0 and later, the GET `/api/scm/resolve` and `POST /api/factory/resolver` endpoints pass an attacker-controlled URL to `URLFetcher.fetch()`, which calls `new URL(url).openConnection()` with no scheme or host allow-list and returns the response body to the caller. Any authenticated Che user can read arbitrary local files via the file:// scheme (including the pod's Kubernetes service-account token at `file:///var/run/secrets/kubernetes.io/serviceaccount/token`), reach internal HTTP services and cloud instance metadata endpoints (169.254.169.254), and have their stored SCM personal access token attached as an `Authorization` header to a host of their choosing. The same credential-forwarding behavior also fires when a victim opens a workspace from a malicious devfile whose `parent.uri` points to an attacker-controlled server, enabling exfiltration of the victim's SCM PAT without direct API access. No fix is available.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86671"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/620"
+    },
+    {
+      "type": "WEB",
+      "url": "https://redhat.atlassian.net/browse/CRW-11956"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-05T17:17:16Z"
+  }
+}

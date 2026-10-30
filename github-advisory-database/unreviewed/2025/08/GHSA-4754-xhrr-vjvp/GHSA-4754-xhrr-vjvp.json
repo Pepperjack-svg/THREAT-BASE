@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4754-xhrr-vjvp",
+  "modified": "2025-08-05T21:31:38Z",
+  "published": "2025-08-05T21:31:37Z",
+  "aliases": [
+    "CVE-2012-10024"
+  ],
+  "details": "XBMC version 11, including builds up to the 2012-11-04 nightly release, contains a path traversal vulnerability in its embedded HTTP server. When accessed via HTTP Basic Authentication, the server fails to properly sanitize URI input, allowing authenticated users to request files outside the intended document root. An attacker can exploit this flaw to read arbitrary files from the host filesystem, including sensitive configuration or credential files.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2012-10024"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xbmc/xbmc/commit/bdff099c024521941cb0956fe01d99ab52a65335"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xbmc/xbmc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/auxiliary/gather/xbmc_traversal.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ioactive.com/wp-content/uploads/pdfs/Security_Advisory_XBMC.pdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/xbmc-web-server-path-traversal"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-05T20:15:33Z"
+  }
+}

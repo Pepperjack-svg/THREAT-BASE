@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cc38-6q22-j4rm",
+  "modified": "2026-03-18T15:30:39Z",
+  "published": "2026-02-04T18:30:43Z",
+  "aliases": [
+    "CVE-2026-23080"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: mcba_usb: mcba_usb_read_bulk_callback(): fix URB memory leak\n\nFix similar memory leak as in commit 7352e1d5932a (\"can: gs_usb:\ngs_usb_receive_bulk_callback(): fix URB memory leak\").\n\nIn mcba_usb_probe() -> mcba_usb_start(), the URBs for USB-in transfers are\nallocated, added to the priv->rx_submitted anchor and submitted. In the\ncomplete callback mcba_usb_read_bulk_callback(), the URBs are processed and\nresubmitted. In mcba_usb_close() -> mcba_urb_unlink() the URBs are freed by\ncalling usb_kill_anchored_urbs(&priv->rx_submitted).\n\nHowever, this does not take into account that the USB framework unanchors\nthe URB before the complete function is called. This means that once an\nin-URB has been completed, it is no longer anchored and is ultimately not\nreleased in usb_kill_anchored_urbs().\n\nFix the memory leak by anchoring the URB in the\nmcba_usb_read_bulk_callback()to the priv->rx_submitted anchor.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23080"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/179f6f0cf5ae489743273b7c1644324c0c477ea9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59153b6388e05609144ad56a9b354e9100a91983"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/710a7529fb13c5a470258ff5508ed3c498d54729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b34c611a4feb81921bc4728c091e4e3ba0270c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94c9f6f7b953f6382fef4bdc48c046b861b8868f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5a1ccdc63b71d93a69a6b72f7a3f3934293ea60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d374d715e338dfc3804aaa006fa6e470ffebb264"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-04T17:16:18Z"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5mw9-5f6m-q724",
+  "modified": "2026-10-15T03:36:17Z",
+  "published": "2026-06-25T09:31:22Z",
+  "aliases": [
+    "CVE-2026-53245"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/802/mrp: fix vector attribute parsing in mrp_pdu_parse_vecattr\n\nIn mrp_pdu_parse_vecattr(), vector attribute events are encoded three\nper byte and valen tracks the number of events left to process.\n\nThe parser decrements valen after processing the first and second events\nfrom each event byte, but not after processing the third one. When valen\nis exactly a multiple of three, the loop continues after the last valid\nevent and consumes the next byte as a new event byte, applying a\nspurious event to the MRP applicant state.\n\nAdditionally, when valen is zero the parser unconditionally consumes\nattrlen bytes as FirstValue and advances the offset, even though per\nIEEE 802.1ak a VectorAttribute with only a LeaveAllEvent has valen of\nzero and no FirstValue or Vector fields. This corrupts the offset for\nsubsequent PDU parsing.\n\nAlso, when valen exceeds three the loop crosses byte boundaries but\nthe attribute value is not incremented between the last event of one\nbyte and the first event of the next. This causes the first event of\nthe next byte to use the same attribute value as the third event\nrather than the next consecutive value.\n\nDecrement valen after processing the third event, skip FirstValue\nconsumption when valen is zero, and increment the attribute value at\nthe end of each loop iteration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36d259711872e3b2f6cd76a4d270c21931c0f35f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42446ca0f3570663e87183c065e0b4def52dfba2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d6e42e8e17f18d61327f8653479c5b5e161ae1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6eea6494e542a03cdf755a593b7d74f3f7c260fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7561c7fbc694308da73300f036719e63e42bf0b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae65714d96f68bb252eb20085320bdaacab36c00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc98717e591a963a616fdf15ecf48eefaf45d758"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd9c3a47c670bec6b18f44454cea023f93b5adb3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:42Z"
+  }
+}

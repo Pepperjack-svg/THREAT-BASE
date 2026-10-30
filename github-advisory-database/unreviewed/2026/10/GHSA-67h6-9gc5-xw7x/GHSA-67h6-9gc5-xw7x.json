@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-67h6-9gc5-xw7x",
+  "modified": "2026-10-16T06:30:27Z",
+  "published": "2026-10-16T06:30:27Z",
+  "aliases": [
+    "CVE-2026-107764"
+  ],
+  "details": "The SiteOrigin CSS plugin for WordPress is vulnerable to Stored DOM-Based Cross-Site Scripting via the 'url (comment_author_url)' parameter in all versions up to, and including, 1.6.7 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is possible because WordPress core's esc_url() preserves HTML entity-encoded characters, allowing a crafted entity-encoded payload in the comment 'Website' field to survive storage and be DOM-decoded by the browser into executable markup at the sink.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107764"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/siteorigin/so-css/compare/1.6.7...1.6.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/so-css/tags/1.6.6/js/inspector.js#L280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/so-css/tags/1.6.6/so-css.php#L69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/so-css/tags/1.6.6/so-css.php#L899"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b0ff9652-1b45-43d6-949a-92bfeaee96d3?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T06:17:06Z"
+  }
+}

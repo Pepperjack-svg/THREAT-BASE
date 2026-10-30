@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-95h8-w3mv-h4hq",
+  "modified": "2025-11-01T06:30:36Z",
+  "published": "2025-11-01T06:30:36Z",
+  "aliases": [
+    "CVE-2025-11983"
+  ],
+  "details": "The WP Discourse plugin for WordPress is vulnerable to Information Exposure in all versions up to, and including, 2.5.9. This is due to the plugin unconditionally sending Discourse API credentials (Api-Key and Api-Username headers) to any host specified in a post's discourse_permalink custom field during comment synchronization. This makes it possible for authenticated attackers, with author-level access and above, to exfiltrate sensitive Discourse API credentials to attacker-controlled servers, as well as query internal services and potentially perform further attacks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11983"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-discourse/tags/2.5.9/lib/discourse-comment.php#L211"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-discourse/tags/2.5.9/lib/discourse-comment.php#L218"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-discourse/tags/2.5.9/lib/plugin-utilities.php#L486"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3384149%40wp-discourse&new=3384149%40wp-discourse&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/6b1524f3-1c59-49a1-bbe3-94dcfd232b1d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-01T06:15:39Z"
+  }
+}

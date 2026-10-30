@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2c3g-g985-wqv4",
+  "modified": "2025-08-08T21:30:40Z",
+  "published": "2025-08-08T21:30:40Z",
+  "aliases": [
+    "CVE-2012-10053"
+  ],
+  "details": "Simple Web Server 2.2 rc2 contains a stack-based buffer overflow vulnerability in its handling of the Connection HTTP header. When a remote attacker sends an overly long string in this header, the server uses vsprintf() without proper bounds checking, leading to a buffer overflow on the stack. This flaw allows remote attackers to execute arbitrary code with the privileges of the web server process. The vulnerability is triggered before authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2012-10053"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/http/sws_connection_bof.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/19937"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/20028"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/simple-web-server-connection-header-buffer-overflow"
+    },
+    {
+      "type": "WEB",
+      "url": "http://ghostinthelab.wordpress.com/2012/07/19/simplewebserver-2-2-rc2-remote-buffer-overflow-exploit"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.pmx.it/software/sws.asp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-08T19:15:35Z"
+  }
+}

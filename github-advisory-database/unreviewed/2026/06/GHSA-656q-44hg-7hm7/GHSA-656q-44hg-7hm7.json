@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-656q-44hg-7hm7",
+  "modified": "2026-06-29T18:31:54Z",
+  "published": "2026-06-29T18:31:54Z",
+  "aliases": [
+    "CVE-2026-13746"
+  ],
+  "details": "Improper neutralization of local CLI parameters in Snowflake CLI versions prior to 3.19 allowed unintended SQL execution. A user could trigger this issue by supplying crafted values to vulnerable Cortex SQL or object listing command paths, causing Snowflake CLI to execute unintended SQL in the context of that user's Snowflake session. Successful exploitation is constrained to self-injection because the vulnerable parameters were supplied directly through local CLI arguments rather than through project files, repositories, or other external input sources, and impact is limited to the privileges already available to the current session. The fix is available in Snowflake CLI version 3.19, and users must manually upgrade.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13746"
+    },
+    {
+      "type": "WEB",
+      "url": "https://community.snowflake.com/s/article/Snowflake-CLI-Vulnerability-Advisory"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-29T16:16:39Z"
+  }
+}

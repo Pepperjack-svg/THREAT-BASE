@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7c34-32v3-j575",
+  "modified": "2026-10-06T16:17:33Z",
+  "published": "2026-10-06T16:17:32Z",
+  "aliases": [
+    "CVE-2026-105852"
+  ],
+  "summary": "Payload relationship-query authorization bypass",
+  "details": "## Impact\n\nA readable collection could expose information about protected documents in a related collection.\n\n**You are affected if:**\n\n- You expose a readable collection with a relationship to a collection protected by access.read where constraints.\n\n## Patches\n\nUsers should upgrade Payload packages to `>= 3.90.0` or `>= 4.0.0-canary.34`.\n\n## Workarounds\n\nThere is no complete workaround. Upgrade Payload packages `>= 3.90.0` or `>= 4.0.0-canary.34`.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "payload"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.90.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "payload"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-canary.0"
+            },
+            {
+              "fixed": "4.0.0-canary.34"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/payloadcms/payload/security/advisories/GHSA-7c34-32v3-j575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/payloadcms/payload/commit/94059cf4bc6170ce88453015c0c6551329ae3982"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/payloadcms/payload"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/payloadcms/payload/releases/tag/v3.90.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-06T16:17:32Z",
+    "nvd_published_at": null
+  }
+}

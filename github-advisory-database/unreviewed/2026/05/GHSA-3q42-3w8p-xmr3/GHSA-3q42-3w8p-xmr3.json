@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3q42-3w8p-xmr3",
+  "modified": "2026-06-16T03:30:33Z",
+  "published": "2026-05-27T15:33:19Z",
+  "aliases": [
+    "CVE-2026-45975"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: use READ_ONCE() to read struct ublksrv_ctrl_cmd\n\nstruct ublksrv_ctrl_cmd is part of the io_uring_sqe, which may lie in\nuserspace-mapped memory. It's racy to access its fields with normal\nloads, as userspace may write to them concurrently. Use READ_ONCE() to\ncopy the ublksrv_ctrl_cmd from the io_uring_sqe to the stack. Use the\nlocal copy in place of the one in the io_uring_sqe.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45975"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce63eda3e6d36e2c253febee1c8421ecbd1a680e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed9f54cc1e335096733aed03c2a46de3d58922ed"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:14Z"
+  }
+}

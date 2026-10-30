@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xgc5-8vg7-68x3",
+  "modified": "2025-06-11T00:30:48Z",
+  "published": "2025-06-11T00:30:48Z",
+  "aliases": [
+    "CVE-2024-7457"
+  ],
+  "details": "The ws.stash.app.mac.daemon.helper tool contains a vulnerability caused by an incorrect use of macOS’s authorization model. Instead of validating the client's authorization reference, the helper invokes AuthorizationCopyRights() using its own privileged context (root), effectively authorizing itself rather than the client. As a result, it grants the system.preferences.admin right internally, regardless of the requesting client's privileges. This flawed logic allows unprivileged clients to invoke privileged operations via XPC, including unauthorized changes to system-wide network preferences such as SOCKS, HTTP, and HTTPS proxy settings. The absence of proper code-signing checks further enables arbitrary processes to exploit this flaw, leading to man-in-the-middle (MITM) attacks through traffic redirection.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-7457"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pentraze.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-11T00:15:23Z"
+  }
+}

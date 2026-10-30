@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5mhv-g6m4-pmp4",
+  "modified": "2025-02-27T18:31:09Z",
+  "published": "2025-02-27T18:31:08Z",
+  "aliases": [
+    "CVE-2022-49385"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndriver: base: fix UAF when driver_attach failed\n\nWhen driver_attach(drv); failed, the driver_private will be freed.\nBut it has been added to the bus, which caused a UAF.\n\nTo fix it, we need to delete it from the bus when failed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/310862e574001a97ad02272bac0fd13f75f42a27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5389101257828d1913d713d9a40acbe14f5961df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d709f58c743166fe1c6914b9de0ae8868600d9b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/823f24f2e329babd0330200d0b74882516fe57f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c059665c84feab46b7173d3a1bf36c2fb7f9df86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cdf1a683a01583bca4b618dd16223cbd6e462e21"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:15Z"
+  }
+}

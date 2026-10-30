@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vmhj-4cqp-m5cj",
+  "modified": "2026-10-21T03:32:22Z",
+  "published": "2026-10-21T03:32:22Z",
+  "aliases": [
+    "CVE-2026-114081"
+  ],
+  "details": "Trigger.dev before 4.5.6 contains an SQL injection vulnerability in the TSQL query compiler, which concatenates window-function names into generated ClickHouse SQL without allowlisting or escaping. Authenticated customers can submit a backtick-quoted identifier to POST /api/v1/query that injects a raw subquery outside the per-tenant WHERE guard, exfiltrating other organizations' analytics data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/triggerdotdev/trigger.dev/security/advisories/GHSA-9q4r-4842-93vw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114081"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/trigger-dev-before-4.5.6-cross-tenant-sql-injection-via-tsql-window-function-name"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T01:17:32Z"
+  }
+}

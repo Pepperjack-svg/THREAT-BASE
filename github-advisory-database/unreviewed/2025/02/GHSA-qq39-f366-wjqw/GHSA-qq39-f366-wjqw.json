@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qq39-f366-wjqw",
+  "modified": "2025-02-27T21:32:14Z",
+  "published": "2025-02-27T21:32:13Z",
+  "aliases": [
+    "CVE-2022-49416"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: fix use-after-free in chanctx code\n\nIn ieee80211_vif_use_reserved_context(), when we have an\nold context and the new context's replace_state is set to\nIEEE80211_CHANCTX_REPLACE_NONE, we free the old context\nin ieee80211_vif_use_reserved_reassign(). Therefore, we\ncannot check the old_ctx anymore, so we should set it to\nNULL after this point.\n\nHowever, since the new_ctx replace state is clearly not\nIEEE80211_CHANCTX_REPLACES_OTHER, we're not going to do\nanything else in this function and can just return to\navoid accessing the freed old_ctx.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49416"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/265bec4779a38b65e86a25120370f200822dfa76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2965c4cdf7ad9ce0796fac5e57debb9519ea721e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ba81e794f0fad6234f644c2da1ae14d5b95e1c4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f05a9e15edcdf5b97e0d86ab6ecd5f187289f6c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6118bbdf69f4718b02d26bbcf2e497eb66004331"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82c8e7bbdd06c7ed58e22450cc5b37f33a25bb2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88cc8f963febe192d6ded9df7217f92f380b449a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f1e5cc85ad77e52f54049a94db0407445ae2a34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b79110f2bf6022e60e590d2e094728a8eec3e79e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:18Z"
+  }
+}

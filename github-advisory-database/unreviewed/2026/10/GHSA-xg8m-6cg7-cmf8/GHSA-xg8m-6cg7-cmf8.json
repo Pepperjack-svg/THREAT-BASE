@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xg8m-6cg7-cmf8",
+  "modified": "2026-10-12T21:31:57Z",
+  "published": "2026-10-12T21:31:57Z",
+  "aliases": [
+    "CVE-2022-51020"
+  ],
+  "details": "Flower before 2.2.0 contains a cross-site request forgery vulnerability because Tornado xsrf_cookies is disabled and the OAuth session cookie lacks SameSite. Attackers can lure authenticated users to malicious pages that POST to /api/worker/shutdown, /api/worker/pool/restart, or /api/task/revoke to shut down Celery workers, resize pools, and revoke tasks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-51020"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mher/flower/issues/1217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mher/flower/commit/3b2115af7f9c42bd2da2fbcbd919f77013e9ec51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mher/flower/commit/a14408b16cc3d2877d36659005ce0d72b6162629"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mher/flower"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mher/flower/blob/v2.1.0/flower/api/control.py#L25-L27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flower-before-2.2.0-csrf-via-worker-and-task-control-api-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T21:17:06Z"
+  }
+}

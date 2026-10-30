@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-592q-r679-2jpc",
+  "modified": "2025-04-15T15:30:48Z",
+  "published": "2025-03-27T18:31:26Z",
+  "aliases": [
+    "CVE-2023-52979"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsquashfs: harden sanity check in squashfs_read_xattr_id_table\n\nWhile mounting a corrupted filesystem, a signed integer '*xattr_ids' can\nbecome less than zero.  This leads to the incorrect computation of 'len'\nand 'indexes' values which can cause null-ptr-deref in copy_bio_to_actor()\nor out-of-bounds accesses in the next sanity checks inside\nsquashfs_read_xattr_id_table().\n\nFound by Linux Verification Center (linuxtesting.org) with Syzkaller.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-52979"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29e774dcb27116c06b9c57b1f1f14a1623738989"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72e544b1b28325fe78a4687b980871a7e4101f76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b30a74f83265c24d1d0842c6c3928cd2e775a3fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7398efe24a965cf3937b716c0b1011c201c5d6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf5d6612092408157db6bb500c70bf6d67c40fbc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/db76fc535fbdfbf29fd0b93e49627537ad794c8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de2785aa3448d1ee7be3ab47fd4a873025f1b3d7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-27T17:15:45Z"
+  }
+}

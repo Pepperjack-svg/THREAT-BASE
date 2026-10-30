@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w5hq-hr8w-m998",
+  "modified": "2026-04-08T09:31:30Z",
+  "published": "2026-04-08T09:31:30Z",
+  "aliases": [
+    "CVE-2026-3594"
+  ],
+  "details": "The Riaxe Product Customizer plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 2.4 via the '/wp-json/InkXEProductDesignerLite/orders' REST API endpoint. The endpoint is registered with 'permission_callback' set to '__return_true', meaning no authentication or authorization checks are performed. The endpoint queries WooCommerce order data from the database and returns it to the requester, including customer first and last names, customer IDs, order IDs, order totals, order dates, currencies, and order statuses. This makes it possible for unauthenticated attackers to extract sensitive customer and order information from the WooCommerce store.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3594"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/riaxe-product-customizer/tags/2.4/riaxe-product-designer.php#L1101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/riaxe-product-customizer/tags/2.4/riaxe-product-designer.php#L2809"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/riaxe-product-customizer/tags/2.4/riaxe-product-designer.php#L2820"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/riaxe-product-customizer/tags/2.4/riaxe-product-designer.php#L986"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/riaxe-product-customizer/trunk/riaxe-product-designer.php#L1101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/riaxe-product-customizer/trunk/riaxe-product-designer.php#L2809"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/riaxe-product-customizer/trunk/riaxe-product-designer.php#L2820"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/riaxe-product-customizer/trunk/riaxe-product-designer.php#L986"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2ffd6393-6604-48d9-ba22-7d989305e9ed?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-08T07:16:21Z"
+  }
+}

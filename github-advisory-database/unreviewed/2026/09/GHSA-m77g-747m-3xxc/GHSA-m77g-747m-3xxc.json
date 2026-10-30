@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m77g-747m-3xxc",
+  "modified": "2026-10-21T15:41:41Z",
+  "published": "2026-09-25T12:31:37Z",
+  "aliases": [
+    "CVE-2026-98131"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: stmmac: fix dma mapping leak in stmmac_tso_xmit()\n\nIn stmmac_tso_xmit(), if the DMA mapping of an skb fragment fails, the\nframe is dropped but the DMA mappings already created for the linear\npart and for the fragments mapped before the failure are never\nunmapped, leaking DMA mappings.\n\nFix the leak by walking back over the descriptors used by the frame and\nreleasing each of them with stmmac_free_tx_buffer(). Moreover, release\nthe descriptors with stmmac_release_tx_desc() unmapping the DMA buffers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98131"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a3257f142ae513d0c96d42f97386d4941bcec29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5d946466a95621fa2769720d59ea336003aa1a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5449b635362cb678d29d8f6ab54e65734d891ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e85adaac3dc6317cae902372c6849189ec62cf7d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:44Z"
+  }
+}

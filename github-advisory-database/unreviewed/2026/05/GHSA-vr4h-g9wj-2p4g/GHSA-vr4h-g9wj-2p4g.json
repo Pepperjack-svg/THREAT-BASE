@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vr4h-g9wj-2p4g",
+  "modified": "2026-05-29T09:31:07Z",
+  "published": "2026-05-29T09:31:07Z",
+  "aliases": [
+    "CVE-2026-9189"
+  ],
+  "details": "The Contact Form 7 – PayPal & Stripe Add-on plugin for WordPress is vulnerable to Payment Bypass via Insufficient Verification of Data Authenticity in all versions up to, and including, 2.4.9. Although `cf7pp_paypal_ipn_handler()` correctly validates IPN authenticity by posting back to PayPal with `cmd=_notify-validate`, it fails to compare the IPN payload's `mc_gross` (payment amount), `mc_currency`, or `receiver_email` fields against the corresponding stored order values before passing the attacker-controlled `invoice` field directly to `cf7pp_complete_payment()`, which marks the order completed after only an integer cast with no amount verification. This makes it possible for unauthenticated attackers to mark arbitrary high-value pending orders as fully paid by making a minimal real PayPal payment and crafting an IPN whose `invoice` parameter references the targeted order, effectively completing purchases without tendering the required payment amount.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9189"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contact-form-7-paypal-add-on/tags/2.4.6/includes/payments/functions.php#L31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contact-form-7-paypal-add-on/tags/2.4.6/includes/payments/paypal_handler.php#L106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contact-form-7-paypal-add-on/tags/2.4.6/includes/payments/paypal_handler.php#L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contact-form-7-paypal-add-on/tags/2.4.8/includes/payments/functions.php#L31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contact-form-7-paypal-add-on/tags/2.4.8/includes/payments/paypal_handler.php#L106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contact-form-7-paypal-add-on/tags/2.4.8/includes/payments/paypal_handler.php#L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3551197/contact-form-7-paypal-add-on"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5e274781-1c20-4224-bc10-26dadb9b1e07?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-29T09:16:18Z"
+  }
+}

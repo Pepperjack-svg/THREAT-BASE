@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vhwj-wg7j-8v79",
+  "modified": "2026-05-08T15:31:28Z",
+  "published": "2026-05-08T15:31:28Z",
+  "aliases": [
+    "CVE-2026-43419"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nceph: fix memory leaks in ceph_mdsc_build_path()\n\nAdd __putname() calls to error code paths that did not free the \"path\"\npointer obtained by __getname().  If ownership of this pointer is not\npassed to the caller via path_info.path, the function must free it\nbefore returning.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43419"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/040d159a45ded7f33201421a81df0aa2a86e5a0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/097cd68f46686391a98f2618188f0cb7b7570de2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13b8b9d6f59ef17fb96c298c3a0d62a8306950cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5895d0164c84d7fec6abc198920c257f55c51899"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/657dc653b06a3cc0282aea447a3f137fa94066a4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T15:16:53Z"
+  }
+}

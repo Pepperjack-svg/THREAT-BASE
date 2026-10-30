@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f988-rxfv-fqh7",
+  "modified": "2025-11-18T15:30:41Z",
+  "published": "2025-07-10T09:32:31Z",
+  "aliases": [
+    "CVE-2025-38330"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: cs_dsp: Fix OOB memory read access in KUnit test (ctl cache)\n\nKASAN reported out of bounds access - cs_dsp_ctl_cache_init_multiple_offsets().\nThe code uses mock_coeff_template.length_bytes (4 bytes) for register value\nallocations. But later, this length is set to 8 bytes which causes\ntest code failures.\n\nAs fix, just remove the lenght override, keeping the original value 4\nfor all operations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38330"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3dafc64b90546eb769f33333afabd9e3e915757"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4ba2ea57da51d616b689c4b8826c517ff5a8523"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-10T09:15:27Z"
+  }
+}

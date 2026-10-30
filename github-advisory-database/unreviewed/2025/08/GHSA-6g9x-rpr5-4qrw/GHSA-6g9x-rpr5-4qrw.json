@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6g9x-rpr5-4qrw",
+  "modified": "2026-10-21T15:40:06Z",
+  "published": "2025-08-22T18:31:22Z",
+  "aliases": [
+    "CVE-2025-38656"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: Fix error code in iwl_op_mode_dvm_start()\n\nPreserve the error code if iwl_setup_deferred_work() fails.  The current\ncode returns ERR_PTR(0) (which is NULL) on this path.  I believe the\nmissing error code potentially leads to a use after free involving\ndebugfs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38656"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d068272c21d886d06526454b68368100ba0a720"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c432da1ee191e9f7830dd516456706063d7bec3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/991e2066f6009d3cb898413058c62dbcc92bd6d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf80c02a9fdb6c5bc8508beb6a0f6a1294fc32f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f95598a133a905fd937354ad902773d05593b8b9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-22T16:15:40Z"
+  }
+}

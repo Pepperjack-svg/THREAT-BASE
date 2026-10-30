@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mg4x-3g76-43w7",
+  "modified": "2026-10-15T03:35:25Z",
+  "published": "2026-03-25T12:30:24Z",
+  "aliases": [
+    "CVE-2026-23367"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: radiotap: reject radiotap with unknown bits\n\nThe radiotap parser is currently only used with the radiotap\nnamespace (not with vendor namespaces), but if the undefined\nfield 18 is used, the alignment/size is unknown as well. In\nthis case, iterator->_next_ns_data isn't initialized (it's\nonly set for skipping vendor namespaces), and syzbot points\nout that we later compare against this uninitialized value.\n\nFix this by moving the rejection of unknown radiotap fields\ndown to after the in-namespace lookup, so it will really use\niterator->_next_ns_data only for vendor namespaces, even in\ncase undefined fields are present.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23367"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/129c8bb320a7cef692c78056ef8e89a2a12ba448"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a60c588d5d39ad187628f58395c776a97fd4323"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f8ceeba670610d66f77def32011f48de951d781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f80f6a60f5d87e5de5fb2732751fce799991c24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/703fa979badbba83d31cd011606d060bfb8b0d1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c854758abe0b8d86f9c43dc060ff56a0ee5b31e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1d1d3c50095928624a95b67a6d7ccc3a18f2215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e664971759a0e5570b50c6592e58a7f97d55e992"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:36Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jp9r-75g3-6qxr",
+  "modified": "2026-05-14T09:31:28Z",
+  "published": "2026-05-14T09:31:28Z",
+  "aliases": [
+    "CVE-2026-6510"
+  ],
+  "details": "The InfusedWoo Pro plugin for WordPress is vulnerable to privilege escalation via missing authorization in all versions up to, and including, 5.1.2. This is due to missing nonce verification and capability checks in the iwar_save_recipe() AJAX handler. This makes it possible for unauthenticated attackers to create a malicious automation recipe that pairs an HTTP post trigger with an auto-login action, allowing any unauthenticated visitor to visit a crafted URL and receive authentication cookies for any targeted user account (e.g., administrator), achieving complete authentication bypass and privilege escalation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6510"
+    },
+    {
+      "type": "WEB",
+      "url": "https://woo.infusedaddons.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/08cb8ba1-1976-438b-8e0b-0a8be08aad6c?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-14T07:16:21Z"
+  }
+}

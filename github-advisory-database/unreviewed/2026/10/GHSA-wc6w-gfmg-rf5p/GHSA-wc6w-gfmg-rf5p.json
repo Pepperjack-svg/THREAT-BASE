@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wc6w-gfmg-rf5p",
+  "modified": "2026-10-02T12:31:15Z",
+  "published": "2026-10-02T12:31:15Z",
+  "aliases": [
+    "CVE-2026-104437"
+  ],
+  "details": "Zebra before 4.4.0 contains a consensus divergence vulnerability in V5 transparent signature verification, computing a ZIP-244 digest for SIGHASH_SINGLE inputs lacking corresponding outputs instead of failing. Attackers can craft V5 transactions with fewer outputs than inputs that Zebra accepts and templates via getblocktemplate, producing blocks zcashd rejects.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ZcashFoundation/zebra/security/advisories/GHSA-cwfq-rfcr-8hmp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104437"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/zebra-before-4.4.0-consensus-split-via-sighash-single-missing-output-handling"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-347"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-02T12:17:14Z"
+  }
+}

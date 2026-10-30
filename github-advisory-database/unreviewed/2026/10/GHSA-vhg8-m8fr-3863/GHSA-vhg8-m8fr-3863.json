@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vhg8-m8fr-3863",
+  "modified": "2026-10-21T18:33:32Z",
+  "published": "2026-10-21T18:33:32Z",
+  "aliases": [
+    "CVE-2026-114493"
+  ],
+  "details": "LocalAI v4.6.0 through v4.11.0 contains a server-side request forgery vulnerability in core/gallery/gallery.go that validates only the initial gallery config URL. Attackers can submit a config URL through POST /models/apply that redirects to internal or cloud metadata addresses, receiving those internal responses as gallery content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mudler/LocalAI/pull/12791"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mudler/LocalAI/blob/v4.11.0/core/gallery/gallery.go#L26-L57"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mudler/LocalAI/blob/v4.11.0/pkg/downloader/uri.go#L196-L212"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mudler/LocalAI/blob/v4.11.0/pkg/httpclient/client.go#L81-L92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/localai-4.6.0-through-4.11.0-ssrf-guard-bypass-via-http-redirects"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T18:17:28Z"
+  }
+}

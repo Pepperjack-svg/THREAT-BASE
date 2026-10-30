@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9pmf-w27v-pwpg",
+  "modified": "2026-10-05T18:34:22Z",
+  "published": "2026-10-05T18:34:22Z",
+  "aliases": [
+    "CVE-2026-101919"
+  ],
+  "details": "A flaw was found in the HyperShift operator. The operator copies user-provided Kubernetes configuration (kubeconfig) secrets directly into the privileged control plane namespace without proper validation or sanitization. An authenticated user with cluster and secret creation permissions can exploit this vulnerability by supplying a configuration containing unauthorized executable plugins. When downstream controllers consume this configuration, an attacker can achieve arbitrary code execution within the control plane.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101919"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-101919"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2542541"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-05T18:17:30Z"
+  }
+}

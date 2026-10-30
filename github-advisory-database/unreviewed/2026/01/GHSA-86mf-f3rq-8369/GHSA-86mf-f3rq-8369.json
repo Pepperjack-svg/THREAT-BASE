@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-86mf-f3rq-8369",
+  "modified": "2026-02-26T18:31:35Z",
+  "published": "2026-01-25T15:30:26Z",
+  "aliases": [
+    "CVE-2026-22997"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: can: j1939: j1939_xtp_rx_rts_session_active(): deactivate session upon receiving the second rts\n\nSince j1939_session_deactivate_activate_next() in j1939_tp_rxtimer() is\ncalled only when the timer is enabled, we need to call\nj1939_session_deactivate_activate_next() if we cancelled the timer.\nOtherwise, refcount for j1939_session leaks, which will later appear as\n\n| unregister_netdevice: waiting for vcan0 to become free. Usage count = 2.\n\nproblem.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22997"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1809c82aa073a11b7d335ae932d81ce51a588a4a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6121b7564c725b632ffe4764abe85aa239d37703"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/809a437e27a3bf3c1c6c8c157773635552116f2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a73e7d7e346dae1c22dc3e95b02ca464b12daf2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/adabf01c19561e42899da9de56a6a1da0e6b8a5b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1d67607e97d489c0cfbbf55f48a76b00710b0e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb2a610867bc379988bae0bb4b8bbc59c0decf1a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-772"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-25T15:15:54Z"
+  }
+}

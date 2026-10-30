@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gp3v-p42p-6pmv",
+  "modified": "2026-10-23T15:31:35Z",
+  "published": "2026-10-23T15:31:35Z",
+  "aliases": [
+    "CVE-2026-99034"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: sdhci-sprd: disable runtime PM on remove\n\nsdhci_sprd_probe() enables runtime PM, while sdhci_sprd_remove() does\nnot perform the corresponding runtime PM cleanup.\n\nThe probe failure path disables runtime PM before disabling the clocks,\nbut the normal remove path directly disables clocks that are also\nmanaged by the runtime PM callbacks. If the device is runtime\nsuspended, those clocks may already be disabled.\n\nResume the device before removal, disable runtime PM and drop the\ntemporary runtime PM reference before disabling the clocks.\n\nThis issue was found by manual code inspection.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99034"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03244b8713d044425db5dbee08037ecd79b684f9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a1caa886d41d9bcc9a402906336eda34a90d323"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/605a59639abb9cb63cd7676460461fb0b34756b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dbad91a31c482063c0a87c90aa83c9001972c6ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e1c6c10a6a70a69e29b04fcc1ebe4b9bcbc7a49a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:26Z"
+  }
+}

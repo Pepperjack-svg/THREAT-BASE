@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7gcq-47qc-pww5",
+  "modified": "2025-11-18T18:32:45Z",
+  "published": "2025-06-18T12:30:49Z",
+  "aliases": [
+    "CVE-2022-50124"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: mt6797-mt6351: Fix refcount leak in mt6797_mt6351_dev_probe\n\nof_parse_phandle() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50124"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1042353bb67cd1c9109d7481ea182c7794336458"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38dc6faef05f33b4c889be8b7d65878e465c1c4b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67a28402a9e8c229c7588f214d81d52903ea06ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7472eb8d7dd12b6b9b1a4f4527719cc9c7f5965f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7dee72b1bcecb26bfff8d6360f2169f8656dbaf6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0381a9f3e595988e83bac4c4dd1e45ed2b3c744"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b488ceb2336905f071f80627bc8a7d657274e5de"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:42Z"
+  }
+}

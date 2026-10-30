@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hwhf-8p2f-45wr",
+  "modified": "2026-07-06T19:51:03Z",
+  "published": "2026-04-22T18:31:45Z",
+  "withdrawn": "2026-07-06T19:51:03Z",
+  "aliases": [],
+  "summary": "Duplicate Advisory: coreutils' comm utility silently corrupts data by performing lossy UTF-8 conversion on all output lines",
+  "details": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-6gcw-w7cp-94g9. This link is maintained to preserve external references.\n\n### Original Description\nThe comm utility in uutils coreutils silently corrupts data by performing lossy UTF-8 conversion on all output lines. The implementation uses String::from_utf8_lossy(), which replaces invalid UTF-8 byte sequences with the Unicode replacement character (U+FFFD). This behavior differs from GNU comm, which processes raw bytes and preserves the original input. This results in corrupted output when the utility is used to compare binary files or files using non-UTF-8 legacy encodings.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "crates.io",
+        "name": "coreutils"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.6.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-35346"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uutils/coreutils/issues/10192"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uutils/coreutils/pull/10206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uutils/coreutils/commit/b9372e509ea9b278fe13763237067a261bb8c946"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/uutils/coreutils"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uutils/coreutils/releases/tag/0.6.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-176"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-29T22:57:41Z",
+    "nvd_published_at": "2026-04-22T17:16:36Z"
+  }
+}

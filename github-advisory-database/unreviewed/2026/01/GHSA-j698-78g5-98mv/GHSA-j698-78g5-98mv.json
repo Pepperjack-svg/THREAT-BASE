@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j698-78g5-98mv",
+  "modified": "2026-01-06T06:31:28Z",
+  "published": "2026-01-06T06:31:28Z",
+  "aliases": [
+    "CVE-2025-14441"
+  ],
+  "details": "The Popupkit plugin for WordPress is vulnerable to arbitrary subscriber data deletion due to missing authorization on the DELETE `/subscribers` REST API endpoint in all versions up to, and including, 2.2.0. This is due to the `permission_callback` only validating wp_rest nonce without checking user capabilities. This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete arbitrary subscriber records.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14441"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/popup-builder-block/tags/2.2.0/includes/Routes/Subscribers.php#L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/popup-builder-block/tags/2.2.0/includes/Routes/Subscribers.php#L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/popup-builder-block/trunk/includes/Routes/Subscribers.php#L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3421671%40popup-builder-block&new=3421671%40popup-builder-block&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/48f5a44d-d01f-4c41-98da-7c1f6c65c254?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-06T05:15:59Z"
+  }
+}

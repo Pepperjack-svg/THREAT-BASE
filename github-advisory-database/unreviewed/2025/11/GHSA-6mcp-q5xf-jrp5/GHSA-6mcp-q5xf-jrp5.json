@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6mcp-q5xf-jrp5",
+  "modified": "2025-11-13T18:31:05Z",
+  "published": "2025-11-13T18:31:05Z",
+  "aliases": [
+    "CVE-2025-60694"
+  ],
+  "details": "A stack-based buffer overflow exists in the validate_static_route function of the httpd binary on Linksys E1200 v2 routers (Firmware E1200_v2.0.11.001_us.tar.gz). The function improperly concatenates user-supplied CGI parameters (route_ipaddr_0~3, route_netmask_0~3, route_gateway_0~3) into fixed-size buffers (v6, v10, v14) without proper bounds checking. Remote attackers can exploit this vulnerability via specially crafted HTTP requests to execute arbitrary code or cause denial of service without authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-60694"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yifan20020708/SGTaint-0-day/blob/main/Linksys/Linksys-E1200/CVE-2025-60694.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.linksys.com"
+    },
+    {
+      "type": "WEB",
+      "url": "http://linksys.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-13T17:15:49Z"
+  }
+}

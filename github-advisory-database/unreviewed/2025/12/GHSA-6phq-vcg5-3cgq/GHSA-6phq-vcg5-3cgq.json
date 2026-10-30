@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6phq-vcg5-3cgq",
+  "modified": "2025-12-17T18:31:32Z",
+  "published": "2025-12-05T18:31:12Z",
+  "aliases": [
+    "CVE-2025-34262"
+  ],
+  "details": "Advantech WISE-DeviceOn Server versions prior to 5.4 contain a stored cross-site scripting (XSS) vulnerability in the /rmm/v1/devices/name/{agent_id} endpoint. When an authenticated user renames a device, the new_name value is stored and later rendered in device listings or detail views without proper HTML sanitation. An attacker can inject malicious script into the device name, which is then executed in the browser context of users who view or interact with the affected device, potentially enabling session compromise and unauthorized actions as the victim.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34262"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advcloudfiles.advantech.com/cms/2ca1b071-fd78-4d7f-8a2a-7b4537a95d19/Security%20Advisory%20PDF%20File/SECURITY-ADVISORY----DeviceOn-20251208-2.pdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advcloudfiles.advantech.com/cms/2ca1b071-fd78-4d7f-8a2a-7b4537a95d19/Security%20Advisory%20PDF%20File/SECURITY-ADVISORY----DeviceOn.pdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.deviceon.advantech.com/docs/resource"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/advantech-wise-deviceon-server-authenticated-stored-xss-via-devices-name-agentid"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-05T18:15:55Z"
+  }
+}

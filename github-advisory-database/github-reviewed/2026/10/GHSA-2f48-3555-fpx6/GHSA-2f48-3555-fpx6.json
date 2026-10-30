@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2f48-3555-fpx6",
+  "modified": "2026-10-28T21:06:52Z",
+  "published": "2026-10-14T15:32:28Z",
+  "aliases": [
+    "CVE-2026-110644"
+  ],
+  "summary": "nodejs-whisper allows OS command injection through crafted audio file paths",
+  "details": "nodejs-whisper through 0.3.1 contains an OS command injection vulnerability in convertToWavType() that allows attackers to execute commands by supplying crafted audio file paths. Attackers can provide file names containing $() command substitution or closing quotes, which are interpolated into an ffmpeg command run via shelljs exec(), executing OS commands with Node.js process privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "nodejs-whisper"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.4.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110644"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChetanXpro/nodejs-whisper/pull/259"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChetanXpro/nodejs-whisper/pull/270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChetanXpro/nodejs-whisper/commit/957fd84da217dd8c6265418e938a77db0e2c2ae7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChetanXpro/nodejs-whisper/commit/d93780c9164be5f7e0b2f4094005378923659ce5"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ChetanXpro/nodejs-whisper"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChetanXpro/nodejs-whisper/blob/v0.3.1/src/utils.ts#L58-L59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChetanXpro/nodejs-whisper/blob/v0.3.1/src/utils.ts#L76-L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChetanXpro/nodejs-whisper/releases/tag/v0.4.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nodejs-whisper-through-0.3.1-os-command-injection-via-converttowavtype"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-28T21:06:52Z",
+    "nvd_published_at": "2026-10-14T15:17:17Z"
+  }
+}

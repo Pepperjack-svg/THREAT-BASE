@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p2f3-rm9r-rxgj",
+  "modified": "2025-03-20T12:32:48Z",
+  "published": "2025-03-20T12:32:48Z",
+  "aliases": [
+    "CVE-2024-8765"
+  ],
+  "details": "In lunary-ai/lunary, the privilege check mechanism is flawed in version git afc5df4. The system incorrectly identifies certain endpoints as public if the path contains '/auth/' anywhere within it. This allows unauthenticated attackers to access sensitive endpoints by including '/auth/' in the path. As a result, attackers can obtain and modify sensitive data and utilize other organizations' resources without proper authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-8765"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lunary-ai/lunary/commit/7ff89b0304d191534b924cf063f3648206d497fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/4908cfcf-607a-412a-9635-966cbb08bb49"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-41"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-20T10:15:44Z"
+  }
+}

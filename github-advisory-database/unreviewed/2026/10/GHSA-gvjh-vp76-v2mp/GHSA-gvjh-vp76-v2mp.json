@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gvjh-vp76-v2mp",
+  "modified": "2026-10-20T21:30:43Z",
+  "published": "2026-10-17T00:31:19Z",
+  "aliases": [
+    "CVE-2026-110753"
+  ],
+  "details": "Text::CSV_XS versions from 1.46 before 1.65 for Perl have a use-after-free of bind_columns variables when skip_empty_rows skips an empty line in getline.\n\nWith bind_columns, the parser writes each field into the caller's own scalar without taking a reference to it. When skip_empty_rows skips an empty last line, the parser frees the current field scalar without checking whether it is bound, dropping one reference from the application's variable. The \"eof\" mode does the same on any empty line.\n\nThe variable is then freed while the application still references it, so later code uses freed memory and can crash the process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110753"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cpan-authors/Text-CSV_XS/commit/f082d5c8aab1b8d16b6181d4f3042a06947e260f.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/HMBRAND/Text-CSV_XS-1.65/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T23:17:00Z"
+  }
+}

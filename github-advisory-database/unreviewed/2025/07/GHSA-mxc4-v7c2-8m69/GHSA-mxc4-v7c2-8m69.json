@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mxc4-v7c2-8m69",
+  "modified": "2026-10-21T15:40:05Z",
+  "published": "2025-07-25T15:30:54Z",
+  "aliases": [
+    "CVE-2025-38421"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86/amd: pmf: Use device managed allocations\n\nIf setting up smart PC fails for any reason then this can lead to\na double free when unloading amd-pmf.  This is because dev->buf was\nfreed but never set to NULL and is again freed in amd_pmf_remove().\n\nTo avoid subtle allocation bugs in failures leading to a double free\nchange all allocations into device managed allocations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38421"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d10b532f861253c283863522d59d099fcb0796d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d6a38e1a82d2f9abd0bae84a354654bccb8389f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d9db3a941270d92bbd1a6a6b54a10324484f2f2d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T15:15:26Z"
+  }
+}

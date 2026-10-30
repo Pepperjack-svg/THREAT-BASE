@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mxcg-m44c-38cw",
+  "modified": "2026-10-15T06:30:43Z",
+  "published": "2026-10-15T06:30:43Z",
+  "aliases": [
+    "CVE-2026-93484"
+  ],
+  "details": "Znuny through 7.3.6 constructs a ticket-search database query by directly concatenating user-supplied input into the SQL statement. This lack of proper sanitization or the use of parameterized queries allows an attacker to inject arbitrary SQL commands, leading to data theft, modification, or denial of service. Specifically this is in Kernel::System::Ticket::TicketSearch and Kernel::System::Ticket::ArticleSearchIndex::DB via the ContentSearch parameter. The parameter is expected to be either \"AND\" or \"OR\", but its value was concatenated directly into the generated SQL query without validation.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:Y/R:U/V:X/RE:M/U:Amber"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93484"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.znuny.org/advisories"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.znuny.org/en/advisories/zsa-2026-15"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T04:18:30Z"
+  }
+}

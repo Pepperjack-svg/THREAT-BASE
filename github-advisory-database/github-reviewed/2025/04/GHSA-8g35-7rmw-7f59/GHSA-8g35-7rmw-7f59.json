@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8g35-7rmw-7f59",
+  "modified": "2025-05-12T22:18:56Z",
+  "published": "2025-04-08T16:33:06Z",
+  "aliases": [
+    "CVE-2025-27892"
+  ],
+  "summary": "Shopware Vulnerable to Blind SQL-injection in DAL aggregations",
+  "details": "### Impact\n\nThe Shopware application API contains a search functionality which enables users to search through information stored within their Shopware instance. The searches performed by this function can be aggregated using the parameters in the “aggregations”\nobject. The ‘name’ field in this “aggregations” **in nested** object is vulnerable SQL-injection and can be exploited using SQL parameters. \n\n### Patches\n\nUpdate to Shopware 6.6.10.3\n\n### Workarounds\n\nFor older versions of 6.5 or 6.4 corresponding security measures are also available via a plugin. For the full range of functions, we recommend updating to the latest Shopware version.\n\n### Credit\n\n[Redteam Pentesting](https://www.redteam-pentesting.de/)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "shopware/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.7.0.0-rc1"
+            },
+            {
+              "fixed": "6.7.0.0-rc2"
+            }
+          ]
+        }
+      ],
+      "versions": [
+        "6.7.0.0-rc1"
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "shopware/platform"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.7.0.0-rc1"
+            },
+            {
+              "fixed": "6.7.0.0-rc2"
+            }
+          ]
+        }
+      ],
+      "versions": [
+        "6.7.0.0-rc1"
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "shopware/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.6.0.0"
+            },
+            {
+              "fixed": "6.6.10.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 6.6.10.2"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "shopware/platform"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.6.0.0"
+            },
+            {
+              "fixed": "6.6.10.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 6.6.10.2"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "shopware/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.5.8.18"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "shopware/platform"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.5.8.18"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopware/shopware/security/advisories/GHSA-8g35-7rmw-7f59"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-27892"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/shopware/shopware"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopware/shopware/releases/tag/v6.5.8.17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopware/shopware/releases/tag/v6.6.10.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopware/shopware/releases/tag/v6.7.0.0-rc2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.redteam-pentesting.de/en/advisories/rt-sa-2025-001"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-04-08T16:33:06Z",
+    "nvd_published_at": "2025-04-15T22:15:25Z"
+  }
+}

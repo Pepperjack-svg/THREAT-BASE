@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c4h7-mp9w-g2wr",
+  "modified": "2025-11-13T21:31:19Z",
+  "published": "2025-11-13T18:31:05Z",
+  "aliases": [
+    "CVE-2025-60698"
+  ],
+  "details": "A command injection vulnerability exists in the D-Link DIR-882 Router firmware DIR882A1_FW102B02 within the `prog.cgi` and `rc` binaries. The `sub_432F60` function in `prog.cgi` stores user-supplied `SetSysLogSettings/IPAddress` values in NVRAM via `nvram_safe_set(\"SysLogRemote_IPAddress\", ...)`. These values are later retrieved in the `sub_448DCC` function of `rc` using `nvram_safe_get` and concatenated into a shell command executed via `twsystem()` without any sanitization. An unauthenticated remote attacker can exploit this vulnerability to execute arbitrary commands on the device through specially crafted HTTP requests to the router's web interface.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-60698"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yifan20020708/SGTaint-0-day/blob/main/DLink/DLink-DIR-882/2.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yifan20020708/SGTaint-0-day/blob/main/DLink/DLink-DIR-882/CVE-2025-60698.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.dlink.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.dlink.com/en/security-bulletin"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-13T18:15:53Z"
+  }
+}

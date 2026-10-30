@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m6wq-66p2-c8pc",
+  "modified": "2025-12-17T01:09:11Z",
+  "published": "2025-12-08T22:20:24Z",
+  "aliases": [],
+  "summary": "Babylon Nil BlockHash in BLS vote extensions triggers panics in consensus handlers",
+  "details": "### Summary\n\nA vulnerability exists in Babylon’s BLS vote extension processing where a malicious active validator can submit a VoteExtension with the `block_hash` field omitted from the protobuf serialization. Because protobuf fields are optional, unmarshalling succeeds but leaves `BlockHash` as nil. Babylon then dereferences this nil pointer in consensus-critical code paths (notably `VerifyVoteExtension`, and also proposal-time vote verification), causing a runtime panic.\n\n### Impact\n\nIntermittent validator crashes at epoch boundaries, which would slow down the creation of the epoch boundary block.\n\n### Finder \n\nVulnerability discovered by:\n\n- @GrumpyLaurie55348",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/babylonlabs-io/babylon/v4"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.2.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/babylonlabs-io/babylon/v3"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "3.0.0-snapshot.250805a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/babylonlabs-io/babylon/v2"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "2.3.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/babylonlabs-io/babylon"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "1.1.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/babylonlabs-io/babylon/security/advisories/GHSA-m6wq-66p2-c8pc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/babylonlabs-io/babylon/commit/f79ad58c1d5bcab3451cb7a47c91e713935917d7"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/babylonlabs-io/babylon"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-08T22:20:24Z",
+    "nvd_published_at": null
+  }
+}

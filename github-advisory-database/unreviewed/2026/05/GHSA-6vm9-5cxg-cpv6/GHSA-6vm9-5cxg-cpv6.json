@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vm9-5cxg-cpv6",
+  "modified": "2026-05-11T21:31:30Z",
+  "published": "2026-05-01T15:30:35Z",
+  "aliases": [
+    "CVE-2026-31783"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: amlogic: spifc-a4: unregister ECC engine on probe failure and remove() callback\n\naml_sfc_probe() registers the on-host NAND ECC engine, but teardown was\nmissing from both probe unwind and remove-time cleanup. Add a devm cleanup\naction after successful registration so\nnand_ecc_unregister_on_host_hw_engine() runs automatically on probe\nfailures and during device removal.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31783"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5e11741aec3b242a197250b473c37b58f53a16b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0dc7e7c56573e7a52080f25f3179a45f3dd7e6f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee4c064e37d4d0ddc5a7580933dbe79a2c6acafc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:41Z"
+  }
+}

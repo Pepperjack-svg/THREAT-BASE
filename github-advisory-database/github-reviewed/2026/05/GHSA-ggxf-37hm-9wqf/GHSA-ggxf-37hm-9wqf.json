@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ggxf-37hm-9wqf",
+  "modified": "2026-05-23T00:12:34Z",
+  "published": "2026-05-23T00:12:34Z",
+  "aliases": [],
+  "summary": "instagrapi: Unsafe signup challenge path handling in instagrapi",
+  "details": "instagrapi versions before 2.6.9 accepted server-supplied signup challenge paths and used them to build request URLs before validating that the paths were relative Instagram API paths. A malicious or tampered challenge payload could cause challenge handling requests to be sent outside the intended Instagram host with the client\\'s existing session headers. Version 2.6.9 validates challenge paths before building URLs, solving captcha challenges, or submitting phone/SMS challenge forms.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "instagrapi"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.6.9"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/subzeroid/instagrapi/security/advisories/GHSA-ggxf-37hm-9wqf"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/subzeroid/instagrapi"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-23T00:12:34Z",
+    "nvd_published_at": null
+  }
+}

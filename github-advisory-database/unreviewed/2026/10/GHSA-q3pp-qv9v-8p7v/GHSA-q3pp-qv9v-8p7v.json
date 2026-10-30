@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q3pp-qv9v-8p7v",
+  "modified": "2026-10-22T03:33:34Z",
+  "published": "2026-10-22T03:33:33Z",
+  "aliases": [
+    "CVE-2026-114634"
+  ],
+  "details": "WWBN AVideo before 29.4.0 contains a blind server-side request forgery vulnerability in getHeaderContentTypeFromURL() because get_headers() follows redirects without re-validating targets with isSSRFSafeURL(). Authenticated uploaders can store a videoLink pointing to a redirector, causing internal GET requests when visitors view the video, enabling internal port scanning via the embed-versus-video render oracle.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-m8q2-35pq-qrmc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114634"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/commit/2db920d3326729743511a27de44034b0a6c78b05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wwbn-avideo-before-29.4.0-blind-ssrf-via-getheadercontenttypefromurl-redirect"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T02:16:55Z"
+  }
+}

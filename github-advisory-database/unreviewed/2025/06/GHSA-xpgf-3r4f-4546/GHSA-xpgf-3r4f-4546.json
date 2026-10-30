@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xpgf-3r4f-4546",
+  "modified": "2025-11-14T18:31:23Z",
+  "published": "2025-06-18T12:30:39Z",
+  "aliases": [
+    "CVE-2022-49982"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: pvrusb2: fix memory leak in pvr_probe\n\nThe error handling code in pvr2_hdw_create forgets to unregister the\nv4l2 device. When pvr2_hdw_create returns back to pvr2_context_create,\nit calls pvr2_context_destroy to destroy context, but mp->hdw is NULL,\nwhich leads to that pvr2_hdw_destroy directly returns.\n\nFix this by adding v4l2_device_unregister to decrease the refcount of\nusb interface.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49982"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fe46195d2f0d5d09ea65433aefe47a4d0d0ff4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/466b67c0543b2ae67814d053f6e29b39be6b33bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/491762b3250fb06a0c97b5198656ea48359eaeed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/945a9a8e448b65bec055d37eba58f711b39f66f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba7dd8a9686a61a34b3a7b922ce721378d4740d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bacb37bdc2a21c8f7fdc83dcc0dea2f4ca1341fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c02d2a91a85c4c4d05826cd1ea74a9b8d42e4280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2f6e67522916f53ad8ccd4dbe68dcf76e9776e5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:25Z"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x6rc-wf46-fv7m",
+  "modified": "2026-05-12T15:31:09Z",
+  "published": "2025-09-16T15:32:36Z",
+  "aliases": [
+    "CVE-2025-39835"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: do not propagate ENODATA disk errors into xattr code\n\nENODATA (aka ENOATTR) has a very specific meaning in the xfs xattr code;\nnamely, that the requested attribute name could not be found.\n\nHowever, a medium error from disk may also return ENODATA. At best,\nthis medium error may escape to userspace as \"attribute not found\"\nwhen in fact it's an IO (disk) error.\n\nAt worst, we may oops in xfs_attr_leaf_get() when we do:\n\n\terror = xfs_attr_leaf_hasname(args, &bp);\n\tif (error == -ENOATTR)  {\n\t\txfs_trans_brelse(args->trans, bp);\n\t\treturn error;\n\t}\n\nbecause an ENODATA/ENOATTR error from disk leaves us with a null bp,\nand the xfs_trans_brelse will then null-deref it.\n\nAs discussed on the list, we really need to modify the lower level\nIO functions to trap all disk errors and ensure that we don't let\nunique errors like this leak up into higher xfs functions - many\nlike this should be remapped to EIO.\n\nHowever, this patch directly addresses a reported bug in the xattr\ncode, and should be safe to backport to stable kernels. A larger-scope\npatch to handle more unique errors at lower levels can follow later.\n\n(Note, prior to 07120f1abdff we did not oops, but we did return the\nwrong error code to userspace.)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39835"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/157ddfb05961c68ab7d457a462822a698e4e4bf4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39fc2742ca14f7fbc621ce9b43bcbd00248cb9a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90bae69c2959c39912f0c2f07a9a7894f3fc49f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae668cd567a6a7622bc813ee0bb61c42bed61ba7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3cc7476b89fb45b7e00874f4f56f6b928467c60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dcdf36f1b67884c722abce9b8946e34ffb9f67c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e358d4b6225e4c1eb208686a05e360ef8df59e07"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T14:15:51Z"
+  }
+}

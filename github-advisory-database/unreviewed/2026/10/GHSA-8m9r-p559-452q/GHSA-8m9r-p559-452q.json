@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8m9r-p559-452q",
+  "modified": "2026-10-21T15:41:51Z",
+  "published": "2026-10-18T18:32:00Z",
+  "aliases": [
+    "CVE-2026-98710"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlegacy: 3945: free EEPROM data on remove\n\nil3945_pci_probe() calls il_eeprom_init(), which allocates memory for\nthe EEPROM data. The probe failure paths release this allocation with\nil_eeprom_free(), but the remove path does not free it after a\nsuccessful probe.\n\nAs a result, the EEPROM data is leaked when the PCI device is removed.\n\nFree the EEPROM data in il3945_pci_remove() before releasing the\nmac80211 hardware structure.\n\nThis issue was found by manual code inspection.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98710"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ebc529726c0c038f49e513a7a6f1893552ee803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/89f9d6186dc7429f38132635526e28549c913c0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab7bee2cd55f665cb29fa0ace2ec14020e0a452e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd8f8f45d81aac384311701d7ffe26567af2e783"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8ebe286394c0bbb4a6dbacb182a34ab6376922d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:24Z"
+  }
+}

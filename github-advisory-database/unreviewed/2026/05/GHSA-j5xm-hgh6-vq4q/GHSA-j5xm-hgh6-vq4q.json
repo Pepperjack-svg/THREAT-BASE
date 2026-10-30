@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j5xm-hgh6-vq4q",
+  "modified": "2026-10-15T03:35:49Z",
+  "published": "2026-05-01T15:30:37Z",
+  "aliases": [
+    "CVE-2026-43052"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: check tdls flag in ieee80211_tdls_oper\n\nWhen NL80211_TDLS_ENABLE_LINK is called, the code only checks if the\nstation exists but not whether it is actually a TDLS station. This\nallows the operation to proceed for non-TDLS stations, causing\nunintended side effects like modifying channel context and HT\nprotection before failing.\n\nAdd a check for sta->sta.tdls early in the ENABLE_LINK case, before\nany side effects occur, to ensure the operation is only allowed for\nactual TDLS peers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43052"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44839ea7e96b3659a1606f3d5267063135479b7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6813a8b1b240756dad4375f3e020ce10e4e3871b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d73872d949c488a1d7c308031d6a9d89b5e0a8b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8148c2fda4ebb17104a573649c9b699208ad10ee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba5b43db126a5e7378553869e3f7954d9187349f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be81f17151fcb8546a95f35ca8f4231b065985de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e602246235fc2ef06c39b2e9cf147d84d0896b73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e77b2937aaa20264e4bd699d3244bdb50e7e3343"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:51Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-774f-f6jm-72cv",
+  "modified": "2026-10-28T12:31:08Z",
+  "published": "2026-10-28T12:31:07Z",
+  "aliases": [
+    "CVE-2026-99198"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: actions: Move setting of netops to fix crash\n\nowl_emac_probe() calls owl_emac_phy_init(), which connects the PHY,\nbefore netdev->netdev_ops is assigned. phy_attach_direct() ->\nphy_link_topo_add_phy() reads dev->netdev_ops through\nnetdev_need_ops_lock() since the commit in question, so probing crashes\nwith a NULL pointer dereference when CONFIG_NET_SHAPER is enabled.\n\nAssign netdev_ops before the PHY attach, as was done for emac in commit\n7c9f391ec89c (\"net: emac: move setting of netops to fix crash\").",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2c4824319850c87e77d26aeb8f860bc310a64d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2eca3a54f415081711cd102d0db733de5abf170"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T11:17:40Z"
+  }
+}

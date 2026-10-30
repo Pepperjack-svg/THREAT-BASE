@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c68r-r9r9-c6jp",
+  "modified": "2026-05-13T21:31:58Z",
+  "published": "2026-05-06T12:30:30Z",
+  "aliases": [
+    "CVE-2026-43149"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: wan/fsl_ucc_hdlc: Fix dma_free_coherent() in uhdlc_memclean()\n\nThe priv->rx_buffer and priv->tx_buffer are alloc'd together as\ncontiguous buffers in uhdlc_init() but freed as two buffers in\nuhdlc_memclean().\n\nChange the cleanup to only call dma_free_coherent() once on the whole\nbuffer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/011ae5dd84dc9f05eb9b8e1adff44252ac776e7b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f85a9655445e67bb0238cfc983d7c383b54938e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36bd7d5deef936c4e1e3cd341598140e5c14c1d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6496fb830cbb741d831225cc4e7e5601c6e42970"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/84b932bc9899d43e5829e6cf088b72d73a922b2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba8d8429e5d6c36f9a654d2b96b9e043c43d92b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d68994e37ac3b285692559776e0279a88a3b5f8d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8a522085d09b30aba1016daf1dddac37c0f0285"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:32Z"
+  }
+}

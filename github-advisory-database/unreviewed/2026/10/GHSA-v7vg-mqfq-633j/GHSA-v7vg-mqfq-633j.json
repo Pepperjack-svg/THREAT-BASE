@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v7vg-mqfq-633j",
+  "modified": "2026-10-20T21:30:43Z",
+  "published": "2026-10-17T00:31:19Z",
+  "aliases": [
+    "CVE-2026-110754"
+  ],
+  "details": "Text::CSV_XS versions before 1.65 for Perl leak the parsed fields of a record that fails to parse in getline.\n\ngetline collects the fields of a record into a new array and returns a reference to it only when the parse succeeds. When the record has a syntax error, getline returns undef and never frees the array or the fields parsed before the error.\n\nA long-running process parsing untrusted CSV retains every malformed record it is sent, so repeated malformed input exhausts its memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cpan-authors/Text-CSV_XS/commit/eb4f739ffc605bfb1ab710e5330704faa0e89f08.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/HMBRAND/Text-CSV_XS-1.65/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T23:17:00Z"
+  }
+}

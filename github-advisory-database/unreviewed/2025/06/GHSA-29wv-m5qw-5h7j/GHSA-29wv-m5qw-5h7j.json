@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-29wv-m5qw-5h7j",
+  "modified": "2025-11-13T21:31:17Z",
+  "published": "2025-06-18T12:30:38Z",
+  "aliases": [
+    "CVE-2022-49975"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Don't redirect packets with invalid pkt_len\n\nSyzbot found an issue [1]: fq_codel_drop() try to drop a flow whitout any\nskbs, that is, the flow->head is null.\nThe root cause, as the [2] says, is because that bpf_prog_test_run_skb()\nrun a bpf prog which redirects empty skbs.\nSo we should determine whether the length of the packet modified by bpf\nprog or others like bpf_prog_test is valid before forwarding it directly.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49975"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6204bf78b2a903b96ba43afff6abc0b04d6e0462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72f2dc8993f10262092745a88cb2dd0fef094f23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b68e53d56697a59b5c53893b53f508bbdf272a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a75987714bd2d8e59840667a28e15c1fa5c47554"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd1894224407c484f652ad456e1ce423e89bb3eb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:24Z"
+  }
+}

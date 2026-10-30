@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mg7h-q7hw-m596",
+  "modified": "2026-05-07T06:31:40Z",
+  "published": "2026-04-24T15:32:34Z",
+  "aliases": [
+    "CVE-2026-31589"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: call ->free_folio() directly in folio_unmap_invalidate()\n\nWe can only call filemap_free_folio() if we have a reference to (or hold a\nlock on) the mapping.  Otherwise, we've already removed the folio from the\nmapping so it no longer pins the mapping and the mapping can be removed,\ncausing a use-after-free when accessing mapping->a_ops.\n\nFollow the same pattern as __remove_mapping() and load the free_folio\nfunction pointer before dropping the lock on the mapping.  That lets us\nmake filemap_free_folio() static as this was the only caller outside\nfilemap.c.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31589"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/615d9bb2ccad42f9e21d837431e401db2e471195"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b667df39d98a7a24be7c2a40ff0863dac1ad2cd7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c330e65ea59c4805d6ab6757c4ddfe8c63acef31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/efc52947247a21bbf79059539bbbd40f4ea76f00"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-24T15:16:34Z"
+  }
+}

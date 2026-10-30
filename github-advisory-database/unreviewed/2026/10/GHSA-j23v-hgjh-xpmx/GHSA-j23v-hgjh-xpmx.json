@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j23v-hgjh-xpmx",
+  "modified": "2026-10-27T00:32:51Z",
+  "published": "2026-10-27T00:32:51Z",
+  "aliases": [
+    "CVE-2026-116808"
+  ],
+  "details": "OpenPanel before 3.0.0 contains an sql injection vulnerability that allows authenticated users to read cross-tenant data by supplying a crafted property parameter to profile.values. Attackers can inject a SELECT expression with their own FROM/WHERE clauses and comment out the project_id scope to exfiltrate other projects' profiles, events, and sessions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Openpanel-dev/openpanel/security/advisories/GHSA-4j6c-j6vc-xq96"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116808"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Openpanel-dev/openpanel/commit/a2aa053cb23e92967e812d3be5fb0f1d606d9fdc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openpanel-before-3.0.0-clickhouse-sql-injection-via-profile-values"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-27T00:17:13Z"
+  }
+}

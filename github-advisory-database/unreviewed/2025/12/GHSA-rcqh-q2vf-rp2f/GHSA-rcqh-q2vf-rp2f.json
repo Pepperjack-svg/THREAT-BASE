@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rcqh-q2vf-rp2f",
+  "modified": "2026-10-21T15:40:12Z",
+  "published": "2025-12-16T15:30:45Z",
+  "aliases": [
+    "CVE-2025-68209"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmlx5: Fix default values in create CQ\n\nCurrently, CQs without a completion function are assigned the\nmlx5_add_cq_to_tasklet function by default. This is problematic since\nonly user CQs created through the mlx5_ib driver are intended to use\nthis function.\n\nAdditionally, all CQs that will use doorbells instead of polling for\ncompletions must call mlx5_cq_arm. However, the default CQ creation flow\nleaves a valid value in the CQ's arm_db field, allowing FW to send\ninterrupts to polling-only CQs in certain corner cases.\n\nThese two factors would allow a polling-only kernel CQ to be triggered\nby an EQ interrupt and call a completion function intended only for user\nCQs, causing a null pointer exception.\n\nSome areas in the driver have prevented this issue with one-off fixes\nbut did not address the root cause.\n\nThis patch fixes the described issue by adding defaults to the create CQ\nflow. It adds a default dummy completion function to protect against\nnull pointer exceptions, and it sets an invalid command sequence number\nby default in kernel CQs to prevent the FW from sending an interrupt to\nthe CQ until it is armed. User CQs are responsible for their own\ninitialization values.\n\nCallers of mlx5_core_create_cq are responsible for changing the\ncompletion function and arming the CQ per their needs.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68209"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08469f5393a1a39f26a6e2eb2e8c33187665c1f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a7865e3e4de2830d8a9fe8c273dc10b248b7338"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a39d334c9840705af69f0466f8f0129c366004ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5eba42f01340f73888dfe560be2806057c25913"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T14:15:53Z"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jp4j-q5fc-58gv",
+  "modified": "2026-03-31T23:58:08Z",
+  "published": "2026-03-31T23:58:08Z",
+  "aliases": [],
+  "summary": "OpenClaw's Discord component interaction ingress skips guild/channel policy enforcement",
+  "details": "## Summary\n\nDiscord button and component interaction ingress did not consistently reapply the same guild and channel policy gates used for normal inbound messages.\n\n## Impact\n\nUsers could trigger privileged component actions from contexts that should have been blocked by Discord channel policy.\n\n## Affected Component\n\n`extensions/discord/src/monitor/agent-components.ts`\n\n## Fixed Versions\n\n- Affected: `>= 2026.2.14, <= 2026.3.24`\n- Patched: `>= 2026.3.28`\n- Latest stable `2026.3.28` contains the fix.\n\n## Fix\n\nFixed by commit `511093d4b3` (`Discord: apply component interaction policy gates`).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "openclaw"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2026.2.14"
+            },
+            {
+              "fixed": "2026.3.28"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2026.3.24"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-jp4j-q5fc-58gv"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/commit/511093d4b37c0831c778fabd25ec3020834983c3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/openclaw/openclaw"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/releases/tag/v2026.3.28"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-31T23:58:08Z",
+    "nvd_published_at": null
+  }
+}

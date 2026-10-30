@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77jm-6qr9-xf3j",
+  "modified": "2026-01-07T18:30:26Z",
+  "published": "2026-01-07T18:30:25Z",
+  "aliases": [
+    "CVE-2025-67366"
+  ],
+  "details": "@sylphxltd/filesystem-mcp v0.5.8 is an MCP server that provides file content reading functionality. Version 0.5.8 of filesystem-mcp contains a critical path traversal vulnerability in its \"read_content\" tool. This vulnerability arises from improper symlink handling in the path validation mechanism: the resolvePath function checks path validity before resolving symlinks, while fs.readFile resolves symlinks automatically during file access. This allows attackers to bypass directory restrictions by leveraging symlinks within the allowed directory that point to external files, enabling unauthorized access to files outside the intended operational scope.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-67366"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sylphxltd/filesystem-mcp/issues/134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sylphxltd/filesystem-mcp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-23"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-07T17:16:01Z"
+  }
+}

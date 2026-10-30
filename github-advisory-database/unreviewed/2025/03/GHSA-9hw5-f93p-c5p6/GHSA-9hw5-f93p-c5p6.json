@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9hw5-f93p-c5p6",
+  "modified": "2025-03-10T21:31:11Z",
+  "published": "2025-03-10T21:31:11Z",
+  "aliases": [
+    "CVE-2022-49595"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: Fix a data-race around sysctl_tcp_probe_threshold.\n\nWhile reading sysctl_tcp_probe_threshold, it can be changed concurrently.\nThus, we need to add READ_ONCE() to its reader.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49595"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44768749980d53bc01980d9c060f736808d11af0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92c0aa4175474483d6cf373314343d4e624e882a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96900fa61777402eb5056269d8000aace33a8b6c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b5dc7ad6da1373d3c60d4b869d688f996e5d219"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b04817c94fbd285a967d9b830b274fe9998c9c0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d452ce36f2d4c402fa3f5275c9677f80166e7fc6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f524c3e7f6cdad66b3b6a912cef47b656f8b0de3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa5fb2cf9393db898772db8cb897ed5fd265eb78"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:35Z"
+  }
+}

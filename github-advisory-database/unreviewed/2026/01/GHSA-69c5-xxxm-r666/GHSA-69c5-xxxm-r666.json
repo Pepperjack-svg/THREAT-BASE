@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-69c5-xxxm-r666",
+  "modified": "2026-01-07T12:31:21Z",
+  "published": "2026-01-07T12:31:21Z",
+  "aliases": [
+    "CVE-2025-14059"
+  ],
+  "details": "The EmailKit plugin for WordPress is vulnerable to Arbitrary File Read via Path Traversal in all versions up to, and including, 1.6.1. This is due to missing path validation in the create_template REST API endpoint where user-controlled input from the emailkit-editor-template parameter is passed directly to file_get_contents() without sanitization. This makes it possible for authenticated attackers with Author-level permissions or higher to read arbitrary files on the server, including sensitive configuration files like /etc/passwd and wp-config.php, via the REST API. The file contents are stored in post meta and can be exfiltrated through MetForm's email confirmation feature.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/emailkit/trunk/includes/Admin/Api/CheckForm.php#L163"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3419280%40emailkit%2Ftrunk&old=3373383%40emailkit%2Ftrunk&sfp_email=&sfph_mail=#file1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/91ebe8cb-99ec-4380-a77e-17e17144a17e?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-07T12:16:51Z"
+  }
+}

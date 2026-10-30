@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rr73-568v-28f8",
+  "modified": "2026-05-13T13:52:30Z",
+  "published": "2026-05-05T21:29:53Z",
+  "aliases": [
+    "CVE-2026-42609"
+  ],
+  "summary": "Grav Vulnerable to Administrative Account Disruption and Privilege De-escalation via User Overwrite Logic",
+  "details": "### Summary\nA business logic vulnerability in the Grav Admin Panel allows a low-privileged user (with only user creation permissions) to overwrite existing accounts, including the primary administrator. By creating a new user with a username that already exists, the system updates the existing account's metadata and permissions instead of rejecting the request. This leads to a Denial of Service (DoS) on administrative functions and Privilege De-escalation of the root account.\n\n### Details\nThe vulnerability stems from an insecure \"Create or Update\" logic within the user management module. When the admin-addon handles a user creation request, it does not strictly validate whether the username is already taken by a higher-privileged account. Instead of returning a \"409 Conflict\" or a validation error, the application logic proceeds to overwrite the existing user configuration file (e.g., user/accounts/root0.yaml) with the new, lower-privileged data provided by the attacker.\nBecause the attacker cannot assign higher permissions to themselves (due to existing fixes), the result is that the targeted account (the original Admin/Root) has its access levels wiped or replaced by the attacker's input, effectively locking the real administrator out of the system.\n\n### PoC\n1. Log in as a Super User (e.g., root0) and create a low-privileged user (e.g., adminuser).\n2. Assign adminuser the following specific permissions:\nadmin.login\nadmin.users.list\nadmin.users.read\nadmin.users.create\n3. Log out and log back in as adminuser.\n4. Navigate to User Accounts -> Add.\n5. Fill in the form with the following details:\nUsername: root0 (The exact username of the Super User)\nEmail: `anything@grav.f`\nFullname: Fake Root0\n7. Click Save.\n8. Observe that the account is successfully \"created\".\n9. The original administrative permissions are gone, and the account is now restricted.\n\n#### PoC video\nhttps://github.com/user-attachments/assets/047cb44e-0279-402b-b4fb-12bf5d427a5e\n\n### Impact\nThis is a Privilege De-escalation and Account Disruption vulnerability.\nWho is impacted: Any Grav installation where a non-admin user is granted permission to create other users.\nConsequence: An attacker can effectively disable all administrative accounts on the platform, leading to a complete loss of management control over the CMS.\n\n\n---\n\n## Maintainer note — fix applied (2026-04-24)\n\nFixed in Grav core on the `2.0` branch: commit [`d904efc33`](https://github.com/getgrav/grav/commit/d904efc33) — will ship in **2.0.0-beta.2**.\n\n**What changed:** `UserObject::save` already had a uniqueness guard (commit [`19c2f8da7`](https://github.com/getgrav/grav/commit/19c2f8da7), November 2025) that blocks the PoC. This release tightens that guard:\n\n1. `strpos($key, '@@')` → `str_contains($key, '@@')`. The previous form was falsy when the transient-key marker was at position 0 (e.g. `@@hash`), silently bypassing the check. `str_contains` returns a proper boolean.\n2. The `instanceof FileStorage` gate was dropped so the uniqueness check runs for any `FlexStorageInterface` backend — not just the default file-per-user YAML one.\n\nA low-privileged user with `admin.users.create` can no longer disrupt a super-admin account by submitting that admin's username through the \"add user\" form.\n\n**Files:**\n- [`system/src/Grav/Common/Flex/Types/Users/UserObject.php`](https://github.com/getgrav/grav/blob/2.0/system/src/Grav/Common/Flex/Types/Users/UserObject.php).\n- [`tests/unit/Grav/Common/Security/UserOverwriteSecurityTest.php`](https://github.com/getgrav/grav/blob/2.0/tests/unit/Grav/Common/Security/UserOverwriteSecurityTest.php) — 3 tests pinning the PoC, the `@@`-prefix edge case, and pass-through for free usernames.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.0-beta.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-rr73-568v-28f8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42609"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/5a12f9be8314682c8713e569e330f11805d0a663"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/c66dfeb5ff679a1667678c6335eb9ff3255dfc47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/d904efc33e03ebb597afde8d3368b28cf0423632"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getgrav/grav"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269",
+      "CWE-285",
+      "CWE-639",
+      "CWE-837"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-05T21:29:53Z",
+    "nvd_published_at": "2026-05-11T16:17:33Z"
+  }
+}

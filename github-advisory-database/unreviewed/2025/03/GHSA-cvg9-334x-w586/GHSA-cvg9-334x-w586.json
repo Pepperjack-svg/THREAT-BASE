@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cvg9-334x-w586",
+  "modified": "2025-03-20T12:32:53Z",
+  "published": "2025-03-20T12:32:53Z",
+  "aliases": [
+    "CVE-2025-1796"
+  ],
+  "details": "A vulnerability in langgenius/dify v0.10.1 allows an attacker to take over any account, including administrator accounts, by exploiting a weak pseudo-random number generator (PRNG) used for generating password reset codes. The application uses `random.randint` for this purpose, which is not suitable for cryptographic use and can be cracked. An attacker with access to workflow tools can extract the PRNG output and predict future password reset codes, leading to a complete compromise of the application.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-1796"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/a60f3039-5394-4e22-8de7-a7da9c6a6e00"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-338"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-20T10:15:54Z"
+  }
+}

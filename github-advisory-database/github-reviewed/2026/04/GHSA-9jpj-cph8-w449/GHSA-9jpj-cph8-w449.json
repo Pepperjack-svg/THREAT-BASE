@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9jpj-cph8-w449",
+  "modified": "2026-04-24T20:35:01Z",
+  "published": "2026-04-20T06:31:27Z",
+  "aliases": [
+    "CVE-2026-6598"
+  ],
+  "summary": "Langflow: Cleartext Storage of Authentication Settings in Project Creation Endpoint",
+  "details": "A security vulnerability has been detected in langflow-ai langflow up to 1.8.3. The affected element is the function create_project/encrypt_auth_settings of the file src/backend/base/Langflow/api/v1/projects.py of the component Project Creation Endpoint. Such manipulation of the argument auth_settings leads to cleartext storage in a file or on disk. The attack can be launched remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "langflow"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.9.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6598"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/langflow-ai/langflow/commit/45325f6376309a91f5017fa033a96c09c7e295e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/chenhouser2025/77adb3486c06c635ae4b09a3eaf90213"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/langflow-ai/langflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/791921"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/358233"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/358233/cti"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-312",
+      "CWE-313"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-24T20:35:01Z",
+    "nvd_published_at": "2026-04-20T04:16:52Z"
+  }
+}

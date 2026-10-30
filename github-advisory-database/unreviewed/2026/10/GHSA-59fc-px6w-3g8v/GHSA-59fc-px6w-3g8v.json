@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-59fc-px6w-3g8v",
+  "modified": "2026-10-14T00:31:47Z",
+  "published": "2026-10-14T00:31:47Z",
+  "aliases": [
+    "CVE-2026-94453"
+  ],
+  "details": "Libreswan's pluto daemon has a use-after-free vulnerability when a client connecting using IKE over TCP closes the connection and another packet (retransmit or malicious) is received for the same tuple. IKE state is retained in memory after the client closes the connection, storing a pointer to iface_endpoint inside ike_sa.sa->st_iface_endpoint. Once this invalid pointer is used, the daemon crashes and restarts. This vulnerability can be triggered before the remote peer has authenticated itself. Continued exploitation can lead to a denial of service. Remote code execution could be possible. The IKE over TCP option is not enabled by default; only configurations that contain listen-tcp=yes are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://libreswan.org/security/CVE-2026-94453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://libreswan.org/security/CVE-2026-94453/CVE-2026-94453.txt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T22:19:30Z"
+  }
+}

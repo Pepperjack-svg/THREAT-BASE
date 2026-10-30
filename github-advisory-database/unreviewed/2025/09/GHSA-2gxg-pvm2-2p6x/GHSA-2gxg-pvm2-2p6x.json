@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2gxg-pvm2-2p6x",
+  "modified": "2025-09-29T12:30:27Z",
+  "published": "2025-09-29T12:30:27Z",
+  "aliases": [
+    "CVE-2025-9648"
+  ],
+  "details": "A vulnerability in the CivetWeb library's function mg_handle_form_request allows remote attackers to trigger a denial of service (DoS) condition. By sending a specially crafted HTTP POST request containing a null byte in the payload, the server enters an infinite loop during form data parsing. Multiple malicious requests will result in complete CPU exhaustion and render the service unresponsive to further requests.\n\nThis issue was fixed in commit 782e189. This issue affects only the library, standalone executable pre-built by vendor is not affected.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-9648"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/civetweb/civetweb/issues/1348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/civetweb/civetweb/commit/782e18903515f43bafbf2e668994e82bdfa51133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2025/09/CVE-2025-9648"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/civetweb/civetweb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-158"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-29T12:15:49Z"
+  }
+}

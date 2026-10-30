@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p42v-9grr-c887",
+  "modified": "2025-11-26T18:30:59Z",
+  "published": "2025-08-22T18:31:22Z",
+  "aliases": [
+    "CVE-2025-38629"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb: scarlett2: Fix missing NULL check\n\nscarlett2_input_select_ctl_info() sets up the string arrays allocated\nvia kasprintf(), but it misses NULL checks, which may lead to NULL\ndereference Oops.  Let's add the proper NULL check.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38629"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c735fcaee81ad8056960659dc9dc460891e76b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d558db85920b124bac36f8a7ddc5de0aa7491bdd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df485a4b2b3ee5b35c80f990beb554e38a8a5fb1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-22T16:15:36Z"
+  }
+}

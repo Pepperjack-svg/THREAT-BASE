@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hqmj-h5c6-369m",
+  "modified": "2026-06-08T18:35:09Z",
+  "published": "2026-03-16T16:23:28Z",
+  "aliases": [
+    "CVE-2026-28500"
+  ],
+  "summary": "ONNX Untrusted Model Repository Warnings Suppressed by silent=True in onnx.hub.load() — Silent Supply-Chain Attack",
+  "details": "## What's the issue\nPassing `silent=True` to `onnx.hub.load()` kills all trust warnings and user prompts. This means a model can be downloaded from any unverified GitHub repo with zero user awareness.\n \n```python\nif not _verify_repo_ref(repo) and not silent:\n    # completely skipped when silent=True\n    print(\"The model repo... is not trusted\")\n    if input().lower() != \"y\":\n        return None\n```\n \nOn top of that, the SHA256 integrity check is useless here — it validates against a manifest that lives in the same repo the attacker controls, so the hash will always match.\n\n \n## Impact\nAny pipeline using `hub.load()` with `silent=True` and an external repo string is silently loading whatever the repo owner ships. If that model executes arbitrary code on load, the attacker has access to the machine.\n \n## Resolved by removing the feature \n## References\n \n- [Write-up](https://github.com/ZeroXJacks/CVEs/blob/main/2026/CVE-2026-28500.md)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "onnx"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.21.0rc1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.20.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/onnx/onnx/security/advisories/GHSA-hqmj-h5c6-369m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28500"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ZeroXJacks/CVEs/blob/main/2026/CVE-2026-28500.md"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/onnx/onnx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/onnx/PYSEC-2026-103.yaml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345",
+      "CWE-494",
+      "CWE-693"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-16T16:23:28Z",
+    "nvd_published_at": "2026-03-18T02:16:24Z"
+  }
+}

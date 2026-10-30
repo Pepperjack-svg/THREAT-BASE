@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fx6x-79c6-q94v",
+  "modified": "2026-10-24T15:32:50Z",
+  "published": "2026-10-23T15:31:36Z",
+  "aliases": [
+    "CVE-2026-99046"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngve: fix XSK buffer leak on error descriptor\n\nWhen the error bit is set in the RX completion descriptor, the buf_state\nand its attached buffer should be freed. In the case of AF_XDP ZC, the\nXSK buffer was not freed, leading to a leak.\n\nThis issue was caught by LLM.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99046"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06656aaa7e43ae62b673c2244d27099b8b94a70d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/889f763874855c575429f75946132a53c573aa14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9fed6a8ab8a5bacba2c709cb19d2dd6d2fa9112e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:28Z"
+  }
+}

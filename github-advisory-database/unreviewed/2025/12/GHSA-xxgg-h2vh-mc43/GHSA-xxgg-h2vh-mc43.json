@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xxgg-h2vh-mc43",
+  "modified": "2025-12-08T18:30:25Z",
+  "published": "2025-12-04T18:30:54Z",
+  "aliases": [
+    "CVE-2025-66373"
+  ],
+  "details": "Akamai Ghost on Akamai CDN edge servers before 2025-11-17 has a chunked request body processing error that can result in HTTP request smuggling. When Akamai Ghost receives an invalid chunked body that includes a chunk size different from the actual size of the following chunk data, under certain circumstances, Akamai Ghost erroneously forwards the invalid request and subsequent superfluous bytes to the origin server. An attacker could hide a smuggled request in these superfluous bytes. Whether this is exploitable depends on the origin server's behavior and how it processes the invalid request it receives from Akamai Ghost.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66373"
+    },
+    {
+      "type": "WEB",
+      "url": "https://en.wikipedia.org/wiki/HTTP_request_smuggling"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.akamai.com/blog/security/cve-2025-66373-http-request-smuggling-chunked-body-size"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-444"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-04T17:15:56Z"
+  }
+}

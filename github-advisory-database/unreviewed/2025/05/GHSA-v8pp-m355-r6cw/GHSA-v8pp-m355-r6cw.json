@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v8pp-m355-r6cw",
+  "modified": "2025-11-14T18:31:21Z",
+  "published": "2025-05-29T15:31:09Z",
+  "aliases": [
+    "CVE-2025-37996"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Fix uninitialized memcache pointer in user_mem_abort()\n\nCommit fce886a60207 (\"KVM: arm64: Plumb the pKVM MMU in KVM\") made the\ninitialization of the local memcache variable in user_mem_abort()\nconditional, leaving a codepath where it is used uninitialized via\nkvm_pgtable_stage2_map().\n\nThis can fail on any path that requires a stage-2 allocation\nwithout transition via a permission fault or dirty logging.\n\nFix this by making sure that memcache is always valid.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/157dbc4a321f5bb6f8b6c724d12ba720a90f1a7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a26d50f8a4a5049e956984797b5d0dedea4bbb18"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-29T14:15:36Z"
+  }
+}

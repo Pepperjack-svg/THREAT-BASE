@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6r9h-pc2x-g962",
+  "modified": "2026-04-23T21:31:17Z",
+  "published": "2026-03-25T12:30:22Z",
+  "aliases": [
+    "CVE-2026-23326"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxsk: Fix fragment node deletion to prevent buffer leak\n\nAfter commit b692bf9a7543 (\"xsk: Get rid of xdp_buff_xsk::xskb_list_node\"),\nthe list_node field is reused for both the xskb pool list and the buffer\nfree list, this causes a buffer leak as described below.\n\nxp_free() checks if a buffer is already on the free list using\nlist_empty(&xskb->list_node). When list_del() is used to remove a node\nfrom the xskb pool list, it doesn't reinitialize the node pointers.\nThis means list_empty() will return false even after the node has been\nremoved, causing xp_free() to incorrectly skip adding the buffer to the\nfree list.\n\nFix this by using list_del_init() instead of list_del() in all fragment\nhandling paths, this ensures the list node is reinitialized after removal,\nallowing the list_empty() to work correctly.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23326"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a9ea988465ece5b6896b1bdc144170a64e84c35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5172adf9efb8298a52f4dcdc3f98d4d9d1e06a6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60abb0ac11dccd6b98fd9182bc5f85b621688861"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/645c6d8376ad4913cbffe0e0c2cca0c4febbe596"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b38cbd4af5034635cff109e08788c63f956f3a69"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:29Z"
+  }
+}

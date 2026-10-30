@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-32hh-f8j3-mw5q",
+  "modified": "2026-10-15T03:35:47Z",
+  "published": "2026-05-01T15:30:34Z",
+  "aliases": [
+    "CVE-2026-31752"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbridge: br_nd_send: validate ND option lengths\n\nbr_nd_send() walks ND options according to option-provided lengths.\nA malformed option can make the parser advance beyond the computed\noption span or use a too-short source LLADDR option payload.\n\nValidate option lengths against the remaining NS option area before\nadvancing, and only read source LLADDR when the option is large enough\nfor an Ethernet address.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/259466f76f5a2148aff11134e68f4b4c6d52725b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82a42eceec7c6bdb0e0da94c0542a173b7ea57f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/837392a38445729c22e03d3abcf33f07763efd85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/850837965af15707fd3142c1cf3c5bfaf022299b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c49b9256bbacb6a135654aebd12e4c0e87166b7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0bfd6d4dc77ab345b6c65eef0cfe9b2f69085aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e71303a9190496136e240c4f2872b7b0b16027a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee02d8991fd7bd86ed6ebd0deb4aab53feb0e43a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:38Z"
+  }
+}

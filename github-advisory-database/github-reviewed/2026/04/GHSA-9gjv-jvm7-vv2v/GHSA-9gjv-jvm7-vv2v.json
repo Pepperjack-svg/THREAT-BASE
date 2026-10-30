@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9gjv-jvm7-vv2v",
+  "modified": "2026-04-09T20:28:40Z",
+  "published": "2026-04-09T20:28:40Z",
+  "aliases": [],
+  "summary": "Gramps Web API: Private Sub-Object Data in Non-Private Objects Exposed to Guest Users",
+  "details": "## Summary\n\nUsers with the **Guest** role could receive private sub-object data (e.g. private alternate names, private addresses, private note/citation/media handles) through list API endpoints such as `GET /api/people/`, `GET /api/places/`, `GET /api/events/`, and all other object list endpoints.\n\n**This does not expose objects (people, places, events, …) that are themselves marked private.** Top-level private objects are correctly excluded from all responses. Only sub-object data attached to otherwise-public objects is affected.\n\n## Affected Versions\n\nAll versions of Gramps Web API prior to the fix.\n\n## Root Cause\n\nThe vulnerability originates from the behaviour of `PrivateProxyDb.iter_*()` in **Gramps core**. The `ProxyDbBase.__iter_object()` helper, which backs all `iter_*()` methods in `PrivateProxyDb`, correctly filters out top-level private objects but returns the remaining objects **unsanitized** — i.e. without stripping private sub-object references. In contrast, `PrivateProxyDb.get_*_from_handle()` does call the appropriate `sanitize_*()` function.\n\nGramps Web API's `ModifiedPrivateProxyDb` (which wraps the raw database for non-admin users) inherited this behaviour without override.\n\nThe same issue affects Gramps desktop features that consume `iter_*()` output: reports and exports generated via Gramps desktop using `PrivateProxyDb` may also include private sub-object data that should have been stripped.\n\n## Conditions Required\n\n**This issue only affects trees in which sub-objects have been explicitly marked private in Gramps desktop.** The Gramps Web frontend UI does not expose controls for setting the private flag on sub-objects (alternate names, addresses, notes,\ncitations, media references, event references, etc.). In practice, such flags are set in Gramps desktop and then synced or imported into Gramps Web.\n\n## Impact\n\nWhen the conditions above are met, a user with the Guest role querying any list endpoint receives:\n\n- **Full content** of private embedded sub-objects on people, such as alternate  names (first name, surname, etc.) and addresses (street, city, etc.).\n- **Handles referencing** private notes, citations, and media attached to places,  events, sources, and other objects. These reveal the *existence* of private\n  linked objects but not their content; fetching those objects by handle is  correctly blocked by the proxy.\n\n## Fix\n\n`ModifiedPrivateProxyDb` now overrides all `iter_*()` object methods to check `obj.get_privacy()` directly on the already-loaded object (eliminating the redundant per-object refetch) and to call the appropriate `sanitize_*()` function before yielding each object. This is consistent with the behaviour of `get_*_from_handle()` in `PrivateProxyDb`.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "gramps-webapi"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.11.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/gramps-project/gramps-web-api/security/advisories/GHSA-9gjv-jvm7-vv2v"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/gramps-project/gramps-web-api"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gramps-project/gramps-web-api/releases/tag/v3.11.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-09T20:28:40Z",
+    "nvd_published_at": null
+  }
+}

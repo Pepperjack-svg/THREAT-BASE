@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mr69-6c22-jgq8",
+  "modified": "2025-11-25T21:32:04Z",
+  "published": "2025-09-05T18:31:27Z",
+  "aliases": [
+    "CVE-2025-39699"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/riscv: prevent NULL deref in iova_to_phys\n\nThe riscv_iommu_pte_fetch() function returns either NULL for\nunmapped/never-mapped iova, or a valid leaf pte pointer that\nrequires no further validation.\n\nriscv_iommu_iova_to_phys() failed to handle NULL returns.\nPrevent null pointer dereference in\nriscv_iommu_iova_to_phys(), and remove the pte validation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39699"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/220c491490255b656672bb572b18460cd9155926"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/99d4d1a070870aa08163af8ce0522992b7f35d8c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-05T18:15:46Z"
+  }
+}

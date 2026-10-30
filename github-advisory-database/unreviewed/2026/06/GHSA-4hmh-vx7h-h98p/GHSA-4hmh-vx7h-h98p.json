@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4hmh-vx7h-h98p",
+  "modified": "2026-08-24T12:31:36Z",
+  "published": "2026-06-12T12:31:33Z",
+  "aliases": [
+    "CVE-2026-48914"
+  ],
+  "details": "A flaw was found in QEMU's virtio-blk device. The issue arises because the device does not properly validate the size of input descriptors before writing data. A malicious guest with high privileges could exploit this vulnerability by submitting a malformed virtio-blk SCSI request, leading to an out-of-bounds write in the host heap memory and a potential denial of service (DoS) for the QEMU process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:N/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48914"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:39311"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:58571"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-48914"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2488283"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lore.kernel.org/qemu-devel/20260526154957.1741622-1-stefanha@redhat.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-12T10:16:22Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j8q5-7w54-24xj",
+  "modified": "2026-10-21T15:40:11Z",
+  "published": "2025-10-30T12:31:08Z",
+  "aliases": [
+    "CVE-2025-40086"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: Don't allow evicting of BOs in same VM in array of VM binds\n\nAn array of VM binds can potentially evict other buffer objects (BOs)\nwithin the same VM under certain conditions, which may lead to NULL\npointer dereferences later in the bind pipeline. To prevent this, clear\nthe allow_res_evict flag in the xe_bo_validate call.\n\nv2:\n - Invert polarity of no_res_evict (Thomas)\n - Add comment in code explaining issue (Thomas)\n\n(cherry picked from commit 8b9ba8d6d95fe75fed6b0480bb03da4b321bea08)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40086"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5aa0ab0ba7d94549cfe17d6ef7a4f33ba1de8384"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ac74613e5f2ef3450f44fd2127198662c2563a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d21087d083e6f324d69ee87c872a4cbb5bc4a48c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-30T10:15:32Z"
+  }
+}

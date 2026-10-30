@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5cgx-vmcr-xxc6",
+  "modified": "2026-10-13T18:30:56Z",
+  "published": "2026-10-13T18:30:56Z",
+  "aliases": [
+    "CVE-2026-110129"
+  ],
+  "details": "fuintCatering through commit 122c9e6 contains an insecure direct object reference vulnerability in the ClientRefundController refund detail endpoint that lets authenticated members read other members' refund records. Attackers can register freely and enumerate sequential refundId values to obtain buyers' names, national ID numbers, addresses, WeChat openIds, and order details.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110129"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fushengqian/fuintCatering/blob/122c9e61a1bc7d947428b7c4f8be4faa76f38e11/fuintBackend/fuint-application/src/main/java/com/fuint/common/service/impl/RefundServiceImpl.java#L330-L353"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fushengqian/fuintCatering/blob/122c9e61a1bc7d947428b7c4f8be4faa76f38e11/fuintBackend/fuint-application/src/main/java/com/fuint/module/clientApi/controller/ClientRefundController.java#L123-L133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/fuintcatering-client-refund-detail-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/fuintcatering-through-commit-122c9e6-idor-via-clientapi-refund-detail"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T17:17:38Z"
+  }
+}

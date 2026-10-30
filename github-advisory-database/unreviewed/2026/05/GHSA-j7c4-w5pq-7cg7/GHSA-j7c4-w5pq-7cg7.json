@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j7c4-w5pq-7cg7",
+  "modified": "2026-05-14T21:30:36Z",
+  "published": "2026-05-08T15:31:21Z",
+  "aliases": [
+    "CVE-2025-71298"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/tests: shmem: Hold reservation lock around madvise\n\nAcquire and release the GEM object's reservation lock around calls\nto the object's madvide operation. The tests use\ndrm_gem_shmem_madvise_locked(), which led to errors such as show below.\n\n[   58.339389] WARNING: CPU: 1 PID: 1352 at drivers/gpu/drm/drm_gem_shmem_helper.c:499 drm_gem_shmem_madvise_locked+0xde/0x140\n\nOnly export the new helper drm_gem_shmem_madvise() for Kunit tests.\nThis is not an interface for regular drivers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71298"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07cfcab370da06f26c273306571cbb0bfa3b9c52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/607d07d8cc0b835a8701259f08a03dc149b79b4f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9cc77691b5fd615625955cedf726da57543088f1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:31Z"
+  }
+}

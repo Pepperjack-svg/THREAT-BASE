@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-59h4-j8cc-9mjg",
+  "modified": "2026-10-23T12:31:36Z",
+  "published": "2026-10-23T12:31:36Z",
+  "aliases": [
+    "CVE-2026-98874"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mld: don't WARN on WoWLAN suspend w/o netdetect\n\nClearly, from a user perspective, it must be valid to configure\nWoWLAN and then suspend while not connected to a network. Since\nmac80211 doesn't distinguish these cases and simply calls the\ndriver to suspend whenever WoWLAN is configured, the driver has\nto cleanly handle the case where it's called for WoWLAN, it's\nnot connected but there's also no netdetect configured.\n\nRemove the WARN_ON() and keep returning 1 to disconnect and\nthen suspend.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98874"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/301b0dfa9db3f1e204de95e803bbd88fbd878c7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4158bc784f4b45c8daa446a8e1c29eb11f63674"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:20Z"
+  }
+}

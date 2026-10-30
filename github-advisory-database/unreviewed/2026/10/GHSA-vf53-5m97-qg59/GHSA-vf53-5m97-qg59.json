@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vf53-5m97-qg59",
+  "modified": "2026-10-13T21:33:40Z",
+  "published": "2026-10-13T21:33:40Z",
+  "aliases": [
+    "CVE-2026-110237"
+  ],
+  "details": "Vifm 0.8.1-beta through 0.14.4 reuses a pre-existing IPC FIFO in the shared temporary directory without checking ownership, allowing local users to execute commands as another user. Attackers can pre-create a world-writable vifm-ipc-vifm FIFO and write IPC packets with -c and ! shell commands that execute with the victim's privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110237"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vifm/vifm/blob/v0.14.4/src/ipc.c#L394-L443"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vifm/vifm/blob/v0.14.4/src/ipc.c#L866-L874"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vifm/vifm/releases/tag/v0.14.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/SkX7Pmiofg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vifm-0.8.1-beta-through-0.14.4-unverified-ipc-fifo-ownership-allows-cross-user-command-execution"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-283"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:48Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hxwc-4ggw-27w5",
+  "modified": "2026-10-07T18:32:09Z",
+  "published": "2026-10-07T18:32:09Z",
+  "aliases": [
+    "CVE-2026-107271"
+  ],
+  "details": "Gophish through 0.12.1 contains a rate limit bypass vulnerability that allows unauthenticated attackers to evade /login throttling by spoofing X-Forwarded-For or X-Real-IP headers. Attackers can send a different forwarded address per request so the limiter keyed on rewritten RemoteAddr never triggers, enabling unlimited password guessing and credential stuffing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107271"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.ostorlab.co/gophish-0121-manual-review-agentic-deep-scan.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gophish/gophish"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gophish/gophish/blob/b1648f0759c6d57ac989157c55d8b47c40254fe6/controllers/route.go#L168"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gophish/gophish/blob/b1648f0759c6d57ac989157c55d8b47c40254fe6/middleware/ratelimit/ratelimit.go#L132-L136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gophish-through-0.12.1-login-rate-limit-bypass-via-x-forwarded-for-spoofing"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-348"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-07T16:17:46Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w6hw-45mp-qr7v",
+  "modified": "2026-06-25T21:31:31Z",
+  "published": "2026-06-25T21:31:31Z",
+  "aliases": [
+    "CVE-2026-57522"
+  ],
+  "details": "Bitwarden Server before 2026.5.0 contains a JSON injection vulnerability in IntegrationTemplateProcessor.ReplaceTokens(), which substitutes user-controlled values into event-integration templates without JSON encoding. When an organization has configured an event integration whose template references a user-controlled token (such as #ActingUserName# or #UserName#, populated from a member's display name), an authenticated member can set their display name to JSON metacharacters and inject arbitrary key-value pairs into the rendered payloads delivered to webhook, SIEM, Slack, Teams, or Datadog endpoints, making injected fields indistinguishable from legitimate template output.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bitwarden/server/pull/7593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bitwarden/server/commit/a26afd18130ef985ede5c97d277820d045185a28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bitwarden/server/releases/tag/v2026.5.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sanjokkarki.com.np/blog/bitwarden-webhook-json-injection"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bitwarden-server-json-injection-via-webhook-templates"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-74"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T20:17:17Z"
+  }
+}

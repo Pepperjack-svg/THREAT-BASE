@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fc28-r9m2-c784",
+  "modified": "2026-10-17T06:30:33Z",
+  "published": "2026-10-17T06:30:33Z",
+  "aliases": [
+    "CVE-2026-92798"
+  ],
+  "details": "The User Registration & Membership plugin for WordPress is vulnerable to Arbitrary Shortcode Execution in versions up to, and including, 5.2.8 This is due to insufficient input sanitization in the 'referrer_url' branch of UR_Smart_Tags::process(), where the attacker-controlled HTTP_REFERER header is only passed through sanitize_text_field() — which does not strip WordPress shortcode delimiters — before being substituted into a Content Restriction message that is subsequently executed via apply_shortcodes()/do_shortcode(). This makes it possible for unauthenticated attackers to execute arbitrary registered shortcodes on any restricted page whose message uses the supported {{referrer_url}} smart tag.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92798"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/user-registration/tags/5.2.8/includes/class-ur-smart-tags.php#L474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/user-registration/tags/5.2.8/includes/class-ur-smart-tags.php#L475"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/user-registration/tags/5.2.8/modules/content-restriction/class-urcr-frontend.php#L1383"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/user-registration/tags/5.2.8/modules/content-restriction/functions-urcr-core.php#L693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3741339/user-registration/trunk/includes/class-ur-smart-tags.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/ec317df9-c7ef-49a3-9818-903dfe4bdd03?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-17T04:17:10Z"
+  }
+}

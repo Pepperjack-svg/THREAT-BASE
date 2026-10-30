@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-36q5-3685-99hr",
+  "modified": "2026-04-24T18:30:41Z",
+  "published": "2026-03-25T12:30:24Z",
+  "aliases": [
+    "CVE-2026-23376"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet-fcloop: Check remoteport port_state before calling done callback\n\nIn nvme_fc_handle_ls_rqst_work, the lsrsp->done callback is only set when\nremoteport->port_state is FC_OBJSTATE_ONLINE.  Otherwise, the\nnvme_fc_xmt_ls_rsp's LLDD call to lport->ops->xmt_ls_rsp is expected to\nfail and the nvme-fc transport layer itself will directly call\nnvme_fc_xmt_ls_rsp_free instead of relying on LLDD's done callback to free\nthe lsrsp resources.\n\nUpdate the fcloop_t2h_xmt_ls_rsp routine to check remoteport->port_state.\nIf online, then lsrsp->done callback will free the lsrsp.  Else, return\n-ENODEV to signal the nvme-fc transport to handle freeing lsrsp.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23376"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/31d3817bcd9e192b30abe3cf4b68f69d48864dd2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd677d0598387ea623820ab2bd0e029c377445a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f30b95159a53e72529a9ca1667f11cd1970240a7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:37Z"
+  }
+}

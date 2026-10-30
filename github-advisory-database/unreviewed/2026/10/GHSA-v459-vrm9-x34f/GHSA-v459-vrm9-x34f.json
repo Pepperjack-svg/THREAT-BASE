@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v459-vrm9-x34f",
+  "modified": "2026-10-08T15:33:07Z",
+  "published": "2026-10-08T15:33:07Z",
+  "aliases": [
+    "CVE-2026-107635"
+  ],
+  "details": "Dislocker through 0.7.3 contains an integer underflow vulnerability in get_vmk() and get_fvek() that allows attackers to trigger out-of-bounds heap reads via crafted datum sizes. Attackers can supply a malicious BitLocker volume image with a datum_size smaller than the 36-byte AES-CCM header, causing hexdump() to over-read and crash dislocker.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107635"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Aorimn/dislocker/commit/0706462db88efe8df88150e4c3e4332b808f4581"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Aorimn/dislocker"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Aorimn/dislocker/blob/v0.7.3/src/metadata/fvek.c#L90-L105"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Aorimn/dislocker/blob/v0.7.3/src/metadata/vmk.c#L146-L180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dislocker-through-0.7.3-out-of-bounds-heap-read-via-vmk-fvek-datum-size-underflow"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T15:17:46Z"
+  }
+}

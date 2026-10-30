@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wgq5-3g38-q2mr",
+  "modified": "2026-01-26T21:30:30Z",
+  "published": "2025-10-01T12:30:31Z",
+  "aliases": [
+    "CVE-2023-53521"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: ses: Fix slab-out-of-bounds in ses_intf_remove()\n\nA fix for:\n\nBUG: KASAN: slab-out-of-bounds in ses_intf_remove+0x23f/0x270 [ses]\nRead of size 8 at addr ffff88a10d32e5d8 by task rmmod/12013\n\nWhen edev->components is zero, accessing edev->component[0] members is\nwrong.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53521"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0595cdb587726b4f0fa780eb7462e3679d141e82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fb1fa8425cce2dc4dce298275d22d7077694b73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40af9a6deed723485e05b7d3255a28750692e8db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/578797f0c8cbc2e3ec5fc0dab87087b4c7073686"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/76f7050537476ac062ec23a544fbca8270f2d08b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82143faf01dda831b89eccef60c39ef8575ab08a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87e47be38d205df338c52ead43f23b2864567423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f9542cad6c27297c8391de3a659f0b7948495d0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:56Z"
+  }
+}

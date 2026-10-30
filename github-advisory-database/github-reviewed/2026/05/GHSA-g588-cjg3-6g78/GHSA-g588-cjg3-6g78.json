@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g588-cjg3-6g78",
+  "modified": "2026-05-11T14:40:17Z",
+  "published": "2026-05-11T14:40:17Z",
+  "aliases": [],
+  "summary": "Steamworks game clients/servers using P2P authentication vulnerable to denial of service",
+  "details": "Processing the raw `ValidateAuthTicketResponse_t` callback data panics when the `m_eAuthSessionResponse` field is `k_EAuthSessionResponseAuthTicketNetworkIdentityFailure`. This can lead to denial of service in game clients and servers using the `begin_authentication_session` API to authenticate players if a malicious game client sends an authentication ticket with a network identity that does not match that of the verifier.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "crates.io",
+        "name": "steamworks"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.13.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Noxime/steamworks-rs/issues/321"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Noxime/steamworks-rs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rustsec.org/advisories/RUSTSEC-2026-0121.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-11T14:40:17Z",
+    "nvd_published_at": null
+  }
+}

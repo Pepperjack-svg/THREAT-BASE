@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q683-8468-r6h6",
+  "modified": "2026-06-26T21:00:49Z",
+  "published": "2026-06-26T21:00:49Z",
+  "aliases": [],
+  "summary": "WebauthnAuthenticator leaks sensitive HTTP headers through INFO-level logs",
+  "details": "## Impact\n\n`Webauthn\\Bundle\\Security\\Http\\Authenticator\\WebauthnAuthenticator` logs the full `Symfony\\Component\\HttpFoundation\\Request` object inside the log context of both `onAuthenticationSuccess()` and `onAuthenticationFailure()` at INFO level:\n\n```php\n$this->logger->info('User has been authenticated successfully with Webauthn.', [\n    'request' => $request,\n    'firewallName' => $firewallName,\n    'identifier' => $token->getUserIdentifier(),\n]);\n\n$this->logger->info('Webauthn authentication request failed.', [\n    'request' => $request,\n    'exception' => $exception,\n]);\n```\n\n`Request::__toString()` returns the raw HTTP message, including every request header. As soon as the configured logger normalises or stringifies the context (default behaviour for `LineFormatter`, `JsonFormatter` via `NormalizerFormatter`, etc.), sensitive headers such as `Cookie` (session identifier), `Authorization` and any custom auth header are written to the log stream in clear text.\n\nApplications that forward logs to centralised platforms (ELK, Splunk, Datadog and similar) are particularly exposed: log access is typically broader than application access, which can allow log readers to hijack authenticated sessions.\n\n## Affected versions\n\nEvery release prior to 5.3.4 is affected.\n\n## Patches\n\nThe fix removes the full `Request` object from the log context and keeps only non-sensitive fields (request path, method, firewall name, user identifier). It is shipped in 5.3.4. Older branches will not receive a backport; users on those branches should upgrade to 5.3.4+ or apply one of the workarounds below.\n\n## Workarounds\n\nUntil the upgrade is applied, projects can:\n\n1. Raise the minimum log level for the WebAuthn authenticator above INFO so these two log records are not emitted in production.\n2. Configure their Monolog processor/formatter to strip the `request` key from the context of these records before they are written.\n\n## Credit\n\nReported by Kay Joosten (Dawn Technology), maintainer of [Stepup-Webauthn](https://github.com/OpenConext/Stepup-Webauthn).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "web-auth/webauthn-symfony-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.3.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/web-auth/webauthn-framework/security/advisories/GHSA-q683-8468-r6h6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/web-auth/webauthn-framework"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200",
+      "CWE-532"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-26T21:00:49Z",
+    "nvd_published_at": null
+  }
+}

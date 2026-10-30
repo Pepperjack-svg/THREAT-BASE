@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wgxf-r68r-7w9h",
+  "modified": "2025-10-22T21:31:17Z",
+  "published": "2025-02-27T03:34:03Z",
+  "aliases": [
+    "CVE-2024-58015"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: Fix for out-of bound access error\n\nSelfgen stats are placed in a buffer using print_array_to_buf_index() function.\nArray length parameter passed to the function is too big, resulting in possible\nout-of bound memory error.\nDecreasing buffer size by one fixes faulty upper bound of passed array.\n\nDiscovered in coverity scan, CID 1600742 and CID 1600758",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8700c4bf8b7ed98037d2acf1eaf770ad6dd431d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb8c0534713865d190856f10bfc97cf0b88475b1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T03:15:12Z"
+  }
+}

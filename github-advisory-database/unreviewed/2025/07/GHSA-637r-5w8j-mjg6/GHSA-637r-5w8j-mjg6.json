@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-637r-5w8j-mjg6",
+  "modified": "2026-04-18T09:30:16Z",
+  "published": "2025-07-25T15:30:54Z",
+  "aliases": [
+    "CVE-2025-38436"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/scheduler: signal scheduled fence when kill job\n\nWhen an entity from application B is killed, drm_sched_entity_kill()\nremoves all jobs belonging to that entity through\ndrm_sched_entity_kill_jobs_work(). If application A's job depends on a\nscheduled fence from application B's job, and that fence is not properly\nsignaled during the killing process, application A's dependency cannot be\ncleared.\n\nThis leads to application A hanging indefinitely while waiting for a\ndependency that will never be resolved. Fix this issue by ensuring that\nscheduled fences are properly signaled when an entity is killed, allowing\ndependent applications to continue execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38436"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/471db2c2d4f80ee94225a1ef246e4f5011733e50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8342127a8a65b0673863b106ce32b79c91ae3270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa382a8b6ed483e9812d0e63b6d1bdcba0186f29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aefd0a935625165a6ca36d0258d2d053901555df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5734f9bab6f0d40577ad0633af4090a5fda2407"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T15:15:29Z"
+  }
+}

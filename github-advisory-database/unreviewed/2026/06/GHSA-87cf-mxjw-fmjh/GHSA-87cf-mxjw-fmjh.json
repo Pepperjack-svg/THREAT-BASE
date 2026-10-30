@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-87cf-mxjw-fmjh",
+  "modified": "2026-06-23T15:32:30Z",
+  "published": "2026-06-07T15:31:49Z",
+  "aliases": [
+    "CVE-2026-49494"
+  ],
+  "details": "Comodo Internet Security's firewall driver Inspect.sys contains an integer underflow in its IPv6 packet parser. The parser decrements an unsigned 64-bit payload-length value (taken from the IPv6 fixed header's payload length field) by the size of each IPv6 extension header without validating it, so a packet whose declared payload length is smaller than the sum of its extension-header lengths underflows the value to a near-maximal 64-bit integer. Because IPv6 parsing occurs before firewall rule enforcement, a remote, unauthenticated attacker can send a single crafted IPv6 packet - even to a host with all ports blocked - to trigger an out-of-bounds read (and, on a separate code path, an oversized memcpy) in the Windows kernel at DISPATCH_LEVEL, crashing the system (BSOD).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MalwareTech/ComoDoS"
+    },
+    {
+      "type": "WEB",
+      "url": "https://malwaretech.com/2026/06/exploiting-a-remote-kernel-vulnerability-in-comodo-internet-security.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://updates.xcitium.com/#note11312"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/comodo-internet-security-inspect-sys-ipv6-integer-underflow-remote-denial-of-service"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/xcitium-client-security-comodo-internet-security-remote-dos"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-07T13:16:20Z"
+  }
+}

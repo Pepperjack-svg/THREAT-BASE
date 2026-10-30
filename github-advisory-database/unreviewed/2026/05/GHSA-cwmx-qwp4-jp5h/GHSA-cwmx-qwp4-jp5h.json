@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cwmx-qwp4-jp5h",
+  "modified": "2026-05-27T21:31:25Z",
+  "published": "2026-05-27T15:33:12Z",
+  "aliases": [
+    "CVE-2026-38427"
+  ],
+  "details": "An issue in fetch_jpg() in xdrv_10_scripter.ino in Tasmota through 15.3.0.3 allows a remote attacker to cause heap buffer overflow. The Content-Length from a JPEG stream is stored in a uint16_t variable; values above 65535 wrap around, causing allocation of a smaller buffer than the data actually read.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-38427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/arendst/Tasmota/blob/c207cc2/tasmota/tasmota_xdrv_driver/xdrv_10_scripter.ino"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sermikr0/CVE-2026-38427"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:16:46Z"
+  }
+}

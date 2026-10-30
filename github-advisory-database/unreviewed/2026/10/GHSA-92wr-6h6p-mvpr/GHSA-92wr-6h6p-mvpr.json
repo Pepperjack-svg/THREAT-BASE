@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-92wr-6h6p-mvpr",
+  "modified": "2026-10-28T12:31:06Z",
+  "published": "2026-10-28T12:31:06Z",
+  "aliases": [
+    "CVE-2026-99177"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SEV: Fix page dirtying in sev_gmem_post_populate()\n\nset_page_dirty() requires that the caller holds some kind of lock to\nensure that the page's mapping does not concurrently go away.\nThat is not the case for a random page we got from get_user_pages_fast(),\nso use set_page_dirty_lock().\n\n[sean: tag for stable]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/184382f9852d433af21de96c334ecf43b8414ed8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97818b2fa7082e940ddd36dab12a68615300e798"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T11:17:38Z"
+  }
+}

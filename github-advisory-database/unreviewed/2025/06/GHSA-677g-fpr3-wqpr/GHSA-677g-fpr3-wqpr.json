@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-677g-fpr3-wqpr",
+  "modified": "2025-11-18T03:31:14Z",
+  "published": "2025-06-18T12:30:50Z",
+  "aliases": [
+    "CVE-2022-50138"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/qedr: Fix potential memory leak in __qedr_alloc_mr()\n\n__qedr_alloc_mr() allocates a memory chunk for \"mr->info.pbl_table\" with\ninit_mr_info(). When rdma_alloc_tid() and rdma_register_tid() fail, \"mr\"\nis released while \"mr->info.pbl_table\" is not released, which will lead\nto a memory leak.\n\nWe should release the \"mr->info.pbl_table\" with qedr_free_pbl() when error\noccurs to fix the memory leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50138"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07ba048df306dc93fc4d2ef670b9e24644a2069f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79ce50dddaf28b5c57911ecc80a2be17a0b17f83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7e647a8d5fc0a2c8e0f36f585a6388286a25bb15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3236a64ddd125a455ef5b5316c1b9051b732974"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b4c9f7db9f0148423557539af0fdf513338efe08"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:43Z"
+  }
+}

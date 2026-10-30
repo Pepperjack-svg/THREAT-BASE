@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qrxq-fh5p-2v4x",
+  "modified": "2025-11-05T15:31:01Z",
+  "published": "2025-05-01T15:31:46Z",
+  "aliases": [
+    "CVE-2022-49791"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: fix multishot accept request leaks\n\nHaving REQ_F_POLLED set doesn't guarantee that the request is\nexecuted as a multishot from the polling path. Fortunately for us, if\nthe code thinks it's multishot issue when it's not, it can only ask to\nskip completion so leaking the request. Use issue_flags to mark\nmultipoll issues.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49791"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e4626de856ef8f25ecd9c716e76d4f95ce95639"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91482864768a874c4290ef93b84a78f4f1dac51b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:02Z"
+  }
+}

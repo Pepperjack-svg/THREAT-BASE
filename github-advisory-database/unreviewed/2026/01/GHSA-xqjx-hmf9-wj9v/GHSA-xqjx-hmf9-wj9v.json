@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xqjx-hmf9-wj9v",
+  "modified": "2026-01-09T09:31:20Z",
+  "published": "2026-01-09T09:31:20Z",
+  "aliases": [
+    "CVE-2026-0627"
+  ],
+  "details": "The AMP for WP plugin for WordPress is vulnerable to Stored Cross-Site Scripting via SVG file uploads in all versions up to, and including, 1.1.10. This is due to insufficient sanitization of SVG file content that only removes `<script>` tags while allowing other XSS vectors such as event handlers (onload, onerror, onmouseover), foreignObject elements, and SVG animation attributes. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts via malicious SVG file uploads that will execute whenever a user views the uploaded file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0627"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/accelerated-mobile-pages/tags/1.1.10/templates/features.php#L10373"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/accelerated-mobile-pages/trunk/templates/features.php#L10373"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3434946/accelerated-mobile-pages/trunk/templates/features.php?old=3426181&old_path=accelerated-mobile-pages%2Ftrunk%2Ftemplates%2Ffeatures.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4ed23318-3b47-4336-a3aa-6b09f3911926?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-09T09:15:47Z"
+  }
+}

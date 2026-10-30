@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3xw3-w36p-rjcw",
+  "modified": "2026-04-08T18:33:59Z",
+  "published": "2025-11-25T09:31:24Z",
+  "aliases": [
+    "CVE-2025-13452"
+  ],
+  "details": "The Admin and Customer Messages After Order for WooCommerce: OrderConvo plugin for WordPress is vulnerable to Missing Authorization in all versions up to, and including, 14. This is due to a flawed permission check in the REST API permission callback that returns true when no nonce is provided. This makes it possible for unauthenticated attackers to impersonate any WordPress user and inject arbitrary messages into any WooCommerce order conversation by directly calling the REST endpoint with controlled user_id, order_id, and context parameters.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13452"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/admin-and-client-message-after-order-for-woocommerce/tags/14/includes/wprest.class.php#L113"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/admin-and-client-message-after-order-for-woocommerce/tags/14/includes/wprest.class.php#L56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/admin-and-client-message-after-order-for-woocommerce/trunk/includes/wprest.class.php#L113"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/admin-and-client-message-after-order-for-woocommerce/trunk/includes/wprest.class.php#L56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3439999"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2c1dd87c-cc28-43b3-8378-4583dc6de195?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-25T08:15:51Z"
+  }
+}

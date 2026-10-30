@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-74p6-p33f-j22m",
+  "modified": "2026-01-05T12:30:29Z",
+  "published": "2026-01-05T12:30:29Z",
+  "aliases": [
+    "CVE-2025-68762"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: netpoll: initialize work queue before error checks\n\nPrevent a kernel warning when netconsole setup fails on devices with\nIFF_DISABLE_NETPOLL flag. The warning (at kernel/workqueue.c:4242 in\n__flush_work) occurs because the cleanup path tries to cancel an\nuninitialized work queue.\n\nWhen __netpoll_setup() encounters a device with IFF_DISABLE_NETPOLL,\nit fails early and calls skb_pool_flush() for cleanup. This function\ncalls cancel_work_sync(&np->refill_wq), but refill_wq hasn't been\ninitialized yet, triggering the warning.\n\nMove INIT_WORK() to the beginning of __netpoll_setup(), ensuring the\nwork queue is properly initialized before any potential failure points.\nThis allows the cleanup path to safely cancel the work queue regardless\nof where the setup fails.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68762"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/760bc6ceda8e2c273c0e2018ad2595967c3dd308"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a90d0dc38a10347078cca60e7495ad0648838f18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5235eb6cfe02a51256013a78f7b28779a7740d5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-05T10:15:57Z"
+  }
+}

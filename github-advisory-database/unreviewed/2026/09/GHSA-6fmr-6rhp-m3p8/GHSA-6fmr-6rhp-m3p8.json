@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6fmr-6rhp-m3p8",
+  "modified": "2026-10-21T15:41:14Z",
+  "published": "2026-09-16T12:30:38Z",
+  "aliases": [
+    "CVE-2026-89840"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: validate MOVE_RANGE destination size\n\nF2FS_IOC_MOVE_RANGE checks the source range, but not the destination end\nbefore updating i_size. A source hole can expose this: __clone_blkaddrs()\nskips NULL_ADDR entries and returns success, so the caller can still extend\nthe destination inode with unchecked pos_out + len.\n\nReject destination overflow and use inode_newsize_ok() before extending\nthe destination inode.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89840"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/54c587f3f95ce2d6932a16566db83f73cc4313e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bca61ee5192ea47003722486ae9588a2a4bb47b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/db13064669526494cd78ba3a4394063b740e940c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dcae1eeda53149f219dd6af93b3083b7271c1c63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e533889fc26aea0cd83c90327063f272061dd820"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:50Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-phxc-9rqx-x894",
+  "modified": "2026-10-21T15:41:57Z",
+  "published": "2026-10-18T18:32:02Z",
+  "aliases": [
+    "CVE-2026-98754"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: vcc: hold port lock when clearing tty pointer in vcc_cleanup\n\nvcc_cleanup() sets port->tty to NULL without holding port->lock, racing\nwith vcc_event() LDC callbacks that read port->tty under port->lock and\nthen use tty->port. This can cause a use-after-free when the callback\ndereferences tty->port after cleanup has already destroyed and freed it.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03b49c991abb8d021ca6fe51cd173447236b0552"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a9fb9eaeb69b1f6c00bed09289a33d9fe1e7ae4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57753441ef84bee3bf0e9ee1e3778d119c44aa32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/821050631750e982007c0856c119346edba51cae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88f6ecb058801e9ce7b9aabc966530118d7cd53c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:29Z"
+  }
+}

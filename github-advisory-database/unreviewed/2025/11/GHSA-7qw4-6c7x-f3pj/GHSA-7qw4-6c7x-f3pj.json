@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7qw4-6c7x-f3pj",
+  "modified": "2025-11-24T18:31:11Z",
+  "published": "2025-11-24T15:30:29Z",
+  "aliases": [
+    "CVE-2025-12978"
+  ],
+  "details": "Fluent Bit in_http, in_splunk, and in_elasticsearch input plugins contain a flaw in the tag_key validation logic that fails to enforce exact key-length matching. This allows crafted inputs where a tag prefix is incorrectly treated as a full match. A remote attacker with authenticated or exposed access to these input endpoints can exploit this behavior to manipulate tags and redirect records to unintended destinations. This compromises the authenticity of ingested logs and can allow injection of forged data, alert flooding and routing manipulation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12978"
+    },
+    {
+      "type": "WEB",
+      "url": "https://fluentbit.io/announcements/v4.1.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-24T15:15:46Z"
+  }
+}

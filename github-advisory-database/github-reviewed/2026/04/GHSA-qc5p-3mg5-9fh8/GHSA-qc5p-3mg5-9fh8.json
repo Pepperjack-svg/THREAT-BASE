@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qc5p-3mg5-9fh8",
+  "modified": "2026-06-08T23:17:53Z",
+  "published": "2026-04-24T16:11:28Z",
+  "aliases": [
+    "CVE-2026-42205"
+  ],
+  "summary": "Avo: Broken Access Control Through Unauthorized Execution of Arbitrary Action Classes Across Resources",
+  "details": "### Summary\n\nA critical Broken Access Control vulnerability was identified in the `ActionsController` of the Avo framework (v3.x). Due to insecure action lookup logic, an authenticated user can execute any Action class (descendants of `Avo::BaseAction`) on any resource, even if the action is not registered for that specific resource. This leads to Privilege Escalation and unauthorized data manipulation across the entire application.\n\n### Details\n\nThe vulnerability exists in the `action_class` method within `app/controllers/avo/actions_controller.rb`.\n\n#### Vulnerable Code\n\n```ruby\ndef action_class\n  # It searches through ALL descendants of BaseAction without resource validation\n  Avo::BaseAction.descendants.find do |action|\n    action.to_s == params[:action_id]\n  end\nend\n```\n\nThe controller identifies the action class to execute solely based on the `params[:action_id]` by searching through all `BaseAction` descendants. It fails to verify whether the requested action is actually permitted or registered for the resource context specified in the request URL (e.g., `/admin/resources/posts/actions`).\n\nConsequently, an attacker can invoke sensitive actions (e.g., `Avo::Actions::ToggleAdmin`) through an unrelated resource endpoint (e.g., `Post`), bypassing the intended resource-action mapping.\n\n### Impact\n\nThis flaw results in significant security risks:\n\n- **Privilege Escalation:** An authenticated user with low privileges can execute administrative actions (like toggling admin roles) to escalate their own or others' permissions.\n- **Unauthorized Operations:** Actions designed for restricted resources can be triggered against any record ID in the database.\n- **Data Integrity Compromise:** Attackers can perform unauthorized destructive operations (e.g., Delete, Archive, or Update) on records they should not have access to.\n\n### Proof of Concept (PoC)\n\n**Steps to Reproduce:**\n\n01. Log in to the Avo admin panel with limited permissions.\n02. Identify a target record ID (e.g., User ID: 1) and a sensitive action class (e.g., `Avo::Actions::ToggleAdmin`).\n03. Send a POST request to a resource endpoint where the target action is not registered:\n    - **URL:** `POST /admin/resources/posts/actions`\n    - **Payload:** `action_id=Avo::Actions::ToggleAdmin&fields[avo_resource_ids]=1`\n04. The server executes the `ToggleAdmin` logic on User 1, even though the request was made through the `posts` resource context.\n\n**PoC Script Snippet:**\n\n```python\n# Simulating the unauthorized action execution\ndata = {\n    'action_id': 'Avo::Actions::ToggleAdmin',\n    'fields[avo_resource_ids]': '1', # Target Record ID\n    'authenticity_token': csrf_token\n}\nresponse = session.post(f\"{BASE_URL}/admin/resources/posts/actions\", data=data)\n```\n\n### Remediation\n\nRestrict the action lookup to only those actions explicitly registered for the current resource context:\n\n```ruby\ndef action_class\n  # Validate that the action is registered for the current resource\n  @resource.get_actions.find do |action|\n    action.to_s == params[:action_id]\n  end\nend\n```\n\n### Discoverer\n\nIllunight",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "avo"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.31.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/avo-hq/avo/security/advisories/GHSA-qc5p-3mg5-9fh8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42205"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/avo-hq/avo"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/avo-hq/avo/releases/tag/v3.31.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/avo/CVE-2026-42205.yml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284",
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-24T16:11:28Z",
+    "nvd_published_at": "2026-05-08T22:16:31Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rq79-8cw2-45h7",
+  "modified": "2026-10-20T03:32:45Z",
+  "published": "2026-10-20T03:32:45Z",
+  "aliases": [
+    "CVE-2026-77933"
+  ],
+  "details": "DB-GPT through 0.8.2 contains a hardcoded credentials vulnerability in its default docker-compose.yml that sets a static MYSQL_ROOT_PASSWORD and publishes port 3306 on all interfaces. Attackers reaching port 3306 or the shared dbgptnet network can authenticate as root@% to gain full database access including FILE and SUPER privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77933"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/eosphoros-ai/DB-GPT/blob/83609c471266607490b24e72188311efa23a0d16/docker-compose.yml#L9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.lasso.security/vulnerability-database/cve-2026-77933"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/db-gpt-through-0.8.2-hardcoded-mysql-root-credentials-in-docker-compose-deployment"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1392"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T01:17:19Z"
+  }
+}

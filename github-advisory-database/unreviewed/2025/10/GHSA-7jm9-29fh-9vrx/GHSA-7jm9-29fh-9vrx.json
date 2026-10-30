@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7jm9-29fh-9vrx",
+  "modified": "2026-07-30T06:32:15Z",
+  "published": "2025-10-30T12:31:09Z",
+  "aliases": [
+    "CVE-2025-40093"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_ecm: Refactor bind path to use __free()\n\nAfter an bind/unbind cycle, the ecm->notify_req is left stale. If a\nsubsequent bind fails, the unified error label attempts to free this\nstale request, leading to a NULL pointer dereference when accessing\nep->ops->free_request.\n\nRefactor the error handling in the bind path to use the __free()\nautomatic cleanup mechanism.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40093"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/070f341d86cf2c098d63e484a86c7c1d2696a868"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15b9faf53ba8719700596e7ef78879ce200e8c2e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42988380ac67c76bb9dff8f77d7ef3eefd50b7b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4630c68bade82f087eaaab22e9a361da2f18d139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3745aaef19198d0c81637a7dd50ef53c4f879b7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-30T10:15:33Z"
+  }
+}

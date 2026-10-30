@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qhcv-7g4x-gf9r",
+  "modified": "2026-01-16T21:30:30Z",
+  "published": "2025-10-01T12:30:29Z",
+  "aliases": [
+    "CVE-2023-53460"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw88: fix memory leak in rtw_usb_probe()\n\ndrivers/net/wireless/realtek/rtw88/usb.c:876 rtw_usb_probe()\nwarn: 'hw' from ieee80211_alloc_hw() not released on lines: 811\n\nFix this by modifying return to a goto statement.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53460"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48181d285623198c33bb9698992502687b258efa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cc92379b80af005e1f49ef6ef790cddc58cf0da"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:47Z"
+  }
+}

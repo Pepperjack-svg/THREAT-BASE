@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2rgc-q6cr-f7qj",
+  "modified": "2026-10-15T21:36:04Z",
+  "published": "2026-10-15T21:36:04Z",
+  "aliases": [
+    "CVE-2026-111138"
+  ],
+  "details": "NetSurf libnsbmp through 0.1.7 contains an out-of-bounds read vulnerability in bmp_decode_rle8() and bmp_decode_rle4() because absolute-run bound checks omit the word-alignment pad byte. Attackers can supply a crafted RLE8 or RLE4 BMP ending on an odd-length absolute run to cause a one-byte heap over-read, crashing applications decoding untrusted images.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111138"
+    },
+    {
+      "type": "WEB",
+      "url": "https://download.netsurf-browser.org/libs/releases/libnsbmp-0.1.7-src.tar.gz"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netsurf-browser/libnsbmp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netsurf-browser/libnsbmp/blob/ea063c9f46acb43e90208da14073332b505ef7e7/src/libnsbmp.c#L1096-L1147"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netsurf-browser/libnsbmp/blob/ea063c9f46acb43e90208da14073332b505ef7e7/src/libnsbmp.c#L942-L982"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/libnsbmp-rle-absolute-pad-and-ico-mask-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netsurf-libnsbmp-through-0.1.7-out-of-bounds-read-in-rle8-and-rle4-decoders"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:27Z"
+  }
+}

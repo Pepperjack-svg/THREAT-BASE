@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m32w-q6hx-h7w8",
+  "modified": "2026-10-15T12:30:35Z",
+  "published": "2026-05-27T15:33:10Z",
+  "aliases": [
+    "CVE-2025-71308"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amdxdna: Fix potential NULL pointer dereference in context cleanup\n\naie_destroy_context() is invoked during error handling in\naie2_create_context(). However, aie_destroy_context() assumes that the\ncontext's mailbox channel pointer is non-NULL. If mailbox channel\ncreation fails, the pointer remains NULL and calling aie_destroy_context()\ncan lead to a NULL pointer dereference.\n\nIn aie2_create_context(), replace aie_destroy_context() with a function\nwhich request firmware to remove the context created previously.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71308"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2611c9616cb52d3ed54a6095d72d18e645a6955a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97f27573837ef96b4ba42af463cc800cab615c0e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b569ff8a1bc1bcd4fdc6fd334604a654f61237a1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:16:43Z"
+  }
+}

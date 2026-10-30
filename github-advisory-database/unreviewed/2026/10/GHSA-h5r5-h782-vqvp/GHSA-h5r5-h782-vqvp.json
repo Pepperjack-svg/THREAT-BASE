@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h5r5-h782-vqvp",
+  "modified": "2026-10-24T15:32:51Z",
+  "published": "2026-10-24T00:32:35Z",
+  "aliases": [
+    "CVE-2026-115931"
+  ],
+  "details": "Postiz lets a signed-in user ask the backend to run a function on one of their connected channels. The backend did not restrict which functions can be requested, so a user could call internal helper functions that were never meant to be reachable from the web interface.\n\nOne of those helpers reads a file from the server's disk. A user who connects a channel whose stored token is a file path can have the backend return the contents of any file it can read, including its environment, which holds the secret used to sign login sessions, the database address and the credentials of connected services. Another helper makes the backend process exit with a single request. Self-registration is open by default, so no existing account and no action by another user is needed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115931"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitroomhq/postiz-app/commit/9383f5be4d310c346e33a3748a9a7ded64c96fed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gadvisory.org/advisories/PSA-2026-JNXM56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitroomhq/postiz-app"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitroomhq/postiz-app/releases/tag/v2.25.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitroomhq/postiz-app/releases/tag/v2.25.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T23:17:43Z"
+  }
+}

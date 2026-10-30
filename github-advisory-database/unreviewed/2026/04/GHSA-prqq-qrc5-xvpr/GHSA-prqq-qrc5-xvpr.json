@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-prqq-qrc5-xvpr",
+  "modified": "2026-04-21T21:31:20Z",
+  "published": "2026-04-20T21:31:44Z",
+  "aliases": [
+    "CVE-2026-29645"
+  ],
+  "details": "NEMU (OpenXiangShan/NEMU) before v2025.12.r2 contains an improper instruction-validation flaw in its RISC-V Vector (RVV) decoder. The decoder does not correctly validate the funct3 field when decoding vsetvli/vsetivli/vsetvl, allowing certain invalid OP-V instruction encodings to be misinterpreted and executed as vset* configuration instructions rather than raising an illegal-instruction exception. This can be exploited by providing crafted RISC-V binaries to cause incorrect trap behavior, architectural state corruption/divergence, and potential denial of service in systems that rely on NEMU for correct execution or sandboxing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-29645"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenXiangShan/NEMU/issues/952"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenXiangShan/NEMU/pull/958"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenXiangShan/NEMU/commit/481de637d5fc5838356caee80a79e56a33754039"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.riscv.org/reference/isa/unpriv/v-st-ext.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-131"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-20T20:16:48Z"
+  }
+}

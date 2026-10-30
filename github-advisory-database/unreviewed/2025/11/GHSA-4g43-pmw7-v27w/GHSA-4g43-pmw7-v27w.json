@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4g43-pmw7-v27w",
+  "modified": "2026-10-21T15:40:11Z",
+  "published": "2025-11-12T12:30:28Z",
+  "aliases": [
+    "CVE-2025-40158"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: use RCU in ip6_output()\n\nUse RCU in ip6_output() in order to use dst_dev_rcu() to prevent\npossible UAF.\n\nWe can remove rcu_read_lock()/rcu_read_unlock() pairs\nfrom ip6_finish_output2().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0393f85c3241c19ba8550f04a812e7d19f6b3082"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11709573cc4e48dc34c80fc7ab9ce5b159e29695"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/423895685f367b5a0a956bd14b02df0192bded4c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92803b826e40e49a5e8a6e208f4b4574e9d19426"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-12T11:15:45Z"
+  }
+}

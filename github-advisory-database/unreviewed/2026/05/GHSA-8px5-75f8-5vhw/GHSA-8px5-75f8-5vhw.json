@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8px5-75f8-5vhw",
+  "modified": "2026-05-27T09:31:13Z",
+  "published": "2026-05-27T09:31:13Z",
+  "aliases": [
+    "CVE-2026-8867"
+  ],
+  "details": "The Post Category Gallery plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'postcategorygallery' shortcode in versions up to, and including, 1.0.0. This is due to insufficient input sanitization and output escaping on user-supplied shortcode attributes (such as total_width, color_scheme, and caption_font_size) inside the sc_horcatbar() function, which are concatenated directly into HTML attribute values. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/post-category-gallery/trunk/horcatbar.php#L79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/post-category-gallery/trunk/horcatbar.php#L97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f439718e-4a3d-4dc9-a16c-6b655480dde6?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T07:16:16Z"
+  }
+}

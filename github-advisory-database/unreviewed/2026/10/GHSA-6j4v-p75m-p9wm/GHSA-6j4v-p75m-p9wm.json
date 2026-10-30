@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6j4v-p75m-p9wm",
+  "modified": "2026-10-27T21:33:42Z",
+  "published": "2026-10-27T21:33:41Z",
+  "aliases": [
+    "CVE-2026-118178"
+  ],
+  "details": "A remote RSS feed could use the itunes:new-feed-url or newLocation element to permanently change its stored subscription URL to a file: URL. Thunderbird then read that location on every feed update. This allowed a malicious feed, or an attacker able to modify a feed delivered over HTTP, to make Thunderbird read local files and, on Windows, connect to an attacker-controlled network share, which could leak the user's NTLM credentials.\nThe NTLM credential leak only affects Thunderbird on Windows. Other operating systems are affected by the local file read only. This vulnerability was fixed in Thunderbird 159 and Thunderbird 153.6.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118178"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=2075772"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.mozilla.org/security/advisories/mfsa2026-121"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.mozilla.org/security/advisories/mfsa2026-122"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-27T19:17:29Z"
+  }
+}

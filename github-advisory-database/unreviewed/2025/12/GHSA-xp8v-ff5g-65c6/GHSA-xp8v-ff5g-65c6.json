@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xp8v-ff5g-65c6",
+  "modified": "2025-12-24T15:30:34Z",
+  "published": "2025-12-24T15:30:34Z",
+  "aliases": [
+    "CVE-2022-50763"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: marvell/octeontx - prevent integer overflows\n\nThe \"code_length\" value comes from the firmware file.  If your firmware\nis untrusted realistically there is probably very little you can do to\nprotect yourself.  Still we try to limit the damage as much as possible.\nAlso Smatch marks any data read from the filesystem as untrusted and\nprints warnings if it not capped correctly.\n\nThe \"code_length * 2\" can overflow.  The round_up(ucode_size, 16) +\nsizeof() expression can overflow too.  Prevent these overflows.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50763"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12acfa1059ad69aa352ddb2bf23ba1b831aff15f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7bfa7d67735381715c98091194e81e7685f9b7db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f5eee162e55175d9dac98b5e9b8da76449d2257"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/caca37cf6c749ff0303f68418cfe7b757a4e0697"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7ff7a46baafd38d7ed45604397e650d61f5db8d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:03Z"
+  }
+}

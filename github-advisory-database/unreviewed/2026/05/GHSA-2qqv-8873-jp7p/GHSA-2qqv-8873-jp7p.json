@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2qqv-8873-jp7p",
+  "modified": "2026-05-08T15:31:28Z",
+  "published": "2026-05-08T15:31:28Z",
+  "aliases": [
+    "CVE-2026-43422"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: legacy: ncm: Fix NPE in gncm_bind\n\nCommit 56a512a9b410 (\"usb: gadget: f_ncm: align net_device lifecycle\nwith bind/unbind\") deferred the allocation of the net_device. This\nchange leads to a NULL pointer dereference in the legacy NCM driver as\nit attempts to access the net_device before it's fully instantiated.\n\nStore the provided qmult, host_addr, and dev_addr into the struct\nncm_opts->net_opts during gncm_bind(). These values will be properly\napplied to the net_device when it is allocated and configured later in\nthe binding process by the NCM function driver.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43422"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b23e86a3a15803c3dcb24701285f73e65099fdf9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be5738d19bed244ede84da45bc45395bcb1d99e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fde0634ad9856b3943a2d1a8cc8de174a63ac840"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T15:16:54Z"
+  }
+}

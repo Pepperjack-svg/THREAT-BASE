@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m9vq-r8xh-f85j",
+  "modified": "2026-02-19T18:31:50Z",
+  "published": "2026-02-19T18:31:50Z",
+  "aliases": [
+    "CVE-2025-4960"
+  ],
+  "details": "The com.epson.InstallNavi.helper tool, deployed with the EPSON printer driver installer, contains a local privilege escalation vulnerability due to multiple flaws in its implementation. It fails to properly authenticate clients over the XPC protocol and does not correctly enforce macOS’s authorization model, exposing privileged functionality to untrusted users. Although it invokes the AuthorizationCopyRights API, it does so using overly permissive custom rights that it registers in the system’s authorization database (/var/db/auth.db).\n\n\nThese rights can be requested and granted by the authorization daemon to any local user, regardless of privilege level. As a result, an attacker can exploit the vulnerable service to perform privileged operations such as executing arbitrary commands or installing system components without requiring administrative credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-4960"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pentraze.com/vulnerability-reports"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pentraze.com/vulnerability-reports/cve-2025-4960"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-19T07:17:38Z"
+  }
+}

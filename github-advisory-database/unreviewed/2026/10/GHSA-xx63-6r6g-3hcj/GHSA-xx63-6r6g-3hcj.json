@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xx63-6r6g-3hcj",
+  "modified": "2026-10-10T06:30:57Z",
+  "published": "2026-10-10T06:30:57Z",
+  "aliases": [
+    "CVE-2026-103424"
+  ],
+  "details": "The Anti-Spam by CleanTalk – Spam Protection Without CAPTCHA plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 6.88 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This vulnerability is exploitable once a comment from the attacker's email address has been approved; on default WordPress installations, only the first comment from a given email address is held for moderation, meaning subsequent comments auto-approve and immediately expose the payload to site visitors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103424"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cleantalk-spam-protect/tags/6.88/cleantalk.php#L248"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cleantalk-spam-protect/tags/6.88/lib/Cleantalk/ApbctWP/ContactsEncoder/ContactsEncoder.php#L97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cleantalk-spam-protect/tags/6.88/lib/Cleantalk/Common/ContactsEncoder/ContactsEncoder.php#L273"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cleantalk-spam-protect/tags/6.88/lib/Cleantalk/Common/ContactsEncoder/ContactsEncoder.php#L831"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cleantalk-spam-protect/tags/6.88/lib/Cleantalk/Common/ContactsEncoder/ContactsEncoder.php#L841"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c3a80bcd-170b-469b-b090-8f806f87b8d7?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T05:16:39Z"
+  }
+}

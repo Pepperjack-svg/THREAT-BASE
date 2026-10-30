@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-23cv-jrm2-r83v",
+  "modified": "2026-10-15T03:35:55Z",
+  "published": "2026-05-27T15:33:20Z",
+  "aliases": [
+    "CVE-2026-46003"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: qrtr: ns: Limit the total number of nodes\n\nCurrently, the nameserver doesn't limit the number of nodes it handles.\nThis can be an attack vector if a malicious client starts registering\nrandom nodes, leading to memory exhaustion.\n\nHence, limit the maximum number of nodes to 64. Note that, limit of 64 is\nchosen based on the current platform requirements. If requirement changes\nin the future, this limit can be increased.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46003"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27d5e84e810b0849d08b9aec68e48570461ce313"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4665a29c08e1b36bc9db4814f9dde3d23e8fd1b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c46413661431aa60fb134cd4ecdf8beaa39f824"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5cf6d5e5e3b804a44692fbf548a5179442e2e923"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8022876894d09ae485b499058c3357da683bcc5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/823310645065bd49666e84af689fa95192819f55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b703ee903b24974aca4bde99c7d25d66309d35dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed29887286aba96d1930f4ddb9f235f6b421073c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:18Z"
+  }
+}

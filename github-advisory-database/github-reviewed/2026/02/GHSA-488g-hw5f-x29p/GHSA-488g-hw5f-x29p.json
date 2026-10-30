@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-488g-hw5f-x29p",
+  "modified": "2026-02-02T22:04:45Z",
+  "published": "2026-02-02T12:31:14Z",
+  "aliases": [
+    "CVE-2025-6208"
+  ],
+  "summary": "llama-index-core vulnerable to Uncontrolled Resource Consumption",
+  "details": "The `SimpleDirectoryReader` component in `llama_index.core` version 0.12.23 suffers from uncontrolled memory consumption due to a resource management flaw. The vulnerability arises because the user-specified file limit (`num_files_limit`) is applied after all files in a directory are loaded into memory. This can lead to memory exhaustion and degraded performance, particularly in environments with limited resources. The issue is resolved in version 0.12.41.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "llama-index-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.12.41"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-6208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/run-llama/llama_index/commit/53614e2f7913c0e86b58add9470b3c900b6c60b2"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/run-llama/llama_index"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/7d722bb6-6567-4608-8b23-f95048d7605a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-02T22:04:45Z",
+    "nvd_published_at": "2026-02-02T11:16:17Z"
+  }
+}

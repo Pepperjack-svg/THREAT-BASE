@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2gcx-8mfj-5hvc",
+  "modified": "2026-10-03T06:31:11Z",
+  "published": "2026-10-03T06:31:11Z",
+  "aliases": [
+    "CVE-2026-92727"
+  ],
+  "details": "The EmbedPress – PDF Embedder, 3D PDF FlipBook, Google Reviews, YouTube Videos, Upload & Embed PDF documents plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'slidesShow' Block Attribute in all versions up to, and including, 4.6.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The slidesShow block attribute is interpolated into an unquoted data-carousel-options HTML attribute, allowing a payload containing spaces to break out of the attribute and inject additional DOM attributes such as onfocus event handlers onto the wrapper element.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92727"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/embedpress/tags/4.6.6/EmbedPress/Gutenberg/EmbedPressBlockRenderer.php#L1105"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/embedpress/tags/4.6.6/EmbedPress/Gutenberg/EmbedPressBlockRenderer.php#L1114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/embedpress/tags/4.6.6/EmbedPress/Gutenberg/EmbedPressBlockRenderer.php#L1549"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e2a22349-caa7-4756-ad2f-1861ccff6c30?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-03T04:18:03Z"
+  }
+}

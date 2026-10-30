@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rvhp-9hpj-rh7c",
+  "modified": "2026-10-21T03:32:11Z",
+  "published": "2026-10-21T00:32:59Z",
+  "aliases": [
+    "CVE-2026-85783"
+  ],
+  "details": "Crypt::Age versions before 0.004 for Perl allow CPU exhaustion via an unbounded number of recipient stanzas, each costing an X25519 scalar multiplication in unwrap_file_key.\n\nThe header parser accepts any number of recipient stanzas, and unwrap_file_key tries every identity against every X25519 stanza. Each attempt runs a scalar multiplication, an HKDF and a ChaCha20-Poly1305 open. The header MAC cannot be checked first, because its key comes from the file key, which only a successful unwrap produces.\n\nEach stanza is 98 bytes of attacker-chosen header and buys one scalar multiplication per identity held, and the file is rejected only after every one of them has run. A caller reaches this through decrypt, decrypt_file or decrypt_filehandle whenever it decrypts a file it did not write.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85783"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/GETTY/Crypt-Age-0.004/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/20/39"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-405"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T22:20:05Z"
+  }
+}

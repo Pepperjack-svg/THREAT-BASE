@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qcj2-99cg-mppf",
+  "modified": "2025-11-05T19:58:56Z",
+  "published": "2025-07-09T18:30:45Z",
+  "aliases": [
+    "CVE-2025-53652"
+  ],
+  "summary": "Jenkins Git Parameter Plugin vulnerable to code injection due to inexhaustive parameter check",
+  "details": "Jenkins Git Parameter Plugin implements a choice build parameter that lists the configured Git SCM’s branches, tags, pull requests, and revisions.\n\nGit Parameter Plugin 439.vb_0e46ca_14534 and earlier does not validate that the Git parameter value submitted to the build matches one of the offered choices.\n\nThis allows attackers with Item/Build permission to inject arbitrary values into Git parameters.\n\nGit Parameter Plugin 444.vca_b_84d3703c2 validates that the Git parameter value submitted to the build matches one of the offered choices.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.tools:git-parameter"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "444.vca"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-53652"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/git-parameter-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2025-07-09/#SECURITY-3419"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/07/09/4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1287",
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-07-09T20:47:01Z",
+    "nvd_published_at": "2025-07-09T16:15:24Z"
+  }
+}

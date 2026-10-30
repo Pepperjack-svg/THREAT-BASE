@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fq9r-wxr5-h64q",
+  "modified": "2025-07-09T03:30:22Z",
+  "published": "2025-07-09T03:30:22Z",
+  "aliases": [
+    "CVE-2025-34084"
+  ],
+  "details": "An unauthenticated information disclosure vulnerability exists in the WordPress Total Upkeep plugin (also known as BoldGrid Backup) prior to version 1.14.10. The plugin exposes multiple endpoints that allow unauthenticated users to retrieve detailed server configuration (env-info.php) and discover backup metadata (restore-info.json). These backups, which may include full SQL database dumps, are accessible without authentication if their paths are known or guessed. The restore-info.json endpoint discloses the absolute filesystem path of the latest backup, which attackers can convert into a web-accessible URL under wp-content/uploads/ and download. Extracting the database archive may yield credential hashes from the wp_users table, facilitating offline password cracking or credential stuffing attacks.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34084"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/2439376/boldgrid-backup"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/auxiliary/scanner/http/wp_total_upkeep_downloader.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vulncheck.com/advisories/wordpress-total-upkeep-boldgrid-backup-plugin-info-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/boldgrid-backup"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.boldgrid.com/wordpress-backup-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/49252"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-09T01:15:50Z"
+  }
+}

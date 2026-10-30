@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3pqf-hwqx-7c78",
+  "modified": "2025-11-18T03:31:14Z",
+  "published": "2025-06-18T12:30:50Z",
+  "aliases": [
+    "CVE-2022-50140"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmemstick/ms_block: Fix a memory leak\n\n'erased_blocks_bitmap' is never freed. As it is allocated at the same time\nas 'used_blocks_bitmap', it is likely that it should be freed also at the\nsame time.\n\nAdd the corresponding bitmap_free() in msb_data_clear().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16e07966638717416abf45393d6a80a5a1034429"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/37958980eb4cd71ae594ace093c11b6a91e165e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39be95d1ff7b44c1e969af72ba9da7332dfcc1da"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/54eb7a55be6779c4d0c25eaf5056498a28595049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9260a154b3b5e387dbceec7c0ac441470646bc6f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/961d7d12080fe70847f944d656e36cd0dd0214ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9d8b911fe3c3ed788c66edba7c90e32a4a7a5f53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/efd675246aec045507b9425c67b548cc2d782d8f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:43Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fq5x-5f3p-8v6r",
+  "modified": "2026-02-05T18:30:29Z",
+  "published": "2025-10-04T18:31:16Z",
+  "aliases": [
+    "CVE-2023-53615"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Fix deletion race condition\n\nSystem crash when using debug kernel due to link list corruption. The cause\nof the link list corruption is due to session deletion was allowed to queue\nup twice.  Here's the internal trace that show the same port was allowed to\ndouble queue for deletion on different cpu.\n\n20808683956 015 qla2xxx [0000:13:00.1]-e801:4: Scheduling sess ffff93ebf9306800 for deletion 50:06:0e:80:12:48:ff:50 fc4_type 1\n20808683957 027 qla2xxx [0000:13:00.1]-e801:4: Scheduling sess ffff93ebf9306800 for deletion 50:06:0e:80:12:48:ff:50 fc4_type 1\n\nMove the clearing/setting of deleted flag lock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53615"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d7da12483e98c451a51bd294a3d3494f0aee5eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6dfe4344c168c6ca20fe7640649aacfcefcccb26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4628a5b98e4c6d905e1f7638242612d7db7d9c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b05017cb4ff75eea783583f3d400059507510ab1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd06c45b326e44f0d21dc1b3fa23e71f46847e28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1ea164be545629bf442c22f508ad9e7b94ac100"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-04T16:15:58Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cgxf-x59w-2x25",
+  "modified": "2026-06-30T21:31:45Z",
+  "published": "2026-06-30T21:31:45Z",
+  "aliases": [
+    "CVE-2026-13207"
+  ],
+  "details": "FUXA versions 1.3.1 and prior contain an authentication bypass vulnerability via dot-segment path normalization in the REST API. The API router fails to normalize dot-segment sequences before applying authentication middleware, allowing unauthenticated requests to access protected endpoints by prefixing paths with dot-segments such as /api/./users, /api/./roles, and /api/project/../users. These requests bypass authentication checks and return sensitive user and role data without credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-181-02.json"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/frangoteam/FUXA/releases"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-181-02"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-290"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-30T21:16:30Z"
+  }
+}

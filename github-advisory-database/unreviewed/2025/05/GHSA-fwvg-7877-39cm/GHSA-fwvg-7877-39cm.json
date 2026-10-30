@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fwvg-7877-39cm",
+  "modified": "2025-11-17T18:30:22Z",
+  "published": "2025-05-16T15:31:02Z",
+  "aliases": [
+    "CVE-2025-37890"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet_sched: hfsc: Fix a UAF vulnerability in class with netem as child qdisc\n\nAs described in Gerrard's report [1], we have a UAF case when an hfsc class\nhas a netem child qdisc. The crux of the issue is that hfsc is assuming\nthat checking for cl->qdisc->q.qlen == 0 guarantees that it hasn't inserted\nthe class in the vttree or eltree (which is not true for the netem\nduplicate case).\n\nThis patch checks the n_active class variable to make sure that the code\nwon't insert the class in the vttree or eltree twice, catering for the\nreentrant case.\n\n[1] https://lore.kernel.org/netdev/CAHcdcOm+03OD2j6R0=YHKqmy=VgJ8xEOKuP6c7mSgnp-TEJJbw@mail.gmail.com/",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37890"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/141d34391abbb315d68556b7c67ad97885407547"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/273bbcfa53541cde38b2003ad88a59b770306421"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e7093c7a8aba5d4f8809f271488e5babe75e202"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6082a87af4c52f58150d40dec1716011d871ac21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8df7d37d626430035b413b97cee18396b3450bef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac39fd4a757584d78ed062d4f6fd913f83bd98b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0cf8ee23e1915431f262a7b2dee0c7a7d699af0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3e949a39a91d1f829a4890e7dfe9417ac72e4d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/08/msg00010.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-16T13:15:52Z"
+  }
+}

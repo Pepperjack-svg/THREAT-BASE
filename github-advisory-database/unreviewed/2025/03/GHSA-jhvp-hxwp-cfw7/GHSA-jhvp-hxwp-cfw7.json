@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jhvp-hxwp-cfw7",
+  "modified": "2025-03-14T00:30:50Z",
+  "published": "2025-03-14T00:30:50Z",
+  "aliases": [
+    "CVE-2022-49128"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/bridge: Add missing pm_runtime_put_sync\n\npm_runtime_get_sync() will increase the rumtime PM counter\neven when it returns an error. Thus a pairing decrement is needed\nto prevent refcount leak. Fix this by replacing this API with\npm_runtime_resume_and_get(), which will not change the runtime\nPM counter on error. Besides, a matching decrement is needed\non the error handling path to keep the counter balanced.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46f47807738441e354873546dde0b000106c068a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/792533e54cd6e89191798ccd1abd590c62b9077e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9df80dc738926a2ea4bd1ce5993c3d0f4b0e855c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff13c90d7f7ab606b37be6d15140d19013d6736c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:50Z"
+  }
+}

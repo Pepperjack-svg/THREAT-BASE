@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j3fw-w5gf-rpg8",
+  "modified": "2025-12-24T12:30:29Z",
+  "published": "2025-12-24T12:30:29Z",
+  "aliases": [
+    "CVE-2025-68355"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix exclusive map memory leak\n\nWhen excl_prog_hash is 0 and excl_prog_hash_size is non-zero, the map also\nneeds to be freed. Otherwise, the map memory will not be reclaimed, just\nlike the memory leak problem reported by syzbot [1].\n\nsyzbot reported:\nBUG: memory leak\n  backtrace (crc 7b9fb9b4):\n    map_create+0x322/0x11e0 kernel/bpf/syscall.c:1512\n    __sys_bpf+0x3556/0x3610 kernel/bpf/syscall.c:6131",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68355"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/688b745401ab16e2e1a3b504863f0a45fd345638"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0022551745d72fc0e7bc8601234d690dee2178d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:15:58Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mfgv-xhqx-f8x7",
+  "modified": "2026-01-20T18:31:52Z",
+  "published": "2025-10-01T12:30:30Z",
+  "aliases": [
+    "CVE-2023-53479"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/acpi: Fix a use-after-free in cxl_parse_cfmws()\n\nKASAN and KFENCE detected an user-after-free in the CXL driver. This\nhappens in the cxl_decoder_add() fail path. KASAN prints the following\nerror:\n\n   BUG: KASAN: slab-use-after-free in cxl_parse_cfmws (drivers/cxl/acpi.c:299)\n\nThis happens in cxl_parse_cfmws(), where put_device() is called,\nreleasing cxld, which is accessed later.\n\nUse the local variables in the dev_err() instead of pointing to the\nreleased memory. Since the dev_err() is printing a resource, change the open\ncoded print format to use the %pr format specifier.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53479"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/316db489647b8ddc381682597e89787eac61a278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4cf67d3cc9994a59cf77bb9c0ccf9007fe916afe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/748fadc08bcbdaf573b34d9784bb3dbd87441dbf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:50Z"
+  }
+}

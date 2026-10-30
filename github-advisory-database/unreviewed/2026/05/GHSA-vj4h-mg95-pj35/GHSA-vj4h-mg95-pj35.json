@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vj4h-mg95-pj35",
+  "modified": "2026-06-25T21:31:18Z",
+  "published": "2026-05-27T15:33:13Z",
+  "aliases": [
+    "CVE-2026-45863"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni3c: dw: Fix memory leak in dw_i3c_master_i2c_xfers()\n\nThe dw_i3c_master_i2c_xfers() function allocates memory for the xfer\nstructure using dw_i3c_master_alloc_xfer(). If pm_runtime_resume_and_get()\nfails, the function returns without freeing the allocated xfer, resulting\nin a memory leak.\n\nAdd a dw_i3c_master_free_xfer() call to the error path to ensure the\nallocated memory is properly freed.\n\nCompile tested only. Issue found using a prototype static analysis tool\nand code review.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45863"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/140a45bd4f6db7d1b30cab967d29689b946c52fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2537089413514caaa9a5fdeeac3a34d45100f747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e71414e252c1cb235911008a98fd47927d3a55c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2c41467ef42f69a3958493a0395ba75174710dc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:16:58Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p66j-qj5c-q58g",
+  "modified": "2026-05-21T00:30:26Z",
+  "published": "2026-03-18T18:31:18Z",
+  "aliases": [
+    "CVE-2026-23257"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: liquidio: Fix off-by-one error in PF setup_nic_devices() cleanup\n\nIn setup_nic_devices(), the initialization loop jumps to the label\nsetup_nic_dev_free on failure. The current cleanup loop while(i--)\nskip the failing index i, causing a memory leak.\n\nFix this by changing the loop to iterate from the current index i\ndown to 0.\n\nAlso, decrement i in the devlink_alloc failure path to point to the\nlast successfully allocated index.\n\nCompile tested only. Issue found using code review.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23257"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/293eaad0d6d6b2a37a458c7deb7be345349cd963"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8558aef4e8a1a83049ab906d21d391093cfa7e7f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0d2389c8cdc1f05de5eb8663bffe9ed05dca769"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af38d9a5cb49fe9d0d282b44f17fdc1f3270d99d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d86c58eb005eb99da402452f3db7a6e0eae32815"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1216b80c9040a904d2ad7c8cd24ca0ff1f36932"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f86bd16280a0f88b538394e0565c56ce4756da99"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-193"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-18T18:16:23Z"
+  }
+}

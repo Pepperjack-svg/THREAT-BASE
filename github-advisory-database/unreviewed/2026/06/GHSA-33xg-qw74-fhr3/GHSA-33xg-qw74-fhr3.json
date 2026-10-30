@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-33xg-qw74-fhr3",
+  "modified": "2026-06-30T21:31:43Z",
+  "published": "2026-06-30T21:31:43Z",
+  "aliases": [
+    "CVE-2026-10129"
+  ],
+  "details": "IBM Langflow OSS 1.0.0 through 1.9.3 contains a Server-Side Request Forgery (SSRF) protection bypass vulnerability in the API Request component. An authenticated attacker with low-level privileges (flow author role) can bypass SSRF protections by enabling the follow_redirects parameter and supplying a public URL that redirects to internal/localhost addresses. The vulnerability exists because the application validates only the initial URL but does not re-validate redirect destinations. This allows attackers to access internal HTTP services, localhost endpoints, cloud metadata services, and private network resources that should be unreachable when SSRF protection is enabled. Successful exploitation can lead to disclosure of sensitive information including credentials, tokens, internal API responses, and administrative panel data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10129"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ibm.com/support/pages/node/7277561"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-30T20:17:26Z"
+  }
+}

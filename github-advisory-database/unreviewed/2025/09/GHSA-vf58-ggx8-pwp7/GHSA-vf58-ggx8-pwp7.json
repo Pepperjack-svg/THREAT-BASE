@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vf58-ggx8-pwp7",
+  "modified": "2025-11-25T15:31:33Z",
+  "published": "2025-09-19T21:31:19Z",
+  "aliases": [
+    "CVE-2025-34199"
+  ],
+  "details": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host versions prior to 22.0.1049 and Application versions prior to 20.0.2786 (VA and SaaS deployments) contain insecure defaults and code patterns that disable TLS/SSL certificate verification for communications to printers and internal microservices. In multiple places, the application sets libcurl/PHP transport options such that CURLOPT_SSL_VERIFYHOST and CURLOPT_SSL_VERIFYPEER are effectively disabled, and environment variables (for example API_*_VERIFYSSL=false) are used to turn off verification for gateway and microservice endpoints. As a result, the client accepts TLS connections without validating server certificates (and, in some cases, uses clear-text HTTP), permitting on-path attackers to perform man-in-the-middle (MitM) attacks. An attacker able to intercept network traffic between the product and printers or microservices can eavesdrop on and modify sensitive data (including print jobs, configuration, and authentication tokens), inject malicious payloads, or disrupt service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/saas/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/va/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pierrekim.github.io/blog/2025-04-08-vasion-printerlogic-83-vulnerabilities.html#va-insecure-communications"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vasion-print-printerlogic-insecure-ssl-verification-allows-mitm-attacks"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295",
+      "CWE-319"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-19T19:15:40Z"
+  }
+}

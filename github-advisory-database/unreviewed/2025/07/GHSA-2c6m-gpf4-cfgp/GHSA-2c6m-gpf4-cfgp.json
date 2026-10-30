@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2c6m-gpf4-cfgp",
+  "modified": "2025-07-30T18:31:36Z",
+  "published": "2025-07-30T18:31:36Z",
+  "aliases": [
+    "CVE-2025-50578"
+  ],
+  "details": "LinuxServer.io heimdall 2.6.3-ls307 contains a vulnerability in how it handles user-supplied HTTP headers, specifically `X-Forwarded-Host` and `Referer`. An unauthenticated remote attacker can manipulate these headers to perform Host Header Injection and Open Redirect attacks. This allows the loading of external resources from attacker-controlled domains and unintended redirection of users, potentially enabling phishing, UI redress, and session theft. The vulnerability exists due to insufficient validation and trust of untrusted input, affecting the integrity and trustworthiness of the application.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-50578"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/linuxserver/Heimdall/issues/1451"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/linuxserver/Heimdall"
+    },
+    {
+      "type": "WEB",
+      "url": "https://medium.com/@juanfelipeoz.rar/cve-2025-50578-exploiting-host-header-injection-open-redirect-in-heimdall-application-733afceff2ea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-30T16:15:28Z"
+  }
+}

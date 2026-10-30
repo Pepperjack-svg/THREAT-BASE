@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h347-fx62-m8r9",
+  "modified": "2025-03-17T18:31:50Z",
+  "published": "2025-03-17T18:31:50Z",
+  "aliases": [
+    "CVE-2022-49480"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: imx-hdmi: Fix refcount leak in imx_hdmi_probe\n\nof_find_device_by_node() takes reference, we should use put_device()\nto release it. when devm_kzalloc() fails, it doesn't have a\nput_device(), it will cause refcount leak.\nAdd missing put_device() to fix this.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49480"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81b7edaabd44ba133006ad72056914eb36828d60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8205a0114db10ec41bd2b748cdd7528632082eca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf760e494ee5fa6bc2dc222f0098c741ad460801"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed46731d8e86c8d65f5fc717671e1f1f6c3146d2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:24Z"
+  }
+}

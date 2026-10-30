@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jqww-wr6j-993j",
+  "modified": "2026-06-14T06:30:23Z",
+  "published": "2026-06-08T18:31:51Z",
+  "aliases": [
+    "CVE-2026-46277"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/zone_device: do not touch device folio after calling ->folio_free()\n\nThe contents of a device folio can immediately change after calling\n->folio_free(), as the folio may be reallocated by a driver with a\ndifferent order.  Instead of touching the folio again to extract the\npgmap, use the local stack variable when calling percpu_ref_put_many().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39928984956037cabd304321cb8f342e47421db5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85be0a262e39c706edb53c88af8afde2e98222ba"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-08T17:16:45Z"
+  }
+}

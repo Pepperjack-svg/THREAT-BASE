@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vg3j-hpm9-8v5v",
+  "modified": "2026-09-02T13:35:21Z",
+  "published": "2026-03-10T18:22:02Z",
+  "aliases": [
+    "CVE-2026-29113"
+  ],
+  "summary": "Craft CMS has a potential information disclosure vulnerability in preview tokens",
+  "details": "# Summary\n\nCraft CMS has a CSRF issue in the preview token endpoint at `/actions/preview/create-token`.  The endpoint accepts an attacker-supplied `previewToken`.\n\nBecause the action does not require POST and does not enforce a CSRF token, an attacker can force a logged-in victim editor to mint a preview token chosen by the attacker.  \n\nThat token can then be used by the attacker (without authentication) to access previewed/unpublished content tied to the victim’s authorized preview scope.\n\n---\n\n## Preconditions\n- Victim is logged in to Craft control panel.\n- Victim has active preview authorization in session for target content (e.g., opened/edited an entry).\n- The attacker must know the target’s `canonicalId` and public URL path of that entry.\n\n## 1) Attacker prepares a fixed token\nUse any 32-character value, for example:\n```text\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n```\n\n## 2) CSRF victim into minting that token\nSend the victim a link (or top-level redirect) such as:\n```text\nhttps://TARGET/actions/preview/create-token?elementType=craft%5Celements%5CEntry&canonicalId=123&siteId=1&previewToken=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&redirect=https%3A%2F%2FTARGET%2F\n```\n\nIf the victim is logged in and authorized for `previewElement:123`, Craft creates that exact token.\n\n## 3) Attacker accesses preview content unauthenticated\n```bash\ncurl -i 'https://TARGET/news/known-entry-slug?token=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'\n```\n\nExpected vulnerable behavior:\n\n- Response renders preview/unpublished state (draft/provisional context), not just normal public content.\n\n---\n\n# Impact\n- CSRF-based minting of attacker-known preview tokens.\n- Unauthorized access to draft/provisional/revision content via token replay.\n- Stealthy one-click exploitation against logged-in editors/admins.\n- No dependency on forwarded-host poisoning.\n\n---",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-RC1"
+            },
+            {
+              "fixed": "4.17.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-RC1"
+            },
+            {
+              "fixed": "5.9.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-vg3j-hpm9-8v5v"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-29113"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/6a88468dc35a27cccc8fef254f415a447d4a07cc"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287",
+      "CWE-352"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-10T18:22:02Z",
+    "nvd_published_at": "2026-03-10T20:16:38Z"
+  }
+}

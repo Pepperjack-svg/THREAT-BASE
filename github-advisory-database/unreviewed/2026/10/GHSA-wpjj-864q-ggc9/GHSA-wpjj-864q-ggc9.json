@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wpjj-864q-ggc9",
+  "modified": "2026-10-20T21:30:38Z",
+  "published": "2026-10-15T09:30:34Z",
+  "aliases": [
+    "CVE-2026-102466"
+  ],
+  "details": "In Eclipse Vert.x versions [4.0.0, 4.5.34] or [5.0.0,5.0.12] or [5.1.0,5.1.9] or [5.2.0, 5.2.0], the Vert.x MySQL client (vertx-mysql-client) pre-allocates an array for column definitions based on a server-declared column count with no upper-bound validation. A malicious or compromised MySQL server, or an attacker with man-in-the-middle positioning, can send a crafted result set packet with an extremely large column count, causing the client to attempt a massive heap allocation. The resulting OutOfMemoryError crashes the Netty event loop thread, causing a complete denial of service for all connections and verticles in the Vert.x application.\n\n\n\nThe impacted component is io.vertx:vertx-mysql-client.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-vertx/vertx-sql-client/security/advisories/GHSA-9jxp-x3fr-ffqh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102466"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/342"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-789"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T09:17:15Z"
+  }
+}

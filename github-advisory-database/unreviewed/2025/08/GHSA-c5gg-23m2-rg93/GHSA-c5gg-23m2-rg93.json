@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c5gg-23m2-rg93",
+  "modified": "2025-11-26T18:30:58Z",
+  "published": "2025-08-19T18:31:33Z",
+  "aliases": [
+    "CVE-2025-38596"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: Fix UAF in panthor_gem_create_with_handle() debugfs code\n\nThe object is potentially already gone after the drm_gem_object_put().\nIn general the object should be fully constructed before calling\ndrm_gem_handle_create(), except the debugfs tracking uses a separate\nlock and list and separate flag to denotate whether the object is\nactually initialized.\n\nSince I'm touching this all anyway simplify this by only adding the\nobject to the debugfs when it's ready for that, which allows us to\ndelete that separate flag. panthor_gem_debugfs_bo_rm() already checks\nwhether we've actually been added to the list or this is some error\npath cleanup.\n\nv2: Fix build issues for !CONFIG_DEBUGFS (Adrián)\n\nv3: Add linebreak and remove outdated comment (Liviu)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38596"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5f2be12442db6a2904e6e31b0e3b5ad5aebf868b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe69a391808404977b1f002a6e7447de3de7a88e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-19T17:15:37Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xfxj-hhhx-9jv8",
+  "modified": "2026-01-24T09:30:27Z",
+  "published": "2026-01-24T09:30:27Z",
+  "aliases": [
+    "CVE-2026-1103"
+  ],
+  "details": "The AIKTP plugin for WordPress is vulnerable to unauthorized modification of data due to missing authorization checks on the /aiktp/getToken REST API endpoint in all versions up to, and including, 5.0.04. The endpoint uses the 'verify_user_logged_in' as a permission callback, which only checks if a user is logged in, but fails to verify if the user has administrative capabilities. This makes it possible for authenticated attackers with Subscriber-level access and above to retrieve the administrator's 'aiktpz_token' access token, which can then be used to create posts, upload media library files, and access private content as the administrator.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1103"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/aiktp/tags/5.0.04/includes/aiktp-sync.php#L123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/aiktp/tags/5.0.04/includes/aiktp-sync.php#L143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3445248%40aiktp&new=3445248%40aiktp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/84846d95-792d-4569-b0eb-876d82d0beee?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-24T08:16:09Z"
+  }
+}

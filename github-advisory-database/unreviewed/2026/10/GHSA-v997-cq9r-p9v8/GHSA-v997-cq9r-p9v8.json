@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v997-cq9r-p9v8",
+  "modified": "2026-10-21T15:41:59Z",
+  "published": "2026-10-18T18:32:03Z",
+  "aliases": [
+    "CVE-2026-98778"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinder: fix is_failure flag for superseded transaction cleanup\n\nWhen a TF_UPDATE_TXN transaction supersedes a pending async transaction,\nbinder_release_entire_buffer() is called with is_failure=false. Since the\nsuperseded transaction was never delivered, binder_apply_fd_fixups() was\nnever called and no fds were installed in the target process.\n\nWith is_failure=false, the BINDER_TYPE_FDA cleanup handler interprets\nstale buffer contents as installed fd numbers and passes them to\nbinder_deferred_fd_close(), closing unrelated file descriptors.\n\nPass is_failure=true since the transaction was never delivered to the\ntarget, matching the semantics of all other undelivered-transaction\ncleanup paths.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98778"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ab671b50714ad8e359cf37eb041d8044319ccdc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22c135635fdd9816c0ef140d6de7b2e4fdf73e89"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60a9f7323ae7318a7cce0d387c318da24f1e8726"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86cdcc87d4ba60aebf94ba3346b3c900c5cd79ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e9b364e46d594c2ec663c9c49f10c1ca541ecc0f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:31Z"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3wpc-2mx8-q7f6",
+  "modified": "2026-10-03T12:31:11Z",
+  "published": "2026-09-24T18:31:31Z",
+  "aliases": [
+    "CVE-2026-93826"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: hidpp: fix potential UAF in hidpp_connect_event()\n\nIf input_register_device() fails, we call input_free_device(), but keep\nstale pointer to the old device in hidpp->input, which could potentially\nlead to UAF. Fix that by resetting it to NULL before returning from\nhidpp_connect_event().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93826"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3303398cc2aa255ba251650a30024e11d48ea6c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b8b2e58b078cd30e121401535541bb8a6d57133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d7637f4d050d105177217e64b869f56f9825060"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6df6b1f2c49678211f65647c300bc51dda02893b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e03fd646adad7f97fa4429ec5f38cee9bde5276e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:16Z"
+  }
+}

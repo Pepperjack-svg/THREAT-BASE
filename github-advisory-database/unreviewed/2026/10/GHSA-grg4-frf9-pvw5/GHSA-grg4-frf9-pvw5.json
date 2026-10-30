@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-grg4-frf9-pvw5",
+  "modified": "2026-10-01T21:32:53Z",
+  "published": "2026-10-01T21:32:52Z",
+  "aliases": [
+    "CVE-2026-82358"
+  ],
+  "details": "RT-Labs AB C-Open CANopen contains a write protection bypass in the SDO (Service Data Object) server implementation 'src/co_sdo_server.c' that fails to properly validate write permissions when processing download-segment frames. An unauthenticated attacker on the CAN bus can initiate an SDO upload for a read-only Object Dictionary (OD) entry, which sets a data pointer to the read-only object, then send download-segment frames to write to that memory location. The download-segment handler does not verify that a download session is active, allowing any CANopen node to overwrite read-only OD entries using two SDO frames. Note that CANopen protocol operates over CAN bus and does not provide built-in authentication mechanisms. Fixed in 1.1.1.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82358"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rtlabs-com/c-open/releases/tag/public%2Fv1.1.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2025/va-26-275-02.json"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rt-labs.com/wp-content/uploads/2026/09/RRTL-260929-01.pdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-82358"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-01T20:17:32Z"
+  }
+}

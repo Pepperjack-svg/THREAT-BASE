@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qf7c-7r9h-mm92",
+  "modified": "2025-12-19T19:23:40Z",
+  "published": "2025-12-19T00:31:42Z",
+  "aliases": [
+    "CVE-2025-68384"
+  ],
+  "summary": "Elasticsearch has Excessive Allocation of Resources via Submission of Oversized User Settings Data",
+  "details": "Allocation of Resources Without Limits or Throttling (CWE-770) in Elasticsearch can allow a low-privileged authenticated user to cause Excessive Allocation (CAPEC-130) causing a persistent denial of service (OOM crash) via submission of oversized user settings data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.elasticsearch.plugin:x-pack-security"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.19.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.elasticsearch.plugin:x-pack-security"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "9.0.0"
+            },
+            {
+              "fixed": "9.1.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.elasticsearch.plugin:x-pack-security"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "9.2.0"
+            },
+            {
+              "fixed": "9.2.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68384"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/elastic/elasticsearch/pull/138691"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/elastic/elasticsearch/commit/ab1d99ae033f2a23a8856b47a2d86652ad63a39a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/elastic/elasticsearch/commit/b46a4f64baea79c4d3afd58bda39d258de97210a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/elasticsearch-8-19-9-9-1-9-and-9-2-3-security-update-esa-2025-33/384181"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/elastic/elasticsearch"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-19T19:23:40Z",
+    "nvd_published_at": "2025-12-18T22:16:02Z"
+  }
+}

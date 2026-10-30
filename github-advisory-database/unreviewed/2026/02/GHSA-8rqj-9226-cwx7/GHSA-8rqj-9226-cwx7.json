@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8rqj-9226-cwx7",
+  "modified": "2026-09-08T21:32:15Z",
+  "published": "2026-02-18T18:30:40Z",
+  "aliases": [
+    "CVE-2025-70151"
+  ],
+  "details": "code-projects Scholars Tracking System 1.0 allows an authenticated attacker to achieve remote code execution via unrestricted file upload. The endpoints update_profile_picture.php and upload_picture.php store uploaded files in a web-accessible uploads/ directory using the original, user-supplied filename without validating the file type or extension. By uploading a PHP file and then requesting it from /uploads/, an attacker can execute arbitrary PHP code as the web server user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-70151"
+    },
+    {
+      "type": "WEB",
+      "url": "https://0x0bito.github.io/posts/CVE-2025-70151-Scholars-FileUpload-RCE"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code-projects.org/scholars-tracking-system-in-php-with-source-code"
+    },
+    {
+      "type": "WEB",
+      "url": "https://youngkevinn.github.io/posts/CVE-2025-70151-Scholars-FileUpload-RCE"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-18T18:24:20Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4gx4-w2xq-pwmj",
+  "modified": "2025-10-21T12:31:23Z",
+  "published": "2025-10-21T12:31:23Z",
+  "aliases": [
+    "CVE-2022-49199"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/nldev: Prevent underflow in nldev_stat_set_counter_dynamic_doit()\n\nThis code checks \"index\" for an upper bound but it does not check for\nnegatives.  Change the type to unsigned to prevent underflows.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a495ef04d5f42e6f00eb2bec1ee9075e3d5a771"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87e0eacb176f9500c2063d140c0a1d7fa51ab8a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6dd8669b8299a3a536cd92a7069152a7704da1d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:56Z"
+  }
+}

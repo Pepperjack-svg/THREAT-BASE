@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xg9f-423r-vcp9",
+  "modified": "2026-04-08T06:31:27Z",
+  "published": "2026-04-08T06:31:27Z",
+  "aliases": [
+    "CVE-2026-4299"
+  ],
+  "details": "The MainWP Child Reports plugin for WordPress is vulnerable to Missing Authorization in all versions up to and including 2.2.6. This is due to a missing capability check in the heartbeat_received() function in the Live_Update class. This makes it possible for authenticated attackers, with Subscriber-level access and above, to obtain MainWP Child Reports activity log entries (including action summaries, user information, IP addresses, and contextual data) via the WordPress Heartbeat API by sending a crafted heartbeat request with the 'wp-mainwp-stream-heartbeat' data key.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4299"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mainwp-child-reports/tags/2.2.6/classes/class-live-update.php#L182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mainwp-child-reports/tags/2.2.6/classes/class-live-update.php#L44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mainwp-child-reports/trunk/classes/class-live-update.php#L182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mainwp-child-reports/trunk/classes/class-live-update.php#L44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3490157%40mainwp-child-reports&new=3490157%40mainwp-child-reports&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/7d4141bd-cd3f-44e9-b423-be03377a342d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-08T05:16:06Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x5r8-cmvp-6558",
+  "modified": "2026-10-23T15:31:33Z",
+  "published": "2026-10-23T15:31:33Z",
+  "aliases": [
+    "CVE-2026-98971"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: exar: initialize the ID before registering its cleanup\n\ndevm_add_action_or_reset() invokes the cleanup action immediately when\nregistering the action fails.  gpio_exar_probe() currently stores the\nallocated ID in exar_gpio only after registering the action, so that\nfailure makes exar_devm_ida_free() release ID 0.  If the allocated ID is\nnonzero, this leaks that ID and can free ID 0 belonging to another device.\n\nStore the ID before registering the cleanup action so both the immediate\nfailure path and normal device teardown release the correct allocation.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98971"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01318927a9055136c207399eeb36ce07becac179"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d69e74034b208588636ecc177e0dd43a7696af3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b78c114600ae3df90c083c72c290437b068577c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf3d841ef12fcbec4458e2750956b738b043a226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7ec4dbd2a073dd53b6349be1c586fe8580dd6b2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:18Z"
+  }
+}

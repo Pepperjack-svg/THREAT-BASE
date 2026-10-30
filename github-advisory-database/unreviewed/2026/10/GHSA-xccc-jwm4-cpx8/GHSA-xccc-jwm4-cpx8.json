@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xccc-jwm4-cpx8",
+  "modified": "2026-10-09T00:31:46Z",
+  "published": "2026-10-09T00:31:46Z",
+  "aliases": [
+    "CVE-2026-107830"
+  ],
+  "details": "Jivejdon from commit e0306088 through commit ee67a65e lacks rate limiting on the unauthenticated /account/smsVRAction endpoint handled by SmsQQAction, allowing unlimited SMS sending. Attackers can load newAccount.jsp to set session attributes, then repeatedly call the endpoint to harass arbitrary phone numbers and exhaust the operator's Tencent Cloud SMS balance.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107830"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/banq/jivejdon/issues/28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/banq/jivejdon"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/banq/jivejdon/blob/ee67a65e65228644a71c8317d7e34deea50f95ef/application/account/newAccount.jsp#L24-L29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/banq/jivejdon/blob/ee67a65e65228644a71c8317d7e34deea50f95ef/src/main/java/com/jdon/jivejdon/presentation/action/account/SmsQQAction.java#L23-L79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jivejdon-through-commit-ee67a65e-missing-rate-limiting-via-account-smsvraction-sms-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-799"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T22:17:30Z"
+  }
+}

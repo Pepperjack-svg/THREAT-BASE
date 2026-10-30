@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c6c4-gfjc-9wrj",
+  "modified": "2025-12-23T00:30:29Z",
+  "published": "2025-07-25T18:30:39Z",
+  "aliases": [
+    "CVE-2025-38437"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix potential use-after-free in oplock/lease break ack\n\nIf ksmbd_iov_pin_rsp return error, use-after-free can happen by\naccessing opinfo->state and opinfo_put and ksmbd_fd_put could\ncalled twice.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38437"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/50f930db22365738d9387c974416f38a06e8057e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8106adc21a2270c16abf69cd74ccd7c79c6e7acd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/815f1161d6dbc4c54ccf94b7d3fdeab34b4d7477"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97c355989928a5f60b228ef5266c1be67a46cdf9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e38ec88a2b42c494601b1213816d75f0b54d9bf0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T16:15:29Z"
+  }
+}

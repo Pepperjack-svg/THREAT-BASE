@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g687-j9p7-p4rx",
+  "modified": "2026-10-23T15:31:34Z",
+  "published": "2026-10-23T15:31:34Z",
+  "aliases": [
+    "CVE-2026-99007"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/fb-helper: defer setup when fbdev_probe() fails, not just on -EAGAIN\n\n__drm_fb_helper_initial_config_and_unlock() calls\ndrm_client_modeset_probe() first, which already fills in each\nmode_set->mode/num_connectors for every connected output, and only\nafterwards calls drm_fb_helper_single_fb_probe() to create\nfb_helper->fb and wire it into those mode_sets via\ndrm_setup_crtcs_fb().\n\nIf drm_fb_helper_single_fb_probe() fails with anything other than\n-EAGAIN (e.g. dev->driver->fbdev_probe() itself fails), the function\nbails out before drm_setup_crtcs_fb() runs and before setting\nfb_helper->deferred_setup. The client is left with mode_sets that\nhave a mode and connectors but mode_set->fb == NULL, and nothing\nmarks this fb_helper as needing a retry.\n\n__drm_fb_helper_restore_fbdev_mode_unlocked() only skips committing\nwhen fb_helper->deferred_setup is set, so a later .restore() call\n(drm_lastclose() on process exit, in this report) commits the stale\nmode_set through drm_client_modeset_commit() ->\ndrm_client_modeset_commit_atomic() -> __drm_atomic_helper_set_config(),\nwhich hits WARN_ON(!set->fb).\n\nMark fb_helper->deferred_setup on any drm_fb_helper_single_fb_probe()\nfailure, not just -EAGAIN, so restore keeps skipping the commit until\na later hotplug event successfully re-probes and re-populates\nmode_set->fb. The real error code is still returned to the caller\nunchanged.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99007"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b303696f61461b3569019d7fcac6a646652b2b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a2006c675758f0c765b36fec6b49d17e89159cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e7b508c7c60dec7a86b7eb2a1b7e6d174afa457"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/755c94d178b7e972bb766199d34e4ba4f63a89eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d510ed273854177f0a3ed330145858b2fe667f81"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:23Z"
+  }
+}

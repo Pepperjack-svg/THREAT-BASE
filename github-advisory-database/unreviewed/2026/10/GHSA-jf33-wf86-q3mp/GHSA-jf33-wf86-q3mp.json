@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jf33-wf86-q3mp",
+  "modified": "2026-10-16T06:30:24Z",
+  "published": "2026-10-16T06:30:24Z",
+  "aliases": [
+    "CVE-2026-111443"
+  ],
+  "details": "Wheels 4.0.6 through 4.1.2 lets an unauthenticated client switch a request into a separate test application context, including in production, by supplying an X-Wheels-Test-Context header or WHEELS_TEST_CONTEXT cookie with any value, or including a test-runner path anywhere in the URL, even the query string. The alternate application uses the same configuration, environment, datasource and debug settings: this is not an authentication bypass or data/debug escalation. It can bypass maintenance mode enabled only at runtime, provide a second set of in-memory rate-limit counters, and trigger additional application-startup side effects and memory use. This is fixed in 4.2.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/wheels-dev/wheels/security/advisories/GHSA-xcj9-wm25-4cg4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111443"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-348"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T04:18:30Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vv75-456q-6j78",
+  "modified": "2025-11-10T21:30:28Z",
+  "published": "2025-05-01T15:31:49Z",
+  "aliases": [
+    "CVE-2022-49835"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: hda: fix potential memleak in 'add_widget_node'\n\nAs 'kobject_add' may allocated memory for 'kobject->name' when return error.\nAnd in this function, if call 'kobject_add' failed didn't free kobject.\nSo call 'kobject_put' to recycling resources.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49835"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02dea987ec1cac712c78e75d224ceb9bb73519ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a79f9568de08657fcdbc41d6fc4c0ca145a7a2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/455d99bd6baf19688048b6d42d9fa74eae27f93b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7140d7aaf93da6a665b454f91bb4dc6b1de218bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90b7d055e2b5f39429f9a9e3815b48a48530ef28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a5523f72bd2b0d66eef3d58810c6eb7b5ffc143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b688a3ec235222d9a84e43a48a6f31acb95baf2d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb0ac8d5e541224f599bc8e8f31a313faa4bf7b7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:06Z"
+  }
+}

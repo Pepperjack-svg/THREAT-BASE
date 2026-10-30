@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2px8-v868-2g2q",
+  "modified": "2025-11-12T21:30:58Z",
+  "published": "2025-05-02T18:31:32Z",
+  "aliases": [
+    "CVE-2023-53037"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: mpi3mr: Bad drive in topology results kernel crash\n\nWhen the SAS Transport Layer support is enabled and a device exposed to\nthe OS by the driver fails INQUIRY commands, the driver frees up the memory\nallocated for an internal HBA port data structure. However, in some places,\nthe reference to the freed memory is not cleared. When the firmware sends\nthe Device Info change event for the same device again, the freed memory is\naccessed and that leads to memory corruption and OS crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53037"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f822ae8fb2a20fffa71e9bfa9b203c03d72d3ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e45183978d64699df639e795235433a60f35047"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa11e4b6cdb403b9fdef6939550f6b36dd61624d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-02T16:15:22Z"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6pmm-j8mh-qwgf",
+  "modified": "2026-10-15T03:35:34Z",
+  "published": "2026-04-13T15:31:42Z",
+  "aliases": [
+    "CVE-2026-31422"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: cls_flow: fix NULL pointer dereference on shared blocks\n\nflow_change() calls tcf_block_q() and dereferences q->handle to derive\na default baseclass.  Shared blocks leave block->q NULL, causing a NULL\nderef when a flow filter without a fully qualified baseclass is created\non a shared block.\n\nCheck tcf_block_shared() before accessing block->q and return -EINVAL\nfor shared blocks.  This avoids the null-deref shown below:\n\n=======================================================================\nKASAN: null-ptr-deref in range [0x0000000000000038-0x000000000000003f]\nRIP: 0010:flow_change (net/sched/cls_flow.c:508)\nCall Trace:\n tc_new_tfilter (net/sched/cls_api.c:2432)\n rtnetlink_rcv_msg (net/core/rtnetlink.c:6980)\n [...]\n=======================================================================",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31422"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a280dd4bd1d616a01d6ffe0de284c907b555504"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/415ea0c973c754b9f375225807810eb9045f4293"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a09f72007201c9f667dc47f64517ec23eea65e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57f94ac7e953eece5ed4819605a18f3cdfc63dcc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/942813276edeb1741fa5b0a73471beb4e495fa08"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9bf5fc36a43f7b8b5507c96e74fb81f1e8b4957e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a208c3e1232997e9317887294c20008dfcb75449"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc707a4fd4c3b6ab2722e06bc359aa010e13d408"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-13T14:16:11Z"
+  }
+}

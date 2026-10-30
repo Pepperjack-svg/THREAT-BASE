@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9qw8-xx45-2wp7",
+  "modified": "2025-12-23T21:30:22Z",
+  "published": "2025-07-25T15:30:53Z",
+  "aliases": [
+    "CVE-2025-38416"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFC: nci: uart: Set tty->disc_data only in success path\n\nSetting tty->disc_data before opening the NCI device means we need to\nclean it up on error paths.  This also opens some short window if device\nstarts sending data, even before NCIUARTSETDRIVER IOCTL succeeded\n(broken hardware?).  Close the window by exposing tty->disc_data only on\nthe success path, when opening of the NCI device and try_module_get()\nsucceeds.\n\nThe code differs in error path in one aspect: tty->disc_data won't be\never assigned thus NULL-ified.  This however should not be relevant\ndifference, because of \"tty->disc_data=NULL\" in nci_uart_tty_open().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38416"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/000bfbc6bc334a93fffca8f5aa9583e7b6356cb5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55c3dbd8389636161090a2b2b6d2d709b9602e9c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a514fca2b8e95838a3ba600f31a18fa60b76d893"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a8acc7080ad55c5402a1b818b3008998247dda87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac6992f72bd8e22679c1e147ac214de6a7093c23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc7722619a9c307e9938d735cf4a2210d3d48dcb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e9799db771b2d574d5bf0dfb3177485e5f40d4d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc27ab48904ceb7e4792f0c400f1ef175edf16fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T14:15:33Z"
+  }
+}

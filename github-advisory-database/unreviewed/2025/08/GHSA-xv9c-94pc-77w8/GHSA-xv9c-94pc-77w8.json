@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xv9c-94pc-77w8",
+  "modified": "2025-11-26T00:30:15Z",
+  "published": "2025-08-22T18:31:23Z",
+  "aliases": [
+    "CVE-2025-38667"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: fix potential out-of-bound write\n\nThe buffer is set to 20 characters. If a caller write more characters,\ncount is truncated to the max available space in \"simple_write_to_buffer\".\nTo protect from OoB access, check that the input size fit into buffer and\nadd a zero terminator after copy to the end of the copied data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38667"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16285a0931869baa618b1f5d304e1e9d090470a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81a635b6eccd6fc889f6d07ab9583b705f739ce1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-22T16:15:42Z"
+  }
+}

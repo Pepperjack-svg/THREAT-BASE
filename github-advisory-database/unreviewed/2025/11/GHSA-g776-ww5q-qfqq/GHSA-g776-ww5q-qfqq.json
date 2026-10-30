@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g776-ww5q-qfqq",
+  "modified": "2025-11-14T18:31:35Z",
+  "published": "2025-11-13T21:31:19Z",
+  "aliases": [
+    "CVE-2025-60699"
+  ],
+  "details": "A buffer overflow vulnerability exists in the TOTOLINK A950RG Router firmware V5.9c.4592_B20191022_ALL within the `global.so` binary. The `getSaveConfig` function retrieves the `http_host` parameter from user input via `websGetVar` and copies it into a fixed-size stack buffer (`v13`) using `strcpy()` without performing any length checks. An unauthenticated remote attacker can exploit this vulnerability by sending a specially crafted HTTP request to the router's web interface, potentially leading to arbitrary code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-60699"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yifan20020708/SGTaint-0-day/blob/main/ToToLink/ToToLink-A950RG/2.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yifan20020708/SGTaint-0-day/blob/main/ToToLink/ToToLink-A950RG/CVE-2025-60699.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.totolink.net"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-13T20:15:52Z"
+  }
+}

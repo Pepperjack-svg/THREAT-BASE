@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q6fp-395r-83jv",
+  "modified": "2026-10-28T18:32:13Z",
+  "published": "2026-10-28T18:32:13Z",
+  "aliases": [
+    "CVE-2026-116285"
+  ],
+  "details": "HTTP::Body versions before 1.23_01 for Perl allow CPU exhaustion via quadratic regex backtracking when parsing chunked request bodies.\n\nIn chunked mode, used when no content length is given, add() matches each chunk-size line with `/^([\\da-fA-F]+).*\\x0D\\x0A/`. On a line of hex digits whose first LF has no CR before it, the digits and `.*` backtrack against each other, so a single add() takes time quadratic in the line's length. Nothing limits how long the line can be.\n\nA remote attacker can exhaust CPU in applications that pass chunked request bodies to HTTP::Body.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116285"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libwww-perl/HTTP-Body/commit/954a5343d2a095b59d357f28759c5388d1169574.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/GETTY/HTTP-Body-1.24/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1333"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T18:17:13Z"
+  }
+}

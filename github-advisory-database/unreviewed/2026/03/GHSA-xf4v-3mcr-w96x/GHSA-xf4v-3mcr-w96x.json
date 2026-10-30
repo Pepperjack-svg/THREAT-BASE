@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xf4v-3mcr-w96x",
+  "modified": "2026-04-23T21:31:17Z",
+  "published": "2026-03-25T12:30:22Z",
+  "aliases": [
+    "CVE-2026-23323"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (macsmc) Fix regressions in Apple Silicon SMC hwmon driver\n\nThe recently added macsmc-hwmon driver contained several critical\nbugs in its sensor population logic and float conversion routines.\n\nSpecifically:\n- The voltage sensor population loop used the wrong prefix (\"volt-\"\n  instead of \"voltage-\") and incorrectly assigned sensors to the\n  temperature sensor array (hwmon->temp.sensors) instead of the\n  voltage sensor array (hwmon->volt.sensors). This would lead to\n  out-of-bounds memory access or data corruption when both temperature\n  and voltage sensors were present.\n- The float conversion in macsmc_hwmon_write_f32() had flawed exponent\n  logic for values >= 2^24 and lacked masking for the mantissa, which\n  could lead to incorrect values being written to the SMC.\n\nFix these issues to ensure correct sensor registration and reliable\nmanual fan control.\n\nConfirm that the reported overflow in FIELD_PREP is fixed by declaring\nmacsmc_hwmon_write_f32() as __always_inline for a compile test.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23323"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5dd69b864911ae3847365e8bafe7854e79fbeecb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/625ef35b70d3883fb9a41cd5a988e64dd3e447d6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:29Z"
+  }
+}

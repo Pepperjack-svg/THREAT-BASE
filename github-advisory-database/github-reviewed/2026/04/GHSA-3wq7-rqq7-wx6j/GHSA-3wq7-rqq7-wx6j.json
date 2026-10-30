@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3wq7-rqq7-wx6j",
+  "modified": "2026-04-01T21:47:07Z",
+  "published": "2026-04-01T21:47:07Z",
+  "aliases": [
+    "CVE-2026-34517"
+  ],
+  "summary": "AIOHTTP has late size enforcement for non-file multipart fields causes memory DoS",
+  "details": "### Summary\n\nFor some multipart form fields, aiohttp read the entire field into memory before checking client_max_size.\n\n### Impact\n\nIf an application uses `Request.post()` an attacker can send a specially crafted multipart request to force significant temporary memory allocation even when the request is ultimately rejected.\n\n-----\n\nPatch: https://github.com/aio-libs/aiohttp/commit/cbb774f38330563422ca0c413a71021d7b944145",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "aiohttp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.13.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.13.3"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/security/advisories/GHSA-3wq7-rqq7-wx6j"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34517"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/commit/cbb774f38330563422ca0c413a71021d7b944145"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/aio-libs/aiohttp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/releases/tag/v3.13.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-01T21:47:07Z",
+    "nvd_published_at": "2026-04-01T21:16:59Z"
+  }
+}

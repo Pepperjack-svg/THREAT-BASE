@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hfmq-6wjv-c7r3",
+  "modified": "2026-02-12T18:30:21Z",
+  "published": "2026-02-11T18:31:31Z",
+  "aliases": [
+    "CVE-2025-70085"
+  ],
+  "details": "An issue was discovered in OpenSatKit 2.2.1. The EventErrStr buffer has a fixed size of 256 bytes. The code uses sprintf to format two filenames (Source1Filename and the string returned by FileUtil_FileStateStr) into this buffer without any length checking and without using bounded format specifiers such as %.*s. If the filename length approaches OS_MAX_PATH_LEN (commonly 64-256 bytes), the combined formatted string together with constant text can exceed 256 bytes, resulting in a stack buffer overflow. Such unsafe sprintf calls are scattered across multiple functions in file.c, including FILE_ConcatenateCmd() and ConcatenateFiles(), all of which fail to validate the output length.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-70085"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/jonafk555"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenSatKit/OpenSatKit"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenSatKit/OpenSatKit/releases/tag/v2.2.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/OpenSatKit/OpenSatKit/master/cfs/apps/filemgr/fsw/src/file.c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-11T18:16:06Z"
+  }
+}

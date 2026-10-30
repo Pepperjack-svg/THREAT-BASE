@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jm55-4g4j-2rgw",
+  "modified": "2026-10-15T03:36:02Z",
+  "published": "2026-05-28T12:30:30Z",
+  "aliases": [
+    "CVE-2026-46136"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7921: fix a potential clc buffer length underflow\n\nThe buf_len is used to limit the iterations for retrieving the country\npower setting and may underflow under certain conditions due to changes\nin the power table in CLC.\n\nThis underflow leads to an almost infinite loop or an invalid power\nsetting resulting in driver initialization failure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0aa63d33742b805d1a218d18d12b983cce4b2f7b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a79b1a492bcfa725383b6580cd93a6862308c85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5373f8b19e568b5c217832b9bbef165bd2b2df14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90cc573fd2f46ddbc2c329e7814b5ba3deb7b939"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0111847f0b4f6023f6dd320114697514e024ba3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e451c325b000b9a0081fd93bc6d103d6943d4b55"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:29Z"
+  }
+}

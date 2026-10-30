@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g2vv-m9x5-457j",
+  "modified": "2025-12-24T12:30:27Z",
+  "published": "2025-12-24T12:30:27Z",
+  "aliases": [
+    "CVE-2023-53998"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwrng: virtio - Fix race on data_avail and actual data\n\nThe virtio rng device kicks off a new entropy request whenever the\ndata available reaches zero.  When a new request occurs at the end\nof a read operation, that is, when the result of that request is\nonly needed by the next reader, then there is a race between the\nwriting of the new data and the next reader.\n\nThis is because there is no synchronisation whatsoever between the\nwriter and the reader.\n\nFix this by writing data_avail with smp_store_release and reading\nit with smp_load_acquire when we first enter read.  The subsequent\nreads are safe because they're either protected by the first load\nacquire, or by the completion mechanism.\n\nAlso remove the redundant zeroing of data_idx in random_recv_done\n(data_idx must already be zero at this point) and data_avail in\nrequest_entropy (ditto).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53998"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22c30022cde6e2c88612b3a499223cfa912f1bc7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/241ef15776a7c8505008db689175b320d345ecd3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fc91f156b3f3446a1bce80cf4adedcbf41271c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/318657b4c2077289659f1cd9e2a34f6a3b208e3e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77471e4912d3960dafe141e268c44be8024fe4dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a43bcb0b661cbbf3ad797d2aee6b6fd06b8fc69d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac52578d6e8d300dd50f790f29a24169b1edd26c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c76d991b6f01a5d931e7053a73bc9524975a5215"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:15:52Z"
+  }
+}

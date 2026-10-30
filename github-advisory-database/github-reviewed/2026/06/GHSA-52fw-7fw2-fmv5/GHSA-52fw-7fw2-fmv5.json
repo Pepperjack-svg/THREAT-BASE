@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-52fw-7fw2-fmv5",
+  "modified": "2026-07-20T21:22:29Z",
+  "published": "2026-06-23T22:12:11Z",
+  "aliases": [
+    "CVE-2026-48493"
+  ],
+  "summary": "Snipe-IT Vulnerable to Privilege Escalation for self via API Permissions Assignment",
+  "details": "### Impact\nA user with only users.edit AND api permissions can send a PATCH to /api/v1/users/{their_own_id} and grant themselves any permission except admin and superuser — for example `assets.view`, `assets.create`, `reports.view`, import, etc.\n\n### Patches\nPatched in https://github.com/grokability/snipe-it/pull/19024",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-52fw-7fw2-fmv5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/pull/19024"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-23T22:12:11Z",
+    "nvd_published_at": "2026-06-23T23:16:49Z"
+  }
+}

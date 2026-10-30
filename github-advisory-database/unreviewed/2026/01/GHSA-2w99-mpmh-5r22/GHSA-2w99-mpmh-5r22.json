@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2w99-mpmh-5r22",
+  "modified": "2026-01-31T15:31:20Z",
+  "published": "2026-01-31T15:31:20Z",
+  "aliases": [
+    "CVE-2026-1165"
+  ],
+  "details": "The Popup Box plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 6.1.1. This is due to a flawed nonce implementation in the 'publish_unpublish_popupbox' function that verifies a self-created nonce rather than one submitted in the request. This makes it possible for unauthenticated attackers to change the publish status of popups via a forged request, granted they can trick a site administrator into performing an action such as clicking a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1165"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ays-popup-box/tags/6.1.0/admin/partials/ays-pb-admin-display.php#L22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ays-popup-box/tags/6.1.0/includes/lists/class-ays-pb-list-table.php#L701"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3439514@ays-popup-box/tags/6.1.1/&new=3444612@ays-popup-box/tags/6.1.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/585a9eb4-f394-4cb2-9050-659171a994d9?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-31T15:15:50Z"
+  }
+}

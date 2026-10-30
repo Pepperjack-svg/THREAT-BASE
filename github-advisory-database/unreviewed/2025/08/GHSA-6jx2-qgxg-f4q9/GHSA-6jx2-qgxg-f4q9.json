@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jx2-qgxg-f4q9",
+  "modified": "2025-08-20T18:30:21Z",
+  "published": "2025-08-20T15:31:42Z",
+  "aliases": [
+    "CVE-2025-51990"
+  ],
+  "details": "XWiki through version 17.3.0 is affected by multiple stored Cross-Site Scripting (XSS) vulnerabilities in the Administration interface, specifically under the Presentation section of the Global Preferences panel. An authenticated administrator can inject arbitrary JavaScript payloads into the HTTP Meta Info, Footer Copyright, and Footer Version fields. These inputs are stored and subsequently rendered without proper output encoding or sanitization on public-facing pages. As a result, the injected scripts are persistently executed in the browser context of any visitor to the affected instances including both authenticated and unauthenticated users. No user interaction is required beyond visiting a page that includes the malicious content. Successful exploitation can lead to session hijacking, credential theft, unauthorized actions via session riding, or further compromise of the application through client-side attacks. The vulnerability introduces significant risk in any deployment, especially in shared or internet-facing environments where administrator credentials may be compromised.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-51990"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/malcxlmj/cve-writeups/blob/main/CVE-2025-51990.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-20T15:15:33Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r296-8jjg-794r",
+  "modified": "2026-10-27T00:32:48Z",
+  "published": "2026-10-27T00:32:48Z",
+  "aliases": [
+    "CVE-2026-116742"
+  ],
+  "details": "HTSlib through 1.24 contains a heap out-of-bounds write and read vulnerability in bgzf_index_load_hfile() in bgzf.c that allows attackers to corrupt heap memory by supplying a crafted .gzi index entry count. A count of 0xFFFFFFFF truncates noffs to zero, causing writes past a malloc(0) buffer and an offs[-1] read in bgzf_useek(), resulting in heap corruption or crashes in tools like samtools and bcftools.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116742"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samtools/htslib/issues/2113"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samtools/htslib/pull/2057"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samtools/htslib/commit/18dddf02bb2c0053b32acec427723555a24b2873"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samtools/htslib"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samtools/htslib/blob/1.24/bgzf.c#L2504"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/htslib-bgzf-gzi-int-truncation-oob"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/htslib-through-1.24-heap-out-of-bounds-write-via-truncated-gzi-index-count"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-197"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T22:16:58Z"
+  }
+}

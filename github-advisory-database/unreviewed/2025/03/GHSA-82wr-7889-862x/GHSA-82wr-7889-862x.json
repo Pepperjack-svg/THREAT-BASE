@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-82wr-7889-862x",
+  "modified": "2025-04-14T21:32:23Z",
+  "published": "2025-03-27T18:31:28Z",
+  "aliases": [
+    "CVE-2023-53013"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nptdma: pt_core_execute_cmd() should use spinlock\n\nThe interrupt handler (pt_core_irq_handler()) of the ptdma\ndriver can be called from interrupt context. The code flow\nin this function can lead down to pt_core_execute_cmd() which\nwill attempt to grab a mutex, which is not appropriate in\ninterrupt context and ultimately leads to a kernel panic.\nThe fix here changes this mutex to a spinlock, which has\nbeen verified to resolve the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53013"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13ba563c2c8055ba8a637c9f70bb833b43cb4207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95e5fda3b5f9ed8239b145da3fa01e641cf5d53c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed0d8f731e0bf1bb12a7a37698ac613db20e2794"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-27T17:15:50Z"
+  }
+}

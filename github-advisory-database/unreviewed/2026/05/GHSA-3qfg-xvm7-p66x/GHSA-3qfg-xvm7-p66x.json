@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3qfg-xvm7-p66x",
+  "modified": "2026-06-01T18:31:41Z",
+  "published": "2026-05-28T12:30:33Z",
+  "aliases": [
+    "CVE-2026-46212"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: bla: prevent use-after-free when deleting claims\n\nWhen batadv_bla_del_backbone_claims() removes all claims for a backbone, it\ndoes this by dropping the link entry in the hash list. This list entry\nitself was one of the references which need to be dropped at the same time\nvia batadv_claim_put().\n\nBut the batadv_claim_put() must not be done before the last access to the\nclaim object in this function. Otherwise the claim might be freed already\nby the batadv_claim_release() function before the list entry was dropped.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46212"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00155f336a5e8b1006d2ca9ae7ad8fc4a44bb401"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0cc9847c64cb6e61118bc78c9187c8209a7197fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d4b241482d9025c537afb3c7c8419c72c0e0c82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/368449e467d5f1e2c2e987bf2bd57000ba75e10b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ae1709a314060a196981b344610d023ea841e57"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c5dc6d68e6ba7f0224a757a39ed52fcdb54d472"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1a99837bb6169cfb9187abaa2005e8f12079426"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b88c865dcf6e9f20bfe66a360d4b62941ef769b8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:36Z"
+  }
+}

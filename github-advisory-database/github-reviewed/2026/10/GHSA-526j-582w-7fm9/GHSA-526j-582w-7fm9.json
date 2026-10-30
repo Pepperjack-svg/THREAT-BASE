@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-526j-582w-7fm9",
+  "modified": "2026-10-15T20:09:11Z",
+  "published": "2026-10-15T20:09:11Z",
+  "aliases": [
+    "CVE-2026-62322"
+  ],
+  "summary": "Python Social Auth: Login CSRF in LINE backend (LineOAuth2) — missing OAuth state validation (incomplete fix of 5.0.0 campaign)",
+  "details": "### Impact\n\nApplications using the LINE Login backend are vulnerable to login CSRF / forced authentication. An attacker can start a LINE authorization flow for an account they control and trick a victim into visiting the callback URL with the attacker’s authorization code. Because the LINE backend did not validate the returned OAuth state, the application could accept the forged callback and log the victim in as the attacker-controlled LINE account.\n\nIf account linking is enabled, the same flaw can allow an attacker to link their LINE identity to a victim’s existing authenticated account, creating a persistent unauthorized login path.\n\n### Patches\n* https://github.com/python-social-auth/social-core/pull/1829\n\n### Workarounds\n  Only applications that enable the LINE backend are affected.\n\n### Credits\n\nThanks to Ta Duc Thien and Duc Anh Nguyen for reproting this via GitHub.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "social-auth-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.0.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/python-social-auth/social-core/security/advisories/GHSA-526j-582w-7fm9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/python-social-auth/social-core/pull/1829"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/python-social-auth/social-core/commit/5b3b90d07ebccc1f5b076445b27ea35ec059764b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/python-social-auth/social-core"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/python-social-auth/social-core/releases/tag/5.0.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-15T20:09:11Z",
+    "nvd_published_at": null
+  }
+}

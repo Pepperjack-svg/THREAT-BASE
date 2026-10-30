@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-78f4-72qq-hj94",
+  "modified": "2026-10-12T15:32:14Z",
+  "published": "2026-10-12T15:32:14Z",
+  "aliases": [
+    "CVE-2026-109180"
+  ],
+  "details": "jshERP through 3.6 contains an authorization bypass vulnerability that allows authenticated users to read data from unassigned warehouses by supplying depotId or depotIds request parameters. When depot_flag warehouse restriction is enabled, attackers can name arbitrary warehouse ids in endpoints like /depotItem/getMaterialDepotStockByParam to read stock levels, batch numbers, sales figures and priced bill lines within the tenant.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AnkesKasty/cve-request-poc/blob/a7b6d1423555812d8efa26c91c5d0683164b31e5/jshERP/poc_depot_derived_read_scope_bypass.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AnkesKasty/cve-request-poc/blob/a7b6d1423555812d8efa26c91c5d0683164b31e5/jshERP/poc_warehouse_and_price_read_bypass.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/controller/DepotController.java#L249-L283"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/controller/DepotItemController.java#L860-L881"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/8f28e7c2fe54d54de3621a414f5df1833dc5a55f/jshERP-boot/src/main/java/com/jsh/erp/service/DepotService.java#L276-L313"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jsherp-through-3.6-authorization-bypass-via-user-controlled-warehouse-ids"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T13:17:30Z"
+  }
+}

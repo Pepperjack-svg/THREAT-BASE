@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gg57-wg6f-c8vg",
+  "modified": "2026-06-01T21:30:45Z",
+  "published": "2026-06-01T21:30:44Z",
+  "aliases": [
+    "CVE-2026-49134"
+  ],
+  "details": "CodexBar prior to 0.32.0 contains a privilege escalation vulnerability in the CLI installer that allows local attackers to execute arbitrary commands as root by exploiting a race condition in temporary file handling. The installer creates a temporary file with mktemp, writes a privileged shell payload into it, and executes it with administrator privileges via bash, allowing a same-user local process to rewrite the installer body before the administrator prompt is approved, causing attacker-controlled commands to run as root.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/steipete/CodexBar/pull/1222"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/steipete/CodexBar/commit/dbc944d46cd4cf7877d1ca47c44556fe573b46e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/steipete/CodexBar/releases/tag/v0.32.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/codexbar-privilege-escalation-via-cli-installer-temp-file"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-377"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-01T21:16:46Z"
+  }
+}

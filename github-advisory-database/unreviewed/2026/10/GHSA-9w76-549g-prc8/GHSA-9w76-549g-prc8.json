@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9w76-549g-prc8",
+  "modified": "2026-10-05T21:31:34Z",
+  "published": "2026-10-05T21:31:34Z",
+  "aliases": [
+    "CVE-2026-105712"
+  ],
+  "details": "gpgtar in GnuPG before 2.5.19 can allow file overwrite via crafted data in an archive. When extracting an untrusted archive with --directory (aka -C) into an existing directory containing a pre-existing symlink, gpgtar can follow that symlink and create or overwrite a file outside the selected extraction directory. The write is limited by the extraction user's filesystem permissions. An archive extracted into a fresh empty directory does not have this risk.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105712"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gpg/gnupg/commit/7a2692fe5e580ae3bbb2a47abc4baaf1af65aa88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.gnupg.org/pipermail/gnupg-announce/2026q2/000504.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://static.dev.gnupg.org/T8159.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-61"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-05T19:17:19Z"
+  }
+}

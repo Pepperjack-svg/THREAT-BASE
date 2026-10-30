@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7374-3pfm-f9q8",
+  "modified": "2026-10-24T15:32:46Z",
+  "published": "2026-10-18T18:31:49Z",
+  "aliases": [
+    "CVE-2026-98466"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Transfer the hyp stack pages out of the host stage-2\n\nfix_host_ownership() walks only the linear-map alias of each memblock\nregion, and the per-CPU hyp stack, mapped in the private VA range for\nits guard page, has none.\n\nWalk each stack's VA range with the same walker.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98466"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22df195bff84300a3f04813d6148765c77ac565a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a8c562892b96f35bba1e00d5e455a15963bbb92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5dd2a91a7ae3a276e6d79806127e923936e241b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:16:57Z"
+  }
+}

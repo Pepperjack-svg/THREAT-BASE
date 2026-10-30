@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j2pc-v64r-mv4f",
+  "modified": "2025-11-15T03:16:13Z",
+  "published": "2025-11-04T15:48:09Z",
+  "aliases": [],
+  "summary": "Protobuf Maven Plugin protocDigest is ignored when using protoc from PATH",
+  "details": "### Summary\nThe expected `protocDigest` is ignored when protoc is taken from the `PATH`.\n\n### Details\nThe documentation for the `protocDigest` parameter says:\n> ... Users may wish to specify this if using a `PATH`-based binary ...\n\nHowever, when specifying `<protoc>PATH</protoc>` the `protocDigest` is not actually checked because the code returns here already\nhttps://github.com/ascopes/protobuf-maven-plugin/blob/59097aae8062c461129a13dcda2f4116b90a8765/protobuf-maven-plugin/src/main/java/io/github/ascopes/protobufmavenplugin/protoc/ProtocResolver.java#L91-L93\n\nbefore the digest check:\nhttps://github.com/ascopes/protobuf-maven-plugin/blob/59097aae8062c461129a13dcda2f4116b90a8765/protobuf-maven-plugin/src/main/java/io/github/ascopes/protobufmavenplugin/protoc/ProtocResolver.java#L106\n\n### PoC\nSpecify:\n```xml\n<protoc>PATH</protoc>\n<protocDigest>sha256:0000000000000000000000000000000000000000000000000000000000000000</protocDigest>\n```\n\nAnd notice how the `protoc` on the `PATH` is not rejected, despite a digest mismatch.\n\n### Impact\nUsers who have an untrusted `protoc` executable on their `PATH` and rely `<protocDigest>` as protection are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:A/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.github.ascopes:protobuf-maven-plugin"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.0.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.0.1"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.github.ascopes:protobuf-maven-plugin"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.10.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ascopes/protobuf-maven-plugin/security/advisories/GHSA-j2pc-v64r-mv4f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ascopes/protobuf-maven-plugin/commit/d3330e7038a296fe595c5470a22019eb70e35b07"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ascopes/protobuf-maven-plugin"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-354",
+      "CWE-693"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-11-04T15:48:09Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j3hm-8rm8-m243",
+  "modified": "2026-10-20T18:31:45Z",
+  "published": "2026-10-20T18:31:45Z",
+  "aliases": [
+    "CVE-2026-113678"
+  ],
+  "details": "Froxlor before 2.3.15 contains a symlink following vulnerability in Statistics::makeChownWithNewStats that allows authenticated customers to take ownership of arbitrary host directories by abusing the root-run traffic cron. Attackers can replace the goaccess statistics directory in their document root with a symlink, causing chown -R to hand root-owned trees to them and enabling root escalation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/froxlor/froxlor/security/advisories/GHSA-vwjv-x8ff-4cvv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113678"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/froxlor/froxlor/commit/0805a7e16a223d528b51d8cacfaff54217b9d8f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/froxlor/froxlor/blob/2.3.14/lib/Froxlor/Http/Statistics.php#L144-L162"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/froxlor/froxlor/releases/tag/2.3.15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/froxlor-before-2.3.15-symlink-following-privilege-escalation-via-traffic-cron"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T16:17:12Z"
+  }
+}

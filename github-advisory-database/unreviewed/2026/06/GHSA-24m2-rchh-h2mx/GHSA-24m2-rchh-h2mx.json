@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-24m2-rchh-h2mx",
+  "modified": "2026-07-08T15:31:37Z",
+  "published": "2026-06-08T18:31:53Z",
+  "aliases": [
+    "CVE-2026-46314"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/v3d: Reject empty multisync extension to prevent infinite loop\n\nv3d_get_extensions() walks a userspace-provided singly-linked list of\nioctl extensions without any bound on the chain length. A local user\ncan craft a self-referential extension (ext->next == &ext) with zero\nin_sync_count and out_sync_count, which bypasses the existing duplicate-\nextension guard:\n\n    if (se->in_sync_count || se->out_sync_count)\n            return -EINVAL;\n\nThe guard never fires because v3d_get_multisync_post_deps() returns\nimmediately when count is zero, leaving both fields at zero on every\niteration. The result is an infinite loop in kernel context, blocking\nthe calling thread and pegging a CPU core indefinitely.\n\nFix this by rejecting a multisync extension where both in_sync_count\nand out_sync_count are zero in v3d_get_multisync_submit_deps(). An\nempty multisync carries no synchronization information and serves no\nuseful purpose, so returning -EINVAL for such an extension is the\ncorrect defense against this attack vector.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46314"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/309abbddeca0c12714721928a819ef45e5710998"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4fa42a249e8cd6ed17aea04e5695b6e9001f2433"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c5164781cb388d219d8f49fa0f0b04cf86ad544"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb44d589bf3148e13452185a6e772a7efbf2d684"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-08T17:16:50Z"
+  }
+}

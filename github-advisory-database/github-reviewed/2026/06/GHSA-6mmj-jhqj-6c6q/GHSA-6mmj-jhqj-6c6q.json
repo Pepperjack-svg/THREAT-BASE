@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6mmj-jhqj-6c6q",
+  "modified": "2026-06-23T23:11:26Z",
+  "published": "2026-06-23T23:11:26Z",
+  "aliases": [
+    "CVE-2026-55542"
+  ],
+  "summary": "Snipe-IT's S3 signature image retrieval lacks authorization before temporary URL ",
+  "details": "### Impact\n Snipe-IT S3 signature image retrieval lacks authorization before temporary URL.\n\nOn S3-backed deployments, authenticated users who know a signature filename can obtain a 5-minute signed S3 URL because the S3 branch returns before the `authorize()` call used by the local-file branch.\n\n## Key evidence\n`routes/web.php:135-143`; `app/Http/Controllers/ActionlogController.php:16-44`; `app/Http/Controllers/Account/AcceptanceController.php:160,175`; `app/Listeners/LogListener.php:56`; `app/Http/Transformers/ActionlogsTransformer.php:188`\n\n\n### Patches\nPatched in  https://github.com/grokability/snipe-it/commit/ded6515cbc27a28f07395da318483c2e96263259 \n\n### Credit\nDisclosed by Ikaro tiagonas",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.5.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 8.5.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-6mmj-jhqj-6c6q"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/ded6515cbc27a28f07395da318483c2e96263259"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-23T23:11:26Z",
+    "nvd_published_at": null
+  }
+}

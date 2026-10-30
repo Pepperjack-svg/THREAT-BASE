@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8735-fgcc-7xrm",
+  "modified": "2025-08-27T18:31:54Z",
+  "published": "2025-08-27T18:31:53Z",
+  "aliases": [
+    "CVE-2025-50983"
+  ],
+  "details": "SQL Injection vulnerability exists in the sortKey parameter of the GET /api/v1/wanted/cutoff API endpoint in readarr 0.4.15.2787. The endpoint fails to properly sanitize user-supplied input, allowing attackers to inject and execute arbitrary SQL commands against the backend SQLite database. Sqlmap confirmed exploitation via stacked queries, demonstrating that the parameter can be abused to run arbitrary SQL statements. A heavy query was executed using SQLite's RANDOMBLOB() and HEX() functions to simulate a time-based payload, indicating deep control over database interactions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-50983"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/4rdr/proofs/blob/main/info/readarr-0.4.15.2787-sql-injection-via-sortkey-parameter.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-27T16:15:35Z"
+  }
+}

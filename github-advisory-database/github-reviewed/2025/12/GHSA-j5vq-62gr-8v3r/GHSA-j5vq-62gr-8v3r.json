@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j5vq-62gr-8v3r",
+  "modified": "2025-12-20T17:13:53Z",
+  "published": "2025-12-17T21:30:48Z",
+  "aliases": [
+    "CVE-2025-12689"
+  ],
+  "summary": "Mattermost fails to check Websocket request for proper UTF-8 format potentially crashing Calls plug-in",
+  "details": "Mattermost versions 11.0.x <= 11.0.4, 10.12.x <= 10.12.2, 10.11.x <= 10.11.6 fail to check WebSocket request field for proper UTF-8 format, which allows attacker to crash Calls plug-in via sending malformed request.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/mattermost/mattermost-plugin-calls"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.11.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12689"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mattermost/mattermost-plugin-calls/commit/f68b41980e1274e05cf91c687e2af1a73c5e36ca"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mattermost/mattermost"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mattermost.com/security-updates"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-20T17:13:53Z",
+    "nvd_published_at": "2025-12-17T19:16:00Z"
+  }
+}

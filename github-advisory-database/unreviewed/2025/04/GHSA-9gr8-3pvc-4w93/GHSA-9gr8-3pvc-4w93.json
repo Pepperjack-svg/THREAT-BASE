@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9gr8-3pvc-4w93",
+  "modified": "2025-10-31T21:30:53Z",
+  "published": "2025-04-01T18:30:53Z",
+  "aliases": [
+    "CVE-2025-21965"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsched_ext: Validate prev_cpu in scx_bpf_select_cpu_dfl()\n\nIf a BPF scheduler provides an invalid CPU (outside the nr_cpu_ids\nrange) as prev_cpu to scx_bpf_select_cpu_dfl() it can cause a kernel\ncrash.\n\nTo prevent this, validate prev_cpu in scx_bpf_select_cpu_dfl() and\ntrigger an scx error if an invalid CPU is specified.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21965"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/515680e76c536dd4aa8e2b5d674b0d441baddf5b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/752b56bb76e2471197d25d6948d85753043b10da"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9360dfe4cbd62ff1eb8217b815964931523b75b3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-01T16:15:27Z"
+  }
+}

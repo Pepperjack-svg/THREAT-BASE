@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ccm2-xh6r-r5h7",
+  "modified": "2025-08-28T21:31:25Z",
+  "published": "2025-08-27T21:31:38Z",
+  "aliases": [
+    "CVE-2025-55582"
+  ],
+  "details": "D-Link DCS-825L firmware v1.08.01 contains a vulnerability in the watchdog script `mydlink-watch-dog.sh`, which blindly respawns binaries such as `dcp` and `signalc` without verifying integrity, authenticity, or permissions. An attacker with local filesystem access (via physical access, firmware modification, or debug interfaces) can replace these binaries with malicious payloads. The script executes these binaries as root in an infinite loop, leading to persistent privilege escalation and arbitrary code execution. This issue is mitigated in v1.09.02, but the product is officially End-of-Life and unsupported.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-55582"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cybermaya.in/posts/Post-43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://supportannouncement.us.dlink.com/security/publication.aspx?name=SAP10431"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.dlink.com/en/security-bulletin"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-27T20:15:33Z"
+  }
+}

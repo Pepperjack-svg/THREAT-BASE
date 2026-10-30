@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-579p-qf78-fqm2",
+  "modified": "2025-10-07T13:09:42Z",
+  "published": "2025-10-05T12:30:24Z",
+  "aliases": [
+    "CVE-2025-8917"
+  ],
+  "summary": "clearml is vulnerable to Path Traversal through its `safe_extract` function",
+  "details": "A vulnerability in clearml versions before 2.0.2 allows for path traversal due to improper handling of symbolic and hard links in the `safe_extract` function. This flaw can lead to arbitrary file writes outside the intended directory, potentially resulting in remote code execution if critical files are overwritten.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "clearml"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-8917"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/clearml/clearml/commit/64fb2bcbdbb87a74af90dd723d5ef4a99fceeb73"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/clearml/clearml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/588fcdd1-fea4-4cc2-a9f8-851701dcb576"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-07T13:09:42Z",
+    "nvd_published_at": "2025-10-05T11:16:03Z"
+  }
+}

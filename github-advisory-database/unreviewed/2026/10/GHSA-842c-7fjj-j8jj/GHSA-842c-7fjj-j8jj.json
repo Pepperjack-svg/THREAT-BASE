@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-842c-7fjj-j8jj",
+  "modified": "2026-10-20T18:31:30Z",
+  "published": "2026-10-13T18:30:51Z",
+  "aliases": [
+    "CVE-2026-79609"
+  ],
+  "details": "XPTI (Xen Page Table Isolation) was introduced to mitigate Meltdown\n(CVE-2017-5754, one aspect of XSA-254).  This involves copying 64-bit PV\nguest page table entries from guest-chosen root page tables to the Xen-\nchosen one which is in actual use by hardware.  To read the guest root\npage table, the directmap is used.  PV guests, however, have a directmap\nwhich may not cover all memory; in particular this is the case if any\nmemory extends beyond the 5 TiB (CONFIG_BIGMEM=y: 3.5 TiB) address\nboundary.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79609"
+    },
+    {
+      "type": "WEB",
+      "url": "https://xenbits.xenproject.org/xsa/advisory-516.html"
+    },
+    {
+      "type": "WEB",
+      "url": "http://xenbits.xen.org/xsa/advisory-516.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T16:17:23Z"
+  }
+}

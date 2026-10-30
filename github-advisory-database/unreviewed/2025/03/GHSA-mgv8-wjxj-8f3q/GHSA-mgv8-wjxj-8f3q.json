@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mgv8-wjxj-8f3q",
+  "modified": "2025-03-18T21:32:00Z",
+  "published": "2025-03-18T21:32:00Z",
+  "aliases": [
+    "CVE-2022-49239"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: codecs: wcd934x: Add missing of_node_put() in wcd934x_codec_parse_data\n\nThe device_node pointer is returned by of_parse_phandle()  with refcount\nincremented. We should use of_node_put() on it when done.\nThis is similar to commit 64b92de9603f\n(\"ASoC: wcd9335: fix a leaked reference by adding missing of_node_put\")",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49239"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f24716e38220fc9e52e208d20591d2bc9b7f020"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f44eca78cc6d4e1779eb95765ec79e433accab4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9531a631379169d57756b2411178c6238655df88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f3793eeb7b94a5eeed6f5c7a44bce403c6681a12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8e89d84ea83c51ba3ba97ff154f7aa679326760"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:00Z"
+  }
+}

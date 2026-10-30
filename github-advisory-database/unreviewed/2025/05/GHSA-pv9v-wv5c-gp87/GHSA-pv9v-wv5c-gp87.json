@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pv9v-wv5c-gp87",
+  "modified": "2025-05-02T18:31:38Z",
+  "published": "2025-05-02T18:31:38Z",
+  "aliases": [
+    "CVE-2023-53137"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: Fix possible corruption when moving a directory\n\nWhen we are renaming a directory to a different directory, we need to\nupdate '..' entry in the moved directory. However nothing prevents moved\ndirectory from being modified and even converted from the inline format\nto the normal format. When such race happens the rename code gets\nconfused and we crash. Fix the problem by locking the moved directory.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0813299c586b175d7edb25f56412c54b812d0379"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c440f14558bfacd22c6935ae1fd4b2a09e96b5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/291cd19d107e197306869cb3237c1bba62d13182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8dac5a63cf79707b547ea3d425fead5f4482198f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0bb13612292ca90fa4c2a7e425375649bc50d3e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c50fc503ee1b97f12c98e26afc39fdaebebcf04f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-02T16:15:32Z"
+  }
+}

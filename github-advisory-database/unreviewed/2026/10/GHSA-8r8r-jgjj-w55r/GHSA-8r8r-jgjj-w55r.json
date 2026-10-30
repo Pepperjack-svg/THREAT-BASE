@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8r8r-jgjj-w55r",
+  "modified": "2026-10-18T18:31:49Z",
+  "published": "2026-10-18T18:31:49Z",
+  "aliases": [
+    "CVE-2026-98446"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: don't let hidden_space go negative in xfs_metafile_resv_init\n\nLOLLM points out that if the amount of fdblocks that we can reserve for\na metadata btree file goes below the space already used by that file,\nthen the hidden_space subtraction can underflow, causing\nxfs_dec_fdblocks to subtract a huge amount of space.  We never want the\ntarget to be less than the used sapce, so fix the logic that adjusts\ndblocks_avail downwards.\n\nAlso fix an error in the adjacent comment.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/476582d754cdc5110f806001417fea6c77824c13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/930a9c1c321efdaa3e7f8caecb0479cee3baf342"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0d8352a39f4a2e329ae45b71bb0d49e2ca0a6dc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:16:54Z"
+  }
+}

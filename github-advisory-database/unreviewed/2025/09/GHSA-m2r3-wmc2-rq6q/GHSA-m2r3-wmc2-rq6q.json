@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m2r3-wmc2-rq6q",
+  "modified": "2025-12-02T21:31:26Z",
+  "published": "2025-09-16T15:32:33Z",
+  "aliases": [
+    "CVE-2023-53300"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: hi846: Fix memleak in hi846_init_controls()\n\nhi846_init_controls doesn't clean the allocated ctrl_hdlr\nin case there is a failure, which causes memleak. Add\nv4l2_ctrl_handler_free to free the resource properly.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53300"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07f0f15e5db60c5b0722049d3251ef4a46dc3b76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12a80b1490e398f5ad7157508cf32b73511de5fc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2649c1a20e8e399ee955d0e22192f9992662c3d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd22e8c8c38fb40f130d3a60e52c59996a5bbae9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T08:15:39Z"
+  }
+}

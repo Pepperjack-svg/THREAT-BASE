@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wwv9-pvmj-9mc8",
+  "modified": "2026-05-21T00:30:25Z",
+  "published": "2026-03-18T18:31:18Z",
+  "aliases": [
+    "CVE-2026-23256"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: liquidio: Fix off-by-one error in VF setup_nic_devices() cleanup\n\nIn setup_nic_devices(), the initialization loop jumps to the label\nsetup_nic_dev_free on failure. The current cleanup loop while(i--)\nskip the failing index i, causing a memory leak.\n\nFix this by changing the loop to iterate from the current index i\ndown to 0.\n\nCompile tested only. Issue found using code review.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01fbca1e93ec3f39f76c31a8f9afa32ce00da48a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3bf519e39b51cb08a93c0599870b35a23db1031e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4640fa5ad5e1a0dbd1c2d22323b7d70a8107dcfd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52b19b3a22306fe452ec9e8ff96063f4bfb77b99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cbba46934aefdfb5d171e0a95aec06c24f7ca30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71a56b89203ec7e5670d94a61a9b4ae617eca804"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd680e56e316be92c01568be98d85d7a6c9bd92c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-193"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-18T18:16:23Z"
+  }
+}

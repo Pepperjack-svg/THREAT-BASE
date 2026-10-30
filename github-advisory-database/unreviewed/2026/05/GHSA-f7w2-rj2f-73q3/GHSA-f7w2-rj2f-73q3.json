@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f7w2-rj2f-73q3",
+  "modified": "2026-10-15T03:35:57Z",
+  "published": "2026-05-27T15:33:21Z",
+  "aliases": [
+    "CVE-2026-46033"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: authencesn - reject short ahash digests during instance creation\n\nauthencesn requires either a zero authsize or an authsize of at least\n4 bytes because the ESN encrypt/decrypt paths always move 4 bytes of\nhigh-order sequence number data at the end of the authenticated data.\n\nWhile crypto_authenc_esn_setauthsize() already rejects explicit\nnon-zero authsizes in the range 1..3, crypto_authenc_esn_create()\nstill copied auth->digestsize into inst->alg.maxauthsize without\nvalidating it.  The AEAD core then initialized the tfm's default\nauthsize from that value.\n\nAs a result, selecting an ahash with digest size 1..3, such as\ncbcmac(cipher_null), exposed authencesn instances whose default\nauthsize was invalid even though setauthsize() would have rejected the\nsame value.  AF_ALG could then trigger the ESN tail handling with a\ntoo-short tag and hit an out-of-bounds access.\n\nReject authencesn instances whose ahash digest size is in the invalid\nnon-zero range 1..3 so that no tfm can inherit an unsupported default\nauthsize.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46033"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-46033"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2482000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f31cd1e64a079c845bca31d2da7b3c90a311726"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5db6ef9847717329f12c5ea8aba7e9f588a980c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67f1f0933cc3d78dde222842bcad2778ec7a0b88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77f59fb2d3aa33e90ec6cbbf45dcfb20ab82b1a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9aff81e8217e9de2929084b03b3c7f81988c112b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b42821c15445f93daea3e76ada682b2b7181c476"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b69933e97efea238ebbfcf70c2b1be1cd03f13e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4c6a6d08e70bb1083c7c405fc7faacbf19aebc0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-46033.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125",
+      "CWE-1284"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:22Z"
+  }
+}

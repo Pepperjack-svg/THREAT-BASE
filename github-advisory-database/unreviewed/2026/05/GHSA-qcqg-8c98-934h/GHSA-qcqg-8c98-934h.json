@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qcqg-8c98-934h",
+  "modified": "2026-06-10T21:31:25Z",
+  "published": "2026-05-28T12:30:33Z",
+  "aliases": [
+    "CVE-2026-46221"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nEDAC/versalnet: Fix device name memory leak\n\nThe device name allocated via kzalloc() in init_one_mc() is assigned to\ndev->init_name but never freed on the normal removal path.  device_register()\ncopies init_name and then sets dev->init_name to NULL, so the name pointer\nbecomes unreachable from the device. Thus leaking memory.\n\nUse a stack-local char array instead of using kzalloc() for name.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46221"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24d2912962d087ebff7c4984f8ac34a5f23c8dbf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8cf5dd235eff6008cb04c3d8064d2acfa90616f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b16033c8774f5fb4c0cb9b445a1dfc68f499ae6a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:37Z"
+  }
+}

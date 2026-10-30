@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mq3c-v59w-hjf6",
+  "modified": "2025-04-15T15:30:52Z",
+  "published": "2025-03-27T18:31:27Z",
+  "aliases": [
+    "CVE-2023-53001"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/drm_vma_manager: Add drm_vma_node_allow_once()\n\nCurrently there is no easy way for a drm driver to safely check and allow\ndrm_vma_offset_node for a drm file just once. Allow drm drivers to call\nnon-refcounted version of drm_vma_node_allow() so that a driver doesn't\nneed to keep track of each drm_vma_node_allow() to call subsequent\ndrm_vma_node_revoke() to prevent memory leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53001"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67444f8ca31cdaf45e0b761241ad49b1ae04bcf9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/899d3a3c19ac0e5da013ce34833dccb97d19b5e4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-27T17:15:48Z"
+  }
+}

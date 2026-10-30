@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3qfm-8v6g-jr47",
+  "modified": "2026-10-16T06:30:24Z",
+  "published": "2026-10-16T06:30:24Z",
+  "aliases": [
+    "CVE-2026-111447"
+  ],
+  "details": "Wheels 1.1 through 4.1.2 resolves nestedProperties() records by posted primary key without checking that they belong to the parent being saved. A user able to submit a nested form for their own parent can update and reassign another parent's hasMany or hasOne rows, or delete them when allowDelete=true. Nested belongsTo records can also be edited by posting another associated record's key. New child rows with composite primary keys not made up of foreign keys retain posted key values, allowing the request to choose their identity. This is fixed in 4.2.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/wheels-dev/wheels/security/advisories/GHSA-6979-65wv-7pxq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111447"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-472"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T04:18:30Z"
+  }
+}

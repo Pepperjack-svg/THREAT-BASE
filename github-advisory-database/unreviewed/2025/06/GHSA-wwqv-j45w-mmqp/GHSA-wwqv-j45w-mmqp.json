@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wwqv-j45w-mmqp",
+  "modified": "2025-11-14T21:30:27Z",
+  "published": "2025-06-18T12:30:36Z",
+  "aliases": [
+    "CVE-2022-49949"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware_loader: Fix memory leak in firmware upload\n\nIn the case of firmware-upload, an instance of struct fw_upload is\nallocated in firmware_upload_register(). This data needs to be freed\nin fw_dev_release(). Create a new fw_upload_free() function in\nsysfs_upload.c to handle the firmware-upload specific memory frees\nand incorporate the missing kfree call for the fw_upload structure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49949"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/789bba82f63c3e81dce426ba457fc7905b30ac6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/baf92485d111be828e1ab84a995515b604b938e5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:21Z"
+  }
+}

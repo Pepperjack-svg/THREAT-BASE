@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jqcq-x2c2-xp7j",
+  "modified": "2026-01-07T21:31:37Z",
+  "published": "2025-08-16T12:30:32Z",
+  "aliases": [
+    "CVE-2025-38529"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncomedi: aio_iiro_16: Fix bit shift out of bounds\n\nWhen checking for a supported IRQ number, the following test is used:\n\n\tif ((1 << it->options[1]) & 0xdcfc) {\n\nHowever, `it->options[i]` is an unchecked `int` value from userspace, so\nthe shift amount could be negative or out of bounds.  Fix the test by\nrequiring `it->options[1]` to be within bounds before proceeding with\nthe original test.  Valid `it->options[1]` values that select the IRQ\nwill be in the range [1,15]. The value 0 explicitly disables the use of\ninterrupts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38529"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/43ddd82e6a91913cea1c078e782afd8de60c3a53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ac7c60439236fb691b8c7987390e2327bbf18fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66acb1586737a22dd7b78abc63213b1bcaa100e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/955e8835855fed8e87f7d8c8075564a1746c1b4c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a88692245c315bf8e225f205297a6f4b13d6856a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c593215385f0c0163015cca4512ed3ff42875d19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0f3c0867d7d231c70984f05c97752caacd0daba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff30dd3f15f443d2a0085b12ec2cc95d44f35fa7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-16T12:15:28Z"
+  }
+}

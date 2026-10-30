@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r3q8-xm3r-6v78",
+  "modified": "2026-05-11T09:30:29Z",
+  "published": "2026-05-08T15:31:22Z",
+  "aliases": [
+    "CVE-2026-43291"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: nfc: nci: Fix parameter validation for packet data\n\nSince commit 9c328f54741b (\"net: nfc: nci: Add parameter validation for\npacket data\") communication with nci nfc chips is not working any more.\n\nThe mentioned commit tries to fix access of uninitialized data, but\nfailed to understand that in some cases the data packet is of variable\nlength and can therefore not be compared to the maximum packet length\ngiven by the sizeof(struct).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b91160e9a91b5a2662875417dc42dc5b0bf03ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/498fc5d0d650c77e87fcc73808d4f43240c21805"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/571dcbeb8e635182bb825ae758399831805693c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a24a8a582da4426b2042e510a1080df84083b51d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ad058a4317db7fdb3f09caa6ed536d24a62ce6a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c692db813a7e3b7c3c17d6e9a3ad2a018bf1142b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f5218426f765eee22e178df9c126d974792fb6a5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:36Z"
+  }
+}

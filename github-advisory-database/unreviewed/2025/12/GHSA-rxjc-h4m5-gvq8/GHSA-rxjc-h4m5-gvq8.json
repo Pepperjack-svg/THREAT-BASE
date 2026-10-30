@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rxjc-h4m5-gvq8",
+  "modified": "2025-12-30T15:30:27Z",
+  "published": "2025-12-30T15:30:27Z",
+  "aliases": [
+    "CVE-2022-50833"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: use hdev->workqueue when queuing hdev->{cmd,ncmd}_timer works\n\nsyzbot is reporting attempt to schedule hdev->cmd_work work from system_wq\nWQ into hdev->workqueue WQ which is under draining operation [1], for\ncommit c8efcc2589464ac7 (\"workqueue: allow chained queueing during\ndestruction\") does not allow such operation.\n\nThe check introduced by commit 877afadad2dce8aa (\"Bluetooth: When HCI work\nqueue is drained, only queue chained work\") was incomplete.\n\nUse hdev->workqueue WQ when queuing hdev->{cmd,ncmd}_timer works because\nhci_{cmd,ncmd}_timeout() calls queue_work(hdev->workqueue). Also, protect\nthe queuing operation with RCU read lock in order to avoid calling\nqueue_delayed_work() after cancel_delayed_work() completed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50833"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c6b036fe5c8ed8b6c4cbdc03605929882907ef0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4635cf3d845a7324c25c52d549b70c8bd7ad4c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/deee93d13d385103205879a8a0915036ecd83261"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:15:57Z"
+  }
+}

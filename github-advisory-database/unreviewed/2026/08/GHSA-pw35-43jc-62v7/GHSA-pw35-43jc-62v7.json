@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pw35-43jc-62v7",
+  "modified": "2026-10-21T15:40:53Z",
+  "published": "2026-08-15T06:32:26Z",
+  "aliases": [
+    "CVE-2026-72494"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/irdma: Replace waitqueue and flag with completion\n\nThe driver previously used a waitqueue along with an explicit\nrequest_done flag, but without proper barriers around request_done.\n\nAn earlier patch by Gui-Dong Han <hanguidong02@gmail.com> attempted\nto fix this by adding the missing memory barriers. Rather than\nadding the barriers, this patch replaces the waitqueue+flag with\na completion, which is designed for this exact purpose.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/706591cccdd3ac2c0ddc8c2ed6c89a6be9865826"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d89bff21c12e543d12ad70cb0103cf815891b24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8de303efe2ff4fcbf240dfc6eb3469e1e8f18a3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bde37aed0724c0139dea177f3aae8d989b6babb1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d9c8c45e6d2f438a3c8e643ae78b59454fa0fadd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:23Z"
+  }
+}

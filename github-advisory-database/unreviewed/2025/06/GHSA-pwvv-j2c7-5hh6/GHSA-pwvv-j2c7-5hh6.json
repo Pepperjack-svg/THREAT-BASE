@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pwvv-j2c7-5hh6",
+  "modified": "2025-11-19T15:31:28Z",
+  "published": "2025-06-18T12:30:48Z",
+  "aliases": [
+    "CVE-2022-50104"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npowerpc/xive: Fix refcount leak in xive_get_max_prio\n\nof_find_node_by_path() returns a node pointer with\nrefcount incremented, we should use of_node_put() on it when done.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/255b650cbec6849443ce2e0cdd187fd5e61c218c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e18b869a8d574cfe9ee64df9c3d0a7ac7ed07a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ed9709d262bf026b2ff64979fbfe0f496287588"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d1e53f7f181a11a8a343def1e0d0209905b7c64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79b8eae24b7ee157bda07695d802be8576983fa8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d99733ad47a6c990b52e136608455643bfa708f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea494e8a9852abd0ba60f69b254ce0d7c38449e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f658d5b528ce97a68efbb64ee54f6fe0909b189a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:39Z"
+  }
+}

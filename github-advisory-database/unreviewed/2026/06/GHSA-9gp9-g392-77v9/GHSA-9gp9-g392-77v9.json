@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9gp9-g392-77v9",
+  "modified": "2026-06-06T06:30:30Z",
+  "published": "2026-06-06T06:30:29Z",
+  "aliases": [
+    "CVE-2026-9851"
+  ],
+  "details": "The Booking Package plugin for WordPress is vulnerable to Privilege Escalation via Account Takeover in versions up to, and including, 1.7.16. This is due to a missing capability check on the 'updateUser' branch of the package_app_action AJAX endpoint, where the handler only validates a nonce and the dispatcher invokes Schedule::updateUser() with the $administrator argument hard-coded to 1, bypassing the only owner-restriction check inside that function and allowing the target user to be determined solely by attacker-supplied input passed directly to wp_update_user(). This makes it possible for authenticated attackers, with Editor-level access and above, to change the email address and password of any account, including Administrator accounts, resulting in a full site takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9851"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/booking-package/tags/1.7.13/index.php#L4416"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/booking-package/tags/1.7.13/index.php#L4477"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/booking-package/tags/1.7.13/lib/Schedule.php#L868"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3558752%40booking-package&new=3558752%40booking-package&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/795c1fd6-137b-4414-8d6b-30053bfb5924?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-06T05:16:30Z"
+  }
+}

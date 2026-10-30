@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mgj8-vp8h-hv58",
+  "modified": "2025-12-24T15:30:38Z",
+  "published": "2025-12-24T15:30:38Z",
+  "aliases": [
+    "CVE-2023-54109"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: rcar_fdp1: Fix refcount leak in probe and remove function\n\nrcar_fcp_get() take reference, which should be balanced with\nrcar_fcp_put(). Add missing rcar_fcp_put() in fdp1_remove and\nthe error paths of fdp1_probe() to fix this.\n\n[hverkuil: resolve merge conflict, remove() is now void]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1acb982e3616e70128994fdecf2368a259c8a489"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2322b262d2205720518785c2706a3283725ba402"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/418a8f3140e07f33bbd5a81625d0ef46c0732cef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45b7461d914c867ef21c74798da8c42d13d3a0df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48765ca7c6b71bf73a4cc8475a4bad9e2633cf61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59c6addfaaaa09ff7654e4d8793cb16fd22a46d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9df630dafa1a59946d1da6f070d4cb64f14ea57c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c766c90faf93897b77c9c5daa603cffab85ba907"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:12Z"
+  }
+}

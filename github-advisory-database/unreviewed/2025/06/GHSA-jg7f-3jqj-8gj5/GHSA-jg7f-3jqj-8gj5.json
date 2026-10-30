@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jg7f-3jqj-8gj5",
+  "modified": "2025-06-20T12:30:53Z",
+  "published": "2025-06-20T12:30:53Z",
+  "aliases": [
+    "CVE-2025-5963"
+  ],
+  "details": "The Postbox's configuration on macOS, specifically the presence of entitlements: \"com.apple.security.cs.allow-dyld-environment-variables\" and \"com.apple.security.cs.disable-library-validation\" allows for Dynamic Library (Dylib) injection. A local attacker with unprivileged access can use environment variables like DYLD_INSERT_LIBRARIES to successfully inject code in application's context and bypass Transparency, Consent, and Control (TCC). Acquired resource access is limited to previously granted permissions by the user. Access to other resources beyond granted-permissions requires user interaction with a system prompt asking for permission.\n\nThe original company behind Postbox is no longer operational, the software will no longer receive updates. The acquiring company (em Client) did not cooperate in vulnerability disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-5963"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2025/06/tcc-bypass"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.postbox-inc.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-276"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-20T10:15:22Z"
+  }
+}

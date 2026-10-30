@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-76x2-j576-5g7r",
+  "modified": "2025-03-12T00:31:47Z",
+  "published": "2025-03-12T00:31:47Z",
+  "aliases": [
+    "CVE-2022-49630"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: Fix a data-race around sysctl_tcp_ecn_fallback.\n\nWhile reading sysctl_tcp_ecn_fallback, it can be changed concurrently.\nThus, we need to add READ_ONCE() to its reader.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49630"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12b8d9ca7e678abc48195294494f1815b555d658"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ec3d6c2626ee6e1b36b7bd006873a271406ba61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bcf7339f2cf70ea4461df6ea045d1aadfabfa11"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:38Z"
+  }
+}

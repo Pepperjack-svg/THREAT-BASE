@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j9wj-wgv2-phcm",
+  "modified": "2026-10-18T18:31:57Z",
+  "published": "2026-10-18T18:31:57Z",
+  "aliases": [
+    "CVE-2026-98637"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Do not clear VM-wide SVE feature on vCPU init failure\n\npkvm_vcpu_init_sve() clears KVM_ARM_VCPU_SVE in kvm->arch.vcpu_features\nwhen it fails, but vcpu_has_sve() tests KVM_ARCH_FLAG_GUEST_HAS_SVE,\nwhich is left set. Later vCPUs on that VM then skip the SVE setup and\nregister with a NULL sve_state, which the guest's first FP access hands\nto sve_load_state().\n\nReturn the error without touching vcpu_features.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1b3c788ad31837e348075e93dbba3f447492776"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd46b41f412fb81c50bac1a0929ec31320f3a807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0cd8ffae092cc1b9d7cfa9188ed5a88a374adcb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:16Z"
+  }
+}

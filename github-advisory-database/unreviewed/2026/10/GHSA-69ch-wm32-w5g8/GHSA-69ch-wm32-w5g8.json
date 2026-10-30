@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-69ch-wm32-w5g8",
+  "modified": "2026-10-24T15:32:46Z",
+  "published": "2026-10-09T09:31:05Z",
+  "aliases": [
+    "CVE-2026-98376"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Use array_map_meta_equal for percpu array inner map replacement\n\npercpu_array_map_ops.map_meta_equal points to the generic\nbpf_map_meta_equal(), which does not compare max_entries.  When a\npercpu array serves as an inner map, replacing it with one that has\nfewer max_entries bypasses the check.  Since percpu_array_map_gen_lookup()\ninlines the original template's index_mask as a JIT immediate, a lookup\non the replacement map can access pptrs[] out of bounds.\n\nPoint percpu_array_map_ops.map_meta_equal to array_map_meta_equal(),\nwhich already enforces the max_entries equality check.\n\nAdd a selftest to verify that replacing a percpu array inner map with\na differently-sized one is rejected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98376"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/593980175389a05793f6060aa20e626330960395"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-09T08:16:55Z"
+  }
+}

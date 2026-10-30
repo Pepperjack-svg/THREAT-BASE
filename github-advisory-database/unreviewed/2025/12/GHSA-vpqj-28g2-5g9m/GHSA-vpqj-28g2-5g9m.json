@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vpqj-28g2-5g9m",
+  "modified": "2025-12-24T15:30:32Z",
+  "published": "2025-12-24T15:30:32Z",
+  "aliases": [
+    "CVE-2022-50722"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: ipu3-imgu: Fix NULL pointer dereference in active selection access\n\nWhat the IMGU driver did was that it first acquired the pointers to active\nand try V4L2 subdev state, and only then figured out which one to use.\n\nThe problem with that approach and a later patch (see Fixes: tag) is that\nas sd_state argument to v4l2_subdev_get_try_crop() et al is NULL, there is\nnow an attempt to dereference that.\n\nFix this.\n\nAlso rewrap lines a little.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50722"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5265cc1202a31f7097691c3483a0d60d624424a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/740717b756c17190dc2d2ad4c6de1e63f214e0c9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9eb3ab6f30bf32f7326909f17949ccb11bab514"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:15:58Z"
+  }
+}

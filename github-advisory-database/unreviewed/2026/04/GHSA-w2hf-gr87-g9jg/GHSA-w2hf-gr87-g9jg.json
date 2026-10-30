@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w2hf-gr87-g9jg",
+  "modified": "2026-04-23T21:31:18Z",
+  "published": "2026-04-03T18:31:21Z",
+  "aliases": [
+    "CVE-2026-23445"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nigc: fix page fault in XDP TX timestamps handling\n\nIf an XDP application that requested TX timestamping is shutting down\nwhile the link of the interface in use is still up the following kernel\nsplat is reported:\n\n[  883.803618] [   T1554] BUG: unable to handle page fault for address: ffffcfb6200fd008\n...\n[  883.803650] [   T1554] Call Trace:\n[  883.803652] [   T1554]  <TASK>\n[  883.803654] [   T1554]  igc_ptp_tx_tstamp_event+0xdf/0x160 [igc]\n[  883.803660] [   T1554]  igc_tsync_interrupt+0x2d5/0x300 [igc]\n...\n\nDuring shutdown of the TX ring the xsk_meta pointers are left behind, so\nthat the IRQ handler is trying to touch them.\n\nThis issue is now being fixed by cleaning up the stale xsk meta data on\nTX shutdown. TX timestamps on other queues remain unaffected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23445"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/31521c124e6488c4a81658e35199feb75a988d86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45b33e805bd39f615d9353a7194b2da5281332df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5e4c90c94eb766d70e30694b7fe66862aabaf24b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b02fa17d1744d19cd3820bdbf6ec5d85547977bf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-03T16:16:30Z"
+  }
+}

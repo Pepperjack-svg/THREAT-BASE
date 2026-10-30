@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j3v8-3vrc-7ghh",
+  "modified": "2026-10-12T21:32:00Z",
+  "published": "2026-10-12T21:32:00Z",
+  "aliases": [
+    "CVE-2026-109562"
+  ],
+  "details": "SnapOtter 1.15.10 through 2.2.0 contains a missing authorization vulnerability that allows any authenticated principal to call the /api/v1/upload, /api/v1/preview and /api/v1/preview/generate handlers without permission checks. Attackers holding even a settings:read-scoped API key can stage arbitrary files outside storage quota, served unauthenticated via /api/v1/download, and feed crafted input to image and video decoders.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109562"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/snapotter-hq/SnapOtter/commit/1544966b52b8f2b40ef3794e43ffd4f0214550ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/snapotter-hq/SnapOtter"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/snapotter-hq/SnapOtter/blob/v2.2.0/apps/api/src/routes/files.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/snapotter-1.15.10-through-2.2.0-missing-authorization-via-upload-and-preview-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T21:17:12Z"
+  }
+}

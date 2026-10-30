@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hf6g-m6v3-8gj5",
+  "modified": "2025-10-01T12:30:28Z",
+  "published": "2025-10-01T12:30:28Z",
+  "aliases": [
+    "CVE-2022-50455"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfs: fix possible null-ptr-deref when parsing param\n\nAccording to commit \"vfs: parse: deal with zero length string value\",\nkernel will set the param->string to null pointer in vfs_parse_fs_string()\nif fs string has zero length.\n\nYet the problem is that, nfs_fs_context_parse_param() will dereferences the\nparam->string, without checking whether it is a null pointer, which may\ntrigger a null-ptr-deref bug.\n\nThis patch solves it by adding sanity check on param->string\nin nfs_fs_context_parse_param().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50455"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46819f604557fe7bc39a6c352fd368371aa9cd6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55513864b418c6453d68aebc36cffcf965342426"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5559405df652008e56eee88872126fe4c451da67"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:38Z"
+  }
+}

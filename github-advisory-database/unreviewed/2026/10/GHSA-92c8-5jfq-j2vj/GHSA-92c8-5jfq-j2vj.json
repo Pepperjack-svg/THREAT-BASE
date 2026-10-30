@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-92c8-5jfq-j2vj",
+  "modified": "2026-10-11T03:30:23Z",
+  "published": "2026-10-11T03:30:23Z",
+  "aliases": [
+    "CVE-2026-108693"
+  ],
+  "details": "ImageMagick on Windows through 7.1.2-33 and 6.9.13-58 contains an uncontrolled search path vulnerability in NTGhostscriptEXE() that launches gswin64c.exe by bare name when Ghostscript is unregistered. Attackers can plant a malicious gswin64c.exe in the working directory to execute code with ImageMagick privileges when PDF, PostScript, or EPS files are converted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImageMagick/ImageMagick"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImageMagick/ImageMagick/blob/211e5b975a0019a88dcef5f84c1193f46738d815/MagickCore/nt-base.c#L1469-L1511"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImageMagick/ImageMagick/blob/211e5b975a0019a88dcef5f84c1193f46738d815/MagickCore/nt-base.c#L2829-L2832"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ghostx-86/exploitarium/tree/main/imagemagick-gs-delegate-hijack-poc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/imagemagick-through-7.1.2-33-and-6.9.13-58-uncontrolled-search-path-via-ghostscript-delegate"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-427"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T02:16:37Z"
+  }
+}

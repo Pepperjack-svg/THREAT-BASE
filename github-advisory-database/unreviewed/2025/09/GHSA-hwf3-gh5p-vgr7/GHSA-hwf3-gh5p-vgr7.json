@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hwf3-gh5p-vgr7",
+  "modified": "2025-10-09T18:30:27Z",
+  "published": "2025-09-29T21:30:26Z",
+  "aliases": [
+    "CVE-2025-34222"
+  ],
+  "details": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host prior to version 22.0.1049 and Application prior to version 20.0.2786 (VA/SaaS deployments) expose four admin routes – /admin/hp/cert_upload, /admin/hp/cert_delete, /admin/certs/ca, and /admin/certs/serviceclients/{scid} – without any authentication check. The routes are defined in the /var/www/app/routes/web.php file inside the printercloud/pi Docker container and are handled by the HPCertificateController class, which performs no user validation.  An unauthenticated attacker can therefore upload a new TLS/SSL certificate replacing the trusted root used by the appliance, delete an existing certificate causing immediate loss of trust for services that rely on it, or download any stored CA or client certificate via the service‑clients endpoint which also suffers an IDOR that allows enumeration of all client IDs. This vulnerability has been identified by the vendor as: V-2024-028 — Unauthenticated Admin APIs Used to Modify SSL Certificates.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34222"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/saas/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/va/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pierrekim.github.io/blog/2025-04-08-vasion-printerlogic-83-vulnerabilities.html#va-insecure-apis-02"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vasion-print-printerlogic-unauth-admin-apis-used-to-modify-ssl-certs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-29T21:15:35Z"
+  }
+}

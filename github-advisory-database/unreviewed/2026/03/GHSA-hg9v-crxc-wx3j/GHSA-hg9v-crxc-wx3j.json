@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hg9v-crxc-wx3j",
+  "modified": "2026-05-28T15:39:38Z",
+  "published": "2026-03-25T12:30:22Z",
+  "aliases": [
+    "CVE-2026-23307"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: ems_usb: ems_usb_read_bulk_callback(): check the proper length of a message\n\nWhen looking at the data in a USB urb, the actual_length is the size of\nthe buffer passed to the driver, not the transfer_buffer_length which is\nset by the driver as the max size of the buffer.\n\nWhen parsing the messages in ems_usb_read_bulk_callback() properly check\nthe size both at the beginning of parsing the message to make sure it is\nbig enough for the expected structure, and at the end of the message to\nmake sure we don't overflow past the end of the buffer for the next\nmessage.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23307"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1818974e1b5ef200e27f144c8cb8a246420bb54d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/18f75b9cbdc3703f15965425ab69dee509b07785"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1cf469026d4a2308eaa91d04dca4a900d07a5c2e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2833e13e2b099546abf5d40a483b4eb04ddd1f7b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38a01c9700b0dcafe97dfa9dc7531bf4a245deff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aed172a2e2330131f0977d2acd3ec8883f413ec1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c703bbf8e9b4947e111c88d2ed09236a6772a471"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f10177e6c4575aedaea580ce67d792fab7a2235e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:26Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j9qx-hx2v-8q9m",
+  "modified": "2026-10-13T18:30:55Z",
+  "published": "2026-10-13T18:30:55Z",
+  "aliases": [
+    "CVE-2026-110118"
+  ],
+  "details": "WorkFlow-Engine through 9.6.11 contains a missing authorization vulnerability that allows authenticated users to complete or reassign other users' workflow tasks via /vue/buttonOperation endpoints. Low-privileged attackers can supply a known taskId to the complete, completeTask or reAssign handlers to approve tasks or reassign them without authority.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/risesoft-y9/WorkFlow-Engine/blob/v9.6.11/y9-module-flowableui/risenet-y9boot-support-flowableui/src/main/java/net/risesoft/controller/buttonOperation/ButtonOperationRestController.java#L1035-L1054"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/risesoft-y9/WorkFlow-Engine/blob/v9.6.11/y9-module-flowableui/risenet-y9boot-support-flowableui/src/main/java/net/risesoft/controller/buttonOperation/ButtonOperationRestController.java#L216-L252"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/risesoft-y9/WorkFlow-Engine/blob/v9.6.11/y9-module-processadmin/risenet-y9boot-support-processadmin/src/main/java/net/risesoft/service/impl/CustomTaskServiceImpl.java#L76-L79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/workflow-engine-task-op-missing-authz"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/workflow-engine-through-9.6.11-missing-authorization-via-flowableui-buttonoperation-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T17:17:36Z"
+  }
+}

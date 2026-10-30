@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rj75-52m6-37p5",
+  "modified": "2026-10-16T00:31:54Z",
+  "published": "2026-10-16T00:31:54Z",
+  "aliases": [
+    "CVE-2026-111274"
+  ],
+  "details": "unarr through 1.1.1 contains a heap-based out-of-bounds read in zip_parse_extra_fields() in zip/parse-zip.c due to an incorrect ZIP64 extra field length check. Attackers can supply a crafted ZIP archive with 0xFFFFFFFF sentinel values and a truncated ZIP64 record to read past the heap buffer and crash the process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111274"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/selmf/unarr"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/selmf/unarr/blob/b211040df83dee513362cdeb9bd87afa26fd5e38/zip/parse-zip.c#L48-L72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/unarr-tar-zip-oob"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/unarr-through-1.1.1-heap-out-of-bounds-read-via-zip-parse-extra-fields"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T22:19:28Z"
+  }
+}

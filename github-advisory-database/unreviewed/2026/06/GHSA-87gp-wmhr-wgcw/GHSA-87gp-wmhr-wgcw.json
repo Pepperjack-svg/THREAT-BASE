@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-87gp-wmhr-wgcw",
+  "modified": "2026-06-26T00:32:03Z",
+  "published": "2026-06-23T21:30:31Z",
+  "aliases": [
+    "CVE-2026-11820"
+  ],
+  "details": "Module: plugins/modules/nexmo.py\n\nCVSS 3.1: 6.5 MEDIUM — AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N \n\nIssue: api_key and api_secret are declared no_log=True at the input level, but both credentials are immediately URL-encoded into a GET request as query parameters, bypassing all no_log protection. \n\nVulnerable Code (lines 82-93):\n\nmsg = {\n\"api_key\": module.params.get(\"api_key\"),\n\"api_secret\": module.params.get(\"api_secret\"),\n\"from\": module.params.get(\"src\"),\n\"text\": module.params.get(\"msg\"),\n}\nurl = f\"{NEXMO_API}?{urlencode(msg)}\"\nresponse, info = fetch_url(module, url, headers=headers)\n\nObserved Output:\n\nhttps://rest.nexmo.com/sms/json?api_key=a1b2c3d4&api_secret=MyS3cr3tK3y!!&from=AnsibleBot&to=15551234567&text=Hello\n\nExposure Vectors: \n\nAnsible verbose output (-vvv) logs the full request URL \n\nVonage/Nexmo server access logs record credentials in query string \n\nHTTP proxies, SIEM, and network inspection tools capture the full URL \n\nAWX/Automation Controller network debug logs\n\nFix: Switch to POST with credentials in the request body:\n\ndata = urlencode({\"api_key\": api_key, \"api_secret\": api_secret,\n\"from\": src, \"to\": number, \"text\": msg})\nfetch_url(module, NEXMO_API, data=data, method=\"POST\",\nheaders={\"Content-Type\": \"application/x-www-form-urlencoded\"})",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11820"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-11820"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2488970"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-23T21:16:54Z"
+  }
+}

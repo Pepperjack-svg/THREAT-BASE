@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xm3p-r4jv-jxcf",
+  "modified": "2026-09-14T12:31:26Z",
+  "published": "2025-04-16T15:34:40Z",
+  "aliases": [
+    "CVE-2025-22039"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix overflow in dacloffset bounds check\n\nThe dacloffset field was originally typed as int and used in an\nunchecked addition, which could overflow and bypass the existing\nbounds check in both smb_check_perm_dacl() and smb_inherit_dacl().\n\nThis could result in out-of-bounds memory access and a kernel crash\nwhen dereferencing the DACL pointer.\n\nThis patch converts dacloffset to unsigned int and uses\ncheck_add_overflow() to validate access to the DACL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22039"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/443b373a4df5a2cb9f7b8c4658b2afedeb16397f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a9cd9ff0fa2bcc30b2bfb8bdb161eb20e44b9dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b8d379048b168a0dff5ab1acb975b933f368514"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73f074fb5e139cd42ad75089abe4e28a49a30003"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8483d7b532be1d1bc149556a2fedf903868c6303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/abbb4ec41867f2cd1c971258e493893bf43bcbd3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/beff0bc9d69bc8e733f9bca28e2d3df5b3e10e42"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:15:56Z"
+  }
+}

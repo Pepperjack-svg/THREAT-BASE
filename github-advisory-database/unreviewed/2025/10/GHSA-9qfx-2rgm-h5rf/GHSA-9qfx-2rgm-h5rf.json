@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9qfx-2rgm-h5rf",
+  "modified": "2025-10-24T18:31:00Z",
+  "published": "2025-10-24T15:31:27Z",
+  "aliases": [
+    "CVE-2025-61430"
+  ],
+  "details": "Improper handling of DNS over TCP in Simple DNS Plus v9 allows a remote attacker with querying access to the DNS server to cause the server to return request payloads from other clients. This happens when the TCP length prefix is malformed (len differs from actual packet len), and due to a concurrency/buffering issue, even when the lengths match. A length prefix that is smaller than the actual packet size increases information leakage. In summary, this vulnerability allows an attacker to see DNS queries of other clients.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61430"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ma-personal.notion.site/simpledns-vuln?source=copy_link"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.incognitotgt.me/blog/simpledns-vuln"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-350"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-24T15:15:40Z"
+  }
+}

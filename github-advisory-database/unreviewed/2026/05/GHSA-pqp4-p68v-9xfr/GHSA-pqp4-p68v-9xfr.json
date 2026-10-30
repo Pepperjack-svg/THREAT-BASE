@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pqp4-p68v-9xfr",
+  "modified": "2026-10-21T15:40:20Z",
+  "published": "2026-05-01T15:30:35Z",
+  "aliases": [
+    "CVE-2026-31771"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_event: move wake reason storage into validated event handlers\n\nhci_store_wake_reason() is called from hci_event_packet() immediately\nafter stripping the HCI event header but before hci_event_func()\nenforces the per-event minimum payload length from hci_ev_table.\nThis means a short HCI event frame can reach bacpy() before any bounds\ncheck runs.\n\nRather than duplicating skb parsing and per-event length checks inside\nhci_store_wake_reason(), move wake-address storage into the individual\nevent handlers after their existing event-length validation has\nsucceeded. Convert hci_store_wake_reason() into a small helper that only\nstores an already-validated bdaddr while the caller holds hci_dev_lock().\nUse the same helper after hci_event_func() with a NULL address to\npreserve the existing unexpected-wake fallback semantics when no\nvalidated event handler records a wake address.\n\nAnnotate the helper with __must_hold(&hdev->lock) and add\nlockdep_assert_held(&hdev->lock) so future call paths keep the lock\ncontract explicit.\n\nCall the helper from hci_conn_request_evt(), hci_conn_complete_evt(),\nhci_sync_conn_complete_evt(), le_conn_complete_evt(),\nhci_le_adv_report_evt(), hci_le_ext_adv_report_evt(),\nhci_le_direct_adv_report_evt(), hci_le_pa_sync_established_evt(), and\nhci_le_past_received_evt().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31771"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e4b738dd0d0f7b237686167706badad9d30649c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b2bf47cd75518c36fa2d41380e4a40641cc89cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86c8d07a64d553c41e213b52650020010f9ef23e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac7889b0fe441e4ef892c40b1d002e91f93fa4ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dbc8b8d33c9e19e17e8b8b1361bbb46e2983f5f2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:40Z"
+  }
+}

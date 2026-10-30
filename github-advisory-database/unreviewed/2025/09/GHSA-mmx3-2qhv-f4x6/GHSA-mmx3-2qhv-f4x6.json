@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mmx3-2qhv-f4x6",
+  "modified": "2025-11-24T21:30:57Z",
+  "published": "2025-09-15T15:31:23Z",
+  "aliases": [
+    "CVE-2023-53153"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: cfg80211: Fix use after free for wext\n\nKey information in wext.connect is not reset on (re)connect and can hold\ndata from a previous connection.\n\nReset key data to avoid that drivers or mac80211 incorrectly detect a\nWEP connection request and access the freed or already reused memory.\n\nAdditionally optimize cfg80211_sme_connect() and avoid an useless\nschedule of conn_work.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/015b8cc5e7c4d7bb671f1984d7b7338c310b185b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22dfb21bf1cd876616d45cda1bc6daa89eec6747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2cfe78619b0de6d2da773978bc2d22797212eaa7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66af4a2ab1d65d556d638cb9555a3b823c2557a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f1959c17d4cb5b74af6fc31dc787e1dc3e4f6e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2a92b3e9d8e03ee3f9ee407fc46a9b4bd02d8b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4b6a138efb8a32507b8946104e32cb926308da7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd081afd21eb35b968b0330700c43ec94986e1c4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T14:15:37Z"
+  }
+}

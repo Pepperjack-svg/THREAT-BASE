@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fm29-2487-rchf",
+  "modified": "2025-12-19T18:31:05Z",
+  "published": "2025-05-20T18:30:55Z",
+  "aliases": [
+    "CVE-2025-37937"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nobjtool, media: dib8000: Prevent divide-by-zero in dib8000_set_dds()\n\nIf dib8000_set_dds()'s call to dib8000_read32() returns zero, the result\nis a divide-by-zero.  Prevent that from happening.\n\nFixes the following warning with an UBSAN kernel:\n\n  drivers/media/dvb-frontends/dib8000.o: warning: objtool: dib8000_tune() falls through to next function dib8096p_cfg_DibRx()",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37937"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/536f7f3595ef8187cfa9ea50d7d24fcf4e84e166"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cfe46036b163e5a0f07c6b705b518148e1a8b2f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75b42dfe87657ede3da3f279bd6b1b16d69af954"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/976a85782246a29ba0f6d411a7a4f524cb9ea987"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b76b198cf209797abcb1314c18ddeb90fe0827b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9249da6b0ed56269d4f21850df8e5b35dab50bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8430e72b99936c206b37a8e2daebb3f8df7f2d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd80277f652138d2619f149f86ae6d17bce721d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e63d465f59011dede0a0f1d21718b59a64c3ff5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-369"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-20T16:15:30Z"
+  }
+}

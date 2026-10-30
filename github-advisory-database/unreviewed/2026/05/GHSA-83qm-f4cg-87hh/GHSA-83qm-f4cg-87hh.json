@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-83qm-f4cg-87hh",
+  "modified": "2026-06-16T03:30:33Z",
+  "published": "2026-05-27T15:33:19Z",
+  "aliases": [
+    "CVE-2026-45979"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: clean up the amdgpu_cs_parser_bos\n\nIn low memory conditions, kmalloc can fail. In such conditions\nunlock the mutex for a clean exit.\n\nWe do not need to amdgpu_bo_list_put as it's been handled in the\namdgpu_cs_parser_fini.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45979"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0905a1d4a5500ecf11f1c0079098e3a351d22163"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f025a2b8d93358467b8e8f4b3a617e88c5f02fab"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:15Z"
+  }
+}

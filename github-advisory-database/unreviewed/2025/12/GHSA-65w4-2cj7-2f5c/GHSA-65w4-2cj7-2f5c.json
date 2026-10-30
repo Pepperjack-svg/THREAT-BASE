@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-65w4-2cj7-2f5c",
+  "modified": "2025-12-09T18:30:33Z",
+  "published": "2025-12-09T18:30:33Z",
+  "aliases": [
+    "CVE-2023-53842"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: codecs: wcd-mbhc-v2: fix resource leaks on component remove\n\nThe MBHC resources must be released on component probe failure and\nremoval so can not be tied to the lifetime of the component device.\n\nThis is specifically needed to allow probe deferrals of the sound card\nwhich otherwise fails when reprobing the codec component:\n\n    snd-sc8280xp sound: ASoC: failed to instantiate card -517\n    genirq: Flags mismatch irq 299. 00002001 (mbhc sw intr) vs. 00002001 (mbhc sw intr)\n    wcd938x_codec audio-codec: Failed to request mbhc interrupts -16\n    wcd938x_codec audio-codec: mbhc initialization failed\n    wcd938x_codec audio-codec: ASoC: error at snd_soc_component_probe on audio-codec: -16\n    snd-sc8280xp sound: ASoC: failed to instantiate card -16",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53842"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17feff71d06c96dea1fa72451c20d411e9d5ac8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90ab6446eb522e31421b77bf8f45714f5668f9a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5475829adcc600bc69ee9ff7c9e3e43fb4f8d30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce4059e1c0aca972446e06c09ee09a0d2ba5df54"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T16:17:24Z"
+  }
+}

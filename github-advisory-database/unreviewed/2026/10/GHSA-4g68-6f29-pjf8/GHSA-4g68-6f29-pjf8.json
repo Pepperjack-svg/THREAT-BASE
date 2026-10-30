@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4g68-6f29-pjf8",
+  "modified": "2026-10-15T21:36:04Z",
+  "published": "2026-10-15T21:36:04Z",
+  "aliases": [
+    "CVE-2026-111140"
+  ],
+  "details": "libregf through 20260526 contains a heap out-of-bounds read in libregf_value_item_read_value_data() because it bounds value data size without subtracting the 4-byte old-format cell offset. Attackers can supply a crafted version 1.0/1.1 REGF hive with a value data cell ending its hive bin to leak adjacent heap bytes or crash parsers like regfexport and plaso.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libyal/libregf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libyal/libregf/blob/1a4bd856484263caa4a5e0d6ba377c3dc69150c7/libregf/libregf_value_item.c#L789-L935"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/libregf-value-data-offset-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libregf-through-20260526-heap-out-of-bounds-read-via-libregf-value-item-read-value-data"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:28Z"
+  }
+}

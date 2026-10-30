@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v8w5-25mx-q5r4",
+  "modified": "2026-10-21T15:40:28Z",
+  "published": "2026-05-27T15:33:13Z",
+  "aliases": [
+    "CVE-2026-45859"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nfnetlink_queue: do shared-unconfirmed check before segmentation\n\nUlrich reports a regression with nfqueue:\n\nIf an application did not set the 'F_GSO' capability flag and a gso\npacket with an unconfirmed nf_conn entry is received all packets are\nnow dropped instead of queued, because the check happens after\nskb_gso_segment().  In that case, we did have exclusive ownership\nof the skb and its associated conntrack entry.  The elevated use\ncount is due to skb_clone happening via skb_gso_segment().\n\nMove the check so that its peformed vs. the aggregated packet.\n\nThen, annotate the individual segments except the first one so we\ncan do a 2nd check at reinject time.\n\nFor the normal case, where userspace does in-order reinjects, this avoids\npacket drops: first reinjected segment continues traversal and confirms\nentry, remaining segments observe the confirmed entry.\n\nWhile at it, simplify nf_ct_drop_unconfirmed(): We only care about\nunconfirmed entries with a refcnt > 1, there is no need to special-case\ndying entries.\n\nThis only happens with UDP.  With TCP, the only unconfirmed packet will\nbe the TCP SYN, those aren't aggregated by GRO.\n\nNext patch adds a udpgro test case to cover this scenario.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45859"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/207b3ebacb6113acaaec0d171d5307032c690004"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23901aa6b8a2f294c4b774436b4691f3ff863a8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79b713ef4261a8ead96af4703f89d0b5f25532e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aead84bdacd77e08357fd718e5dcaffaf387f3c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b740e7ddd7ca0dbfeafca3f5e52717206cf28524"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:16:58Z"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h8cc-85qr-g7ff",
+  "modified": "2026-06-01T18:31:19Z",
+  "published": "2025-03-17T21:30:31Z",
+  "aliases": [
+    "CVE-2022-49183"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: act_ct: fix ref leak when switching zones\n\nWhen switching zones or network namespaces without doing a ct clear in\nbetween, it is now leaking a reference to the old ct entry. That's\nbecause tcf_ct_skb_nfct_cached() returns false and\ntcf_ct_flow_table_lookup() may simply overwrite it.\n\nThe fix is to, as the ct entry is not reusable, free it already at\ntcf_ct_skb_nfct_cached().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49183"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4bb42d73def9411e5cad885b9811987d72431df1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9222a08be539cbb7a8e0d46cbc7ab9e4db273eb8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b24793a37d91aacad7cb9893b226a7924a89636a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bcb74e132a76ce0502bb33d5b65533a4ed72d159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bcbf4e5c3b5b373cd61528392dd1ec8e9c0fd33d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:55Z"
+  }
+}

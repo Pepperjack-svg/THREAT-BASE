@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2f27-2cwc-rp26",
+  "modified": "2026-10-27T00:32:49Z",
+  "published": "2026-10-27T00:32:48Z",
+  "aliases": [
+    "CVE-2026-116729"
+  ],
+  "details": "libfvde through 20260923 contains a heap out-of-bounds read vulnerability in libfvde_encrypted_metadata_read_type_0x001a() caused by an unbounded strlen on embedded XML plist data. Attackers can supply a crafted FileVault 2 volume with non-NUL-terminated plist data, causing libfvde_volume_open() to read past the heap block buffer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libyal/libfvde/issues/70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libyal/libfvde/commit/c2676fe49d0da44d66e7d750e72c57d2670f0b8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libyal/libfvde"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libyal/libfvde/blob/20260923/libfvde/libfvde_encrypted_metadata.c#L2786-L2792"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/libfvde-encrypted-metadata-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libfvde-through-20260923-heap-out-of-bounds-read-via-libfvde-encrypted-metadata-read-type-0x001a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T22:16:56Z"
+  }
+}

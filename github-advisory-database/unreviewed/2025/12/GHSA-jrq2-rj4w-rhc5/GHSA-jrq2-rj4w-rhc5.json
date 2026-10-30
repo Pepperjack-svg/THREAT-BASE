@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jrq2-rj4w-rhc5",
+  "modified": "2025-12-19T18:31:17Z",
+  "published": "2025-12-19T15:31:19Z",
+  "aliases": [
+    "CVE-2025-66910"
+  ],
+  "details": "Turms Server v0.10.0-SNAPSHOT and earlier contains a plaintext password storage vulnerability in the administrator authentication system. The BaseAdminService class caches administrator passwords in plaintext within AdminInfo objects to optimize authentication performance. Upon successful login, raw passwords are stored unencrypted in memory in the rawPassword field. Attackers with local system access can extract these passwords through memory dumps, heap analysis, or debugger attachment, bypassing bcrypt protection.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66910"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Xzzz111/public_cve_report/blob/main/CVE-2025-66910_report.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/turms-im/turms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/turms-im/turms/blob/develop/turms-server-common/src/main/java/im/turms/server/common/domain/admin/bo/AdminInfo.java#L34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/turms-im/turms/blob/develop/turms-server-common/src/main/java/im/turms/server/common/domain/admin/service/BaseAdminService.java#L237"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-256"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-19T15:15:56Z"
+  }
+}

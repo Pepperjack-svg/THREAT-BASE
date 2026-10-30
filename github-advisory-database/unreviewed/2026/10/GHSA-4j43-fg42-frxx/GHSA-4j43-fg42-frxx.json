@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4j43-fg42-frxx",
+  "modified": "2026-10-19T12:32:47Z",
+  "published": "2026-10-19T12:32:47Z",
+  "aliases": [
+    "CVE-2026-112184"
+  ],
+  "details": "MISP contains a reflected cross-site scripting (XSS) vulnerability in the workflow module interface. Parameter names returned by the misp-modules service are rendered as raw HTML form labels on the workflow module page without output encoding. An attacker who can influence the parameter names reported by the misp-modules service can inject arbitrary HTML or JavaScript that executes in the context of an authenticated MISP user's browser.\n\nPreconditions:\n\n- The attacker must be able to control or influence parameter names reported by the misp-modules service.\n\n- A victim must be authenticated and view the affected workflow module page.\n\nImpact:\n\n- Execution of arbitrary JavaScript in the victim's browser session.\n\n- Potential theft of session tokens, manipulation of the MISP interface, or initiation of unauthorized actions on behalf of the victim.\n\nAffected versions: <2.5.48.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112184"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/813a48b2b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T10:16:47Z"
+  }
+}

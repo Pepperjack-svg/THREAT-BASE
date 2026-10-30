@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hr8m-7mwf-v24x",
+  "modified": "2026-05-04T03:31:28Z",
+  "published": "2026-05-04T03:31:28Z",
+  "aliases": [
+    "CVE-2026-7372"
+  ],
+  "details": "A stack overflow vulnerability exists in the WebCam Server Login functionality of GeoVision GV-VMS V20 20.0.2. A specially crafted HTTP request can lead to an arbitrary code execution. An attacker can make an unauthenticated HTTP request to trigger this vulnerability.\n\n#### Stack-overflow via unconstrained sscanf\n\nThe call to `sscanf` at [1] to split the `Buffer` variable into the `username` and `password` variables doesn't limit the size of the extracted content to match the destination buffers' sizes. In this case, if either the username or password decoded from the authorization string exceeds `40` characters (the size the stack variables  `username` and `password`) then a stack overflow will occur. \n\n\n\nThe data is controlled by an attacker, but sronger constraints (e.g. no null bytes) may make exploitation harder. A successful attack could  lead to full code execution as SYSTEM on the machine running the service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7372"
+    },
+    {
+      "type": "WEB",
+      "url": "https://talosintelligence.com/vulnerability_reports"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.geovision.com.tw/cyber_security.php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-04T01:16:04Z"
+  }
+}

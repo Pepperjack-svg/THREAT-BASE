@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fhh6-4pm2-6vqv",
+  "modified": "2026-01-15T21:31:48Z",
+  "published": "2026-01-15T21:31:48Z",
+  "aliases": [
+    "CVE-2026-21910"
+  ],
+  "details": "An Improper Check for Unusual or Exceptional Conditions vulnerability in the packet forwarding engine (PFE) of Juniper Networks Junos OS on EX4k Series and QFX5k Series platforms allows an unauthenticated network-adjacent attacker flapping an interface to cause traffic between VXLAN Network Identifiers (VNIs) to drop, leading to a Denial of Service (DoS).\n\nOn all EX4k and QFX5k platforms, a link flap in an\n\nEVPN-VXLAN configuration Link Aggregation Group (LAG)\nresults in Inter-VNI traffic dropping when there are multiple load-balanced next-hop routes for the same destination.\n\nThis issue is only applicable to systems that support EVPN-VXLAN Virtual Port-Link Aggregation Groups (VPLAG), such as the QFX5110, QFX5120, QFX5200, EX4100, EX4300, EX4400, and EX4650.\n\nService can only be restored by restarting the affected FPC via the 'request chassis fpc restart slot <slot-number>' command.\n\nThis issue affects Junos OS \n\non EX4k and QFX5k Series: \n\n\n\n  *  all versions before 21.4R3-S12, \n  *  all versions of 22.2\n  *  from 22.4 before 22.4R3-S8, \n  *  from 23.2 before 23.2R2-S5, \n  *  from 23.4 before 23.4R2-S5, \n  *  from 24.2 before 24.2R2-S3,\n  *  from 24.4 before 24.4R2.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:Y/R:U/V:X/RE:M/U:Green"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21910"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.juniper.net/JSA106009"
+    },
+    {
+      "type": "WEB",
+      "url": "https://supportportal.juniper.net/JSA106009"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-754"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-15T21:16:06Z"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f6c4-25w9-79f8",
+  "modified": "2026-01-07T21:31:39Z",
+  "published": "2025-08-16T12:30:33Z",
+  "aliases": [
+    "CVE-2025-38546"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\natm: clip: Fix memory leak of struct clip_vcc.\n\nioctl(ATMARP_MKIP) allocates struct clip_vcc and set it to\nvcc->user_back.\n\nThe code assumes that vcc_destroy_socket() passes NULL skb\nto vcc->push() when the socket is close()d, and then clip_push()\nfrees clip_vcc.\n\nHowever, ioctl(ATMARPD_CTRL) sets NULL to vcc->push() in\natm_init_atmarp(), resulting in memory leak.\n\nLet's serialise two ioctl() by lock_sock() and check vcc->push()\nin atm_init_atmarp() to prevent memleak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c17ff462d98c997d707ee5cf4e4a9b1b52b9d90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c075e88d5859a2c6b43b27e0e46fb281cef8039"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fb9fb5a4b5cec2d56e26525ef8c519de858fa60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fb37ab3226606cbfc9b2b6f9e301b0b735734c5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62dba28275a9a3104d4e33595c7b3328d4032d8d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e4dbeee56f614e3f1e166e5d0655a999ea185ef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f771816f14da6d6157a8c30069091abf6b566fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb2e4a2f8f268d8fba6662f663a2e57846f14a8d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-16T12:15:30Z"
+  }
+}

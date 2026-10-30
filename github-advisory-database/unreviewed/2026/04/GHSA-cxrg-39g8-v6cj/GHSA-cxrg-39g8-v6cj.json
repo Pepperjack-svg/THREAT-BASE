@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cxrg-39g8-v6cj",
+  "modified": "2026-10-15T03:35:31Z",
+  "published": "2026-04-03T18:31:22Z",
+  "aliases": [
+    "CVE-2026-23463"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoc: fsl: qbman: fix race condition in qman_destroy_fq\n\nWhen QMAN_FQ_FLAG_DYNAMIC_FQID is set, there's a race condition between\nfq_table[fq->idx] state and freeing/allocating from the pool and\nWARN_ON(fq_table[fq->idx]) in qman_create_fq() gets triggered.\n\nIndeed, we can have:\n         Thread A                             Thread B\n    qman_destroy_fq()                    qman_create_fq()\n      qman_release_fqid()\n        qman_shutdown_fq()\n        gen_pool_free()\n           -- At this point, the fqid is available again --\n                                           qman_alloc_fqid()\n           -- so, we can get the just-freed fqid in thread B --\n                                           fq->fqid = fqid;\n                                           fq->idx = fqid * 2;\n                                           WARN_ON(fq_table[fq->idx]);\n                                           fq_table[fq->idx] = fq;\n     fq_table[fq->idx] = NULL;\n\nAnd adding some logs between qman_release_fqid() and\nfq_table[fq->idx] = NULL makes the WARN_ON() trigger a lot more.\n\nTo prevent that, ensure that fq_table[fq->idx] is set to NULL before\ngen_pool_free() is called by using smp_wmb().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23463"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/014077044e874e270ec480515edbc1cadb976cf2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/265e56714635c5dd1e5964bfd97fa6e73f62cde5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66442cf9989bd4489fa80d9f37637d58ab016835"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/751f60bd48edaf03f9d84ab09e5ce6705757d50f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85dbbf7dc88b0a54f2e334daedf6f3f31fd004fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e3d47904b8153c8c3ad2f9b66d5008aad677aa8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d21923a8059fa896bfef016f55dd769299335cb4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d288fbe652ef43b7128e4bc0c0c2ef6bd03a2210"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-03T16:16:33Z"
+  }
+}

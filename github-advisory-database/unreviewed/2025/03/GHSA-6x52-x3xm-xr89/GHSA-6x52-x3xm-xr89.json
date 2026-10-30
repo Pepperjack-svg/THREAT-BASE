@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6x52-x3xm-xr89",
+  "modified": "2025-03-12T00:31:46Z",
+  "published": "2025-03-12T00:31:46Z",
+  "aliases": [
+    "CVE-2022-49608"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npinctrl: ralink: Check for null return of devm_kcalloc\n\nBecause of the possible failure of the allocation, data->domains might\nbe NULL pointer and will cause the dereference of the NULL pointer\nlater.\nTherefore, it might be better to check it and directly return -ENOMEM\nwithout releasing data manually if fails, because the comment of the\ndevm_kmalloc() says \"Memory allocated with this function is\nautomatically freed on driver detach.\".",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49608"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13596e6c9e541e90e5fc2c52b23f08b951370da9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44016a85419ca0d4f1e4d0127b330f8e4e2a57d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5595d30c4dc27d939635c3188c68203b6ece1711"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5694b162f275fb9a9f89422701b2b963be11e496"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6194c021496addc11763d1ffa89ce5751889fe3c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3b821e8e406d5650e587b7ac624ac24e9b780a8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:36Z"
+  }
+}

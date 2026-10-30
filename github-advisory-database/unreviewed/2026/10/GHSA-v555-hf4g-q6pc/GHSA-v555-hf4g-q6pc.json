@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v555-hf4g-q6pc",
+  "modified": "2026-10-02T12:31:13Z",
+  "published": "2026-10-02T12:31:13Z",
+  "aliases": [
+    "CVE-2026-97876"
+  ],
+  "details": "A local attacker with control over GRUB's configuration can bypass lockdown restrictions when booting with Secure Boot and load an unsigned GRUB module, while GRUB continues to report lockdown is enabled.\n\n\n\n\nThe vulnerability is caused by insufficient validation of the MMIO base address passed to the GRUB serial command. GRUB does not validate that the base address corresponds to a UART device, rather than being an arbitrary memory address. This allows an attacker to trick GRUB into writing non-arbitrary data at an attacker-controlled address, including resetting the grub_file_verifiers list in a way that disables the subsequent verification of loaded modules.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97876"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.freedesktop.org/gnu-grub/grub/-/commit/26beaa3b2720fefdc4d04c1ae209b776fe6848d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openwall.com/lists/oss-security/2026/09/13/5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-822"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-02T11:17:39Z"
+  }
+}

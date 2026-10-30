@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q2hm-mp4x-64qg",
+  "modified": "2025-04-01T21:31:11Z",
+  "published": "2025-04-01T03:31:33Z",
+  "aliases": [
+    "CVE-2025-3051"
+  ],
+  "details": "Linux::Statm::Tiny for Perl before 0.0701 allows untrusted code from the current working directory ('.') to be loaded similar to CVE-2016-1238.\n\nIf an attacker can place a malicious file in current working directory, it may be loaded instead of the intended file, potentially leading to arbitrary code execution.\n\nLinux::Statm::Tiny uses Mite to produce the affected code section due to CVE-2025-30672",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-3051"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blogs.perl.org/users/todd_rinaldo/2016/11/what-happened-to-dot-in-inc.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/RRWO/Linux-Statm-Tiny-0.0700/source/lib/Linux/Statm/Tiny/Mite.pm#L82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/RRWO/Linux-Statm-Tiny-0.0701/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-427"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-01T03:15:18Z"
+  }
+}

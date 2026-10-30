@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pqw8-2jmw-8f2c",
+  "modified": "2026-10-29T00:31:24Z",
+  "published": "2026-10-29T00:31:24Z",
+  "aliases": [
+    "CVE-2026-118752"
+  ],
+  "details": "FreeImage (danoli3 fork) before 3.19.22 contains a heap buffer overflow vulnerability in the PBM RLE decoder of PluginIFF.cpp that lacks bounds checks on ByteRun1 runs. Attackers can supply a crafted IFF/LBM PBM file with runs straddling scanline ends to write up to 127 controlled bytes past the heap-allocated bitmap.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage/issues/156"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage/pull/161"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage/commit/cf173c16354274dc8fb739dc395fc7f32efe7d45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage/commit/e1105d3b464b679f0525c6178d9ccf49d55cf712"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage/blob/3.19.21/Source/FreeImage/PluginIFF.cpp#L296-L324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/danoli3/FreeImage/releases/tag/3.19.22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/freeimage-before-3.19.22-heap-buffer-overflow-via-iff-lbm-pbm-rle-decoder"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T22:17:13Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pgxh-r3r9-7phj",
+  "modified": "2026-10-15T21:36:07Z",
+  "published": "2026-10-15T21:36:07Z",
+  "aliases": [
+    "CVE-2026-111162"
+  ],
+  "details": "WildMIDI through 0.5.0 contains a heap out-of-bounds read vulnerability in the HMP parser _WM_ParseNewHmp() that allows attackers to read beyond buffers via underflowed chunk lengths. Attackers can supply a crafted .hmp file with a chunk length of 0-12 that wraps to roughly 4 GB, crashing applications or exposing heap bytes through WildMidi_GetInfo().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111162"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Mindwerks/wildmidi"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Mindwerks/wildmidi/blob/340472ed4633d139d30c660b90eca03c1320e593/src/f_hmp.c#L258-L261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Mindwerks/wildmidi/blob/340472ed4633d139d30c660b90eca03c1320e593/src/internal_midi.c#L2166-L2172"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/wildmidi-hmp-chunk-length-underflow-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wildmidi-through-0.5.0-heap-out-of-bounds-read-via-wm-parsenewhmp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:31Z"
+  }
+}

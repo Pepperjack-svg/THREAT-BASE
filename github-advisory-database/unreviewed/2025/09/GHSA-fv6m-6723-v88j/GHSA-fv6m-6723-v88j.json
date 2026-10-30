@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fv6m-6723-v88j",
+  "modified": "2025-12-03T21:30:59Z",
+  "published": "2025-09-15T15:31:27Z",
+  "aliases": [
+    "CVE-2022-50326"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: airspy: fix memory leak in airspy probe\n\nThe commit ca9dc8d06ab6 (\"media: airspy: respect the DMA coherency\n rules\") moves variable buf from stack to heap, however, it only frees\nbuf in the error handling code, missing deallocation in the success\npath.\n\nFix this by freeing buf in the success path since this variable does not\nhave any references in other code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50326"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23bc5eb55f8c9607965c20d9ddcc13cb1ae59568"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4285dd02b6b2ca3435b65fb62c053dd9408fd71"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T15:15:44Z"
+  }
+}

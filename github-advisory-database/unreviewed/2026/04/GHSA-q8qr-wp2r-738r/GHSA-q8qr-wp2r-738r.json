@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q8qr-wp2r-738r",
+  "modified": "2026-04-21T15:32:17Z",
+  "published": "2026-04-10T18:31:18Z",
+  "aliases": [
+    "CVE-2026-40023"
+  ],
+  "details": "Apache Log4cxx's  XMLLayout https://logging.apache.org/log4cxx/1.7.0/classlog4cxx_1_1xml_1_1XMLLayout.html , in versions before 1.7.0, fails to sanitize characters forbidden by the  XML 1.0 specification https://www.w3.org/TR/xml/#charsets  in log messages, NDC, and MDC property keys and values, producing invalid XML output. Conforming XML parsers must reject such documents with a fatal error, which may cause downstream log processing systems to drop or fail to index affected records.\n\nAn attacker who can influence logged data can exploit this to suppress individual log records, impairing audit trails and detection of malicious activity.\n\nUsers are advised to upgrade to Apache Log4cxx 1.7.0, which fixes this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40023"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/logging-log4cxx/pull/609"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/y15cv3zblg3dfwr5vy6ddbnl4zyrzr8b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://logging.apache.org/cyclonedx/vdr.xml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://logging.apache.org/log4cxx/1.7.0/classlog4cxx_1_1xml_1_1XMLLayout.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://logging.apache.org/security.html#CVE-2026-40023"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/04/10/12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-116"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-10T16:16:32Z"
+  }
+}

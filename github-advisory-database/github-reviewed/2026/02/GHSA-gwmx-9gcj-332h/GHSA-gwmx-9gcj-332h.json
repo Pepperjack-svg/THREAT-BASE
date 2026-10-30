@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gwmx-9gcj-332h",
+  "modified": "2026-02-11T23:14:08Z",
+  "published": "2026-02-11T16:53:35Z",
+  "aliases": [
+    "CVE-2026-25633"
+  ],
+  "summary": "Statamic CMS's missing authorization allows access to assets",
+  "details": "### Impact\nUsers without permission to view assets are able are able to download them and view their metadata.\n\nLogged-out users and users without permission to access the control panel are unable to take advantage of this.\n\n### Patches\nThis has been fixed in 5.73.6 and 6.2.5.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.73.6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0-alpha.1"
+            },
+            {
+              "fixed": "6.2.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/security/advisories/GHSA-gwmx-9gcj-332h"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/pull/13883"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/commit/5a6f47246edf3a0c453727ffecbfa14333a6bc8a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/statamic/cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/releases/tag/v5.73.6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/releases/tag/v6.2.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-11T16:53:35Z",
+    "nvd_published_at": "2026-02-11T21:16:18Z"
+  }
+}

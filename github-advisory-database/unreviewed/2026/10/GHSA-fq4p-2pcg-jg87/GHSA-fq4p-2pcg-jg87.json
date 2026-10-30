@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fq4p-2pcg-jg87",
+  "modified": "2026-10-19T21:36:28Z",
+  "published": "2026-10-19T21:36:28Z",
+  "aliases": [
+    "CVE-2026-110687"
+  ],
+  "details": "Cpanel::JSON::XS versions from 4.43 before 4.80 for Perl misorder byte-string keys during canonical encoding in utf16_cmp.\n\ncanonical sorts keys by UTF-16 code units. When any key in a hash is UTF-8 flagged, every key is decoded as UTF-8 for the comparison, including byte-string keys that the encoder writes out as Latin-1 characters. A byte-string key whose bytes are valid UTF-8 is sorted out of order, and two keys that encode differently can compare equal and are left in hash order.\n\nThe same data can encode to different canonical documents across processes.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110687"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rurban/Cpanel-JSON-XS/commit/bb9da30b67f637f4d57922f0e043376363f28f0c.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-176"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T19:17:22Z"
+  }
+}

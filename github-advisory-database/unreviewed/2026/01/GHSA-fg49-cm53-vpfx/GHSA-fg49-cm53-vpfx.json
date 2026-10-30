@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fg49-cm53-vpfx",
+  "modified": "2026-07-30T06:32:26Z",
+  "published": "2026-01-05T12:30:28Z",
+  "aliases": [
+    "CVE-2025-68753"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: firewire-motu: add bounds check in put_user loop for DSP events\n\nIn the DSP event handling code, a put_user() loop copies event data.\nWhen the user buffer size is not aligned to 4 bytes, it could overwrite\nbeyond the buffer boundary.\n\nFix by adding a bounds check before put_user().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68753"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d71b3c2ed742f1ccb3b0b7a61afb90c0251093f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/298e753880b6ea99ac30df34959a7a03b0878eed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d4f17782ce4facf3197e79707df411ee3d7b30a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f9e51cf2a2a43d0cd72d3dc0b5ccea3f639c187"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df692cf2b601a54b34edfdb9e683d67483aa8ce1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea2c921d9de6e32ca50cb817b9d57bb881be70de"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-05T10:15:56Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mq33-37wv-8g5g",
+  "modified": "2026-10-21T15:40:07Z",
+  "published": "2025-09-05T18:31:17Z",
+  "aliases": [
+    "CVE-2025-38722"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhabanalabs: fix UAF in export_dmabuf()\n\nAs soon as we'd inserted a file reference into descriptor table, another\nthread could close it.  That's fine for the case when all we are doing is\nreturning that descriptor to userland (it's a race, but it's a userland\nrace and there's nothing the kernel can do about it).  However, if we\nfollow fd_install() with any kind of access to objects that would be\ndestroyed on close (be it the struct file itself or anything destroyed\nby its ->release()), we have a UAF.\n\ndma_buf_fd() is a combination of reserving a descriptor and fd_install().\nhabanalabs export_dmabuf() calls it and then proceeds to access the\nobjects destroyed on close.  In particular, it grabs an extra reference to\nanother struct file that will be dropped as part of ->release() for ours;\nthat \"will be\" is actually \"might have already been\".\n\nFix that by reserving descriptor before anything else and do fd_install()\nonly when everything had been set up.  As a side benefit, we no longer\nhave the failure exit with file already created, but reference to\nunderlying file (as well as ->dmabuf_export_cnt, etc.) not grabbed yet;\nunlike dma_buf_fd(), fd_install() can't fail.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38722"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/33927f3d0ecdcff06326d6e4edb6166aed42811c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40deceb38f9db759772d1c289c28fd2a543f57fc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55c232d7e0241f1d5120b595e7a9de24c75ed3d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c07886761fd6251db6938d4e747002e3d150d231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d26058c2349d77d1ef179a2cc9752ca12004b6ff"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-04T16:15:41Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qr79-p6wg-4p8q",
+  "modified": "2025-11-25T21:32:03Z",
+  "published": "2025-09-05T18:31:26Z",
+  "aliases": [
+    "CVE-2025-39680"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: rtl9300: Fix out-of-bounds bug in rtl9300_i2c_smbus_xfer\n\nThe data->block[0] variable comes from user. Without proper check,\nthe variable may be very large to cause an out-of-bounds bug.\n\nFix this bug by checking the value of data->block[0] first.\n\n1. commit 39244cc75482 (\"i2c: ismt: Fix an out-of-bounds bug in\n   ismt_access()\")\n2. commit 92fbb6d1296f (\"i2c: xgene-slimpro: Fix out-of-bounds bug in\n   xgene_slimpro_i2c_xfer()\")",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39680"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/071e43fcba5ddd9a7813e6cc0aa10299eae41b21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57f312b955938fc4663f430cb57a71f2414f601b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-05T18:15:44Z"
+  }
+}

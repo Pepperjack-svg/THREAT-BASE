@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-826q-ppf7-8g9v",
+  "modified": "2026-04-14T18:30:31Z",
+  "published": "2026-04-09T15:35:08Z",
+  "aliases": [
+    "CVE-2026-5440"
+  ],
+  "details": "A memory exhaustion vulnerability exists in the HTTP server due to unbounded use of the `Content-Length` header.  The server allocates memory directly based on the attacker supplied header value without enforcing an upper limit. A crafted HTTP request containing an extremely large `Content-Length` value can trigger excessive memory allocation and server termination, even without sending a request body.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5440"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.cert.org/vuls/id/536588"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.machinespirits.de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.orthanc-server.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-09T15:16:16Z"
+  }
+}

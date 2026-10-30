@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-84hr-q2hc-2m5c",
+  "modified": "2025-05-02T09:30:30Z",
+  "published": "2025-02-27T21:32:14Z",
+  "aliases": [
+    "CVE-2022-49535"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: lpfc: Fix null pointer dereference after failing to issue FLOGI and PLOGI\n\nIf lpfc_issue_els_flogi() fails and returns non-zero status, the node\nreference count is decremented to trigger the release of the nodelist\nstructure. However, if there is a prior registration or dev-loss-evt work\npending, the node may be released prematurely.  When dev-loss-evt\ncompletes, the released node is referenced causing a use-after-free null\npointer dereference.\n\nSimilarly, when processing non-zero ELS PLOGI completion status in\nlpfc_cmpl_els_plogi(), the ndlp flags are checked for a transport\nregistration before triggering node removal.  If dev-loss-evt work is\npending, the node may be released prematurely and a subsequent call to\nlpfc_dev_loss_tmo_handler() results in a use after free ndlp dereference.\n\nAdd test for pending dev-loss before decrementing the node reference count\nfor FLOGI, PLOGI, PRLI, and ADISC handling.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49535"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10663ebec0ad5c78493a0dd34c9ee4d73d7ca0df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/577a942df3de2666f6947bdd3a5c9e8d30073424"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7dc74ab7975c9b96284abfe4cca756d75fa4604"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:29Z"
+  }
+}

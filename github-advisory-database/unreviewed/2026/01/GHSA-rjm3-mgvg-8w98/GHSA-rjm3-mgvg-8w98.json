@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rjm3-mgvg-8w98",
+  "modified": "2026-01-23T18:31:28Z",
+  "published": "2026-01-23T18:31:28Z",
+  "aliases": [
+    "CVE-2025-67125"
+  ],
+  "details": "A signed integer overflow in docopt.cpp v0.6.2 (LeafPattern::match in docopt_private.h) when merging occurrence counters (e.g., default LONG_MAX + first user \"-v/--verbose\") can cause counter wrap (negative/unbounded semantics) and lead to logic/policy bypass in applications that rely on occurrence-based limits, rate-gating, or safety toggles. In hardened builds (e.g., UBSan or -ftrapv), the overflow may also result in process abort (DoS).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-67125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/thesmartshadow/672afe8828844c833f46f8ebe2f5f3bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/docopt/docopt.cpp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-23T16:15:52Z"
+  }
+}

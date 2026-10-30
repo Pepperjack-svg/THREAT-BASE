@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7fwj-mp6x-9r6f",
+  "modified": "2026-10-23T12:31:37Z",
+  "published": "2026-10-23T12:31:37Z",
+  "aliases": [
+    "CVE-2026-98894"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/ras: reset CPER ring on corrupt entry size\n\nWhen CPER ring overflow handling advances the read pointer, it trusts the\nparsed entry size from the current ring contents. Corrupt CPER data can\nproduce an entry size that does not advance rptr after dword conversion\nand pointer masking.\n\nIn that case the recovery loop keeps testing the same location while\nholding the CPER ring mutex. This can hang the worker that is writing the\nnext CPER record.\n\nDetect a no-progress rptr update and reset the CPER ring to an empty\nstate instead. This drops the corrupt contents and lets the writer leave\nthe recovery path without spinning.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98894"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d695e66d7027a0c78302e47ac76293675fbbb4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a98d0d49757a113ce17960262b9cd4ccc1420108"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:23Z"
+  }
+}

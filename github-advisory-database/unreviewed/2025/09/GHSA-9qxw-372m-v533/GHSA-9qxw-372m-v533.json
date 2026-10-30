@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9qxw-372m-v533",
+  "modified": "2025-11-25T21:32:04Z",
+  "published": "2025-09-05T18:31:27Z",
+  "aliases": [
+    "CVE-2025-39708"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: iris: Fix NULL pointer dereference\n\nA warning reported by smatch indicated a possible null pointer\ndereference where one of the arguments to API\n\"iris_hfi_gen2_handle_system_error\" could sometimes be null.\n\nTo fix this, add a check to validate that the argument passed is not\nnull before accessing its members.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39708"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f837559ccdd275c5a059e6ac4d5034b03409f1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/992ddee3c0da5f113ba86892ace467c1ac645538"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-05T18:15:48Z"
+  }
+}

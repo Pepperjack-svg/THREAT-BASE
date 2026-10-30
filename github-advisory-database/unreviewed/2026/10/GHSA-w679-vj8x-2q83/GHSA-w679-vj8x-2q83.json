@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w679-vj8x-2q83",
+  "modified": "2026-10-11T15:31:06Z",
+  "published": "2026-10-11T15:31:06Z",
+  "aliases": [
+    "CVE-2026-108757"
+  ],
+  "details": "Nexting pinclaw OpenClaw channel plugin through 0.3.0 contains a missing authentication vulnerability in src/core/http-router.ts that skips the authToken check on POST /pinclaw/send. Unauthenticated attackers reaching port 18790, which binds all interfaces by default, can inject blind prompts into the user's main OpenClaw agent session as user instructions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108757"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Nexting-ai/nexting/blob/a4b75f0429d3b1bf35eef68a296b2e72aa9c7483/plugin/src/core/http-router.ts#L296-L330"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Nexting-ai/nexting/blob/a4b75f0429d3b1bf35eef68a296b2e72aa9c7483/plugin/src/core/server.ts#L149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind/nexting-pinclaw-send-unauth-agent-injection"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.npmjs.com/package/pinclaw"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nexting-pinclaw-through-0.3.0-missing-authentication-via-post-pinclaw-send"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T13:17:20Z"
+  }
+}

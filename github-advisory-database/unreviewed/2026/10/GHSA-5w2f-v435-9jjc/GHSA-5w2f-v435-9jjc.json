@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5w2f-v435-9jjc",
+  "modified": "2026-10-20T18:31:45Z",
+  "published": "2026-10-20T18:31:45Z",
+  "aliases": [
+    "CVE-2026-113611"
+  ],
+  "details": "Outline before 1.8.0 contains an improper access revocation vulnerability that allows deleted administrators to keep receiving document contents because UserDeletedProcessor never disables their WebhookSubscription rows. Former admins who registered webhooks before deletion continue receiving full document bodies, including Markdown and Yjs data, via DeliverWebhookTask for every matching workspace event.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/outline/outline/security/advisories/GHSA-33jq-x32c-3ccw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113611"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/outline/outline/commit/e044014cea958962fc9f5e2b8f6ff1d8cadd676f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/outline/outline/blob/v1.7.1/server/queues/processors/UserDeletedProcessor.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/outline/outline/releases/tag/v1.8.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/outline-before-1.8.0-information-disclosure-via-orphaned-webhook-subscriptions"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T16:17:11Z"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v6f2-g4gw-r4rc",
+  "modified": "2025-11-03T21:34:28Z",
+  "published": "2025-09-12T15:31:17Z",
+  "aliases": [
+    "CVE-2025-9556"
+  ],
+  "details": "Langchaingo supports the use of jinja2 syntax when parsing prompts, which is in turn parsed using the gonja library v1.5.3.\nGonja supports include and extends syntax to read files, which leads to a server side template injection vulnerability within langchaingo, allowing an attacker to insert a statement into a prompt to read the \"etc/passwd\" file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/tmc/langchaingo/security/advisories/GHSA-mgcj-g55g-rf6h"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-9556"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tmc/langchaingo/pull/1348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.kb.cert.org/vuls/id/949137"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-12T14:15:42Z"
+  }
+}

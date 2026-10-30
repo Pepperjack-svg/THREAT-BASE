@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r28f-pmvp-8355",
+  "modified": "2026-03-25T21:30:22Z",
+  "published": "2026-01-13T18:31:07Z",
+  "aliases": [
+    "CVE-2025-71101"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: hp-bioscfg: Fix out-of-bounds array access in ACPI package parsing\n\nThe hp_populate_*_elements_from_package() functions in the hp-bioscfg\ndriver contain out-of-bounds array access vulnerabilities.\n\nThese functions parse ACPI packages into internal data structures using\na for loop with index variable 'elem' that iterates through\nenum_obj/integer_obj/order_obj/password_obj/string_obj arrays.\n\nWhen processing multi-element fields like PREREQUISITES and\nENUM_POSSIBLE_VALUES, these functions read multiple consecutive array\nelements using expressions like 'enum_obj[elem + reqs]' and\n'enum_obj[elem + pos_values]' within nested loops.\n\nThe bug is that the bounds check only validated elem, but did not consider\nthe additional offset when accessing elem + reqs or elem + pos_values.\n\nThe fix changes the bounds check to validate the actual accessed index.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79cab730dbaaac03b946c7f5681bd08c986e2abd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf7ae870560b988247a4bbbe5399edd326632680"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/db4c26adf7117b1a4431d1197ae7109fee3230ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e44c42c830b7ab36e3a3a86321c619f24def5206"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-13T16:16:10Z"
+  }
+}

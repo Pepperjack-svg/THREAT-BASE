@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-98h7-qf5m-qq4g",
+  "modified": "2026-10-13T21:33:42Z",
+  "published": "2026-10-13T21:33:42Z",
+  "aliases": [
+    "CVE-2026-110238"
+  ],
+  "details": "Rapyd Admin from 9.0.0 before 9.20.0 contains an authorization bypass vulnerability that allows authenticated company members with the default customer role to modify or delete arbitrary user accounts through the UsersModalEditEmbed Livewire component. Attackers can dispatch editUser or deleteUser with predictable sequential user ids to reset owner or super admin passwords, promote themselves to owner, and delete users.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zofe/rapyd-admin/commit/acd6ee85f9e5ccec67199673b039c605d161406a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zofe/rapyd-admin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zofe/rapyd-admin/blob/v9.19.0/app/Modules/Companies/Livewire/UsersModalEditEmbed.php#L27-L81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zofe/rapyd-admin/blob/v9.19.0/app/Modules/Companies/Views/users_table_embed.blade.php#L17-L20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zofe/rapyd-admin/releases/tag/v9.20.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rapyd-admin-9.0.0-before-9.20.0-authorization-bypass-via-usersmodaleditembed-component"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:49Z"
+  }
+}

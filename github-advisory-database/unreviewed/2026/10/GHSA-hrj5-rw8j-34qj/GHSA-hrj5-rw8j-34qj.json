@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hrj5-rw8j-34qj",
+  "modified": "2026-10-08T06:31:19Z",
+  "published": "2026-10-08T06:31:18Z",
+  "aliases": [
+    "CVE-2026-107449"
+  ],
+  "details": "linuxserver Heimdall through 2.8.3 applies its SafeUrlFetcher SSRF protection mechanism only to ItemController; the enhanced-application test and live-stats requests occur via SupportedApps::execute(), a GuzzleHttp client that lacks IP address restrictions. In some realistic installations, the POST /test_config (and GET /get_stats) endpoints are accessible through CSRF, and thus an unauthenticated attacker can force the server to send requests to arbitrary internal hosts and ports (including 169.254.169.254) and read a status/port oracle in addition to partial response data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107449"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kashishtopi/heimdall-unauth-ssrf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/linuxserver/Heimdall/blob/9ad5864a80d7025db1e6eab8eb2981c165b0ddff/app/SupportedApps.php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T05:17:04Z"
+  }
+}

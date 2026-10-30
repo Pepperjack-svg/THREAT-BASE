@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6grj-9h9x-cv46",
+  "modified": "2025-10-23T18:31:06Z",
+  "published": "2025-02-27T03:33:59Z",
+  "aliases": [
+    "CVE-2024-57985"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: qcom: scm: Cleanup global '__scm' on probe failures\n\nIf SCM driver fails the probe, it should not leave global '__scm'\nvariable assigned, because external users of this driver will assume the\nprobe finished successfully.  For example TZMEM parts ('__scm->mempool')\nare initialized later in the probe, but users of it (__scm_smc_call())\nrely on the '__scm' variable.\n\nThis fixes theoretical NULL pointer exception, triggered via introducing\nprobe deferral in SCM driver with call trace:\n\n  qcom_tzmem_alloc+0x70/0x1ac (P)\n  qcom_tzmem_alloc+0x64/0x1ac (L)\n  qcom_scm_assign_mem+0x78/0x194\n  qcom_rmtfs_mem_probe+0x2d4/0x38c\n  platform_probe+0x68/0xc8",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57985"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e76b546e6fca7eb568161f408133904ca6bcf4f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/390d3baeba51a126f75c97b90ec28b9384ce4b84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/faf1715798fe72b79e4432ce8c6d03ca69765425"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T02:15:11Z"
+  }
+}

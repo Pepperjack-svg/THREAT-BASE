@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q9m2-3393-574q",
+  "modified": "2026-10-13T21:33:38Z",
+  "published": "2026-10-13T21:33:38Z",
+  "aliases": [
+    "CVE-2026-110220"
+  ],
+  "details": "Kubeflow Model Registry through 0.3.17 contains a server-side request forgery vulnerability that allows namespace users to steal the controller ServiceAccount token via the modelregistry.kubeflow.org/url annotation. Attackers can create an InferenceService pointing the annotation at their server, capture the bearer token, and modify other tenants' InferenceServices cluster-wide.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kubeflow/hub"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kubeflow/hub/blob/v0.3.17/cmd/controller/main.go#L224-L228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kubeflow/hub/blob/v0.3.17/pkg/inferenceservice-controller/controller.go#L268-L292"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kubeflow/hub/blob/v0.3.17/pkg/openapi/client.go#L420-L423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/kubeflow-hub-controller-token-url-forwarding"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/kubeflow-model-registry-through-0.3.17-ssrf-via-inferenceservice-controller-url-annotation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:46Z"
+  }
+}

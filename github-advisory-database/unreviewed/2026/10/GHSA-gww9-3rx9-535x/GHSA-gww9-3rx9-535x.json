@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gww9-3rx9-535x",
+  "modified": "2026-10-28T12:31:09Z",
+  "published": "2026-10-28T12:31:08Z",
+  "aliases": [
+    "CVE-2026-118485"
+  ],
+  "details": "Axel Download Accelerator 2.17.14 and earlier performs URL percent-decoding (http_decode()) on the output filename after the URL has been parsed and the filename component extracted. This allows an attacker to embed %2e%2e%2f (URL-encoded ../) sequences in the URL path. These sequences survive the URL parser intact (they contain no literal / characters) but are decoded into directory traversal sequences before the output file is opened for writing. As a result, a crafted URL can cause axel to write downloaded content to arbitrary filesystem paths relative to the current working directory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118485"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/axel-download-accelerator/axel/issues/477"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/axel-download-accelerator/axel/pull/483/changes/4e76e1a1dd1c4ea11b445e2c45e4ee257c76314e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisories.orangecyberdefense.com/advisories/167"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/axel-download-accelerator/axel/milestone/22"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-24"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T12:17:40Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mxpf-w6j6-89w2",
+  "modified": "2025-11-14T18:31:20Z",
+  "published": "2025-05-20T18:30:58Z",
+  "aliases": [
+    "CVE-2025-37981"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: smartpqi: Use is_kdump_kernel() to check for kdump\n\nThe smartpqi driver checks the reset_devices variable to determine\nwhether special adjustments need to be made for kdump. This has the\neffect that after a regular kexec reboot, some driver parameters such as\nmax_transfer_size are much lower than usual. More importantly, kexec\nreboot tests have revealed memory corruption caused by the driver log\nbeing written to system memory after a kexec.\n\nFix this by testing is_kdump_kernel() rather than reset_devices where\nappropriate.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37981"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7cc670e8ebaa5241dd99c0ad75eceb8f8f64f607"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2d5a0072235a69749ceb04c1a26dc75df66a31a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ebf673c76ce91e612a882dfaa9a3824962994aae"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-20T17:15:48Z"
+  }
+}

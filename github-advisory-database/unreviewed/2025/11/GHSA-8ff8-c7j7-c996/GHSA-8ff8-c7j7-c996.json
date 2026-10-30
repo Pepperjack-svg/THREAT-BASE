@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8ff8-c7j7-c996",
+  "modified": "2025-11-07T06:30:28Z",
+  "published": "2025-11-07T06:30:28Z",
+  "aliases": [
+    "CVE-2025-12352"
+  ],
+  "details": "The Gravity Forms plugin for WordPress is vulnerable to arbitrary file uploads due to missing file type validation in the copy_post_image() function in all versions up to, and including, 2.9.20. This makes it possible for unauthenticated attackers to upload arbitrary files on the affected site's server which may make remote code execution possible. This only impacts sites that have allow_url_fopen set to `On`, the post creation form enabled along with a file upload field for the post",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12352"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pronamic/gravityforms/blob/06de1b7e169e4f073e9d0d491e17b89365b48c20/forms_model.php#L5451C26-L5451C41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pronamic/gravityforms/blob/06de1b7e169e4f073e9d0d491e17b89365b48c20/includes/fields/class-gf-field-fileupload.php#L306"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/42525101-6196-40b9-90e7-c7f1886ef247?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-07T05:15:57Z"
+  }
+}

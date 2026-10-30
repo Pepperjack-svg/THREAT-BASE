@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9768-hprv-crj5",
+  "modified": "2025-11-05T19:58:33Z",
+  "published": "2025-07-09T18:30:44Z",
+  "aliases": [
+    "CVE-2025-53650"
+  ],
+  "summary": "Jenkins Credentials Binding Plugin vulnerability can expose sensitive information in logger messages",
+  "details": "Jenkins Credentials Binding Plugin 687.v619cb_15e923f and earlier does not properly mask (i.e., replace with asterisks) credentials present in exception error messages that are written to the build log.\n\nCredentials Binding Plugin 687.689.v1a_f775332fc9 rethrows exceptions that contain credentials, masking those credentials in the error messages.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.plugins:credentials-binding"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "687.689.v1a"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-53650"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/credentials-binding-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2025-07-09/#SECURITY-3499"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/07/09/4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-522",
+      "CWE-779"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-07-09T20:28:31Z",
+    "nvd_published_at": "2025-07-09T16:15:24Z"
+  }
+}

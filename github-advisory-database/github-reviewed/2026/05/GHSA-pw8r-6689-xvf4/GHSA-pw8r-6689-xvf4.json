@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pw8r-6689-xvf4",
+  "modified": "2026-05-13T13:53:12Z",
+  "published": "2026-05-11T16:20:58Z",
+  "aliases": [
+    "CVE-2026-44643"
+  ],
+  "summary": "Angular Expressions - Remote Code Execution using filters",
+  "details": "## Impact\n\nAn attacker can write a malicious expression that escapes the sandbox to execute arbitrary code on the system.\n\nExample of vulnerable code:\n\n```\nconst expressions = require(\"angular-expressions\");\nconst result = expressions.compile(\"a | __proto__\")({}, {});\n```\n\nThis should throw the error : Filter '__proto__' is not defined, however, this shows : \n\nUncaught SyntaxError: Unexpected identifier 'Object'\n\nWith a more complex (undisclosed) payload, one can get full access to Arbitrary code execution on the system.\n\n## Vulnerable versions : \n\nangular-expressions <= 1.5.1\n\n## Patches\n\nThe problem has been patched in version 1.5.2 of angular-expressions.\n\n## Credits\n\nCredits go to San Gil from [www.securityoffice.io](https://securityoffice.io/) who has found the issue and reported it to us.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "angular-expressions"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.5.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/peerigon/angular-expressions/security/advisories/GHSA-pw8r-6689-xvf4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44643"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/peerigon/angular-expressions"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-95"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-11T16:20:58Z",
+    "nvd_published_at": "2026-05-11T16:17:36Z"
+  }
+}

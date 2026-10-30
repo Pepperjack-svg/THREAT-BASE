@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hqgm-v7cx-mq25",
+  "modified": "2026-10-20T18:31:45Z",
+  "published": "2026-10-20T18:31:45Z",
+  "aliases": [
+    "CVE-2026-113679"
+  ],
+  "details": "HarfBuzz 8.0.0 through 14.6.0 contains an out-of-bounds write vulnerability in the experimental WebAssembly shaper because the font_glyph_to_string import has a wrong WAMR signature. Attackers can supply a crafted font whose wasm module places the output buffer near linear memory's end, writing glyph-name bytes into host memory to crash or corrupt applications.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113679"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/harfbuzz/harfbuzz/pull/6414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/harfbuzz/harfbuzz/commit/5e821de8256d01780566b5c8ab7886fae4c93da8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/harfbuzz/harfbuzz/blob/14.6.0/src/hb-wasm-api-font.hh#L115-L123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/harfbuzz/harfbuzz/blob/14.6.0/src/hb-wasm-api-list.hh#L85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/harfbuzz-8.0.0-through-14.6.0-out-of-bounds-write-via-webassembly-font-glyph-to-string"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T16:17:12Z"
+  }
+}

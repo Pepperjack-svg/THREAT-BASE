@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-44v2-prcf-pc3m",
+  "modified": "2025-04-09T13:08:26Z",
+  "published": "2025-04-08T18:34:43Z",
+  "aliases": [
+    "CVE-2025-25226"
+  ],
+  "summary": "Joomla Framework Database Package Vulnerable to SQL Injection",
+  "details": "Improper handling of identifiers lead to a SQL injection vulnerability in the quoteNameStr method of the database package. Please note: the affected method is a protected method. It has no usages in the original packages in neither the 2.x nor 3.x branch and therefore the vulnerability in question can not be exploited when using the original database class. However, classes extending the affected class might be affected, if the vulnerable method is used.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "joomla/database"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.4.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "joomla/database"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "2.2.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-25226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://developer.joomla.org/security-centre/963-20250401-framework-sql-injection-vulnerability-in-quotenamestr-method-of-database-package.html"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/joomla-framework/database"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-04-09T13:08:26Z",
+    "nvd_published_at": "2025-04-08T17:15:35Z"
+  }
+}

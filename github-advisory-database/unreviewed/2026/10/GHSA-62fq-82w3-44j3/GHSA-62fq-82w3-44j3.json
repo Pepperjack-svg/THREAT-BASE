@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-62fq-82w3-44j3",
+  "modified": "2026-10-15T21:36:06Z",
+  "published": "2026-10-15T21:36:06Z",
+  "aliases": [
+    "CVE-2026-111150"
+  ],
+  "details": "ValleyBell libvgm through commit a6eed945 contains a heap out-of-bounds read vulnerability in the PCM data-block decompressor caused by an unbounded compression-table index. Attackers can supply a crafted .vgm file with a small type 0x7F table and wider compressed values, causing DecompressDataBlk to over-read heap memory and crash consumers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111150"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ValleyBell/libvgm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ValleyBell/libvgm/blob/a6eed945ecf4e5a25cf82004779c6f7e4fd5c319/player/dblk_compr.c#L183-L190"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ValleyBell/libvgm/blob/a6eed945ecf4e5a25cf82004779c6f7e4fd5c319/player/dblk_compr.c#L727-L751"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/libvgm-pcm-compression-table-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/valleybell-libvgm-through-commit-a6eed945-heap-out-of-bounds-read-via-decompressdatablk"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:29Z"
+  }
+}

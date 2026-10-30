@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x78j-v8h9-3j2q",
+  "modified": "2026-10-01T15:08:30Z",
+  "published": "2026-10-01T15:08:29Z",
+  "aliases": [
+    "CVE-2026-102937"
+  ],
+  "summary": "virtualenv: Command injection via --prompt in activate.bat (batch activator)",
+  "details": "`BatchActivator.quote()` returned its input unchanged, the only activator with no escaping at all. `--prompt`, the `VIRTUALENV_PROMPT` environment variable, and the config file all set the prompt, and `activate.bat` writes it straight into `@set \"VAR=value\"`. A prompt containing a double quote closes that string early, and whatever follows runs as live cmd.exe syntax:\n\n```console\n$ virtualenv --prompt 'x\" & calc & \"' venv\n$ venv\\Scripts\\activate.bat\n```\n\nruns `calc` the moment someone activates the environment. Confirmed on a real Windows runner. Anyone who templates a prompt from untrusted input (a CI job using a branch name, a wrapper script deriving an environment name from user input) hands an attacker code execution in the shell of anyone who activates the resulting venv on Windows.\n\nFixed in 21.7.12 by escaping the characters cmd.exe treats as live syntax inside this construct. Fix: https://github.com/pypa/virtualenv/pull/3250",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "virtualenv"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "21.7.12"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 21.7.11"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/virtualenv/security/advisories/GHSA-x78j-v8h9-3j2q"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102937"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/virtualenv/pull/3250"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/virtualenv/commit/d721ff140ce4afdc2a9b76751e4584e25d9fbea6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/virtualenv/PYSEC-2026-4014.yaml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pypa/virtualenv"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/virtualenv/releases/tag/21.7.12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/virtualenv"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-01T15:08:29Z",
+    "nvd_published_at": "2026-09-29T21:17:18Z"
+  }
+}

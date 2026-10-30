@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g59r-24g3-h7cm",
+  "modified": "2025-10-30T19:54:46Z",
+  "published": "2025-10-30T17:22:53Z",
+  "aliases": [
+    "CVE-2025-64112"
+  ],
+  "summary": "Statamic Vulnerable to Superadmin Account Takeover via Stored Cross-Site Scripting and Lack of Proper X-CSRF-TOKEN Server-Side Validation",
+  "details": "### Impact\n\nStored XSS vulnerabilities in Collections and Taxonomies allow authenticated users with content creation permissions to inject malicious JavaScript that executes when viewed by higher-privileged users.\n\nThis affects:\n\n- Control panel users with permission to create or edit Collections and Taxonomies\n- Versions up to and including 5.22.0\n\nThe vulnerability can be exploited to:\n\n- Change a super admin's password (versions ≤ 5.21.0)\n- Change a super admin's email address to initiate password reset (version 5.22.0)\n- Gain unauthorized access to superadmin accounts\n\nThe attack requires:\n\n- An authenticated user with control panel and content creation permissions\n- A super admin to view the compromised content\n\n### Patches\n\nThis has been fixed in 5.22.1.\n\n### Credits\n\nStatamic thanks [Wojtek Chwala](https://github.com/wojtekchwala) for responsibly reporting the identified issues and working with us as we addressed them.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.22.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.22.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/security/advisories/GHSA-g59r-24g3-h7cm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-64112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/commit/e513751f433679ce698606e20c554a0c839987c1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/statamic/cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/releases/tag/v5.22.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-30T17:22:53Z",
+    "nvd_published_at": "2025-10-30T18:15:33Z"
+  }
+}

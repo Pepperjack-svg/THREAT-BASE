@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h2xx-9xmf-ppmv",
+  "modified": "2026-10-28T18:32:12Z",
+  "published": "2026-10-28T18:32:12Z",
+  "aliases": [
+    "CVE-2026-116269"
+  ],
+  "details": "MIME::Field::ParamVal versions before 5.521 for Perl turn an RFC 2231 filename with a hyphenated language tag into an empty recommended filename.\n\nA parameter such as filename*=utf-8'en-US'payload.exe is converted to an encoded word with the language tag appended to the charset. The decoder strips the language suffix only when it is a single word, so it cannot resolve the charset UTF-8*EN-US and returns an empty string. The recommended_filename() method returns that empty string rather than falling back to the name parameter.\n\nOther mail readers return payload.exe. A remote sender can get an attachment past a policy that checks file extensions on the recommended filename.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116269"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/DSKOLL/MIME-tools-5.521/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-436"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T18:17:13Z"
+  }
+}

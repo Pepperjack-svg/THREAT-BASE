@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xjr9-gg9q-jx3v",
+  "modified": "2026-06-19T20:47:11Z",
+  "published": "2026-06-19T20:47:11Z",
+  "aliases": [
+    "CVE-2026-54782"
+  ],
+  "summary": "CoreWCF: Authentication bypass in CoreWCF SAML 1.1 / 2.0 token signature validation",
+  "details": "### Impact\nFull impersonation of any principal the trusted STS could have issued an assertion for — including administrative principals when the relying party grants them via SAML claims. Affects both SAML 1.1 and SAML 2.0.\n\n#### Preconditions\nRelying-party service is hosted with WSFederationHttpBinding or WS2007FederationHttpBinding (or any binding that triggers FederatedSecurityTokenManager for issued-token validation), and IdentityConfiguration is wired (UseIdentityConfiguration = true).\nAttacker can reach the service over the network and knows the trusted STS’s public certificate (public certs are by design discoverable).\n\n### Patches\nFixed in CoreWCF v1.8.1 and v1.9.1\n\n### Workarounds\nNone",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "CoreWCF.Primitives"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.8.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "CoreWCF.Primitives"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.9.0"
+            },
+            {
+              "fixed": "1.9.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/CoreWCF/CoreWCF/security/advisories/GHSA-xjr9-gg9q-jx3v"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/CoreWCF/CoreWCF"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-290",
+      "CWE-347"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-19T20:47:11Z",
+    "nvd_published_at": null
+  }
+}

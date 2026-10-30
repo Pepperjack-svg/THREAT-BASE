@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hq7p-2c9c-64hf",
+  "modified": "2026-10-12T09:31:21Z",
+  "published": "2026-10-12T09:31:21Z",
+  "aliases": [
+    "CVE-2026-78358"
+  ],
+  "details": "Several administrative actions do not sufficiently validate whether a request was intentionally initiated by the authenticated user. In particular, the DBUpdateLogCleanUp action can be triggered through a GET request without validating a ChallengeToken. An unauthenticated remote attacker can therefore cause the browser of an authenticated administrator to execute the cleanup action by embedding a crafted request in a malicious web page. Successful exploitation can delete existing DBUpdate log entries. This may reduce the availability of diagnostic and historical information used for troubleshooting and auditing. The impact is limited to DBUpdate log entries that exist at the time the forged request is processed.\n\nAdditional administrative endpoints were identified that do not validate a ChallengeToken. Some of these endpoints can trigger administrative actions such as deploying or synchronizing already existing configuration. They do not allow an attacker to introduce arbitrary new configuration through the CSRF request itself. \n\nExport and read-only endpoints were also identified without ChallengeToken validation. While these endpoints may be triggered through a forged cross-site request, the response content remains subject to the browser's same-origin restrictions and is not automatically exposed to the attacker. Therefore, no direct confidentiality impact has been demonstrated for these endpoints.\n\nThis issue affects OTRS:\n\n  *  7.0.X\n  *  8.0.X\n  *  2023.X\n  *  2024.X\n  *  2025.X\n  *  2026.X before 2026.7.X\n\nPlease note that ((OTRS)) Community Edition 6.x and before are vulnerable. Products based on the ((OTRS)) Community Edition also very likely to be affected",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78358"
+    },
+    {
+      "type": "WEB",
+      "url": "https://otrs.com/release-notes/otrs-security-advisory-2026-15"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T07:16:37Z"
+  }
+}

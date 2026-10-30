@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jhjh-hcm6-mrcc",
+  "modified": "2025-04-29T15:31:21Z",
+  "published": "2025-04-18T15:31:38Z",
+  "aliases": [
+    "CVE-2025-40014"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nobjtool, spi: amd: Fix out-of-bounds stack access in amd_set_spi_freq()\n\nIf speed_hz < AMD_SPI_MIN_HZ, amd_set_spi_freq() iterates over the\nentire amd_spi_freq array without breaking out early, causing 'i' to go\nbeyond the array bounds.\n\nFix that by stopping the loop when it gets to the last entry, so the low\nspeed_hz value gets clamped up to AMD_SPI_MIN_HZ.\n\nFixes the following warning with an UBSAN kernel:\n\n  drivers/spi/spi-amd.o: error: objtool: amd_set_spi_freq() falls through to next function amd_spi_set_opcode()",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40014"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/76e51db43fe4aaaebcc5ddda67b0807f7c9bdecc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f2c746e09a3746bf937bc708129dc8af61d8f19"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-129"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-18T07:15:44Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vwvp-p3cc-rrj2",
+  "modified": "2025-10-09T00:31:06Z",
+  "published": "2025-10-09T00:31:06Z",
+  "aliases": [
+    "CVE-2017-20202"
+  ],
+  "details": "Web Developer for Chrome v0.4.9 contained malicious code that generated a domain via a DGA and fetched a remote script. The fetched script conditionally loaded follow-on modules that performed extensive ad substitution and malvertising, displayed fake “repair” alerts that redirected users to affiliate programs, and attempted to harvest credentials when users logged in. Injected components enumerate common banner sizes for substitution, replace third-party ad calls, and redirect victim traffic to affiliate landing pages. Potential impacts include user-level code execution in the browser context, large-scale ad fraud and traffic hijacking, credential theft, and exposure to additional payloads delivered by the actor. The compromise was reported on by the maintainer of Web Developer for Chrome on August 2, 2017 and remediated in v0.5.0.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-20202"
+    },
+    {
+      "type": "WEB",
+      "url": "https://chromewebstore.google.com/detail/web-developer/bfbameneiokkgbdmiekhjnmfkcnldhhm?pli=1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/piedpiperRichard/076516da60f45842f1a6e6ae35a9a240"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ui.vision/blog/chrome-extension-adware"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web.archive.org/web/20170803163618/https://chrispederick.com/blog/web-developer-for-chrome-compromised"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.proofpoint.com/us/threat-insight/post/threat-actor-goes-chrome-extension-hijacking-spree"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/web-developer-for-chrome-malicious-backdoor-supply-chain-compromise"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-506"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-08T22:15:31Z"
+  }
+}

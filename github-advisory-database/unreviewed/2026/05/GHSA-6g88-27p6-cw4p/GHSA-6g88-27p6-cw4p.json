@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6g88-27p6-cw4p",
+  "modified": "2026-10-21T15:40:26Z",
+  "published": "2026-05-08T15:31:22Z",
+  "aliases": [
+    "CVE-2026-43310"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: verisilicon: Avoid G2 bus error while decoding H.264 and HEVC\n\nFor the i.MX8MQ platform, there is a hardware limitation: the g1 VPU and\ng2 VPU cannot decode simultaneously; otherwise, it will cause below bus\nerror and produce corrupted pictures, even potentially lead to system hang.\n\n[  110.527986] hantro-vpu 38310000.video-codec: frame decode timed out.\n[  110.583517] hantro-vpu 38310000.video-codec: bus error detected.\n\nTherefore, it is necessary to ensure that g1 and g2 operate alternately.\nThis allows for successful multi-instance decoding of H.264 and HEVC.\n\nTo achieve this, g1 and g2 share the same v4l2_m2m_dev, and then the\nv4l2_m2m_dev can handle the scheduling.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43310"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/286d629d10640bc22f3bf46aa4f356eb7975e862"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5133ef7c893c2c3aee7dd12503dc480de9dbfbb5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0203ddf9af7c8e170e1e99ce83b4dc07f0cd765"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2efc1e8ab65bdb9b892af132887323e4df92f02"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f988fbf0536b42f6a05ccc1ac709d60236ec1aa6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:38Z"
+  }
+}

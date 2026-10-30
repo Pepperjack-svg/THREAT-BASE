@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mc62-3gf7-rphg",
+  "modified": "2026-06-23T21:30:32Z",
+  "published": "2026-06-23T21:30:32Z",
+  "aliases": [
+    "CVE-2026-12892"
+  ],
+  "details": "A flaw was found in GStreamer's gst-plugins-bad package. When processing a specially crafted H.264 video file containing malformed MVC or SVC extension slice NAL units, a 1-byte heap out-of-bounds read can occur during parsing. This happens when the parser attempts to check slice boundary information without first verifying that the NAL unit contains enough data beyond the extension header. An attacker could exploit this by tricking a user into opening a malicious H.264 video file, potentially causing the application to crash or leak a single byte of heap memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-12892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2491321"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/work_items/5108"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-23T21:16:55Z"
+  }
+}

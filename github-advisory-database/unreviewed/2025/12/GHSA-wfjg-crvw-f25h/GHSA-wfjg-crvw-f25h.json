@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wfjg-crvw-f25h",
+  "modified": "2025-12-30T15:30:34Z",
+  "published": "2025-12-30T15:30:34Z",
+  "aliases": [
+    "CVE-2023-54268"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndebugobjects: Don't wake up kswapd from fill_pool()\n\nsyzbot is reporting a lockdep warning in fill_pool() because the allocation\nfrom debugobjects is using GFP_ATOMIC, which is (__GFP_HIGH | __GFP_KSWAPD_RECLAIM)\nand therefore tries to wake up kswapd, which acquires kswapd_wait::lock.\n\nSince fill_pool() might be called with arbitrary locks held, fill_pool()\nshould not assume that acquiring kswapd_wait::lock is safe.\n\nUse __GFP_HIGH instead and remove __GFP_NORETRY as it is pointless for\n!__GFP_DIRECT_RECLAIM allocation.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c088d30a72d9b8f9c6ae9362222942e4075cb00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aee97eec77029270866c704f66cdf2881cbd2fe1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be646802b3dc408c4dc72a3ac32c3f4a0282414d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7fff52c99d52f180d8bef95d8ed8fec6343889c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb799279fb1f9c63c520fe8c1c41cb9154252db6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd673079749bac97bb30f1461df079e6c8e86511"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:15Z"
+  }
+}

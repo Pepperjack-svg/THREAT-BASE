@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qcp6-4768-v6qq",
+  "modified": "2026-10-15T21:36:10Z",
+  "published": "2026-10-15T21:36:09Z",
+  "aliases": [
+    "CVE-2026-111215"
+  ],
+  "details": "Netgate pfSense CE through 2.9.0 contains an OS command injection vulnerability that allows authenticated users to execute commands as root by supplying a crafted wireless parent interface name. Attackers with limited Wireless Edit or Interface Assignments privileges can submit values like ath0;<cmd> via interfaces_wireless_edit.php or interfaces_assign.php, which interface_wireless_clone() interpolates unescaped into an ifconfig shell command.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://abraxaslabs.tech/research/pfsense-ce-leftovers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/abraxas/pfsense-assign-if-add"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/abraxas/pfsense-wireless-clone"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pfsense/pfsense/blob/9363ac5b8651a1c7a333180425ce7719070f95f9/src/etc/inc/interfaces.inc#L3370"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pfsense/pfsense/blob/9363ac5b8651a1c7a333180425ce7719070f95f9/src/usr/local/www/interfaces_assign.php#L187"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pfsense/pfsense/blob/9363ac5b8651a1c7a333180425ce7719070f95f9/src/usr/local/www/interfaces_wireless_edit.php#L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netgate-pfsense-ce-through-2.9.0-os-command-injection-via-wireless-parent-interface"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:33Z"
+  }
+}

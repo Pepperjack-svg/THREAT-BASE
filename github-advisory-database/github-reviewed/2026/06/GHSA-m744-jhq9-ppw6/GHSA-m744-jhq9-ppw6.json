@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m744-jhq9-ppw6",
+  "modified": "2026-06-19T20:46:49Z",
+  "published": "2026-06-19T20:46:49Z",
+  "aliases": [
+    "CVE-2026-54775"
+  ],
+  "summary": "CoreWCF: Kafka consume pump halts permanently on a Kafka tombstone (null-value record), causing persistent endpoint denial of service.",
+  "details": "### Impact\nA CoreWCF service is running and listening on a Kafka topic receiving a null-value record will stop processing new records from that topic.\n\n#### Preconditions\nThe attacker has produce/write permission on a topic that CoreWCF is consuming from. If the broker permits anonymous publishes, no authentication is required. \n\n### Patches\nFixed in CoreWCF v1.8.1 and v1.9.1\n\n### Workarounds\nOnly allow authenticated writes to a topic",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "CoreWCF.Kafka"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.8.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "CoreWCF.Kafka"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.9.0"
+            },
+            {
+              "fixed": "1.9.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/CoreWCF/CoreWCF/security/advisories/GHSA-m744-jhq9-ppw6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/CoreWCF/CoreWCF"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-248",
+      "CWE-754",
+      "CWE-755"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-19T20:46:49Z",
+    "nvd_published_at": null
+  }
+}

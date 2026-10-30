@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r8hx-vf7j-v5q3",
+  "modified": "2025-04-10T15:31:49Z",
+  "published": "2025-04-10T15:31:49Z",
+  "aliases": [
+    "CVE-2025-32743"
+  ],
+  "details": "In ConnMan through 1.44, the lookup string in ns_resolv in dnsproxy.c can be NULL or an empty string when the TC (Truncated) bit is set in a DNS response. This allows attackers to cause a denial of service (application crash) or possibly execute arbitrary code, because those lookup values lead to incorrect length calculations and incorrect memcpy operations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-32743"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lapis-sawfish-be3.notion.site/0-click-Vulnerability-in-Comman-1-43_v3-1cadc00d01d080b0b3b9c46a6da584cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web.git.kernel.org/pub/scm/network/connman/connman.git/tree/src/dnsproxy.c?h=1.44#n1688"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-392"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-10T14:15:29Z"
+  }
+}

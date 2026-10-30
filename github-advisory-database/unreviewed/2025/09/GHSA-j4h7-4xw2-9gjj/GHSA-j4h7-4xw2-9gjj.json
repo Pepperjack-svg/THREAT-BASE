@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4h7-4xw2-9gjj",
+  "modified": "2025-09-26T06:30:49Z",
+  "published": "2025-09-26T06:30:49Z",
+  "aliases": [
+    "CVE-2025-10745"
+  ],
+  "details": "The Banhammer – Monitor Site Traffic, Block Bad Users and Bots plugin for WordPress is vulnerable to Blocking Bypass in all versions up to, and including, 3.4.8. This is due to a site-wide “secret key” being deterministically generated from a constant character set using md5() and base64_encode() and then stored in the `banhammer_secret_key` option. This makes it possible for unauthenticated attackers to bypass the plugin’s logging and blocking by appending a GET parameter named `banhammer-process_{SECRET}` where `{SECRET}` is the predictable value, thereby causing Banhammer to abort its protections for that request.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-10745"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/banhammer/trunk/inc/banhammer-core.php#L101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/banhammer/trunk/inc/banhammer-functions.php#L336"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3365087%40banhammer&new=3365087%40banhammer&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3365979%40banhammer&new=3365979%40banhammer&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/97c46a13-6981-426f-b24a-c9820657042f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-330"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-26T04:15:55Z"
+  }
+}

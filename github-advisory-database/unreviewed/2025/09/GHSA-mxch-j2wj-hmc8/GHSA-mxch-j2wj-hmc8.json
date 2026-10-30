@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mxch-j2wj-hmc8",
+  "modified": "2025-12-12T21:31:31Z",
+  "published": "2025-09-18T15:30:34Z",
+  "aliases": [
+    "CVE-2023-53391"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nshmem: use ramfs_kill_sb() for kill_sb method of ramfs-based tmpfs\n\nAs the ramfs-based tmpfs uses ramfs_init_fs_context() for the\ninit_fs_context method, which allocates fc->s_fs_info, use ramfs_kill_sb()\nto free it and avoid a memory leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f34bf8b442c6d720e7fa6f15e8702427e48aea9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36ce9d76b0a93bae799e27e4f5ac35478c676592"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/487f229efea80c00dd7397547ec4f25fb8999d99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5fada375113767b3b57f1b04f7a4fe64ffaa626f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ebe07db840992a3886694ac3d303b06f4b70ce00"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T14:15:42Z"
+  }
+}

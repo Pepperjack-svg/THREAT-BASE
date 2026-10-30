@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gr2g-vmxj-5cv8",
+  "modified": "2025-10-16T15:30:42Z",
+  "published": "2025-10-16T03:30:23Z",
+  "aliases": [
+    "CVE-2025-11683"
+  ],
+  "details": "YAML::Syck versions before 1.36 for Perl has missing null-terminators which causes out-of-bounds read and potential information disclosure\n\nMissing null terminators in token.c leads to but-of-bounds read which allows adjacent variable to be read\n\nThe issue is seen with complex YAML files with a hash of all keys and empty values.  There is no indication that the issue leads to accessing memory outside that allocated to the module.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11683"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cpan-authors/YAML-Syck/pull/65"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/dist/YAML-Syck/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-119"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-16T01:15:32Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pq3f-wh3m-p798",
+  "modified": "2025-11-19T15:31:29Z",
+  "published": "2025-06-18T12:30:53Z",
+  "aliases": [
+    "CVE-2022-50186"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nath11k: fix missing skb drop on htc_tx_completion error\n\nOn htc_tx_completion error the skb is not dropped. This is wrong since\nthe completion_handler logic expect the skb to be consumed anyway even\nwhen an error is triggered. Not freeing the skb on error is a memory\nleak since the skb won't be freed anywere else. Correctly free the\npacket on eid >= ATH11K_HTC_EP_COUNT before returning.\n\nTested-on: IPQ8074 hw2.0 AHB WLAN.HK.2.5.0.1-01208-QCAHKSWPL_SILICONZ-1",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50186"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f1483361585ae7556492f50f83f038bbdf8c294"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dda25326839d6e6b1fe59e79616149e44ea4eaa4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5646fe3b7ef739c392e59da7db6adf5e1fdef42"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:49Z"
+  }
+}

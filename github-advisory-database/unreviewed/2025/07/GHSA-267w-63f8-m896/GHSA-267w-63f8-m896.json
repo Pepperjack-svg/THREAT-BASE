@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-267w-63f8-m896",
+  "modified": "2025-07-23T15:31:13Z",
+  "published": "2025-07-23T15:31:13Z",
+  "aliases": [
+    "CVE-2015-10141"
+  ],
+  "details": "An unauthenticated OS command injection vulnerability exists within Xdebug versions 2.5.5 and earlier, a PHP debugging extension developed by Derick Rethans. When remote debugging is enabled, Xdebug listens on port 9000 and accepts debugger protocol commands without authentication. An attacker can send a crafted eval command over this interface to execute arbitrary PHP code, which may invoke system-level functions such as system() or passthru(). This results in full compromise of the host under the privileges of the web server user.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-10141"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kirtixs.com/blog/2015/11/13/xpwn-exploiting-xdebug-enabled-servers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/44568"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.fortiguard.com/encyclopedia/ips/46000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/xdebug-remote-debugger-unauth-os-command-execution"
+    },
+    {
+      "type": "WEB",
+      "url": "https://xdebug.org"
+    },
+    {
+      "type": "WEB",
+      "url": "http://web.archive.org/web/20231226215418/https://paper.seebug.org/397"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-23T14:15:31Z"
+  }
+}

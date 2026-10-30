@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-43g4-4j68-8xj3",
+  "modified": "2026-10-21T15:40:06Z",
+  "published": "2025-08-19T18:31:33Z",
+  "aliases": [
+    "CVE-2025-38595"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen: fix UAF in dmabuf_exp_from_pages()\n\n[dma_buf_fd() fixes; no preferences regarding the tree it goes through -\nup to xen folks]\n\nAs soon as we'd inserted a file reference into descriptor table, another\nthread could close it.  That's fine for the case when all we are doing is\nreturning that descriptor to userland (it's a race, but it's a userland\nrace and there's nothing the kernel can do about it).  However, if we\nfollow fd_install() with any kind of access to objects that would be\ndestroyed on close (be it the struct file itself or anything destroyed\nby its ->release()), we have a UAF.\n\ndma_buf_fd() is a combination of reserving a descriptor and fd_install().\ngntdev dmabuf_exp_from_pages() calls it and then proceeds to access the\nobjects destroyed on close - starting with gntdev_dmabuf itself.\n\nFix that by doing reserving descriptor before anything else and do\nfd_install() only when everything had been set up.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38595"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3edfd2353f301bfffd5ee41066e37320a59ccc2d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/532c8b51b3a8676cbf533a291f8156774f30ea87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba8bc644f168509c16d48444991de7cfea3f12ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d59d49af4aeed9a81e673e37c26c6a3bacf1a181"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5907885260401bba300d4d18d79875c05b82651"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-19T17:15:37Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p22q-5w3q-wqpq",
+  "modified": "2026-06-01T18:31:30Z",
+  "published": "2026-05-08T15:31:23Z",
+  "aliases": [
+    "CVE-2026-43319"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: spidev: fix lock inversion between spi_lock and buf_lock\n\nThe spidev driver previously used two mutexes, spi_lock and buf_lock,\nbut acquired them in different orders depending on the code path:\n\n  write()/read(): buf_lock -> spi_lock\n  ioctl():       spi_lock -> buf_lock\n\nThis AB-BA locking pattern triggers lockdep warnings and can\ncause real deadlocks:\n\n  WARNING: possible circular locking dependency detected\n  spidev_ioctl() -> mutex_lock(&spidev->buf_lock)\n  spidev_sync_write() -> mutex_lock(&spidev->spi_lock)\n  *** DEADLOCK ***\n\nThe issue is reproducible with a simple userspace program that\nperforms write() and SPI_IOC_WR_MAX_SPEED_HZ ioctl() calls from\nseparate threads on the same spidev file descriptor.\n\nFix this by simplifying the locking model and removing the lock\ninversion entirely. spidev_sync() no longer performs any locking,\nand all callers serialize access using spi_lock.\n\nbuf_lock is removed since its functionality is fully covered by\nspi_lock, eliminating the possibility of lock ordering issues.\n\nThis removes the lock inversion and prevents deadlocks without\nchanging userspace ABI or behaviour.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43319"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40534d19ed2afb880ecf202dab26a8e7a5808d16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41ccfac7d302968a4f32b5f7b012d066c5f5cdf8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e341e18215030af2136836b78508e0d798916df7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8431b8672231d378b03176fe74c95adfd3522cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fabfed1afe273717ea33b8aee46b767360edbb80"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:40Z"
+  }
+}

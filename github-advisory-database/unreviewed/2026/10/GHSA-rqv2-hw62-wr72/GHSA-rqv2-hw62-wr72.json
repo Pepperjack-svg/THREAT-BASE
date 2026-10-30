@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rqv2-hw62-wr72",
+  "modified": "2026-10-26T15:34:45Z",
+  "published": "2026-10-26T15:34:45Z",
+  "aliases": [
+    "CVE-2026-110748"
+  ],
+  "details": "This issue affects Apache SIS from version 0.7 through 1.6 inclusive. When a data file contains links to other files, Apache SIS opened these files regardless their paths. It was possible, for example, to specify a path to a local file. However, these files were always expected to be in some specific formats and the reading stops at the first parsing error, which makes this vulnerability unlikely to leak sensitive information. The impacted formats are:\n\n  *  Geographic Markup Language (GML) with `xlink:href` attributes for other files in GML format.\n  *  Well Known Text (WKT) with parameter elements for datum shift grids in NADCON, NTv2 or RGF93 formats.\n  *  Landsat scene with paths to files for each band in the GeoTIFF format.\n\n\n\n\nUsers are recommended to upgrade to version 1.7, which fixes the issue by restricting the paths to the same directory as the file containing the references to other files, or to a predetermined directory for datum shift grids.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110748"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/j43dd1okv97o0qygbox381l01rsszsln"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T15:16:36Z"
+  }
+}

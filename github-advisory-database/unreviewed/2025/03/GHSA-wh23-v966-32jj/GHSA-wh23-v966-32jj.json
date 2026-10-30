@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wh23-v966-32jj",
+  "modified": "2026-03-07T12:31:23Z",
+  "published": "2025-03-07T09:30:35Z",
+  "aliases": [
+    "CVE-2025-21836"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/kbuf: reallocate buf lists on upgrade\n\nIORING_REGISTER_PBUF_RING can reuse an old struct io_buffer_list if it\nwas created for legacy selected buffer and has been emptied. It violates\nthe requirement that most of the field should stay stable after publish.\nAlways reallocate it instead.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21836"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/146a185f6c05ee263db715f860620606303c4633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a5febbef40ce968e295a7aeaa5d5cbd9e3e5ad4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d0dc28dae836caf7645fef62a10befc624dd17b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8802766324e1f5d414a81ac43365c20142e85603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://u1f383.github.io/slides/talks/2025_Hexacon-Deja_Vu_in_Linux_io_uring_Breaking_Memory_Sharing_Again_After_Generations_of_Fixes.pdf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-07T09:15:16Z"
+  }
+}

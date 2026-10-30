@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hg7w-cw6w-99w3",
+  "modified": "2026-10-13T18:30:57Z",
+  "published": "2026-10-13T18:30:57Z",
+  "aliases": [
+    "CVE-2026-88833"
+  ],
+  "details": "A flaw was found in BusyBox's udhcpc DHCP client. When processing raw DHCP packets, the client replaces the validated packet length with an attacker-controlled value from the IP header without re-validating the minimum size. This leads to an integer underflow when subtracting header sizes, causing a subsequent memory copy with a massively oversized length. An attacker on the same network segment can send a specially crafted packet to crash the DHCP client, resulting in denial of service and loss of network connectivity.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88833"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-88833"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2531347"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T17:17:48Z"
+  }
+}

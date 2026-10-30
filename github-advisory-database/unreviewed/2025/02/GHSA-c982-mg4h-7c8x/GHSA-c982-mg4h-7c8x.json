@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c982-mg4h-7c8x",
+  "modified": "2025-10-23T15:30:23Z",
+  "published": "2025-02-27T03:34:03Z",
+  "aliases": [
+    "CVE-2024-58008"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKEYS: trusted: dcp: fix improper sg use with CONFIG_VMAP_STACK=y\n\nWith vmalloc stack addresses enabled (CONFIG_VMAP_STACK=y) DCP trusted\nkeys can crash during en- and decryption of the blob encryption key via\nthe DCP crypto driver. This is caused by improperly using sg_init_one()\nwith vmalloc'd stack buffers (plain_key_blob).\n\nFix this by always using kmalloc() for buffers we give to the DCP crypto\ndriver.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58008"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3192f1c54dddb9b5820bf5e8677809949d8e9c66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3355594de46fb1cba663f12b9644b664b8a609f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8d9fab39d1f87b52932646b2f1e7877aa3fc0f4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T03:15:11Z"
+  }
+}

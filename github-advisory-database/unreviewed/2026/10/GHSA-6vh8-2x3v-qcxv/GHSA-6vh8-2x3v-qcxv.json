@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vh8-2x3v-qcxv",
+  "modified": "2026-10-07T09:32:14Z",
+  "published": "2026-10-06T09:31:32Z",
+  "aliases": [
+    "CVE-2026-98251"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nopenvswitch: avoid reallocating confirmed conntrack labels\n\novs_ct_get_conn_labels() adds the labels extension when a conntrack\nentry does not have one.  Confirmed conntracks can be read locklessly,\nso adding an extension may reallocate and free the extension block\nwhile another CPU accesses it.\n\nOnly add the extension for unconfirmed conntracks.  A confirmed\nconntrack without labels now fails the caller's label operation instead\nof reallocating its extension storage.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05eab8dced6bf4d3009a6eeee16ddac99047dc83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e6dd889c325abf23821e1459c3ffef59b7f0009"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f118c8217c109fd13ca61caa301d72c483897ef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4371d79ea74407fb992c985b1f94391e35bb8289"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/579d87ec1e1e85729a6cb2c25961e58beb78640c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ff688aceada1160331a789385ea146f62fbddf7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c9fcc6c33950d3db551af664d1fd3d998bfee56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d16f089bd700f45d720ce989d5495e1dc3be0cf8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:13Z"
+  }
+}

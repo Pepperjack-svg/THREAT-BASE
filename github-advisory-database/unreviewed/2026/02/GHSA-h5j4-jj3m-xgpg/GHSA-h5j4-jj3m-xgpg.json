@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h5j4-jj3m-xgpg",
+  "modified": "2026-02-13T00:32:52Z",
+  "published": "2026-02-13T00:32:52Z",
+  "aliases": [
+    "CVE-2026-26224"
+  ],
+  "details": "Intego Log Reporter, a macOS diagnostic utility bundled with Intego security products that collects system and application logs for support analysis, contains a local privilege escalation vulnerability. A root-executed diagnostic script creates and writes files in /tmp without enforcing secure directory handling, introducing a time-of-check to time-of-use (TOCTOU) race condition. A local unprivileged user can exploit a symlink-based race condition to cause arbitrary file writes to privileged system locations, resulting in privilege escalation to root.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26224"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.quarkslab.com/intego_lpe_macos_1.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.quarkslab.com/resources/2026-02-10_intego_1/40945709530779-How-to-Use-the-Intego-Log-Reporter.pdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.intego.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/intego-log-reporter-toctou-local-privilege-escalation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-12T22:16:07Z"
+  }
+}

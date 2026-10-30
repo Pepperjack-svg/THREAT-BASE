@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p279-5wcv-45vq",
+  "modified": "2026-10-07T18:05:38Z",
+  "published": "2026-10-07T18:05:38Z",
+  "aliases": [
+    "CVE-2026-104890"
+  ],
+  "summary": "Kunstmaan CMS: MediaBundle extension blacklist bypass allows authenticated administrators to upload executable PHP files leading to remote code execution",
+  "details": "### Summary\n\nThe MediaBundle blocks dangerous upload extensions with a blacklist that was matched\ncase-sensitively, while the stored filename was lowercased afterwards. A file uploaded\nas `webshell.pHp` therefore bypassed the blacklist and was written to the web-accessible\nupload directory as `webshell.php`, where the web server executed it. Any authenticated\nbackend user with access to the media section could obtain remote code execution.\n\n### Details\n\n`FileHandler::getFilePath()` rewrote blacklisted extensions to `.txt` using a\ncase-sensitive regex, and only then lowercased the extension when building the stored\nname — so the check ran against the attacker-controlled casing and the normalisation\nhappened after it.\n\nTwo further weaknesses contributed:\n\n* The default blacklist contained only `php` and `htaccess`, leaving other\n  server-executable extensions (`phtml`, `php5`, `phar`, `shtml`, `cgi`, …) unblocked\n  regardless of casing.\n* Configured blacklist values were interpolated into the regex unescaped.\n\n### Impact\n\nAn authenticated user with access to the admin media section can upload a file that the\nweb server executes as PHP. The uploaded file is reachable over HTTP without\nauthentication, giving arbitrary code execution as the web server user.\n\n### Patches\n\nFixed in kunstmaan/media-bundle 7.3.2. The extension is now normalised before it is\nchecked and compared with `in_array()`; the default blacklist is expanded to the full\nset of server-executable extensions; and a new opt-in `allowed_extensions` option allows\nprojects to enforce a strict allow-list.\n\nNote that the patch does not rename files already stored on disk. Sites should audit\ntheir media upload directory for existing files with an executable extension.\n\n### Workarounds\n\nIf you cannot upgrade, configure the web server to refuse to execute scripts in the\nmedia upload directory (for example a `location` block in nginx or `php_flag engine off`\nin Apache).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "kunstmaan/media-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "7.3.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "kunstmaan/bundles-cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "7.3.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Kunstmaan/KunstmaanBundlesCMS/security/advisories/GHSA-p279-5wcv-45vq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104890"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Kunstmaan/KunstmaanBundlesCMS/commit/1bbdfdeac8e7e91506b1a9271360b9b68d7690d3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Kunstmaan/KunstmaanBundlesCMS"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Kunstmaan/KunstmaanBundlesCMS/releases/tag/7.3.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-07T18:05:38Z",
+    "nvd_published_at": "2026-10-05T16:17:06Z"
+  }
+}

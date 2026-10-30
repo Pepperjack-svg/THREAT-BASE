@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r995-5488-jh52",
+  "modified": "2026-10-08T21:33:14Z",
+  "published": "2026-10-08T09:31:55Z",
+  "aliases": [
+    "CVE-2026-66082"
+  ],
+  "details": "An authorization bypass vulnerability in Apache DolphinScheduler allows authenticated users to perform unauthorized operations on workflow schedules, workflow definitions, and task instances in other projects.\n\n\n\nThe affected endpoints check permissions against the supplied projectCode but fail to verify that the target resource belongs to that project. An authenticated user with the required permissions in one project can supply that project's code together with a resource identifier from another project, bypassing the target project's access restrictions.\n\n\n\nThe affected endpoints include:\n\n  *  \n\nPOST /projects/{projectCode}/schedules/{id}/online and /offline: Activate or deactivate workflow schedules in another project.\n\n\n  *  \n\nPOST /projects/{projectCode}/workflow-definition/{code}/release: Change the ONLINE/OFFLINE state of workflow definitions in another project.\n\n\n\n\n\n\nSuccessful exploitation allows users to alter workflow availability and interfere with task execution in projects they are not authorized to access.\n\n\n\nThis issue affects Apache DolphinScheduler: before 3.4.3.\n\n\n\nUsers are recommended to upgrade to version 3.4.3, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66082"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/lp124m92t6gfocqkm1h338674j2so9yc"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/08/1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T09:16:41Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77x5-pwh8-3qq8",
+  "modified": "2025-11-12T18:31:04Z",
+  "published": "2025-05-02T18:31:33Z",
+  "aliases": [
+    "CVE-2023-53055"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfscrypt: destroy keyring after security_sb_delete()\n\nfscrypt_destroy_keyring() must be called after all potentially-encrypted\ninodes were evicted; otherwise it cannot safely destroy the keyring.\nSince inodes that are in-use by the Landlock LSM don't get evicted until\nsecurity_sb_delete(), this means that fscrypt_destroy_keyring() must be\ncalled *after* security_sb_delete().\n\nThis fixes a WARN_ON followed by a NULL dereference, only possible if\nLandlock was being used on encrypted files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53055"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/497ab5d9c7852dfedab2c9de75e41b60e54b7c5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/992a3f3e8a0c92151dfdf65fc85567c865fd558a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ccb820dc7d2236b1af0d54ae038a27b5b6d5ae5a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d77531fac6a1fd9f1db0195438ba5419d72b96c4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-02T16:15:24Z"
+  }
+}

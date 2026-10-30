@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5q8c-r7p8-3p9v",
+  "modified": "2026-03-26T21:31:19Z",
+  "published": "2025-11-26T03:30:21Z",
+  "aliases": [
+    "CVE-2025-12848"
+  ],
+  "details": "Webform Multiple File Upload module for Drupal 7.x contains a cross-site scripting (XSS) vulnerability in the file name renderer. An unauthenticated attacker can exploit this vulnerability by uploading a file with a malicious\nfilename containing JavaScript code (e.g., \"<img src=1 onerror=alert(document.domain)>\") to a Webform node with a Multifile field where file type validation is disabled. This allows the execution of arbitrary scripts\nin the context of the victim's browser.\n \nThe issue is present in a third-party library and has been addressed in a patch available at  https://github.com/fyneworks/multifile/pull/44 . Users are advised to apply the provided patch or update to a fixed version of the module.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:N/AU:X/R:U/V:D/RE:L/U:Amber"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12848"
+    },
+    {
+      "type": "WEB",
+      "url": "https://d7es.tag1.com/security-advisories/webform-multiple-file-upload-critical-cross-site-scripting"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.d7security.org/security-advisories/D7SECURITY-SA-CONTRIB-2025-001"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.drupal.org/node/3105204"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.herodevs.com/vulnerability-directory/cve-2025-12848"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-26T02:15:48Z"
+  }
+}

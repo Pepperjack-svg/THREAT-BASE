@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h2xv-9jg2-5v55",
+  "modified": "2026-10-21T03:32:11Z",
+  "published": "2026-10-21T00:32:53Z",
+  "aliases": [
+    "CVE-2026-113812"
+  ],
+  "details": "Mozilla::CA versions before 20261020 for Perl provide a CA certificate bundle containing a root linked to compromised intermediates.\n\nThe bundle includes \"emSign ECC Root CA - G3\", which provides a trust path for intermediate certificates whose private keys are publicly available.\n\nAn attacker able to intercept or redirect client traffic may use these keys to impersonate a TLS server.\n\nLWP, HTTP::Tiny and other clients normally use IO::Socket::SSL, which looks for CA certificates in OpenSSL's default locations before falling back to Mozilla::CA.\n\nConfiguration and environment variables can override this selection. Users should check which CA store their client uses. If it uses the system store, check for and install the operating system vendor's updates for this incident.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113812"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=2083449"
+    },
+    {
+      "type": "WEB",
+      "url": "https://emudhra.we-have-a-problem.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/LWP/Mozilla-CA-20261020/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openwall.com/lists/oss-security/2026/10/20/1"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/20/36"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T22:19:30Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mq9h-jmwj-r2r4",
+  "modified": "2026-10-28T03:31:50Z",
+  "published": "2026-10-28T03:31:50Z",
+  "aliases": [
+    "CVE-2026-117609"
+  ],
+  "details": "rtl_433 through 25.12 contains a stack-based buffer overflow vulnerability in proflame2_mc() that allows nearby attackers to write past a 7-byte stack buffer by sending more than seven valid Manchester-coded words. Attackers can transmit a crafted OOK radio signal or supply a crafted signal file to crash rtl_433 and corrupt stack memory, enabling control-flow hijacking on builds without stack canaries.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-117609"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/merbanan/rtl_433/issues/3739"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/merbanan/rtl_433/pull/3740"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/merbanan/rtl_433/commit/f35183aaf1d2d905d422fd70bcae4eb7349d6186"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/merbanan/rtl_433"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/merbanan/rtl_433/blob/25.12/src/devices/proflame2.c#L46-L95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rtl-433-through-25.12-stack-based-buffer-overflow-via-proflame-2-decoder"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T03:17:12Z"
+  }
+}

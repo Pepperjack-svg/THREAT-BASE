@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wf2j-c3q8-8c84",
+  "modified": "2026-08-04T12:34:39Z",
+  "published": "2025-12-09T03:31:11Z",
+  "aliases": [
+    "CVE-2023-53804"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnilfs2: fix use-after-free bug of nilfs_root in nilfs_evict_inode()\n\nDuring unmount process of nilfs2, nothing holds nilfs_root structure after\nnilfs2 detaches its writer in nilfs_detach_log_writer().  However, since\nnilfs_evict_inode() uses nilfs_root for some cleanup operations, it may\ncause use-after-free read if inodes are left in \"garbage_list\" and\nreleased by nilfs_dispose_list() at the end of nilfs_detach_log_writer().\n\nFix this issue by modifying nilfs_evict_inode() to only clear inode\nwithout additional metadata changes that use nilfs_root if the file system\nis degraded to read-only or the writer is detached.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53804"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/116d53f09ff52e6f98e3fe1f85d8898d6ba26c68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a782ea8ebd712a458466e3103e2881b4f886cb5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b4205ea97901f822004e6c8d59484ccfda03faa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b5a04ac3ad9898c4745cba46ea26de74ba56a8e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/acc2a40e428f12780004e1e9fce4722d88f909fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8427b8522d9ede53015ba45a9978ba68d1162f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f31e18131ee2ce80a4da5c808221d25b1ae9ad6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb8e8d58f116d069e5939e1f786ac84e7fa4533e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T01:16:52Z"
+  }
+}

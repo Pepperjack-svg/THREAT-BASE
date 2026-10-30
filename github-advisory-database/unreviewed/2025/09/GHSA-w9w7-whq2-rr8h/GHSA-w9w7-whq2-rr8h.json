@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9w7-whq2-rr8h",
+  "modified": "2025-09-19T00:30:58Z",
+  "published": "2025-09-19T00:30:58Z",
+  "aliases": [
+    "CVE-2025-59691"
+  ],
+  "details": "PureVPN client applications on Linux through September 2025 allow IPv6 traffic to leak outside the VPN tunnel upon network events such as Wi-Fi reconnect or system resume. In the CLI client, the VPN auto-reconnects and claims to be connected, but IPv6 traffic is no longer routed or blocked. In the GUI client, the IPv6 connection remains functional after disconnection until the user clicks Reconnect. In both cases, the real IPv6 address is exposed to external services, violating user privacy and defeating the advertised IPv6 leak protection. This affects CLI 2.0.1 and GUI 2.10.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59691"
+    },
+    {
+      "type": "WEB",
+      "url": "https://anagogistis.com/posts/purevpn-ipv6-leak"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-669"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T23:15:34Z"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7649-wm97-w3j3",
+  "modified": "2026-10-07T17:59:38Z",
+  "published": "2026-10-07T17:59:38Z",
+  "aliases": [
+    "CVE-2026-106494"
+  ],
+  "summary": "Backstage: Improper input validation in cloud storage URL readers",
+  "details": "### Impact\n\nAn attacker with write access to a cloud storage bucket used by Backstage could craft object names that could collide with protected files in the output directory. In certain deployment configurations, this could lead to content injection.\n\n### Patches\n\nPatched in `@backstage/backend-defaults` version `0.17.8`",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@backstage/backend-defaults"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.17.8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/backstage/backstage/security/advisories/GHSA-7649-wm97-w3j3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/backstage/backstage/commit/14e925ce5b905dd8daa64c3009722febda76034c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/backstage/backstage"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/backstage/backstage/releases/tag/v1.54.6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-73"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-07T17:59:38Z",
+    "nvd_published_at": "2026-10-06T21:17:18Z"
+  }
+}

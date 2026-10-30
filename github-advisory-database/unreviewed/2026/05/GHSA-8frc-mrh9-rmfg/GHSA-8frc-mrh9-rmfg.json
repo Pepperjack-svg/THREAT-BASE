@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8frc-mrh9-rmfg",
+  "modified": "2026-06-25T21:31:19Z",
+  "published": "2026-05-27T15:33:14Z",
+  "aliases": [
+    "CVE-2026-45872"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: smartpqi: Fix memory leak in pqi_report_phys_luns()\n\npqi_report_phys_luns() fails to release the rpl_list buffer when\nencountering an unsupported data format or when the allocation for\nrpl_16byte_wwid_list fails. These early returns bypass the cleanup logic,\nleading to memory leaks.\n\nConsolidate the error handling by adding an out_free_rpl_list label and use\ngoto statements to ensure rpl_list is consistently freed on failure.\n\nCompile tested only. Issue found using a prototype static analysis tool and\ncode review.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45872"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41b37312bd9722af77ec7817ccf22d7a4880c289"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/454570434114e4862767f506a442a0f110b639b2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d52e13122d3771f753dd73ae6512fa01f58015cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5579ebaadc7b699868dad0f591a7bf83cd647e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f471ecfec093e39ef8fd08978413793087daa14d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fdf1188cfa80f88c9f18d58cb33d57ff40e70e26"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:00Z"
+  }
+}

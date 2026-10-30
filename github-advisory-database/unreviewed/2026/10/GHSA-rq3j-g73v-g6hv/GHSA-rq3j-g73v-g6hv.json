@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rq3j-g73v-g6hv",
+  "modified": "2026-10-19T18:32:12Z",
+  "published": "2026-10-19T18:32:12Z",
+  "aliases": [
+    "CVE-2026-112303"
+  ],
+  "details": "GDevelop desktop app through 5.6.284 contains a credential leak vulnerability that allows attackers to steal the gd_resource cookie by supplying attacker-controlled resource URLs in project files. Attackers can get victims to open a crafted project, causing downloadLocalFile() to send the cookie to their server and expose private cloud project resources.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/4ian/GDevelop/issues/9257"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/4ian/GDevelop/commit/fbb01f40a640c35c6064f827065eda00e5608690"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/4ian/GDevelop/blob/v5.6.284/newIDE/app/src/ProjectsStorage/LocalFileStorageProvider/LocalFileResourceMover.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/4ian/GDevelop/blob/v5.6.284/newIDE/electron-app/app/LocalFileDownloader.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gdevelop-through-5.6.284-cookie-leak-via-localfiledownloader-resource-urls"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-522"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T16:17:06Z"
+  }
+}

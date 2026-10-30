@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7v2x-2f52-8cpm",
+  "modified": "2026-10-11T03:30:23Z",
+  "published": "2026-10-11T03:30:23Z",
+  "aliases": [
+    "CVE-2026-108704"
+  ],
+  "details": "CordysCRM through 1.9.3 contains an authorization bypass vulnerability that allows low-privileged authenticated users to skip permission checks by setting the owner field to their own user id. Attackers can send requests to the follow/record/add endpoints to add follow-up records and overwrite follow_time and follower on any known customer, clue or opportunity.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108704"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/1Panel-dev/CordysCRM/blob/0d7ae06fe94f4ce33ec7f65b9d82a07ae05c2d94/backend/crm/src/main/java/cn/cordys/crm/clue/controller/ClueFollowRecordController.java#L33-L39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/1Panel-dev/CordysCRM/blob/0d7ae06fe94f4ce33ec7f65b9d82a07ae05c2d94/backend/crm/src/main/java/cn/cordys/crm/customer/controller/CustomerFollowRecordController.java#L35-L41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/1Panel-dev/CordysCRM/blob/0d7ae06fe94f4ce33ec7f65b9d82a07ae05c2d94/backend/crm/src/main/java/cn/cordys/crm/follow/controller/FollowUpRecordController.java#L85-L91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/1Panel-dev/CordysCRM/blob/0d7ae06fe94f4ce33ec7f65b9d82a07ae05c2d94/backend/crm/src/main/java/cn/cordys/crm/follow/service/BaseFollowUpService.java#L198-L204"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AnkesKasty/cve-request-poc/blob/a7b6d1423555812d8efa26c91c5d0683164b31e5/CordysCRM/poc_follow_record_add.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cordyscrm-through-1.9.3-authorization-bypass-via-follow-up-record-add-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T02:16:38Z"
+  }
+}

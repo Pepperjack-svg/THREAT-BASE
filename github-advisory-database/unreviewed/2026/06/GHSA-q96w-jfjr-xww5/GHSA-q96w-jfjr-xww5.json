@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q96w-jfjr-xww5",
+  "modified": "2026-07-08T15:31:48Z",
+  "published": "2026-06-25T09:31:23Z",
+  "aliases": [
+    "CVE-2026-53261"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndevlink: Release nested relation on devlink free\n\ndevlink relation state is normally released from devl_unregister(), which\ncalls devlink_rel_put(). This misses devlink instances that get a nested\nrelation before registration and then fail probe before devl_register() is\nreached.\n\nThat flow can happen for SFs. The child devlink gets linked to its\nparent before registration, then a later probe error calls devlink_free()\ndirectly. Since the instance was never registered, devl_unregister() is not\ncalled and devlink->rel is leaked.\n\nRelease any pending relation from devlink_free() as well. The registered\npath is unchanged because devl_unregister() already clears devlink->rel\nbefore devlink_free() runs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11324d52b0c63f4f202b35793c6507a575e9a689"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3522b21fd7e1863d0734537737bd59f1b90d0190"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/927f96861f939c0b517d13ed27bf4fabbfc1cfb3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9137286884703113b1c9e6403bd6d7d97b14754"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:44Z"
+  }
+}

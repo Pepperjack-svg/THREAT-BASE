@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fh4j-chp9-mvg5",
+  "modified": "2025-12-29T21:30:24Z",
+  "published": "2025-12-29T21:30:24Z",
+  "aliases": [
+    "CVE-2025-14728"
+  ],
+  "details": "Rapid7 Velociraptor versions before 0.75.6 contain a directory traversal issue on Linux servers that allows a rogue client to upload a file which is written outside the datastore directory. Velociraptor is normally only allowed to write in the datastore directory. The issue occurs due to insufficient sanitization of directory names which end with a \".\", only encoding the final \".\" AS \"%2E\".\n\n\nAlthough files can be written to incorrect locations, the containing directory must end with \"%2E\". This limits the impact of this vulnerability, and prevents it from overwriting critical files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14728"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.velociraptor.app/announcements/advisories/cve-2025-14728"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-29T19:15:55Z"
+  }
+}

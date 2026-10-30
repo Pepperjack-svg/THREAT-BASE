@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jw44-xqgm-jxvc",
+  "modified": "2025-11-26T18:31:00Z",
+  "published": "2025-08-22T18:31:22Z",
+  "aliases": [
+    "CVE-2025-38642"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: fix WARN_ON for monitor mode on some devices\n\nOn devices without WANT_MONITOR_VIF (and probably without\nchannel context support) we get a WARN_ON for changing the\nper-link setting of a monitor interface.\n\nSince we already skip AP_VLAN interfaces and MONITOR with\nWANT_MONITOR_VIF and/or NO_VIRTUAL_MONITOR should update\nthe settings, catch this in the link change code instead\nof the warning.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38642"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e10ded6b0f9b0eeefaacbb6c6c6afff3f702812"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c57e5b9819dfd16d709bcd6cb633301ed0829a66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff15498ebaa49c5429a74e70a1951dede60cd14c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-617"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-22T16:15:38Z"
+  }
+}

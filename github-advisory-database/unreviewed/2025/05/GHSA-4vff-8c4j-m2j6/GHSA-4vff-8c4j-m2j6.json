@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4vff-8c4j-m2j6",
+  "modified": "2025-11-10T21:30:28Z",
+  "published": "2025-05-01T15:31:49Z",
+  "aliases": [
+    "CVE-2022-49831"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: zoned: initialize device's zone info for seeding\n\nWhen performing seeding on a zoned filesystem it is necessary to\ninitialize each zoned device's btrfs_zoned_device_info structure,\notherwise mounting the filesystem will cause a NULL pointer dereference.\n\nThis was uncovered by fstests' testcase btrfs/163.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49831"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/544f38a738343d7e75f104e5e9d1ade58d8b71bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91c38504e589dadbcde47b1cacdfc5b684154d44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a8d1b1647bf8244a5f270538e9e636e2657fffa3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:06Z"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-42wq-59cj-7gvc",
+  "modified": "2026-06-16T15:33:40Z",
+  "published": "2026-05-27T15:33:20Z",
+  "aliases": [
+    "CVE-2026-46007"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (powerz) Avoid cacheline sharing for DMA buffer\n\nDepending on the architecture the transfer buffer may share a cacheline\nwith the following mutex. As the buffer may be used for DMA, that is\nproblematic.\n\nUse the high-level DMA helpers to make sure that cacheline sharing can\nnot happen.\n\nAlso drop the comment, as the helpers are documentation enough.\n\nhttps://sashiko.dev/#/message/20260408175814.934BFC19421%40smtp.kernel.org",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46007"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1869da3efe703b016b23d4885f3fe6c1751959c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/270e5c576a6e30f6b337fa91d35b44c241297533"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fa2273016a0483217404cfe330967c4ac6832a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3023c050af3600bf451153335dea5e073c9a3088"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:18Z"
+  }
+}

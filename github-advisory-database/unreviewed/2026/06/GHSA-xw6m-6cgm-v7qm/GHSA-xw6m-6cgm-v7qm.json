@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xw6m-6cgm-v7qm",
+  "modified": "2026-06-30T21:31:44Z",
+  "published": "2026-06-30T21:31:44Z",
+  "aliases": [
+    "CVE-2026-13759"
+  ],
+  "details": "IBM WebSphere Extreme Scale 8.6.1.0 through 8.6.1.6 ships three ObjectInputStream subclasses (WsObjectInputStream, ObjectStreamPool$ReusableInputStream, ObjectInputStreamResolver) that install no JEP-290 class filter; when Coherence is on the classpath, multiple RCE gadget chains including RemoteConstructor.readResolve and PriorityQueue/ExtractorComparator are confirmed working, allowing a post-login attacker who can write a session attribute or a LAN-adjacent attacker on the grid replication wire to execute arbitrary code on peer WAS JVMs",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13759"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ibm.com/support/pages/node/7278595"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-30T20:17:28Z"
+  }
+}

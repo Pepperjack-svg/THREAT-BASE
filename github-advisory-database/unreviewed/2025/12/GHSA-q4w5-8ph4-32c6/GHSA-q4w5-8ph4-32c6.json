@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q4w5-8ph4-32c6",
+  "modified": "2025-12-16T15:30:44Z",
+  "published": "2025-12-16T15:30:44Z",
+  "aliases": [
+    "CVE-2025-68177"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncpufreq/longhaul: handle NULL policy in longhaul_exit\n\nlonghaul_exit() was calling cpufreq_cpu_get(0) without checking\nfor a NULL policy pointer. On some systems, this could lead to a\nNULL dereference and a kernel warning or panic.\n\nThis patch adds a check using unlikely() and returns early if the\npolicy is NULL.\n\nBugzilla: #219962",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55cf586b9556863e3c2a45460aba71bcb2be5bcd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/592532a77b736b5153e0c2e4c74aa50af0a352ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64adabb6d9d51b7e7c02fe733346a2c4dd738488"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/809cf2a7794ca4c14c304b349f4c3ae220701ce4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d6791c480f22d6e9a566eaa77336d3d37c5c591"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/956b56d17a89775e4957bbddefa45cd3c6c71000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b02352dd2e6cca98777714cc2a27553191df70db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd93e1d71b3b14443092919be12b1abf08de35eb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T14:15:49Z"
+  }
+}

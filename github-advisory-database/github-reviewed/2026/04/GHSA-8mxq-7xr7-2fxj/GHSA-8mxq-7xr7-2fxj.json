@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8mxq-7xr7-2fxj",
+  "modified": "2026-04-06T23:10:01Z",
+  "published": "2026-04-03T21:42:35Z",
+  "aliases": [
+    "CVE-2026-34052"
+  ],
+  "summary": "LTI JupyterHub Authenticator: Unbounded Memory Growth via Nonce Storage (Denial of Service)",
+  "details": "## Summary\n\nThe LTI 1.1 validator stores OAuth nonces in a class-level dictionary that grows without bounds. Nonces are added before signature validation, so an attacker with knowledge of a valid consumer key can send repeated requests with unique nonces to gradually exhaust server memory, causing a denial of service.\n\n## Patches\n\n- upgrade jupyterhub-litauthenticator to 1.6.3",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "jupyterhub-ltiauthenticator"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.6.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.6.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/jupyterhub/ltiauthenticator/security/advisories/GHSA-8mxq-7xr7-2fxj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34052"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jupyterhub/ltiauthenticator"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jupyterhub/ltiauthenticator/releases/tag/1.6.3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401",
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-03T21:42:35Z",
+    "nvd_published_at": "2026-04-03T23:17:03Z"
+  }
+}

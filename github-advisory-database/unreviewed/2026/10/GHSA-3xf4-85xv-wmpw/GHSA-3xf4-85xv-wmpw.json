@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3xf4-85xv-wmpw",
+  "modified": "2026-10-20T12:31:30Z",
+  "published": "2026-10-20T09:31:11Z",
+  "aliases": [
+    "CVE-2026-92287"
+  ],
+  "details": "Pass-through of unvalidated KMS URLs to KMS clients in Apache C++ Parquet and PyArrow versions 4.0.0 to 25.0.1.\n\n\n\n\nThis affects users who read Parquet files and configure Parquet decryption properties with a KmsClient implementation.\n\n\n\n\nOn the reader side, the KMS URL can be application-controlled (specified in the KmsConnectionConfig) or file-controlled.\nIf the user does not leverage application control for this parameter, a file-controlled KMS URL is forwarded to a pluggable KmsClient implementation. \nIf the KMS implementation does not perform host validation and makes use of the provided KMS URL, a KMS token can be sent to a malicious host set by an attacker in the file. \n\n\n\n\nUsers are recommended to upgrade to version 26.0.0, which disables this behavior by default and requires that users opt-in to it by enabling the read_kms_url flag in the DecryptionConfiguration. Users of affected versions are recommended to either specify the KMS URL in the KmsConnectionConfig when reading files, or ensure any KmsClient implementations validate received KMS URLs. Users that opt-in to file-controlled KMS URLs in version 26.0.0 and later must ensure KmsClients validate KMS URLs.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92287"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/arrow/issues/51349"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/0t6vry0msbk9dpsd0xv395ov5b84hj57"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/19/6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T09:17:12Z"
+  }
+}

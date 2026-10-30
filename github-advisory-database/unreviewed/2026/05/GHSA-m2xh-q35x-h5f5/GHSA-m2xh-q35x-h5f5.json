@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m2xh-q35x-h5f5",
+  "modified": "2026-10-15T03:35:50Z",
+  "published": "2026-05-06T12:30:27Z",
+  "aliases": [
+    "CVE-2026-43093"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxsk: tighten UMEM headroom validation to account for tailroom and min frame\n\nThe current headroom validation in xdp_umem_reg() could leave us with\ninsufficient space dedicated to even receive minimum-sized ethernet\nframe. Furthermore if multi-buffer would come to play then\nskb_shared_info stored at the end of XSK frame would be corrupted.\n\nHW typically works with 128-aligned sizes so let us provide this value\nas bare minimum.\n\nMulti-buffer setting is known later in the configuration process so\nbesides accounting for 128 bytes, let us also take care of tailroom space\nupfront.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43093"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ec4d3f6e6934deb843b561ae048cd17218e5ad1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a6051cd7e3e4c54ff3854a43b638b9292af5e67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5f123bc278bf4e3283d8606321bebbfd299f4384"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6523bc1b40e69301f24c14338b762af4739d6d39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8769708add9eadeea8041a9761771bb715a87104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ea6ba4f3195dcba6e8b3e7b2e748593b7cafb12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a03975beb9f6af0d8ac051e30b2abeabe618414f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a315e022a72d95ef5f1d4e58e903cb492b0ad931"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T10:16:22Z"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fxc7-fm93-6q77",
+  "modified": "2026-08-03T20:40:41Z",
+  "published": "2026-05-05T22:22:22Z",
+  "aliases": [
+    "CVE-2026-44221"
+  ],
+  "summary": "ArcadeDB vulnerable to cross-database authorization bypass and unsecured newly-created databases",
+  "details": "### Impact\nAuthenticated users and API tokens scoped to a specific database could read, write, and mutate schema on any other database on the same server. Two distinct defects contributed: (1) ServerSecurityUser.getDatabaseUser() returned a DB user with an uninitialized fileAccessMap, which requestAccessOnFile treated as allow-all; (2) ArcadeDBServer.createDatabase() omitted factory.setSecurity(...) so any database created via POST /api/v1/server {\"command\":\"create database X\"} had its entire record-level authorization system silently disabled. In combination, record-level and database-level authorization could be bypassed by any authenticated principal.\n\n### Patches\nUpgrade to version 26.4.2\n\n### Resources\n\nhttps://github.com/ArcadeData/arcadedb/commit/04110c06315da55604ac107f71fe7182f3a3deb8",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.arcadedb:arcadedb-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "21.10.1"
+            },
+            {
+              "fixed": "26.4.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-fxc7-fm93-6q77"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44221"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ArcadeData/arcadedb/commit/04110c06315da55604ac107f71fe7182f3a3deb8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ArcadeData/arcadedb/commit/9e708f116b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ArcadeData/arcadedb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-05T22:22:22Z",
+    "nvd_published_at": "2026-05-12T20:16:43Z"
+  }
+}

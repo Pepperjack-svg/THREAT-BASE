@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cwfr-988g-hf77",
+  "modified": "2026-10-28T15:31:08Z",
+  "published": "2026-10-02T09:31:19Z",
+  "aliases": [
+    "CVE-2026-63571"
+  ],
+  "details": "Improper verification of cryptographic signature in the attribute certificate path validator (PkixAttrCertPathValidator, also used by PkixAttrCertPathBuilder) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows a remote attacker to have a forged X.509 attribute certificate accepted as valid, and so obtain whatever roles or privileges an application grants on the strength of its attributes, via an attribute certificate that names a trusted attribute authority as its issuer but was not signed by it, because the RFC 3281 validation steps check the holder and issuer certification paths, validity period, extensions and revocation status but never verify the attribute certificate's signature with the issuer's public key. Only applications that use these classes to validate attribute certificates are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63571"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bcgit/bc-csharp/commit/c08f65e1ed7b92a10776220ed9c047f47c264725"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bcgit/bc-csharp/wiki/CVE-2026-63571"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-347"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-02T08:17:01Z"
+  }
+}

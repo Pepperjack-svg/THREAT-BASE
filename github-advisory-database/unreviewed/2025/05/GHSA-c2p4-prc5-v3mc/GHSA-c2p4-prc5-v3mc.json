@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c2p4-prc5-v3mc",
+  "modified": "2025-11-10T21:30:29Z",
+  "published": "2025-05-01T15:31:51Z",
+  "aliases": [
+    "CVE-2022-49893"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/region: Fix cxl_region leak, cleanup targets at region delete\n\nWhen a region is deleted any targets that have been previously assigned\nto that region hold references to it. Trigger those references to\ndrop by detaching all targets at unregister_region() time.\n\nOtherwise that region object will leak as userspace has lost the ability\nto detach targets once region sysfs is torn down.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49893"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d9e734018d70cecf79e2e4c6082167160a0f13f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45d9fb4b758b9d602ee7776eb6754b0349946aad"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:14Z"
+  }
+}

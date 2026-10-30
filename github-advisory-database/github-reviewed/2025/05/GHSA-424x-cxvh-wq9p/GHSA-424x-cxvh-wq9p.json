@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-424x-cxvh-wq9p",
+  "modified": "2025-05-28T20:08:12Z",
+  "published": "2025-05-28T17:38:46Z",
+  "aliases": [
+    "CVE-2024-47057"
+  ],
+  "summary": "Mautic allows user name enumeration due to response time difference on password reset form",
+  "details": "### Summary\n\nThis advisory addresses a security vulnerability in Mautic related to the \"Forget your password\" functionality. This vulnerability could be exploited by unauthenticated users to enumerate valid usernames.\n\nUser Enumeration via Timing Attack: A user enumeration vulnerability exists in the \"Forget your password\" functionality. Differences in response times for existing and non-existing users, combined with a lack of request limiting, allow an attacker to determine the existence of usernames through a timing-based attack.\n\n### Mitigation\nPlease update to a version that addresses this timing vulnerability, where password reset responses are normalized to respond at the same time regardless of user existence.\n\n### Workarounds\nNone\n\nIf you have any questions or comments about this advisory:\nEmail us at security@mautic.org",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "4.4.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-alpha"
+            },
+            {
+              "fixed": "5.2.6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0-alpha"
+            },
+            {
+              "fixed": "6.0.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mautic/mautic/security/advisories/GHSA-424x-cxvh-wq9p"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47057"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mautic/mautic"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-203",
+      "CWE-204"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-05-28T17:38:46Z",
+    "nvd_published_at": "2025-05-28T18:15:25Z"
+  }
+}

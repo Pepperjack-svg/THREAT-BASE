@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-55cc-7hm8-3hr4",
+  "modified": "2025-09-18T18:30:26Z",
+  "published": "2025-09-18T06:30:28Z",
+  "aliases": [
+    "CVE-2023-49565"
+  ],
+  "details": "The cbis_manager Podman container is vulnerable to remote command execution via the /api/plugins endpoint. Improper sanitization of the HTTP Headers X-FILENAME, X-PAGE, and X-FIELD allows for command injection. These headers are directly utilized within the subprocess.Popen Python function without adequate validation, enabling a remote attacker to execute arbitrary commands on the underlying system by crafting malicious header values within an HTTP request to the affected endpoint.\nThe web service executes with root privileges within the container environment, the demonstrated remote code execution permits an attacker to acquire elevated privileges for the command execution.\nRestricting access to the management network with an external firewall can partially mitigate this risk.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-49565"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nokia.com/about-us/security-and-privacy/product-security-advisory/CVE-2023-49565"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T06:15:34Z"
+  }
+}

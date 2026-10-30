@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m67m-4jp2-2c59",
+  "modified": "2026-03-09T15:30:47Z",
+  "published": "2026-03-09T12:31:39Z",
+  "aliases": [
+    "CVE-2025-14558"
+  ],
+  "details": "The rtsol(8) and rtsold(8) programs do not validate the domain search list options provided in router advertisement messages; the option body is passed to resolvconf(8) unmodified.\n\nresolvconf(8) is a shell script which does not validate its input.  A lack of quoting meant that shell commands pass as input to resolvconf(8) may be executed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-25:12.rtsold.asc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sploitus.com/exploit?id=MSF:EXPLOIT-FREEBSD-MISC-RTSOLD_DNSSL_CMDINJECT-"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-09T12:16:11Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2h3h-p2mp-rw5q",
+  "modified": "2025-12-12T18:30:28Z",
+  "published": "2025-09-18T15:30:34Z",
+  "aliases": [
+    "CVE-2023-53377"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: prevent use-after-free by freeing the cfile later\n\nIn smb2_compound_op we have a possible use-after-free\nwhich can cause hard to debug problems later on.\n\nThis was revealed during stress testing with KASAN enabled\nkernel. Fixing it by moving the cfile free call to\na few lines below, after the usage.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53377"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/33f736187d08f6bc822117629f263b97d3df4165"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4fe07d55a5461e66a55fbefb57f85ff0facea32b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b6353518ef8180816e863aa23b06456f395404d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d017880782cf71f8820ee4a2002843893176501d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T14:15:40Z"
+  }
+}

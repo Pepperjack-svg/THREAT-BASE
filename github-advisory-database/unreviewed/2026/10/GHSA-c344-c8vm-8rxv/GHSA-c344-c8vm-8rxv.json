@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c344-c8vm-8rxv",
+  "modified": "2026-10-10T18:31:20Z",
+  "published": "2026-10-10T18:31:20Z",
+  "aliases": [
+    "CVE-2026-108581"
+  ],
+  "details": "TencentCloud Octop through 1.0.2b6 contains a missing authorization vulnerability that allows authenticated low-privileged users to read stored provider API keys via GET /api/providers and GET /api/voice/providers. Attackers can query these endpoints, which only validate the JWT, to obtain plaintext LLM and voice provider API keys and abuse the upstream provider accounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108581"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TencentCloud/Octop/pull/1265"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TencentCloud/Octop/pull/1507"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TencentCloud/Octop/blob/eb28011249c02cafd389b2d424294c6c1b9cf422/src/octop/api/routers/providers.py#L120-L208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind/octop-provider-key-cross-role-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/octop-through-1.0-2b6-missing-authorization-exposes-provider-api-keys-via-api-providers"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T16:16:31Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4377-g9q2-3wh5",
+  "modified": "2025-06-09T21:30:50Z",
+  "published": "2025-06-09T18:32:13Z",
+  "aliases": [
+    "CVE-2025-45055"
+  ],
+  "details": "Silverpeas 6.4.2 contains a stored cross-site scripting (XSS) vulnerability in the event management module. An authenticated user can upload a malicious SVG file as an event attachment, which, when viewed by an administrator, executes embedded JavaScript in the admin's session. This allows attackers to escalate privileges by creating a new administrator account. The vulnerability arises from insufficient sanitization of SVG files and weak CSRF protections.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-45055"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Silverpeas/Silverpeas-Core/pull/1394"
+    },
+    {
+      "type": "WEB",
+      "url": "https://medium.com/@mingihongkim/privilege-escalation-via-svg-injection-in-silverpeas-6-4-2-b5ab1d5b6955"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-09T16:15:40Z"
+  }
+}

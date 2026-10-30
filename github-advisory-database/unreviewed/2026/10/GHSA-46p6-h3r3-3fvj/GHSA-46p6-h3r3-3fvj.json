@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-46p6-h3r3-3fvj",
+  "modified": "2026-10-19T15:32:38Z",
+  "published": "2026-10-19T15:32:38Z",
+  "aliases": [
+    "CVE-2026-111915"
+  ],
+  "details": "Yank Note before 3.93.1 contains a path traversal vulnerability that allows unauthenticated remote attackers to read arbitrary files via the path or doc parameter of /api/help. Attackers can supply repeated '../' segments, which bypass the single-replacement sanitization in the publicly allowlisted endpoint, to read SSH keys, configuration, or notes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111915"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/purocean/yn/issues/543"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/purocean/yn/commit/d3b0ad27f7f6388b878eefd828557ae2d2a8789b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/purocean/yn/blob/v3.93.0/src/main/server/index.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/purocean/yn/releases/tag/v3.93.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/yank-note-before-3.93.1-path-traversal-via-api-help-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T14:17:00Z"
+  }
+}

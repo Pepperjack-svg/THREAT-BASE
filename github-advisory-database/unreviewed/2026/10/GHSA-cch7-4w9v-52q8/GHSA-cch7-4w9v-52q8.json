@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cch7-4w9v-52q8",
+  "modified": "2026-10-18T18:31:56Z",
+  "published": "2026-10-18T18:31:56Z",
+  "aliases": [
+    "CVE-2026-98607"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/virtio: fix object leaks in virtio_gpu_resource_create_blob_ioctl()\n\nvirtio_gpu_resource_create_blob_ioctl() calls drm_gem_object_release() on\nboth the virtio_gpu_resource_assign_uuid() and drm_gem_handle_create()\nerror paths instead of dropping the reference it owns, so\nobj->funcs->free() never runs and the virtio_gpu_object, the resource id\nand the host-side resource are leaked.\n\nUse drm_gem_object_put() instead.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98607"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02df4e24dc4c0bf5b0425a6acabc5201d7f04fc2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0455867bbd95ffa9d9db0a1c6dda500f8126232c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24b6d5c7641412c9ebef0d4c8b888d49a0e6b880"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73ea38a89b923fa08047885a0845d1cd89261ead"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81c6769e069d703154087377d1749af2f1b74e49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88c60c06a2a5244f5dd32ec098e633add114890f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eea473532a286cd1b13cddbec5c645989f43a3aa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:13Z"
+  }
+}

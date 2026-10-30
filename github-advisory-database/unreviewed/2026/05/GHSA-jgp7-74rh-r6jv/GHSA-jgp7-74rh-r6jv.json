@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jgp7-74rh-r6jv",
+  "modified": "2026-05-08T21:31:21Z",
+  "published": "2026-05-06T12:30:35Z",
+  "aliases": [
+    "CVE-2026-43267"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw89: fix potential zero beacon interval in beacon tracking\n\nDuring fuzz testing, it was discovered that bss_conf->beacon_int\nmight be zero, which could result in a division by zero error in\nsubsequent calculations. Set a default value of 100 TU if the\ninterval is zero to ensure stability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43267"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1260bee01493126cf9c872b6ca2af261173baa6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e00c9a4ec84c0bb067833b34202f457badbbc1c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb57be32f438c57c88d6ce756101c1dfbcc03bba"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-369"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:47Z"
+  }
+}

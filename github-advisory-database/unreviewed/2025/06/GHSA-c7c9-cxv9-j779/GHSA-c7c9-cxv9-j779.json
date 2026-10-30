@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c7c9-cxv9-j779",
+  "modified": "2025-11-13T21:31:18Z",
+  "published": "2025-06-18T12:30:44Z",
+  "aliases": [
+    "CVE-2022-50051"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: SOF: debug: Fix potential buffer overflow by snprintf()\n\nsnprintf() returns the would-be-filled size when the string overflows\nthe given buffer size, hence using this value may result in the buffer\noverflow (although it's unrealistic).\n\nThis patch replaces with a safer version, scnprintf() for papering\nover such a potential issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50051"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1eb123ce985e6cf302ac6e3f19862d132d86fa8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a67971a17604ae7de278fb09243432459afc51e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b318b9dd2ac67f39d0338ce563879d1f59a0347a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:33Z"
+  }
+}

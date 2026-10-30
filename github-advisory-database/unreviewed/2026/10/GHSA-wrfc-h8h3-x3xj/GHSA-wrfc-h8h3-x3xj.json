@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wrfc-h8h3-x3xj",
+  "modified": "2026-10-15T00:31:18Z",
+  "published": "2026-10-15T00:31:18Z",
+  "aliases": [
+    "CVE-2026-110851"
+  ],
+  "details": "n8n before 2.41.4 and 2.42.x before 2.42.1 contains an authorization bypass in the Agents create endpoint, which accepts a caller-supplied Agent ID, checks permissions only against the requested project, and updates an existing Agent without verifying which project owns it. An authenticated user with read-only Agent access to another project can supply an existing Agent ID to move that Agent into their own project and rewrite its name, schema and version.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:H/VA:L/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/n8n-io/n8n/security/advisories/GHSA-2r5r-xgvc-rj4p"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110851"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/n8n-before-2.41.4-and-2.42.1-cross-project-agent-ownership-transfer-via-agents-create-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T23:17:26Z"
+  }
+}

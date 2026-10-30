@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wv2q-ghh7-v3v5",
+  "modified": "2025-10-31T21:30:54Z",
+  "published": "2025-04-16T15:34:41Z",
+  "aliases": [
+    "CVE-2025-22064"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: don't unregister hook when table is dormant\n\nWhen nf_tables_updchain encounters an error, hook registration needs to\nbe rolled back.\n\nThis should only be done if the hook has been registered, which won't\nhappen when the table is flagged as dormant (inactive).\n\nJust move the assignment into the registration block.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22064"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03d1fb457b696c18fe15661440c4f052b2374e7e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6134d1ea1e1408e8e7c8c26545b3b301cbdf1eda"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/688c15017d5cd5aac882400782e7213d40dc3556"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce571eba07d54e3637bf334bc48376fbfa55defe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/feb1fa2a03a27fec7001e93e4223be4120d1784b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:16:00Z"
+  }
+}

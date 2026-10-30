@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7v86-rcc3-mqc8",
+  "modified": "2026-02-04T18:30:19Z",
+  "published": "2025-10-07T18:31:08Z",
+  "aliases": [
+    "CVE-2022-50521"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: mxm-wmi: fix memleak in mxm_wmi_call_mx[ds|mx]()\n\nThe ACPI buffer memory (out.pointer) returned by wmi_evaluate_method()\nis not freed after the call, so it leads to memory leak.\n\nThe method results in ACPI buffer is not used, so just pass NULL to\nwmi_evaluate_method() which fixes the memory leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50521"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14bb4bde3b7b2584734b13747b345caeeb41bea3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17cd8c46cbec4e6ad593fb9159928b8e7608c11a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/379e7794c5e7485193d25d73614fbbd1e1387f6f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cf81501356c9e898ad94b2369ffc805f83f7d7b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/50ac517d6f5348b276f1f663799cf85dce521518"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b0f81b0808235967868e01336c976e840217108"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/727cc0147f5066e359aca65cc6cc5e6d64cc15d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87426ce3bd57ad414b6e2436434ef8128986a9a5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:35Z"
+  }
+}

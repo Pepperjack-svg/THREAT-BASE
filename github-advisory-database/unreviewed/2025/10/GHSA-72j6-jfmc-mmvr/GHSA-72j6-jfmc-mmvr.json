@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-72j6-jfmc-mmvr",
+  "modified": "2025-10-23T12:31:16Z",
+  "published": "2025-10-23T12:31:16Z",
+  "aliases": [
+    "CVE-2022-49654"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: dsa: qca8k: reset cpu port on MTU change\n\nIt was discovered that the Documentation lacks of a fundamental detail\non how to correctly change the MAX_FRAME_SIZE of the switch.\n\nIn fact if the MAX_FRAME_SIZE is changed while the cpu port is on, the\nswitch panics and cease to send any packet. This cause the mgmt ethernet\nsystem to not receive any packet (the slow fallback still works) and\nmakes the device not reachable. To recover from this a switch reset is\nrequired.\n\nTo correctly handle this, turn off the cpu ports before changing the\nMAX_FRAME_SIZE and turn on again after the value is applied.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/188c798f3c2554fa0d7147e9b97baf144b817019"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1993f5a06736ada59dd54b50dc96755a38796ee5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/386228c694bf1e7a7688e44412cb33500b0ac585"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:40Z"
+  }
+}

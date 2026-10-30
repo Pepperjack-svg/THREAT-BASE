@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jr2f-hw4r-48cj",
+  "modified": "2025-11-13T21:31:18Z",
+  "published": "2025-06-18T12:30:44Z",
+  "aliases": [
+    "CVE-2022-50036"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/sun4i: dsi: Prevent underflow when computing packet sizes\n\nCurrently, the packet overhead is subtracted using unsigned arithmetic.\nWith a short sync pulse, this could underflow and wrap around to near\nthe maximal u16 value. Fix this by using signed subtraction. The call to\nmax() will correctly handle any negative numbers that are produced.\n\nApply the same fix to the other timings, even though those subtractions\nare less likely to underflow.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50036"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82a1356a933d8443139f8886f11b63c974a09a67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98e28de472ef248352f04f87e29e634ebb0ec240"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1e7908f78f5a7f53f8cd83c7dcdfec974c95f26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb837f5b83461624e525727a8f4add14b201147e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:32Z"
+  }
+}

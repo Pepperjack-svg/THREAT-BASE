@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jxj-r3pv-7wf7",
+  "modified": "2026-01-27T21:31:33Z",
+  "published": "2025-05-02T18:31:34Z",
+  "aliases": [
+    "CVE-2023-53059"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/chrome: cros_ec_chardev: fix kernel data leak from ioctl\n\nIt is possible to peep kernel page's data by providing larger `insize`\nin struct cros_ec_command[1] when invoking EC host commands.\n\nFix it by using zeroed memory.\n\n[1]: https://elixir.bootlin.com/linux/v6.2/source/include/linux/platform_data/cros_ec_proto.h#L74",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13493ad6a220cb3f6f3552a16b4f2753a118b633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0d8644784f73fa39f57f72f374eefaba2bf48a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b20cf3f89c56b5f6a38b7f76a8128bf9f291bbd3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eab28bfafcd1245a3510df9aa9eb940589956ea6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ebea2e16504f40d2c2bac42ad5c5a3de5ce034b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f86ff88a1548ccf5a13960c0e7625ca787ea0993"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-02T16:15:24Z"
+  }
+}

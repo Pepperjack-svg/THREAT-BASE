@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m2f3-4p6h-4879",
+  "modified": "2026-03-25T21:30:20Z",
+  "published": "2026-01-13T18:31:05Z",
+  "aliases": [
+    "CVE-2025-71071"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/mediatek: fix use-after-free on probe deferral\n\nThe driver is dropping the references taken to the larb devices during\nprobe after successful lookup as well as on errors. This can\npotentially lead to a use-after-free in case a larb device has not yet\nbeen bound to its driver so that the iommu driver probe defers.\n\nFix this by keeping the references as expected while the iommu driver is\nbound.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71071"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ef70a0b104ae8011811f60bcfaa55ff49385171"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c04217d06a1161aaf36267e9d971ab6f847d5a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/896ec55da3b90bdb9fc04fedc17ad8c359b2eee5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de83d4617f9fe059623e97acf7e1e10d209625b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6c08d3aa441bbc1956e9d65f1cbb89113a5aa8a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-13T16:16:06Z"
+  }
+}

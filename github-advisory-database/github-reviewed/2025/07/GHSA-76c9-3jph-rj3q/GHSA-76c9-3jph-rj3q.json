@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-76c9-3jph-rj3q",
+  "modified": "2025-07-17T21:17:19Z",
+  "published": "2025-07-17T21:17:19Z",
+  "aliases": [
+    "CVE-2025-7339"
+  ],
+  "summary": "on-headers is vulnerable to http response header manipulation",
+  "details": "### Impact\n\nA bug in on-headers versions `< 1.1.0` may result in response headers being inadvertently modified when an array is passed to `response.writeHead()`\n\n### Patches\n\nUsers should upgrade to `1.1.0`\n\n### Workarounds\n\nUses are encouraged to upgrade to `1.1.0`, but this issue can be worked around by passing an object to `response.writeHead()` rather than an array.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "on-headers"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.1.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/jshttp/on-headers/security/advisories/GHSA-76c9-3jph-rj3q"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-7339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/expressjs/morgan/issues/315"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jshttp/on-headers/issues/15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jshttp/on-headers/commit/c6e384908c9c6127d18831d16ab0bd96e1231867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cna.openjsf.org/security-advisories.html"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jshttp/on-headers"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-241"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-07-17T21:17:19Z",
+    "nvd_published_at": "2025-07-17T16:15:35Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hv4v-f9v2-r8c2",
+  "modified": "2026-10-09T15:31:35Z",
+  "published": "2026-10-09T15:31:35Z",
+  "aliases": [
+    "CVE-2026-95702"
+  ],
+  "details": "Use-after-free vulnerability in VFS in Google gVisor prior to release 20260831.0 on all platforms allows a local attacker with standard container privileges to achieve code execution in the host sentry process by double-freeing the backing MemoryFile from an in-sandbox overlay filesystem. The sentry process remains confined by host-level Linux seccomp and namespace boundaries.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95702"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/gvisor/commit/25c75149bc0eeaa6a3a49b9bbe3473588b2af6df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/gvisor/commit/90bc4fc36fe442257a06ba15df00371561c183ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/gvisor/commit/e4efb89c787ef15b09e68d561f1303380e1d5a77"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-09T15:17:20Z"
+  }
+}

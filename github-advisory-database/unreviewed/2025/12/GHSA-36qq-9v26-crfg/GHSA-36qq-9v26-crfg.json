@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-36qq-9v26-crfg",
+  "modified": "2025-12-16T18:31:31Z",
+  "published": "2025-12-15T18:30:40Z",
+  "aliases": [
+    "CVE-2025-66437"
+  ],
+  "details": "An SSTI (Server-Side Template Injection) vulnerability exists in the get_address_display method of Frappe ERPNext through 15.89.0. This function renders address templates using frappe.render_template() with a context derived from the address_dict parameter, which can be either a dictionary or a string referencing an Address document. Although ERPNext uses a custom Jinja2 SandboxedEnvironment, dangerous functions like frappe.db.sql remain accessible via get_safe_globals(). An authenticated attacker with permission to create or modify an Address Template can inject arbitrary Jinja expressions into the template field. By creating an Address document with a matching country, and then calling the get_address_display API with address_dict=\"address_name\", the system will render the malicious template using attacker-controlled data. This leads to server-side code execution or database information disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66437"
+    },
+    {
+      "type": "WEB",
+      "url": "https://iamanc.github.io/post/erpnext-ssti-bug-4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.notion.so/SSTI-bug-4-239e6086eadc80aa9331fba874c674a5?source=copy_link"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336",
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-15T18:15:48Z"
+  }
+}

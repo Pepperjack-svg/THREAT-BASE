@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jcwr-3268-p643",
+  "modified": "2025-09-23T15:31:08Z",
+  "published": "2025-09-23T15:31:08Z",
+  "aliases": [
+    "CVE-2022-49188"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nremoteproc: qcom_q6v5_mss: Fix some leaks in q6v5_alloc_memory_region\n\nThe device_node pointer is returned by of_parse_phandle() or\nof_get_child_by_name() with refcount incremented.\nWe should use of_node_put() on it when done.\n\nThis function only call of_node_put(node) when of_address_to_resource\nsucceeds, missing error cases.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49188"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07a5dcc4bed9d7cae54adf5aa10ff9f037a3204b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a7d988735e757e111f9722de7cf1b40a84a48b1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9df3007b3cda4936cc50f5a7d2d30505a652828"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd4771ba2cf9e18473a42b5b70175e50d67a64bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7210ca29a783c94478da02368731e4c9cf7cdb7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:55Z"
+  }
+}

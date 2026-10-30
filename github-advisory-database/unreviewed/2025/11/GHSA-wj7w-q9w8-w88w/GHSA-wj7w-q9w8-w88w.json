@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wj7w-q9w8-w88w",
+  "modified": "2025-11-12T12:30:27Z",
+  "published": "2025-11-12T12:30:27Z",
+  "aliases": [
+    "CVE-2025-40144"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvdimm: ndtest: Return -ENOMEM if devm_kcalloc() fails in ndtest_probe()\n\ndevm_kcalloc() may fail. ndtest_probe() allocates three DMA address\narrays (dcr_dma, label_dma, dimm_dma) and later unconditionally uses\nthem in ndtest_nvdimm_init(), which can lead to a NULL pointer\ndereference under low-memory conditions.\n\nCheck all three allocations and return -ENOMEM if any allocation fails,\njumping to the common error path. Do not emit an extra error message\nsince the allocator already warns on allocation failure.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40144"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8aea9d512c65eed0dad98b8d65ce74fe77c01b34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/972cbba5cd384bacdc2eb589776e1d0a9f42714f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9e6aa994917ee602798bbb03180a194b37865bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b808a3590c2884ca91316dbadbfcc1924f5893c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc8b56317ff83ef4bba89bda356b93978604694f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e4a1e3e88160f7d7a2c33e3db8844073ed6eaf97"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-12T11:15:44Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rx7m-qprj-p54h",
+  "modified": "2026-10-05T15:32:22Z",
+  "published": "2026-10-05T15:32:22Z",
+  "aliases": [
+    "CVE-2026-77804"
+  ],
+  "details": "In Progress® Telerik® Fiddler® Classic for Windows, versions prior to v6.0.20262.10021, a time-of-check time-of-use (TOCTOU) race condition exists in the installation of the HTTPS interception root certificate into the Local Computer certificate store. Fiddler writes the certificate to a temporary file in a user-writable location and then launches the external TrustCert helper application, which elevates and imports the certificate from that file. A local threat actor with low privileges who replaces the temporary file between the time it is written and the time the elevated helper reads it can cause an attacker-supplied root certificate to be installed in the Local Computer Trusted Root Certification Authorities store, enabling subsequent interception and modification of TLS-protected traffic on the machine. Successful exploitation requires the user to initiate the certificate trust operation and approve the elevation prompt.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77804"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.telerik.com/fiddler/knowledge-base/kb-security-root-certificate-installation-toctou-cve-2026-77804"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-05T13:16:54Z"
+  }
+}

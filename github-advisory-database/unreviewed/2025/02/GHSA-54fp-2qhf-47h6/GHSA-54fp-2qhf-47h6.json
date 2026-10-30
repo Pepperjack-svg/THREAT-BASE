@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-54fp-2qhf-47h6",
+  "modified": "2026-01-19T15:30:31Z",
+  "published": "2025-02-27T21:32:13Z",
+  "aliases": [
+    "CVE-2022-49168"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: do not clean up repair bio if submit fails\n\nThe submit helper will always run bio_endio() on the bio if it fails to\nsubmit, so cleaning up the bio just leads to a variety of use-after-free\nand NULL pointer dereference bugs because we race with the endio\nfunction that is cleaning up the bio.  Instead just return BLK_STS_OK as\nthe repair function has to continue to process the rest of the pages,\nand the endio for the repair bio will do the appropriate cleanup for the\npage that it was given.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49168"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7170875083254b51fcc5d67f96640977083f481e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8cbc3001a3264d998d6b6db3e23f935c158abd4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1cb11fb45ebbb1e7dfe5e9038b32ea72c184b14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e76c78c48902dae6fa612749f59162bca0a79e0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7e1d15d2bd8c373cf621614ddd17971a2132713"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:53Z"
+  }
+}

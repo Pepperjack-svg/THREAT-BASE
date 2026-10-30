@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9xjj-2vj5-5vwq",
+  "modified": "2026-10-28T12:31:04Z",
+  "published": "2026-10-28T12:31:04Z",
+  "aliases": [
+    "CVE-2026-99135"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-integrity: fix infinite loop on discard with large tag size\n\nWhen integrity_metadata handles a discard, it fills a buffer with\nDISCARD_FILLER and writes it over the tags, max_blocks blocks at a\ntime. If the kmalloc fails, the buffer is the on-stack array\nchecksums_onstack and max_size is set to HASH_MAX_DIGESTSIZE. So if the\ntag size is larger than HASH_MAX_DIGESTSIZE, max_blocks is zero, bi_size\nis never decremented and the loop never terminates.\n\nFix this by using sizeof(checksums_onstack) as max_size. The array has\nMAX_TAG_SIZE bytes since commit b93b6643e9b5 (\"dm integrity: fix a\ncrash with unusually large tag size\"), so max_blocks is at least 1.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99135"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/18d80c77b4c7dd20699e81cedfbbff4e9d198f28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/251b44b424920df9204e88a81fb3f78fa48ddd99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc512700f1413fed652dac22fa1c4e837210b9c0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T11:17:33Z"
+  }
+}

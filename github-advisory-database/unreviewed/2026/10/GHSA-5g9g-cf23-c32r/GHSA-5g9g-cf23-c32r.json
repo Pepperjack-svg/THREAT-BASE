@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5g9g-cf23-c32r",
+  "modified": "2026-10-28T03:31:50Z",
+  "published": "2026-10-28T03:31:50Z",
+  "aliases": [
+    "CVE-2026-109209"
+  ],
+  "details": "The All-in-One Video Gallery – Video Player & Galleries for YouTube, Vimeo & Self-Hosted Videos plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'custom_fields[embedcode]' parameter in all versions up to, and including, 4.9.7 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The sanitization bypass is possible because the save_meta_data() handler returns early when $_POST['post_type'] is absent — a condition always true during XML-RPC requests — and the plugin unconditionally grants Subscribers the publish_aiovg_videos capability, making this exploitable by any authenticated user via a single wp.newPost XML-RPC call.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109209"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/all-in-one-video-gallery/tags/4.9.7/admin/videos.php#L254"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/all-in-one-video-gallery/tags/4.9.7/includes/player/base.php#L1028"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/all-in-one-video-gallery/tags/4.9.7/includes/player/base.php#L277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3759353/all-in-one-video-gallery/trunk/includes/player/base.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/cc6b1fa7-d5f9-4aec-860e-067c26745450?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T03:17:09Z"
+  }
+}

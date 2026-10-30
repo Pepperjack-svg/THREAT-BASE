@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9729-xjvh-4qp8",
+  "modified": "2026-05-08T21:31:21Z",
+  "published": "2026-05-06T12:30:35Z",
+  "aliases": [
+    "CVE-2026-43269"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/atmel-hlcdc: fix memory leak from the atomic_destroy_state callback\n\nAfter several commits, the slab memory increases. Some drm_crtc_commit\nobjects are not freed. The atomic_destroy_state callback only put the\nframebuffer. Use the __drm_atomic_helper_plane_destroy_state() function\nto put all the objects that are no longer needed.\n\nIt has been seen after hours of usage of a graphics application or using\nkmemleak:\n\nunreferenced object 0xc63a6580 (size 64):\n  comm \"egt_basic\", pid 171, jiffies 4294940784\n  hex dump (first 32 bytes):\n    40 50 34 c5 01 00 00 00 ff ff ff ff 8c 65 3a c6  @P4..........e:.\n    8c 65 3a c6 ff ff ff ff 98 65 3a c6 98 65 3a c6  .e:......e:..e:.\n  backtrace (crc c25aa925):\n    kmemleak_alloc+0x34/0x3c\n    __kmalloc_cache_noprof+0x150/0x1a4\n    drm_atomic_helper_setup_commit+0x1e8/0x7bc\n    drm_atomic_helper_commit+0x3c/0x15c\n    drm_atomic_commit+0xc0/0xf4\n    drm_atomic_helper_set_config+0x84/0xb8\n    drm_mode_setcrtc+0x32c/0x810\n    drm_ioctl+0x20c/0x488\n    sys_ioctl+0x14c/0xc20\n    ret_fast_syscall+0x0/0x54",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43269"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/082271e364a3205598c2e4e6233a9f49ce7941cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/25e832a7830740e72103eb0b527680a4b64bbcb3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e64e78f4a70e3f6ac8fe5a7071f08ffd25a2489"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5718d98976ad6b9700e5a6afec67fc47a8a92580"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57fa3487acfa3467405f8506b94682abd96e7393"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d4e91ab97fda64e8cf9c8881cc3b4da026bd849"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec40702029b08ee8d5f5b03303d64a10e74a957b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f12352471061df83a36edf54bbb16284793284e4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:48Z"
+  }
+}

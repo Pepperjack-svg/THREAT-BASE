@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mhmh-rgmh-rf63",
+  "modified": "2026-10-21T15:40:05Z",
+  "published": "2025-07-10T09:32:29Z",
+  "aliases": [
+    "CVE-2025-38292"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: fix invalid access to memory\n\nIn ath12k_dp_rx_msdu_coalesce(), rxcb is fetched from skb and boolean\nis_continuation is part of rxcb.\nCurrently, after freeing the skb, the rxcb->is_continuation accessed\nagain which is wrong since the memory is already freed.\nThis might lead use-after-free error.\n\nHence, fix by locally defining bool is_continuation from rxcb,\nso that after freeing skb, is_continuation can be used.\n\nCompile tested only.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38292"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/371b340affa52f280f6eadfd25fbd43f09f0d5c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5f09d16cd57764c95c8548fe5b70672c9ac01127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/920c2db46ca4476c25ec52758441e2e7ab498b0f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f17747fbda6fca934854463873c4abf8061491d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-10T08:15:27Z"
+  }
+}

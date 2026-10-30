@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9952-gv64-x94c",
+  "modified": "2025-07-28T16:08:20Z",
+  "published": "2025-07-28T16:08:20Z",
+  "aliases": [
+    "CVE-2025-54418"
+  ],
+  "summary": "CodeIgniter4's ImageMagick Handler has Command Injection Vulnerability",
+  "details": "### Impact\nThis vulnerability affects applications that:\n* Use the ImageMagick handler for image processing (`imagick` as the image library)\n* **AND** either:\n  * Allow file uploads with user-controlled filenames and process uploaded images using the `resize()` method\n  * **OR** use the `text()` method with user-controlled text content or options\n\nAn attacker can:\n* Upload a file with a malicious filename containing shell metacharacters that get executed when the image is processed\n* **OR** provide malicious text content or options that get executed when adding text to images\n\n### Patches\nUpgrade to v4.6.2 or later.\n\n### Workarounds\n* **Switch to the GD image handler** (`gd`, the default handler), which is not affected by either vulnerability\n* **For file upload scenarios**: Instead of using user-provided filenames, generate random names to eliminate the attack vector with `getRandomName()` when using the `move()` method, or use the `store()` method, which automatically generates safe filenames\n* **For text operations**: If you must use ImageMagick with user-controlled text, sanitize the input to only allow safe characters: `preg_replace('/[^a-zA-Z0-9\\s.,!?-]/', '', $text)` and validate/restrict text options\n\n\n### References\n* [OWASP Command Injection Prevention](https://owasp.org/www-community/attacks/Command_Injection)\n* [CWE-78: OS Command Injection](https://cwe.mitre.org/data/definitions/78.html)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "codeigniter4/framework"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.6.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/codeigniter4/CodeIgniter4/security/advisories/GHSA-9952-gv64-x94c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-54418"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codeigniter4/CodeIgniter4/commit/e18120bff1da691e1d15ffc1bf553ae7411762c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cwe.mitre.org/data/definitions/78.html"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/codeigniter4/CodeIgniter4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://owasp.org/www-community/attacks/Command_Injection"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-07-28T16:08:20Z",
+    "nvd_published_at": "2025-07-28T15:15:26Z"
+  }
+}

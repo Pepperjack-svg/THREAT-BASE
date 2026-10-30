@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g39h-563w-fg8c",
+  "modified": "2025-12-08T18:30:25Z",
+  "published": "2025-11-11T00:30:21Z",
+  "aliases": [
+    "CVE-2025-11578"
+  ],
+  "details": "A privilege escalation vulnerability was identified in GitHub Enterprise Server that allowed an authenticated Enterprise admin to gain root SSH access to the appliance by exploiting a symlink escape in pre-receive hook environments. By crafting a malicious repository and environment, an attacker could replace system binaries during hook cleanup and execute a payload that adds their own SSH key to the root user’s authorized keys—thereby granting themselves root SSH access to the server. To exploit this vulnerability, the attacker needed to have enterprise admin privileges. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.19, and was fixed in versions 3.14.19, 3.15.14, 3.16.10, 3.17.7 and 3.18.1. This vulnerability was reported via the GitHub Bug Bounty program.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11578"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.14/admin/release-notes#3.14.19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.14/admin/release-notes#3.14.20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.15/admin/release-notes#3.15.14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.15/admin/release-notes#3.15.15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.16/admin/release-notes#3.16.10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.16/admin/release-notes#3.16.11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.17/admin/release-notes#3.17.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.17/admin/release-notes#3.17.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.18/admin/release-notes#3.18.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.18/admin/release-notes#3.18.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-10T23:15:41Z"
+  }
+}

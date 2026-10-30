@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qqh8-qfc3-4qg9",
+  "modified": "2026-05-15T15:30:34Z",
+  "published": "2026-05-08T15:31:26Z",
+  "aliases": [
+    "CVE-2026-43372"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: dsa: microchip: Fix error path in PTP IRQ setup\n\nIf request_threaded_irq() fails during the PTP message IRQ setup, the\nnewly created IRQ mapping is never disposed. Indeed, the\nksz_ptp_irq_setup()'s error path only frees the mappings that were\nsuccessfully set up.\n\nDispose the newly created mapping if the associated\nrequest_threaded_irq() fails at setup.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43372"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3704ac6a0d9a78f66a187515a8ca3faedaf01cc5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c58a9fdb0d0e1011aa02455d26d6ebea251979b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/99c8c16a4aad0b37293cae213e15957c573cf79b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2d1d41e0e8ec447d40a5752844fc5fb0b23db27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e80fef36c676c947072dabeb5803ae59d92ba493"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T15:16:48Z"
+  }
+}

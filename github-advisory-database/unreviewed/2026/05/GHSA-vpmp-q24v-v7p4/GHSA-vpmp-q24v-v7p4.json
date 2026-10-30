@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vpmp-q24v-v7p4",
+  "modified": "2026-05-08T21:31:20Z",
+  "published": "2026-05-01T15:30:37Z",
+  "aliases": [
+    "CVE-2026-43041"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: qrtr: replace qrtr_tx_flow radix_tree with xarray to fix memory leak\n\n__radix_tree_create() allocates and links intermediate nodes into the\ntree one by one. If a subsequent allocation fails, the already-linked\nnodes remain in the tree with no corresponding leaf entry. These orphaned\ninternal nodes are never reclaimed because radix_tree_for_each_slot()\nonly visits slots containing leaf values.\n\nThe radix_tree API is deprecated in favor of xarray. As suggested by\nMatthew Wilcox, migrate qrtr_tx_flow from radix_tree to xarray instead\nof fixing the radix_tree itself [1]. xarray properly handles cleanup of\ninternal nodes — xa_destroy() frees all internal xarray nodes when the\nqrtr_node is released, preventing the leak.\n\n[1] https://lore.kernel.org/all/20260225071623.41275-1-jiayuan.chen@linux.dev/T/",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43041"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fda873092b541bb5a9b87d728a2429f863f8cfa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2428083101f6883f979cceffa76cd8440751ffe6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b75ff0aedd6ade1018ad4a3a9d8336794e36e42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d2249eefaca59908fe3c264b8eca526424dcfbe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69402908e277dd164bf8d7c8fd0513c0fac28e9e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2664bc4f0f356f17c2094587a2b3665e3867e44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2dd9aaf6e2861337f5835f877a5b2becaf4b015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff134cc43972d7ddceff8cfd36cf6b9eaafc00b3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:50Z"
+  }
+}

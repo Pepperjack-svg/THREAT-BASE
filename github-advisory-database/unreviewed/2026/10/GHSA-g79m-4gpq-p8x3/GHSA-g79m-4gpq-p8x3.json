@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g79m-4gpq-p8x3",
+  "modified": "2026-10-16T18:34:44Z",
+  "published": "2026-10-16T18:34:43Z",
+  "aliases": [
+    "CVE-2026-111623"
+  ],
+  "details": "Xiaozhi-esp32-server-java through 6.1.0 contains an authentication bypass vulnerability that allows unauthenticated attackers to obtain valid device WebSocket tokens by requesting /api/device/ota with any MAC address. Attackers can open a victim device's WebSocket channel to read private role system prompts, write conversation history, consume LLM/STT/TTS credentials, and overwrite device metadata.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111623"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/joey-zhou/xiaozhi-esp32-server-java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/joey-zhou/xiaozhi-esp32-server-java/blob/v6.1.0/xiaozhi-common/src/main/java/com/xiaozhi/communication/auth/DeviceAuthService.java#L76-L81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/joey-zhou/xiaozhi-esp32-server-java/blob/v6.1.0/xiaozhi-server/src/main/java/com/xiaozhi/device/DeviceAppService.java#L298-L346"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/joey-zhou/xiaozhi-esp32-server-java/blob/v6.1.0/xiaozhi-server/src/main/java/com/xiaozhi/device/DeviceController.java#L142-L153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/xiaozhi-esp32-server-java-ota-device-token-issuance"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/xiaozhi-esp32-server-java-through-6.1.0-authentication-bypass-via-ota-endpoint-token-issuance"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-290"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:42Z"
+  }
+}

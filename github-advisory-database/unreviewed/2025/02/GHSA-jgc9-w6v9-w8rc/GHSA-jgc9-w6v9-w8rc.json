@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jgc9-w6v9-w8rc",
+  "modified": "2025-02-27T21:32:14Z",
+  "published": "2025-02-27T21:32:14Z",
+  "aliases": [
+    "CVE-2022-49479"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmt76: fix tx status related use-after-free race on station removal\n\nThere is a small race window where ongoing tx activity can lead to a skb\ngetting added to the status tracking idr after that idr has already been\ncleaned up, which will keep the wcid linked in the status poll list.\nFix this by only adding status skbs if the wcid pointer is still assigned\nin dev->wcid, which gets cleared early by mt76_sta_pre_rcu_remove",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49479"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ddd426d72aca4054045a9bd3b80a4ce1d398f11f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ef7f9f894cfd0b2e471206409a529af4a26ddd55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fcfe1b5e162bf473c1d47760962cec8523c00466"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:24Z"
+  }
+}

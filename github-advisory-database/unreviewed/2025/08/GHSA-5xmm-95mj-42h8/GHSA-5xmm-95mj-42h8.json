@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5xmm-95mj-42h8",
+  "modified": "2026-01-17T21:30:27Z",
+  "published": "2025-08-11T21:31:40Z",
+  "aliases": [
+    "CVE-2025-40920"
+  ],
+  "details": "Catalyst::Authentication::Credential::HTTP versions 1.018 and earlier for Perl generate nonces using the Perl Data::UUID library.  *  Data::UUID does not use a strong cryptographic source for generating UUIDs.\n  *  Data::UUID returns v3 UUIDs, which are generated from known information and are unsuitable for security, as per RFC 9562.\n  *  The nonces should be generated from a strong cryptographic source, as per RFC 7616.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40920"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/perl-catalyst/Catalyst-Authentication-Credential-HTTP/pull/1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/perl-catalyst/Catalyst-Authentication-Credential-HTTP/commit/ad2c03aad95406db4ce35dfb670664ebde004c18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/perl-catalyst/Catalyst-Authentication-Credential-HTTP/commit/ad2c03aad95406db4ce35dfb670664ebde004c18.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://datatracker.ietf.org/doc/html/rfc7616#section-5.12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://datatracker.ietf.org/doc/html/rfc9562#name-security-considerations"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/ETHER/Catalyst-Authentication-Credential-HTTP-1.018/source/lib/Catalyst/Authentication/Credential/HTTP.pm#L391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.metacpan.org/patches/C/Catalyst-Authentication-Credential-HTTP/1.018/CVE-2025-40920-r1.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/08/12/1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-338"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-11T21:15:28Z"
+  }
+}

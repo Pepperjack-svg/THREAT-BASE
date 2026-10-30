@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x697-8hfh-c2rc",
+  "modified": "2026-10-26T15:34:43Z",
+  "published": "2026-10-26T15:34:43Z",
+  "aliases": [
+    "CVE-2026-116214"
+  ],
+  "details": "MacCMS v10 before 2026.1000.4054 contains an authentication bypass vulnerability that allows unauthenticated attackers to reset any member's password because check_msg() never compares msg_to. Attackers can request a recovery code to their own mailbox via user/findpass_msg, then submit it to user/findpass_reset with the victim's email or phone to take over the account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116214"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/maccmspro/maccms10/issues/30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/magicblack/maccms10/commit/27bb1b004b9931c93f46b65e9c0e531466e7e02a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/maccmspro/maccms10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/maccmspro/maccms10/blob/7f388ee0008faf5b01e5df7bf5e5a6ff4bbe13e8/application/common/model/User.php#L607-L630"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/maccms-v10-before-2026.1000.4054-account-takeover-via-unbound-password-recovery-code"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-640"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T14:16:34Z"
+  }
+}

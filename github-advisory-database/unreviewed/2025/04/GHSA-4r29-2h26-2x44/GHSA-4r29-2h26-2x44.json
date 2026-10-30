@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4r29-2h26-2x44",
+  "modified": "2025-04-14T21:32:20Z",
+  "published": "2025-04-14T21:32:20Z",
+  "aliases": [
+    "CVE-2022-49284"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncoresight: syscfg: Fix memleak on registration failure in cscfg_create_device\n\ndevice_register() calls device_initialize(),\naccording to doc of device_initialize:\n\n    Use put_device() to give up your reference instead of freeing\n    * @dev directly once you have called this function.\n\nTo prevent potential memleak, use put_device() for error handling.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49284"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/412225b32986d5b11c3c1ad9234c50a3f5c52c76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a529af1f5a5c096f3e18f0d5a32cfcc3d82df1ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c61e2fc87f24cae4701f352fe9ecd4c5c143106c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cfa5dbcdd7aece76f3415284569f2f384aff0253"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:05Z"
+  }
+}

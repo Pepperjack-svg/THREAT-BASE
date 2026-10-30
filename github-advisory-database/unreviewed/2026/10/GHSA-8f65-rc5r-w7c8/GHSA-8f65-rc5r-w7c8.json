@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8f65-rc5r-w7c8",
+  "modified": "2026-10-22T03:33:37Z",
+  "published": "2026-10-22T03:33:37Z",
+  "aliases": [
+    "CVE-2026-114721"
+  ],
+  "details": "Roundcube Webmail before 1.6.20 and 1.7.x before 1.7.5 allows the disabled_actions configuration setting to be bypassed. The check compared only the action name as requested, so a remote authenticated attacker could reach an action listed in disabled_actions by requesting it through its deprecated alias instead. Upstream fixed this in the commit “Fix bug where deprecated action aliases bypassed `disabled_actions` setting”, which moves the check into rcmail::action_handler() and resolves aliases before comparing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114721"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/cd413140bf5362cd86a4327dd6364387505865a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/e7c512ae09ebd0ae5d0d2f29e00a767bf91f6bbe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.debian.org/1151279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.6.20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.7.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://roundcube.net/news/2026/10/19/security-updates-1.6.20-and-1.7.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T02:16:59Z"
+  }
+}

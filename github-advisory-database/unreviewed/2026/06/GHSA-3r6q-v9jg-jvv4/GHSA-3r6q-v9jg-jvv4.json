@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3r6q-v9jg-jvv4",
+  "modified": "2026-10-15T03:36:08Z",
+  "published": "2026-06-09T15:32:18Z",
+  "aliases": [
+    "CVE-2026-46322"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntun: free page on build_skb failure in tun_xdp_one()\n\nWhen build_skb() fails in tun_xdp_one(), the function sets ret to\n-ENOMEM and jumps to the out label, which returns without freeing the\npage that vhost_net_build_xdp() allocated for the frame. As with the\nshort-frame rejection path, tun_sendmsg() discards the per-buffer error\nand still returns total_len, so vhost_tx_batch() takes the success path\nand never frees the page. Each build_skb() failure in a batch leaks one\npage-frag chunk.\n\nFree the page before taking the error path, matching the put_page() the\nother error exits of tun_xdp_one() already perform.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2638a9c1521905bb5c5d1e95c8fbc09f79148ed7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26fe549b5192536b6c1c68a2dfdc8c0dcf9fa4a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4fefc6156a162a9f50035c12091a5e5130c82c6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60d9c0d6cdde5420d6483c921b16fe5465eb5238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/793385c154771603b8671dd8338927221e9d8d78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa308e9dbb9acb17cacdbbce9e4504f69bac8385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa8963fdce667a42fb7f0bdd2909fadcab02f9a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d16e38fac09a47bfcf98c1ad65a1bb53f94540f5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-09T13:16:37Z"
+  }
+}

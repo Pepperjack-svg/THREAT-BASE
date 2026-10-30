@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-88wj-6c62-8f7x",
+  "modified": "2026-10-24T12:30:23Z",
+  "published": "2026-10-24T12:30:23Z",
+  "aliases": [
+    "CVE-2026-116011"
+  ],
+  "details": "Crow before 1.3.4 contains an uncontrolled recursion vulnerability in crow::json::load() that allows remote unauthenticated attackers to crash the server by sending deeply nested JSON. Attackers can send a request body with thousands of nested objects to exhaust the worker thread stack, terminating the process and dropping all connections.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/CrowCpp/Crow/security/advisories/GHSA-7x84-xhp8-6cqj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116011"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CrowCpp/Crow/commit/6956b7ca93c5df22f5aaccd670e5aa000c0d882b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CrowCpp/Crow/blob/v1.3.3/include/crow/json.h#L878"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CrowCpp/Crow/releases/tag/v1.3.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/crow-before-1.3.4-denial-of-service-via-deeply-nested-json-in-crow-json-load"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-24T12:16:57Z"
+  }
+}

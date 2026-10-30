@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8g43-4633-h8mf",
+  "modified": "2026-10-21T15:41:49Z",
+  "published": "2026-10-18T18:31:49Z",
+  "aliases": [
+    "CVE-2026-98453"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: close handle after create-context parsing failure\n\nSMB2_open() accounts a successful CREATE response as a remote open before\nparsing its create contexts.  If smb2_parse_contexts() rejects malformed\ncontext data, SMB2_open() returns without closing the handle, leaving the\nserver-side handle open and num_remote_opens elevated.\n\nClose the handle after a post-CREATE context parsing failure so the error\npath releases the remote resource and balances the open count.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/566820af017e81497fb5e9d3ad6e7ffe2828bc8b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80c67cc71d32ccafc89a29b669243b40d81b930f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cdb36b09fb1f86d638d0afb44d621ed3f7c1d8eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eaa97a196a107d4ef8775df2248181624151812e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f09875ff901e933e7b22c913daf51d21e9d93a45"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:16:55Z"
+  }
+}

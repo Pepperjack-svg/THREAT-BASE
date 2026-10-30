@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wjfp-2w53-2rcg",
+  "modified": "2026-05-12T21:31:26Z",
+  "published": "2026-05-06T12:30:29Z",
+  "aliases": [
+    "CVE-2025-71286"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: SOF: ipc4-topology: Correct the allocation size for bytes controls\n\nThe size of the data behind of scontrol->ipc_control_data for bytes\ncontrols is:\n[1] sizeof(struct sof_ipc4_control_data) + // kernel only struct\n[2] sizeof(struct sof_abi_hdr)) + payload\n\nThe max_size specifies the size of [2] and it is coming from topology.\n\nChange the function to take this into account and allocate adequate amount\nof memory behind scontrol->ipc_control_data.\n\nWith the change we will allocate [1] amount more memory to be able to hold\nthe full size of data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1237cd9ff198cb882402572f29569e5247190974"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/491956b45b5f4933632ea6d8a8bdfdf045ab81e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59fe643f21b9d59bcbedb0dfbf988ee455c23736"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a653820700b81c9e6f05ac23b7969ecec1a18e85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a704a1a4394b5877b9adc31b2c3165ad0b541896"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-131"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:27Z"
+  }
+}

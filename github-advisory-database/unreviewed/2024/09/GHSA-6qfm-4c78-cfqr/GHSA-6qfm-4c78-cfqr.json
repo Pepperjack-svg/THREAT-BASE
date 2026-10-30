@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6qfm-4c78-cfqr",
+  "modified": "2025-11-03T21:31:13Z",
+  "published": "2024-09-18T09:30:37Z",
+  "aliases": [
+    "CVE-2024-46774"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npowerpc/rtas: Prevent Spectre v1 gadget construction in sys_rtas()\n\nSmatch warns:\n\n  arch/powerpc/kernel/rtas.c:1932 __do_sys_rtas() warn: potential\n  spectre issue 'args.args' [r] (local cap)\n\nThe 'nargs' and 'nret' locals come directly from a user-supplied\nbuffer and are used as indexes into a small stack-based array and as\ninputs to copy_to_user() after they are subject to bounds checks.\n\nUse array_index_nospec() after the bounds checks to clamp these values\nfor speculative execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-46774"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0974d03eb479384466d828d65637814bee6b26d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f1feff02e9da0dd0cdb195c428c42b5f9b6c771"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/68d8156480940b79227d58865ec5d2947b9384a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a262c2dc833f2fe1bd5c53a4d899e7077d3b1da9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b137af795399d8b657bad1646c18561530f35ed1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2834ff1d9641a8695a09ea79cd901c7b6d4d05f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-09-18T08:15:05Z"
+  }
+}

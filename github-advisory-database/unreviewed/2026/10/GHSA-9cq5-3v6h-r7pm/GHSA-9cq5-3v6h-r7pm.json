@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9cq5-3v6h-r7pm",
+  "modified": "2026-10-14T21:33:42Z",
+  "published": "2026-10-14T21:33:42Z",
+  "aliases": [
+    "CVE-2026-110763"
+  ],
+  "details": "lamp-boot 4.16.0-java17 through 4.21.2-java17 contains an insecure direct object reference vulnerability in the oauth module's /anyone/findDeptByCompany endpoint that skips URI permission checks. Authenticated low-privilege users can iterate sequential employeeId values to read every employee's department membership within the tenant.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110763"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zuihou/lamp-boot"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zuihou/lamp-boot/blob/ddef8c71de970b915ba1b15e0e9c2dd7414074de/lamp-oauth/lamp-oauth-controller/src/main/java/top/tangyh/lamp/oauth/controller/UserInfoController.java#L167"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/lamp-boot-finddeptbycompany-employee-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lamp-boot-4.16.0-java17-through-4.21.2-java17-idor-via-anyone-finddeptbycompany"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T19:17:12Z"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gc6m-v2g5-2jw7",
+  "modified": "2026-10-14T15:32:21Z",
+  "published": "2026-10-14T15:32:21Z",
+  "aliases": [
+    "CVE-2026-98423"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211_hwsim: don't hand frames to mac80211 while stopping\n\nThe code checks ->started for frames coming from wmediumd, but the\nradio can be stopped after the check and before frame delivery,\ncausing mac80211 to hit the WARN_ON(!local->started).\n\nExpand the mutex for this case and synchronise against it when the\nradio is stopped to avoid being able to hit the warning with hwsim.\n\nDrop the error print that would've complicated the error path, it\nonly triggers for allocation failures (already noisy) and malformed\nframes anyway.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f59be7585dc81baa6f36b0035dd6848ea43d318"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c79ef616aa16af582fb2cb93b0f750975a0004f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ce9b2bc9e73213e316a8c72400256a76bf41814"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87840d4a3a21b1c19b867a80e16ba69dff284de2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4e4fe330294e3936e0f4e15d6996468f8a45fb2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7fa45d8123a7f794b93fc22dbcf19f38dc4d8cb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T14:17:53Z"
+  }
+}

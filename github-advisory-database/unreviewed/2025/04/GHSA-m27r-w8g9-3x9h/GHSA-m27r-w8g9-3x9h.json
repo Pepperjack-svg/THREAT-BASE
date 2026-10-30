@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m27r-w8g9-3x9h",
+  "modified": "2026-01-22T21:33:42Z",
+  "published": "2025-04-01T18:30:52Z",
+  "aliases": [
+    "CVE-2025-21950"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrivers: virt: acrn: hsm: Use kzalloc to avoid info leak in pmcmd_ioctl\n\nIn the \"pmcmd_ioctl\" function, three memory objects allocated by\nkmalloc are initialized by \"hcall_get_cpu_state\", which are then\ncopied to user space. The initializer is indeed implemented in\n\"acrn_hypercall2\" (arch/x86/include/asm/acrn.h). There is a risk of\ninformation leakage due to uninitialized bytes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21950"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b8f7a2caa7f9cdfd135e3f78eb9d7e36fb95083"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e15cf870d2c748e45d45ffc4d5b1dc1b7d50120"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/524f29d78c9bdeb49f31f5b0376a07d2fc5cf563"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/819cec1dc47cdeac8f5dd6ba81c1dbee2a68c3bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4c21b878f0e237f45209a324c903ea7fb05247d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7e5031fe3f161c8eb5e84db1540bc4373ed861b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-01T16:15:26Z"
+  }
+}

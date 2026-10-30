@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cx4h-xjm7-pqxp",
+  "modified": "2026-10-21T15:40:59Z",
+  "published": "2026-08-22T18:30:29Z",
+  "aliases": [
+    "CVE-2026-74695"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_flow_table: drop existing skb dst before skb_dst_set_noref()\n\nIncoming skbs passing through netfilter flowtable offload hooks (or XFRM\noffload path) might already carry a ref-counted dst_entry assigned during\nearlier RX or routing steps.\n\nCalling skb_dst_set_noref() when skb already holds a ref-counted dst\noverwrites skb->_skb_refdst, leaking the previous dst_entry reference\ncount and triggering a DEBUG_NET_WARN_ON_ONCE assertion in\nskb_dst_check_unset():\n\n  WARNING: at skb_dst_check_unset include/linux/skbuff.h:1170\n  WARNING: at skb_dst_set_noref include/linux/skbuff.h:1234\n  WARNING: at nf_flow_offload_ip_hook+0xf6c/0x2b60 net/netfilter/nf_flow_table_ip.c:864\n\nDrop any existing dst_entry reference with skb_dst_drop(skb) before\nsetting the non-referenced flowtable destination.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74695"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12afa450a6a6c0cce2c42b7545a9958f62d8a00c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/274f544a32c08638ee887f2e27e3235b6b1237d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4db3b48a966ed479b99cc8319ea9e46d4f7c703b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/538e67e8c7889cf5f93951f5309d1bcb41f86036"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8aecf0bbcc72605592134c917c222207d8f63ab0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:44Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jrph-46wx-r2g3",
+  "modified": "2026-05-08T15:31:15Z",
+  "published": "2026-05-06T12:30:27Z",
+  "aliases": [
+    "CVE-2026-43091"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: Wait for RCU readers during policy netns exit\n\nxfrm_policy_fini() frees the policy_bydst hash tables after flushing the\npolicy work items and deleting all policies, but it does not wait for\nconcurrent RCU readers to leave their read-side critical sections first.\n\nThe policy_bydst tables are published via rcu_assign_pointer() and are\nlooked up through rcu_dereference_check(), so netns teardown must also\nwait for an RCU grace period before freeing the table memory.\n\nFix this by adding synchronize_rcu() before freeing the policy hash tables.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/069daad4f2ae9c5c108131995529d5f02392c446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/33a3149dd81a1e2f52b80ee1e0fc380b39f3d028"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3733fce2871c9bca9dd18a1a23b1432ea215a094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/438b1f668ad58f46ce699bb48e4698a7839e3f9e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b66920a3348c0f63ba18365248fa21fbf0b3a937"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T10:16:22Z"
+  }
+}

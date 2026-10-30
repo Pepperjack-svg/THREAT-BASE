@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cm38-gcmc-3rxp",
+  "modified": "2026-03-25T21:30:24Z",
+  "published": "2026-01-28T15:31:30Z",
+  "aliases": [
+    "CVE-2026-23014"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Ensure swevent hrtimer is properly destroyed\n\nWith the change to hrtimer_try_to_cancel() in\nperf_swevent_cancel_hrtimer() it appears possible for the hrtimer to\nstill be active by the time the event gets freed.\n\nMake sure the event does a full hrtimer_cancel() on the free path by\ninstalling a perf_event::destroy handler.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23014"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/deee9dfb111ab00f9dfd46c0c7e36656b80f5235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff5860f5088e9076ebcccf05a6ca709d5935cfa9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-28T15:16:17Z"
+  }
+}

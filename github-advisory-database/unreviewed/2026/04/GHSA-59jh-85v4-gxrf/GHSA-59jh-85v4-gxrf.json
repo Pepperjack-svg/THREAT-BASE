@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-59jh-85v4-gxrf",
+  "modified": "2026-04-12T21:30:19Z",
+  "published": "2026-04-12T21:30:19Z",
+  "aliases": [
+    "CVE-2026-40395"
+  ],
+  "details": "Varnish Enterprise before 6.0.16r12 allows a \"workspace overflow\" denial of service (daemon panic) for shared VCL. The headerplus.write_req0() function from vmod_headerplus updates the underlying req0, which is normally the original read-only request from which req is derived (readable and writable from VCL). This is useful in the active VCL, after amending req, to prepare a refined req0 before switching to a different VCL with the return (vcl(<label>)) action. This is for example how the Varnish Controller operates shared VCL deployments. If the amended req contained too many header fields for req0, this would have resulted in a workspace overflow that would in turn trigger a panic and crash the Varnish Enterprise server. This could be used as a Denial of Service attack vector by malicious clients.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.varnish-software.com/security/VEV00003"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-12T20:16:18Z"
+  }
+}

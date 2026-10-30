@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g852-mvxx-736r",
+  "modified": "2025-04-10T15:31:48Z",
+  "published": "2025-04-08T09:31:12Z",
+  "aliases": [
+    "CVE-2025-22009"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nregulator: dummy: force synchronous probing\n\nSometimes I get a NULL pointer dereference at boot time in kobject_get()\nwith the following call stack:\n\nanatop_regulator_probe()\n devm_regulator_register()\n  regulator_register()\n   regulator_resolve_supply()\n    kobject_get()\n\nBy placing some extra BUG_ON() statements I could verify that this is\nraised because probing of the 'dummy' regulator driver is not completed\n('dummy_regulator_rdev' is still NULL).\n\nIn the JTAG debugger I can see that dummy_regulator_probe() and\nanatop_regulator_probe() can be run by different kernel threads\n(kworker/u4:*).  I haven't further investigated whether this can be\nchanged or if there are other possibilities to force synchronization\nbetween these two probe routines.  On the other hand I don't expect much\nboot time penalty by probing the 'dummy' regulator synchronously.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22009"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ade367b56c3947c990598df92395ce737bee872"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8619909b38eeebd3e60910158d7d68441fc954e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3b83a1442a09b145006eb4294b1a963c5345c9c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e26f24ca4fb940b15e092796c5993142a2558bd9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-08T09:15:24Z"
+  }
+}

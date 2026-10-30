@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rj36-vf3r-744c",
+  "modified": "2025-11-14T21:30:27Z",
+  "published": "2025-06-18T12:30:35Z",
+  "aliases": [
+    "CVE-2022-49935"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndma-buf/dma-resv: check if the new fence is really later\n\nPreviously when we added a fence to a dma_resv object we always\nassumed the the newer than all the existing fences.\n\nWith Jason's work to add an UAPI to explicit export/import that's not\nnecessary the case any more. So without this check we would allow\nuserspace to force the kernel into an use after free error.\n\nSince the change is very small and defensive it's probably a good\nidea to backport this to stable kernels as well just in case others\nare using the dma_resv object in the same way.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49935"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3f7c10a269d5b77dd5822ade822643ced3057f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4c798fe98adceb642050819cb57cbc8f5c27870"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:20Z"
+  }
+}

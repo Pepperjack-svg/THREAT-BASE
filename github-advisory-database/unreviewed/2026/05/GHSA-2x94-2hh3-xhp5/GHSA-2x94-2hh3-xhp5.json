@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2x94-2hh3-xhp5",
+  "modified": "2026-05-13T18:30:53Z",
+  "published": "2026-05-13T18:30:53Z",
+  "aliases": [
+    "CVE-2020-37168"
+  ],
+  "details": "Ecommerce Systempay 1.0 contains a weak cryptographic implementation vulnerability that allows attackers to brute force the 16-character production secret key used for payment signature generation. Attackers can extract payment form data and signatures from POST requests to the payment endpoint, then use SHA1 hash comparison to iteratively test key candidates until discovering the correct production key, enabling them to forge valid payment signatures and manipulate transaction amounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-37168"
+    },
+    {
+      "type": "WEB",
+      "url": "https://paiement.systempay.fr/doc/fr-FR"
+    },
+    {
+      "type": "WEB",
+      "url": "https://paiement.systempay.fr/doc/fr-FR/module-de-paiement-gratuit"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/48017"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ecommerce-systempay-production-key-brute-force"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-328"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-13T16:16:31Z"
+  }
+}

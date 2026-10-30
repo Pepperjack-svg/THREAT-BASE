@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpj9-h5cm-gw64",
+  "modified": "2026-03-25T18:31:34Z",
+  "published": "2026-01-13T18:31:06Z",
+  "aliases": [
+    "CVE-2025-71094"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: usb: asix: validate PHY address before use\n\nThe ASIX driver reads the PHY address from the USB device via\nasix_read_phy_addr(). A malicious or faulty device can return an\ninvalid address (>= PHY_MAX_ADDR), which causes a warning in\nmdiobus_get_phy():\n\n  addr 207 out of range\n  WARNING: drivers/net/phy/mdio_bus.c:76\n\nValidate the PHY address in asix_read_phy_addr() and remove the\nnow-redundant check in ax88172a.c.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38722e69ee64dbb020028c93898d25d6f4c0e0b2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98a12c2547a44a5f03f35c108d2022cc652cbc4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1e077a3f76eea0dc671ed6792e7d543946227e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf8a0f3b787ca7c5889bfca12c60c483041fbee3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f5f4f30f3811d37e1aa48667c36add74e5a8d99f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc96018f09f8d30586ca6582c5045a84eafef146"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-13T16:16:09Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-crm6-8p5c-4rv5",
+  "modified": "2026-10-21T15:41:43Z",
+  "published": "2026-10-06T09:31:32Z",
+  "aliases": [
+    "CVE-2026-98245"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: take commit root semaphore when iterating in mark_block_group_to_copy()\n\nmark_block_group_to_copy() iterates over the commit root with\nskip_locking=true. A concurrent transaction commit can swap and free\nthe commit root during iteration, causing use-after-free when\naccessing extent buffers.\n\nFix it by using path->need_commit_sem to protect the commit root search.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0594e3423f4ba3137c734371169491f9a98e9af4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/709f6a5e986535005110c6c69b322f63631cb200"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e2007b263ea250251ec3021a0a197da990ee1a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93a025166495c63ba5b8ac721c7040d5312e8335"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c32490c6d3f3a9f2d177d57c7eb8bbc347561d08"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:12Z"
+  }
+}

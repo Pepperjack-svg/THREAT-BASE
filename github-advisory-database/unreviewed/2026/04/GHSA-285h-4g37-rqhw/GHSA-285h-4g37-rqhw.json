@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-285h-4g37-rqhw",
+  "modified": "2026-04-08T12:31:29Z",
+  "published": "2026-04-08T12:31:29Z",
+  "aliases": [
+    "CVE-2026-4073"
+  ],
+  "details": "The pdfl.io plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'pdflio' shortcode in all versions up to, and including, 1.0.5. This is due to insufficient input sanitization and output escaping on the 'text' shortcode attribute. The output_shortcode() function directly concatenates the user-supplied $text variable into HTML output without applying esc_html() or any other escaping function. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4073"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pdfl-io/tags/1.0.5/pdflio.php#L117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pdfl-io/tags/1.0.5/pdflio.php#L81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pdfl-io/trunk/pdflio.php#L117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pdfl-io/trunk/pdflio.php#L81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3492458%40pdfl-io&new=3492458%40pdfl-io"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2bf70203-61c0-406a-9110-b60761b4a513?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-08T10:16:01Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r5vj-594q-443q",
+  "modified": "2025-12-24T15:30:33Z",
+  "published": "2025-12-24T15:30:33Z",
+  "aliases": [
+    "CVE-2022-50741"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: imx-jpeg: Disable useless interrupt to avoid kernel panic\n\nThere is a hardware bug that the interrupt STMBUF_HALF may be triggered\nafter or when disable interrupt.\nIt may led to unexpected kernel panic.\nAnd interrupt STMBUF_HALF and STMBUF_RTND have no other effect.\nSo disable them and the unused interrupts.\n\nmeanwhile clear the interrupt status when disable interrupt.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50741"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/35591c2469953d59abdb16cb7beac834052cdb4f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ad31bc146f0e4521805695f4f99d8a3c3b2761f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3720e65c9013a7b2a5dbb63e6bf6d74a35dd894"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1257fc8fc988bdc4b26277f58bbf7b694b531f0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:00Z"
+  }
+}

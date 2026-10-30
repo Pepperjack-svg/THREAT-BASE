@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-34q7-82vg-cv73",
+  "modified": "2026-10-23T15:31:38Z",
+  "published": "2026-10-23T15:31:38Z",
+  "aliases": [
+    "CVE-2026-93630"
+  ],
+  "details": "A hostname canonicalization vulnerability in the email HTML sanitizers of Zimbra Collaboration Suite (ZCS) allows an unauthenticated sender to bypass the restriction on forms that target the Zimbra host. DefangFilter and the OWASP ActionAttributePolicy compare the form-action hostname with the request hostname before browser URL canonicalization. A percent-encoded hostname can therefore survive sanitization while the browser submits the form to the normal Zimbra origin with the recipient's authentication cookie. This permits authenticated form requests from a crafted email after the recipient opens it in Classic and submits the form. The issue is present in ZCS 10.1.16 and 10.1.21. It does not bypass an endpoint's CSRF-token checks; a state-changing attack additionally requires an endpoint that accepts the resulting request without that protection.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93630"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wiki.zimbra.com/wiki/Zimbra_Security_Advisories"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.rapid7.com/blog/post/ve-breaking-zimbra-identity-boundaries-part-1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-180"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T14:17:56Z"
+  }
+}

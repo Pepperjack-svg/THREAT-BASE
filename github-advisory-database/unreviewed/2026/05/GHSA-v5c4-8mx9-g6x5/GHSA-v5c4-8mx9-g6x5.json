@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v5c4-8mx9-g6x5",
+  "modified": "2026-10-21T15:40:28Z",
+  "published": "2026-05-27T15:33:13Z",
+  "aliases": [
+    "CVE-2026-45861"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngfs2: Fix slab-use-after-free in qd_put\n\nCommit a475c5dd16e5 (\"gfs2: Free quota data objects synchronously\")\nstarted freeing quota data objects during filesystem shutdown instead of\nputting them back onto the LRU list, but it failed to remove these\nobjects from the LRU list, causing LRU list corruption.  This caused\nuse-after-free when the shrinker (gfs2_qd_shrink_scan) tried to access\nalready-freed objects on the LRU list.\n\nFix this by removing qd objects from the LRU list before freeing them in\nqd_put().\n\nInitial fix from Deepanshu Kartikey <kartikey406@gmail.com>.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45861"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d47922b98046b8070a77347fb883a6523792803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22150a7d401d9e9169b9b68e05bed95f7f49bf69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53aaf083de197946b25bc4ffa3068d37366ce73d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80fff26d7a0c3926b511661c27eecc811a420eef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca7c67bdd293089b3483f18886d6b2d0037d2ad9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:16:58Z"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5wcm-3v2w-8362",
+  "modified": "2026-10-23T21:47:48Z",
+  "published": "2026-10-23T21:47:48Z",
+  "aliases": [
+    "CVE-2026-114508"
+  ],
+  "summary": "Laravel relationship inclusion can trigger unauthorized data destruction",
+  "details": "A vulnerability in how relationship inclusion is processed on certain read endpoints. Under specific conditions, a request to a read-only endpoint can be crafted to trigger a destructive database operation on a related table, rather than simply retrieving data.\n\n### Impact\nA user with only read access could cause irreversible data loss (e.g., a related table being emptied), without needing any write permissions. This could result in denial of service and loss of data integrity for affected applications.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "laravel/framework"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "12.45.0"
+            },
+            {
+              "fixed": "12.68.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "laravel/framework"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "13.0.0"
+            },
+            {
+              "fixed": "13.27.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/security/advisories/GHSA-5wcm-3v2w-8362"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114508"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/pull/61322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/pull/61323"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/commit/50a7970efe9f9990b6ec4f1e949de2abaaf4263e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/commit/b89f2944995d555bfda76dced1ef6c6b04ef17d8"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/laravel/framework"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/releases/tag/v12.68.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/releases/tag/v13.27.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-470"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-23T21:47:48Z",
+    "nvd_published_at": "2026-10-21T22:16:49Z"
+  }
+}

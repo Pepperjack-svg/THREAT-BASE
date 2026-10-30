@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p9m3-8942-gxhh",
+  "modified": "2026-10-26T18:32:57Z",
+  "published": "2026-10-26T18:32:57Z",
+  "aliases": [
+    "CVE-2026-116489"
+  ],
+  "details": "Timescale pgvectorscale before 0.9.1 contains a type confusion vulnerability that allows low-privileged database users to corrupt memory by shadowing pgvector's vector type or operators. Attackers with CREATE privilege on the vectorscale schema can pre-create shadow objects, then build and query DiskANN indexes over crafted values to cause out-of-bounds reads and writes, disclosing memory, crashing the server, or escalating privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116489"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/timescale/pgvectorscale/pull/280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/timescale/pgvectorscale/commit/1c7cb1cab919ac122f901f163a71f69a264a8f81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/timescale/pgvectorscale/commit/59d2f573dbd7a1446728ac547576d22f5b05cfaa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/timescale/pgvectorscale/commit/f42f8cf29c92111add863ccf3255b3bf23fb51cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/timescale/pgvectorscale"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/timescale/pgvectorscale/blob/0.9.0/pgvectorscale/src/access_method/build.rs#L253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/timescale/pgvectorscale/blob/0.9.0/pgvectorscale/src/access_method/mod.rs#L208-L231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/timescale/pgvectorscale/blob/0.9.0/pgvectorscale/src/access_method/pg_vector.rs#L133-L151"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/timescale/pgvectorscale/releases/tag/0.9.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/timescale-pgvectorscale-before-0.9.1-type-confusion-via-unqualified-diskann-operator-classes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-843"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T16:17:18Z"
+  }
+}

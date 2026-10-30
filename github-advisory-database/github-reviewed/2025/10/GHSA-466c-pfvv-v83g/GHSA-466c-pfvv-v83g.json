@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-466c-pfvv-v83g",
+  "modified": "2025-10-03T19:25:09Z",
+  "published": "2025-10-03T19:25:09Z",
+  "aliases": [],
+  "summary": "wrflib has a soundness issue and is unmaintained",
+  "details": "All functions under `wrflib::byte_extract` are simply wrapper of unsafe pointer offset and lacks sufficient checks to it pointer and offset parameter.\n\n`wrflib` is unmaintained.",
+  "severity": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "crates.io",
+        "name": "wrflib"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.0.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/cruise-automation/webviz-rust-framework"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rustsec.org/advisories/RUSTSEC-2025-0072.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-119"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-03T19:25:09Z",
+    "nvd_published_at": null
+  }
+}

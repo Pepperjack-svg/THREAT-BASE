@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6fg9-pffg-wphf",
+  "modified": "2026-10-21T15:41:52Z",
+  "published": "2026-10-18T18:32:01Z",
+  "aliases": [
+    "CVE-2026-98726"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-multipath: fix underflow in ANA log bounds checks\n\nThe number of ANA groups advertised through Identify Controller sizes the\nANA log buffer. The ANA log header and group descriptors independently\nsupply the number of groups and namespace IDs to parse.\n\nBoth bounds checks subtract an untrusted object size from ana_log_size\nbefore comparing the current offset. If the object is larger than the\nbuffer, the size_t subtraction underflows and lets the parser read beyond\nana_log_buf.\n\nCheck the current offset before the first subtraction and compare each\nobject size with the remaining buffer instead. This rejects inconsistent\nANA data before dereferencing a truncated group descriptor or walking an\noversized namespace ID array.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98726"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03a0c21f0fd7a872953aae5714303d8f38d1e567"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3045128294d347fd38542ad6e174b1b34d9c0751"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49e8a3224c91fd5fbf22f4adcca6c8209cfdd6fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63fa2d9c9c37020bd2703fe2a6a38027b5abeb15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5cdb0c0a51e8ff49914ae16ef5360010c40cc85"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:26Z"
+  }
+}

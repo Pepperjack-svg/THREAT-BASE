@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4mx2-9f8m-cpmr",
+  "modified": "2026-06-24T18:32:28Z",
+  "published": "2026-05-27T15:33:16Z",
+  "aliases": [
+    "CVE-2026-45921"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmtd: parsers: Fix memory leak in mtd_parser_tplink_safeloader_parse()\n\nThe function mtd_parser_tplink_safeloader_parse() allocates buf via\nmtd_parser_tplink_safeloader_read_table(). If the allocation for\nparts[idx].name fails inside the loop, the code jumps to the err_free\nlabel without freeing buf, leading to a memory leak.\n\nFix this by freeing the temporary buffer buf in the err_free label.\n\nCompile tested only. Issue found using a prototype static analysis tool\nand code review.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45921"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f5e62ea5c43146eacdc6861cb1022ffae1b79bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/971e9c53aed82f17a9c6a65daa4e21cc15eba5b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/980ce2b02dd06a4fdf5fee38b2e14becf9cf7b8b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e97f5fac8ce9a6b9ec724c97d86b0985e915fdca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec121ad626c319085f6d40a52cd04e99b4554926"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:07Z"
+  }
+}

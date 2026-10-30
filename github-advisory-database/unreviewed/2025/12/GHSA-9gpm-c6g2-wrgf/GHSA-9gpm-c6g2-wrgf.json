@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9gpm-c6g2-wrgf",
+  "modified": "2025-12-16T18:31:34Z",
+  "published": "2025-12-16T18:31:34Z",
+  "aliases": [
+    "CVE-2025-68316"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: ufs: core: Fix invalid probe error return value\n\nAfter DME Link Startup, the error return value is set to the MIPI UniPro\nGenericErrorCode which can be 0 (SUCCESS) or 1 (FAILURE).  Upon failure\nduring driver probe, the error code 1 is propagated back to the driver\nprobe function which must return a negative value to indicate an error,\nbut 1 is not negative, so the probe is considered to be successful even\nthough it failed.  Subsequently, removing the driver results in an oops\nbecause it is not in a valid state.\n\nThis happens because none of the callers of ufshcd_init() expect a\nnon-negative error code.\n\nFix the return value and documentation to match actual usage.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68316"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2b32bc1d9e359a9f90d0de6af16699facb10935"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df96dbe1af7f6591c09f862f1226d3619b07e1b6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T16:16:11Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4c9-hvw2-vg7q",
+  "modified": "2026-10-21T15:41:59Z",
+  "published": "2026-10-18T18:32:03Z",
+  "aliases": [
+    "CVE-2026-98792"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: flowtable: generalize pending status bit\n\nRename NF_FLOW_HW_PENDING to NF_FLOW_PENDING and use it to inhibit the\nflowtable GC worker until pending hw offload work has been completed.\n\nApparently, nf_flow_offload_stats() can schedule work to retrieve stats\nwhile the flow is being removed by GC.\n\nAnd this bit can also be used in a follow up patch to disable GC until\nthe flow has been fully added in both directions.\n\nRevert the reordering done in commit d644b23afe1e (\"netfilter:\nflowtable: publish HW_DEAD after worker is done\") to prevent a race\nbetween GC and hw offload handler.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98792"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4033e1a9262c57dfbfc594a591a50fcba63c531a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d52b72f3aa68ad0536444e36530bda75070194c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c549fb7eecd01fdba7c0d12c01da876ef8a3214"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2cac45848d1cf31ed190db30f90ba8211e9a8ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7e292f3c8c853f27a1af7eaf3428a0e76fe5fcc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:33Z"
+  }
+}

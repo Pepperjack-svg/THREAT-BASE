@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p9jr-xxvg-3xmg",
+  "modified": "2025-12-01T21:30:22Z",
+  "published": "2025-09-16T18:31:26Z",
+  "aliases": [
+    "CVE-2023-53314"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev/ep93xx-fb: Do not assign to struct fb_info.dev\n\nDo not assing the Linux device to struct fb_info.dev. The call to\nregister_framebuffer() initializes the field to the fbdev device.\nDrivers should not override its value.\n\nFixes a bug where the driver incorrectly decreases the hardware\ndevice's reference counter and leaks the fbdev device.\n\nv2:\n\t* add Fixes tag (Dan)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53314"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0517fc5a71333b315164736bbd32608894fbb872"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c6ff2a7c593db851f23e31ace2baf557ea9d0ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/309c27162afea79b3c7f8747bb650faf6923b639"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4aade6c9100a3537788b6a9c7ac481037d19efdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ffa40ff64aa43a9a28fcf209b48d86a3e0f4972"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f83c1b13f8154e0284448912756d0a351a1a602a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f90a0e5265b60cdd3c77990e8105f79aa2fac994"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ffdf2b020db717853167391a3a8d912e13428fa6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T17:15:37Z"
+  }
+}

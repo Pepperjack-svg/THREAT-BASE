@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g89h-pfwv-vrq2",
+  "modified": "2025-07-31T09:32:49Z",
+  "published": "2025-07-31T09:32:49Z",
+  "aliases": [
+    "CVE-2025-8192"
+  ],
+  "details": "There exists a TOCTOU race condition in TvSettings AppRestrictionsFragment.java that lead to start of attacker supplied activity in Settings’ context, i.e. system-uid context, thus lead to launchAnyWhere. The core idea is to utilize the time window between the check of Intent and the use to Intent to change the target component’s state, thus bypass the original security sanitize function.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:N/VC:L/VI:H/VA:N/SC:L/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-8192"
+    },
+    {
+      "type": "WEB",
+      "url": "https://defcon.org/html/defcon-33/dc-33-speakers.html#content_60309"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-31T09:15:27Z"
+  }
+}

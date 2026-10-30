@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8f4g-p77g-3pf2",
+  "modified": "2025-11-26T18:30:58Z",
+  "published": "2025-08-19T18:31:34Z",
+  "aliases": [
+    "CVE-2025-38615"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: cancle set bad inode after removing name fails\n\nThe reproducer uses a file0 on a ntfs3 file system with a corrupted i_link.\nWhen renaming, the file0's inode is marked as a bad inode because the file\nname cannot be deleted.\n\nThe underlying bug is that make_bad_inode() is called on a live inode.\nIn some cases it's \"icache lookup finds a normal inode, d_splice_alias()\nis called to attach it to dentry, while another thread decides to call\nmake_bad_inode() on it - that would evict it from icache, but we'd already\nfound it there earlier\".\nIn some it's outright \"we have an inode attached to dentry - that's how we\ngot it in the first place; let's call make_bad_inode() on it just for shits\nand giggles\".",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38615"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/358d4f821c03add421a4c49290538a705852ccf1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ed2cc6a6e93fbeb8c0cafce1e7fb1f64a331dcc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a285395020780adac1ffbc844069c3d700bf007a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b35a50d639ca5259466ef5fea85529bb4fb17d5b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d99208b91933fd2a58ed9ed321af07dacd06ddc3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-19T17:15:40Z"
+  }
+}

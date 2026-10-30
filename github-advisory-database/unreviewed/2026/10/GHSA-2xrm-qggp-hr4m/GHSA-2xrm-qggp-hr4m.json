@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2xrm-qggp-hr4m",
+  "modified": "2026-10-09T15:31:33Z",
+  "published": "2026-10-09T15:31:33Z",
+  "aliases": [
+    "CVE-2026-108104"
+  ],
+  "details": "Xerial snappy-java from 1.1.7.4 before 1.1.10.10 contains a double release vulnerability in SnappyFramedInputStream that returns pooled buffers twice when replacement allocation fails. Attackers can supply framed data with a large declared chunk length to trigger OutOfMemoryError, causing shared backing arrays that expose or overwrite other streams' decompressed data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/xerial/snappy-java/security/advisories/GHSA-c73m-r934-8qvg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xerial/snappy-java/commit/139a53090a6662298924fd75d21f4769b4a219ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xerial/snappy-java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xerial/snappy-java/blob/v1.1.10.9/src/main/java/org/xerial/snappy/SnappyFramedInputStream.java#L243"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xerial/snappy-java/releases/tag/v1.1.10.10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/xerial-snappy-java-1.1.7.4-before-1.1.10.10-double-release-of-pooled-buffers-in-snappyframedinputstream"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-09T15:17:11Z"
+  }
+}

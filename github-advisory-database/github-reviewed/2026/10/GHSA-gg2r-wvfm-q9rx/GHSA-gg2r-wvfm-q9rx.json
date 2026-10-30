@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gg2r-wvfm-q9rx",
+  "modified": "2026-10-21T21:12:56Z",
+  "published": "2026-10-21T21:12:56Z",
+  "aliases": [
+    "CVE-2026-112892"
+  ],
+  "summary": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory",
+  "details": "### Summary\nThe MSP RLE decoder expands run-length data into an in-memory buffer with no cap tied to the declared image size. A small file that passes the pixel-count check can force hundreds of megabytes or more of allocation when the application loads pixels.\n\n### Details\nThe MSP decoder writes each run into an unbounded `io.BytesIO` and can expand roughly 85x per run:\n\n- `src/PIL/MspImagePlugin.py:144-146`\n\n### Impact\nMemory-exhaustion denial of service from a tiny crafted image in any application that loads pixels. The expansion is decoupled from the declared pixel count, so `MAX_IMAGE_PIXELS` does not bound it.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pillow"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.1.0"
+            },
+            {
+              "fixed": "13.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-gg2r-wvfm-q9rx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/python-pillow/Pillow/commit/5dcb630b9798efd91929cb873d677aeee6ed0bb3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/python-pillow/Pillow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-409"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-21T21:12:56Z",
+    "nvd_published_at": "2026-10-19T22:17:09Z"
+  }
+}

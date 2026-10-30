@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gfj4-2pq5-q7vj",
+  "modified": "2026-10-18T18:31:56Z",
+  "published": "2026-10-18T18:31:56Z",
+  "aliases": [
+    "CVE-2026-98620"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: mtk_eth_soc: unregister net_devices in case of probe failure\n\nIf register_netdev() fails for one of the MTK_MAX_DEVS devices in\nmtk_probe(), the error path jumps to err_deinit_ppe, skipping\nmtk_unreg_dev(). The previously registered net_devices are then freed by\nmtk_free_dev() while still in NETREG_REGISTERED state, hitting the\nBUG_ON(dev->reg_state != NETREG_UNREGISTERED).\n\nRoute the register_netdev() failure to err_unreg_netdev so the net_devices\nregistered so far are properly unregistered before being freed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98620"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fdb944d4df02223c67d5e65c4c134ecb57a5668"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/245bea0c7ab278150c70366bdeb69b901327133c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/310d1ac61a4d5a2ca8356a3a48d263acf54503ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7254b702e556158e34b4d7c168b5d8e7da5978af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab3bde3b3e56331b4f53a1f6cf4e5e9d1c14c1a0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:14Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-48cq-p2fm-8444",
+  "modified": "2026-10-28T12:31:05Z",
+  "published": "2026-10-28T12:31:04Z",
+  "aliases": [
+    "CVE-2026-99139"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: fix use-after-free in do_tcp_getsockopt(TCP_CONGESTION)\n\ndo_tcp_getsockopt() reads icsk->icsk_ca_ops->name without holding\nrcu_read_lock(). Since commit 0baf26b0fcd7 (\"bpf: tcp: Support\ntcp_congestion_ops in bpf\"), icsk_ca_ops can point to dynamically\nallocated BPF struct_ops memory that may be freed concurrently via\nsetsockopt(TCP_CONGESTION), leading to a use-after-free.\n\n  BUG: KASAN: slab-use-after-free in _copy_to_user+0x37/0x60\n  Read of size 16 at addr ffff888013505260 by task exploit/149\n   _copy_to_user+0x37/0x60\n   do_tcp_getsockopt+0x158a/0x2460 (net/ipv4/tcp.c:4585)\n   tcp_getsockopt+0x91/0xf0\n   __sys_getsockopt+0xf7/0x170\n\nFix this by holding rcu_read_lock() around the ca_ops->name access,\nusing READ_ONCE() to load icsk_ca_ops, and copying the name to a\nstack buffer before releasing the lock. Also annotate the relevant\nicsk_ca_ops stores with WRITE_ONCE() to fix the accompanying KCSAN\ndata-race issue.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5271b79b7ad68dcb222e893773f92bdabf7750f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a8e45471afa230c1431c26c8e99ec24377e3b514"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1804ef016392dd91267d2207ee43b1de34302ca"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T11:17:33Z"
+  }
+}

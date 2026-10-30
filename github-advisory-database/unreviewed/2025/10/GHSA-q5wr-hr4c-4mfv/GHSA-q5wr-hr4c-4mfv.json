@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q5wr-hr4c-4mfv",
+  "modified": "2026-02-05T15:31:08Z",
+  "published": "2025-10-07T18:31:08Z",
+  "aliases": [
+    "CVE-2022-50533"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: mlme: fix null-ptr deref on failed assoc\n\nIf association to an AP without a link 0 fails, then we crash in\ntracing because it assumes that either ap_mld_addr or link 0 BSS\nis valid, since we clear sdata->vif.valid_links and then don't\nadd the ap_mld_addr to the struct.\n\nSince we clear also sdata->vif.cfg.ap_addr, keep a local copy of\nit and assign it earlier, before clearing valid_links, to fix\nthis.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50533"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78a6a43aaf87180ec7425a2a90468e1b4d09a1ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb7743955a929e44b308cc3f63f8cc03873c1bee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c695dfba8dfb82dc7ace4f22be088916cbf621ca"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:37Z"
+  }
+}

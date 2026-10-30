@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v2qv-44ch-jx7v",
+  "modified": "2025-11-03T21:33:23Z",
+  "published": "2025-04-01T18:30:51Z",
+  "aliases": [
+    "CVE-2025-21928"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: intel-ish-hid: Fix use-after-free issue in ishtp_hid_remove()\n\nThe system can experience a random crash a few minutes after the driver is\nremoved. This issue occurs due to improper handling of memory freeing in\nthe ishtp_hid_remove() function.\n\nThe function currently frees the `driver_data` directly within the loop\nthat destroys the HID devices, which can lead to accessing freed memory.\nSpecifically, `hid_destroy_device()` uses `driver_data` when it calls\n`hid_ishtp_set_feature()` to power off the sensor, so freeing\n`driver_data` beforehand can result in accessing invalid memory.\n\nThis patch resolves the issue by storing the `driver_data` in a temporary\nvariable before calling `hid_destroy_device()`, and then freeing the\n`driver_data` after the device is destroyed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21928"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01b18a330cda61cc21423a7d1af92cf31ded8f60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07583a0010696a17fb0942e0b499a62785c5fc9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c1fb475ef999d6c22fc3f963fdf20cb3ed1b03d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/560f4d1299342504a6ab8a47f575b5e6b8345ada"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf1a6015d2f6b1f0afaa0fd6a0124ff2c7943394"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3faae7f42181865c799d88c5054176f38ae4625"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dea6a349bcaf243fff95dfd0428a26be6a0fb44e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb0695d87a81e7c1f0509b7d8ee7c65fbc26aec9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-01T16:15:23Z"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hw3r-gvqg-rmwc",
+  "modified": "2025-03-17T18:31:51Z",
+  "published": "2025-03-17T18:31:50Z",
+  "aliases": [
+    "CVE-2022-49473"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: ti: j721e-evm: Fix refcount leak in j721e_soc_probe_*\n\nof_parse_phandle() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not needed anymore.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49473"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a3966b950b37a6f10c5f9caee15b4cdcf5a7413"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/510e879420b410d88c612aecc6ca15dc6fe77473"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/554df0f70bff1ace6d2df2fcaddbc9b7bd509de2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a34840c4eb3278a7c29c9c57a65ce7541c66f9f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d748ff8fbb3a5296bddd586445dc692b079cbe3d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:23Z"
+  }
+}

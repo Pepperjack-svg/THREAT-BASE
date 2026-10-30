@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jj77-qm54-jjwq",
+  "modified": "2026-10-19T12:32:47Z",
+  "published": "2026-10-19T12:32:47Z",
+  "aliases": [
+    "CVE-2026-112183"
+  ],
+  "details": "MISP contains a CSS injection vulnerability in the remote event preview feature. When a user previews an event from a linked MISP server, the colour value associated with each remote tag is written directly into an inline CSS style attribute without sufficient validation. Although HTML entity encoding is applied, the value is interpreted as CSS within the style attribute, allowing a malicious or compromised linked server to inject arbitrary CSS declarations.\n\nAn attacker with the ability to create or modify tags on a linked MISP instance can craft a tag colour value containing CSS injection payloads. When a user on the local instance views the event preview, the injected CSS is rendered, potentially allowing UI manipulation, visual spoofing, or limited information disclosure through CSS-based techniques.\n\nPreconditions:\n\n- A linked MISP server relationship exists between the victim instance and the attacker-controlled instance.\n\n- The attacker can create or modify tags on the linked server.\n\n- A victim user views the remote event preview page.\n\nAffected: <2.5.48.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112183"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/91323b517"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-74"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T10:16:46Z"
+  }
+}

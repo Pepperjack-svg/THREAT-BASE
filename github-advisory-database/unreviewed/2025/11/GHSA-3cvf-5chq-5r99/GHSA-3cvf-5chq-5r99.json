@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3cvf-5chq-5r99",
+  "modified": "2025-11-15T00:30:26Z",
+  "published": "2025-11-14T21:30:29Z",
+  "aliases": [
+    "CVE-2025-63291"
+  ],
+  "details": "When processing API requests, the Alteryx server 2022.1.1.42654 and 2024.1 used MongoDB object IDs to uniquely identify the data being requested by the caller. The Alteryx server did not check whether the authenticated user had permission to access the specified MongoDB object ID. By specifying particlar MongoDB object IDs, callers could obtain records for other users without proper authorization. Records retrievable using this attack included administrative API keys and private studio api keys.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-63291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://aleksazatezalo.medium.com/alteryx-server-idor-advisory-782e3013ee38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.alteryx.com/current/en/server/api-overview.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.alteryx.com/current/en/server/api-overview/alteryx-server-api-v3/server-api-configuration-and-authorization.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639",
+      "CWE-648"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-14T19:16:01Z"
+  }
+}

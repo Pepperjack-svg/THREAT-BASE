@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-75v3-2c25-pfq5",
+  "modified": "2026-10-16T12:31:22Z",
+  "published": "2026-10-16T12:31:22Z",
+  "aliases": [
+    "CVE-2026-109118"
+  ],
+  "details": "Improper path containment check in ikus060 rdiffweb 7.1.1 allows an authenticated user to cause the browse, restore, history and delete operations to resolve to a path outside the repository being operated on, via a percent-encoded traversal sequence (%2e%2e) in the request path, because the containment check uses a string prefix comparison (startswith) instead of a filesystem path boundary check. The target must be a sibling path whose name begins with the repository path, and the user already hold permissions on it; the issue can mislead a user into operating on, or deleting, data other than the repository displayed",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/ikus-soft/rdiffweb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/ikus-soft/rdiffweb/-/commit/04b7096566811feb7d782e38560b44044fa91a29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/ikus-soft/rdiffweb/-/work_items/392"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/ikus-soft/rdiffweb/-/work_items/393"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/ikus-soft/rdiffweb/-/work_items/394"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T11:17:00Z"
+  }
+}

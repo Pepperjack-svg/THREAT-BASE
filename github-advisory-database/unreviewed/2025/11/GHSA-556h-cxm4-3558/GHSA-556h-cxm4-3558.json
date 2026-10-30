@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-556h-cxm4-3558",
+  "modified": "2026-04-08T21:33:08Z",
+  "published": "2025-11-25T09:31:24Z",
+  "aliases": [
+    "CVE-2025-13382"
+  ],
+  "details": "The Frontend File Manager Plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 23.4. This is due to the plugin not validating file ownership before processing file rename requests in the '/wpfm/v1/file-rename' REST API endpoint. This makes it possible for authenticated attackers, with Subscriber-level access and above, to rename files uploaded by other users via the 'fileid' parameter.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13382"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/nmedia-user-file-uploader/tags/23.4/inc/classes/class.rest.php#L20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/nmedia-user-file-uploader/tags/23.4/inc/classes/class.rest.php#L52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/nmedia-user-file-uploader/tags/23.5/inc/classes/class.rest.php#L20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/aa8d5feb-2ae9-44b8-90b5-9fc67226855a?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-25T08:15:50Z"
+  }
+}

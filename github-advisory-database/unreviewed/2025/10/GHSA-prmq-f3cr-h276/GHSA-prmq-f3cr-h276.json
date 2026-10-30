@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-prmq-f3cr-h276",
+  "modified": "2025-10-22T18:30:32Z",
+  "published": "2025-10-22T18:30:31Z",
+  "aliases": [
+    "CVE-2022-49553"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: validate BOOT sectors_per_clusters\n\nWhen the NTFS BOOT sectors_per_clusters field is > 0x80, it represents a\nshift value.  Make sure that the shift value is not too large before using\nit (NTFS max cluster size is 2MB).  Return -EVINVAL if it too large.\n\nThis prevents negative shift values and shift values that are larger than\nthe field size.\n\nPrevents this UBSAN error:\n\n UBSAN: shift-out-of-bounds in ../fs/ntfs3/super.c:673:16\n shift exponent -192 is negative",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49553"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4746c49b11b2403f5b5b07c6eac9e60663dcd9a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58cf68a1886d14ffdc5c892ce483a82156769e88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2b6986316a2d106f6951e76db70fa4b2fde64a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3b774342fa752a5290c0de36375289dfcf4a260"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:31Z"
+  }
+}

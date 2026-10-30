@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xrfw-g6fh-r7xc",
+  "modified": "2025-03-17T18:31:50Z",
+  "published": "2025-03-17T18:31:50Z",
+  "aliases": [
+    "CVE-2022-49463"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nthermal/drivers/imx_sc_thermal: Fix refcount leak in imx_sc_thermal_probe\n\nof_find_node_by_name() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when done.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49463"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09700c504d8e63faffd2a2235074e8c5d130cb8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ec10303c10833c1bcba7a1bde2f297e494d5464"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ade442ea5d3512a3c67984489ab4d8a6fb3b29f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bbf522a2c51ef939d0e8835e236bfcd252193af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec0925b731697db7cab5944a3e55d2d58bb3d075"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:22Z"
+  }
+}

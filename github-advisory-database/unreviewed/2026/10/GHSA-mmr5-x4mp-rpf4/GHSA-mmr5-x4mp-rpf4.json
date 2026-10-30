@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mmr5-x4mp-rpf4",
+  "modified": "2026-10-08T15:32:58Z",
+  "published": "2026-10-08T15:32:58Z",
+  "aliases": [
+    "CVE-2026-44034"
+  ],
+  "details": "A heap-based out-of-bounds read in DcmRLECodecDecoder::decodeFrame() in dcmdata/libsrc/dcrleccd.cc of OFFIS DCMTK 3.7.0 allows an attacker to read up to 63 bytes of adjacent heap memory, or cause a crash, via a crafted RLE Lossless DICOM file whose pixel data fragment is shorter than the 64-byte RLE header. The function copies 64 bytes without checking the fragment length, a check that the sibling function decode() already performs. Applications that decode RLE images frame by frame (for example, through DcmPixelData::getUncompressedFrame()) are affected. The dcmdrle command-line tool uses decode() and is not affected. The issue is fixed in commit 45469f3c30037e9c7159290e4bb74cd7b3b9ef1d.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44034"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/DCMTK/dcmtk/commit/45469f3c30037e9c7159290e4bb74cd7b3b9ef1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.dcmtk.org/redmine/issues/1213"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T13:17:17Z"
+  }
+}

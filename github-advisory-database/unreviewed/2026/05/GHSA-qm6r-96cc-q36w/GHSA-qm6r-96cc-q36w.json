@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qm6r-96cc-q36w",
+  "modified": "2026-10-21T15:40:27Z",
+  "published": "2026-05-08T15:31:27Z",
+  "aliases": [
+    "CVE-2026-43414"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Completely fix fcport double free\n\nIn qla24xx_els_dcmd_iocb() sp->free is set to qla2x00_els_dcmd_sp_free().\nWhen an error happens, this function is called by qla2x00_sp_release(),\nwhen kref_put() releases the first and the last reference.\n\nqla2x00_els_dcmd_sp_free() frees fcport by calling qla2x00_free_fcport().\nDoing it one more time after kref_put() is a bad idea.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4097a2afe8acc6038b71aab825430f1403decf20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7172f41786dc08144da4627483e405de57bf8d2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/baabbd29191514391ca81594e43261bd17c6795a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0b7da13a04bd70ef6070bfb9ea85f582294560a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d48ea85463f5b34f7b92ea0a13eddf1ab993da7b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T15:16:53Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rw4v-j63g-mf75",
+  "modified": "2026-07-06T21:30:25Z",
+  "published": "2026-06-26T21:32:17Z",
+  "aliases": [
+    "CVE-2026-53303"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: protect extension_list reading with sb_lock in f2fs_sbi_show()\n\nIn f2fs_sbi_show(), the extension_list, extension_count and\nhot_ext_count are read without holding sbi->sb_lock. If a concurrent\nsysfs store modifies the extension list via f2fs_update_extension_list(),\nthe show path may read inconsistent count and array contents, potentially\nleading to out-of-bounds access or displaying stale data.\n\nFix this by holding sb_lock around the entire extension list read\nand format operation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b3a1bf4c2ffd4c9595d900ead78c9035894a025"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5909bedbed38c558bee7cb6758ceedf9bc3a9194"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cea15f66b7b68b2c50943a6660e0692c6635e4eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0e877810baf613b018fd9747440b9d4d9db1428"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3ff0c121bbaef026df6248ab7ef6f0b068b0647"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea3ab43a1f3cf2c7cecd75c8be1ee99a5e94a92e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-26T20:17:23Z"
+  }
+}

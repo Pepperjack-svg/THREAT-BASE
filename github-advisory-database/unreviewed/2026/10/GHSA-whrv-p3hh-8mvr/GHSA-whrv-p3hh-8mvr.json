@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-whrv-p3hh-8mvr",
+  "modified": "2026-10-11T15:31:08Z",
+  "published": "2026-10-11T15:31:08Z",
+  "aliases": [
+    "CVE-2026-108864"
+  ],
+  "details": "iFlytek Astron Agent through 1.1.2 contains an insecure direct object reference vulnerability that allows authenticated applications to resume other applications' paused workflows by supplying their event_id to POST /workflow/v1/resume. Attackers can predict Snowflake event IDs to inject resume content into victim workflows and read their continuation output stream, breaking cross-tenant isolation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108864"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/iflytek/astron-agent"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/iflytek/astron-agent/blob/v1.1.2/core/workflow/api/v1/chat/open.py#L106-L183"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/iflytek/astron-agent/blob/v1.1.2/core/workflow/cache/event_registry.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/iflytek-astron-agent-cross-app-workflow-resume"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/iflytek-astron-agent-through-1.1.2-authorization-bypass-via-workflow-v1-resume-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T14:17:06Z"
+  }
+}

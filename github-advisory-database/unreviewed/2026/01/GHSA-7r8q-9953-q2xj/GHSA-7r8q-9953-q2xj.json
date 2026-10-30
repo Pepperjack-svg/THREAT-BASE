@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7r8q-9953-q2xj",
+  "modified": "2026-07-30T06:32:26Z",
+  "published": "2026-01-05T12:30:29Z",
+  "aliases": [
+    "CVE-2025-68761"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhfs: fix potential use after free in hfs_correct_next_unused_CNID()\n\nThis code calls hfs_bnode_put(node) which drops the refcount and then\ndreferences \"node\" on the next line.  It's only safe to use \"node\"\nwhen we're holding a reference so flip these two lines around.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68761"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40a1e0142096dd7dd6cb5373841222b528698588"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c105e76bb17cf4b55fe89c6ad4f6a0e3972b5b08"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-05T10:15:57Z"
+  }
+}

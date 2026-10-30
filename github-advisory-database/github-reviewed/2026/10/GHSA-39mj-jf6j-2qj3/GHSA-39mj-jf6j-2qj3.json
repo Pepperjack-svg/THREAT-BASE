@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-39mj-jf6j-2qj3",
+  "modified": "2026-10-21T16:54:44Z",
+  "published": "2026-10-21T16:54:44Z",
+  "aliases": [
+    "CVE-2026-113794"
+  ],
+  "summary": "pypdf: Possible infinite loop when hitting EOF in standard xref table",
+  "details": "### Impact\n\nAn attacker who uses this vulnerability can craft a PDF which leads to an infinite loop. This requires an incomplete file which ends inside the xref table.\n\n### Patches\n\nThis has been fixed in [pypdf==6.20.0](https://github.com/py-pdf/pypdf/releases/tag/6.20.0).\n\n### Workarounds\n\nIf you cannot upgrade yet, consider applying the changes from PR [#4170](https://github.com/py-pdf/pypdf/pull/4170).\n\n### Notes\n\nThis has been reported through both the secure channel and as a public issue at [#4169](https://github.com/py-pdf/pypdf/issues/4169).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pypdf"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.20.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/security/advisories/GHSA-39mj-jf6j-2qj3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/issues/4169"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/pull/4170"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/commit/37e1cd681744bac38b159f7e1c614eee8d639c58"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/py-pdf/pypdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/releases/tag/6.20.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-21T16:54:44Z",
+    "nvd_published_at": null
+  }
+}

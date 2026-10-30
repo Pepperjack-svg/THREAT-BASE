@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pp8c-qfhv-484p",
+  "modified": "2025-11-17T15:30:32Z",
+  "published": "2025-05-20T18:30:56Z",
+  "aliases": [
+    "CVE-2025-37950"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nocfs2: fix panic in failed foilio allocation\n\ncommit 7e119cff9d0a (\"ocfs2: convert w_pages to w_folios\") and commit\n9a5e08652dc4b (\"ocfs2: use an array of folios instead of an array of\npages\") save -ENOMEM in the folio array upon allocation failure and call\nthe folio array free code.\n\nThe folio array free code expects either valid folio pointers or NULL. \nFinding the -ENOMEM will result in a panic.  Fix by NULLing the error\nfolio entry.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37950"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/31d4cd4eb2f8d9b87ebfa6a5e443a59e3b3d7b8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80d18f060d5bdf2c5eb3d1d00dcb744d6a879222"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-20T16:15:33Z"
+  }
+}

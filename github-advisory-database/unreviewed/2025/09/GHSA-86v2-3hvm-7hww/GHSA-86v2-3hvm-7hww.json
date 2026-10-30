@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-86v2-3hvm-7hww",
+  "modified": "2025-11-26T00:30:16Z",
+  "published": "2025-09-05T18:31:26Z",
+  "aliases": [
+    "CVE-2025-38737"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: Fix oops due to uninitialised variable\n\nFix smb3_init_transform_rq() to initialise buffer to NULL before calling\nnetfs_alloc_folioq_buffer() as netfs assumes it can append to the buffer it\nis given.  Setting it to NULL means it should start a fresh buffer, but the\nvalue is currently undefined.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38737"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/453a6d2a68e54a483d67233c6e1e24c4095ee4be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4931fe2dbe1cc0e7d350a4b51b0b330e43971d98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6adaa9fae36f848afa7278945d725e197e33c496"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-05T18:15:43Z"
+  }
+}

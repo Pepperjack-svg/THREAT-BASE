@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77w2-v593-vxvv",
+  "modified": "2026-02-01T18:07:48Z",
+  "published": "2026-01-30T21:30:22Z",
+  "aliases": [
+    "CVE-2025-62348"
+  ],
+  "summary": "Salt junos Module Vulnerable to Code Injection via Specially Crafted YAML Payload",
+  "details": "Salt's junos execution module contained an unsafe YAML decode/load usage. A specially crafted YAML payload processed by the junos module could lead to unintended code execution under the context of the Salt process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "salt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3006.17"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-62348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/saltstack/salt/issues/68469"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/saltstack/salt/pull/68472/commits/c17fd645edef208233dcac855615fced69409a00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.saltproject.io/en/latest/topics/releases/3006.17.html"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/saltstack/salt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-01T18:07:48Z",
+    "nvd_published_at": "2026-01-30T19:16:10Z"
+  }
+}

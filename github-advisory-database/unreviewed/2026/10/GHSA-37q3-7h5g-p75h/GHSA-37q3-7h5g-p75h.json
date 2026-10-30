@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-37q3-7h5g-p75h",
+  "modified": "2026-10-07T21:33:23Z",
+  "published": "2026-10-06T21:32:04Z",
+  "aliases": [
+    "CVE-2026-106550"
+  ],
+  "details": "Mozilla's Node-convict (version 6.2.2 and later) is vulnerable to a Denial of Service vulnerability caused by incomplete prototype‑pollution protections in config.set(). An attacker controlling the configuration key can write arbitrary properties to constructor.<key>, which walk() resolves to the global Object function. This allows overwriting core JavaScript methods such as Object.assign, leading to persistent process-wide failures and requiring a restart. The issue bypasses existing filters that only block constructor.prototype.* and __proto__.*. Exploitation requires an endpoint that forwards attacker-controlled keys into config.set().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106550"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mozilla/node-convict"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tomasilluminati/security-research/blob/main/CVE-2026-106550/README.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T21:17:18Z"
+  }
+}

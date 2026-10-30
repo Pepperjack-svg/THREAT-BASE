@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7wwh-xcc3-9fcg",
+  "modified": "2026-06-22T20:28:29Z",
+  "published": "2026-06-22T20:28:29Z",
+  "aliases": [
+    "CVE-2026-44583"
+  ],
+  "summary": "Paymenter has Blind Unauthenticated SSRF on the Paypal gateway module",
+  "details": "### Summary\nThe PayPal webhook endpoint `/extensions/paypal/webhook` processes the `PAYPAL-CERT-URL` HTTP header without validation, allowing attackers to control server-side HTTP request destinations.\n\n### Technical details:\n\nThe `/extensions/paypal/webhook` endpoint processes incoming webhook requests and trusts the value of the `PAYPAL-CERT-URL` HTTP header without validation.\n\nThis value is passed directly into a server-side HTTP request via `file_get_contents`, allowing attackers to control the destination of the request. No allowlist, validation, or signature verification is applied to the header before usage.\n\nAs a result, the application can be coerced into performing HTTP requests to attacker-controlled or internal network destinations.\n\n### Impact\nThis vulnerability allows remote unauthenticated attackers to induce server-side HTTP GET requests to arbitrary external or internal endpoints.\n\nDepending on network configuration, this may lead to:\n\n- Blind SSRF to external attacker-controlled systems\n- Potential access to internal network services\n\nNo direct response data is returned to the attacker (blind SSRF), but the issue may still enable sensitive network probing or data exfiltration via side channels.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "paymenter/paymenter"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Paymenter/Paymenter/security/advisories/GHSA-7wwh-xcc3-9fcg"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Paymenter/Paymenter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-22T20:28:29Z",
+    "nvd_published_at": null
+  }
+}

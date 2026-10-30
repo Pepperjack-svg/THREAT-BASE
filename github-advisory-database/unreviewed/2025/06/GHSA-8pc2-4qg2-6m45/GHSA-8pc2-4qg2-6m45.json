@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8pc2-4qg2-6m45",
+  "modified": "2025-12-17T18:31:31Z",
+  "published": "2025-06-18T12:30:34Z",
+  "aliases": [
+    "CVE-2025-38078"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: pcm: Fix race of buffer access at PCM OSS layer\n\nThe PCM OSS layer tries to clear the buffer with the silence data at\ninitialization (or reconfiguration) of a stream with the explicit call\nof snd_pcm_format_set_silence() with runtime->dma_area.  But this may\nlead to a UAF because the accessed runtime->dma_area might be freed\nconcurrently, as it's performed outside the PCM ops.\n\nFor avoiding it, move the code into the PCM core and perform it inside\nthe buffer access lock, so that it won't be changed during the\noperation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38078"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10217da9644ae75cea7330f902c35fc5ba78bbbf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74d90875f3d43f3eff0e9861c4701418795d3455"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8170d8ec4efd0be352c14cb61f374e30fb0c2a25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93a81ca0657758b607c3f4ba889ae806be9beb73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/afa56c960fcb4db37f2e3399f28e9402e4e1f470"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf85e49aaf3a3c5775ea87369ea5f159c2148db4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0e05a76fc727929524ef24a19c302e6dd40233f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f3e14d706ec18faf19f5a6e75060e140fea05d4a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T10:15:41Z"
+  }
+}

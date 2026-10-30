@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-chr3-6fxw-gjw4",
+  "modified": "2026-10-23T15:31:34Z",
+  "published": "2026-10-23T15:31:34Z",
+  "aliases": [
+    "CVE-2026-99003"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: validate userspace queue count against initialized firmware slot count\n\nIn panthor_drv.c:panthor_ioctl_group_create(),\nthe queue count is validated against the hardcoded maximum:\n\n\tif (!args->queues.count || args->queues.count > MAX_CS_PER_CSG)\n\t\treturn -EINVAL;\n\nHowever, if the firmware reports fewer slots than MAX_CS_PER_CSG,\npanthor_fw_init_ifaces() will only initialize that smaller number of\nstream interfaces.\n\nIf unprivileged userspace requests more queues than the firmware reported\n(but no more than MAX_CS_PER_CSG), cs_slot_prog_locked() fetches an\nuninitialized stream interface and may crash when dereferencing\ncs_iface->input->ringbuf_base.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99003"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4487cf79bf173f2b426a02d102076f8a20d23b96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9be126be5f78bc331a930295af97c9b1f9158f06"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec86c43dcfff68eab4db9bdafcd3e2b16e342e18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fdee3570b282a6c8699aea63fa5694355e010ec9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:22Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vvwr-mg55-mhmm",
+  "modified": "2026-06-10T21:31:26Z",
+  "published": "2026-05-28T12:30:33Z",
+  "aliases": [
+    "CVE-2026-46233"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: bla: only purge non-released claims\n\nWhen batadv_bla_purge_claims() goes through the list of claims, it is only\ntraversing the hash list with an rcu_read_lock(). Due to a potential\nparallel batadv_claim_put(), it can happen that it encounters a claim which\nwas actually in the process of being released+freed by\nbatadv_claim_release(). In this case, backbone_gw is set to NULL before the\ndelayed RCU kfree is started. Calling batadv_bla_claim_get_backbone_gw() is\nthen no longer allowed because it would cause a NULL-ptr derefence.\n\nTo avoid this, only claims with a valid reference counter must be purged.\nAll others are already taken care of.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46233"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6725c523a35eeca611ff37e7d4a8712fae92aefd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b7ebb7222a5524ce58e48cc9c6d688320ea6cfe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b8fbcee3184d848b5aee085ca16d0cf05c9b641"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9f58d5e3261f3deeae69ec1e237f38ef3ff5cbe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab3dbd07a809a8eb30c7ddfab9ac886ed30dce8d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/afb5436f6028fd68f408f189230fbaa19c910d72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b65365d2b1e6095c538d49baeb140dd1c166c1b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf6b604011591865ae39ac82de8978c1120d17af"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:38Z"
+  }
+}

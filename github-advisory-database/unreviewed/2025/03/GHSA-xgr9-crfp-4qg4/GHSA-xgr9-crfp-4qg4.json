@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xgr9-crfp-4qg4",
+  "modified": "2026-10-15T03:34:41Z",
+  "published": "2025-03-12T12:30:58Z",
+  "aliases": [
+    "CVE-2025-21853"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: avoid holding freeze_mutex during mmap operation\n\nWe use map->freeze_mutex to prevent races between map_freeze() and\nmemory mapping BPF map contents with writable permissions. The way we\nnaively do this means we'll hold freeze_mutex for entire duration of all\nthe mm and VMA manipulations, which is completely unnecessary. This can\npotentially also lead to deadlocks, as reported by syzbot in [0].\n\nSo, instead, hold freeze_mutex only during writeability checks, bump\n(proactively) \"write active\" count for the map, unlock the mutex and\nproceed with mmap logic. And only if something went wrong during mmap\nlogic, then undo that \"write active\" counter increment.\n\n  [0] https://lore.kernel.org/bpf/678dcbc9.050a0220.303755.0066.GAE@google.com/",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21853"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d90d9e154144a3a80e9fc0eb9b21b7fc990f68f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/271e49f8a58edba65bc2b1250a0abaa98c4bfdbe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29cfda62ab4d92ab94123813db49ab76c1e61b29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ce31c97c219b4fe797749f950274f246eb88c49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4759acbd44d24a69b7b14848012ec4201d6c5501"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc27c52eea189e8f7492d40739b7746d67b65beb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d95607a5f2f9bb08194c9deaf4a5f3e8ba59a9d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-12T10:15:18Z"
+  }
+}

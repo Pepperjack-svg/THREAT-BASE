@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3pvc-3977-gxh7",
+  "modified": "2026-10-24T12:30:24Z",
+  "published": "2026-10-24T12:30:24Z",
+  "aliases": [
+    "CVE-2026-116015"
+  ],
+  "details": "yudao-cloud through 2026.09 contains an insecure direct object reference vulnerability in the mall trade module that allows authenticated members to read other members' after-sale operation logs by supplying arbitrary afterSaleId values. Attackers can enumerate sequential after-sale IDs against GET /app-api/trade/after-sale-log/list to expose refund amounts, status transitions and timestamps belonging to other members.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/YunaiV/yudao-cloud/issues/344"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/YunaiV/yudao-cloud/commit/df604fbd9824195ec3e48e2dfd3341c1d4e1edea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/YunaiV/yudao-cloud/blob/593354d92a63f401ba73b95da868aade8c3d855d/yudao-module-mall/yudao-module-trade-server/src/main/java/cn/iocoder/yudao/module/trade/controller/app/aftersale/AppAfterSaleLogController.java#L33-L40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/YunaiV/yudao-cloud/blob/593354d92a63f401ba73b95da868aade8c3d855d/yudao-module-mall/yudao-module-trade-server/src/main/java/cn/iocoder/yudao/module/trade/dal/mysql/aftersale/AfterSaleLogMapper.java#L13-L17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/yudao-cloud-mall-after-sale-log-cross-member-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/yudao-cloud-through-2026.09-idor-via-after-sale-log-list-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-24T12:16:57Z"
+  }
+}

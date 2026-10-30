@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f84v-gjx6-6gf8",
+  "modified": "2026-10-15T21:36:02Z",
+  "published": "2026-10-15T21:36:02Z",
+  "aliases": [
+    "CVE-2026-109131"
+  ],
+  "details": "The Hub collection module documentation renderer in the unified Ansible Automation Platform UI (built from upstream ansible-ui, frontend/hub) renders a documentation URL part (formatPartURL in DocumentationParsers.tsx) as a link without restricting the URL protocol/scheme. A collection whose documentation contains a link using a script-executing URL scheme can therefore cause script to run in the same origin as the Hub UI when another authenticated user views and activates that link in the collection documentation page. This is a stored cross-site scripting issue in shipped Platform UI code (present in the AAP 2.6 and 2.7 release branches).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109131"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-109131"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2549510"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:20Z"
+  }
+}

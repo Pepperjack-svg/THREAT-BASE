@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2m6w-7qwv-3jcx",
+  "modified": "2026-06-01T21:30:41Z",
+  "published": "2026-06-01T18:31:52Z",
+  "aliases": [
+    "CVE-2026-37227"
+  ],
+  "details": "FlexRIC v2.0.0 contains reachable assert(0) calls in stub message handlers for whitelisted but unimplemented E2AP message types in the near-RT RIC. A remote unauthenticated attacker can send a decodable E2AP PDU of such a type (e.g., E2nodeConfigurationUpdate) to crash the near-RT RIC process (port 36421) via SIGABRT. The message passes whitelist validation but triggers an unconditional assertion in the handler.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-37227"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MinamiKotor1/oran-security-advisories-zhongnan-luo/blob/main/advisories/CVE-2026-37227.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eurecom.fr/mosaic5g/flexric"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-617"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-01T17:16:58Z"
+  }
+}

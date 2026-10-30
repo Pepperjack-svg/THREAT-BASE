@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6g6j-j4qf-ch65",
+  "modified": "2026-05-19T21:32:01Z",
+  "published": "2026-05-06T12:30:27Z",
+  "aliases": [
+    "CVE-2026-43096"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmshv: Fix infinite fault loop on permission-denied GPA intercepts\n\nPrevent infinite fault loops when guests access memory regions without\nproper permissions. Currently, mshv_handle_gpa_intercept() attempts to\nremap pages for all faults on movable memory regions, regardless of\nwhether the access type is permitted. When a guest writes to a read-only\nregion, the remap succeeds but the region remains read-only, causing\nimmediate re-fault and spinning the vCPU indefinitely.\n\nValidate intercept access type against region permissions before\nattempting remaps. Reject writes to non-writable regions and executes to\nnon-executable regions early, returning false to let the VMM handle the\nintercept appropriately.\n\nThis also closes a potential DoS vector where malicious guests could\nintentionally trigger these fault loops to consume host resources.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43096"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02226839079ccc558820a3b25c4c46812927b4ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16cbec24897624051b324aa3a85859c38ca65fde"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T10:16:23Z"
+  }
+}

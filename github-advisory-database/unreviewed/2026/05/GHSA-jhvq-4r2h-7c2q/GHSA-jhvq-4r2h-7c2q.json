@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jhvq-4r2h-7c2q",
+  "modified": "2026-10-21T15:40:29Z",
+  "published": "2026-05-27T15:33:15Z",
+  "aliases": [
+    "CVE-2026-45901"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: revert commit_mutex usage in reset path\n\nIt causes circular lock dependency between commit_mutex, nfnl_subsys_ipset\nand nlk_cb_mutex when nft reset, ipset list, and iptables-nft with '-m set'\nrule run at the same time.\n\nPrevious patches made it safe to run individual reset handlers concurrently\nso commit_mutex is no longer required to prevent this.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45901"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f261bb906bf527c4a6e2a646e2d5f3679f2a8bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0dd8637fbaae8405eb9e8de741f9ce7c9667b6f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d66bedfe97a2bc321fa8118e669aae988038f729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee3978b6a0dcd4215cb7cedcba705a12174786a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6410d18c1e2da325df02be989d5bca5ed38b086"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:04Z"
+  }
+}

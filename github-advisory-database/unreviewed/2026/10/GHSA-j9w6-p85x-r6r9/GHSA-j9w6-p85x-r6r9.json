@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j9w6-p85x-r6r9",
+  "modified": "2026-10-23T15:31:37Z",
+  "published": "2026-10-23T15:31:37Z",
+  "aliases": [
+    "CVE-2026-99074"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: stop PMTU walk when nexthop group shrinks\n\nCommit 7d3f3b4367f3 (\"net: ipv4: Cache pmtu for all packet paths if\nmultipath enabled\") made __ip_rt_update_pmtu() update every path.\n\nFor nexthop objects, fib_info_num_path() and fib_info_nhc()\nindependently load nh->nh_grp.  RCU protects each group's lifetime but\ndoes not make the loads observe the same group.  If replacement shrinks\nthe group after the loop accepts an index, fib_info_nhc() returns NULL\nand update_or_create_fnhe() dereferences it.\n\nA deterministic probe only widened the existing window between the real\noperations.  On v7.2, an RTM_NEWNEXTHOP replacement published a\none-member group after the PMTU reader accepted index 1 from a two-member\ngroup, producing:\n\n  KASAN: null-ptr-deref in range [0x0000000000000000-0x0000000000000007]\n  RIP: update_or_create_fnhe+0x45/0x15b0\n\nStop when the indexed path is absent.  Groups are dense, so no later\nindex exists in that snapshot.  The same real-writer window completed\n114,423 PMTU iterations without an oops with this check.  A reproducer\nis available on request.\n\nReplacement requires CAP_NET_ADMIN in the network namespace.  Where\nunprivileged user namespaces are permitted, a local user can obtain it\nin a new user and network namespace.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99074"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6619e01855e65ef35723685a557e3eb106f4ecf5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7fd60d3c9a1e1b11ef5f1643bbae78d91eae2f4a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c60d17d6dd61adc761ac6f65a008fefbc54cbf87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c6d670ac656badfd0e15355e07a13a6bdf3b69fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f27483f9975b5065ff67054cc7eb8edac6083488"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:31Z"
+  }
+}

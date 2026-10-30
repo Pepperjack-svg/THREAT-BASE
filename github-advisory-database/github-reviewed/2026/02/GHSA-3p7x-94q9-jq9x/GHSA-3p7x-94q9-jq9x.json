@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3p7x-94q9-jq9x",
+  "modified": "2026-02-05T21:43:48Z",
+  "published": "2026-02-05T18:30:32Z",
+  "aliases": [
+    "CVE-2026-1707"
+  ],
+  "summary": "pgadmin4 affected by a Restore restriction bypass via key disclosure vulnerability",
+  "details": "pgAdmin versions 9.11 are affected by a Restore restriction bypass via key disclosure vulnerability that occurs when running in server mode and performing restores from PLAIN-format dump files. An attacker with access to the pgAdmin web interface can observe an active restore operation, extract the `\\restrict` key in real time, and race the restore process by overwriting the restore script with a payload that re-enables meta-commands using `\\unrestrict <key>`. This results in reliable command execution on the pgAdmin host during the restore operation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pgadmin4"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.12"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1707"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pgadmin-org/pgadmin4/issues/9518"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pgadmin-org/pgadmin4/commit/62e2d18b0261f88086db65059a6078db07169f18"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pgadmin-org/pgadmin4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284",
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-05T21:43:48Z",
+    "nvd_published_at": "2026-02-05T18:16:11Z"
+  }
+}

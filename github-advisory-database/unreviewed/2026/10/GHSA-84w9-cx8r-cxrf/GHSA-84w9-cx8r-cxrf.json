@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-84w9-cx8r-cxrf",
+  "modified": "2026-10-24T15:32:47Z",
+  "published": "2026-10-18T18:31:52Z",
+  "aliases": [
+    "CVE-2026-98518"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/nouveau/dmem: pin VRAM for the whole registered range\n\nCommit c32287471077 (\"gpu/drm/nouveau: enable THP support for GPU memory\nmigration\") grew the device-private region that\nnouveau_dmem_chunk_alloc() registers from DMEM_CHUNK_SIZE to\nDMEM_CHUNK_SIZE * NR_CHUNKS, but left the VRAM buffer object backing that\nregion at DMEM_CHUNK_SIZE.\n\nnouveau_dmem_page_addr() returns chunk->bo->offset plus the page's offset\nwithin the registered region, so every page past the first chunk resolves\nto VRAM outside the buffer object.\n\nSize the buffer object to the region it backs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98518"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06c69c64686a31783c8bec6495dc22822d38c4ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64ca4cdd1031206424e6455f0ae4fb0560d8f46a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:03Z"
+  }
+}

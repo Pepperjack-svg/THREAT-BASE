@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6556-hh6q-qw3c",
+  "modified": "2026-10-21T15:41:50Z",
+  "published": "2026-10-18T18:31:58Z",
+  "aliases": [
+    "CVE-2026-98656"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: trigger: cancel reenable_work before freeing trigger\n\niio_trigger_notify_done_atomic() defers ->reenable() into\ntrig->reenable_work on the system workqueue, and the worker dereferences\nthe owning trigger through container_of().  Nothing cancels this work\nbefore iio_trig_release() frees the trigger, so a worker armed by the\nlast in-flight IRQ can outlive the free and touch freed memory.\n\nCancel it at the top of iio_trig_release(), which every free path\nreaches through the device core's final put_device().\n\nFound by an in-house static analysis tool.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98656"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a57b9246cecd5dd797a42eb310d6c8816f26d9e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/882d0011c59ff8ac15188ec9ce071399ecfa10ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac5d26a46c90ff61fd574eff4e8f0d71c905828a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf513df1a2c75566cdc802d9da47f62e8d6cfd18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e64703280ce7a23a43c27efebeb7da457c88bf5c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:18Z"
+  }
+}

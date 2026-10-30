@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4qpj-7mpx-3h2f",
+  "modified": "2026-05-03T09:33:10Z",
+  "published": "2026-05-01T15:30:35Z",
+  "aliases": [
+    "CVE-2026-31779"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: fix potential out-of-bounds read in iwl_mvm_nd_match_info_handler()\n\nThe memcpy function assumes the dynamic array notif->matches is at least\nas large as the number of bytes to copy. Otherwise, results->matches may\ncontain unwanted data. To guarantee safety, extend the validation in one\nof the checks to ensure sufficient packet length.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31779"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/744fabc338e87b95c4d1ff7c95bc8c0f834c6d99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca0e9491b98ca4c5b44204b0b3dd8062a3b5fba2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd90880eb5ec5442b37eb2b95688f4a63f4883e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e67d8c626ace80b0fa2b48c8ec0a46b508c93442"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6abac936a0dfd31d6c3e49205ec0ee75a8f887f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ffbed27ba15ef80d1c622eeedbfef03e501ae134"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:41Z"
+  }
+}

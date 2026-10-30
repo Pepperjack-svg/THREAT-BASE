@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mwh4-6h8g-pg8w",
+  "modified": "2026-04-01T21:48:24Z",
+  "published": "2026-04-01T21:48:24Z",
+  "aliases": [
+    "CVE-2026-34519"
+  ],
+  "summary": "AIOHTTP has HTTP response splitting via \\r in reason phrase",
+  "details": "### Summary\n\nAn attacker who controls the `reason` parameter when creating a `Response` may be able to inject extra headers or similar exploits.\n\n### Impact\n\nIn the unlikely situation that an application allows untrusted data to be used in the response's `reason` parameter, then an attacker could manipulate the response to send something different from what the developer intended.\n\n-----\n\nPatch: https://github.com/aio-libs/aiohttp/commit/53b35a2f8869c37a133e60bf1a82a1c01642ba2b",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "aiohttp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.13.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.13.3"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/security/advisories/GHSA-mwh4-6h8g-pg8w"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34519"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/commit/53b35a2f8869c37a133e60bf1a82a1c01642ba2b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/aio-libs/aiohttp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/releases/tag/v3.13.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-113"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-01T21:48:24Z",
+    "nvd_published_at": "2026-04-01T21:17:00Z"
+  }
+}

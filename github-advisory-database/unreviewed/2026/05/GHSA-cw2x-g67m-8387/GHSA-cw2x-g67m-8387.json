@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cw2x-g67m-8387",
+  "modified": "2026-05-11T09:30:30Z",
+  "published": "2026-05-08T15:31:24Z",
+  "aliases": [
+    "CVE-2026-43336"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nlib/crypto: chacha: Zeroize permuted_state before it leaves scope\n\nSince the ChaCha permutation is invertible, the local variable\n'permuted_state' is sufficient to compute the original 'state', and thus\nthe key, even after the permutation has been done.\n\nWhile the kernel is quite inconsistent about zeroizing secrets on the\nstack (and some prominent userspace crypto libraries don't bother at all\nsince it's not guaranteed to work anyway), the kernel does try to do it\nas a best practice, especially in cases involving the RNG.\n\nThus, explicitly zeroize 'permuted_state' before it goes out of scope.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43336"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/066c760acead1fb743bae294dbd89f479ae43b9b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1933249263c3a98df79992f61a566476e4163bcc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d761e5a7340c46479fb2399598f331e4fe2c633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91999af43ca2125e3b2c18fcfc02912ada02efc3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b416a4245f04a450c67a13e6d96056c37c5b33fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd62d9b44464a6c20a34a74068e7a784d0afa04a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5046823f8fa3677341b541a25af2fcb99a5b1e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e90ee961af515a484f091678ce58a4c3f7b73b02"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:43Z"
+  }
+}

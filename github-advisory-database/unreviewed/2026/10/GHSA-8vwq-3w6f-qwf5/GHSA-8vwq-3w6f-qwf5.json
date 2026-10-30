@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8vwq-3w6f-qwf5",
+  "modified": "2026-10-23T15:31:32Z",
+  "published": "2026-10-23T15:31:32Z",
+  "aliases": [
+    "CVE-2026-98956"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: adau1372: allow sleepy powerdown GPIOs\n\ngpiod_set_value() emits a WARN when the GPIO provider indicates that it\ncan sleep, as is typical for I2C controlled GPIO expanders. Since the\npowerdown GPIO is only manipulated in process context, use the _cansleep\nvariant instead. This lets the driver use sleepy GPIOs to power off the\nchip.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98956"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47c0c7a051b70d396774d5dc27b23283c28c3555"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58905982b0d912021325f5de84facae86cc0f2f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64dd172bbffe6135d79a06ddad53dd2da4d8bd62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65cd0e21746b812d311e9fac6d473dd62f0ad52a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cf4c3c9b7a4df0fe4cc67481b7b251cff781b29"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:16Z"
+  }
+}

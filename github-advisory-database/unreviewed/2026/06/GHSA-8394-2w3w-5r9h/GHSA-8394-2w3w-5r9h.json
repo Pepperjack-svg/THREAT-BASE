@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8394-2w3w-5r9h",
+  "modified": "2026-06-29T18:31:54Z",
+  "published": "2026-06-29T18:31:54Z",
+  "aliases": [
+    "CVE-2026-13748"
+  ],
+  "details": "Improper restriction of file path resolution in Snowflake CLI versions prior to 3.19 allowed arbitrary local file content to be read and transmitted to Snowflake services. An attacker could exploit this by supplying crafted repository or project content that referenced files outside the intended project boundary, causing Snowflake CLI to read local files and upload or embed their contents during deployment or SQL template processing. Successful exploitation required the victim to process attacker-controlled project content, and retrieval of exfiltrated data depended on access to the victim's Snowflake account artifacts such as query history or uploaded stage content. The fix is available in Snowflake CLI version 3.19, and users must manually upgrade.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13748"
+    },
+    {
+      "type": "WEB",
+      "url": "https://community.snowflake.com/s/article/Snowflake-CLI-Vulnerability-Advisory"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-29T16:16:39Z"
+  }
+}

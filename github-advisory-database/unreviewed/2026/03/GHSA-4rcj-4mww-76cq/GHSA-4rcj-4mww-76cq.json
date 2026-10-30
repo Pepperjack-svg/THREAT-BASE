@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4rcj-4mww-76cq",
+  "modified": "2026-03-23T03:31:39Z",
+  "published": "2026-03-23T03:31:39Z",
+  "aliases": [
+    "CVE-2026-4606"
+  ],
+  "details": "GV Edge Recording Manager (ERM) v2.3.1 improperly runs application components with SYSTEM-level privileges, allowing any local user to gain full control of the operating system. \n\nDuring installation, ERM creates a Windows service that runs under the LocalSystem account. \n\nWhen the ERM application is launched, related processes are spawned under SYSTEM privileges rather than the security context of the logged-in user. \n\nFunctions such as 'Import Data' open a Windows file dialog operating with SYSTEM permissions, enabling modification or deletion of protected system files and directories. \n\nAny ERM function invoking Windows file open/save dialogs exposes the same risk. \n\nThis vulnerability allows local privilege escalation and may result in full system compromise.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:N/AU:N/R:I/V:C/RE:M/U:Green"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4606"
+    },
+    {
+      "type": "WEB",
+      "url": "https://https://www.geovision.com.tw/cyber_security.php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-250"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-23T02:16:05Z"
+  }
+}

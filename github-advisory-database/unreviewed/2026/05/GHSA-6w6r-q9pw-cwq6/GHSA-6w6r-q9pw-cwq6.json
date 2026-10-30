@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6w6r-q9pw-cwq6",
+  "modified": "2026-06-16T03:30:33Z",
+  "published": "2026-05-27T15:33:18Z",
+  "aliases": [
+    "CVE-2026-45962"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: Validate SQE128 flag before accessing the cmd\n\nublk_ctrl_cmd_dump() accesses (header *)sqe->cmd before\nIO_URING_F_SQE128 flag check. This could cause out of boundary memory\naccess.\n\nMove the SQE128 flag check earlier in ublk_ctrl_uring_cmd() to return\n-EINVAL immediately if the flag is not set.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45962"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17d33ba7291100008360b5a354962db37ad80684"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/31cac6acf77ece488f29fb8f79589d9298e969c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b4dff498f46e9802f71bc84258bf73065f51c6a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da7e4b75e50c087d2031a92f6646eb90f7045a67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dbe8e81a2ec608f87f79a34f6444cd62f6a243bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f75a5555e0049e7857eae25b60aee98b80e287ec"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:12Z"
+  }
+}

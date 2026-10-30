@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7hw8-6q6r-4276",
+  "modified": "2026-09-24T14:57:10Z",
+  "published": "2026-06-19T21:17:01Z",
+  "aliases": [
+    "CVE-2026-55423"
+  ],
+  "summary": "Langflow: Logout button does not clear session",
+  "details": "### Summary\nThe logout button does not clear the session. The previous user stays logged in unless another user explicitly logs in.\n\n### Details\nNot in auto login mode. Hosted on localhost. `access_token_lf` remains present in both Local Storage and Cookies. `refresh_token_lf` remains present in Cookies.\n\n**Root cause:** the `/logout` endpoint deleted the authentication cookies without matching the original `httponly`/`samesite`/`secure`/`domain` parameters, so the browser kept them; additionally the frontend did not clear the auth cookies on logout.\n\n```\nLANGFLOW_AUTO_LOGIN: \"False\"\nLANGFLOW_SUPERUSER: <set>\nLANGFLOW_SUPERUSER_PASSWORD: <set>\nLANGFLOW_SECRET_KEY: <set>\nLANGFLOW_NEW_USER_IS_ACTIVE: \"False\"\nLANGFLOW_ENABLE_SUPERUSER_CLI: \"False\"\n```\n\n### PoC\nClick Logout. Hit refresh to return to previous screen.\n\n### Impact\nUsers on shared computers may falsely believe they have terminated their session.\n\n### Patches\nFixed in **1.7.0** (PRs #10527 and #10528). The logout endpoint now deletes the auth cookies using the same parameters they were created with, and the frontend clears the auth cookies on logout. Upgrade to **1.7.0 or later**.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "langflow"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.7.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/langflow-ai/langflow/security/advisories/GHSA-7hw8-6q6r-4276"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/langflow-ai/langflow/pull/10527"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/langflow-ai/langflow/pull/10528"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/langflow-ai/langflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/langflow/PYSEC-2026-222.yaml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-19T21:17:01Z",
+    "nvd_published_at": "2026-06-23T17:17:08Z"
+  }
+}

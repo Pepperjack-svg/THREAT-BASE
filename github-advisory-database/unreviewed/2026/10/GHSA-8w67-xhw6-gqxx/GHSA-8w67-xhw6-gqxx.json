@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8w67-xhw6-gqxx",
+  "modified": "2026-10-16T09:30:27Z",
+  "published": "2026-10-16T09:30:26Z",
+  "aliases": [
+    "CVE-2026-109388"
+  ],
+  "details": "The HivePress – Business Directory, Listings & Classified Ads Plugin plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'message' parameter in all versions up to, and including, 1.7.32 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires that the site administrator has enabled user listing submission, and the script executes in the victim's browser at the moment of successful login via the embedded form on the attacker's listing page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109388"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hivepress/hivepress/pull/374/changes/508b1766beb79949ab22dd4a163fafadb4c63e7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/hivepress/tags/1.7.32/assets/js/common.js#L1278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/hivepress/tags/1.7.32/includes/blocks/class-form.php#L89"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/hivepress/tags/1.7.32/includes/components/class-editor.php#L417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/hivepress/tags/1.7.32/includes/forms/class-form.php#L189"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3747070%40hivepress%2Ftags%2F1.8.0&old=3732142%40hivepress%2Ftags%2F1.7.32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5d1937ae-d350-452c-b20e-d85bc88dbe48?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T07:17:09Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ghwm-6mq3-q77x",
+  "modified": "2025-03-10T21:31:10Z",
+  "published": "2025-03-10T21:31:10Z",
+  "aliases": [
+    "CVE-2022-49573"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: Fix a data-race around sysctl_tcp_early_retrans.\n\nWhile reading sysctl_tcp_early_retrans, it can be changed concurrently.\nThus, we need to add READ_ONCE() to its reader.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49573"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11e8b013d16e5db63f8f76acceb5b86964098aaa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/488d3ad98ef7cddce7054193dbae6b4349c6807d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5037ca9e4b169cc9aed0174d658c3d81fdaf8ea5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52e65865deb6a36718a463030500f16530eaab74"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83767fe800a311370330d4ec83aa76093b744a80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5975f6376ce90c2c483ae36bf88c9cface4c13b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:32Z"
+  }
+}

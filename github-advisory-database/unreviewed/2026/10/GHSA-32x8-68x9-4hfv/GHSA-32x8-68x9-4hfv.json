@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-32x8-68x9-4hfv",
+  "modified": "2026-10-19T15:32:42Z",
+  "published": "2026-10-19T15:32:42Z",
+  "aliases": [
+    "CVE-2026-112329"
+  ],
+  "details": "The Sensei LMS WordPress plugin before 4.26.4 contains a broken access control vulnerability in the legacy save_new_message handler hooked on the init action, which validates only a generic nonce without verifying course enrollment or restricting post_id to valid post types. Authenticated attackers, including unprivileged Subscribers, can supply an arbitrary post_id for any course, lesson, or quiz to create a private message addressed to that post's author, bypassing the enrollment checks enforced by the newer REST send-message controller.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112329"
+    },
+    {
+      "type": "WEB",
+      "url": "https://senseilms.com/release-notes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sensei-lms-broken-access-control-via-save-new-message"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T15:17:06Z"
+  }
+}

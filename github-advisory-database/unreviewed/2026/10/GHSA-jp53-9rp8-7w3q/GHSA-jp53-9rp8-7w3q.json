@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jp53-9rp8-7w3q",
+  "modified": "2026-10-12T18:31:38Z",
+  "published": "2026-10-12T18:31:38Z",
+  "aliases": [
+    "CVE-2026-109249"
+  ],
+  "details": "FreeRDP 3.0.0 before 3.32.0 contains a heap out-of-bounds read in freerdp_assistance_parse_all_elements_of() because it advances its parsing cursor without reducing the remaining length, letting the scan window exceed the decrypted ConnectionString2 buffer. Attackers can supply a crafted .msrcIncident invitation file and password that crash xfreerdp when opened, before any RDP connection.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-gvq8-v2fm-ffxv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/commit/2a737ce14dfee036a12d2d3e87473ace3e20349b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/freerdp-3.0.0-before-3.32.0-heap-out-of-bounds-read-via-remote-assistance-file-parsing"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T17:17:16Z"
+  }
+}

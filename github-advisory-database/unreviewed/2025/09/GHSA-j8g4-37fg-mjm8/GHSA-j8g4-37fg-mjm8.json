@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j8g4-37fg-mjm8",
+  "modified": "2025-12-12T21:31:32Z",
+  "published": "2025-09-22T21:30:18Z",
+  "aliases": [
+    "CVE-2025-39861"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: vhci: Prevent use-after-free by removing debugfs files early\n\nMove the creation of debugfs files into a dedicated function, and ensure\nthey are explicitly removed during vhci_release(), before associated\ndata structures are freed.\n\nPreviously, debugfs files such as \"force_suspend\", \"force_wakeup\", and\nothers were created under hdev->debugfs but not removed in\nvhci_release(). Since vhci_release() frees the backing vhci_data\nstructure, any access to these files after release would result in\nuse-after-free errors.\n\nAlthough hdev->debugfs is later freed in hci_release_dev(), user can\naccess files after vhci_data is freed but before hdev->debugfs is\nreleased.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39861"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1503756fffe76d5aea2371a4b8dee20c3577bcfd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/28010791193a4503f054e8d69a950ef815deb539"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7cc08f2f127b9a66f46ea918e34353811a7cb378"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd75eba88e88d7b896b0c737b02a74a12afc235f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-19T16:15:45Z"
+  }
+}

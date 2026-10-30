@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9vc7-6mj4-86xj",
+  "modified": "2026-10-21T15:41:29Z",
+  "published": "2026-09-17T18:32:13Z",
+  "aliases": [
+    "CVE-2026-93176"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Fix dangling pointer in plane reset function\n\namdgpu_dm_plane_drm_plane_reset() frees the old state before allocating\na new one. If kzalloc() fails, the function returns without updating\nthe state pointer, leaving a dangling pointer to already freed memory.\n\nFix this by allocating the new state first. On allocation failure, the\nold state remains untouched and the function safely returns.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.\n\n[adjust for movement around current amd-staging-drm-next]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93176"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0999a267bdc13648b6b0db893e7eabe30bc13e7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d8391d3149a1aeb93505a4f9fb9ed8364882c42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80c0f51aced43d6eaf72f95a2833b0a77cf7880d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98cad4bd1443975d972f4c7f705980da03722a22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cda8af27b787d79eadc4eb8109d9f2e856dadac2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:13Z"
+  }
+}

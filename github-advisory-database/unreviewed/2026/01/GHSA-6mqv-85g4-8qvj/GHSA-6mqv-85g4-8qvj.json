@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6mqv-85g4-8qvj",
+  "modified": "2026-03-25T21:30:22Z",
+  "published": "2026-01-14T15:33:01Z",
+  "aliases": [
+    "CVE-2025-71116"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: make decode_pool() more resilient against corrupted osdmaps\n\nIf the osdmap is (maliciously) corrupted such that the encoded length\nof ceph_pg_pool envelope is less than what is expected for a particular\nencoding version, out-of-bounds reads may ensue because the only bounds\ncheck that is there is based on that length value.\n\nThis patch adds explicit bounds checks for each field that is decoded\nor skipped.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71116"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/145d140abda80e33331c5781d6603014fa75d258"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2acb8517429ab42146c6c0ac1daed1f03d2fd125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d0d8c292531fe356c4e94dcfdf7d7212aca9957"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c738512714e8c0aa18f8a10c072d5b01c83db39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c82e39ff67353a5a6cbc07b786b8690bd2c45aaa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d061be4c8040ffb1110d537654a038b8b6ad39d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e927ab132b87ba3f076705fc2684d94b24201ed1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-14T15:16:01Z"
+  }
+}

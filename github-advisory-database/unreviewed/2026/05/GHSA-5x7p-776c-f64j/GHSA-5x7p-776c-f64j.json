@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5x7p-776c-f64j",
+  "modified": "2026-05-12T21:31:25Z",
+  "published": "2026-05-01T15:30:36Z",
+  "aliases": [
+    "CVE-2026-43005"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (tps53679) Fix array access with zero-length block read\n\ni2c_smbus_read_block_data() can return 0, indicating a zero-length\nread. When this happens, tps53679_identify_chip() accesses buf[ret - 1]\nwhich is buf[-1], reading one byte before the buffer on the stack.\n\nFix by changing the check from \"ret < 0\" to \"ret <= 0\", treating a\nzero-length read as an error (-EIO), which prevents the out-of-bounds\narray access.\n\nAlso fix a typo in the adjacent comment: \"if present\" instead of\nduplicate \"if\".",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43005"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e211f6aaa6a00fd0ee0c1eea5498f168c6725e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6999b4769e2a61c463158927102e8c07e3f69ba2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79b7e588399bb55f4c10bea6ca41b6c3b944d2bb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:44Z"
+  }
+}

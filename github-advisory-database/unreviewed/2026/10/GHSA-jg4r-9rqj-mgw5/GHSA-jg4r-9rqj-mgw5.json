@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jg4r-9rqj-mgw5",
+  "modified": "2026-10-21T15:41:51Z",
+  "published": "2026-10-18T18:31:59Z",
+  "aliases": [
+    "CVE-2026-98679"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: accel: kxcjk-1013: reject duplicate event disable\n\nThe IIO core does not filter duplicate writes to the event enable\nattribute. kxcjk1013_write_event_config() already ignores repeated\nenable requests, but a repeated disable request still calls\nkxcjk1013_set_power_state(data, false), dropping a runtime PM reference\nthat was not acquired for this request. This can underflow the runtime\nPM usage count and trigger a \"Runtime PM usage count underflow\" warning.\n\nReturn early when the requested state already matches ev_enable_state.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98679"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/137c35cff4d4d69f73cbfc0bf7870bf379a7a364"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3365209e758c845a197211645731f0e393a86012"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa94a37b5a3e560c277dac6f9e5d0d75549a6583"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ad690c0c1b9131725619e352cb7c970488cbf436"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd30c10ff60d2b30386c23bb7c61cc97f2385c97"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:21Z"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xwr8-qcf8-4867",
+  "modified": "2026-10-21T03:32:29Z",
+  "published": "2026-10-21T03:32:29Z",
+  "aliases": [
+    "CVE-2026-113743"
+  ],
+  "details": "A weakness has been identified in Tenstorrent tt-metal up to 0.80.0. The affected element is the function load_hf_state_dict_filtered of the file models/tt_transformers/tt/load_checkpoints.py. This manipulation of the argument weight_map causes path traversal. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks. Upgrading to version 0.81.0-dev20261016 is sufficient to fix this issue. Patch name: 4851ccf347f6903c3d819eed60705600386e52c3. It is suggested to upgrade the affected component.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113743"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tenstorrent/tt-metal/issues/59616"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tenstorrent/tt-metal/pull/60634"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tenstorrent/tt-metal/commit/4851ccf347f6903c3d819eed60705600386e52c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/3em0/cve_repo/blob/main/2026/Path_Traversal_in_tt-metal_tt_transformers_load_checkpoints.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tenstorrent/tt-metal"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tenstorrent/tt-metal/releases/tag/v0.81.0-dev20261016"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-113743"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/1018296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/422924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/422924/cti"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T02:17:06Z"
+  }
+}

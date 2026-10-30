@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-475m-mm7r-j479",
+  "modified": "2025-12-24T18:30:22Z",
+  "published": "2025-12-24T18:30:22Z",
+  "aliases": [
+    "CVE-2025-68750"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: potential integer overflow in usbg_make_tpg()\n\nThe variable tpgt in usbg_make_tpg() is defined as unsigned long and is\nassigned to tpgt->tport_tpgt, which is defined as u16. This may cause an\ninteger overflow when tpgt is greater than USHRT_MAX (65535). I\nhaven't tried to trigger it myself, but it is possible to trigger it\nby calling usbg_make_tpg() with a large value for tpgt.\n\nI modified the type of tpgt to match tpgt->tport_tpgt and adjusted the\nrelevant code accordingly.\n\nThis patch is similar to commit 59c816c1f24d (\"vhost/scsi: potential\nmemory corruption\").",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68750"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0861b9cb2ff519b7c5a3b1dd52a343e18c4efb24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/153874010354d050f62f8ae25cbb960c17633dc5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/358d5ba08f1609c34a054aed88c431844d09705a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/603a83e5fee38a950bfcfb2f36449311fa00a474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/620a5e1e84a3a7004270703a118d33eeb1c0f368"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6722e080b5b39ab7471386c73d0c1b39572f943c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f77e344515b5258edb3988188311464209b1c7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a33f507f36d5881f602dab581ab0f8d22b49762c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T16:15:48Z"
+  }
+}

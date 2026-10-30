@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73jm-mgrc-fg99",
+  "modified": "2026-10-21T15:42:01Z",
+  "published": "2026-10-18T18:32:06Z",
+  "aliases": [
+    "CVE-2026-98862"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naudit: fix exe mark UAF in kill_rules()\n\nkill_rules() removes mixed AUDIT_DIR and AUDIT_EXE rules when an audit\ntree is pruned. It drops entry->rule.exe before removing the rule from\nthe RCU-visible filter lists.\n\nAfter a rule has been installed with AUDIT_ADD_RULE, which requires\nCAP_AUDIT_CONTROL, removing the watched directory can race with another\ntask that is still evaluating the rule. In that case, fsnotify can free\nthe executable mark before the reader reaches audit_mark_compare(),\ncausing a use-after-free.\n\nKASAN reports:\n\n    BUG: KASAN: slab-use-after-free in audit_mark_compare+0x8d/0xa0\n\nUnlink the published rules from the RCU-visible lists and retain them\non tree->rules for cleanup. If any rule has an executable mark, wait for\na single RCU grace period before removing the marks and scheduling the\nentries for freeing. Otherwise, call_rcu() already provides the required\ndeferred freeing without a synchronous wait.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98862"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/304960900991157e6883bdf0b39782b690545ee8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88633025f20ba9c32ccdb3efc86eafdf98cb825c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9aee3caeff4dd4126d84f67607b95cec8719b867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa650d87a498844060eecb1d336f4d46f4d1b0b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2cc5462b78559c7628a9f8ac9a9592e7783183a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:40Z"
+  }
+}

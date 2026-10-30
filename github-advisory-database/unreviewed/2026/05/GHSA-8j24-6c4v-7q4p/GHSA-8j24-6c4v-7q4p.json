@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8j24-6c4v-7q4p",
+  "modified": "2026-06-19T15:33:09Z",
+  "published": "2026-05-01T15:30:33Z",
+  "aliases": [
+    "CVE-2026-31727"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: u_ether: Fix NULL pointer deref in eth_get_drvinfo\n\nCommit ec35c1969650 (\"usb: gadget: f_ncm: Fix net_device lifecycle with\ndevice_move\") reparents the gadget device to /sys/devices/virtual during\nunbind, clearing the gadget pointer. If the userspace tool queries on\nthe surviving interface during this detached window, this leads to a\nNULL pointer dereference.\n\nUnable to handle kernel NULL pointer dereference\nCall trace:\n eth_get_drvinfo+0x50/0x90\n ethtool_get_drvinfo+0x5c/0x1f0\n __dev_ethtool+0xaec/0x1fe0\n dev_ethtool+0x134/0x2e0\n dev_ioctl+0x338/0x560\n\nAdd a NULL check for dev->gadget in eth_get_drvinfo(). When detached,\nskip copying the fw_version and bus_info strings, which is natively\nhandled by ethtool_get_drvinfo for empty strings.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31727"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0326429e8ba99892e1d1e115dc8e88e1a3b64e24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7de4d46be40738c7e48e64b5cc0a34aa1e047b0a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7fce959e9be3bf63bb0fdf4b05f9cc42cb289fe2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a36e5e800b9c93e3e1ffa42f34d38b36775dbcee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e002e92e88e12457373ed096b18716d97e7bbb20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9f987472f4b8ab177be2b6492a59278ed969479"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:35Z"
+  }
+}

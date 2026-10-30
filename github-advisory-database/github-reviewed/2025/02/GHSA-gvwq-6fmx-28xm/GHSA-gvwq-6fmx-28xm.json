@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gvwq-6fmx-28xm",
+  "modified": "2025-04-10T12:50:02Z",
+  "published": "2025-02-06T06:31:26Z",
+  "aliases": [
+    "CVE-2024-57086"
+  ],
+  "summary": "node-opcua-alarm-condition prototype pollution vulnerability",
+  "details": "A prototype pollution in the function fieldsToJson of node-opcua-alarm-condition v2.134.0 allows attackers to cause a Denial of Service (DoS) via supplying a crafted payload.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "node-opcua-alarm-condition"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.137.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57086"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/node-opcua/node-opcua/issues/1433#issuecomment-2791824350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/tariqhawis/30acc3632cf595ca5825b7ec2b2f795a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/node-opcua/node-opcua"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/node-opcua/node-opcua/blob/330db56bb62bce9fff80382daee1fac94311978d/packages/node-opcua-alarm-condition/test/test_cve_polution_attack.ts"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1321"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-04-10T12:50:02Z",
+    "nvd_published_at": "2025-02-05T22:15:32Z"
+  }
+}

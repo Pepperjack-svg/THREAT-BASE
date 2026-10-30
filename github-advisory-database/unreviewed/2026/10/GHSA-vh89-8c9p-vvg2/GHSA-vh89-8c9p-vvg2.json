@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vh89-8c9p-vvg2",
+  "modified": "2026-10-07T09:32:14Z",
+  "published": "2026-10-06T09:31:32Z",
+  "aliases": [
+    "CVE-2026-98252"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/core: fix refcount bug in iwpm_get_nlmsg_request()\n\niwpm_get_nlmsg_request() initializes refcount _after_ list_add_tail()\nmaking it accessible to global list where another CPU can kref_get()\non nlmsg_request causing a refcount \"addition on 0\" bug. Fix this\nby initializing kref _before_ list_add_tail() so refcount for\nnlmsg_request can be incremented/decremented normally. In addition,\nalso initialize every field before list_add_tail().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98252"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/117871cdb8927542abd7b65ce5995bf0265a8c05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fbac8a56004b6ce54fbfe845d4b25da6e0b55e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/33fb59da49c4c3f5c2ec9f9d4447a56857a02c02"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52c13c63bb3662c108244e7447055e30bf40244e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88e429a4e9bac3d2138011c5ca06254331f2587f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a91609032d47e77bcb37bc8f6e88d89340d2709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce8a379598bd4058081416abea4279fd05a95374"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e15eb536be4f646ce683d2867572b2200be877f7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:13Z"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mx4j-wm6m-3mxr",
+  "modified": "2026-02-03T15:30:20Z",
+  "published": "2025-10-09T12:30:18Z",
+  "aliases": [
+    "CVE-2025-39957"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: increase scan_ies_len for S1G\n\nCurrently the S1G capability element is not taken into account\nfor the scan_ies_len, which leads to a buffer length validation\nfailure in ieee80211_prep_hw_scan() and subsequent WARN in\n__ieee80211_start_scan(). This prevents hw scanning from functioning.\nTo fix ensure we accommodate for the S1G capability length.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39957"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0dbad5f5549e54ac269cc04ce89f212892a98cab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16c9244a62116fe148f6961753b68e7160799f97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32adb020b0c32939da1322dcc87fc0ae2bc935d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7e2f3213e85eba00acb4cfe6d71647892d63c3a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93e063f15e17acb8cd6ac90c8f0802c2624e1a74"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-09T10:15:37Z"
+  }
+}

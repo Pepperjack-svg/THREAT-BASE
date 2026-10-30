@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r9jv-8h68-mr7c",
+  "modified": "2026-06-25T21:31:18Z",
+  "published": "2026-05-27T15:33:13Z",
+  "aliases": [
+    "CVE-2026-45851"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nefi: Fix reservation of unaccepted memory table\n\nThe reserve_unaccepted() function incorrectly calculates the size of the\nmemblock reservation for the unaccepted memory table. It aligns the\nsize of the table, but fails to account for cases where the table's\nstarting physical address (efi.unaccepted) is not page-aligned.\n\nIf the table starts at an offset within a page and its end crosses into\na subsequent page that the aligned size does not cover, the end of the\ntable will not be reserved. This can lead to the table being overwritten\nor inaccessible, causing a kernel panic in accept_memory().\n\nThis issue was observed when starting Intel TDX VMs with specific memory\nsizes (e.g., > 64GB).\n\nFix this by calculating the end address first (including the unaligned\nstart) and then aligning it up, ensuring the entire range is covered\nby the reservation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45851"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0862438c90487e79822d5647f854977d50381505"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b18bf59977f5c5bc3b11b210520f62500a7adf3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7bc182ec1846be437351e44164089d988f9d0dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba6b6f1502fa55621d1db23f253d54322bdbe4e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e649b5916725c68f44ebf45fb396df563c5dbaf2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:16:57Z"
+  }
+}

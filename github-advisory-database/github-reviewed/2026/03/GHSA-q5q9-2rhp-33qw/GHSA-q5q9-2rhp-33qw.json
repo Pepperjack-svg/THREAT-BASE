@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q5q9-2rhp-33qw",
+  "modified": "2026-03-09T17:42:17Z",
+  "published": "2026-03-09T17:42:17Z",
+  "aliases": [
+    "CVE-2026-30854"
+  ],
+  "summary": "Parse Server: GraphQL `__type` introspection bypass via inline fragments when public introspection is disabled",
+  "details": "### Impact\n\nWhen `graphQLPublicIntrospection` is disabled, `__type` queries nested inside inline fragments (e.g. `... on Query { __type(name:\"User\") { name } })` bypass the introspection control, allowing unauthenticated users to perform type reconnaissance. `__schema` introspection is not affected.\n\n### Patches\n\nThe check was changed from a flat iteration over root-level selections to a recursive walk of all selection sets, detecting `__type` inside inline fragments at any depth.\n\n### Workarounds\n\nRequire master key authentication at the network layer (e.g. reverse proxy) for the GraphQL endpoint.\n\n### References\n\n- GitHub security advisory: https://github.com/parse-community/parse-server/security/advisories/GHSA-q5q9-2rhp-33qw\n- Fix Parse Server 9: https://github.com/parse-community/parse-server/releases/tag/9.5.0-alpha.10",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "parse-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "9.3.1-alpha.3"
+            },
+            {
+              "fixed": "9.5.0-alpha.10"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/parse-community/parse-server/security/advisories/GHSA-q5q9-2rhp-33qw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-30854"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/parse-community/parse-server"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-09T17:42:17Z",
+    "nvd_published_at": "2026-03-07T17:15:52Z"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9rpm-78h2-fvw5",
+  "modified": "2026-05-11T18:31:36Z",
+  "published": "2026-05-06T12:30:27Z",
+  "aliases": [
+    "CVE-2026-43108"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoc: qcom: pd-mapper: Fix element length in servreg_loc_pfr_req_ei\n\nIt looks element length declared in servreg_loc_pfr_req_ei for reason\nnot matching servreg_loc_pfr_req's reason field due which we could\nobserve decoding error on PD crash.\n\n  qmi_decode_string_elem: String len 81 >= Max Len 65\n\nFix this by matching with servreg_loc_pfr_req's reason field.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43108"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/641f6fda143b879da1515f821ee475073678cf2a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d75145672cf2ec7c5417e3243af72c48314f7bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c93ca7c5a72e23a83a0b96f7f5c41a7a72f1dc47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cba84132c2ac7c08b215ce4962bc6f522c08a88c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T10:16:24Z"
+  }
+}

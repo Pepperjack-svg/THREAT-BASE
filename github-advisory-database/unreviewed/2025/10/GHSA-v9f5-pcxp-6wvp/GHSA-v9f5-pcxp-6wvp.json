@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v9f5-pcxp-6wvp",
+  "modified": "2025-10-22T18:30:31Z",
+  "published": "2025-10-22T18:30:31Z",
+  "aliases": [
+    "CVE-2022-49435"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmfd: davinci_voicecodec: Fix possible null-ptr-deref davinci_vc_probe()\n\nIt will cause null-ptr-deref when using 'res', if platform_get_resource()\nreturns NULL, so move using 'res' after devm_ioremap_resource() that\nwill check it to avoid null-ptr-deref.\nAnd use devm_platform_get_and_ioremap_resource() to simplify code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49435"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d00158a06efe6bbcd020108634ea0f2ed8b32f7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/311242c7703df0da14c206260b7e855f69cb0264"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49c1e32e7b3f301642a60448700ec531df981269"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5289795824b77489803b0802cd9edc13824a2d0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/579944b9f38727d9ff570b58f83bc424e8af8398"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1d4941d9a24999f680799f9bbde7f57351ca637"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:19Z"
+  }
+}

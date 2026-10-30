@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j3cc-8mgg-5gq2",
+  "modified": "2025-10-28T12:30:16Z",
+  "published": "2025-10-28T12:30:16Z",
+  "aliases": [
+    "CVE-2025-40031"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntee: fix register_shm_helper()\n\nIn register_shm_helper(), fix incorrect error handling for a call to\niov_iter_extract_pages(). A case is missing for when\niov_iter_extract_pages() only got some pages and return a number larger\nthan 0, but not the requested amount.\n\nThis fixes a possible NULL pointer dereference following a bad input from\nioctl(TEE_IOC_SHM_REGISTER) where parts of the buffer isn't mapped.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40031"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a7874ab814ce12003c46a92f7afc9b035c8e8e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9338093db954918558677a468d32e77041c65167"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5cf5b37064b1699d946e8b7ab4ac7d7d101814c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-28T12:15:36Z"
+  }
+}

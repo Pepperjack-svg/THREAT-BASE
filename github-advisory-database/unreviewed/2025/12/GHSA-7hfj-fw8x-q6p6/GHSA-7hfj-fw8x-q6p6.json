@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7hfj-fw8x-q6p6",
+  "modified": "2025-12-24T15:30:35Z",
+  "published": "2025-12-24T15:30:35Z",
+  "aliases": [
+    "CVE-2022-50783"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: use proper req destructor for IPv6\n\nBefore, only the destructor from TCP request sock in IPv4 was called\neven if the subflow was IPv6.\n\nIt is important to use the right destructor to avoid memory leaks with\nsome advanced IPv6 features, e.g. when the request socks contain\nspecific IPv6 options.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50783"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/092953f3c4cd65f88b27b87a922f6c725f34ee04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1922ea6b0ae2ea0c9a09be0eafafe1cd1069d259"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6eb02c596ec02e5897ae377e065cb7df55337a96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd5dc96fea4edd16d2e22f41b4dd50a4cfbeb919"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3295fee3c756ece33ac0d935e172e68c0a4161b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:05Z"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xg82-2hrv-hf64",
+  "modified": "2026-05-08T23:04:36Z",
+  "published": "2026-05-08T23:04:36Z",
+  "aliases": [
+    "CVE-2026-37709"
+  ],
+  "summary": "Snipe-IT has insecure permissions in file uploads",
+  "details": "Insecure Permissions vulnerability in grokability snipe-it versions through 8.4.0, fixed after 2026-03-10 commit 676a9958, allow a remote attacker to execute arbitrary code via the `app/Http/Controllers/Api/UploadedFilesController.php` component\n\n### Impact\nUsers who can view assets, consumables, etc were able to send a POST request to `/api/v1/{object_type}/{id}/files`. The API authorized with \"view\" instead of write permission and persists the file and audit log entry.\n\n### Patches\nFixed after 2026-03-10 commit 676a9958, fix released to 8.4.1.\n\n### Workarounds\nNone.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.4.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-xg82-2hrv-hf64"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-37709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/676a9958895a77de340565e7a0b17ae744664904"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-08T23:04:36Z",
+    "nvd_published_at": "2026-05-07T18:16:19Z"
+  }
+}

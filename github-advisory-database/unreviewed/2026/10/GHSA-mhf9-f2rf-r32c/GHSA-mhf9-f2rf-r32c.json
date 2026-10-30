@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mhf9-f2rf-r32c",
+  "modified": "2026-10-16T18:34:46Z",
+  "published": "2026-10-16T18:34:46Z",
+  "aliases": [
+    "CVE-2026-111640"
+  ],
+  "details": "DooTask through 1.9.66 contains a missing authorization vulnerability in WebSocketDialog::checkDialog() that skips the membership check for dialogs with group_type 'okr'. Authenticated users can supply the dialog_id of OKR comment dialogs to msg__list, msg__one, or msg__send* endpoints to read and inject messages.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111640"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kuaifan/dootask/blob/v1.9.66/app/Models/WebSocketDialog.php#L976-L978"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/dootask-okr-dialog-missing-membership-check"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dootask-through-1.9.66-missing-authorization-in-okr-comment-dialogs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:44Z"
+  }
+}

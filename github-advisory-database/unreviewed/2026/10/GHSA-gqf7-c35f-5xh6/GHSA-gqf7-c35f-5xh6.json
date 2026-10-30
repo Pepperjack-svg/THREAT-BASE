@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gqf7-c35f-5xh6",
+  "modified": "2026-10-23T15:31:36Z",
+  "published": "2026-10-23T15:31:36Z",
+  "aliases": [
+    "CVE-2026-99049"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: xilinx: fix runtime PM leak on request error path\n\npm_runtime_get_sync() leaves the usage counter incremented even when it\nfails, and xgpio_request() returns the error without dropping it.\n\ngpiolib does not call ->free() when ->request() fails, so xgpio_free(),\nwhich holds the only matching pm_runtime_put(), never runs. The reference\nis leaked and the controller can no longer runtime-suspend, so its clock\nstays enabled.\n\nSwitch to pm_runtime_resume_and_get(), which only increments the usage\ncounter on success.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fd6ecda5d1f47cffcfadddb35ee49402162c724"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a027e0d7765d1531ee39e4dae81951b04f32ba7b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b07b3925f676640103b3d74b93fc401b1c873d13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f73ee2bd2293f8cc340061c5229395ace71fc2eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff82fc3a4a1d417dee1229681cc5285986edb1fa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:28Z"
+  }
+}

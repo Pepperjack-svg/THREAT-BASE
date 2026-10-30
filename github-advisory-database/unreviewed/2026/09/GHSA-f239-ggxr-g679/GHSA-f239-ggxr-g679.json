@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f239-ggxr-g679",
+  "modified": "2026-09-30T21:32:09Z",
+  "published": "2026-09-30T21:32:09Z",
+  "aliases": [
+    "CVE-2026-103547"
+  ],
+  "details": "In ldapd in OpenBSD 7.8 before errata 057 and 7.9 before errata 021, delegated BSD authentication results are correlated only by the LDAP child process client file descriptor and LDAP message ID. After a connection closes, a later connection that reuses the same file descriptor and message ID can receive the earlier authentication result. A remote attacker who can reach ldapd can complete a Bind as another identity. A missing connection can also cause a NULL pointer dereference. (ldapd is not enabled by default.)",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103547"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openbsd/src/commit/4f3f58e83c2a6d239c544236a9d4d76c74bbf960"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ftp.openbsd.org/pub/OpenBSD/patches/7.9/common/021_ldapd.patch.sig"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openbsd.org/errata78.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openbsd.org/errata79.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T20:17:31Z"
+  }
+}

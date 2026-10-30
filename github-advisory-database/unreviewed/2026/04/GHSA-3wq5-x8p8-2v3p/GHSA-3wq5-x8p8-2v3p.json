@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3wq5-x8p8-2v3p",
+  "modified": "2026-04-28T00:31:40Z",
+  "published": "2026-04-09T18:31:28Z",
+  "aliases": [
+    "CVE-2026-5329"
+  ],
+  "details": "Rapid7 Velociraptor versions prior to 0.76.2 contain an improper input validation vulnerability in the client monitoring message handler on the Velociraptor server (primarily Linux) that allows an authenticated remote attacker  to write to arbitrary internal server queues via a crafted monitoring message with a malicious queue name. The server handler that receives client monitoring messages does not sufficiently validate the queue name supplied by the client, allowing a rogue client to write arbitrary messages to privileged internal queues. This may lead to remote code execution on the Velociraptor server. Rapid7 Hosted Velociraptor instances are not affected by this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5329"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.velociraptor.app/announcements/advisories/cve-2026-5329"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-09T18:17:04Z"
+  }
+}

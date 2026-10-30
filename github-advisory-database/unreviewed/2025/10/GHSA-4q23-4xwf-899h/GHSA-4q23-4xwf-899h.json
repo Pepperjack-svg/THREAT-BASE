@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4q23-4xwf-899h",
+  "modified": "2025-10-02T21:31:18Z",
+  "published": "2025-10-02T18:31:01Z",
+  "aliases": [
+    "CVE-2025-59403"
+  ],
+  "details": "The Flock Safety Android Collins application (aka com.flocksafety.android.collins) 6.35.31 for Android lacks authentication. It is responsible for the camera feed on Falcon, Sparrow, and Bravo devices, but exposes administrative API endpoints on port 8080 without authentication. Endpoints include but are not limited to: /reboot, /logs, /crashpack, and /adb/enable. This results in multiple impacts including denial of service (DoS) via /reboot, information disclosure via /logs, and remote code execution (RCE) via /adb/enable. The latter specifically results in adb being started over TCP without debugging confirmation, providing an attacker in the LAN/WLAN with shell access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59403"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gainsec.com/2025/09/27/fly-by-device-2-the-falcon-sparrow-gated-wireless-rce-camera-feed-dos-information-disclosure-and-more"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gainsec.com/wp-content/uploads/2025/09/Root-from-the-Coop-Device-3_-Root-Shell-on-Flock-Safetys-Bravo-Compute-Box-GainSec.pdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.flocksafety.com/products"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.flocksafety.com/products/license-plate-readers"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400",
+      "CWE-749"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-02T17:16:05Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vwm4-62gf-x745",
+  "modified": "2026-06-19T20:47:25Z",
+  "published": "2026-06-19T20:47:25Z",
+  "aliases": [
+    "CVE-2026-54901"
+  ],
+  "summary": "Oj: Use-After-Free in Oj::Parser array_class/hash_class GC Marking",
+  "details": "### Summary\n\n`Oj::Parser` in usual mode does not mark `array_class` and `hash_class` references during garbage collection. If GC runs after the class is assigned but before a parse, the class object is reclaimed, leaving the parser holding a dangling VALUE. The subsequent `parse` call dereferences the freed object, producing a segfault.\n\n### Version\n\n- **Software**: oj gem\n- **Affected**: all versions with `ext/oj/usual.c` / `ext/oj/parser.c`\n- **Latest tested**: 3.17.1 (confirmed present)\n\n### Details\n\nThe `parser_mark` function in `ext/oj/parser.c` is registered as the GC mark callback for the parser's `TypedData`. If `array_class` (stored as `d->array_class` in the `Usual` struct) is not passed to `rb_gc_mark`, the GC does not know it is referenced and may collect it.\n\nWhen `close_array_class` (`usual.c:405`) later calls `rb_funcallv` on the collected class VALUE, it accesses freed memory, crashing at `RIP: 0x7f... / 0x0000000000000000`.\n\nCrash output:\n```\narray_class finalized\nabout to parse\n[BUG] Segmentation fault at 0x0000000000000000\n    close_array_class+0x194  /ext/oj/usual.c:405\n    parse+0x17b3             /ext/oj/parser.c:715\n    parser_parse+0x10b       /ext/oj/parser.c:1408\nRIP: 0x7fd1b46d68b7  RBP: 0x0000000000000000\n```\n\n### Reproduce\n\n```ruby\nrequire 'oj'\np = Oj::Parser.new(:usual,\n  array_class: (ac = Class.new { def <<(_x); end }))\nObjectSpace.define_finalizer(ac, proc { warn 'array_class finalized' })\nac = nil\nGC.start(full_mark: true, immediate_sweep: true)  # collect the class\np.parse('[1]')  # segfault\n```",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "oj"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.17.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 3.17.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ohler55/oj/security/advisories/GHSA-vwm4-62gf-x745"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ohler55/oj"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-19T20:47:25Z",
+    "nvd_published_at": null
+  }
+}

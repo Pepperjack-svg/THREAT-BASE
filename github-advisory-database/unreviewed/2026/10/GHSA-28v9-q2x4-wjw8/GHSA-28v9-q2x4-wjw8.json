@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28v9-q2x4-wjw8",
+  "modified": "2026-10-15T21:36:11Z",
+  "published": "2026-10-15T21:36:11Z",
+  "aliases": [
+    "CVE-2026-111221"
+  ],
+  "details": "Netgate pfSense CE through 2.9.0 contains a configuration injection vulnerability that allows authenticated WebGUI users to inject mpd5 commands by submitting an unescaped RADIUS shared secret. Attackers with L2TP or PPPoE Server edit privileges can POST a secret containing a quote and newline to vpn_l2tp.php or services_pppoe_edit.php, appending an up-script that executes as root when a session starts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111221"
+    },
+    {
+      "type": "WEB",
+      "url": "https://abraxaslabs.tech/research/pfsense-ce-leftovers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/abraxas/pfsense-l2tp-radius-mpd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pfsense/pfsense/blob/9363ac5b8651a1c7a333180425ce7719070f95f9/src/etc/inc/vpn.inc#L202-L215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pfsense/pfsense/blob/9363ac5b8651a1c7a333180425ce7719070f95f9/src/etc/inc/vpn.inc#L428-L441"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pfsense/pfsense/blob/9363ac5b8651a1c7a333180425ce7719070f95f9/src/usr/local/www/vpn_l2tp.php#L137-L143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netgate-pfsense-ce-through-2.9.0-command-injection-via-radius-secret-mpd-conf-injection"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-93"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:34Z"
+  }
+}

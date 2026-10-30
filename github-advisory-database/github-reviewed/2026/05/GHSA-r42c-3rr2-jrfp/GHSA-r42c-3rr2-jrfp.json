@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r42c-3rr2-jrfp",
+  "modified": "2026-06-23T22:58:55Z",
+  "published": "2026-05-21T21:30:37Z",
+  "aliases": [
+    "CVE-2026-8140"
+  ],
+  "summary": "Concrete CMS is Vulnerable to Cross-Site Request Forgery",
+  "details": "Concrete CMS 9.5.0 and below does not validate a CSRF token before processing requests to /dashboard/extend/install/download/<remoteId>. The download() method in concrete/controllers/single_page/dashboard/extend/install.php checks only the canInstallPackages() permission before fetching a remote marketplace package and writing it to the server's DIR_PACKAGES directory. Because the endpoint is a state-changing GET route with no token enforcement, an attacker who can cause an authenticated administrator to visit a crafted page can force an arbitrary marketplace package to be downloaded. In order to be vulnerable, the victim must be passing canInstallPackages() and the site must be connected to the Concrete marketplace. Concrete CMS thanks https://github.com/maru1009  for reporting this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "concrete5/concrete5"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.5.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://documentation.concretecms.org/9-x/developers/introduction/version-history/951-release-notes"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/concretecms/concretecms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-23T22:58:55Z",
+    "nvd_published_at": "2026-05-21T21:16:33Z"
+  }
+}

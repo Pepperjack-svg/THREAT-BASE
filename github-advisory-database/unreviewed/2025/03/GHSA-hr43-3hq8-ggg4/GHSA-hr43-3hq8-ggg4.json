@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hr43-3hq8-ggg4",
+  "modified": "2026-05-12T15:30:51Z",
+  "published": "2025-03-06T18:31:12Z",
+  "aliases": [
+    "CVE-2024-58085"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntomoyo: don't emit warning in tomoyo_write_control()\n\nsyzbot is reporting too large allocation warning at tomoyo_write_control(),\nfor one can write a very very long line without new line character. To fix\nthis warning, I use __GFP_NOWARN rather than checking for KMALLOC_MAX_SIZE,\nfor practically a valid line should be always shorter than 32KB where the\n\"too small to fail\" memory-allocation rule applies.\n\nOne might try to write a valid line that is longer than 32KB, but such\nrequest will likely fail with -ENOMEM. Therefore, I feel that separately\nreturning -EINVAL when a line is longer than KMALLOC_MAX_SIZE is redundant.\nThere is no need to distinguish over-32KB and over-KMALLOC_MAX_SIZE.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58085"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-265688.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3df7546fc03b8f004eee0b9e3256369f7d096685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/414705c0303350d139b1dc18f329fe47dfb642dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a01c200fa7eb59da4d2dbbb48b61f4a0d196c09f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2bd5857a0d6973ebbcb4d9831ddcaebbd257be1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c67efabddc73171c7771d3ffe4ffa1e503ee533e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9382f380e8d09209b8e5c0def0545852168be25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6b37b3e12de638753bce79a2858070b9c4a4ad3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe1c021eb03dae0dc9dce55e81f77a60e419a27a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/03/msg00028.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-06T17:15:21Z"
+  }
+}

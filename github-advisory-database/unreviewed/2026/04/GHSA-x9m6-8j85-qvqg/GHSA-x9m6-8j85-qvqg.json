@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x9m6-8j85-qvqg",
+  "modified": "2026-04-27T15:30:51Z",
+  "published": "2026-04-25T09:30:28Z",
+  "aliases": [
+    "CVE-2026-31678"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nopenvswitch: defer tunnel netdev_put to RCU release\n\novs_netdev_tunnel_destroy() may run after NETDEV_UNREGISTER already\ndetached the device. Dropping the netdev reference in destroy can race\nwith concurrent readers that still observe vport->dev.\n\nDo not release vport->dev in ovs_netdev_tunnel_destroy(). Instead, let\nvport_netdev_free() drop the reference from the RCU callback, matching\nthe non-tunnel destroy path and avoiding additional synchronization\nunder RTNL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31678"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42f0d3d81209654c08ffdde5a34b9b92d2645896"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6931d21f87bc6d657f145798fad0bf077b82486c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98b726ab5e2a4811e27c28e4d041f75bba147eab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9d56aced21fb9c104e8a3f3be9b21fbafe448ffc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8c56a3fc5d879c0928f207a756b0f067f06c6a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bbe7bd722bfaea36aab3da6cc60fb4a05c644643"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362",
+      "CWE-367"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-25T09:16:01Z"
+  }
+}

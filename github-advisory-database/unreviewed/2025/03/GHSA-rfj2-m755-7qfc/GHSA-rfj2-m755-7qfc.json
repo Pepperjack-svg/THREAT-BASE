@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rfj2-m755-7qfc",
+  "modified": "2025-10-31T21:30:52Z",
+  "published": "2025-03-27T18:31:28Z",
+  "aliases": [
+    "CVE-2023-53033"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nft_payload: incorrect arithmetics when fetching VLAN header bits\n\nIf the offset + length goes over the ethernet + vlan header, then the\nlength is adjusted to copy the bytes that are within the boundaries of\nthe vlan_ethhdr scratchpad area. The remaining bytes beyond ethernet +\nvlan header are copied directly from the skbuff data area.\n\nFix incorrect arithmetic operator: subtract, not add, the size of the\nvlan header in case of double-tagged packets to adjust the length\naccordingly to address CVE-2023-0179.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53033"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/550efeff989b041f3746118c0ddd863c39ddc1aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/696e1a48b1a1b01edad542a1ef293665864a4dd0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/76ef74d4a379faa451003621a84e3498044e7aa3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a8acfe2c6fb99f9375a9325807a179cd8c32e6e3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-27T17:15:53Z"
+  }
+}

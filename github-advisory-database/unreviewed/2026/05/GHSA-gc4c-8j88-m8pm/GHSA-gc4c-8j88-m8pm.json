@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gc4c-8j88-m8pm",
+  "modified": "2026-05-14T06:31:32Z",
+  "published": "2026-05-14T06:31:32Z",
+  "aliases": [
+    "CVE-2026-7648"
+  ],
+  "details": "The LearnPress – WordPress LMS Plugin for Create and Sell Online Courses plugin for WordPress is vulnerable to payment bypass through user-controlled key in all versions up to, and including, 4.3.5. This is due to improper handling of user-supplied request parameters in the REST API endpoint, which passes the unsanitized parameter array to the add_to_cart() function where array_merge() allows attacker-controlled values to overwrite hardcoded defaults. This makes it possible for authenticated attackers, with subscriber-level access and above, to enroll in any paid course entirely free of charge by supplying a quantity value of zero, which causes the order total to calculate as $0 and bypasses all payment gateway requirements.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7648"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.3/inc/cart/class-lp-cart.php#L105"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.3/inc/cart/class-lp-cart.php#L180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.3/inc/rest-api/v1/frontend/class-lp-rest-courses-controller.php#L474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/trunk/inc/cart/class-lp-cart.php#L105"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/trunk/inc/cart/class-lp-cart.php#L180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/trunk/inc/rest-api/v1/frontend/class-lp-rest-courses-controller.php#L474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3521636%40learnpress&new=3521636%40learnpress&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/564ec4a6-20d3-4b46-8637-fc1de586e19a?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-14T05:16:46Z"
+  }
+}

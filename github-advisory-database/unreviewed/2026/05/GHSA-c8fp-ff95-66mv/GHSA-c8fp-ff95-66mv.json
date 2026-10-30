@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8fp-ff95-66mv",
+  "modified": "2026-06-25T21:31:19Z",
+  "published": "2026-05-27T15:33:14Z",
+  "aliases": [
+    "CVE-2026-45876"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\narm64/gcs: Fix error handling in arch_set_shadow_stack_status()\n\nalloc_gcs() returns an error-encoded pointer on failure, which comes\nfrom do_mmap(), not NULL.\n\nThe current NULL check fails to detect errors, which could lead to using\nan invalid GCS address.\n\nUse IS_ERR_VALUE() to properly detect errors, consistent with the\ncheck in gcs_alloc_thread_stack().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45876"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53c998527ffa60f9deda8974a11ad39790684159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4741114c9622346c4bbb8cc2bbd88153616ffaf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c787a235deb33be6eda40beee8f561da5fd8cb8c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:01Z"
+  }
+}

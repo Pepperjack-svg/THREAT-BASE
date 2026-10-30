@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-78vr-q6cf-c7p6",
+  "modified": "2026-06-19T21:15:23Z",
+  "published": "2026-06-19T21:15:23Z",
+  "aliases": [],
+  "summary": "Craft Commerce: Partial Payment Amount Without Lower Bound Validation",
+  "details": "### Summary\n\nThe `Order::setPaymentAmount()` method accepts any float value without enforcing a minimum positive amount. The PaymentsController casts the user-supplied 'paymentAmount' parameter directly to float with no lower-bound check. \n\n### Details\n\nWhen the store has 'Allow Partial Payment on Checkout' enabled, a user can submit a payment amount of $0.00 or even a negative value, potentially marking orders as paid without a valid transaction.\n\n<img width=\"690\" height=\"80\" alt=\"image\" src=\"https://github.com/user-attachments/assets/78b653a6-ccae-4ce4-b71b-fc38a7757d73\" />\n\n<img width=\"761\" height=\"200\" alt=\"image\" src=\"https://github.com/user-attachments/assets/665a235f-62c2-45fe-aa41-c3f266881c77\" />\n\n### PoC\n\n_Complete instructions, including specific configuration details, to reproduce the vulnerability._\n<img width=\"606\" height=\"144\" alt=\"image\" src=\"https://github.com/user-attachments/assets/a04a6de2-7c5f-4837-aed6-58756e246b80\" />\n\n\n### Impact\nOn stores with partial payment enabled, a customer may be able to set an arbitrarily small payment amount. Gateway behavior varies — some will process $0.00 transactions, effectively giving free order fulfillment.\n\n**Remediation**\n\n<img width=\"718\" height=\"98\" alt=\"image\" src=\"https://github.com/user-attachments/assets/aa64b696-9749-45e4-97f6-8d7299cdf1d6\" />",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/commerce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.6.5"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.6.4"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/commerce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.11.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.11.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/security/advisories/GHSA-78vr-q6cf-c7p6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/commit/9a88392b3074aa132a9455d4f4b582411df52c74"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/commerce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1284",
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-19T21:15:23Z",
+    "nvd_published_at": null
+  }
+}

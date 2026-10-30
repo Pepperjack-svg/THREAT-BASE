@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jrmw-x68c-2f58",
+  "modified": "2026-04-08T21:33:03Z",
+  "published": "2025-02-27T09:31:45Z",
+  "aliases": [
+    "CVE-2025-1717"
+  ],
+  "details": "The Login Me Now plugin for WordPress is vulnerable to authentication bypass in versions up to, and including, 1.7.2. This is due to insecure authentication based on an arbitrary transient name in the 'AutoLogin::listen()' function. This makes it possible for unauthenticated attackers to log in an existing user on the site, even an administrator. Note: this vulnerability requires using a transient name and value from another software, so the plugin is not inherently vulnerable on it's own.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-1717"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/login-me-now/tags/1.7.2/app/Logins/BrowserTokenLogin/AutoLogin.php#L24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3247924/login-me-now"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/fc689622-50d6-47c4-a5f6-0314b1a207c9?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-288",
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T08:15:31Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9vc5-7wqc-m5wc",
+  "modified": "2026-10-10T06:30:58Z",
+  "published": "2026-10-10T06:30:58Z",
+  "aliases": [
+    "CVE-2026-97630"
+  ],
+  "details": "The FV Flowplayer Video Player plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Unquoted popup Shortcode Attribute in all versions up to, and including, 7.5.54.7212 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Successful exploitation requires the profile_videos_enable_bio option to be enabled, as script execution occurs on the author bio/archive page where the profile-video shortcode is rendered.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97630"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/flowplayer/modules/ad-popup.module.js#L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/custom-videos.php#L329"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/custom-videos.php#L360"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/custom-videos.php#L418"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/flowplayer-frontend.php#L993"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/6fc6246e-0a39-431f-a5b1-c1a84c48817b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T05:16:40Z"
+  }
+}

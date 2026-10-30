@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6cpx-w2cg-qmgr",
+  "modified": "2025-09-19T15:31:07Z",
+  "published": "2025-02-27T03:34:04Z",
+  "aliases": [
+    "CVE-2025-21751"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5: HWS, change error flow on matcher disconnect\n\nCurrently, when firmware failure occurs during matcher disconnect flow,\nthe error flow of the function reconnects the matcher back and returns\nan error, which continues running the calling function and eventually\nfrees the matcher that is being disconnected.\nThis leads to a case where we have a freed matcher on the matchers list,\nwhich in turn leads to use-after-free and eventual crash.\n\nThis patch fixes that by not trying to reconnect the matcher back when\nsome FW command fails during disconnect.\n\nNote that we're dealing here with FW error. We can't overcome this\nproblem. This might lead to bad steering state (e.g. wrong connection\nbetween matchers), and will also lead to resource leakage, as it is\nthe case with any other error handling during resource destruction.\n\nHowever, the goal here is to allow the driver to continue and not crash\nthe machine with use-after-free error.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21751"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ce840c7a659aa53a31ef49f0271b4fd0dc10296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23a86c76a1a197e8fbbbd0ce3e826eb58c471624"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5682aad0276ff9b9b0eff3188eb6a1f504d6b436"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T03:15:15Z"
+  }
+}

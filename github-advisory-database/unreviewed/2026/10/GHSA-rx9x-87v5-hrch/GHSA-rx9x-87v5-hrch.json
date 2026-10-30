@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rx9x-87v5-hrch",
+  "modified": "2026-10-28T12:31:08Z",
+  "published": "2026-10-28T12:31:08Z",
+  "aliases": [
+    "CVE-2026-99211"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetlink: reset skb headers before unicast and multicast filtering\n\nSocket filters can use SKF_NET_OFF and SKF_LL_OFF to read relative to\nan skb's network and MAC headers. Netlink producers may reserve\nheadroom without resetting those headers, allowing a receiving socket's\nfilter to read data before the initialized message.\n\nFor example, IWPM HELLO replies are allocated with dev_alloc_skb(),\nwhich reserves NET_SKB_PAD bytes. An unprivileged NETLINK_RDMA user can\nattach a classic socket filter and disclose this headroom through the\nlength of the delivered reply. The resets in netlink_dump() do not help\nbecause IWPM sends a separately allocated skb through netlink_unicast().\n\nReset both headers before running the receiver's filter in unicast and\nbroadcast delivery, as is already done for dump skbs. This also covers\nother netlink producers that reserve headroom without changing their\nallocation or message-building code.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99211"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06791594274f87c29f1a9f1961d700272716a49d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06935da5de83aa8b98841563894857e7d2f80e47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bf659bd54e1f00e34cf5244b1d289c506fa47c0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T11:17:42Z"
+  }
+}

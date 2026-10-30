@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6h7q-rp25-r6h4",
+  "modified": "2026-05-01T21:31:20Z",
+  "published": "2026-05-01T18:31:25Z",
+  "aliases": [
+    "CVE-2025-69606"
+  ],
+  "details": "Cross-Site Scripting (XSS) vulnerability was discovered in the GSVoIP web panel version 2.0.90. The `msg` parameter in the `/painel/gateways.php/error` endpoint does not properly sanitize user-supplied input, allowing attackers to inject arbitrary JavaScript into the HTML response. A remote attacker can exploit this vulnerability by sending a crafted URL to a victim, leading to unauthorized script execution, session hijacking, phishing, or other client-side attacks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-69606"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Razielx64/CVE-2025-69606-GSVoIP-XSS"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sip2.solutionsvoip.com.br/painel/gateways.php/error?msg=%3C%2Fscript%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.solutionsvoip.com.br"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T18:16:13Z"
+  }
+}

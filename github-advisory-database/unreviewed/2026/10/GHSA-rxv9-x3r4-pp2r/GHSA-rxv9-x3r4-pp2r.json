@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rxv9-x3r4-pp2r",
+  "modified": "2026-10-13T03:30:29Z",
+  "published": "2026-10-09T18:31:43Z",
+  "aliases": [
+    "CVE-2026-108111"
+  ],
+  "details": "ruoyi-ai 3.0.0 through 3.1.0 contains a missing authorization vulnerability in the GET /workflow/search endpoint that exposes other users' private workflows. Authenticated non-admin users can query this endpoint, which lacks owner or is_public filtering, to list enabled private workflows in the same tenant, including UUIDs and full node and edge configurations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ageerle/ruoyi-ai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ageerle/ruoyi-ai/blob/v3.1.0/ruoyi-modules/ruoyi-aiflow/src/main/java/org/ruoyi/workflow/controller/WorkflowController.java#L121-L130"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ageerle/ruoyi-ai/blob/v3.1.0/ruoyi-modules/ruoyi-aiflow/src/main/java/org/ruoyi/workflow/service/WorkflowService.java#L187-L202"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind/SJnkeEUoMx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind/cve-2026-108111-108112-ruoyi-ai-workflow-authz"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ruoyi-ai-3.0.0-through-3.1.0-missing-authorization-via-workflow-search"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-09T16:17:26Z"
+  }
+}

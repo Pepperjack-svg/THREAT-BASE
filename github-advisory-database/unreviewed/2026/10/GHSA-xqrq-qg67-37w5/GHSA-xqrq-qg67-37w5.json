@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xqrq-qg67-37w5",
+  "modified": "2026-10-19T09:32:31Z",
+  "published": "2026-10-19T09:32:30Z",
+  "aliases": [
+    "CVE-2026-112179"
+  ],
+  "details": "In MISP, the event synchronization process contained a logic error in the preparation of event reports for remote push. The filtering of non-exportable tags was applied only once after the iteration over all reports, rather than to each individual report.\n\nAs a result:\n\n- All reports except the last one in the set were pushed to the remote MISP instance with their non-exportable tags intact, effectively disclosing restricted tag information to the receiving instance.\n\n- When the last report in the set was withheld (empty), a null report was pushed, causing the remote instance to fail saving the event.\n\nThis issue affects any MISP instance configured to push events with multiple reports to a remote server via synchronization.\n\nAffected: <2.5.48.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112179"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/0be4564a9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T09:17:08Z"
+  }
+}

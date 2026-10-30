@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ghqh-9ppg-g8cf",
+  "modified": "2025-11-12T21:31:01Z",
+  "published": "2025-05-02T18:31:35Z",
+  "aliases": [
+    "CVE-2023-53091"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: update s_journal_inum if it changes after journal replay\n\nWhen mounting a crafted ext4 image, s_journal_inum may change after journal\nreplay, which is obviously unreasonable because we have successfully loaded\nand replayed the journal through the old s_journal_inum. And the new\ns_journal_inum bypasses some of the checks in ext4_get_journal(), which\nmay trigger a null pointer dereference problem. So if s_journal_inum\nchanges after the journal replay, we ignore the change, and rewrite the\ncurrent journal_inum to the superblock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3039d8b8692408438a618fac2776b629852663c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/499fef2030fb754c68b1c7cb3a799a3bc1d0d925"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70e66bdeae4d0f7c8e87762f425b68aedd5e8955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee0c5277d4fab920bd31345c49e193ecede9ecef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-02T16:15:28Z"
+  }
+}

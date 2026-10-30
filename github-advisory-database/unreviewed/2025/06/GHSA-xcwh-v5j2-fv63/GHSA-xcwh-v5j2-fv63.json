@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xcwh-v5j2-fv63",
+  "modified": "2025-11-18T18:32:45Z",
+  "published": "2025-06-18T12:30:49Z",
+  "aliases": [
+    "CVE-2022-50125"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: cros_ec_codec: Fix refcount leak in cros_ec_codec_platform_probe\n\nof_parse_phandle() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a034d93ee929a9ea89f3fa5f1d8492435b9ee6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1065c385325845c88350c765cc6e449f46741984"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3e64b5562c077218295f2230fb5cf181193cb06"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bae95c5aee1f67da6608ceaebfb744d900e5ffbf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca6c9244e6c9827a0b2fe8808c5e7b1ee8ab7104"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:42Z"
+  }
+}

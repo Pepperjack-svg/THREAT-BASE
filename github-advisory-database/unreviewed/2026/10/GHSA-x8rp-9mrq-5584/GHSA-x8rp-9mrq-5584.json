@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x8rp-9mrq-5584",
+  "modified": "2026-10-10T21:31:15Z",
+  "published": "2026-10-10T21:31:15Z",
+  "aliases": [
+    "CVE-2026-108595"
+  ],
+  "details": "Phi 0.3.0 through 0.28.4 contains a permission bypass vulnerability that allows spawned sub-agents to escape workspace_only_writes and readonly mode by supplying an unchecked workdir to agent_spawn. Attackers can plant prompt-injected instructions in processed content so the agent spawns a worker rooted elsewhere, causing unapproved file writes anywhere the user can write.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108595"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pulseaiclub/phi"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pulseaiclub/phi/blob/5b3cb440a7c58115ef64283a737a43299f2805a4/internal/agent/engine_runner.go#L52-L60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pulseaiclub/phi/blob/5b3cb440a7c58115ef64283a737a43299f2805a4/internal/tools/agenttool/agent.go#L106-L120"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind/phi-subagent-workdir-workspace-escape"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/phi-0.3.0-through-0.28.4-permission-bypass-via-agent-spawn-workdir"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T19:16:57Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcw2-f6v9-6ffp",
+  "modified": "2026-10-23T06:31:26Z",
+  "published": "2026-10-15T21:36:02Z",
+  "aliases": [
+    "CVE-2026-108334"
+  ],
+  "details": "A flaw was found in the internal WebAssembly (WASM) shim used by the Kuadrant operator. When generating the CEL predicate that determines whether Gateway-level authentication and rate limiting should run, the shim does not correctly escape values from HTTPRoute match fields. A user who can create or modify an HTTPRoute attached to a shared Gateway can provide a crafted path, header, or query match value that causes the predicate to skip those checks. The request is still forwarded to the route’s backend.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108334"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Kuadrant/kuadrant-operator/commit/7e667dc216e6ad38feaeadb391da59aa0380057a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:83531"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:88203"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-108334"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2548768"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://github.com/advisories/GHSA-fcw2-f6v9-6ffp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-917"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:20Z"
+  }
+}

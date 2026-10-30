@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3g2f-4rjg-9385",
+  "modified": "2026-01-14T19:50:09Z",
+  "published": "2026-01-14T16:45:07Z",
+  "aliases": [
+    "CVE-2026-21889"
+  ],
+  "summary": "Weblate leaks information via screenshots",
+  "details": "### Impact\nThe screenshot images were served directly by the HTTP server without proper access control. This could allow an unauthenticated user to access screenshots after guessing their filename.\n\n### Patches\n* https://github.com/WeblateOrg/weblate/pull/17516\n\n### References\n\nThanks to Lukas May and Michael Leu for reporting this.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "weblate"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.15.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/security/advisories/GHSA-3g2f-4rjg-9385"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21889"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/pull/17516"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/commit/a6eb5fd0299780eca286be8ff187dc2d10feec47"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/WeblateOrg/weblate"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-14T16:45:07Z",
+    "nvd_published_at": "2026-01-14T17:16:07Z"
+  }
+}

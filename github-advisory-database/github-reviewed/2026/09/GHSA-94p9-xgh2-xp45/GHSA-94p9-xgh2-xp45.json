@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-94p9-xgh2-xp45",
+  "modified": "2026-09-30T23:54:13Z",
+  "published": "2026-09-30T23:54:13Z",
+  "aliases": [
+    "CVE-2026-102930"
+  ],
+  "summary": "virtualenv: Downloaded seed wheels (pip/setuptools) are not integrity-checked before use",
+  "details": "`download_wheel()` runs `pip download` and hands the result straight to the seeder, with nothing checking the bytes it gets back. The embedded pip and setuptools wheels carry a `BUNDLE_SHA256` that virtualenv checks on every load, but a wheel fetched over the network for the periodic-update feature or the `--download` flag had no equivalent verification.\n\nA compromised index, a stale mirror, or a MITM'd download (when TLS is intercepted, e.g. via a misconfigured or malicious CA) could substitute a different wheel under the same distribution/version/filename, and virtualenv would cache and seed it into every environment created afterward with no warning.\n\nFixed by computing the downloaded wheel's sha256 and comparing it against the digest PyPI's public JSON API reports for that exact release, independent of which index actually served the file. The check is skipped, not treated as failure, when a custom index (`PIP_INDEX_URL`, `PIP_EXTRA_INDEX_URL`, `PIP_INDEX`) is configured, since a private index can legitimately serve a different, intentionally rebuilt wheel. Fix: https://github.com/pypa/virtualenv/pull/3251",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "virtualenv"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "21.7.12"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 21.7.11"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/virtualenv/security/advisories/GHSA-94p9-xgh2-xp45"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102930"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/virtualenv/pull/3251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/virtualenv/commit/a01ed3e2f239d6ab1fce62c5c7664ccf268fff6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/virtualenv/PYSEC-2026-4011.yaml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pypa/virtualenv"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/virtualenv/releases/tag/21.7.12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/virtualenv"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-494"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-30T23:54:13Z",
+    "nvd_published_at": "2026-09-29T21:17:18Z"
+  }
+}

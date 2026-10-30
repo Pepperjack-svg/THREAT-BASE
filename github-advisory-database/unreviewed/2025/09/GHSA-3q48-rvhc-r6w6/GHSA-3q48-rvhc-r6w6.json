@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3q48-rvhc-r6w6",
+  "modified": "2025-09-16T15:32:37Z",
+  "published": "2025-09-16T15:32:37Z",
+  "aliases": [
+    "CVE-2009-20005"
+  ],
+  "details": "A stack-based buffer overflow exists in the UtilConfigHome.csp endpoint of InterSystems Caché 2009.1. The vulnerability is triggered by sending a specially crafted HTTP GET request containing an oversized argument to the .csp handler. Due to insufficient bounds checking, the input overflows a stack buffer, allowing an attacker to overwrite control structures and execute arbitrary code. It is unknown if this vulnerability was patched and an affected version range remains undefined.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-20005"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/http/intersystems_cache.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/16807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.intersystems.com/products/cache"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.juniper.net/us/en/threatlabs/ips-signatures/detail.APP:INTERSYSTEMS-CACHE-OF.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/intersystems-cache-stack-buffer-overflow"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T15:15:41Z"
+  }
+}

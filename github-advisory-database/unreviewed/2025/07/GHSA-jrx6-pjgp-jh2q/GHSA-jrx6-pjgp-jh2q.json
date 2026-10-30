@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jrx6-pjgp-jh2q",
+  "modified": "2025-07-11T15:31:39Z",
+  "published": "2025-07-11T15:31:39Z",
+  "aliases": [
+    "CVE-2025-52964"
+  ],
+  "details": "A Reachable Assertion vulnerability in the Routing Protocol Daemon (rpd) of Juniper Networks Junos OS and Junos OS Evolved allows an unauthenticated, network-based attacker to cause a Denial of Service (DoS).\n\nWhen the device receives a specific BGP UPDATE packet, the rpd crashes and restarts. Continuous receipt of this specific packet will cause a sustained DoS condition.\n\nFor the issue to occur, BGP multipath with \"pause-computation-during-churn\" must be configured on the device, and the attacker must send the paths via a BGP UPDATE from a established BGP peer.\n\nThis issue affects:\nJunos OS: \n  *  All versions before 21.4R3-S7, \n  *  from 22.3 before 22.3R3-S3, \n  *  from 22.4 before 22.4R3-S5, \n  *  from 23.2 before 23.2R2, \n  *  from 23.4 before 23.4R2.\n\n\n\nJunos OS Evolved: \n  *  All versions before 21.4R3-S7-EVO, \n  *  from 22.3 before 22.3R3-S3-EVO, \n  *  from 22.4 before 22.4R3-S5-EVO, \n  *  from 23.2 before 23.2R2-EVO, \n  *  from 23.4 before 23.4R2-EVO.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-52964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://supportportal.juniper.net/JSA100080"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-617"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-11T15:15:26Z"
+  }
+}

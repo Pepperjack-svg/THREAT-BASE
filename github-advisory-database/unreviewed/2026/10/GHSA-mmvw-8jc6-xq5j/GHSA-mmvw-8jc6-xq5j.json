@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mmvw-8jc6-xq5j",
+  "modified": "2026-10-14T15:32:21Z",
+  "published": "2026-10-14T15:32:21Z",
+  "aliases": [
+    "CVE-2026-98417"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: xfrm: reject unrepresentable espintcp transport headers\n\nESP-in-TCP can hand xfrm packets whose transport header offset no longer\nfits after the stream parser trims the TCP envelope. The plain transport\nheader reset truncates that offset and triggers the skb warning path.\n\nUse the careful transport-header helper and drop the skb through the\nexisting XFRM error path when the offset cannot be represented.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/206f396f46149dc8bc4dfd2b54b9879ba3ee1d7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/327b2a457dd7d5445f7395f371f3c65de79bd5ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a8243fd2e21980fa3fd10c0610e9155057cebd3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c29681207bc213188afa603dff2d55e7178a341"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96f01b53c2d05e003b040892256de54a586e8529"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2b84e73e0386ad0b4f9b8d3afde343e761f5275"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cce630c751279e974fa0bb574d80575e0cc7e8f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d37a5b87577c4b4c1a1dcb000a9dff1df2cf886b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T14:17:53Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j37p-9r5c-rjgj",
+  "modified": "2026-10-22T21:32:50Z",
+  "published": "2026-10-22T21:32:50Z",
+  "aliases": [
+    "CVE-2026-115507"
+  ],
+  "details": "Vikunja 2.2.0 before 2.7.1 contains an HTML injection vulnerability in CreateConversationalHeader in pkg/notifications/mail.go that interpolates display names and task and project titles raw into email anchors. Authenticated users can craft titles or display names that close the anchor and inject phishing links into task-comment and task-mention notification emails sent to project members.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-vikunja/vikunja/security/advisories/GHSA-rp33-8f2m-hm6j"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115507"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-vikunja/vikunja/commit/18ff05932632c65dbc90a88118597989c6af4bf9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-vikunja/vikunja"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-vikunja/vikunja/blob/v2.7.0/pkg/notifications/mail.go#L132-L148"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-vikunja/vikunja/releases/tag/v2.7.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vikunja-2.2.0-before-2.7.1-html-injection-via-notification-email-header"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T20:17:06Z"
+  }
+}

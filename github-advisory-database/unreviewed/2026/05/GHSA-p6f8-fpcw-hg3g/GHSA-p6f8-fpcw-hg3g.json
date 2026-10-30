@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p6f8-fpcw-hg3g",
+  "modified": "2026-06-01T18:31:35Z",
+  "published": "2026-05-27T15:33:22Z",
+  "aliases": [
+    "CVE-2026-46053"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: rds: fix MR cleanup on copy error\n\n__rds_rdma_map() hands sg/pages ownership to the transport after\nget_mr() succeeds. If copying the generated cookie back to user space\nfails after that point, the error path must not free those resources\nagain before dropping the MR reference.\n\nRemove the duplicate unpin/free from the put_user() failure branch so\nthat MR teardown is handled only through the existing final cleanup\npath.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46053"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/033370ffb3c9c0264d19f8ba9ef769523266589a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/106dc689206610cfa2098f593fdd1e020c997835"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8141a2dc70080eda1aedc0389ed2db2b292af5bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8fdbb6262a4a3ed44a0830a7793903b54bb27bdc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91a44b406bc1f9e1c5da0cb7d0d5991b43b79147"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3cb8cae530b2727d8245684148bb49425f6765c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d95cea9298be1ba8876e3f156be96d3a492085ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec55a86f7fba7d9111df94b9c11a4755ed492995"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:24Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hpgm-5w85-35mm",
+  "modified": "2026-10-21T15:41:51Z",
+  "published": "2026-10-18T18:32:00Z",
+  "aliases": [
+    "CVE-2026-98716"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Use the active VMCB's MSR bitmap when checking if MSR is intercepted\n\nUse the MSR permission bitmap of the active VMCB instead of assuming that\nKVM is always using vmcb02's bitmap when L2 is active, as KVM uses msrpm02\nif and only if L1 wants to intercept MSR accesses, i.e. if and only if KVM\nneeds to merge msprm01 with msrpm12.\n\nDon't bother tracking the virtual address of the bitmap that's being used,\nas __va() is cheap on x86, and caching the virtual address would introduce\nyet another source of potentially stale information.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98716"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/318ef696fa3c712e46bb62a1a828c3cd62f390c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55865b3ae03705aa39198783b9cb1f8b96eb44e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74836ae4785b9754bb36d0b18fcc1dec4e5e98d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/84da7a0e92207444d9cbfe69965e17db29008f27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e06bbb9ade7cdf28d4a3b5b14e5812881c8df85"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:25Z"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-crwm-whhx-38v8",
+  "modified": "2026-09-02T15:33:17Z",
+  "published": "2024-09-18T09:30:37Z",
+  "aliases": [
+    "CVE-2024-46754"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Remove tst_run from lwt_seg6local_prog_ops.\n\nThe syzbot reported that the lwt_seg6 related BPF ops can be invoked\nvia bpf_test_run() without without entering input_action_end_bpf()\nfirst.\n\nMartin KaFai Lau said that self test for BPF_PROG_TYPE_LWT_SEG6LOCAL\nprobably didn't work since it was introduced in commit 04d4b274e2a\n(\"ipv6: sr: Add seg6local action End.BPF\"). The reason is that the\nper-CPU variable seg6_bpf_srh_states::srh is never assigned in the self\ntest case but each BPF function expects it.\n\nRemove test_run for BPF_PROG_TYPE_LWT_SEG6LOCAL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-46754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9cd15511de7c619bbd0f54bb3f28e6e720ded5d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a675524cfbe88fd49c05ff8807a08646983e687c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b05c2e25a5c168dbb46b6f7fcb741fd4e4f3b54a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c13fda93aca118b8e5cd202e339046728ee7dddb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e217492f6fa2228ad703ee3006d8fc4e5969fbd4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea3fae6984ba0f054550e4da22219489c12cd8d4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-09-18T08:15:04Z"
+  }
+}

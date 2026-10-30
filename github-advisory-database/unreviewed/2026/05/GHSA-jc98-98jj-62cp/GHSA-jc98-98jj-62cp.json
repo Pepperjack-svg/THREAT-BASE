@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jc98-98jj-62cp",
+  "modified": "2026-10-15T03:36:05Z",
+  "published": "2026-05-28T12:30:34Z",
+  "aliases": [
+    "CVE-2026-46234"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock: fix buffer size clamping order\n\nIn vsock_update_buffer_size(), the buffer size was being clamped to the\nmaximum first, and then to the minimum. If a user sets a minimum buffer\nsize larger than the maximum, the minimum check overrides the maximum\ncheck, inverting the constraint.\n\nThis breaks the intended socket memory boundaries by allowing the\nvsk->buffer_size to grow beyond the configured vsk->buffer_max_size.\n\nFix this by checking the minimum first, and then the maximum. This\nensures the buffer size never exceeds the buffer_max_size.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01ef69785dc3162f588a361ab770b1e312800188"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b68881501460c3761f196469e1e503218c5e536"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2602f7bb5818e92315feeaeb71d8ce4d5c9ab160"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/310da27932dd0afe7ce7456dfe1f0814c3301f41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a998a7e250bf976539e05a00ec64a81292afecaa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/caf11dfea5233a69298a1c448bbf8d1639c80536"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d114bfdc9b76bf93b881e195b7ec957c14227bab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6ec135941d2c1c2dbb87b5ce1783f4f6ac6ccca"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:39Z"
+  }
+}

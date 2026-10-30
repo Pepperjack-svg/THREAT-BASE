@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4c4g-c6q5-6cpq",
+  "modified": "2026-10-15T03:35:13Z",
+  "published": "2026-02-04T18:30:42Z",
+  "aliases": [
+    "CVE-2025-71197"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nw1: therm: Fix off-by-one buffer overflow in alarms_store\n\nThe sysfs buffer passed to alarms_store() is allocated with 'size + 1'\nbytes and a NUL terminator is appended. However, the 'size' argument\ndoes not account for this extra byte. The original code then allocated\n'size' bytes and used strcpy() to copy 'buf', which always writes one\nbyte past the allocated buffer since strcpy() copies until the NUL\nterminator at index 'size'.\n\nFix this by parsing the 'buf' parameter directly using simple_strtoll()\nwithout allocating any intermediate memory or string copying. This\nremoves the overflow while simplifying the code.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71197"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/060b08d72a38b158a7f850d4b83c17c2969e0f6b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49ff9b4b9deacbefa6654a0a2bcaf910c9de7e95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a5820ecfa5a76c3d3e154802c8c15f391ef442e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6fd6d2a8e41b7f544a4d26cbd60bedf9c67893a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/761fcf46a1bd797bd32d23f3ea0141ffd437668a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3fc3e1f04dcc7c41787bbf08a6e0d2728e022cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6b2609af21b5cccc9559339591b8a2cbf884169"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-04T17:16:11Z"
+  }
+}

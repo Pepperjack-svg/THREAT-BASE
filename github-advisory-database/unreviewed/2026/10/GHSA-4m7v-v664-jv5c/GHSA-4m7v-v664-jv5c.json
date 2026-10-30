@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4m7v-v664-jv5c",
+  "modified": "2026-10-27T00:32:51Z",
+  "published": "2026-10-27T00:32:51Z",
+  "aliases": [
+    "CVE-2026-116813"
+  ],
+  "details": "OpenPanel before 3.0.0 contains an sql injection vulnerability in ConversionService.getConversion that allows project-read members and share-link holders to inject ClickHouse SQL through unescaped event names and dates. Attackers can break out of string literals in series names or startDate/endDate values with OR 1=1 to neutralize project_id scoping and read other tenants' analytics data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Openpanel-dev/openpanel/security/advisories/GHSA-7fm7-rprq-g8rm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116813"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openpanel-before-3.0.0-clickhouse-sql-injection-via-conversion-service-ts"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-27T00:17:14Z"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-425c-353w-6mvg",
+  "modified": "2026-10-15T03:34:38Z",
+  "published": "2025-02-27T21:32:16Z",
+  "aliases": [
+    "CVE-2025-21802"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hns3: fix oops when unload drivers paralleling\n\nWhen unload hclge driver, it tries to disable sriov first for each\nae_dev node from hnae3_ae_dev_list. If user unloads hns3 driver at\nthe time, because it removes all the ae_dev nodes, and it may cause\noops.\n\nBut we can't simply use hnae3_common_lock for this. Because in the\nprocess flow of pci_disable_sriov(), it will trigger the remove flow\nof VF, which will also take hnae3_common_lock.\n\nTo fixes it, introduce a new mutex to protect the unload process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21802"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/622d92a67656e5c4d2d6ccac02d688ed995418c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82736bb83fb0221319c85c2e9917d0189cd84e1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c640dd3d900cc8988a39c007591f1deee776df4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92e5995773774a3e70257e9c95ea03518268bea5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5a8bc47aa0a4aa8bca5466dfa2d12dbb5b3cd0c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cafe9a27e22736d4a01b3933e36225f9857c7988"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e876522659012ef2e73834a0b9f1cbe3f74d5fad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/03/msg00028.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T20:16:02Z"
+  }
+}

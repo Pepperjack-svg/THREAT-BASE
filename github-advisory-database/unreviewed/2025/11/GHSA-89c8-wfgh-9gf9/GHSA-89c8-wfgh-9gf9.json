@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-89c8-wfgh-9gf9",
+  "modified": "2026-04-08T18:33:58Z",
+  "published": "2025-11-18T09:30:51Z",
+  "aliases": [
+    "CVE-2025-12411"
+  ],
+  "details": "The Premmerce Wholesale Pricing for WooCommerce plugin for WordPress is vulnerable to SQL Injection via the 'ID' parameter in versions up to, and including, 1.1.10. This is due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with subscriber level access and above, to manipulate SQL queries that can be used to extract sensitive information from the database and modify price type display names in the database via the admin-post.php \"premmerce_update_price_type\" action, causing cosmetic corruption of the admin interface. The 'price_type' parameter of the \"premmerce_delete_price_type\" is also vulnerable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12411"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/premmerce-woocommerce-wholesale-pricing/tags/1.1.10/src/Admin/Admin.php#L83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/premmerce-woocommerce-wholesale-pricing/tags/1.1.10/src/Models/Model.php#L171"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3465244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/1e4e27e0-bbb0-498a-b425-9e9d60dfed0f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-18T09:15:48Z"
+  }
+}

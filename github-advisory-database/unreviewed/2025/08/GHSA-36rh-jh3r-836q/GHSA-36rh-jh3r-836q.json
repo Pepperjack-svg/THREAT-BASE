@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-36rh-jh3r-836q",
+  "modified": "2025-11-04T00:32:06Z",
+  "published": "2025-08-26T03:44:56Z",
+  "aliases": [
+    "CVE-2024-28026"
+  ],
+  "details": "Three OS command injection vulnerabilities exist in the web interface I/O configuration functionality of MC Technologies MC LR Router 2.10.5. A specially crafted HTTP request can lead to arbitrary command execution. An attacker can make an authenticated HTTP request to trigger these vulnerabilities.This vulnerability refers to the authenticated OS Command Injection that occurs through the attacker-controlled `out1` parameter, at offset `0x8efc`.\n\n    \n    int out_ret = sscanf(current_param->key, \"out%u\", &io_idx);\n    if (out_ret == 1 && io_idx == 1)\n    {\n        // [4] Similar to `3`, but `out1` instead of `btn1`\n        if (asprintf(&command, \"/usr/sbin/vout %s %u vo_manual\", current_param->value, 1) > 0)\n        {\n            system(command);\n            return -1;\n        }\n    }",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-28026"
+    },
+    {
+      "type": "WEB",
+      "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2024-1953"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.talosintelligence.com/vulnerability_reports/TALOS-2024-1953"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-21T15:15:28Z"
+  }
+}

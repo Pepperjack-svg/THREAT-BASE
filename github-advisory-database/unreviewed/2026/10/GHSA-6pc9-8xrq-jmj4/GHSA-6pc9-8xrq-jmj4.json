@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6pc9-8xrq-jmj4",
+  "modified": "2026-10-23T12:31:37Z",
+  "published": "2026-10-23T12:31:37Z",
+  "aliases": [
+    "CVE-2026-98903"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmailbox: imx: Add a channel shutdown field\n\nsashiko complained about possible teardown problem. The scenario\n\n CPU 0                              CPU 1\n  imx_mu_isr()                   imx_mu_shutdown()\n                                   imx_mu_xcr_rmw(priv, IMX_MU_RCR, 0, IMX_MU_xCR_RIEn(priv->dcfg->type, cp->idx));\n    imx_mu_specific_rx()\n      imx_mu_xcr_rmw(priv, IMX_MU_RCR, IMX_MU_xCR_RIEn(priv->dcfg->type, 0), 0);\n                                   free_irq()\n\nThe RX event remains enabled because in this short window the RX event\nwas disabled in ->shutdown() while the interrupt was active and then\nenabled again by the ISR while ->shutdown waited in free_irq().\n\nThis race requires timing and if happens can be problematic on shared\nhandlers if the \"removed\" channel triggers an interrupt. In this case\nthe irq-core will shutdown the interrupt with the \"nobody cared\"\nmessage.\n\nIntroduce imx_mu_con_priv::shutdown to signal that the channel is\nshutting down. This flag is set with the lock held (by\nimx_mu_xcr_clr_shut()). The unmask side uses imx_mu_xcr_set_act() which\nonly enables the event if the channel has not been shutdown and\nserialises on the same lock.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98903"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02273054b2e94e53065ea5644265bb9d8f7ee2a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ccea7eacb7786c358833634f45700365f6c1d99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/944d8509c2220a2313d4a094a646507929fb6f8d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:24Z"
+  }
+}

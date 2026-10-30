@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c434-7979-wrg6",
+  "modified": "2026-10-14T15:32:25Z",
+  "published": "2026-10-14T15:32:25Z",
+  "aliases": [
+    "CVE-2026-110611"
+  ],
+  "details": "REBUILD through 4.5.0 contains an authorization bypass vulnerability in AiBot2Controller /aibot2 endpoints that act on a caller-supplied chatid without verifying ownership. Authenticated low-privilege users can supply another user's chatid to chat-init, chat-delete, chat-feedback, or chat-stream-stop to read, delete, exfiltrate, or interrupt AI assistant conversations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110611"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getrebuild/rebuild/blob/48c6cc42f9c331cc57c057fa9c66d6cbda990131/src/main/java/com/rebuild/core/aibot2/ChatManager.java#L99-L101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getrebuild/rebuild/blob/48c6cc42f9c331cc57c057fa9c66d6cbda990131/src/main/java/com/rebuild/web/aibot/AiBot2Controller.java#L151-L203"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/getrebuild-rebuild-aibot-chat-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rebuild-through-4.5.0-authorization-bypass-via-aibot2-chat-endpoints-chatid"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T15:17:13Z"
+  }
+}

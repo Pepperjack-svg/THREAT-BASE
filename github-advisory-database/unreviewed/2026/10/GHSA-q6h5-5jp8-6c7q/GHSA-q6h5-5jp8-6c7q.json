@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q6h5-5jp8-6c7q",
+  "modified": "2026-10-13T21:33:43Z",
+  "published": "2026-10-13T21:33:43Z",
+  "aliases": [
+    "CVE-2026-110240"
+  ],
+  "details": "Lancet through 2.3.9 contains an SSRF protection bypass vulnerability in netutil.IsInternalIP that misclassifies IPv6 private, link-local, CGNAT and transition addresses as external. Attackers can supply hostnames resolving to these address forms, including NAT64, 6to4 or Teredo embedding internal IPv4, to reach internal services or cloud metadata endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110240"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/duke-git/lancet/issues/356"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/duke-git/lancet/pull/357"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/duke-git/lancet/commit/835111c832939a85416d686a1e99d5fe7060c9b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/duke-git/lancet"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/duke-git/lancet/blob/v1.4.6/netutil/net.go#L158-L170"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/duke-git/lancet/blob/v2.3.9/netutil/net.go#L192-L205"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lancet-through-2.3.9-ssrf-protection-bypass-via-netutil-isinternalip"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:49Z"
+  }
+}

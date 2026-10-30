@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2h4h-cj8f-67g5",
+  "modified": "2025-04-28T18:30:52Z",
+  "published": "2025-04-18T15:31:38Z",
+  "aliases": [
+    "CVE-2025-39778"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nobjtool, nvmet: Fix out-of-bounds stack access in nvmet_ctrl_state_show()\n\nThe csts_state_names[] array only has six sparse entries, but the\niteration code in nvmet_ctrl_state_show() iterates seven, resulting in a\npotential out-of-bounds stack read.  Fix that.\n\nFixes the following warning with an UBSAN kernel:\n\n  vmlinux.o: warning: objtool: .text.nvmet_ctrl_state_show: unexpected end of section",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39778"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0cc0efc58d6c741b2868d4af24874d7fec28a575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/107a23185d990e3df6638d9a84c835f963fe30a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1adc93a525fdee8e2b311e6d5fd93eb69714ca05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8fbf37a3577b4d64c150cafde338eee17b2f2ea4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-18T07:15:44Z"
+  }
+}

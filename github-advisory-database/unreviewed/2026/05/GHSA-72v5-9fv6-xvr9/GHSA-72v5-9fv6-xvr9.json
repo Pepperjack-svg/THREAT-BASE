@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-72v5-9fv6-xvr9",
+  "modified": "2026-05-08T21:31:21Z",
+  "published": "2026-05-06T12:30:35Z",
+  "aliases": [
+    "CVE-2026-43264"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: of: display_timing: fix refcount leak in of_get_display_timings()\n\nof_parse_phandle() returns a device_node with refcount incremented,\nwhich is stored in 'entry' and then copied to 'native_mode'. When the\nerror paths at lines 184 or 192 jump to 'entryfail', native_mode's\nrefcount is not decremented, causing a refcount leak.\n\nFix this by changing the goto target from 'entryfail' to 'timingfail',\nwhich properly calls of_node_put(native_mode) before cleanup.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43264"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/20881ad42e651c69d89eb38a2042838187900fd6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b22e4fe1273c24f405ed7903349c4bbd82b6368"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ed019654234edb8625c05d05e15d40f74e64f70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69290f2d3999c5fa1a7f5d5593cfc5461fa3ee64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5bdcc5afbff845834d04d651773cb6b47db5dd3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5734f9030a8b1e13868d1641b5163d8e659306e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d6f34bbff07476c6abb8672c89d217824871c5ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eacf9840ae1285a1ef47eb0ce16d786e542bd4d7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:47Z"
+  }
+}

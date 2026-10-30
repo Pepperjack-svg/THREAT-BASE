@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4v4x-mh67-4m6p",
+  "modified": "2025-02-27T21:32:13Z",
+  "published": "2025-02-27T21:32:13Z",
+  "aliases": [
+    "CVE-2022-49377"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-mq: don't touch ->tagset in blk_mq_get_sq_hctx\n\nblk_mq_run_hw_queues() could be run when there isn't queued request and\nafter queue is cleaned up, at that time tagset is freed, because tagset\nlifetime is covered by driver, and often freed after blk_cleanup_queue()\nreturns.\n\nSo don't touch ->tagset for figuring out current default hctx by the mapping\nbuilt in request queue, so use-after-free on tagset can be avoided. Meantime\nthis way should be fast than retrieving mapping from tagset.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49377"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/460aa288c5cd0544dcf933a2f0ad0e8c6d2d35ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d05426e2d5fd7df8afc866b78c36b37b00188b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70fdd922c7bf8949f8df109cf2635dff64c90392"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b140bac470b4f707cda59c7266214246238661df"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:14Z"
+  }
+}

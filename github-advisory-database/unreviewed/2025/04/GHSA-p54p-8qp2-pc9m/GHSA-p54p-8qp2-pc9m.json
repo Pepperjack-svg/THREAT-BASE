@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p54p-8qp2-pc9m",
+  "modified": "2025-11-14T18:31:18Z",
+  "published": "2025-04-16T15:34:42Z",
+  "aliases": [
+    "CVE-2025-22074"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix r_count dec/increment mismatch\n\nr_count is only increased when there is an oplock break wait,\nso r_count inc/decrement are not paired. This can cause r_count\nto become negative, which can lead to a problem where the ksmbd\nthread does not terminate.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22074"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/20378cf48359f39dee0ef9b61470ebe77bd49c0d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/457db486203c90e10c3efc87fd45cc7000b1cd36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4790bcb269e5d6d88200a67c54ae6d627332a3be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2ec33d46b4d1c8085dab5d02e00b21f4f0fb8a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ddb7ea36ba7129c2ed107e2186591128618864e1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:16:01Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r26w-hjm4-pvpr",
+  "modified": "2026-10-17T09:30:28Z",
+  "published": "2026-10-17T09:30:28Z",
+  "aliases": [
+    "CVE-2026-109983"
+  ],
+  "details": "The YMC Filter plugin for WordPress is vulnerable to Stored DOM-Based Cross-Site Scripting via the 'post_title' parameter in all versions up to, and including, 3.12.19 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The autocomplete REST endpoint is registered with a permission callback that unconditionally returns true, meaning any site visitor — including unauthenticated users — can trigger the payload simply by typing in the YMC filter search box, while only Author-level access is required to store it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109983"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ymc-smart-filter/tags/3.12.19/ymc2/assets/js/frontend/ymc-public.min.js#L10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ymc-smart-filter/tags/3.12.19/ymc2/src/api/abstracts/FG_REST_Abstract_Controller.php#L66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ymc-smart-filter/tags/3.12.19/ymc2/src/api/controllers/frontend/FG_REST_Frontend_Search_Controller.php#L135"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ymc-smart-filter/tags/3.12.19/ymc2/src/api/controllers/frontend/FG_REST_Frontend_Search_Controller.php#L148"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ymc-smart-filter/tags/3.12.20/ymc2/src/api/controllers/frontend/FG_REST_Frontend_Search_Controller.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/ymc-smart-filter"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/27cfa62d-ba16-4344-be0c-82cac4d21d1c?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-17T08:16:28Z"
+  }
+}

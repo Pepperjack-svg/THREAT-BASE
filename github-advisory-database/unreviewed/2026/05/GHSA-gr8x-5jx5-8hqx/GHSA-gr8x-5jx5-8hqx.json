@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gr8x-5jx5-8hqx",
+  "modified": "2026-05-12T09:31:32Z",
+  "published": "2026-05-12T09:31:32Z",
+  "aliases": [
+    "CVE-2026-6690"
+  ],
+  "details": "The LifePress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'n' parameter of the lp_update_mds AJAX action in all versions up to, and including, 2.2.2. This is due to the `wp_ajax_nopriv_lp_update_mds` action being registered without nonce verification or capability checks, combined with insufficient input sanitization and output escaping when the series name is rendered in the admin settings page. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6690"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/lifepress/tags/2.2.2/includes/admin/class-admin-ajax.php#L110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/lifepress/tags/2.2.2/includes/admin/class-admin-ajax.php#L25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/lifepress/tags/2.2.2/includes/class-metrics.php#L355"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4fa5b8a9-1683-4806-987d-527834f45d34?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-12T09:16:55Z"
+  }
+}

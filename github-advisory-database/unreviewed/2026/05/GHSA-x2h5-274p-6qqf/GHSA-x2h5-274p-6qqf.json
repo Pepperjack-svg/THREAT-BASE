@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x2h5-274p-6qqf",
+  "modified": "2026-05-26T13:30:23Z",
+  "published": "2026-05-26T13:30:23Z",
+  "aliases": [
+    "CVE-2026-9284"
+  ],
+  "details": "The WooCommerce PayPal Payments plugin for WordPress is vulnerable to unauthorized order manipulation and information disclosure due to missing authorization checks on the `ppc-create-order` and `ppc-get-order` WC-AJAX endpoints in all versions up to, and including, 4.0.1. The `ppc-create-order` endpoint accepts an arbitrary WooCommerce order ID in the `pay-now` context without validating order ownership, allowing attackers to create PayPal orders for any WC order and write PayPal metadata to it. The `ppc-get-order` endpoint returns full PayPal order details for any PayPal order ID without binding to the requester's session. This makes it possible for unauthenticated attackers to chain these endpoints to manipulate other customers' order payment flows and exfiltrate sensitive order details (payer information, shipping data) by creating a PayPal order for a victim's WC order and then retrieving the PayPal order data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9284"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-paypal-payments/tags/3.3.2/modules/ppcp-button/src/Endpoint/CreateOrderEndpoint.php#L249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-paypal-payments/tags/3.3.2/modules/ppcp-button/src/Endpoint/GetOrderEndpoint.php#L44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-paypal-payments/trunk/modules/ppcp-button/src/Endpoint/CreateOrderEndpoint.php#L249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woocommerce-paypal-payments/trunk/modules/ppcp-button/src/Endpoint/GetOrderEndpoint.php#L44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3497597%40woocommerce-paypal-payments&new=3497597%40woocommerce-paypal-payments&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d5fa3282-b3be-4ea1-9865-011dea828a25?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-23T05:16:34Z"
+  }
+}

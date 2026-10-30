@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-32xj-q92g-hrxp",
+  "modified": "2026-04-08T21:33:09Z",
+  "published": "2026-01-07T12:31:22Z",
+  "aliases": [
+    "CVE-2025-14460"
+  ],
+  "details": "The Piraeus Bank WooCommerce Payment Gateway plugin for WordPress is vulnerable to unauthorized order status modification in all versions up to, and including, 3.1.4. This is due to missing authorization checks on the payment callback endpoint handler when processing the 'fail' callback from the payment gateway. This makes it possible for unauthenticated attackers to change any order's status to 'failed' via the publicly accessible WooCommerce API endpoint by providing only the order ID (MerchantReference parameter), which can be easily enumerated as order IDs are sequential integers. This can cause significant business disruption including canceled shipments, inventory issues, and loss of revenue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14460"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woo-payment-gateway-for-piraeus-bank/tags/3.1.4/classes/WC_Piraeusbank_Gateway.php#L821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/woo-payment-gateway-for-piraeus-bank/trunk/classes/WC_Piraeusbank_Gateway.php#L821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3439515"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d7b15198-8f44-4390-862b-35d41eb8a854?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-07T12:16:54Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m5cf-54f6-6gw2",
+  "modified": "2026-04-28T18:30:32Z",
+  "published": "2026-04-28T18:30:32Z",
+  "aliases": [
+    "CVE-2025-60887"
+  ],
+  "details": "An issue was discovered in Cista v0.15 and below. Insecure deserialization of untrusted input under certain conditions may lead to leaking of stack/heap addresses which may be used to bypass ASLR. Classes with pointer-like mechanics under the cista::raw namespace are prone to reference tampering, where Cista does not perform sufficient checks to safeguard against self-referencing pointers and referencing other data within the payload. The leak occurs if the deserialized values are observable by the attacker.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-60887"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/TrebledJ/66cc0ed37bdb3e70ce0ef98396790771"
+    },
+    {
+      "type": "WEB",
+      "url": "http://cista.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-28T16:16:05Z"
+  }
+}

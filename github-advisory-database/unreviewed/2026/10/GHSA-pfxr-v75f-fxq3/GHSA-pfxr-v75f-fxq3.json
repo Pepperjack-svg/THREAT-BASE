@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pfxr-v75f-fxq3",
+  "modified": "2026-10-21T15:41:50Z",
+  "published": "2026-10-18T18:31:58Z",
+  "aliases": [
+    "CVE-2026-98670"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: xilinx-xadc: free IRQ before cancelling the unmask worker on unbind\n\nThe ZYNQ XADC alarm IRQ handler queues zynq_unmask_work via\nschedule_delayed_work(); that work is cleared by a devm callback.\nRegister the devm callback before devm_request_irq() so the devres LIFO\nteardown frees the IRQ first, ensuring the handler can no longer queue\nwork by the time the workqueue is cleared. Otherwise the handler could\nre-arm the work and run it after the xadc structure has been freed.\n\nThis issue was found by an in-house static analysis tool.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98670"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/012451d72c12293918617ff98cc737bedad21910"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f3f427076240e75ff265e61645627a71ca4918c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49ea8a359e362bfbb32a647c8eb7962fbb37234e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a29d385ad7b340c952a3935af2b33488db1eb3a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5fe2d1b55faba6d00fd87ad491b6cb603046304"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:20Z"
+  }
+}

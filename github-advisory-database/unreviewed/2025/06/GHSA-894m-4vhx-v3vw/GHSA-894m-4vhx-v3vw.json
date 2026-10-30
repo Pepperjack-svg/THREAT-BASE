@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-894m-4vhx-v3vw",
+  "modified": "2025-11-19T15:31:29Z",
+  "published": "2025-06-18T12:30:53Z",
+  "aliases": [
+    "CVE-2022-50183"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/meson: encoder_cvbs: Fix refcount leak in meson_encoder_cvbs_init\n\nof_graph_get_remote_node() returns remote device nodepointer with\nrefcount incremented, we should use of_node_put() on it when done.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50183"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51c36411ae27bf5f06c43462d2de2d4947ed33ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d255ddbbf679aa47e041cbf68520fd985ed2279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb5ac08d5bd8626c318bd80a5063263daab8fdb6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:48Z"
+  }
+}

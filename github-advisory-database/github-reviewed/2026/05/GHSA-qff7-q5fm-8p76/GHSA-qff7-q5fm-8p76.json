@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qff7-q5fm-8p76",
+  "modified": "2026-05-04T21:19:24Z",
+  "published": "2026-05-04T21:19:24Z",
+  "aliases": [],
+  "summary": "AzuraCast has Missing Permissions Check on Media File Download, Allowing Cross-Station Data Exfiltration",
+  "details": "## Summary\n\nThe `GET /api/station/{station_id}/file/{id}/play` endpoint, handled by `PlayAction`, is missing the `Middleware\\Permissions` check that protects all sibling routes in the same `/file/{id}` route group. Any authenticated user can download media files from any station, regardless of whether they have permissions on that station. In multi-tenant deployments, this enables cross-station media exfiltration.\n\n## Details\n\nIn `backend/config/routes/api_station.php`, the `/file/{id}` route group (lines 407-429) defines four endpoints:\n\n```php\n// Line 407-429\n$group->group(\n    '/file/{id}',\n    function (RouteCollectorProxy $group) {\n        // GET /file/{id} — has Permissions check ✓\n        $group->get('', ...)->add(new Middleware\\Permissions(StationPermissions::Media, true));\n\n        // PUT /file/{id} — has Permissions check ✓\n        $group->put('', ...)->add(new Middleware\\Permissions(StationPermissions::Media, true));\n\n        // DELETE /file/{id} — has Permissions check ✓\n        $group->delete('', ...)->add(new Middleware\\Permissions(StationPermissions::DeleteMedia, true));\n\n        // GET /file/{id}/play — NO Permissions check ✗\n        $group->get('/play', Controller\\Api\\Stations\\Files\\PlayAction::class)\n            ->setName('api:stations:files:play');\n    }\n);\n```\n\nThe middleware chain for the `/play` endpoint is: `GetStation → RequireStation → RequireLogin → StationSupportsFeature(Media) → PlayAction`. The `RequireLogin` middleware (`backend/src/Middleware/RequireLogin.php`) only verifies a valid session/API key exists — it does not check station-level permissions.\n\nThe controller at `backend/src/Controller/Api/Stations/Files/PlayAction.php:84` calls `$this->mediaRepo->requireForStation($id, $station)`, which verifies the media belongs to the station but performs no authorization check. The `findForStation` method (`StationMediaRepository.php:46-66`) accepts both auto-increment integer IDs and unique IDs, making enumeration trivial via sequential integers.\n\nThis is notably similar to the regression fixed in commit `7fbc7dd` (2026-02-26), which restored a missing group-level `Permissions` middleware on the adjacent `/files` group. The `/play` route was missed in that fix.\n\n## PoC\n\n```bash\n# Step 1: Create two stations (Station A and Station B) in a multi-tenant AzuraCast instance.\n# Upload media files to Station B.\n\n# Step 2: Create a user with permissions ONLY on Station A. Generate an API key for this user.\nAPI_KEY=\"user-with-only-station-a-access\"\n\n# Step 3: Enumerate and download media from Station B (station_id=2) using sequential IDs\n# This should return 403 Forbidden, but instead returns the file content\ncurl -H \"X-API-Key: $API_KEY\" https://target/api/station/2/file/1/play -o stolen1.mp3\n# HTTP 200 OK — file downloaded successfully\n\ncurl -H \"X-API-Key: $API_KEY\" https://target/api/station/2/file/2/play -o stolen2.mp3\n# HTTP 200 OK — file downloaded successfully\n\n# Step 4: Verify the same user is correctly blocked on other endpoints in the same group\ncurl -H \"X-API-Key: $API_KEY\" https://target/api/station/2/file/1\n# HTTP 403 Forbidden — permission check works here\n```\n\n## Impact\n\n- Any authenticated user can download the full media library of any station in the instance, regardless of their assigned permissions.\n- In multi-tenant deployments (e.g., hosting providers running multiple radio stations), a user of Station A can exfiltrate all copyrighted audio content from Station B.\n- Media IDs use auto-increment integers (`HasAutoIncrementId` trait on `StationMedia`), enabling trivial enumeration of all media files.\n- The confidentiality impact is High: full media file contents (MP3, FLAC, etc.) are exposed.\n\n## Recommended Fix\n\nAdd the `Permissions` middleware to the `/play` route, matching the pattern used by the adjacent routes:\n\n```php\n// backend/config/routes/api_station.php, line 426-427\n// Before:\n$group->get('/play', Controller\\Api\\Stations\\Files\\PlayAction::class)\n    ->setName('api:stations:files:play');\n\n// After:\n$group->get('/play', Controller\\Api\\Stations\\Files\\PlayAction::class)\n    ->setName('api:stations:files:play')\n    ->add(new Middleware\\Permissions(StationPermissions::Media, true));\n```",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "azuracast/azuracast"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.23.6"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.23.5"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/AzuraCast/AzuraCast/security/advisories/GHSA-qff7-q5fm-8p76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AzuraCast/AzuraCast/commit/ba92dc3f0ea15a9c0ba0f4557d99a9a26004108f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/AzuraCast/AzuraCast"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-04T21:19:24Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-55fh-fmpq-w8h6",
+  "modified": "2026-10-15T03:35:20Z",
+  "published": "2026-03-25T12:30:22Z",
+  "aliases": [
+    "CVE-2026-23292"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: target: Fix recursive locking in __configfs_open_file()\n\nIn flush_write_buffer, &p->frag_sem is acquired and then the loaded store\nfunction is called, which, here, is target_core_item_dbroot_store().  This\nfunction called filp_open(), following which these functions were called\n(in reverse order), according to the call trace:\n\n  down_read\n  __configfs_open_file\n  do_dentry_open\n  vfs_open\n  do_open\n  path_openat\n  do_filp_open\n  file_open_name\n  filp_open\n  target_core_item_dbroot_store\n  flush_write_buffer\n  configfs_write_iter\n\ntarget_core_item_dbroot_store() tries to validate the new file path by\ntrying to open the file path provided to it; however, in this case, the bug\nreport shows:\n\ndb_root: not a directory: /sys/kernel/config/target/dbroot\n\nindicating that the same configfs file was tried to be opened, on which it\nis currently working on. Thus, it is trying to acquire frag_sem semaphore\nof the same file of which it already holds the semaphore obtained in\nflush_write_buffer(), leading to acquiring the semaphore in a nested manner\nand a possibility of recursive locking.\n\nFix this by modifying target_core_item_dbroot_store() to use kern_path()\ninstead of filp_open() to avoid opening the file using filesystem-specific\nfunction __configfs_open_file(), and further modifying it to make this fix\ncompatible.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23292"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/142eacb50fb903a4c10dee7e67b6e79ebb36a582"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14d4ac19d1895397532eec407433c5d74d9da53b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3161ef61f121d4573cad5b57c92188dcd9b284b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4fcfa424a581d823cb1a9676e3eefe6ca17e453a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a5641024fbfd9b24fe65984ad85fea10a3ae438"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8ef82cb6443d5f3260b1b830e17f03dda4229ea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:24Z"
+  }
+}

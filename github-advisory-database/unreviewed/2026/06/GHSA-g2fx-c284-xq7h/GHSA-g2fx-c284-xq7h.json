@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g2fx-c284-xq7h",
+  "modified": "2026-06-24T00:30:31Z",
+  "published": "2026-06-24T00:30:31Z",
+  "aliases": [
+    "CVE-2026-7574"
+  ],
+  "details": "Anthropic Claude Desktop Cowork VM image handling (confirmed across v1.1348.0 through v1.2278.0, including v1.1348.0, v1.1617.0, and v1.2278.0) validates only file presence and a version marker string before booting rootfs.img, but does not verify image content integrity at time-of-use. A local attacker with unprivileged code execution as the victim macOS user can modify the VM root filesystem image and have it trusted on subsequent Cowork VM boots, enabling persistent arbitrary code execution in the VM and access to host-mounted directories. The estimated CWE mapping is CWE-353 (Missing Support for Integrity Check).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7574"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cfp.recon.cx/recon-2026/talk/DZUQYU"
+    },
+    {
+      "type": "WEB",
+      "url": "https://takeonme.org/gcves/GCVE-1337-2026-00000000000000000000000000000000000000000000000001110111111101011111111110000000000000000000000000000000000000000000000000000001010"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-353"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-24T00:16:34Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hrhp-726g-9jqc",
+  "modified": "2026-10-07T18:32:09Z",
+  "published": "2026-10-07T18:32:08Z",
+  "aliases": [
+    "CVE-2026-107207"
+  ],
+  "details": "LMCache through 0.5.5 contains a server-side request forgery vulnerability in its frontend monitoring service that allows unauthenticated attackers to bypass the proxy allowlist by registering arbitrary hosts. Attackers can add entries via POST /api/proxies and then use /proxy or /proxy2 to reach internal hosts, read responses, and tamper with nodes or stop the heartbeat.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LMCache/LMCache/issues/5512"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LMCache/LMCache"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LMCache/LMCache/blob/v0.5.5/lmcache/lmcache_frontend/app.py#L411-L428"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LMCache/LMCache/blob/v0.5.5/lmcache/lmcache_frontend/app.py#L567-L604"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lmcache-through-0.5.5-missing-authentication-in-frontend-node-catalog-allows-ssrf-allowlist-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-07T16:17:45Z"
+  }
+}

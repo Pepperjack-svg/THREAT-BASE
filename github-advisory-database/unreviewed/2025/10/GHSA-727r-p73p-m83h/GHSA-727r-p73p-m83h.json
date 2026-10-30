@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-727r-p73p-m83h",
+  "modified": "2026-02-04T21:30:24Z",
+  "published": "2025-10-07T18:31:09Z",
+  "aliases": [
+    "CVE-2022-50548"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: i2c: hi846: Fix memory leak in hi846_parse_dt()\n\nIf any of the checks related to the supported link frequencies fail, then\nthe V4L2 fwnode resources don't get released before returning, which leads\nto a memleak. Fix this by properly freeing the V4L2 fwnode data in a\ndesignated label.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50548"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4368730678412a8fa71960dbda81e122dafa70f7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80113026d415e27483669db7a88b548d1ec3d3d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a05a9ae9ef3fffc9bc7ec2bc432a249a01155f6e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:39Z"
+  }
+}

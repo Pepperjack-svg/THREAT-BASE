@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-23q2-54qv-rq5x",
+  "modified": "2026-06-18T15:04:14Z",
+  "published": "2026-06-18T15:04:14Z",
+  "aliases": [
+    "CVE-2026-49274"
+  ],
+  "summary": "Kirby: `pages.access` permission is not checked in the pages picker for parent pages",
+  "details": "### TL;DR\n\nThis vulnerability affects all Kirby sites that use the `pages` field and where users of a particular role have no permission to access pages (`pages.access` permission is disabled). This can be due to configuration in the user blueprint(s), `options` in the model blueprint(s), or a combination of both settings.\n\nIt was possible to confirm the existence of arbitrary pages and to retrieve the value of the title field of the pages found.\n\nThe vulnerability can only be exploited by authenticated users. Write actions are *not* affected by this vulnerability.\n\n----\n\n### Introduction\n\nMissing authorization allows authenticated users to perform actions they are not intended to have access to.\n\nThe effects of missing authorization can include unauthorized access to sensitive information as well as unauthorized changes to content or system information.\n\n### Affected components\n\nKirby's user permissions control which user role is allowed to perform specific actions on content models in the CMS. These permissions are defined for each role in the user blueprint (`site/blueprints/users/...`). It is also possible to customize the permissions for each target model in the model blueprints (such as in `site/blueprints/pages/...`) using the `options` feature. The permissions and options together control the authorization of user actions.\n\nKirby provides the `pages.access` and `pages.list` permissions (among others). The `list` permission controls whether affected models appear in lists throughout the Panel and REST API. The `access` permission has the same effect but also disables direct access to the affected models.\n\nThis vulnerability affects the backend logic for the page picker that is used in the `pages` field to select pages. The picker is opened based on a user-provided parent page or the site model.\n\n### Impact\n\nIn affected releases, the backend logic did not validate that the user-provided parent page or site was accessible to the current user. This allowed authenticated attackers with knowledge of the full path to an existing page to confirm the existence of a particular page and to retrieve the value of the title field of that page. This could lead to the disclosure of sensitive information.\n\n### Patches\n\nThe problem has been patched in [Kirby 4.9.4](https://github.com/getkirby/kirby/releases/tag/4.9.4) and [Kirby 5.4.4](https://github.com/getkirby/kirby/releases/tag/5.4.4). Please update to one of these or a [later version](https://github.com/getkirby/kirby/releases) to fix the vulnerability.\n\nIn all of the mentioned releases, we have added a check verifying that the requested parent page or site is accessible to the current user before returning the picker data.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getkirby/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.9.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.9.3"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getkirby/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-alpha.1"
+            },
+            {
+              "fixed": "5.4.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.4.3"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getkirby/kirby/security/advisories/GHSA-23q2-54qv-rq5x"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getkirby/kirby"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getkirby/kirby/releases/tag/4.9.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getkirby/kirby/releases/tag/5.4.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-18T15:04:14Z",
+    "nvd_published_at": null
+  }
+}

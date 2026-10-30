@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qqx4-ccm8-48mc",
+  "modified": "2026-02-19T18:31:49Z",
+  "published": "2026-02-19T18:31:49Z",
+  "aliases": [
+    "CVE-2025-13842"
+  ],
+  "details": "The Breadcrumb NavXT plugin for WordPress is vulnerable to authorization bypass through user-controlled key in versions up to and including 7.5.0. This is due to the Gutenberg block renderer trusting the $_REQUEST['post_id'] parameter without verification in the includes/blocks/build/breadcrumb-trail/render.php file. This makes it possible for unauthenticated attackers to enumerate and view breadcrumb trails for draft or private posts by manipulating the post_id parameter, revealing post titles and hierarchy that should remain hidden.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13842"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/breadcrumb-navxt/trunk/includes/blocks/build/breadcrumb-trail/render.php#L17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3425008"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/62e25985-ac19-41a5-8027-eb053f4a6490?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-19T07:17:33Z"
+  }
+}

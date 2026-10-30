@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8vqg-92mx-5p5h",
+  "modified": "2025-07-02T15:30:36Z",
+  "published": "2025-07-02T09:30:29Z",
+  "aliases": [
+    "CVE-2025-24332"
+  ],
+  "details": "Nokia Single RAN AirScale baseband allows an authenticated administrative user access to all physical boards after performing a single login to the baseband system board. The baseband does not re-authenticate the user when they connect from the baseband system board to the baseband capacity boards using the internal bsoc SSH service, which is available only internally within the baseband and through the internal backplane between the boards. The bsoc SSH allows login from one board to another via the baseband internal backplane using an SSH private key present on the baseband system board.\n\nThis bsoc SSH capability was previously considered an administrative functionality but has now been restricted to be available only to baseband root-privileged administrators. This restriction mitigates the possibility of misuse with lower-level privileges (e.g., from baseband software images). This mitigation is included starting from release 23R4-SR 3.0 MP and later",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-24332"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nokia.com/about-us/security-and-privacy/product-security-advisory/cve-2025-24332"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-288"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-02T09:15:24Z"
+  }
+}

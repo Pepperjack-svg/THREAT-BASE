@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j5rm-v3vh-vx94",
+  "modified": "2026-05-18T15:37:00Z",
+  "published": "2026-05-18T15:37:00Z",
+  "aliases": [],
+  "summary": "eduMFA Passkeys: missing expiration flag may allow replay attacks and reuse of old challenges ",
+  "details": "### Impact\nIn eduMFA < 2.9.1 userless Passkey/WebAuthn challenges might be replayed and do not expire\n\n### Patches\nFixed in eduMFA >= 2.9.1 by adding validity information to the userless challenges.\n\n### Workarounds\nNo known workarounds besides disabling userless login altogether.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "edumfa"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.9.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/eduMFA/eduMFA/security/advisories/GHSA-j5rm-v3vh-vx94"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/eduMFA/eduMFA"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287",
+      "CWE-613"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-18T15:37:00Z",
+    "nvd_published_at": null
+  }
+}

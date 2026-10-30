@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rjw8-q97p-7xhf",
+  "modified": "2026-10-27T15:32:44Z",
+  "published": "2026-10-27T15:32:44Z",
+  "aliases": [
+    "CVE-2026-117561"
+  ],
+  "details": "Codefriar sf-mcp through 1.3.2 contains an OS command injection vulnerability that allows attackers to execute shell commands by supplying crafted Salesforce CLI tool flag values. Because escapeValue() in src/utils.ts fails to neutralize backticks, $() substitution, and other shell metacharacters, these values reach execSync in executeSfCommand and run as the MCP server user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-117561"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codefriar/sf-mcp/issues/17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codefriar/sf-mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codefriar/sf-mcp/blob/beb103dced68962e0c069b62cb377286751d0103/src/utils.ts#L79-L90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sf-mcp-through-1.3.2-os-command-injection-via-salesforce-cli-flag-values"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-27T14:16:38Z"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r8hp-cx2w-5c4r",
+  "modified": "2026-10-15T03:35:44Z",
+  "published": "2026-04-25T09:30:28Z",
+  "aliases": [
+    "CVE-2026-31682"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbridge: br_nd_send: linearize skb before parsing ND options\n\nbr_nd_send() parses neighbour discovery options from ns->opt[] and\nassumes that these options are in the linear part of request.\n\nIts callers only guarantee that the ICMPv6 header and target address\nare available, so the option area can still be non-linear. Parsing\nns->opt[] in that case can access data past the linear buffer.\n\nLinearize request before option parsing and derive ns from the linear\nnetwork header.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31682"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ba4caba423ed94d63006eb1d2227b0332ab7fcd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a30f6469b058574f49efde61cd6f5d79e576053"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f397b950c916e9a1f8a4fce04ea0110206cad47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/658261898130da620fc3d0fbb0523efb3366cb55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c55e41c73af5c4511070933b1bd25248521270c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a01aee7cafc575bb82f5529e8734e7052f9b16ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd91ec85aa4c77d645bd2739fc56784157a88ca2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c68433fd291c9e88c00292095172c62d1997d662"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-25T09:16:01Z"
+  }
+}

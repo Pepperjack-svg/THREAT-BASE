@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gcc9-wqf3-69qj",
+  "modified": "2026-01-08T18:30:43Z",
+  "published": "2026-01-07T21:31:56Z",
+  "aliases": [
+    "CVE-2026-22185"
+  ],
+  "details": "OpenLDAP Lightning Memory-Mapped Database (LMDB) mdb_load contains a heap buffer underflow vulnerability in the readline() function. When processing malformed input, an unsigned offset calculation can underflow a heap pointer, resulting in an out-of-bounds read of one byte before the allocated heap buffer. This may allow a local attacker to cause a denial of service and potentially disclose limited heap memory contents.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22185"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.openldap.org/show_bug.cgi?id=10421"
+    },
+    {
+      "type": "WEB",
+      "url": "https://seclists.org/fulldisclosure/2026/Jan/5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://seclists.org/fulldisclosure/2026/Jan/8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openldap.org"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openldap-lmdb-mdb-load-heap-buffer-underflow-in-readline"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-07T21:16:01Z"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-crqj-674f-vq27",
+  "modified": "2025-10-29T18:30:29Z",
+  "published": "2025-03-27T18:31:24Z",
+  "aliases": [
+    "CVE-2022-49747"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs/zmap.c: Fix incorrect offset calculation\n\nEffective offset to add to length was being incorrectly calculated,\nwhich resulted in iomap->length being set to 0, triggering a WARN_ON\nin iomap_iter_done().\n\nFix that, and describe it in comments.\n\nThis was reported as a crash by syzbot under an issue about a warning\nencountered in iomap_iter_done(), but unrelated to erofs.\n\nC reproducer: https://syzkaller.appspot.com/text?tag=ReproC&x=1037a6b2880000\nKernel config: https://syzkaller.appspot.com/text?tag=KernelConfig&x=e2021a61197ebe02\nDashboard link: https://syzkaller.appspot.com/bug?extid=a8e049cd3abd342936b6",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2144859229c1e74f52d3ea067338d314a83a8afb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6acd87d50998ef0afafc441613aeaf5a8f5c9eff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f31d8c889d9a4e47bfcc6c4537d0c9f89fe582c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-27T17:15:39Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-566j-v842-c9mx",
+  "modified": "2026-10-16T00:31:57Z",
+  "published": "2026-10-16T00:31:57Z",
+  "aliases": [
+    "CVE-2026-111344"
+  ],
+  "details": "APITable through 1.14.0-beta contains an authorization bypass vulnerability that allows authenticated users to read node descriptions from other spaces by supplying a user-controlled nodeId. Attackers can request GET /node/{nodeId}/description, which skips space membership and node permission checks, to disclose cross-tenant datasheet, folder, and form descriptions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111344"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apitable/apitable"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apitable/apitable/blob/v1.14.0-beta/backend-server/application/src/main/java/com/apitable/workspace/controller/NodeController.java#L1043-L1057"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/apitable-node-description-cross-space-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/apitable-through-1.14.0-beta-authorization-bypass-via-get-node-nodeid-description"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T22:19:31Z"
+  }
+}

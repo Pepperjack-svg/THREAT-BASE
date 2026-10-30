@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3vxg-x5f8-f5qf",
+  "modified": "2026-04-14T01:01:17Z",
+  "published": "2026-04-14T01:01:17Z",
+  "aliases": [
+    "CVE-2026-32270"
+  ],
+  "summary": "Craft Commerce has an unauthenticated information disclosure that can leak some customer order data on anonymous payments",
+  "details": "### Summary\n\n`PaymentsController::actionPay` discloses some order data to unauthenticated users when an order number is provided and the email check fails during an anonymous payment.\n\nThe JSON error response includes the serialized order object (`order`), which contains some sensitive fields such as customer email, shipping address, and billing address.\n\n### Details\n\nI manually audited frontend payment flows and found that `actionPay()` retrieves orders by number before authorization is fully enforced.\n\nCode path:\n\n1. Load order by `number`.\n2. Evaluate whether payment is authorized for completed orders (`number + matching email`).\n3. If unauthorized, return failure.\n4. Failure response still includes `cartArray($order)`, which serializes sensitive order data.\n\nWhy is this a vulnerability?\n\n- Authorization logic says the requester is not allowed to pay for a completed order without an email.\n- But the response still returns the same completed order’s contents.\n\n### Impact\n\nType: Information Disclosure / Broken Access Control\n\nWho is impacted:\n\n- Any Commerce deployment where completed order numbers can be obtained or leaked.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/commerce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.6.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.5.4"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/commerce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.11.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.10.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/security/advisories/GHSA-3vxg-x5f8-f5qf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/commit/48a5d946419964e2af1ac64a8e1acc2a32ca0a08"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/commerce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/releases/tag/4.11.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/releases/tag/5.6.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200",
+      "CWE-862"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-14T01:01:17Z",
+    "nvd_published_at": "2026-04-13T20:16:33Z"
+  }
+}

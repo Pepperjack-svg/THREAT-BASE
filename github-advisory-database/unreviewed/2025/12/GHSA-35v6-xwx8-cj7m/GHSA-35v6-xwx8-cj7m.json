@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-35v6-xwx8-cj7m",
+  "modified": "2026-10-21T15:40:12Z",
+  "published": "2025-12-16T18:31:34Z",
+  "aliases": [
+    "CVE-2025-68318"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nclk: thead: th1520-ap: set all AXI clocks to CLK_IS_CRITICAL\n\nThe AXI crossbar of TH1520 has no proper timeout handling, which means\ngating AXI clocks can easily lead to bus timeout and thus system hang.\n\nSet all AXI clock gates to CLK_IS_CRITICAL. All these clock gates are\nungated by default on system reset.\n\nIn addition, convert all current CLK_IGNORE_UNUSED usage to\nCLK_IS_CRITICAL to prevent unwanted clock gating.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68318"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bdec5e01fc2f3114d1fb1daeb1000911d783c4ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c567bc5fc68c4388c00e11fc65fd14fe86b52070"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d816c00bb69fb2eecd3fccac067857f3a0dbc44e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T16:16:11Z"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jpr9-mqf4-fm6w",
+  "modified": "2025-12-30T15:30:29Z",
+  "published": "2025-12-30T15:30:29Z",
+  "aliases": [
+    "CVE-2022-50887"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nregulator: core: fix unbalanced of node refcount in regulator_dev_lookup()\n\nI got the the following report:\n\n  OF: ERROR: memory leak, expected refcount 1 instead of 2,\n  of_node_get()/of_node_put() unbalanced - destroy cset entry:\n  attach overlay node /i2c/pmic@62/regulators/exten\n\nIn of_get_regulator(), the node is returned from of_parse_phandle()\nwith refcount incremented, after using it, of_node_put() need be called.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50887"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e88505ac0a6ae97746bcdbd4b042ee9f20455ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b93c58adddd98812ad928bbc2063038f3df1ffd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f98469c3141f8e42ba11075a273fb795bbad57f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ac888db0f67813d91373a9a61c840f815cd4ec9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4dfcf5087db9a34a300d6b99009232d4537c3e6a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cda1895f3b7f324ece1614308a815a3994983b97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d39937f8de641c44a337cec4a2e5d3e8add20a7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2b41b748c19962b82709d9f23c6b2b0ce9d2f91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f48c474efe05cf9ce5e535b5e0ddd710e963936c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:03Z"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m9mq-5qq3-7f5f",
+  "modified": "2026-08-04T12:34:37Z",
+  "published": "2025-10-22T15:31:11Z",
+  "aliases": [
+    "CVE-2023-53711"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFS: Fix a potential data corruption\n\nWe must ensure that the subrequests are joined back into the head before\nwe can retransmit a request. If the head was not on the commit lists,\nbecause the server wrote it synchronously, we still need to add it back\nto the retransmission list.\nAdd a call that mirrors the effect of nfs_cancel_remove_inode() for\nO_DIRECT.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53711"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ec26716e45d615edfff46012e7dedcc0ac5f7ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4185605cd0f72ec8bf8b423aacd94cd5ee13bbcf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88975a55969e11f26fe3846bf4fbf8e7dc8cbbd4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da302f1d476a44245823a74546debb5d160bf5bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dac14a1dbe20e003215dacb8a3a1a7e4ca4e0ad0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-22T14:15:45Z"
+  }
+}

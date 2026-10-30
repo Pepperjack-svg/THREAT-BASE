@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mccw-9f8h-p8w7",
+  "modified": "2025-12-18T18:30:28Z",
+  "published": "2025-07-09T12:31:34Z",
+  "aliases": [
+    "CVE-2025-38249"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb-audio: Fix out-of-bounds read in snd_usb_get_audioformat_uac3()\n\nIn snd_usb_get_audioformat_uac3(), the length value returned from\nsnd_usb_ctl_msg() is used directly for memory allocation without\nvalidation. This length is controlled by the USB device.\n\nThe allocated buffer is cast to a uac3_cluster_header_descriptor\nand its fields are accessed without verifying that the buffer\nis large enough. If the device returns a smaller than expected\nlength, this leads to an out-of-bounds read.\n\nAdd a length check to ensure the buffer is large enough for\nuac3_cluster_header_descriptor.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ee87c2814deb5e42921281116ac3abcb326880b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11e740dc1a2c8590eb7074b5c4ab921bb6224c36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24ff7d465c4284529bbfa207757bffb6f44b6403"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2dc1c3edf67abd30c757f8054a5da61927cdda21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6eb211788e1370af52a245d4d7da35c374c7b401"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74fcb3852a2f579151ce80b9ed96cd916ba0d5d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3fb926abe90d86f5e3055e0035f04d9892a118b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb4e2a6e8f28a3c0ad382e363aeb9cd822007b8a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-09T11:15:27Z"
+  }
+}

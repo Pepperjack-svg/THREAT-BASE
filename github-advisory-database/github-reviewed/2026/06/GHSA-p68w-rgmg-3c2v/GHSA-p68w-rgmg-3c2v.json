@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p68w-rgmg-3c2v",
+  "modified": "2026-06-23T23:02:03Z",
+  "published": "2026-06-23T23:02:03Z",
+  "aliases": [
+    "CVE-2026-49976"
+  ],
+  "summary": "Snipe-IT Vulnerable to User Account Escalation via CSV Import",
+  "details": "### Impact\nThe CSV user import in update mode bypasses user-edit authorization. A user with only the `import` permission can overwrite any non-admin user's email by uploading a CSV, then trigger a password reset to take over the account.\n\n`UserImporter.php` checks the `canEditAuthFields` gate and tries to strip auth fields from the model:\n\n```php\n// app/Importer/UserImporter.php:107-114\nif (Auth::check() && (! Gate::allows('canEditAuthFields', $user))) {\n    unset($user->username);\n    unset($user->email);\n    unset($user->password);\n    unset($user->activated);\n}\n$user->update($this->sanitizeItemForUpdating($user));\n```\n\nThe `unset()`s operate on the model, but `sanitizeItemForUpdating()` rebuilds its array from `$this->item` (the raw CSV row), not from the model:\n\n```php\n// app/Importer/ItemImporter.php:135-149\nprotected function sanitizeItemForStoring($model, $updating = false)\n{\n    $item = collect($this->item);                  // CSV data, not model attributes\n    $item = $item->only($model->getFillable());\n    if ($updating) {\n        $item = $item->reject(fn($v) => empty($v));\n    }\n    return $item->toArray();\n}\n```\n\nThe attacker's CSV values pass through untouched.\n\nFor non-admin attacker vs. non-admin, non-superuser target, the gate returns `true` at `AuthServiceProvider.php:137`, so the `unset()` block never executes. The entire import path checks only `$this->authorize('import')` (`ImportController.php:196`); no `users.edit` check anywhere. The normal API route `PATCH /api/v1/users/{id}` correctly returns 403 for the same user. \n\nAttacker must have import privileges to exploit this, and that permission must be granted specifically and intentionally by a superadmin.\n\n\n### Patches\nPatched in v8.6.0",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-p68w-rgmg-3c2v"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-23T23:02:03Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8x32-fq94-j5fv",
+  "modified": "2025-12-24T15:30:35Z",
+  "published": "2025-12-24T15:30:35Z",
+  "aliases": [
+    "CVE-2023-54055"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/irdma: Fix memory leak of PBLE objects\n\nOn rmmod of irdma, the PBLE object memory is not being freed. PBLE object\nmemory are not statically pre-allocated at function initialization time\nunlike other HMC objects. PBLEs objects and the Segment Descriptors (SD)\nfor it can be dynamically allocated during scale up and SD's remain\nallocated till function deinitialization.\n\nFix this leak by adding IRDMA_HMC_IW_PBLE to the iw_hmc_obj_types[] table\nand skip pbles in irdma_create_hmc_obj but not in irdma_del_hmc_objects().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54055"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/810250c9c6616fe131099c0e51c61f2110ed07bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/adf58bd4018fbcd990c62e840afd2f178eefad60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b69a6979dbaa2453675fe9c71bdc2497fedb11f9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee02fa4a71bdb95a444124e5c11eaa22f1f44738"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:07Z"
+  }
+}

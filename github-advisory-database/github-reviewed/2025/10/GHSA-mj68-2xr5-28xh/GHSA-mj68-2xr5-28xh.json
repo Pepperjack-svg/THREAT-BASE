@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mj68-2xr5-28xh",
+  "modified": "2025-10-13T23:09:53Z",
+  "published": "2025-10-13T21:31:10Z",
+  "aliases": [
+    "CVE-2025-62246"
+  ],
+  "summary": "Liferay Mentions Web is Vulnerable to Cross-site Scripting",
+  "details": "Multiple stored cross-site scripting (XSS) vulnerabilities in Liferay Portal 7.4.0 through 7.4.3.111, and older unsupported versions, and Liferay DXP 2023.Q4.0 through 2023.Q4.5, 2023.Q3.1 through 2023.Q3.8, 7.4 GA through update 92, and older unsupported versions allow remote authenticated users to inject arbitrary web script or HTML via a crafted payload injected into a user’s first, middle or last name text field to (1) page comments widget, (2) blog entry comments, (3) document and media document comments, (4) message board messages, (5) wiki page comments or (6) other widgets/apps that supports mentions.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:A/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay:com.liferay.mentions.web"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.0.35"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-62246"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/4218ecd902dbd860d3f9ee233b0ffa4c822a49ee"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/liferay/liferay-portal"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.atlassian.net/browse/LPE-17940"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.dev/portal/security/known-vulnerabilities/-/asset_publisher/jekt/content/CVE-2025-62246"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-13T23:09:53Z",
+    "nvd_published_at": "2025-10-13T21:15:35Z"
+  }
+}

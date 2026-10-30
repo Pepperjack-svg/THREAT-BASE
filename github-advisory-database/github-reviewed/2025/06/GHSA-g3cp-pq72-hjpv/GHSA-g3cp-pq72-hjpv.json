@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g3cp-pq72-hjpv",
+  "modified": "2025-06-13T14:08:31Z",
+  "published": "2025-06-13T14:08:31Z",
+  "aliases": [
+    "CVE-2025-49579"
+  ],
+  "summary": "starcitizentools/citizen-skin allows stored XSS in menu heading message",
+  "details": "### Summary\nAll system messages in menu headings using the Menu.mustache template are inserted as raw HTML, allowing anybody who can edit those messages to insert arbitrary HTML into the DOM.\n\n### Details\nThe system messages for menu headings are inserted unescaped into raw HTML:\nhttps://github.com/StarCitizenTools/mediawiki-skins-Citizen/blob/072e4365e9084e4b153eac62d3666566c06f5a49/templates/Menu.mustache#L8-L10\n\n### PoC\n1. Go to any article using citizen with the `uselang` parameter set to `x-xss`\n2. A large number of alerts will be shown for various messages, e.g.:\n![image](https://github.com/user-attachments/assets/6a18ec77-d2a0-4a0d-b4aa-83359304659a)\n![image](https://github.com/user-attachments/assets/eaadb8e1-58b6-41be-90d2-829c50cf75ac)\n\nOn the main page of my test wiki, the following messages were shown: `navigation`, `notifications`, `user-interface-preferences`, `personaltools`, `variants`, `views`, `associated-pages`, `cactions` and `toolbox`.\n\n### Impact\nThis impacts wikis where a group has the `editinterface` but not the `editsitejs` user right.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "starcitizentools/citizen-skin"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.4.2"
+            },
+            {
+              "fixed": "3.3.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen/security/advisories/GHSA-g3cp-pq72-hjpv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-49579"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen/commit/54c8717d45ce1594918f11cb9ce5d0ccd8dfee65"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen/commit/93c36ac778397e0e7c46cf7adb1e5d848265f1bd"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-06-13T14:08:31Z",
+    "nvd_published_at": "2025-06-12T19:15:20Z"
+  }
+}

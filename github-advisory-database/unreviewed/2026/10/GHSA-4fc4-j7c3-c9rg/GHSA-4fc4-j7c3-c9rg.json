@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4fc4-j7c3-c9rg",
+  "modified": "2026-10-19T15:32:38Z",
+  "published": "2026-10-19T15:32:38Z",
+  "aliases": [
+    "CVE-2026-111935"
+  ],
+  "details": "NoteGen through 0.38.3 contains an external control of file path vulnerability in chat image analysis that allows attackers to read local image files via unvalidated synced sourceUrl paths. Attackers with write access to the victim's sync target can plant absolute paths or file:// URLs, causing image_inspect to send local images to the AI provider.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111935"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codexu/note-gen/issues/1296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codexu/note-gen/commit/64e671eb58f56ad6ebec0d99d32f6037f9319979"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codexu/note-gen/commit/6840c13c4fcb71a79b7df838d19a026830d64b96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codexu/note-gen/blob/note-gen-v0.38.3/src/lib/chat-image-context.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codexu/note-gen/blob/note-gen-v0.38.3/src/lib/sync/conversation-sync.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/notegen-through-0.38.3-local-file-disclosure-via-chat-image-analysis"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T14:17:01Z"
+  }
+}

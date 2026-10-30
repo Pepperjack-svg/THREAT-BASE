@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j2mf-q9c3-gwxw",
+  "modified": "2026-09-30T12:35:14Z",
+  "published": "2026-09-30T12:35:14Z",
+  "aliases": [
+    "CVE-2026-103235"
+  ],
+  "details": "MISP contains a mass assignment vulnerability in the event delegation feature. When a user with delegation permission submits a delegation request, the application authorized the user against the event identified in the URL but then persisted the entire submitted record, including caller-supplied fields such as the primary key and event_id.\n\nAn authenticated attacker could inject a primary key or event_id into the delegation payload to retarget an existing delegation record to any event on the instance. Because a delegation row grants the requesting organisation read access to the event it references, this effectively granted read access to arbitrary events belonging to other organisations. If the target organisation subsequently accepted the delegation, ownership of the event was transferred and the original record was deleted.\n\nPreconditions:\n\n- An authenticated user with the delegation permission (perm_delegate)\n\n- The MISP.delegation server setting must be enabled\n\nImpact:\n\n- Confidentiality: read access to any event on the instance\n\n- Integrity: overwriting existing delegation records and transferring event ownership\n\nAffected versions: MISP < 2.5.48",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/d1f5684f9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T10:17:16Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v7rc-q48q-f2p3",
+  "modified": "2026-05-29T15:30:26Z",
+  "published": "2026-03-25T12:30:22Z",
+  "aliases": [
+    "CVE-2026-23298"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: ucan: Fix infinite loop from zero-length messages\n\nIf a broken ucan device gets a message with the message length field set\nto 0, then the driver will loop for forever in\nucan_read_bulk_callback(), hanging the system.  If the length is 0, just\nskip the message and go on to the next one.\n\nThis has been fixed in the kvaser_usb driver in the past in commit\n0c73772cd2b8 (\"can: kvaser_usb: leaf: Fix potential infinite loop in\ncommand parsers\"), so there must be some broken devices out there like\nthis somewhere.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23298"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13b646eec3ba1131180803f5aaf1fee23540ad8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e446fd0582ad8be9f6dafb115fc2e7245f9bea7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa9e0a7fe5efc2f74327fd37d828e9a51d9ff588"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab6f075492d37368b4c7b0df7f7fdc2b666887fc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd85f21a6219aeae4389d700c54f1799f4b814e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7bc62be6c1a60bb21301692009590b1ffda91d9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca07d3c6eef14d34e6fdeefe55058db045be29dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7bb6e0606b5f233531aaaad9542d69fbb792115"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:25Z"
+  }
+}

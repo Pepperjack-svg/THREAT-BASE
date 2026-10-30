@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4chx-f5rg-w5pp",
+  "modified": "2026-03-18T15:30:40Z",
+  "published": "2026-02-14T18:30:15Z",
+  "aliases": [
+    "CVE-2026-23164"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrocker: fix memory leak in rocker_world_port_post_fini()\n\nIn rocker_world_port_pre_init(), rocker_port->wpriv is allocated with\nkzalloc(wops->port_priv_size, GFP_KERNEL). However, in\nrocker_world_port_post_fini(), the memory is only freed when\nwops->port_post_fini callback is set:\n\n    if (!wops->port_post_fini)\n        return;\n    wops->port_post_fini(rocker_port);\n    kfree(rocker_port->wpriv);\n\nSince rocker_ofdpa_ops does not implement port_post_fini callback\n(it is NULL), the wpriv memory allocated for each port is never freed\nwhen ports are removed. This leads to a memory leak of\nsizeof(struct ofdpa_port) bytes per port on every device removal.\n\nFix this by always calling kfree(rocker_port->wpriv) regardless of\nwhether the port_post_fini callback exists.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23164"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a3a64d75d2d0727da285749476761ebcad557a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ce2e85889939c02740b4245301aa5c35fc94887"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d7ba71e46216b8657a82ca2ec118bc93812a4d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b11e6f926480ab0939fec44781f28558c54be4e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d448bf96889f1905e740c554780f5c9fa0440566"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8723917efda3b4f4c3de78d1ec1e1af015c0be1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dce375f4afc348c310d171abcde7ec1499a4c26a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T16:15:56Z"
+  }
+}

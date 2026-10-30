@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7w44-35gq-6jc3",
+  "modified": "2026-07-08T06:31:35Z",
+  "published": "2026-06-26T21:32:16Z",
+  "aliases": [
+    "CVE-2026-53287"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naudit: fix incorrect inheritable capability in CAPSET records\n\n__audit_log_capset() records the effective capability set into the\ninheritable field due to a copy-paste error. Every CAPSET audit\nrecord therefore reports cap_pi (process inheritable) with the value\nof cap_effective instead of cap_inheritable.\n\nThis silently corrupts audit data used for compliance and forensic\nanalysis: an attacker who modifies inheritable capabilities to\nprepare for a privilege-escalating exec would have the change masked\nin the audit trail.\n\nThe bug has been present since the original introduction of CAPSET\naudit records in 2008.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53287"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a065c51a225854768b772a0b733a44d77162582"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/151ee470edc3d7ed29fe72df678f8357d2ad8ced"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75bd76c9eb2de9afeca03dc5152ebca5fb8fc816"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95de7bb4bf535a9288549d401ebde83cdcbf2792"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d782e4d200cd9036ef353eeb29525bfbfd13a14e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e35f3550c5b4fab33103c18654c293cee9850b0a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e4a640475e43f406fdfd56d370b1f34b0cbbc18d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/febb4bf373ac565d3fb8d1f429827bdd983be496"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-26T20:17:21Z"
+  }
+}

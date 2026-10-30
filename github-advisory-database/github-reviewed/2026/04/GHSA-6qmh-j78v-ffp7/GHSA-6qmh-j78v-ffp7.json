@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6qmh-j78v-ffp7",
+  "modified": "2026-04-24T21:06:24Z",
+  "published": "2026-04-14T20:02:31Z",
+  "aliases": [
+    "CVE-2026-24906"
+  ],
+  "summary": "October CMS has Stored XSS in Backend Editor Markup Classes",
+  "details": "A stored cross-site scripting (XSS) vulnerability was identified in the Backend Editor Settings. The Markup Classes fields (used for paragraph styles, inline styles, table styles, etc.) did not sanitize input to valid CSS class name characters. Malicious values were rendered unsanitized in Froala editor dropdown menus, allowing JavaScript execution when any user opened a RichEditor.\n\n### Impact\n- Stored XSS via editor settings rendered in RichEditor dropdowns\n- Could allow privilege escalation if a superuser opens any RichEditor (e.g., editing a blog post)\n- Requires authenticated backend access with editor settings permissions\n- Triggers on routine content editing operations\n\n### Patches\nThe vulnerability has been patched in v3.7.14 and v4.1.10. All users are encouraged to upgrade to the latest patched version.\n\n### Workarounds\nIf upgrading immediately is not possible:\n- Restrict editor settings permissions to fully trusted administrators only\n\n### References\n- Reported by [Chris Alupului](https://github.com/neosprings)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "october/system"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.1.10"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.1.9"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "october/system"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.7.14"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.7.13"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/octobercms/october/security/advisories/GHSA-6qmh-j78v-ffp7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24906"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/octobercms/october"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-14T20:02:31Z",
+    "nvd_published_at": "2026-04-14T18:16:45Z"
+  }
+}

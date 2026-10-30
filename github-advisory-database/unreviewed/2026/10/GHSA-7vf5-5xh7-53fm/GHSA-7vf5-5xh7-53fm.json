@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7vf5-5xh7-53fm",
+  "modified": "2026-10-21T15:41:43Z",
+  "published": "2026-10-06T09:31:29Z",
+  "aliases": [
+    "CVE-2026-98173"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix use-after-free of iface in cifs_try_adding_channels()\n\ncifs_try_adding_channels() iterates ses->iface_list with\nlist_for_each_entry_safe_from(), which captures the next entry\n(niface) under iface_lock.  The loop body then drops iface_lock for\nthe whole duration of cifs_ses_add_channel().\n\nA concurrent interface refresh (SMB3_request_interfaces() ->\nparse_server_interfaces()) marks all ifaces inactive and removes and\nfrees any that are not re-advertised via list_del() + kref_put(),\nwhere release_iface() is a bare kfree().  Since niface typically has\nno channel holding a reference, the list reference is its last and it\ncan be freed inside the unlocked window.  On continue, the iterator\nadvance step then dereferences niface->iface_head.next, and the loop\nbody reads iface->rdma_capable/is_active, both on freed memory.\n\nFix this by never keeping an unreferenced list pointer across the\nunlocked window.  Each channel attempt now re-scans the list from the\nhead under iface_lock, takes a kref on the selected candidate, and\npasses only that referenced candidate to cifs_ses_add_channel().\nweight_fulfilled still tracks selection progress, so restarting the\nscan preserves the original weighted distribution and the\nweight_fulfilled-before-kref_put ordering on the failure path.\n\nAdd a per-pass attempts cap so a flapping interface refresh cannot\nkeep the inner loop spinning within a single tries increment.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98173"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c941f1ebfd26f683de81091473f3596a218abff0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d034e836eefd7ce75e588f7031cffbeec594f5ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e99040e5e9c60441e6b4725e1a7b88c3106ae903"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec36b38e65596950e6c29bed7dfc90b98707c19c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee0d8f83d68f6e6509f092c997ccab3c8c801538"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:17:59Z"
+  }
+}

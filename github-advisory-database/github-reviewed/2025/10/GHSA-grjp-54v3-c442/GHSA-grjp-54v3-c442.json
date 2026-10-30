@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-grjp-54v3-c442",
+  "modified": "2025-10-29T22:13:03Z",
+  "published": "2025-10-29T22:13:03Z",
+  "aliases": [],
+  "summary": "OpenUSD File Parsing Use-After-Free Remote Code Execution Vulnerability",
+  "details": "# Patch\nThis is fixed with [commit b953092](https://github.com/PixarAnimationStudios/OpenUSD/commit/b9530922b6a8ea72cd43661226b693fff8abbe4c), with the fix available in OpenUSD 25.11 and onwards.\n\n# Summary\nWe have been advised by Zero Day Initiative that our usage of the USD framework may constitute a Use-After-Free Remote Code Execution Vulnerability. They have sent us the attached file illustrating the issue. Indeed, we see a use after free exception when running the file through our importer with an address sanitizer.\n\n[zdi-23709-poc0.zip](https://github.com/user-attachments/files/17474297/zdi-23709-poc0.zip)\n\nThanks in advance.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "usd-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "25.11"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 25.08"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/PixarAnimationStudios/OpenUSD/security/advisories/GHSA-grjp-54v3-c442"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PixarAnimationStudios/OpenUSD/commit/b9530922b6a8ea72cd43661226b693fff8abbe4c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/PixarAnimationStudios/OpenUSD"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-29T22:13:03Z",
+    "nvd_published_at": null
+  }
+}

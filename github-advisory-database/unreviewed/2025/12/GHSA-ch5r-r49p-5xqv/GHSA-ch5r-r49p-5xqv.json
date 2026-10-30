@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ch5r-r49p-5xqv",
+  "modified": "2026-10-15T03:35:01Z",
+  "published": "2025-12-24T12:30:29Z",
+  "aliases": [
+    "CVE-2025-68371"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: smartpqi: Fix device resources accessed after device removal\n\nCorrect possible race conditions during device removal.\n\nPreviously, a scheduled work item to reset a LUN could still execute\nafter the device was removed, leading to use-after-free and other\nresource access issues.\n\nThis race condition occurs because the abort handler may schedule a LUN\nreset concurrently with device removal via sdev_destroy(), leading to\nuse-after-free and improper access to freed resources.\n\n  - Check in the device reset handler if the device is still present in\n    the controller's SCSI device list before running; if not, the reset\n    is skipped.\n\n  - Cancel any pending TMF work that has not started in sdev_destroy().\n\n  - Ensure device freeing in sdev_destroy() is done while holding the\n    LUN reset mutex to avoid races with ongoing resets.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68371"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a5c5a2f88e839af5320216a02ffb075b668596a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e1acf1b6dd6dd0495bda139daafd7a403ae2dc1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d2390653d82cad0e1ba2676e536dd99678f6ef1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7dfa5a5516ec3c6b9b6c22ee18f0eb2df3f38ef2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b518e86d1a70a88f6592a7c396cf1b93493d1aab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eccc02ba1747501d92bb2049e3ce378ba372f641"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:16:00Z"
+  }
+}

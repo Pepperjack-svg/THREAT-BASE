@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q6q7-289w-x495",
+  "modified": "2025-07-16T18:32:33Z",
+  "published": "2025-07-09T03:30:22Z",
+  "aliases": [
+    "CVE-2025-34083"
+  ],
+  "details": "An unrestricted file upload vulnerability exists in the WordPress AIT CSV Import/Export plugin ≤ 3.0.3. The plugin exposes an upload handler at upload-handler.php that allows arbitrary file upload via a multipart/form-data POST request. This endpoint does not enforce authentication or content-type validation, enabling attackers to upload malicious PHP code directly to the server. Although the upload may produce an error related to CSV parsing, the malicious file is still saved under wp-content/uploads/ and remains executable. Notably, the plugin does not need to be active for exploitation to succeed.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34083"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/unix/webapp/wp_ait_csv_rce.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://packetstorm.news/files/id/160918"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vulncheck.com/advisories/wordpress-ait-csv-import-export-plugin-rce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/36e699a4-91f2-426d-ba14-26036fbfeaea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.acunetix.com/vulnerabilities/web/wordpress-plugin-ait-themes-csv-import-export-arbitrary-file-upload-3-0-3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ait-themes.club/csv-import-export-wordpress-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.fortiguard.com/encyclopedia/ips/49754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/ait-csv-import-export/ait-csv-importexport-303-arbitrary-file-upload"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-09T01:15:49Z"
+  }
+}

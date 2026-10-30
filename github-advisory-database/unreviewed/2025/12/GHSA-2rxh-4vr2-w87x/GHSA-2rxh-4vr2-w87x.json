@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2rxh-4vr2-w87x",
+  "modified": "2025-12-24T12:30:25Z",
+  "published": "2025-12-24T12:30:25Z",
+  "aliases": [
+    "CVE-2022-50698"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: da7219: Fix an error handling path in da7219_register_dai_clks()\n\nIf clk_hw_register() fails, the corresponding clk should not be\nunregistered.\n\nTo handle errors from loops, clean up partial iterations before doing the\ngoto.  So add a clk_hw_unregister().\nThen use a while (--i >= 0) loop in the unwind section.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50698"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4993c1511d66326f1037bc5156b024a6a96d23ef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/abb4e4349afe7eecdb0499582f1c777031e3a7c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cefce8bee0e988f9a005fe40705b98a25cfb7f9d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec692f0b51006de1138cd1f82cae625f0d2888d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f5f1f5ee5048cfa7bd07f496b33bd2cfc198a176"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:15:49Z"
+  }
+}

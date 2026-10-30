@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j964-63vc-3mhh",
+  "modified": "2026-10-15T21:36:05Z",
+  "published": "2026-10-15T21:36:05Z",
+  "aliases": [
+    "CVE-2026-111148"
+  ],
+  "details": "libsidplayfp through 3.1.1 contains a heap out-of-bounds read vulnerability that allows attackers to crash applications by supplying a PSID/RSID file with an unchecked data offset. Attackers can set the header data offset beyond the file size, wrapping the length calculation so resolveAddrs() reads up to 64 KiB past the heap buffer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111148"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libsidplayfp/libsidplayfp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libsidplayfp/libsidplayfp/blob/732fa8ec8131fc75aafc2eaea583ddcdeea2a3cc/src/sidtune/SidTuneBase.cpp#L295-L300"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libsidplayfp/libsidplayfp/blob/732fa8ec8131fc75aafc2eaea583ddcdeea2a3cc/src/sidtune/SidTuneBase.cpp#L488-L500"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/libsidplayfp-psid-dataoffset-underflow-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libsidplayfp-through-3.1.1-heap-out-of-bounds-read-via-sidtunebase-acceptsidtune"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:29Z"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g65m-jqm9-5xv8",
+  "modified": "2026-10-21T15:41:08Z",
+  "published": "2026-09-11T21:31:33Z",
+  "aliases": [
+    "CVE-2026-89601"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\next2: Fix lost inode updates for IS_SYNC inodes\n\next2_setsize() and ext2_xattr_set2() had a construct like:\n\n\tif (IS_SYNC(inode)) {\n\t\tsync_inode_metadata(inode, 1);\n\t} else {\n\t\tmark_inode_dirty(inode);\n\t}\n\nwhich leads to lost inode updates for IS_SYNC inodes because\nsync_inode_metadata() does anything only if the inode is already dirty\nand hence inode updates may be simply lost. Fix the problem by\nunconditionally marking the inode dirty and *then* call\nsync_inode_metadata().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89601"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/356984d1a5c32e94810cbb6c8dc7d8ff2d4d919a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5481766125041e71662f2e32ee0e91ad5f4d07f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5efb3350230fef831167740e69e6db2861101186"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b879565effd88fc119c2efea3f3868a9997ed9ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e54de654423bee98d1ba50379b09daf97c7854a6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:44Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3g5v-28p4-h3v9",
+  "modified": "2026-01-23T18:31:22Z",
+  "published": "2025-06-18T12:30:52Z",
+  "aliases": [
+    "CVE-2022-50169"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: wil6210: debugfs: fix info leak in wil_write_file_wmi()\n\nThe simple_write_to_buffer() function will succeed if even a single\nbyte is initialized.  However, we need to initialize the whole buffer\nto prevent information leaks.  Just use memdup_user().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50169"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05ceda14ef7c73104e709c414c3680d8a59f51d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/074e865b37da55aa87baa16d68b96896f85f8adb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4615458db7793fadc6d546ac3564b36819e77a22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60c9983425167ec5073c628d83a6875760d18059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67470920cd3f3cb38699b1ad23234f96bead4d21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/789edc1af9c1a2293956e8534bfef3d18d629de9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a4836560a6198d245d5732e26f94898b12eb760"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1216e699a1ce83ea005510844bd7508d34c6cef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-909"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:47Z"
+  }
+}

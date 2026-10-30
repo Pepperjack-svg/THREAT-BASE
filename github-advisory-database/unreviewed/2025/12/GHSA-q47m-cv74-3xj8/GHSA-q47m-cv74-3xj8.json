@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q47m-cv74-3xj8",
+  "modified": "2025-12-30T15:30:32Z",
+  "published": "2025-12-30T15:30:32Z",
+  "aliases": [
+    "CVE-2023-54228"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nregulator: raa215300: Fix resource leak in case of error\n\nThe clk_register_clkdev() allocates memory by calling vclkdev_alloc() and\nthis memory is not freed in the error path. Similarly, resources allocated\nby clk_register_fixed_rate() are not freed in the error path.\n\nFix these issues by using devm_clk_hw_register_fixed_rate() and\ndevm_clk_hw_register_clkdev().\n\nAfter this, the static variable clk is not needed. Replace it with \nlocal variable hw in probe() and drop calling clk_unregister_fixed_rate()\nfrom raa215300_rtc_unregister_device().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2bf2d2ac9e67184dc99275875a6452ca6e3027ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e21ac64e669e960688e79bf5babeed63132dac8a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:11Z"
+  }
+}

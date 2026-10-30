@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jj2f-fq9g-62qj",
+  "modified": "2025-09-08T21:30:58Z",
+  "published": "2025-09-08T21:30:58Z",
+  "aliases": [
+    "CVE-2025-56803"
+  ],
+  "details": "Figma Desktop for Windows version 125.6.5 contains a command injection vulnerability in the local plugin loader. An attacker can execute arbitrary OS commands by setting a crafted build field in the plugin's manifest.json. This field is passed to child_process.exec without validation, leading to possible RCE. NOTE: this is disputed by the Supplier because the behavior only allows a local user to attack himself via a local plugin. The local build procedure, which is essential to the attack, is not executed for plugins shared to the Figma Community.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-56803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shinyColumn/CVE-2025-56803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://shinycolumn.notion.site/figma-command-injection"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-03T18:15:35Z"
+  }
+}

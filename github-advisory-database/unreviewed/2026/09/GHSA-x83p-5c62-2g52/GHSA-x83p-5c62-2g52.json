@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x83p-5c62-2g52",
+  "modified": "2026-09-30T15:31:35Z",
+  "published": "2026-09-30T15:31:34Z",
+  "aliases": [
+    "CVE-2026-103398"
+  ],
+  "details": "OpenSave through 2.4.0 fails to properly validate save paths supplied by paired peers in the manifest request handler. Attackers can specify arbitrary directories outside configured save locations to read and write files through manifest and sync routes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103398"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/mansurmavlankulov/2ca66f95965fb9d4aab353bcf2434cdb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Liquid-co/OpenSave"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Liquid-co/OpenSave/blob/v2.4.0/internal/delta/rootguard.go#L16-L30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Liquid-co/OpenSave/blob/v2.4.0/internal/p2p/routes.go#L555-L566"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/opensave-through-2.4.0-arbitrary-file-read-and-write-via-peer-controlled-save-path"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T15:22:28Z"
+  }
+}

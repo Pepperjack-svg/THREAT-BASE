@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vp8c-vqq5-23j3",
+  "modified": "2025-12-02T21:31:26Z",
+  "published": "2025-09-16T15:32:33Z",
+  "aliases": [
+    "CVE-2023-53284"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm/dpu: check for null return of devm_kzalloc() in dpu_writeback_init()\n\nBecause of the possilble failure of devm_kzalloc(), dpu_wb_conn might\nbe NULL and will cause null pointer dereference later.\n\nTherefore, it might be better to check it and directly return -ENOMEM.\n\nPatchwork: https://patchwork.freedesktop.org/patch/512277/\n[DB: fixed typo in commit message]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53284"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21e9a838f505178e109ccb3bf19d7808eb0326f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3723c4dbcd14cc96771000ce0b0540801e6ba059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ee51b19855c5dd72aca57b8014f3b70d7798733"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T08:15:37Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v2qv-379g-fmvw",
+  "modified": "2025-09-22T21:30:16Z",
+  "published": "2025-09-22T21:30:15Z",
+  "aliases": [
+    "CVE-2022-49254"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: ti-vpe: cal: Fix a NULL pointer dereference in cal_ctx_v4l2_init_formats()\n\nIn cal_ctx_v4l2_init_formats(), devm_kzalloc() is assigned to\nctx->active_fmt and there is a dereference of it after that, which could\nlead to NULL pointer dereference on failure of devm_kzalloc().\n\nFix this bug by adding a NULL check of ctx->active_fmt.\n\nThis bug was found by a static analyzer.\n\nBuilds with 'make allyesconfig' show no new warnings, and our static\nanalyzer no longer warns about this code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49254"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1381f1a629a090c251965edb56f849ad648414a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91e2805579ab0783eed53acc2bf9fb553e939004"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa613ac270292e102503e9767882e39200efe608"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/abd77889851d2ead0d0c9c4d29f1808801477b00"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:02Z"
+  }
+}

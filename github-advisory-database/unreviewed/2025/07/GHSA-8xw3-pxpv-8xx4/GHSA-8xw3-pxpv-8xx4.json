@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8xw3-pxpv-8xx4",
+  "modified": "2025-09-24T00:30:40Z",
+  "published": "2025-07-25T18:30:37Z",
+  "aliases": [
+    "CVE-2013-10032"
+  ],
+  "details": "An authenticated remote code execution vulnerability exists in GetSimpleCMS version 3.2.1. The application’s upload.php endpoint allows authenticated users to upload arbitrary files without proper validation of MIME types or extensions. By uploading a .pht file containing PHP code, an attacker can bypass blacklist-based restrictions and place executable code within the web root. A crafted request using a polyglot or disguised extension allows the attacker to execute the payload by accessing the file directly via the web server. This vulnerability exists due to the use of a blacklist for filtering file types instead of a whitelist.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2013-10032"
+    },
+    {
+      "type": "WEB",
+      "url": "https://get-simple.info"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/unix/webapp/get_simple_cms_upload_exec.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.broadcom.com/support/security-center/attacksignatures/detail?asid=27895"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/25405"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.fortiguard.com/encyclopedia/ips/39295"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/getsimple-cms-auth-rce-via-arbitrary-php-file-upload"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306",
+      "CWE-434"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T16:15:24Z"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wh2j-26j7-9728",
+  "modified": "2026-02-20T22:41:41Z",
+  "published": "2026-02-20T21:31:24Z",
+  "aliases": [
+    "CVE-2026-2473"
+  ],
+  "summary": "Google Cloud Vertex AI has a a vulnerability involving predictable bucket naming",
+  "details": "Predictable bucket naming in Vertex AI Experiments in Google Cloud Vertex AI from version 1.21.0 up to (but not including) 1.133.0 on Google Cloud Platform allows an unauthenticated remote attacker to achieve cross-tenant remote code execution, model theft, and poisoning via pre-creating predictably named Cloud Storage buckets (Bucket Squatting).\n\nThis vulnerability was patched and no customer action is needed.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/U:Clear"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "google-cloud-aiplatform"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.21.0"
+            },
+            {
+              "fixed": "1.133.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2473"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.cloud.google.com/support/bulletins#gcp-2026-012"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/googleapis/python-aiplatform"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/googleapis/python-aiplatform/releases/tag/v1.133.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-340"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-20T22:41:41Z",
+    "nvd_published_at": "2026-02-20T20:25:24Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5r94-pf8r-75v2",
+  "modified": "2025-11-19T06:31:10Z",
+  "published": "2025-11-19T06:31:10Z",
+  "aliases": [
+    "CVE-2025-12427"
+  ],
+  "details": "The YITH WooCommerce Wishlist plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.10.0 via the REST API endpoint and AJAX handler due to missing validation on user-controlled keys. This makes it possible for unauthenticated attackers to discover any user's wishlist token ID, and subsequently rename the victim's wishlist without authorization (integrity impact). This can be exploited to target multi-user stores for defacement, social engineering attacks, mass tampering, and profiling at scale.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/yith-woocommerce-wishlist/tags/4.10.0/includes/class-yith-wcwl-ajax-handler.php#L265"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/yith-woocommerce-wishlist/tags/4.10.0/includes/class-yith-wcwl-ajax-handler.php#L38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/yith-woocommerce-wishlist/tags/4.10.0/includes/rest-api/controllers/v1/class-yith-wcwl-rest-v1-lists-controller.php#L56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/yith-woocommerce-wishlist/tags/4.10.0/includes/rest-api/controllers/v1/class-yith-wcwl-rest-v1-lists-controller.php#L97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3394933%40yith-woocommerce-wishlist%2Ftrunk&old=3379519%40yith-woocommerce-wishlist%2Ftrunk&sfp_email=&sfph_mail=#file0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/ffdb95ac-6b22-44a9-bd5c-b802a2d908d7?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-19T04:16:04Z"
+  }
+}

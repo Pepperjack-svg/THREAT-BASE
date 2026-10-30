@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-96xf-xvcw-f386",
+  "modified": "2025-10-14T21:30:25Z",
+  "published": "2025-10-14T21:30:25Z",
+  "aliases": [
+    "CVE-2022-49064"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncachefiles: unmark inode in use in error path\n\nUnmark inode in use if error encountered. If the in-use flag leakage\noccurs in cachefiles_open_file(), Cachefiles will complain \"Inode\nalready in use\" when later another cookie with the same index key is\nlooked up.\n\nIf the in-use flag leakage occurs in cachefiles_create_tmpfile(), though\nthe \"Inode already in use\" warning won't be triggered, fix the leakage\nanyway.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49064"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2055abafd3d4ee0376fb3eed5cae866316995a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea5dc046127e857a7873ae55fd57c866e9e86fb2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:43Z"
+  }
+}

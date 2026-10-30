@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4pg4-5mfg-2p8v",
+  "modified": "2026-10-06T09:31:30Z",
+  "published": "2026-10-06T09:31:30Z",
+  "aliases": [
+    "CVE-2026-98202"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: synaptics-rmi4 - fix GPF in suspend and resume when unbound\n\nTransport drivers (such as rmi_i2c and rmi_spi) invoke\nrmi_driver_suspend() and rmi_driver_resume() on their child rmi_dev\ndevice during system power management events. However, transport drivers\nare fully registered and operational even if the physical RMI driver\nfailed to bind or probe the rmi_dev device.\n\nWhen rmi_driver_suspend() or rmi_driver_resume() is called on an unbound\nrmi_dev, dev_get_drvdata() returns NULL. Calling rmi_disable_irq() or\nrmi_enable_irq() without driver data attached causes a NULL pointer\ndereference and General Protection Fault when attempting to lock\ndata->enabled_mutex.\n\nFix this by checking if driver data is attached to rmi_dev in\nrmi_driver_suspend() and rmi_driver_resume(), exiting early if\nno driver data is present.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98202"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30366f507ce3e408caf7f7375bb343df54b9a4f9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a3d7c68aa36f68e2a4824da4782c0e5d7c4eba4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/84145a4a1dc58f8959811913c5f61f3235dd9f6c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/942b06a19252908d0f952c0590caf20e47f88252"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2b6703465c1ce43edb91c1626604b7092b3c431"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa1713dc3d43d028d6cb66e5659d9d7e83b73362"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fafca210631d8c2d4311bdfccc5ec46b9fe65977"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe10579b6dc3f0dac61e51e1797cacbba5039ac2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:06Z"
+  }
+}

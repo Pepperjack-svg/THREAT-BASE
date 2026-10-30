@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w939-6x76-94vc",
+  "modified": "2025-12-16T21:30:49Z",
+  "published": "2025-05-20T18:30:57Z",
+  "aliases": [
+    "CVE-2025-37967"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: ucsi: displayport: Fix deadlock\n\nThis patch introduces the ucsi_con_mutex_lock / ucsi_con_mutex_unlock\nfunctions to the UCSI driver. ucsi_con_mutex_lock ensures the connector\nmutex is only locked if a connection is established and the partner pointer\nis valid. This resolves a deadlock scenario where\nucsi_displayport_remove_partner holds con->mutex waiting for\ndp_altmode_work to complete while dp_altmode_work attempts to acquire it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/364618c89d4c57c85e5fc51a2446cd939bf57802"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5924b324468845fc795bd76f588f51d7ab4f202d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61fc1a8e1e10cc784cab5829930838aaf1d37af5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/962ce9028ca6eb450d5c205238a3ee27de9d214d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f32451ca4cb7dc53f2a0e2e66b84d34162747eb7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4bd982563c2fd41ec9ca6c517c392d759db801c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/08/msg00010.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-20T17:15:47Z"
+  }
+}

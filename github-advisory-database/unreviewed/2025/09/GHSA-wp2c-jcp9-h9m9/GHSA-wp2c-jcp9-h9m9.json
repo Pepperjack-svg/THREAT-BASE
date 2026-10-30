@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wp2c-jcp9-h9m9",
+  "modified": "2025-12-04T15:30:30Z",
+  "published": "2025-09-15T15:31:27Z",
+  "aliases": [
+    "CVE-2022-50322"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtc: msc313: Fix function prototype mismatch in msc313_rtc_probe()\n\nWith clang's kernel control flow integrity (kCFI, CONFIG_CFI_CLANG),\nindirect call targets are validated against the expected function\npointer prototype to make sure the call target is valid to help mitigate\nROP attacks. If they are not identical, there is a failure at run time,\nwhich manifests as either a kernel panic or thread getting killed.\n\nmsc313_rtc_probe() was passing clk_disable_unprepare() directly, which\ndid not have matching prototypes for devm_add_action_or_reset()'s\ncallback argument. Refactor to use devm_clk_get_enabled() instead.\n\nThis was found as a result of Clang's new -Wcast-function-type-strict\nflag, which is more sensitive than the simpler -Wcast-function-type,\nwhich only checks for type width mismatches.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21b8a1dd56a163825e5749b303858fb902ebf198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5affaaf3334c9274131dae889ed79ea0553d61b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba50fee6b41bcbafaeed3c51f90d37d1480ff9a0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T15:15:44Z"
+  }
+}

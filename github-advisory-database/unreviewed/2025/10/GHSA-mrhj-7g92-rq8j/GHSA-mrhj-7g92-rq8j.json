@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrhj-7g92-rq8j",
+  "modified": "2026-02-04T18:30:20Z",
+  "published": "2025-10-07T18:31:08Z",
+  "aliases": [
+    "CVE-2022-50537"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: raspberrypi: fix possible memory leak in rpi_firmware_probe()\n\nIn rpi_firmware_probe(), if mbox_request_channel() fails, the 'fw' will\nnot be freed through rpi_firmware_delete(), fix this leak by calling\nkfree() in the error path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50537"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62ac943eb2a9d655e431b9bc98ff6d7bd51a0e49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6757dd2193fe18c5c5fe3050e7f2ff9dcbd1ff34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71d2abab374f707ab8ac8dcef191fd2b3b67b8bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b51161696e803fd5f9ad55b20a64c2df313f95c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b308fdedef095aac14569f810d46edf773ea7d1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d34742245e4366579f9a80f8cfe4a63248e838e0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:37Z"
+  }
+}

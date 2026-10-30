@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8jj5-9h2j-2r96",
+  "modified": "2026-10-21T21:32:35Z",
+  "published": "2026-10-21T21:32:35Z",
+  "aliases": [
+    "CVE-2026-111817"
+  ],
+  "details": "Apache Traffic Server can stall a chunked transfer that it passes through with its trailers removed (proxy.config.http.drop_chunked_trailers) until the connection times out, because it waits for the trailer bytes it has already dropped. Trailer dropping is on by default in 10.x. In 8.1.11 and 9.2.x it is off by default, and those versions are affected only if it is enabled.\n\n\n\nThis issue affects Apache Traffic Server: 8.1.11, from 9.2.5 through 9.2.15, from 10.0.0 through 10.1.4, 10.2.0.\n\n\n\nUsers are recommended to upgrade to version 10.1.5 or 10.2.1, which fix the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111817"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/r95dq29ywcd1f4x30snxlqmb12z4s4kc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T20:17:23Z"
+  }
+}

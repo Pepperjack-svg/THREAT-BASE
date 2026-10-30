@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v6fv-v2qw-3wr9",
+  "modified": "2025-10-24T18:30:57Z",
+  "published": "2025-10-24T18:30:57Z",
+  "aliases": [
+    "CVE-2022-49710"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm mirror log: round up region bitmap size to BITS_PER_LONG\n\nThe code in dm-log rounds up bitset_size to 32 bits. It then uses\nfind_next_zero_bit_le on the allocated region. find_next_zero_bit_le\naccesses the bitmap using unsigned long pointers. So, on 64-bit\narchitectures, it may access 4 bytes beyond the allocated size.\n\nFix this bug by rounding up bitset_size to BITS_PER_LONG.\n\nThis bug was found by running the lvm2 testsuite with kasan.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49710"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d2209b54f1de0c2f99cab246d4cf2cfe24aaaa9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85e123c27d5cbc22cfdc01de1e2ca1d9003a02d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a02f3275acc628c0d956be771405ced79ac36df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae460312875159285cef5bf3dc654593f404a1ef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba751f0d25f07aa21ce9b85372a3792bf7969d13"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:46Z"
+  }
+}

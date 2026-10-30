@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q3hj-qw3j-gv7p",
+  "modified": "2026-10-21T15:40:17Z",
+  "published": "2026-03-18T18:31:18Z",
+  "aliases": [
+    "CVE-2026-23259"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/rw: free potentially allocated iovec on cache put failure\n\nIf a read/write request goes through io_req_rw_cleanup() and has an\nallocated iovec attached and fails to put to the rw_cache, then it may\nend up with an unaccounted iovec pointer. Have io_rw_recycle() return\nwhether it recycled the request or not, and use that to gauge whether to\nfree a potential iovec or not.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23259"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d5f2329ab4df65c2ee011b986d8a6e05ad0f67c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41cda4c66846c3bfcdeaf28444ccabbb55e64cf1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b9748055457ac3a0710bf210c229d01ea1b01b9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-18T18:16:24Z"
+  }
+}

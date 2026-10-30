@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8c85-w2xh-8gcf",
+  "modified": "2025-10-22T15:31:11Z",
+  "published": "2025-10-22T15:31:11Z",
+  "aliases": [
+    "CVE-2023-53719"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: arc_uart: fix of_iomap leak in `arc_serial_probe`\n\nSmatch reports:\n\ndrivers/tty/serial/arc_uart.c:631 arc_serial_probe() warn:\n'port->membase' from of_iomap() not released on lines: 631.\n\nIn arc_serial_probe(), if uart_add_one_port() fails,\nport->membase is not released, which would cause a resource leak.\n\nTo fix this, I replace of_iomap with devm_platform_ioremap_resource.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53719"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/081790eee6b47389a0d895262086d64c6a38d6e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/153017561d2804cfae87cc9aa377aa84dd906ae1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f00df24a5021a6f02c1830a290acd4bceb22a2d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40a462313ba4f337a2b419e7fb4a670f3dd95e14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7525aa211758cc023a371e010d16ceaae1057807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ab5fc55d7f65d58a3c3aeadf11bdf60267cd2bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f76a18e53a66c0ef2938276110717b3805720cd9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-22T14:15:46Z"
+  }
+}

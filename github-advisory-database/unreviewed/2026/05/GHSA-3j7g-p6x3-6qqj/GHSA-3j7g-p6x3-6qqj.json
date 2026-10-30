@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3j7g-p6x3-6qqj",
+  "modified": "2026-06-16T03:30:32Z",
+  "published": "2026-05-27T15:33:18Z",
+  "aliases": [
+    "CVE-2026-45960"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhfsplus: return error when node already exists in hfs_bnode_create\n\nWhen hfs_bnode_create() finds that a node is already hashed (which should\nnot happen in normal operation), it currently returns the existing node\nwithout incrementing its reference count. This causes a reference count\ninconsistency that leads to a kernel panic when the node is later freed\nin hfs_bnode_put():\n\n    kernel BUG at fs/hfsplus/bnode.c:676!\n    BUG_ON(!atomic_read(&node->refcnt))\n\nThis scenario can occur when hfs_bmap_alloc() attempts to allocate a node\nthat is already in use (e.g., when node 0's bitmap bit is incorrectly\nunset), or due to filesystem corruption.\n\nReturning an existing node from a create path is not normal operation.\n\nFix this by returning ERR_PTR(-EEXIST) instead of the node when it's\nalready hashed. This properly signals the error condition to callers,\nwhich already check for IS_ERR() return values.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45960"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ca428769cb4737a25bd32fb4d1573cc09eeaeef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e6ff6a6fc69cc17ed10c9cb6242935d52acd52d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e9185a42e0e237c74435fd092b7c34537c62156"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/507a1de58c21c95ad7c44afccaf1222d1c42246b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51838112d9c22502333c3085ca0c0d691e7093c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b57ada854b32310f224abd61bcfec2d5790ff0a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/986455135b95f32c1f142068e451098fc751749e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8a73cc46c8462a969a7516131feb3096f4c49d3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:12Z"
+  }
+}

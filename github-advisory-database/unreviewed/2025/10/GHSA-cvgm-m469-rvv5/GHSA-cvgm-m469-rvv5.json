@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cvgm-m469-rvv5",
+  "modified": "2025-10-23T12:31:16Z",
+  "published": "2025-10-23T12:31:15Z",
+  "aliases": [
+    "CVE-2022-49616"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: rt7*-sdw: harden jack_detect_handler\n\nRealtek headset codec drivers typically check if the card is\ninstantiated before proceeding with the jack detection.\n\nThe rt700, rt711 and rt711-sdca are however missing a check on the\ncard pointer, which can lead to NULL dereferences encountered in\ndriver bind/unbind tests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49616"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0484271ab0ce50649329fa9dc23c50853c5b26a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07a606e1389a63b61cb8cd591026f30529117573"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d75b73ec6d6b705cca528b36d8315e43e8d7fa5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:37Z"
+  }
+}

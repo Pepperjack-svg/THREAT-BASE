@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7vqw-4gww-392j",
+  "modified": "2026-01-13T18:31:04Z",
+  "published": "2026-01-13T18:31:03Z",
+  "aliases": [
+    "CVE-2025-68786"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: skip lock-range check on equal size to avoid size==0 underflow\n\nWhen size equals the current i_size (including 0), the code used to call\ncheck_lock_range(filp, i_size, size - 1, WRITE), which computes `size - 1`\nand can underflow for size==0. Skip the equal case.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68786"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52fcbb92e0d3acfd1448b2a43b6595d540da5295"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/571204e4758a528fbd67330bd4b0dfbdafb33dd8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d510ac31626ed157d2182149559430350cf2104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6f4cfa3783804336491e0edcb250c25f9b59d33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da29cd197246c85c0473259f1cad897d9d28faea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-13T16:15:58Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p2c7-54v2-7989",
+  "modified": "2025-10-29T21:30:33Z",
+  "published": "2025-10-29T21:30:33Z",
+  "aliases": [
+    "CVE-2025-11202"
+  ],
+  "details": "win-cli-mcp-server resolveCommandPath Command Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of win-cli-mcp-server. Authentication is not required to exploit this vulnerability.\n\nThe specific flaw exists within the implementation of the resolveCommandPath method. The issue results from the lack of proper validation of a user-supplied string before using it to execute a system call. An attacker can leverage this vulnerability to execute code in the context of the service account. Was ZDI-CAN-27787.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11202"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/simon-ami/win-cli-mcp-server/commit/521b4a34190d03bde7d433d213c36357181a6d09"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zerodayinitiative.com/advisories/ZDI-25-930"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-29T20:15:35Z"
+  }
+}

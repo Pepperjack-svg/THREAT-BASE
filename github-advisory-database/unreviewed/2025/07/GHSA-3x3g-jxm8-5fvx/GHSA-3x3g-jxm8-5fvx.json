@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3x3g-jxm8-5fvx",
+  "modified": "2025-12-18T18:30:28Z",
+  "published": "2025-07-09T12:31:34Z",
+  "aliases": [
+    "CVE-2025-38251"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\natm: clip: prevent NULL deref in clip_push()\n\nBlamed commit missed that vcc_destroy_socket() calls\nclip_push() with a NULL skb.\n\nIf clip_devs is NULL, clip_push() then crashes when reading\nskb->truesize.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c709dce16999bf6a1d2ce377deb5dd6fdd8cb08"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41f6420ee845006354c004839fed07da71e34aee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88c88f91f4b3563956bb52e7a71a3640f7ece157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9199e8cb75f13a1650adcb3c6cad42789c43884e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a07005a77b18ae59b8471e7e4d991fa9f642b3c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b993ea46b3b601915ceaaf3c802adf11e7d6bac6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ede31ad949ae0d03cb4c5edd79991586ad7c8bb8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-09T11:15:27Z"
+  }
+}

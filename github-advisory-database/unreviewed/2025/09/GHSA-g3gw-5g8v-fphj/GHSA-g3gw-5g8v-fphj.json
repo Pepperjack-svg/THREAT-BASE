@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g3gw-5g8v-fphj",
+  "modified": "2025-12-12T21:31:32Z",
+  "published": "2025-09-22T21:30:17Z",
+  "aliases": [
+    "CVE-2025-39837"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: asus-wmi: Fix racy registrations\n\nasus_wmi_register_driver() may be called from multiple drivers\nconcurrently, which can lead to the racy list operations, eventually\ncorrupting the memory and hitting Oops on some ASUS machines.\nAlso, the error handling is missing, and it forgot to unregister ACPI\nlps0 dev ops in the error case.\n\nThis patch covers those issues by introducing a simple mutex at\nacpi_wmi_register_driver() & *_unregister_driver, and adding the\nproper call of asus_s2idle_check_unregister() in the error path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39837"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5549202b9c02c2ecbc8634768a3da8d9e82d548d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7a70326fb26b905cfc8fe2366113aa4394733ef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-19T16:15:42Z"
+  }
+}

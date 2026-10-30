@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3cj-hqqx-6rjp",
+  "modified": "2025-08-09T15:30:21Z",
+  "published": "2025-08-09T15:30:21Z",
+  "aliases": [
+    "CVE-2025-7726"
+  ],
+  "details": "The The7 theme for WordPress is vulnerable to Stored Cross-Site Scripting via its lightbox rendering code in all versions up to, and including, 12.6.0 due to insufficient input sanitization and output escaping. The theme’s JavaScript reads user-supplied 'title' and 'data-dt-img-description' attributes directly via jQuery.attr(), concatenates them into an HTML string, and inserts that string into the DOM using methods such as jQuery.html() without escaping or filtering. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-7726"
+    },
+    {
+      "type": "WEB",
+      "url": "https://the7.io/changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themeforest.net/item/the7-responsive-multipurpose-wordpress-theme/5556590"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themeforest.net/item/the7-responsive-multipurpose-wordpress-theme/5556590#item-description__recent-updates"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5da295f3-ac54-4330-ac39-65225adeb93a?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-09T14:15:26Z"
+  }
+}

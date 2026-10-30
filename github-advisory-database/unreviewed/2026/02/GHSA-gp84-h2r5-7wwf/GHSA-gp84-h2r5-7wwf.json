@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gp84-h2r5-7wwf",
+  "modified": "2026-02-06T18:30:30Z",
+  "published": "2026-02-04T18:30:42Z",
+  "aliases": [
+    "CVE-2026-23049"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panel-simple: fix connector type for DataImage SCF0700C48GGU18 panel\n\nThe connector type for the DataImage SCF0700C48GGU18 panel is missing and\ndevm_drm_panel_bridge_add() requires connector type to be set. This leads\nto a warning and a backtrace in the kernel log and panel does not work:\n\"\nWARNING: CPU: 3 PID: 38 at drivers/gpu/drm/bridge/panel.c:379 devm_drm_of_get_bridge+0xac/0xb8\n\"\nThe warning is triggered by a check for valid connector type in\ndevm_drm_panel_bridge_add(). If there is no valid connector type\nset for a panel, the warning is printed and panel is not added.\nFill in the missing connector type to fix the warning and make\nthe panel operational once again.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04218cd68d1502000823c8288f37b4f171dcdcae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ab3d4353bf75005eaa375677c9fed31148154d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83e0d8d22e7ee3151af1951595104887eebed6ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb309377eece5317207d71fd833f99cca4727fbd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc0b17bdba3838e9e17e7e9adc968384ac99938b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4c330b4499e7334ec6fce535574e09d55843d71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7940d3ec1dc6bf719eddc69d4b8e52cc2201896"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-04T17:16:15Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vvr9-4v54-jx9g",
+  "modified": "2025-12-30T15:30:30Z",
+  "published": "2025-12-30T15:30:30Z",
+  "aliases": [
+    "CVE-2023-54188"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: apple-admac: Fix 'current_tx' not getting freed\n\nIn terminate_all we should queue up all submitted descriptors to be\nfreed. We do that for the content of the 'issued' and 'submitted' lists,\nbut the 'current_tx' descriptor falls through the cracks as it's\nremoved from the 'issued' list once it gets assigned to be the current\ndescriptor. Explicitly queue up freeing of the 'current_tx' descriptor\nto address a memory leak that is otherwise present.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54188"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7abd535881a48587961c2099b1d2933ebd42c4b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d9503be5a100c553731c0e8a82c7b4201e8a970c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd4d88e68c75caf5c6f8293a36bc3ae289e0369e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:06Z"
+  }
+}

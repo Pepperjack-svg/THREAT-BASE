@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6cj6-4hh2-hvrg",
+  "modified": "2025-09-23T15:31:07Z",
+  "published": "2025-09-23T15:31:07Z",
+  "aliases": [
+    "CVE-2022-49165"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: imx-jpeg: Prevent decoding NV12M jpegs into single-planar buffers\n\nIf the application queues an NV12M jpeg as output buffer, but then\nqueues a single planar capture buffer, the kernel will crash with\n\"Unable to handle kernel NULL pointer dereference\" in mxc_jpeg_addrs,\nprevent this by finishing the job with error.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49165"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/417591a766b3c040c346044541ff949c0b2bb7b2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4eb591c47c82a6a6ad293ed108c3cb77115fbc25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d075ede7d24f19dc817c5bd517a53f0524f9031"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eff76b180751e5e55c872d17755680c3b83ba9ab"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:53Z"
+  }
+}

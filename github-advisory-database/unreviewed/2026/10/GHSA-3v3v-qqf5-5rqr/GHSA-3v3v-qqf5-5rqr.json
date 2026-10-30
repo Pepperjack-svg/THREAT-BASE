@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3v3v-qqf5-5rqr",
+  "modified": "2026-10-29T00:31:24Z",
+  "published": "2026-10-29T00:31:24Z",
+  "aliases": [
+    "CVE-2026-118692"
+  ],
+  "details": "CherryTree through 1.7.2 contains an OS command injection vulnerability in CtActions::link_clicked that allows attackers to execute commands by embedding shell metacharacters in web link URLs. When the non-default Custom Web Link Clicked Action option is enabled, attackers can supply crafted documents whose links pass $(...), backticks, or semicolons unquoted to std::system, running commands as the victim on click.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/giuspen/cherrytree/issues/2945"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/giuspen/cherrytree"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/giuspen/cherrytree/blob/v1.7.2/src/ct/ct_actions_others.cc#L381-L388"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/giuspen/cherrytree/blob/v1.7.2/src/ct/ct_misc_utils.cc#L227-L247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cherrytree-through-1.7.2-os-command-injection-via-custom-web-link-action"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T22:17:13Z"
+  }
+}

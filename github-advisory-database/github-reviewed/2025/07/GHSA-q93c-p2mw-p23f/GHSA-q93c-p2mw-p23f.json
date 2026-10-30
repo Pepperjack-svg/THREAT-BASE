@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q93c-p2mw-p23f",
+  "modified": "2025-07-08T20:35:45Z",
+  "published": "2025-07-07T15:30:38Z",
+  "aliases": [
+    "CVE-2023-51232"
+  ],
+  "summary": "Dagster vulnerable to Path Traversal attack through its /logs endpoint",
+  "details": "Directory Traversal vulnerability in dagster-webserver Dagster thru 1.5.10 allows remote attackers to obtain sensitive information via crafted request to the /logs endpoint. This may be restricted to certain file names that start with a dot ('.').",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "dagster"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.11"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-51232"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dagster-io/dagster/pull/18462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dagster-io/dagster/commit/dbb064c2ddda74265b8174edd9775e1302ca6ba0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/dagster-io/dagster"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-07-08T20:35:45Z",
+    "nvd_published_at": "2025-07-07T14:15:23Z"
+  }
+}

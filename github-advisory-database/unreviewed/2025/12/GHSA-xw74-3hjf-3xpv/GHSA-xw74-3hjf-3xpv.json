@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xw74-3hjf-3xpv",
+  "modified": "2026-02-26T18:31:34Z",
+  "published": "2025-12-22T18:30:25Z",
+  "aliases": [
+    "CVE-2025-68333"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsched_ext: Fix possible deadlock in the deferred_irq_workfn()\n\nFor PREEMPT_RT=y kernels, the deferred_irq_workfn() is executed in\nthe per-cpu irq_work/* task context and not disable-irq, if the rq\nreturned by container_of() is current CPU's rq, the following scenarios\nmay occur:\n\nlock(&rq->__lock);\n<Interrupt>\n  lock(&rq->__lock);\n\nThis commit use IRQ_WORK_INIT_HARD() to replace init_irq_work() to\ninitialize rq->scx.deferred_irq_work, make the deferred_irq_workfn()\nis always invoked in hard-irq context.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68333"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/541959b2fadb832a7d0ceb95041dc52bdcf6bff7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/600b4379b9a7ba41340d652211fb29699da4c629"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a257e974210320ede524f340ffe16bf4bf0dda1e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-22T17:16:01Z"
+  }
+}

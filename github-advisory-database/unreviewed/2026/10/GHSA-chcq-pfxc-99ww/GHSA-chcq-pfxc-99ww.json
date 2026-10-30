@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-chcq-pfxc-99ww",
+  "modified": "2026-10-10T21:31:15Z",
+  "published": "2026-10-10T21:31:15Z",
+  "aliases": [
+    "CVE-2026-108593"
+  ],
+  "details": "9router 0.4.1 through 0.5.99 contains a configuration injection vulnerability in the POST /api/cli-tools/hermes-settings endpoint that allows authenticated dashboard users to inject arbitrary keys into the Hermes Agent config.yaml file. Attackers can submit a baseUrl containing double quotes and newlines to add hooks_auto_accept and a hooks.post_llm_call shell command, which Hermes Agent executes without approval after an LLM call.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/decolua/9router"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/decolua/9router/blob/a99cf57239ff778b61e434c2786009d5ed1c412c/src/app/api/cli-tools/hermes-settings/route.js#L185-L223"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/decolua/9router/blob/a99cf57239ff778b61e434c2786009d5ed1c412c/src/app/api/cli-tools/hermes-settings/route.js#L20-L35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind/9router-hermes-config-injection"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/9router-0.4.1-through-0.5.99-config-injection-rce-via-hermes-settings-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T19:16:57Z"
+  }
+}

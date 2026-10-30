@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-48c4-xwvf-f6cx",
+  "modified": "2025-12-08T03:31:03Z",
+  "published": "2025-12-08T03:31:03Z",
+  "aliases": [
+    "CVE-2023-53754"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: lpfc: Fix ioremap issues in lpfc_sli4_pci_mem_setup()\n\nWhen if_type equals zero and pci_resource_start(pdev, PCI_64BIT_BAR4)\nreturns false, drbl_regs_memmap_p is not remapped. This passes a NULL\npointer to iounmap(), which can trigger a WARN() on certain arches.\n\nWhen if_type equals six and pci_resource_start(pdev, PCI_64BIT_BAR4)\nreturns true, drbl_regs_memmap_p may has been remapped and\nctrl_regs_memmap_p is not remapped. This is a resource leak and passes a\nNULL pointer to iounmap().\n\nTo fix these issues, we need to add null checks before iounmap(), and\nchange some goto labels.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/631d0fab143bef85ea0813596f1dda36e2b9724c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74d90f92eafe8ccd12827228236a28a94eda6bcc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7e5a54d1f00725a739dcd20f616d82eff4f764bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91a0c0c1413239d0548b5aac4c82f38f6d53a91e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bab8dc38b1a0a12bc064fc064269033bdcf5b88e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6f1ef4a53856ed000b0f7265d7e16dcb00f4243"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd8c83d8375b9dac1949f2753485a5c055ebfad0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-08T02:15:50Z"
+  }
+}

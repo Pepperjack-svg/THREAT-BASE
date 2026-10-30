@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hc84-56cx-wr29",
+  "modified": "2025-03-13T18:32:21Z",
+  "published": "2025-03-12T12:30:58Z",
+  "aliases": [
+    "CVE-2025-21851"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix softlockup in arena_map_free on 64k page kernel\n\nOn an aarch64 kernel with CONFIG_PAGE_SIZE_64KB=y,\narena_htab tests cause a segmentation fault and soft lockup.\nThe same failure is not observed with 4k pages on aarch64.\n\nIt turns out arena_map_free() is calling\napply_to_existing_page_range() with the address returned by\nbpf_arena_get_kern_vm_start().  If this address is not page-aligned\nthe code ends up calling apply_to_pte_range() with that unaligned\naddress causing soft lockup.\n\nFix it by round up GUARD_SZ to PAGE_SIZE << 1 so that the\ndivision by 2 in bpf_arena_get_kern_vm_start() returns\na page-aligned value.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21851"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/517e8a7835e8cfb398a0aeb0133de50e31cae32b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/787d556a3de447e70964a4bdeba9196f62a62b1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1f3f3892d4526f18aaeffdb6068ce861e793ee3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-12T10:15:17Z"
+  }
+}

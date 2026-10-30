@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qhpw-2qgq-68px",
+  "modified": "2026-05-08T15:31:18Z",
+  "published": "2026-05-06T12:30:33Z",
+  "aliases": [
+    "CVE-2026-43215"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: Fix locking usage for tcon fields\n\nWe used to use the cifs_tcp_ses_lock to protect a lot of objects\nthat are not just the server, ses or tcon lists. We later introduced\nsrv_lock, ses_lock and tc_lock to protect fields within the\ncorresponding structs. This was done to provide a more granular\nprotection and avoid unnecessary serialization.\n\nThere were still a couple of uses of cifs_tcp_ses_lock to provide\ntcon fields. In this patch, I've replaced them with tc_lock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3969db6b22e3d90d8c5f22ac1a7fe0350a94c136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/601dd3b79769b38d30b693c40afdb2a4b7edf9d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c59eeeeffa1524ef57e173a89a1a3ff539888d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/953953abb66e52c224057ab91e404284fefeab62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96c4af418586ee9a6aab61738644366426e05316"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362",
+      "CWE-667"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:41Z"
+  }
+}

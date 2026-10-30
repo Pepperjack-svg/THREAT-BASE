@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-35fj-5v77-5rpx",
+  "modified": "2026-10-23T12:31:36Z",
+  "published": "2026-10-23T12:31:36Z",
+  "aliases": [
+    "CVE-2026-98872"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfreevxfs: don't BUG() on unknown typed-extent type\n\nvxfs_bmap_typed() handles four typed-extent types and calls BUG() in\nits default case, so an on-disk typed extent with any other type value\ncrashes the kernel. It is reachable from ioctl(FIBMAP) on a regular\nfile:\n\n  kernel BUG at fs/freevxfs/vxfs_bmap.c:230!\n  RIP: vxfs_bmap_typed fs/freevxfs/vxfs_bmap.c:230 [inline]\n       vxfs_bmap1+0x128a/0x12d0 fs/freevxfs/vxfs_bmap.c:257\n\nReplace the BUG() with WARN_ON_ONCE() and return 0 -- the value\nvxfs_bmap_typed() already returns on failure (and from the DEV4 case\nabove); vxfs_getblk() maps 0 to -EIO, so the ioctl fails cleanly.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98872"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1284d687d46953fff9c0d969df108114611aca8b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/405f13d7b270913e06e8e2b4de568985f94ef7d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/500e9d5bf9eff2096a21b7ac25a0a06ca46ab821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/704d48d81dc41470e108811c32c577ada66192d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ada9807e37103b41f586d34e3075e1209182b65"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1f2d54a576f0e4133b979e545abcfefd439c300"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe40a19d571cbb584eea46038ee919d8712b2d2c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:20Z"
+  }
+}

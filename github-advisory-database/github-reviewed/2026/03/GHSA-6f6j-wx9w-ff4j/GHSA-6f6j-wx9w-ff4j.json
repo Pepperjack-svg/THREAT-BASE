@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6f6j-wx9w-ff4j",
+  "modified": "2026-03-20T21:36:39Z",
+  "published": "2026-03-02T21:55:05Z",
+  "aliases": [
+    "CVE-2026-31999"
+  ],
+  "summary": "CpenClaw's ACPX Windows wrapper shell fallback allowed cwd injection in specific paths",
+  "details": "### Summary\nOn Windows ACPX paths, wrapper resolution for `.cmd`/`.bat` could fall back to shell execution in ways that allowed `cwd` influence to alter execution behavior.\n\n### Impact\nIn affected Windows ACPX configurations, this could enable command execution integrity loss through cwd-influenced wrapper resolution.\n\n### Fix\nWrapper resolution now prefers explicit PATH/PATHEXT entrypoint resolution and unwrapped Node/EXE execution, with strict fail-closed handling enabled by default for unresolvable wrapper cases.\n\n### Affected and Patched Versions\n- Affected: `>= 2026.2.26, < 2026.3.1`\n- Patched: `2026.3.1`",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "openclaw"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2026.2.26"
+            },
+            {
+              "fixed": "2026.3.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-6f6j-wx9w-ff4j"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31999"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/openclaw/openclaw"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-current-working-directory-injection-via-windows-wrapper-resolution-fallback"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-02T21:55:05Z",
+    "nvd_published_at": null
+  }
+}

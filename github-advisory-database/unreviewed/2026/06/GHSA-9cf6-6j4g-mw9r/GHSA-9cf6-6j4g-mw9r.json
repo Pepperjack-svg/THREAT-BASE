@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9cf6-6j4g-mw9r",
+  "modified": "2026-06-29T18:31:55Z",
+  "published": "2026-06-29T18:31:55Z",
+  "aliases": [
+    "CVE-2026-56783"
+  ],
+  "details": "Parseable before 2.9.2 contains an information disclosure vulnerability in the notification-target API endpoints that returns webhook tokens and basic-auth credentials in cleartext due to commented-out secret-masking functionality. Any authenticated user with the GetAlert action, including low-privilege reader roles, can recover credentials and internal endpoint URLs for all configured notification targets by querying GET /api/v1/targets or related endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56783"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/parseablehq/parseable/issues/1693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/parseablehq/parseable/pull/1698"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/parseablehq/parseable/commit/f307c4989cc9f3ff4204fd383dec7a39924e6b2a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/parseablehq/parseable/releases/tag/v2.9.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/parseable-cleartext-credential-exposure-in-notification-target-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-522"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-29T18:16:38Z"
+  }
+}

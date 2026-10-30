@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f39x-mp5j-46f3",
+  "modified": "2025-12-18T18:30:28Z",
+  "published": "2025-07-04T15:31:08Z",
+  "aliases": [
+    "CVE-2025-38191"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix null pointer dereference in destroy_previous_session\n\nIf client set ->PreviousSessionId on kerberos session setup stage,\nNULL pointer dereference error will happen. Since sess->user is not\nset yet, It can pass the user argument as NULL to destroy_previous_session.\nsess->user will be set in ksmbd_krb5_authenticate(). So this patch move\ncalling destroy_previous_session() after ksmbd_krb5_authenticate().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/076f1adefb9837977af7ed233883842ddc446644"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0902625a24eea7fdc187faa5d97df244d159dd6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1193486dffb7432a09f57f5d09049b4d4123538b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/281afc52e2961cd5dd8326ebc9c5bc40904c0468"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ac5b66acafcc9292fb935d7e03790f2b8b2dc0e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zerodayinitiative.com/advisories/ZDI-25-610"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-04T14:15:26Z"
+  }
+}

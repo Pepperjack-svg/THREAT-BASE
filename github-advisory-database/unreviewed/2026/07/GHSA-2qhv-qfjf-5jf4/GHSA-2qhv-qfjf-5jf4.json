@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2qhv-qfjf-5jf4",
+  "modified": "2026-07-01T06:31:33Z",
+  "published": "2026-07-01T06:31:33Z",
+  "aliases": [
+    "CVE-2026-11988"
+  ],
+  "details": "The LearnPress – WordPress LMS Plugin for Create and Sell Online Courses plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.3.9.1 via the 'userId' parameter due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with subscriber-level access and above, to view the course enrollment progress and completion data belonging to any instructor or administrator account on the site. This IDOR does not apply when the target user is a regular subscriber, as the guard correctly blocks cross-subscriber access; exploitation is limited to cases where the victim user holds the LP_TEACHER_ROLE or administrator role.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11988"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.2.7.5/inc/rest-api/v1/frontend/class-lp-rest-lazy-load-controller.php#L118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.2.7.5/inc/rest-api/v1/frontend/class-lp-rest-lazy-load-controller.php#L137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.2.7.5/inc/user/abstract-lp-user.php#L680"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.9.1/inc/rest-api/v1/frontend/class-lp-rest-lazy-load-controller.php#L118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.9.1/inc/rest-api/v1/frontend/class-lp-rest-lazy-load-controller.php#L137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.9.1/inc/user/abstract-lp-user.php#L680"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?old_path=%2Flearnpress/tags/4.3.9.1&new_path=%2Flearnpress/tags/4.4.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/6b5e8cfd-989e-4a64-abb0-9daa22df46a4?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-01T05:16:16Z"
+  }
+}

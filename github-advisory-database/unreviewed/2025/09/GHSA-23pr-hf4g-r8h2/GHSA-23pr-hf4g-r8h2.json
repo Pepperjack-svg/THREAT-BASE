@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-23pr-hf4g-r8h2",
+  "modified": "2025-12-03T18:30:20Z",
+  "published": "2025-09-16T15:32:33Z",
+  "aliases": [
+    "CVE-2023-53274"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nclk: mediatek: mt8183: Add back SSPM related clocks\n\nThis reverts commit 860690a93ef23b567f781c1b631623e27190f101.\n\nOn the MT8183, the SSPM related clocks were removed claiming a lack of\nusage. This however causes some issues when the driver was converted to\nthe new simple-probe mechanism. This mechanism allocates enough space\nfor all the clocks defined in the clock driver, not the highest index\nin the DT binding. This leads to out-of-bound writes if their are holes\nin the DT binding or the driver (due to deprecated or unimplemented\nclocks). These errors can go unnoticed and cause memory corruption,\nleading to crashes in unrelated areas, or nothing at all. KASAN will\ndetect them.\n\nAdd the SSPM related clocks back to the MT8183 clock driver to fully\nimplement the DT binding. The SSPM clocks are for the power management\nco-processor, and should never be turned off. They are marked as such.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53274"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1eb8d61ac5c9c7ec56bb96d433532807509b9288"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45d69917a4af6c869193f95932dc6d6f15d5ef86"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T08:15:36Z"
+  }
+}

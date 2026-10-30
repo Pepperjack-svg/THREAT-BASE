@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4r8x-8q6m-xvvj",
+  "modified": "2025-09-29T21:30:20Z",
+  "published": "2025-09-19T21:31:17Z",
+  "aliases": [
+    "CVE-2025-34190"
+  ],
+  "details": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host and Application (macOS/Linux client deployments) are vulnerable to an authentication bypass in PrinterInstallerClientService. The service requires root privileges for certain administrative operations, but these checks rely on calls to geteuid(). By preloading a malicious shared object overriding geteuid(), a local attacker can trick the service into believing it is running with root privileges. This bypass enables execution of administrative commands (e.g., enabling debug mode, managing configurations, or invoking privileged features) without proper authorization. While some actions requiring write access to protected files may still fail, the flaw effectively breaks the intended security model of the inter-process communication (IPC) system, allowing local attackers to escalate privileges and compromise system integrity. NOTE: This vulnerability has been addressed, but an affected version range is not yet fully determined. We will update this record as soon as the vendor provides confirmed version information.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34190"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/saas/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/va/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pierrekim.github.io/blog/2025-04-08-vasion-printerlogic-83-vulnerabilities.html#mac-auth-bypass-printerinstallerclientservice"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vasion-print-printerlogic-authentication-bypass-via-ld-preload-hooking"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-19T19:15:39Z"
+  }
+}

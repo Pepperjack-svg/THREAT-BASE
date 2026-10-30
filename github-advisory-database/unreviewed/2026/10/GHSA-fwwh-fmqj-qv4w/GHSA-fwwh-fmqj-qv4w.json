@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fwwh-fmqj-qv4w",
+  "modified": "2026-10-14T03:30:39Z",
+  "published": "2026-10-14T03:30:39Z",
+  "aliases": [
+    "CVE-2026-102251"
+  ],
+  "details": "The Abandoned Cart Pro for WooCommerce plugin for WordPress is vulnerable to generic SQL Injection via the 'validate' parameter in all versions up to, and including, 10.8.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. AES-CTR is a malleable stream cipher, so an attacker who obtains one legitimate token by abandoning a cart with an email address they control can recover the keystream and forge a ciphertext carrying arbitrary SQL. The HMAC check added in 10.4.1 is enforced only when the wcap_nonce parameter is present, so omitting the parameter skips it entirely.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tychesoftwares.com/docs/docs/abandoned-cart-pro-for-woocommerce-new/changelog-abandoned-cart-pro"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tychesoftwares.com/products/woocommerce-abandoned-cart-pro-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a656312d-1ddf-48d5-81bf-180c67b32e39?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T03:17:12Z"
+  }
+}

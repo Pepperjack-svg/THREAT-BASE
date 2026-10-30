@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fppf-vq4v-6j7g",
+  "modified": "2026-10-21T15:40:07Z",
+  "published": "2025-09-11T18:35:51Z",
+  "aliases": [
+    "CVE-2025-39754"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/smaps: fix race between smaps_hugetlb_range and migration\n\nsmaps_hugetlb_range() handles the pte without holdling ptl, and may be\nconcurrenct with migration, leaing to BUG_ON in pfn_swap_entry_to_page(). \nThe race is as follows.\n\nsmaps_hugetlb_range              migrate_pages\n  huge_ptep_get\n                                   remove_migration_ptes\n\t\t\t\t   folio_unlock\n  pfn_swap_entry_folio\n    BUG_ON\n\nTo fix it, hold ptl lock in smaps_hugetlb_range().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09fc018f48871123ad5dbd7b03c956580232ed76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a1f3663974162b8f1e098196f557cfc1d160138"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45d19b4b6c2d422771c29b83462d84afcbb33f01"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b625883ccbcc2b57808db51d1375b1d7b9bcb3e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f76089018b34dbe0c2e9b67c5b7d8860668748bb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-11T17:15:39Z"
+  }
+}

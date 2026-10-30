@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8v4r-83gc-j76m",
+  "modified": "2026-05-12T15:31:04Z",
+  "published": "2025-09-05T18:31:27Z",
+  "aliases": [
+    "CVE-2025-39706"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Destroy KFD debugfs after destroy KFD wq\n\nSince KFD proc content was moved to kernel debugfs, we can't destroy KFD\ndebugfs before kfd_process_destroy_wq. Move kfd_process_destroy_wq prior\nto kfd_debugfs_fini to fix a kernel NULL pointer problem. It happens\nwhen /sys/kernel/debug/kfd was already destroyed in kfd_debugfs_fini but\nkfd_process_destroy_wq calls kfd_debugfs_remove_process. This line\n    debugfs_remove_recursive(entry->proc_dentry);\ntries to remove /sys/kernel/debug/kfd/proc/<pid> while\n/sys/kernel/debug/kfd is already gone. It hangs the kernel by kernel\nNULL pointer.\n\n(cherry picked from commit 0333052d90683d88531558dcfdbf2525cc37c233)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39706"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e58401a24e7b2d4ec619104e1a76590c1284a4c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74ee7445c3b61c3bd899a54bd82c1982cb3a8206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/910735ded17cc306625e7e1cdcc8102f7ac60994"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96609a51e6134542bf90e053c2cd2fe4f61ebce3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc35c955da799ba62f6f977d58e0866d0251e3f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-05T18:15:47Z"
+  }
+}

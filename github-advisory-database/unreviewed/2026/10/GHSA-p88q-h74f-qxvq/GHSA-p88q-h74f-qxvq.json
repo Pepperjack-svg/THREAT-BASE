@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p88q-h74f-qxvq",
+  "modified": "2026-10-16T18:34:45Z",
+  "published": "2026-10-16T18:34:44Z",
+  "aliases": [
+    "CVE-2026-111628"
+  ],
+  "details": "10up Distributor before 2.3.2 contains a PHP object injection vulnerability that allows Contributor-level users to instantiate PHP objects by double unserializing distributed post meta. Attackers can store a serialized PHP string as meta, which set_meta() in includes/utils.php unserializes on the destination site, storing attacker-defined objects whose impact depends on loaded gadget classes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/10up/distributor/security/advisories/GHSA-wm53-9j85-ph6h"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111628"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/10up/distributor/commit/7c57edb774d80534885ca6f2c46b95d333de6e5a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/10up/distributor/blob/2.3.1/includes/utils.php#L192-L200"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/10up/distributor/releases/tag/2.3.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/10up-distributor-before-2.3.2-php-object-injection-via-set-meta"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:42Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-834q-vmvq-2qjx",
+  "modified": "2025-10-09T18:30:36Z",
+  "published": "2025-10-09T18:30:36Z",
+  "aliases": [
+    "CVE-2025-59975"
+  ],
+  "details": "An Uncontrolled Resource Consumption vulnerability in the HTTP daemon (httpd) of Juniper Networks Junos Space allows an unauthenticated network-based attacker flooding the device with inbound API calls to consume all resources on the system, leading to a Denial of Service (DoS).\n\nAfter continuously flooding the system with inbound connection requests, all available file handles become consumed, blocking access to the system via SSH and the web user interface (WebUI), resulting in a management interface DoS. A manual reboot of the system is required to restore functionality.\n\nThis issue affects Junos Space: \n  *  all versions before 22.2R1 Patch V3, \n  *  from 23.1 before 23.1R1 Patch V3.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:Y/R:U/V:C/RE:M/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59975"
+    },
+    {
+      "type": "WEB",
+      "url": "https://supportportal.juniper.net/JSA103172"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-09T16:15:47Z"
+  }
+}

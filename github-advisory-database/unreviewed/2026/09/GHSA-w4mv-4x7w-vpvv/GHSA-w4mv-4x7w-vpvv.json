@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w4mv-4x7w-vpvv",
+  "modified": "2026-09-30T15:31:24Z",
+  "published": "2026-09-30T15:31:24Z",
+  "aliases": [
+    "CVE-2026-103321"
+  ],
+  "details": "MISP contains a stored cross-site script (XSS) vulnerability in the event graph preview feature.\n\nThe event graph preview image field was accepted and stored without server-side validation. On the client side, the stored value was rendered into an HTML img element's src attribute via string concatenation, allowing a crafted value to break out of the attribute context and inject arbitrary script.\n\nPreconditions:\n\n- An authenticated MISP user with the ability to create or modify an event graph entry.\n\n- A second user (the victim) who views the event graph and triggers the preview popover.\n\nImpact:\n\n- Execution of arbitrary JavaScript in the victim's browser within the MISP application context.\n\n- Potential theft of session tokens, cookies, or sensitive data accessible to the victim's browser.\n\n- Potential for performing actions on behalf of the victim within the MISP application.\n\nAffected: MISP versions prior to the fix (commit applied after v2.5.48).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103321"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/92c7ccc43"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T13:17:18Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2wf3-7j9f-p79x",
+  "modified": "2025-09-19T21:31:17Z",
+  "published": "2025-09-19T21:31:17Z",
+  "aliases": [
+    "CVE-2022-4980"
+  ],
+  "details": "General Bytes Crypto Application Server (CAS) beginning with version 20201208 prior to 20220531.38 (backport) and 20220725.22 (mainline) contains an authentication bypass in the admin web interface. An unauthenticated attacker could invoke the same URL used by the product's default-installation / first-admin creation page and create a new administrative account remotely. By gaining admin privileges, the attacker can change the ATM configuration resulting in redirected funds. Public vendor advisories and multiple independent writeups describe the vulnerability as a call to the page used for initial/default installation / first administration user creation; General Bytes has not publicly published the exact endpoint/parameter name. The issue was actively exploited in the wild against cloud-hosted and standalone CAS deployments (scanning exposed CAS instances on ports 7777/443), and publicly acknowledged by the General Bytes in September 2022.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-4980"
+    },
+    {
+      "type": "WEB",
+      "url": "https://generalbytes.atlassian.net/wiki/spaces/ESD/pages/2785509377/Security%2BIncident%2B"
+    },
+    {
+      "type": "WEB",
+      "url": "https://news.sophos.com/en-us/2022/08/23/bitcoin-atms-leeched-by-attackers-who-created-fake-admin-accounts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://thehackernews.com/2022/08/hackers-stole-crypto-from-bitcoin-atms.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.halborn.com/blog/post/explained-the-general-bytes-bitcoin-atm-hack-august-2022"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.incibe.es/en/incibe-cert/publications/cybersecurity-highlights/0day-vulnerability-exploited-general-bytes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/general-bytes-cas-unauth-creation-of-admin-account-via-default-installation-first-admin-page"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-19T19:15:37Z"
+  }
+}

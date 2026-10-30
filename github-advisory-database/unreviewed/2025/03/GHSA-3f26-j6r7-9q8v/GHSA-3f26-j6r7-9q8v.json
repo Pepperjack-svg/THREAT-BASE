@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3f26-j6r7-9q8v",
+  "modified": "2025-03-16T03:31:31Z",
+  "published": "2025-03-16T03:31:31Z",
+  "aliases": [
+    "CVE-2022-49737"
+  ],
+  "details": "In X.Org X server 20.11 through 21.1.16, when a client application uses easystroke for mouse gestures, the main thread modifies various data structures used by the input thread without acquiring a lock, aka a race condition. In particular, AttachDevice in dix/devices.c does not acquire an input lock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49737"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?att=1;bug=1081338;filename=dix-Hold-input-lock-for-AttachDevice.patch;msg=5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1081338"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.freedesktop.org/xorg/xserver/-/commit/dc7cb45482cea6ccec22d117ca0b489500b4d0a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.freedesktop.org/xorg/xserver/-/issues/1260"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-413"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-16T01:15:35Z"
+  }
+}

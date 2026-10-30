@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8mx3-4rwx-rhjv",
+  "modified": "2026-10-27T00:32:47Z",
+  "published": "2026-10-27T00:32:47Z",
+  "aliases": [
+    "CVE-2026-116732"
+  ],
+  "details": "libdwarf through 2.3.3 contains a heap out-of-bounds read vulnerability in dwarf_debug_addr_table() that omits the table starting offset when validating .debug_addr unit length. Attackers can supply a crafted object file with a non-zero offset table, causing dwarf_debug_addr_by_index() to read past the heap buffer, disclosing adjacent heap bytes or crashing consumers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116732"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/davea42/libdwarf-code/issues/336"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/davea42/libdwarf-code/commit/71f04013ddc2a3c88b9e25a4162ee2824741b593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/davea42/libdwarf-code"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/davea42/libdwarf-code/blob/v2.3.3/src/lib/libdwarf/dwarf_debugaddr.c#L175-L216"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/libdwarf-debug-addr-table-section-offset-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libdwarf-through-2.3.3-heap-out-of-bounds-read-via-dwarf-debug-addr-table"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T22:16:57Z"
+  }
+}

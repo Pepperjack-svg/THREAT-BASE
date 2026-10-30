@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q5pp-jrgg-4fpm",
+  "modified": "2026-10-22T12:31:16Z",
+  "published": "2026-10-22T12:31:16Z",
+  "aliases": [
+    "CVE-2026-114665"
+  ],
+  "details": "Goploy 1.18.0 before 1.18.1 contains a link following vulnerability in the /deploy/fileDiff and /deploy/fileCompare endpoints that allows authenticated members to read arbitrary files. Attackers with repository write access can commit a symlink pointing outside the project directory to read database configuration and deployment SSH private keys.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhenorzz/goploy/security/advisories/GHSA-4g5x-hcwm-82jw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114665"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhenorzz/goploy/commit/97a49839cc27470f4e804d985fbd2bddac085a3a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhenorzz/goploy"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhenorzz/goploy/blob/v1.18.0/cmd/server/api/deploy/handler.go#L404-L418"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhenorzz/goploy/releases/tag/v1.18.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/goploy-1.18.0-before-1.18.1-symlink-following-arbitrary-file-read-via-deploy-filediff-and-deploy-filecompare"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T11:17:43Z"
+  }
+}

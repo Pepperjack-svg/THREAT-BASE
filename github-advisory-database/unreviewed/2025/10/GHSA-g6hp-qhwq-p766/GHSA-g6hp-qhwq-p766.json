@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g6hp-qhwq-p766",
+  "modified": "2025-10-08T15:32:26Z",
+  "published": "2025-10-07T15:30:28Z",
+  "aliases": [
+    "CVE-2025-57564"
+  ],
+  "details": "CubeAPM nightly-2025-08-01-1 allow unauthenticated attackers to inject arbitrary log entries into production systems via the /api/logs/insert/elasticsearch/_bulk endpoint. This endpoint accepts bulk log data without requiring authentication or input validation, allowing remote attackers to perform unauthorized log injection. Exploitation may lead to false log entries, log poisoning, alert obfuscation, and potential performance degradation of the observability pipeline. The issue is present in the core CubeAPM platform and is not limited to specific deployment configurations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-57564"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/prassan10/CubeAPM/blob/main/CVE-2025-57564%3A%20Unauthenticated%20Log%20Injection%20in%20CubeAPM"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/prassan10/CubeAPM/blob/main/Unauthenticated-Log_Injection"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-117"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T14:15:38Z"
+  }
+}

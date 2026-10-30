@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wvpv-4m2j-8jmq",
+  "modified": "2026-10-26T18:32:58Z",
+  "published": "2026-10-26T18:32:58Z",
+  "aliases": [
+    "CVE-2026-116543"
+  ],
+  "details": "Open5GS 1.3.0 through 2.8.0 contains a heap out-of-bounds write vulnerability in parse_multipart() that allows unauthenticated attackers to corrupt memory by supplying an empty multipart boundary. Attackers can send a single crafted multipart/related request to the SBI interface of any network function, overflowing the lookbehind buffer and crashing it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/open5gs/open5gs/security/advisories/GHSA-25v2-v588-jq8g"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116543"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open5gs/open5gs/commit/6820c2743b5b5e126e3755d2f92dae2b236732df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open5gs/open5gs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open5gs/open5gs/blob/v2.8.0/lib/sbi/contrib/multipart_parser.c#L260"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open5gs/open5gs/blob/v2.8.0/lib/sbi/message.c#L3372"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/open5gs-1.3.0-through-2.8.0-heap-out-of-bounds-write-via-sbi-multipart-parser"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T16:17:19Z"
+  }
+}

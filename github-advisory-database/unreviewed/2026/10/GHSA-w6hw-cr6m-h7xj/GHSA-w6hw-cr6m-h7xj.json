@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w6hw-cr6m-h7xj",
+  "modified": "2026-10-20T15:31:23Z",
+  "published": "2026-10-20T15:31:23Z",
+  "aliases": [
+    "CVE-2026-113619"
+  ],
+  "details": "In Eclipse ioFog Controller versions 3.8.0 through 3.9.1, POST, PUT, and PATCH bodies on routes that enable template substitution are rendered by an uncapped Liquid engine before authentication and RBAC. The bearer check does not reject a missing or invalid token, and the auth rate limit applies only to user login routes. A small JSON body can stall or abort the Controller process. The anonymous caller does not receive the rendered result; the impact is availability of the control plane, including the agent API and in-process WebSocket relays on that process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113619"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/469"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/1268"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T13:16:41Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ww4w-67c9-6hv8",
+  "modified": "2026-10-08T15:33:07Z",
+  "published": "2026-10-08T15:33:07Z",
+  "aliases": [
+    "CVE-2026-107637"
+  ],
+  "details": "pH7Builder (pH7 Social Dating CMS) before 18.5.0 contains an improper authorization vulnerability in the note module delete() action that allows authenticated members to delete other members' note comments and categories. Attackers can submit another member's note ID in the POST id parameter to remove all comments and category associations, since those queries lack profile ID checks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pH7Software/pH7-Social-Dating-CMS/commit/e784139b2385ef44d08a1d586c365857dd777ef6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pH7Software/pH7-Social-Dating-CMS"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pH7Software/pH7-Social-Dating-CMS/blob/v18.4.1/_protected/app/system/modules/note/controllers/MainController.php#L311-L320"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ph7builder-before-18.5.0-improper-authorization-via-note-module-delete-action"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T15:17:46Z"
+  }
+}

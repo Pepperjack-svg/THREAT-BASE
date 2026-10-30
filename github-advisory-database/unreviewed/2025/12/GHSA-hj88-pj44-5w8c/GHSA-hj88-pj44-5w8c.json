@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hj88-pj44-5w8c",
+  "modified": "2026-01-11T18:30:28Z",
+  "published": "2025-12-24T12:30:28Z",
+  "aliases": [
+    "CVE-2025-68345"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: hda: cs35l41: Fix NULL pointer dereference in cs35l41_hda_read_acpi()\n\nThe acpi_get_first_physical_node() function can return NULL, in which\ncase the get_device() function also returns NULL, but this value is\nthen dereferenced without checking,so add a check to prevent a crash.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68345"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/343fa9800cf9870ec681e21f0a6f2157b74ae520"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a35a505d76a4b6cd426b59ff2d800d0394cc5d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c28946b7409b7b68fb0481ec738c8b04578b11c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c34b04cc6178f33c08331568c7fd25c5b9a39f66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e63f9c81ca28b06eeeac3630faddc50717897351"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6ba921b17797ccc545d80e0dbccb5fab91c248c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:15:57Z"
+  }
+}

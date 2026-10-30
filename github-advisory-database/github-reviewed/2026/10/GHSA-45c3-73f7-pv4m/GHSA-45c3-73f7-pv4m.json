@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-45c3-73f7-pv4m",
+  "modified": "2026-10-27T15:37:37Z",
+  "published": "2026-10-27T15:37:37Z",
+  "aliases": [
+    "CVE-2026-114605"
+  ],
+  "summary": "dnspython dns.name.from_wire_parser() excessive CPU use",
+  "details": "### Impact\nA maliciously crafted DNS message may cause dns.name.from_wire_parser() to use excessive CPU for DNS name decompression.  Applications that process untrusted DNS wire form messages with dnspython may be degraded or DoS'd by the extra CPU use required.\n\n### Patches\nThis problem is fixed in dnspython 2.9.0.\n\n### Workarounds\nThere are no known workarounds.\n\n### Credit\nEvgenios Gkritsis, Department of Informatics, University of Piraeus & Athena Research Center, Greece\nConstantinos Patsakis, Department of Informatics, University of Piraeus & Athena Research Center, Greece\nGeorge Stergiopoulos, Department of Informatics, Athens University of Economics and Business, Greece",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "dnspython"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.9.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/rthalley/dnspython/security/advisories/GHSA-45c3-73f7-pv4m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114605"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rthalley/dnspython/commit/b485e460c266540a1a09ca6d8d1d7b685b1d3023"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/rthalley/dnspython"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rthalley/dnspython/releases/tag/v2.9.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-27T15:37:37Z",
+    "nvd_published_at": "2026-10-22T17:16:58Z"
+  }
+}

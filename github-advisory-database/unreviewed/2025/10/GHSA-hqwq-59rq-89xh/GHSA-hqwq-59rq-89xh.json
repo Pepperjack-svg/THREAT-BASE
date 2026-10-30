@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hqwq-59rq-89xh",
+  "modified": "2025-10-22T18:30:30Z",
+  "published": "2025-10-22T18:30:30Z",
+  "aliases": [
+    "CVE-2022-49423"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtla: Avoid record NULL pointer dereference\n\nFix the following null/deref_null.cocci errors:\n./tools/tracing/rtla/src/osnoise_hist.c:870:31-36: ERROR: record is NULL but dereferenced.\n./tools/tracing/rtla/src/osnoise_top.c:650:31-36: ERROR: record is NULL but dereferenced.\n./tools/tracing/rtla/src/timerlat_hist.c:905:31-36: ERROR: record is NULL but dereferenced.\n./tools/tracing/rtla/src/timerlat_top.c:700:31-36: ERROR: record is NULL but dereferenced.\n\n\"record\" is NULL before calling osnoise_init_trace_tool.\nAdd a tag \"out_free\" to avoid dereferring a NULL pointer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a6b52ed72c822b5ee146a6a00ea66614fe02653"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0f1c686baff74d5df10f2f46670ef4e24a75756"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:18Z"
+  }
+}

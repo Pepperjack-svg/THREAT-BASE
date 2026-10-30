@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h8cj-p2h5-hm79",
+  "modified": "2026-10-14T18:32:29Z",
+  "published": "2026-10-14T18:32:29Z",
+  "aliases": [
+    "CVE-2026-107349"
+  ],
+  "details": "An infinite loop in PgBouncer 1.20.0 through 1.26.0 allows an unauthenticated remote attacker to cause a denial of service. A StartupMessage whose options parameter contains an empty parameter name, such as \"-c=\", makes the ignore_startup_parameters list lookup loop forever. Because PgBouncer serves all clients from a single process, this saturates a CPU core and makes PgBouncer unresponsive to all clients until the process is restarted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107349"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.pgbouncer.org/changelog.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T18:17:25Z"
+  }
+}

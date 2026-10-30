@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5662-2rj7-f2v6",
+  "modified": "2025-08-04T15:22:23Z",
+  "published": "2025-08-04T15:22:23Z",
+  "aliases": [
+    "CVE-2025-54796"
+  ],
+  "summary": "copyparty allows Regex Denial of Service (ReDoS) in the upload listing",
+  "details": "### Summary\nThe `filter` parameter for the \"Recent uploads\" page allows arbitrary Regexes. If this feature is enabled (which is the default), an attacker can craft a filter which deadlocks the server.\n\n### PoC\n`https://127.0.0.1:3923/?ru&filter=(.+)+x`\n\n### Impact\nThe server becomes fully inaccessible for a long time.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "copyparty"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.18.9"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.18.8"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/9001/copyparty/security/advisories/GHSA-5662-2rj7-f2v6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-54796"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/9001/copyparty/commit/09910ba80784c3980947d92f45db696398c0fd83"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/9001/copyparty"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/9001/copyparty/releases/tag/v1.18.9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1333"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-08-04T15:22:23Z",
+    "nvd_published_at": "2025-08-02T00:15:26Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77wm-h672-qx76",
+  "modified": "2026-10-22T00:31:59Z",
+  "published": "2026-10-22T00:31:59Z",
+  "aliases": [
+    "CVE-2026-76287"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.4, a user that holds a role with the preview_data_management_pipeline capability or edit_data_management_pipeline_job capability could read or delete Data Management SPL2 preview jobs and results outside their ownership scope.\nThe vulnerability is possible because the Data Management Representational State Transfer (REST) API verifies the required capability but does not verify that the requested preview job belongs to the requester.\nThe affected Data Management REST API is available only when the Edge Processor feature is turned on. The Edge Processor feature is turned off by default.\nFor more information see Set up a data management control plane (https://help.splunk.com/en/splunk-enterprise/process-data-at-the-edge/use-edge-processors-for-splunk-enterprise/10.4/getting-started/set-up-a-data-management-control-plane) and Getting sample data for previewing data transformations (https://help.splunk.com/en/splunk-enterprise/process-data-at-the-edge/use-edge-processors-for-splunk-enterprise/10.4/working-with-pipelines/getting-sample-data-for-previewing-data-transformations) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76287"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-1007"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T23:17:26Z"
+  }
+}

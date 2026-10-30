@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-439f-2pm4-424q",
+  "modified": "2025-03-17T18:31:49Z",
+  "published": "2025-03-17T18:31:49Z",
+  "aliases": [
+    "CVE-2022-49449"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npinctrl: renesas: rzn1: Fix possible null-ptr-deref in sh_pfc_map_resources()\n\nIt will cause null-ptr-deref when using 'res', if platform_get_resource()\nreturns NULL, so move using 'res' after devm_ioremap_resource() that\nwill check it to avoid null-ptr-deref.\nAnd use devm_platform_get_and_ioremap_resource() to simplify code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49449"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01f9e02e0f13df3fd291676dc80054e977be1601"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f661477c2bb8068194dbba9738d05219f111c6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34c719b8fdfbd0c7c54cae56e6b0f16e9f8bf03e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b646e0cfeb38bf5f1944fd548f1dfa9b129fa00c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c16b59d445135c8026a04e388d8b2762feaa3b3b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:21Z"
+  }
+}

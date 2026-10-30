@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m8pm-m9cw-wjqh",
+  "modified": "2026-05-01T18:31:24Z",
+  "published": "2026-05-01T18:31:24Z",
+  "aliases": [
+    "CVE-2026-37552"
+  ],
+  "details": "Unsafe deserialization vulnerability in MixPHP Framework 2.x thru 2.2.17. The sync-invoke TCP server (Server.php:87) receives data from a TCP socket, passes it directly to Opis\\Closure\\unserialize(), then executes the result via call_user_func(). No authentication or signature verification exists on the TCP connection. An attacker with access to the localhost TCP port (server binds 127.0.0.1) can send a crafted serialized PHP closure to achieve arbitrary code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-37552"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/sgInnora/fa46386840fe978a30d7e53c458f2975"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mix-php/mix"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mix-php/mix/blob/v2.2.17/src/sync-invoke/src/Server.php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T16:16:30Z"
+  }
+}

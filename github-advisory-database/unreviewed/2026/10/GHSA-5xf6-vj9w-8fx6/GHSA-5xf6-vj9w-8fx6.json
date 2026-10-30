@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5xf6-vj9w-8fx6",
+  "modified": "2026-10-23T15:31:35Z",
+  "published": "2026-10-23T15:31:34Z",
+  "aliases": [
+    "CVE-2026-99008"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: RFCOMM: Fix NULL tty_dev dereference in rfcomm_dev_shutdown\n\nsyzbot hit a NULL pointer dereference in rfcomm_dev_shutdown() when an\nRFCOMM tty is closed.\n\nrfcomm_dev_add() puts the new device on rfcomm_dev_list first and only\nthen registers the tty device and saves it in dev->tty_dev. If that\nregistration fails, dev->tty_dev is never set at all. The device can be\nlooked up in the meantime, so an open() of /dev/rfcommN gets through\nrfcomm_tty_install() and attaches to it. When that tty is closed again,\nrfcomm_dev_shutdown() uses dev->tty_dev without checking it:\n\n  Oops: general protection fault, probably for non-canonical address\n  KASAN: null-ptr-deref in range [0x0000000000000040-0x0000000000000047]\n  RIP: 0010:rfcomm_dev_shutdown+0x48/0xb0 net/bluetooth/rfcomm/tty.c:131\n  Call Trace:\n   tty_port_shutdown+0x1bf/0x220 drivers/tty/tty_port.c:372\n   tty_port_close+0x4e/0x150 drivers/tty/tty_port.c:705\n   tty_release+0x359/0x1670 drivers/tty/tty_io.c:1718\n   __fput+0x418/0xa50 fs/file_table.c:512\n\nrfcomm_dev_destruct() already copes with a NULL dev->tty_dev. Add the\nsame check to rfcomm_dev_shutdown(), so the tty device is only moved\nwhen it was actually registered.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99008"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08e90633377f1b2567ab5ad6810b74c552246a07"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3fd5164bdb04635caa7942ddb554b0ec699a9433"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a661f401f83b8462f2d424e0a1a72b7681e92ea2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0aef0b0374678153244f162df507106d728af39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5c372ad03330f02962d4860df4d355ab25487df"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:23Z"
+  }
+}

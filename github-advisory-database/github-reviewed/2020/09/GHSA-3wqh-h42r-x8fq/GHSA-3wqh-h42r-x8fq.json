@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3wqh-h42r-x8fq",
+  "modified": "2025-09-25T22:29:15Z",
+  "published": "2020-09-03T15:46:22Z",
+  "aliases": [],
+  "summary": "Denial of Service in @hapi/content",
+  "details": "Versions of `@hapi/content` prior to 4.1.1 and 5.0.1 are vulnerable to Denial of Service. The Content-Encoding HTTP header parser has a vulnerability which will cause the function to throw a system error if the header contains some invalid values. Because hapi rethrows system errors (as opposed to catching expected application errors), the error is thrown all the way up the stack. If no unhandled exception handler is available, the application will exist, allowing an attacker to shut down services.\n\n\n## Recommendation\n\nUpgrade to version 5.0.2. Versions 4.1.1 and 5.0.1 are fixed but only available for direct download through the repository.",
+  "severity": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@hapi/content"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.0.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://www.npmjs.com/advisories/1476"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2020-08-31T19:00:42Z",
+    "nvd_published_at": null
+  }
+}

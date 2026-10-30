@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f32m-f53g-3875",
+  "modified": "2026-10-15T03:34:34Z",
+  "published": "2025-02-27T03:34:03Z",
+  "aliases": [
+    "CVE-2024-58016"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsafesetid: check size of policy writes\n\nsyzbot attempts to write a buffer with a large size to a sysfs entry\nwith writes handled by handle_policy_update(), triggering a warning\nin kmalloc.\n\nCheck the size specified for write buffers before allocating.\n\n[PM: subject tweak]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58016"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-265688.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36b385d0f2b4c0bf41d491e19075ecd990d2bf94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96fae5bd1589731592d30b3953a90a77ef3928a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/976284b94f2021df09829e37a367e19b84d9e5f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0dec65f88c8d9290dfa1d2ca1e897abe54c5881"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c71d35676d46090c891b6419f253fb92a1a9f4eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ecf6a4a558097920447a6fb84dfdb279e2ac749a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f09ff307c7299392f1c88f763299e24bc99811c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/03/msg00028.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T03:15:12Z"
+  }
+}

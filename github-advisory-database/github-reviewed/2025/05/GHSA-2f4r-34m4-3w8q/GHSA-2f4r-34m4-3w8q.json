@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2f4r-34m4-3w8q",
+  "modified": "2025-05-17T15:07:23Z",
+  "published": "2025-05-17T15:07:23Z",
+  "aliases": [],
+  "summary": "Auth0 Wordpress plugin Vulnerable to Brute Force Authentication Tags of CookieStore Sessions",
+  "details": "**Overview**\nSession cookies of applications using the Auth0 Wordpress plugin configured with CookieStore have authentication tags that can be brute forced, which may result in unauthorized access.\n\n**Am I Affected?**\nYou are affected by this vulnerability if you meet the following pre-conditions:\n1. Applications using the Auth0 WordPress Plugin with version <=5.2.1\n2. Auth0 WordPress Plugin uses the Auth0-PHP SDK with version 8.0.0-BETA1 or higher and below 8.14.0. \n3. Session storage configured with CookieStore.\n\n\n**Fix**\nUpgrade Auth0/wordpress plugin to v5.3.0. As an additional precautionary measure, we recommend rotating your cookie encryption keys. Note that once updated, any previous session cookies will be rejected.\n\n**Acknowledgement**\nOkta would like to thank Félix Charette for discovering this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "auth0/wordpress"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.3.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/auth0/wordpress/security/advisories/GHSA-2f4r-34m4-3w8q"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-47275"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/auth0/wordpress/commit/06b64468089472d8b62c881708be7eb3749b35ac"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/auth0/wordpress"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/auth0/wordpress/releases/tag/5.3.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-05-17T15:07:23Z",
+    "nvd_published_at": null
+  }
+}

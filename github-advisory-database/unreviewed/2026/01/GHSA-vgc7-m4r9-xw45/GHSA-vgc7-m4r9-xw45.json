@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vgc7-m4r9-xw45",
+  "modified": "2026-03-25T21:30:23Z",
+  "published": "2026-01-25T15:30:27Z",
+  "aliases": [
+    "CVE-2026-23001"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmacvlan: fix possible UAF in macvlan_forward_source()\n\nAdd RCU protection on (struct macvlan_source_entry)->vlan.\n\nWhenever macvlan_hash_del_source() is called, we must clear\nentry->vlan pointer before RCU grace period starts.\n\nThis allows macvlan_forward_source() to skip over\nentries queued for freeing.\n\nNote that macvlan_dev are already RCU protected, as they\nare embedded in a standard netdev (netdev_priv(ndev)).\n\nhttps: //lore.kernel.org/netdev/695fb1e8.050a0220.1c677c.039f.GAE@google.com/T/#u",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23001"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15f6faf36e162532bec5cc05eb3fc622108bf2ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/232afc74a6dde0fe1830988e5827921f5ec9bb3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/484919832e2db6ce1e8add92c469e5d459a516b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6dbead9c7677186f22b7981dd085a0feec1f038e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7470a7a63dc162f07c26dbf960e41ee1e248d80e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8133e85b8a3ec9f10d861e0002ec6037256e987e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8518712a2ca952d6da2238c6f0a16b4ae5ea3f13"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-25T15:15:54Z"
+  }
+}

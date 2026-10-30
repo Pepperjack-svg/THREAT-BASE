@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2crp-r6g2-9c5p",
+  "modified": "2025-05-07T15:31:25Z",
+  "published": "2025-05-01T15:31:50Z",
+  "aliases": [
+    "CVE-2022-49867"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: wwan: iosm: fix memory leak in ipc_wwan_dellink\n\nIOSM driver registers network device without setting the\nneeds_free_netdev flag, and does NOT call free_netdev() when\nunregisters network device, which causes a memory leak.\n\nThis patch sets needs_free_netdev to true when registers\nnetwork device, which makes netdev subsystem call free_netdev()\nautomatically after unregister_netdevice().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/128514b51a5ba2c82f9e4a106f1c10423907618a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ce2348c2858d723f7fe389dead9b43b08e0944e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f25caaca424703d5a0607310f0452f978f1f78d9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:11Z"
+  }
+}

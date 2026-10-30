@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hhhw-f92w-5h8m",
+  "modified": "2026-10-23T15:31:37Z",
+  "published": "2026-10-23T15:31:36Z",
+  "aliases": [
+    "CVE-2026-99067"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: scrub: fix local_root reference leak in scrub_print_warning_inode()\n\nWhen paths_from_inode() fails, scrub_print_warning_inode() jumps to err\nwithout dropping the reference taken by btrfs_get_fs_root(), leaking a\nreference to the root every time path resolution fails while printing\nscrub warnings.  Every other error and success path of the function\ndrops the reference.\n\nDrop the reference on the paths_from_inode() failure path too.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99067"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12ba7d8b9cd45a2c6aa8f37c3f4b8a50422fb549"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fd742c7479961da6d0bb794ef8ac6b7b9442847"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41cabfbf3532e2a2a17be9e4876042a5393b5c8d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/452a435b74f7f598a343c51f7c89c5d2244384b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a7e5992bc37088f9b00e531955022aef69de3dc7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:30Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h2hx-8pjw-mmmw",
+  "modified": "2026-06-16T12:32:01Z",
+  "published": "2026-06-16T12:32:01Z",
+  "aliases": [
+    "CVE-2026-8442"
+  ],
+  "details": "The WP Review Slider Pro plugin for WordPress is vulnerable to Arbitrary File Deletion in versions up to and including 12.6.8. This is due to missing authorization checks on the wpfb_hide_review and wprp_save_review_admin AJAX handlers combined with insufficient path validation in the wpfb_hidereview_ajax() function, which uses strpos() to check that a stored media URL starts with the expected prefix but fails to sanitize path traversal sequences in the remaining relative path before passing it to unlink(). This makes it possible for authenticated attackers, with subscriber-level access and above, to delete arbitrary files on the affected site's server which may make remote code execution possible.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8442"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpreviewslider.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f3af6f70-aa7e-4f33-88c0-45befaab2b29?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-16T10:16:29Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wvmg-w3gm-rjfx",
+  "modified": "2025-11-15T00:30:26Z",
+  "published": "2025-11-15T00:30:26Z",
+  "aliases": [
+    "CVE-2021-4469"
+  ],
+  "details": "Denver SHO-110 IP cameras expose a secondary HTTP service on TCP port 8001 that provides access to a '/snapshot' endpoint without authentication. While the primary web interface on port 80 enforces authentication, the backdoor service allows any remote attacker to retrieve image snapshots by directly requesting the 'snapshot' endpoint. An attacker can repeatedly collect snapshots and reconstruct the camera stream, compromising the confidentiality of the monitored environment.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-4469"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/50162"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/denver-sho-110-ip-camera-unauthenticated-snapshot-access"
+    },
+    {
+      "type": "WEB",
+      "url": "http://old.denver.eu/products/smart-home-security/denver-sho-110/c-1024/c-1243/p-3826"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-14T23:15:42Z"
+  }
+}

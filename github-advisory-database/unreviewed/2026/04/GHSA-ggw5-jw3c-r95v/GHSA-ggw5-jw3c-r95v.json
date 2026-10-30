@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ggw5-jw3c-r95v",
+  "modified": "2026-04-27T15:30:31Z",
+  "published": "2026-04-03T18:31:22Z",
+  "aliases": [
+    "CVE-2026-23461"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: Fix use-after-free in l2cap_unregister_user\n\nAfter commit ab4eedb790ca (\"Bluetooth: L2CAP: Fix corrupted list in\nhci_chan_del\"), l2cap_conn_del() uses conn->lock to protect access to\nconn->users. However, l2cap_register_user() and l2cap_unregister_user()\ndon't use conn->lock, creating a race condition where these functions can\naccess conn->users and conn->hchan concurrently with l2cap_conn_del().\n\nThis can lead to use-after-free and list corruption bugs, as reported\nby syzbot.\n\nFix this by changing l2cap_register_user() and l2cap_unregister_user()\nto use conn->lock instead of hci_dev_lock(), ensuring consistent locking\nfor the l2cap_conn structure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11a87dd5df428a4b79a84d2790cac7f3c73f1f0d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71030f3b3015a412133a805ff47970cdcf30c2b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/752a6c9596dd25efd6978a73ff21f3b592668f4a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c22a5e659959eb77c2fbb58a5adfaf3c3dab7abf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da3000cbe4851458a22be38bb18c0689c39fdd5f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362",
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-03T16:16:33Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xx2v-hjr6-76fh",
+  "modified": "2026-10-18T12:30:26Z",
+  "published": "2026-10-18T12:30:26Z",
+  "aliases": [
+    "CVE-2026-112008"
+  ],
+  "details": "libmng through 2.0.3 contains a heap-based buffer overflow vulnerability in mng_read_ordr() that allows attackers to corrupt heap memory because ORDR entry buffers are sized by 5-byte on-wire records instead of 8-byte in-memory entries. Attackers can supply a crafted MNG file with MHDR, DHDR and a multi-record ORDR chunk to applications calling mng_read or mng_readdisplay, writing attacker-controlled data past the allocation and crashing the application.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112008"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/libmng-ordr-chunk-store-oob-write"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sourceforge.net/projects/libmng"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sourceforge.net/projects/libmng/files/libmng-devel/2.0.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libmng-through-2.0.3-heap-buffer-overflow-via-ordr-chunk-reader-mng-read-ordr"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-131"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T12:17:13Z"
+  }
+}

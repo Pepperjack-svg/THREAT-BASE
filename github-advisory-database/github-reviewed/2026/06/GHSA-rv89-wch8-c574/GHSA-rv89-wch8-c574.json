@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rv89-wch8-c574",
+  "modified": "2026-06-22T20:29:41Z",
+  "published": "2026-06-22T20:29:41Z",
+  "aliases": [
+    "CVE-2026-44584"
+  ],
+  "summary": "Paymenter doesn't reset email verification status after email change",
+  "details": "### Summary\nThe email update functionality fails to invalidate the existing verification state when a user changes their email address, allowing a verified account to retain its verified status after switching to an unverified or unowned email address.\n\n### Technical Details\nWhen a user updated their email address, the system did not reset or revalidate the associated email verification status. As a result, the verification column remained set to “true” even after the email address was changed.\n\nThis allowed an attacker to:\n\n- Verify an account using a legitimate email address\n- Change the account email to an arbitrary or unowned address\n- Retain the verified status without re-confirmation of the new email\n\nNo verification challenge or confirmation was required for the newly assigned email address.\n\n### Impact\nThis vulnerability allows a user to associate a verified account with an email address they do not control, this may result in:\n\n- Misrepresentation of email ownership\n- Bypass of verification-based trust assumptions\n- Potential abuse of features gated behind verified status\n\nNo direct unauthorized access to other users accounts or data is possible through this issue alone.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "paymenter/paymenter"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Paymenter/Paymenter/security/advisories/GHSA-rv89-wch8-c574"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Paymenter/Paymenter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-22T20:29:41Z",
+    "nvd_published_at": null
+  }
+}

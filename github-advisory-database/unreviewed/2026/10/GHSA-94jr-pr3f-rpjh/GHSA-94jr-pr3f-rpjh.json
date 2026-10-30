@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-94jr-pr3f-rpjh",
+  "modified": "2026-10-11T15:31:05Z",
+  "published": "2026-10-11T15:31:05Z",
+  "aliases": [
+    "CVE-2026-108750"
+  ],
+  "details": "OpenDocMan 2.4.0 through 2.10.0 contains a decompression bomb vulnerability that allows authenticated users to exhaust PHP memory by uploading crafted office documents. Attackers can upload a small ODT, DOCX, or XLSX file whose XML entries decompress to hundreds of megabytes, crashing PHP workers and degrading availability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108750"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/opendocman/opendocman"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/opendocman/opendocman/blob/641f0a6f8eeba902e309978ec04291c44d3cd1c5/application/models/Document.class.php#L67-L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/opendocman/opendocman/blob/641f0a6f8eeba902e309978ec04291c44d3cd1c5/application/models/TextExtractors/OdtExtractor.class.php#L10-L25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind03/opendocman-office-document-decompression-dos"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/opendocman-2.4.0-through-2.10.0-decompression-bomb-dos-via-upload-text-extraction"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-409"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T13:17:19Z"
+  }
+}

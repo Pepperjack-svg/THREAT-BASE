@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wqfw-mf45-5858",
+  "modified": "2026-10-16T18:34:47Z",
+  "published": "2026-10-16T18:34:47Z",
+  "aliases": [
+    "CVE-2026-111656"
+  ],
+  "details": "ChatWiki through 2.9.6 contains an insecure direct object reference vulnerability that allows authenticated users to access another tenant's form filters by supplying arbitrary form_id values. Attackers can send sequential form_id values to getFormFilterList, getFormFilterInfo and updateFormFilterSort to read filter rules and overwrite another tenant's filter sort order.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111656"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhimaAi/chatwiki/blob/v2.9.6/internal/app/chatwiki/business/manage/form.go#L1192-L1242"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhimaAi/chatwiki/blob/v2.9.6/internal/app/chatwiki/business/manage/form.go#L878-L990"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/chatwiki-form-filter-cross-tenant-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/chatwiki-through-2.9.6-cross-tenant-idor-via-form-filter-management-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:46Z"
+  }
+}

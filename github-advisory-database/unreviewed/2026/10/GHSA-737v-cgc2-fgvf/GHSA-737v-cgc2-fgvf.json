@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-737v-cgc2-fgvf",
+  "modified": "2026-10-06T15:31:59Z",
+  "published": "2026-10-06T15:31:59Z",
+  "aliases": [
+    "CVE-2026-106037"
+  ],
+  "details": "Mooncake through 0.3.13.post1 contains a missing authentication vulnerability in the Store REST service, which binds to 0.0.0.0 without authentication on any route. Unauthenticated attackers can call routes such as /api/get, /api/put, /api/remove_all and /api/mount to read cached KV data with user prompts, inject or delete objects, and mount attacker-described segments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106037"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kvcache-ai/Mooncake/issues/4476"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kvcache-ai/Mooncake"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kvcache-ai/Mooncake/blob/719735896c86b56fabec6cf3e825fb2ea640597a/mooncake-wheel/mooncake/mooncake_store_service.py#L240-L282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mooncake-through-0.3.13-post1-missing-authentication-in-store-rest-service"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T14:17:42Z"
+  }
+}

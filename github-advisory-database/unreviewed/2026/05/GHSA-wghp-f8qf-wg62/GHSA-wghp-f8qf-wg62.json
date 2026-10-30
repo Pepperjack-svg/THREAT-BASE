@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wghp-f8qf-wg62",
+  "modified": "2026-05-26T13:30:19Z",
+  "published": "2026-05-26T13:30:19Z",
+  "aliases": [
+    "CVE-2026-42626"
+  ],
+  "details": "HP ENVY 5000 series printers VERBASPP1N003.2237A.00 do not properly manage concurrent TCP connections to port 9100 (JetDirect/RAW printing). An unauthenticated remote attacker on the same network can establish a persistent connection to port 9100 and send keep-alive packets, causing the printer's session threads to remain locked in a waiting state. The firmware lacks connection timeouts and concurrent session limits, resulting in a persistent Denial of Service (DoS) that renders the printer unresponsive to all user commands and print jobs. Physical intervention (manual restart) is required to restore functionality, and the attack can be immediately re-initiated.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42626"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jacobmasse.medium.com/hp-envy-5000-printer-dos-vulnerability-8cae52c87b41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://medium.com/@jacobmasse/hp-envy-5000-printer-dos-vulnerability-8cae52c87b41"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-22T17:16:47Z"
+  }
+}

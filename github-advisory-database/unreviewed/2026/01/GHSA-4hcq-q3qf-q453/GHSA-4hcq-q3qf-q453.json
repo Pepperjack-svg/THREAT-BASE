@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4hcq-q3qf-q453",
+  "modified": "2026-01-27T21:31:40Z",
+  "published": "2026-01-12T21:30:34Z",
+  "aliases": [
+    "CVE-2026-22200"
+  ],
+  "details": "Enhancesoft osTicket versions up to and including 1.18.2 contain an arbitrary file read vulnerability in the ticket PDF export functionality. A remote attacker can submit a ticket containing crafted rich-text HTML that includes PHP filter expressions which are insufficiently sanitized before being processed by the mPDF PDF generator during export. When the attacker exports the ticket to PDF, the generated PDF can embed the contents of attacker-selected files from the server filesystem as bitmap images, allowing disclosure of sensitive local files in the context of the osTicket application user. This issue is exploitable in default configurations where guests may create tickets and access ticket status, or where self-registration is enabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22200"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/osTicket/osTicket/commit/c59b067"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/osTicket/osTicket"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/osTicket/osTicket/releases/tag/v1.17.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/osTicket/osTicket/releases/tag/v1.18.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://horizon3.ai/attack-research/attack-blogs/ticket-to-shell-exploiting-php-filters-and-cnext-in-osticket-cve-2026-22200"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osticket.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/osticket-pdf-export-arbitrary-file-read"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-74"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-12T19:16:02Z"
+  }
+}

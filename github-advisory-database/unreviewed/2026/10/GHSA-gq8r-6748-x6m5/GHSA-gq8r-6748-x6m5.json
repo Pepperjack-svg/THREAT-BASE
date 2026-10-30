@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gq8r-6748-x6m5",
+  "modified": "2026-10-18T18:31:53Z",
+  "published": "2026-10-18T18:31:53Z",
+  "aliases": [
+    "CVE-2026-98545"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nata: libata-scsi: bound the ATA passthru sense descriptor writes\n\nWhen an ATA PASS-THROUGH command to an ATAPI device fails, the sense\nbuffer holds the device's REQUEST SENSE reply, and\nata_scsi_set_passthru_sense_fields() trusts its additional length\nbyte, sb[7], when adding the ATA Status Return descriptor.  A faulty\nor malicious device can use that to make the kernel read and write\npast the 96-byte buffer in three ways:\n\n- scsi_sense_desc_find() is passed sb[7] + 8 as the buffer length, so\n  its clamp against sb[7] does nothing and the walk runs off the end.\n- A type-9 descriptor found near the end is filled in unchecked.\n- A new descriptor at sb[8 + len] needs len + 22 bytes, not len + 14,\n  so len 75..82 writes up to 8 bytes past the end.\n\nReproduced with KASAN under qemu, with the emulated ATAPI REQUEST SENSE\nreply patched:\n\n  BUG: KASAN: slab-out-of-bounds in scsi_sense_desc_find+0x1a5/0x210\n  BUG: KASAN: slab-out-of-bounds in ata_scsi_qc_complete+0x1a15/0x1a50\n\nBoth are gone with this patch, and a valid descriptor is still filled\nin.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98545"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1603abb0c50420e97cf4a1feddbd5e183c5fdf86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80320b278fea07ffcda3f57b67b61658e0a4e1ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80fbb0bc4d11683c88f2f9d3997ea02fcada5408"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c698f6deabf680f8f4a1727ef2dc80fe78815fbf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d9a7147b93624660626cd7c3b1143715699e1f5c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:06Z"
+  }
+}

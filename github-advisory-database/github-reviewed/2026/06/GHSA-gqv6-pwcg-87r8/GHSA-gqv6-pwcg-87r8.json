@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gqv6-pwcg-87r8",
+  "modified": "2026-06-19T20:47:14Z",
+  "published": "2026-06-19T20:47:14Z",
+  "aliases": [
+    "CVE-2026-54783"
+  ],
+  "summary": "CoreWCF: XML Signature Wrapping in WS-Security endorsing/supporting signature verification allows replay of captured signed messages",
+  "details": "### Impact\nThe attacker, with one captured signed SOAP envelope from a victim and no other privileges, can invoke arbitrary operations on the service as the victim principal for the lifetime of the captured signing key. There is no rate limit on replays. The DetectReplays setting on transport-security bindings does not mitigate the issue because the attack does not reuse the original timestamp — the fresh timestamp in the wsse:Security header is what the replay-detection logic inspects.\n\n### Patches\nFixed in CoreWCF v1.8.1 and v1.9.1\n\n### Workarounds\nEnsure communication is protected by SSL/TLS to prevent capturing of signed SOAP envelope.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "CoreWCF.Primitives"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.8.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "CoreWCF.Primitives"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.9.0"
+            },
+            {
+              "fixed": "1.9.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/CoreWCF/CoreWCF/security/advisories/GHSA-gqv6-pwcg-87r8"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/CoreWCF/CoreWCF"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-294",
+      "CWE-345",
+      "CWE-347"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-19T20:47:14Z",
+    "nvd_published_at": null
+  }
+}

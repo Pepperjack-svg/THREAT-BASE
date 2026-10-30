@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-434v-x5qv-pmh6",
+  "modified": "2026-03-26T17:58:55Z",
+  "published": "2026-03-26T17:58:55Z",
+  "aliases": [],
+  "summary": "libcrux has All-Zero Key Generation Upon Catastrophic RNG Failure",
+  "details": "The libcrux-ed25519 key generation samples Ed25519 secret keys from a provided CSPRNG in a loop for up to 100 attempts until a non-zero key is found.  If a non-zero key could not be sampled within 100 attempts the key generation function would silently continue with an all-zero buffer as the secret key.\n\n## Impact\nThis bug only occurs in the event of a catastrophic failure of the CSPRNG, but would allow anyone to forge signatures under the resulting static signing key.\n\n## Mitigation\nInstead of silently continuing with an all-zero signing key, starting from version `0.0.7` key generation will error in the case of 100 failed attempts at sampling a valid key.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "crates.io",
+        "name": "libcrux-ed25519"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.0.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/cryspen/libcrux/pull/1349"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/cryspen/libcrux"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rustsec.org/advisories/RUSTSEC-2026-0075.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1240",
+      "CWE-331",
+      "CWE-392"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-26T17:58:55Z",
+    "nvd_published_at": null
+  }
+}

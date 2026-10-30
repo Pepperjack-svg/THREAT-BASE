@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7h4p-h257-qp65",
+  "modified": "2026-10-27T21:33:41Z",
+  "published": "2026-10-27T21:33:41Z",
+  "aliases": [
+    "CVE-2026-118174"
+  ],
+  "details": "When a message containing an OpenPGP key attachment was displayed, Thunderbird automatically loaded the attachment's content to offer importing the key. A sender could mark the attachment as an external attachment pointing to an arbitrary URL, which Thunderbird then loaded without any user interaction, bypassing remote content blocking. On Windows, a URL pointing to an attacker-controlled network share could leak the user's NTLM credentials.\nThe NTLM credential leak only affects Thunderbird on Windows. On other operating systems, the issue allowed a remote request that bypassed remote content blocking. This vulnerability was fixed in Thunderbird 159 and Thunderbird 153.6.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=2080910"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.mozilla.org/security/advisories/mfsa2026-121"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.mozilla.org/security/advisories/mfsa2026-122"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-27T19:17:29Z"
+  }
+}

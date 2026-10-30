@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p9cf-q2gf-35mq",
+  "modified": "2026-10-21T15:40:40Z",
+  "published": "2026-06-26T21:32:16Z",
+  "aliases": [
+    "CVE-2026-53281"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/vt-d: Avoid NULL pointer dereference or refcount corruption\n\nCommit 60f030f7418d (\"iommu/vt-d: Avoid use of NULL after WARN_ON_ONCE\")\nfixed a NULL pointer dereference in an unlikely situation partly.\n\nIf dev_pasid is not found in the dev_pasids list, it remains NULL.\nHowever, the teardown operations are executed unconditionally, this lead\nto a NULL pointer dereference or refcount corruption.\n\nIf the domain was never attached to this IOMMU, info will be NULL, which\nwould cause an immediate dereference when checking --info->refcnt.\n\nEven if info is not NULL, decrementing the refcount without having removed\na valid PASID might unbalance the count. This could lead to premature\ndropping of the refcount to 0, potentially causing a use-after-free for the\nremaining active devices sharing the domain.\n\nFix it by returning early if dev_pasid is NULL, before executing the\nteardown operations.\n\nIssue found by AI review and suggested by Kevin Tian.\nhttps://sashiko.dev/#/patchset/20260421031347.1408890-1-zhenzhong.duan%40intel.com",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:47017"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:47040"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-53281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2493728"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79ea2feb917b05366b49d85573c9c5331f043b2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9022cb9ac0c2a72a57fa8ebf92ac74f953ca0153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cdfe3c9f2c9e28a8651ee463c88ad191ced2f840"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1a677f9c5e02c4ae49614044ac21296660d1391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-53281.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-26T20:17:19Z"
+  }
+}

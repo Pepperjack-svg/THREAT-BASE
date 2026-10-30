@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-34vm-p5v7-6w29",
+  "modified": "2025-12-30T15:30:26Z",
+  "published": "2025-12-30T15:30:26Z",
+  "aliases": [
+    "CVE-2022-50823"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nclk: tegra: Fix refcount leak in tegra114_clock_init\n\nof_find_matching_node() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50823"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f0e1cbbaffd729560716e9592aa5e609ea93bb6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5984b1d66126b024ee77482602ac6e51b53f4116"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8cc87a9c142ae0e276a3ff9ce50f78a1668da36f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e1fe30253930c6a67385c19802c5ab8706a76d9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a7d3fb5814c73d7d49913e4294f8f508a3038bb4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c01bfd23cc13a420b3f6a36bcab98410f49d480d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce699dcdac2bfdb6b238f2517ba41d9623b15f46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/db16a80c76ea395766913082b1e3f939dde29b2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7a57fb92af52c4da69cd947752e8946e5ada50a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:15:56Z"
+  }
+}

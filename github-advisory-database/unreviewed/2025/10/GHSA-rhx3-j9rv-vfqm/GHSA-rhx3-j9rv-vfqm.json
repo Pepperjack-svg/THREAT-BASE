@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rhx3-j9rv-vfqm",
+  "modified": "2025-10-29T15:31:54Z",
+  "published": "2025-10-28T18:30:29Z",
+  "aliases": [
+    "CVE-2025-56399"
+  ],
+  "details": "alexusmai laravel-file-manager 3.3.1 and before allows an authenticated attacker to achieve Remote Code Execution (RCE) through a crafted file upload. A file with a '.png` extension containing PHP code can be uploaded via the file manager interface. Although the upload appears to fail client-side validation, the file is still saved on the server. The attacker can then use the rename API to change the file extension to `.php`, and upon accessing it via a public URL, the server executes the embedded code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-56399"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Theethat-Thamwasin/CVE-2025-56399"
+    },
+    {
+      "type": "WEB",
+      "url": "http://laravel-file-manager.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-28T16:15:38Z"
+  }
+}

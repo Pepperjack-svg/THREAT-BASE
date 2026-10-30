@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5pfh-rw2m-9j53",
+  "modified": "2025-12-05T21:30:22Z",
+  "published": "2025-12-03T18:30:26Z",
+  "aliases": [
+    "CVE-2025-65842"
+  ],
+  "details": "The Aquarius HelperTool (1.0.003) privileged XPC service on macOS contains multiple flaws that allow local privilege escalation. The service accepts XPC connections from any local process without validating the client's identity, and its authorization logic incorrectly calls AuthorizationCopyRights with a NULL reference, causing all authorization checks to succeed. The executeCommand:authorization:withReply: method then interpolates attacker-controlled input into NSTask and executes it with root privileges. A local attacker can exploit these weaknesses to run arbitrary commands as root, create persistent backdoors, or obtain a fully interactive root shell.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-65842"
+    },
+    {
+      "type": "WEB",
+      "url": "https://almightysec.com/helpertool-xpc-service-local-privilege-escalation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-266"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-03T17:15:54Z"
+  }
+}

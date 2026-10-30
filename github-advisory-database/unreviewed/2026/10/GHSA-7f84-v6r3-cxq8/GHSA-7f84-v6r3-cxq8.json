@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7f84-v6r3-cxq8",
+  "modified": "2026-10-21T18:33:15Z",
+  "published": "2026-10-21T18:33:15Z",
+  "aliases": [
+    "CVE-2026-114470"
+  ],
+  "details": "Cross-site request forgery in the REST API of Progressive Robot hMailServer 6.0.0 through 6.3.6 allows a remote attacker to make an authenticated user's browser perform a state-changing request. The REST API accepts HTTP Basic authentication and answers a browser with a Basic sign-in box; a browser caches the credential once the box is answered and sends it with later requests to that origin, including a top-level form post from another site, and the server reads a request body whatever its declared content type. The cross-site protection covered only the cookie session (a header a cross-site form cannot set, and a SameSite=Strict cookie); HTTP Basic was not held to it. A page under an attacker's control, visited by a user whose browser holds a cached Basic credential for the REST API - typically an administrator who signed in through the box - could therefore cause a state-changing request such as creating a domain, an account or an API key, or changing a setting, with the victim's credential. The attacker cannot read the cross-origin response, so the forgery is blind.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114470"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/hmailserver/hmailserver/-/work_items/93"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T16:17:34Z"
+  }
+}

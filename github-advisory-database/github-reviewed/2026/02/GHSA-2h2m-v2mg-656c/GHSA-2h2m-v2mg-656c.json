@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2h2m-v2mg-656c",
+  "modified": "2026-02-03T21:40:06Z",
+  "published": "2026-02-02T22:44:05Z",
+  "aliases": [
+    "CVE-2026-25484"
+  ],
+  "summary": "Craft Commerce has Stored XSS in Product Type Name",
+  "details": "## Summary\n\nStored XSS via Product Type names. The name is not sanitized when displayed in user permissions settings.\n\nThe vulnerable input (source) is in Commerce (Product Type settings), but the sink is in CMS user permissions settings. Reporting to Commerce GHSA since the input originates here.\n\nUsers are recommended to update to the patched 5.5.2 release to mitigate the issue.\n\n---\n## Proof of Concept\n\n### Required Permissions (Attacker)\n\n- Admin access (to edit Commerce settings)\n\n### Steps to Reproduce\n\n1. Log in as attacker with admin permissions.\n2. Go to **Commerce** -> **Settings** -> **Product Types** (`/admin/commerce/settings/producttypes`).\n3. Create a new Product Type.\n4. Set **Name** to:\n```html\n<img src=x onerror=\"alert('XSS-ProductType')\" hidden>\n```\n5. Save the Product Type.\n6. Go to **Users** -> Edit any user -> Click on **Permissions** tab (`/admin/users/{UserID}/permissions`).\n7. Alert fires instantly (when the Product Type checkbox renders).\n\n## Resources\n\nhttps://github.com/craftcms/commerce/commit/7e1dedf06038c8e70dce0187b7048d4ab8ffb75c",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/commerce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.5.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.5.1"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/commerce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-RC1"
+            },
+            {
+              "fixed": "4.10.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.10.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/security/advisories/GHSA-2h2m-v2mg-656c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25484"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/commit/7e1dedf06038c8e70dce0187b7048d4ab8ffb75c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/commerce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/releases/tag/4.10.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/releases/tag/5.5.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-02T22:44:05Z",
+    "nvd_published_at": "2026-02-03T19:16:25Z"
+  }
+}

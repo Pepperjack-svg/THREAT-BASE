@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mmh4-m2wj-3q4g",
+  "modified": "2025-12-30T15:30:28Z",
+  "published": "2025-12-30T15:30:28Z",
+  "aliases": [
+    "CVE-2022-50857"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrapidio: rio: fix possible name leak in rio_register_mport()\n\nIf device_register() returns error, the name allocated by dev_set_name()\nneed be freed.  It should use put_device() to give up the reference in the\nerror path, so that the name can be freed in kobject_cleanup(), and\nlist_del() is called to delete the port from rio_mports.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50857"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a71344f99289250e4d5b8adbac76f444485c840"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/117fede82e9d6ea3de30746d500eb5edc2eb8310"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1bbad5793f404cf218757e3beb600eca6080330f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ddbeae5f224d924cf0b12460dda88c7480aa452"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97d9eb45ffa67ffa112a6659953321b8f7db0065"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9abba4aa60874c5216fc8de7dededadc791de696"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a47de2fd3f88a7788be19f94ade72c2244a98045"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a73a626c0510d203e369aeb26c4d6ec9c75af027"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e92a216d16bde65d21a3227e0fb2aa0794576525"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:00Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mjqg-gwhm-xr66",
+  "modified": "2026-10-17T21:31:19Z",
+  "published": "2026-10-17T21:31:19Z",
+  "aliases": [
+    "CVE-2026-111918"
+  ],
+  "details": "Vikunja from 1.0.0-rc0 before 2.7.0 contains an improper authorization vulnerability in RecalculateTaskPositions that allows authenticated users with zero accessible projects to write task_positions rows for all tasks instance-wide. Attackers can delete their Inbox after repointing default_project_id, then create empty-filter saved filters to persist cross-tenant references and amplify writes for denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-vikunja/vikunja/security/advisories/GHSA-fprf-r6rv-xg99"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111918"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vikunja-1.0.0-rc0-before-2.7.0-cross-tenant-task-position-writes-via-saved-filter-creation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-17T19:16:34Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-43mm-w7h4-j7r2",
+  "modified": "2026-04-08T18:33:57Z",
+  "published": "2025-10-24T09:31:59Z",
+  "aliases": [
+    "CVE-2025-12028"
+  ],
+  "details": "The IndieAuth plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 4.5.4. This is due to missing nonce verification on the `login_form_indieauth()` function and the authorization endpoint at wp-login.php?action=indieauth. This makes it possible for unauthenticated attackers to force authenticated users to approve OAuth authorization requests for attacker-controlled applications via a forged request granted they can trick a user into performing an action such as clicking on a link or visiting a malicious page while logged in. The attacker can then exchange the stolen authorization code for an access token, effectively taking over the victim's account with the granted scopes (create, update, delete).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12028"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/indieauth/tags/4.5.4/includes/class-indieauth-authorization-endpoint.php#L411"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/indieauth/tags/4.5.4/includes/class-indieauth-authorization-endpoint.php#L418"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/indieauth/tags/4.5.4/includes/class-indieauth-authorization-endpoint.php#L476"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3384558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/42b373da-d5a6-4e3b-90f4-059da3641841?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-24T09:15:44Z"
+  }
+}

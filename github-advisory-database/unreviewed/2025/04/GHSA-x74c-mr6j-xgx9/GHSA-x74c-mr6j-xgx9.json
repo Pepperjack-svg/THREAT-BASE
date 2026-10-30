@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x74c-mr6j-xgx9",
+  "modified": "2025-04-17T21:30:44Z",
+  "published": "2025-04-17T21:30:44Z",
+  "aliases": [
+    "CVE-2022-49406"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: Fix potential deadlock in blk_ia_range_sysfs_show()\n\nWhen being read, a sysfs attribute is already protected against removal\nwith the kobject node active reference counter. As a result, in\nblk_ia_range_sysfs_show(), there is no need to take the queue sysfs\nlock when reading the value of a range attribute. Using the queue sysfs\nlock in this function creates a potential deadlock situation with the\ndisk removal, something that a lockdep signals with a splat when the\ndevice is removed:\n\n[  760.703551]  Possible unsafe locking scenario:\n[  760.703551]\n[  760.703554]        CPU0                    CPU1\n[  760.703556]        ----                    ----\n[  760.703558]   lock(&q->sysfs_lock);\n[  760.703565]                                lock(kn->active#385);\n[  760.703573]                                lock(&q->sysfs_lock);\n[  760.703579]   lock(kn->active#385);\n[  760.703587]\n[  760.703587]  *** DEADLOCK ***\n\nSolve this by removing the mutex_lock()/mutex_unlock() calls from\nblk_ia_range_sysfs_show().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49406"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41e46b3c2aa24f755b2ae9ec4ce931ba5f0d8532"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/717b078bc745ba9a262abebed9806a17e8bbb77b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc107c805cde709866b59867ef72b9390199205e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:17Z"
+  }
+}

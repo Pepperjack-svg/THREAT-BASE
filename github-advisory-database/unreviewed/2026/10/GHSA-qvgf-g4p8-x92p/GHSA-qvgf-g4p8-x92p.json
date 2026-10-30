@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qvgf-g4p8-x92p",
+  "modified": "2026-10-11T15:31:07Z",
+  "published": "2026-10-11T15:31:07Z",
+  "aliases": [
+    "CVE-2026-108852"
+  ],
+  "details": "Deep Chat through 2.5.1 contains a cross-site scripting vulnerability that allows attackers to inject javascript: links because RemarkableConfig.createNew disables Remarkable link validation. Attackers can place crafted Markdown links in AI responses, addMessage content, or loaded history to execute script in the embedding page when victims click them.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108852"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OvidijusParsiunas/deep-chat"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OvidijusParsiunas/deep-chat/blob/2.5.1/component/src/views/chat/messages/remarkable/remarkableConfig.ts#L74-L78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/ovidijusparsiunas-deep-chat-markdown-scheme-validation"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/deep-chat-through-2.5.1-xss-via-markdown-link-validation-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T14:17:04Z"
+  }
+}

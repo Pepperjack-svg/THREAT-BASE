@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qjxf-6753-vc9p",
+  "modified": "2026-06-01T18:31:29Z",
+  "published": "2026-05-06T12:30:27Z",
+  "aliases": [
+    "CVE-2026-43098"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfc: s3fwrn5: allocate rx skb before consuming bytes\n\ns3fwrn82_uart_read() reports the number of accepted bytes to the serdev\ncore. The current code consumes bytes into recv_skb and may already\ndeliver a complete frame before allocating a fresh receive buffer.\n\nIf that alloc_skb() fails, the callback returns 0 even though it has\nalready consumed bytes, and it leaves recv_skb as NULL for the next\nreceive callback. That breaks the receive_buf() accounting contract and\ncan also lead to a NULL dereference on the next skb_put_u8().\n\nAllocate the receive skb lazily before consuming the next byte instead.\nIf allocation fails, return the number of bytes already accepted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43098"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09822d3d6f68a0cdc4626e0c507324a4927f55a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/20a57de2e79b797ed75382659d52bf4c7d9cb446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c14a19d5b1645cce1cb1252833d70b23635b632"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d931680a9851481c3243689488eafed08eeff71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c31f7a599cf00fad3c204092a91a924126c67e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8c2aa3c4a1ec530a485e46a1c4f1a118bb00156"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e4ab0fd1c91882f2a7846b1817781c8741f7f315"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T10:16:23Z"
+  }
+}

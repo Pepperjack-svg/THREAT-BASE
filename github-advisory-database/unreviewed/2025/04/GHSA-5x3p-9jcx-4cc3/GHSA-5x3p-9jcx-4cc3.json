@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5x3p-9jcx-4cc3",
+  "modified": "2025-04-19T09:31:06Z",
+  "published": "2025-04-19T09:31:06Z",
+  "aliases": [
+    "CVE-2025-3404"
+  ],
+  "details": "The Download Manager plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the savePackage function in all versions up to, and including, 3.3.12. This makes it possible for authenticated attackers, with Author-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-3404"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/download-manager/tags/3.3.12/src/Admin/Menu/Packages.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/download-manager/tags/3.3.12/src/Admin/Menu/Packages.php#L56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/21f8f5be-b513-4040-af39-c1a61d7e313f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-19T08:15:13Z"
+  }
+}

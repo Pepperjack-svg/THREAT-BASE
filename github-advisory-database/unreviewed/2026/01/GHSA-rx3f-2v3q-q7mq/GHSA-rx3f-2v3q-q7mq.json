@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rx3f-2v3q-q7mq",
+  "modified": "2026-01-23T21:30:41Z",
+  "published": "2026-01-16T00:30:54Z",
+  "aliases": [
+    "CVE-2023-7334"
+  ],
+  "details": "Changjetong T+ versions up to and including 16.x contain a .NET deserialization vulnerability in an AjaxPro endpoint that can lead to remote code execution. A remote attacker can send a crafted request to /tplus/ajaxpro/Ufida.T.CodeBehind._PriorityLevel,App_Code.ashx?method=GetStoreWarehouseByStore with a malicious JSON body that leverages deserialization of attacker-controlled .NET types to invoke arbitrary methods such as System.Diagnostics.Process.Start. This can result in execution of arbitrary commands in the context of the T+ application service account. Exploitation evidence was observed by the Shadowserver Foundation on 2023-08-19 (UTC).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-7334"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.csdn.net/qq_53003652/article/details/134031230"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.csdn.net/u010025272/article/details/131553591"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MD-SEC/MDPOCS/blob/main/ChangJieTongTPlus_GetStoreWarehouseByStore_Rce_Poc.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.chanjetvip.com/product/goods/detail?id=6077e91b70fa071069139f62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.freebuf.com/articles/web/381731.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/changjetong-tplus-getstorewarehousebystore-deserialization-rce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-15T22:16:10Z"
+  }
+}

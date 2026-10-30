@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hx6m-xfx3-6p5x",
+  "modified": "2025-04-07T21:32:07Z",
+  "published": "2025-04-07T15:31:11Z",
+  "aliases": [
+    "CVE-2024-58036"
+  ],
+  "details": "Net::Dropbox::API 1.9 and earlier for Perl uses the rand() function as the default source of entropy, which is not cryptographically secure, for cryptographic functions.\n\nSpecifically Net::Dropbox::API uses the Data::Random library which specifically states that it is \"Useful mostly for test programs\". Data::Random uses the rand() function.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58036"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/BAREFOOT/Data-Random-0.13/source/lib/Data/Random.pm#L537"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/NORBU/Net-Dropbox-API-1.9/source/lib/Net/Dropbox/API.pm#L11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/NORBU/Net-Dropbox-API-1.9/source/lib/Net/Dropbox/API.pm#L385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://perldoc.perl.org/functions/rand"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.metacpan.org/docs/guides/random-data-for-security.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-331",
+      "CWE-338"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-05T16:15:33Z"
+  }
+}

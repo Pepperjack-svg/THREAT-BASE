@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q823-95hw-ffc6",
+  "modified": "2026-10-06T09:31:36Z",
+  "published": "2026-10-06T09:31:36Z",
+  "aliases": [
+    "CVE-2026-98354"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/mad: Fix receive buffer leak when PKey enforcement fails\n\nib_mad_complete_recv() initializes mad_recv_wc->rmpp_list and then runs\nib_mad_enforce_security() before linking recv_buf onto that list.  On\nfailure it calls ib_free_recv_mad(), which only walks rmpp_list and frees\nthe ib_mad_private of every buffer found there.  As the list is still\nempty at that point, nothing is freed at all.\n\nThe caller cannot clean up either: ib_mad_recv_done() sets recv to NULL\nright after ib_mad_complete_recv() returns, assuming the MAD layer took\nownership of the buffer.  Every MAD that fails the PKey check therefore\nleaks one ib_mad_private (about 300 bytes per IB port MAD, ~2K for OPA),\nand a remote node can trigger this repeatedly by sending MADs with a\nwrong PKey.\n\nLink recv_buf onto rmpp_list right after the list is initialized, so the\nerror path has something to free.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98354"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3476c28c9addfa253f505e6bd87f1f5598b961d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39c4ea72a40503e102ae07e6776005f96ca078a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4617c9a856188674dddb0ca66979746d07688579"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5091e25ec503f7fc02723ca435226467b68caac7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/752b30e9d339008e5ce7eed412e9446078916129"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e2036fb47a5b152d53eadbd35abf311bd34cc7f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bad289e42f512646a988f278f536d21547df73f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0d8df85db146d6275e226cb950023be69dd6c77"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:28Z"
+  }
+}

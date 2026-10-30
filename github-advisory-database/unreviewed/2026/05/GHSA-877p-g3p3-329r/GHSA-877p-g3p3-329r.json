@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-877p-g3p3-329r",
+  "modified": "2026-05-07T21:30:24Z",
+  "published": "2026-05-01T18:31:24Z",
+  "aliases": [
+    "CVE-2026-37554"
+  ],
+  "details": "An issue was discovered in Vanetza V2X v26.02 allowing remote unauthorized attackers to cause a denial of service. The vulnerability exists in the GeoNetworking packet processing pipeline where OpenSSL exceptions from ECC point validation (invalid compressed point, point not on curve) are not properly caught by the Router::indicate() call chain. The openssl_wrapper.cpp check() function (line 19) throws openssl::Exception when OpenSSL operations fail. The parser's catch block in parse_secured() should catch these, but the exception escapes through subsequent processing stages (indicate_common, indicate_extended). This causes std::terminate, crashing the V2X receiver.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/riebl/vanetza/security/advisories/GHSA-44qj-vh8c-5354"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-37554"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/sgInnora/45128ae15d52df7238680a8f2da8359f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/riebl/vanetza"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/riebl/vanetza/blob/master/vanetza/geonet/router.cpp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/riebl/vanetza/blob/master/vanetza/security/openssl_wrapper.cpp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-248"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T16:16:31Z"
+  }
+}

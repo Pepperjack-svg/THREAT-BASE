@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pjp4-cp6x-7mxh",
+  "modified": "2025-07-23T03:32:05Z",
+  "published": "2025-07-23T03:32:05Z",
+  "aliases": [
+    "CVE-2025-6215"
+  ],
+  "details": "The Omnishop plugin for WordPress is vulnerable to Unauthenticated Registration Bypass in all versions up to, and including, 1.0.9. Its /users/register endpoint is exposed to the public (permission_callback always returns true) and invokes wp_create_user() unconditionally,  ignoring the site’s users_can_register option and any nonce or CAPTCHA checks. This makes it possible for unauthenticated attackers to create arbitrary user accounts (customer) on sites where registrations should be closed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-6215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/omnishop/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/12d465d2-cd89-476e-b70a-743151a23053?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-23T03:15:25Z"
+  }
+}

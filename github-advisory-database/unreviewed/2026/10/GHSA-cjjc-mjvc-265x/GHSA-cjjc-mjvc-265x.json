@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cjjc-mjvc-265x",
+  "modified": "2026-10-21T15:41:50Z",
+  "published": "2026-10-18T18:31:58Z",
+  "aliases": [
+    "CVE-2026-98663"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: imu: adis16480: fix unprotected debugfs reads\n\nThe firmware_revision and firmware_date file operations are open coded\nand never call debugfs_file_get(), which debugfs_create_file_unsafe()\nrequires. debugfs_remove_recursive() therefore does not wait for a read\nin progress, and unbind frees the iio_dev underneath it.\n\nUse debugfs_create_file() instead.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98663"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/396b83106f5e7d16467049f0caabd10533c01a0e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a782244972715c76bdaf8b662e9b22e260c5296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7e507c6da8875da93b4130c8185e82a9dfd565c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce308ce18dedc18e9eeff8473892975e6fdd7aef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e1dea54496f90a62318cf4eeaa1e9ef8316e92b6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:19Z"
+  }
+}

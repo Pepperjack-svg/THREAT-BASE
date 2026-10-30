@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qrch-52m5-vv85",
+  "modified": "2026-05-14T20:42:12Z",
+  "published": "2026-05-06T21:39:07Z",
+  "aliases": [
+    "CVE-2026-42552"
+  ],
+  "summary": "Flight vulnerable to sensitive information disclosure via default error handler",
+  "details": "### Summary\nThe default error handler `Engine::_error()` writes the full exception message, exception code, and stack trace (including absolute filesystem paths) directly into the HTTP 500 response, with no debug gating. Production deployments leak internal paths, any secret interpolated into an exception message, and full module structure — giving attackers primitives for chaining other weaknesses (LFI, path traversal).\n\n### Affected code\n`flight/Engine.php` (≈ lines 678-704):\n\n```php\npublic function _error(Throwable $e): void\n{\n    ...\n    $msg = sprintf(<<<'HTML'\n        <h1>500 Internal Server Error</h1>\n            <h3>%s (%s)</h3>\n            <pre>%s</pre>\n        HTML,\n        $e->getMessage(),\n        $e->getCode(),\n        $e->getTraceAsString()\n    );\n    $this->response()->cache(0)->clearBody()->status(500)->write($msg)->send();\n}\n```\n\nNo `flight.debug` check, no environment gating.\n\n### Proof of concept\nAny uncaught exception — including those auto-raised from `handleError()` — returns:\n\n```\nHTTP/1.1 500 Internal Server Error\n\n<h1>500 Internal Server Error</h1>\n  <h3>secret path /var/www/config/db.yml; token=LEAKED123 (0)</h3>\n  <pre>#0 [internal function]: {closure}()\n  #1 /home/user/app/vendor/flightphp/core/flight/core/Dispatcher.php(361)...\n  #2 /home/user/app/vendor/flightphp/core/flight/Engine.php(...)\n  ...\n  </pre>\n```\n\nReproduced against the live PoC app at `/poc5/error`.\n\n### Impact\n- Disclosure of absolute filesystem paths (primes weaponization of LFI / path-traversal vulnerabilities in the same application).\n- Disclosure of secrets (DB credentials, API tokens) when exceptions are constructed with interpolated configuration values.\n- Enumeration of installed vendor packages and internal application structure.\n\n### Patch (fixed in `3.18.1`, commit `b8dd23a`)\nA new `flight.debug` setting (default `false`) gates the verbose output. In production the handler now emits only `<h1>500 Internal Server Error</h1>`. Developers can set `flight.debug = true` in local environments to restore the full trace output.\n\n### Credit\nDiscovered by **@Rootingg**.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "flightphp/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.18.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/flightphp/core/security/advisories/GHSA-qrch-52m5-vv85"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42552"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flightphp/core/commit/b8dd23aaa828cb289fa3c84e75b2a3717cab50b0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/flightphp/core"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flightphp/core/releases/tag/v3.18.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-209"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-06T21:39:07Z",
+    "nvd_published_at": "2026-05-13T20:16:22Z"
+  }
+}

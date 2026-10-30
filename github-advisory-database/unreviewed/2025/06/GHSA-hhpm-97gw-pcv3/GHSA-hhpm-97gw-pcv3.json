@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hhpm-97gw-pcv3",
+  "modified": "2025-11-19T15:31:30Z",
+  "published": "2025-06-18T12:30:55Z",
+  "aliases": [
+    "CVE-2022-50201"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nselinux: fix memleak in security_read_state_kernel()\n\nIn this function, it directly returns the result of __security_read_policy\nwithout freeing the allocated memory in *data, cause memory leak issue,\nso free the memory if __security_read_policy failed.\n\n[PM: subject line tweak]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50201"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fc1f72aad2070d34022d0823e4cf09706b53f25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73de1befcc53a7c68b0c5e76b9b5ac41c517760f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c877c5217145bda8fd95f506bf42f8d981afa57d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f3cd7562c0a6774fc62d79654482014020e574f5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:50Z"
+  }
+}

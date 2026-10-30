@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xggg-9q4f-8rr9",
+  "modified": "2026-10-18T18:31:50Z",
+  "published": "2026-10-18T18:31:49Z",
+  "aliases": [
+    "CVE-2026-98461"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sock: validate event length before filtering\n\nis_filtered_packet() reads the event code from skb->data[0] without first\nchecking that the skb is nonempty. When an opcode filter is configured,\nit also reads the command opcode at offsets 3 or 4 without checking that\na Command Complete or Command Status event is long enough.\n\nhci_send_to_sock() invokes the filter before hci_event_packet() validates\nthe event header. A malformed event supplied by a controller or a vhci\ndevice can therefore cause an out-of-bounds read.\n\nKeep the unmasked event code for the opcode checks. The masked value is\nneeded for the 64-bit event bitmap, but using it to identify command events\naliases event codes above 0x3f. In particular, Synchronous Train Complete\n(0x4f) was treated as Command Status (0x0f) even though its payload has no\nopcode.\n\nReject actual command events that are too short for the field being\ninspected. A truncated command event cannot match a configured opcode.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a92763c2ba721bf113cd83f913fe8c511b4a4dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2501a3b7b7144d1d11939b355a48ed01f83d0c62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3976bbcd43b9b94c53ac9b0fd28888011588f4cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39e99d85071bca0feeec3164a9437ca1bff297fc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0a6cf99afd57a39598b1beca0e86ef5004980de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dca25c204f71be0556a15177dbe037237ac43e5e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ebdd49cec380731844ed9df4092a29a014623df4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f894f6292d5122cd62d30600736b4a0ae79f7770"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:16:56Z"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5vr7-c3m8-jx2x",
+  "modified": "2025-03-12T00:31:50Z",
+  "published": "2025-03-12T00:31:49Z",
+  "aliases": [
+    "CVE-2022-49714"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/realtek-rtl: Fix refcount leak in map_interrupts\n\nof_find_node_by_phandle() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nThis function doesn't call of_node_put() in error path.\nCall of_node_put() directly after of_property_read_u32() to cover\nboth normal path and error path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49714"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e85b1b797de0e7a271b906291ce28245822820b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eff4780f83d0ae3e5b6c02ff5d999dc4c1c5c8ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6d6223df0666fbc054e3a8c6ac14eb0af37c286"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:47Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v6vr-f94r-r434",
+  "modified": "2026-10-21T15:40:24Z",
+  "published": "2026-05-06T12:30:27Z",
+  "aliases": [
+    "CVE-2026-43107"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: account XFRMA_IF_ID in aevent size calculation\n\nxfrm_get_ae() allocates the reply skb with xfrm_aevent_msgsize(), then\nbuild_aevent() appends attributes including XFRMA_IF_ID when x->if_id is\nset.\n\nxfrm_aevent_msgsize() does not include space for XFRMA_IF_ID. For states\nwith if_id, build_aevent() can fail with -EMSGSIZE and hit BUG_ON(err < 0)\nin xfrm_get_ae(), turning a malformed netlink interaction into a kernel\npanic.\n\nAccount XFRMA_IF_ID in the size calculation unconditionally and replace\nthe BUG_ON with normal error unwinding.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43107"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c41283d94af943a05f7f2cc1a01f0c872f3cf43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58e5735d1a5373652f405a0c16e54ac04aaab0ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7081d46d32312f1a31f0e0e99c6835a394037599"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e62e322ea20be78e346e4b49f9a6b9f03313af4c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8f3bb89ab677db15f9f5250c77af728f9afe995"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-131"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T10:16:24Z"
+  }
+}

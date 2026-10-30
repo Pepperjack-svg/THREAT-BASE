@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9ppp-w3g4-fh4q",
+  "modified": "2026-10-06T19:50:12Z",
+  "published": "2026-06-19T19:36:50Z",
+  "aliases": [
+    "CVE-2026-54897"
+  ],
+  "summary": "Oj: Use-After-Free in Oj::Doc Iterators via Reentrant Close",
+  "details": "### Summary\n\n`Oj::Doc` iterators (`each_value`, `each_child`, `each_leaf`) are vulnerable to a heap use-after-free. When a Ruby block yielded during iteration calls `doc.close` or `d.close`, the document's heap memory is freed while the C iterator is still running. When control returns from the block, the iterator reads from the freed region, producing a use-after-free accessible from pure Ruby.\n\n### Version\n\n- **Software**: oj gem\n- **Affected**: all versions with `ext/oj/fast.c`\n- **Latest tested**: 3.17.1 (confirmed present)\n\n### Details\n\nThe iterators in `ext/oj/fast.c` follow the pattern:\n\n```c\n// fast.c:1505 (doc_each_child)\nstatic VALUE doc_each_child(VALUE self, ...) {\n    ...\n    while (cur != NULL) {\n        rb_yield(...);       // ← Ruby block executes here\n        cur = cur->next;     // ← cur is now freed if block called close()\n    }\n}\n```\n\n`rb_yield` can invoke arbitrary Ruby code, including calling `close()` on the `Doc` or any child node, which calls `ruby_sized_xfree` on the backing buffer. On return, the C code reads `cur->next` from the freed region. All three iterators are affected.\n\nASAN report (each_child variant):\n```\n==253632==ERROR: AddressSanitizer: heap-use-after-free on address 0x5210000bd080\nREAD of size 8 at 0x5210000bd080 thread T0\n    #0 doc_each_child  /ext/oj/fast.c:1505\n0x5210000bd080 is located 896 bytes inside of 4064-byte region [0x5210000bcd00, 0x5210000bdce0)\nfreed by thread T0 here:\n    #0 free\n    #1 ruby_sized_xfree  (libruby-3.3.so.3.3)\n```\n\nAll three iterators trigger the same freed region (`fd` shadow bytes):\n```\n0x5210000bd080:[fd]fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd\n```\n\n### Reproduce\n\n```ruby\nrequire 'oj'\n# each_child\nOj::Doc.open('[1,2]') { |doc| doc.each_child { |d| d.close } }\n# each_value\nOj::Doc.open('[1,2]') { |doc| doc.each_value { |v| doc.close } }\n# each_leaf\nOj::Doc.open('[1,[2]]') { |doc| doc.each_leaf { |d| d.close } }\n```",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "oj"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.17.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.17.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ohler55/oj/security/advisories/GHSA-9ppp-w3g4-fh4q"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54897"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ohler55/oj"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/oj/CVE-2026-54897.yml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord/SearchResults?query=CVE-2026-54897"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-19T19:36:50Z",
+    "nvd_published_at": "2026-07-01T00:16:32Z"
+  }
+}

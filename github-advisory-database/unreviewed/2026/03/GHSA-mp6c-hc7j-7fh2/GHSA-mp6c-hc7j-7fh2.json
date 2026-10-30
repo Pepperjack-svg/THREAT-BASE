@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mp6c-hc7j-7fh2",
+  "modified": "2026-03-30T00:31:08Z",
+  "published": "2026-03-30T00:31:08Z",
+  "aliases": [
+    "CVE-2025-7741"
+  ],
+  "details": "Hardcoded Password Vulnerability have been found in CENTUM. Affected products contain a hardcoded password for the user account (PROG) used for CENTUM Authentication Mode within the system. Under the following conditions, there is a risk that an attacker could log in as the PROG user.\n\nThe default permission for the PROG users is S1 permission (equivalent to OFFUSER). Therefore, for properly permission-controlled targets of operation and monitoring, even if an attacker user in as the PROG user, the risk of critical operations or configuration changes being performed is considered low. (If the PROG user's permissions have been changed for any reason, there is a risk that operations or configuration changes may be performed under the modified permissions. The CVSS values below are for the default permissions.)\n\nAdditionally, exploiting this vulnerability requires an attacker to already have access to the HIS screen controls. Therefore, an attacker can already operate and monitor at that point, regardless of this vulnerability.\n\nThe conditions under which this vulnerability is exploited:\n\nIf all of the following conditions are met, the affected products are vulnerable to this vulnerability.\n\n-An attacker obtains the hardcoded password using a certain method.\n\n-The HIS with the affected product installed is configured in CTM authentication mode.\n\n-An attacker must have direct access to the aforementioned HIS or be able to break into it remotely using a certain method and perform screen operations.\n\n\nThe affected products and versions are as follows: CENTUM VP R5.01.00 to R5.04.20, R6.01.00 to R6.12.00 and R7.01.00.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-7741"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web-material3.yokogawa.com/1/39531/files/YSAR-26-0003-E.pdf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-259"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-30T00:16:00Z"
+  }
+}

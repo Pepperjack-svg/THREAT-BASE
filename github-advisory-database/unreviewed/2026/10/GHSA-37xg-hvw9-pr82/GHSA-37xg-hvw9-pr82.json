@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-37xg-hvw9-pr82",
+  "modified": "2026-10-14T00:31:47Z",
+  "published": "2026-10-14T00:31:47Z",
+  "aliases": [
+    "CVE-2026-77206"
+  ],
+  "details": "Libreswan's IKEv2 state machine has a null pointer dereference bug in the EAP handling code for authentication. As a result of inconsistency within the IKEv2 state machine code, this bug can be triggered by any IKEv2 connection, even if EAP is not configured at all. The error is caused by a fall-through where it incorrectly dereferences ike->sa.st_eap which is NULL. A malicious IKE_AUTH packet can trigger this bug, meaning the peer does not need to be authenticated. The bug results in a crash and restart of the pluto daemon. No remote code execution is possible. Continued exploitation can cause a denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://libreswan.org/security/CVE-2026-77206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://libreswan.org/security/CVE-2026-77206/CVE-2026-77206.txt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T22:18:24Z"
+  }
+}

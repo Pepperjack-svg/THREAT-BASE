@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2r54-3grc-9jjr",
+  "modified": "2025-09-16T18:31:25Z",
+  "published": "2025-09-16T18:31:25Z",
+  "aliases": [
+    "CVE-2022-50345"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Protect against send buffer overflow in NFSv3 READ\n\nSince before the git era, NFSD has conserved the number of pages\nheld by each nfsd thread by combining the RPC receive and send\nbuffers into a single array of pages. This works because there are\nno cases where an operation needs a large RPC Call message and a\nlarge RPC Reply at the same time.\n\nOnce an RPC Call has been received, svc_process() updates\nsvc_rqst::rq_res to describe the part of rq_pages that can be\nused for constructing the Reply. This means that the send buffer\n(rq_res) shrinks when the received RPC record containing the RPC\nCall is large.\n\nA client can force this shrinkage on TCP by sending a correctly-\nformed RPC Call header contained in an RPC record that is\nexcessively large. The full maximum payload size cannot be\nconstructed in that case.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50345"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/309f29361b6bfae96936317376f1114568c5de19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75d9de25a6f833dd0701ca546ac926cabff2b5af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc6c0ed253cd4763dba7541d558e4b704f33176f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c23687911f82a63fa2977ce9c992b395e90f8ba0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa6be9cc6e80ec79892ddf08a8c10cabab9baf38"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T17:15:34Z"
+  }
+}

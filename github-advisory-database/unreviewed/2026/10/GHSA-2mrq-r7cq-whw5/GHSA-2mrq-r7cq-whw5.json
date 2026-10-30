@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2mrq-r7cq-whw5",
+  "modified": "2026-10-28T12:31:06Z",
+  "published": "2026-10-28T12:31:06Z",
+  "aliases": [
+    "CVE-2026-99161"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: viai2c-wmt: Fix clock leak in wmt_i2c_probe()\n\nIn wmt_i2c_probe(), i2c->clk is acquired using of_clk_get(). If any\nsubsequent operation fails or when the module is unloaded, the clock\nreference count is never decremented via clk_put(), leading to a\nresource leak.\n\nSwitch to devm_clk_get() so that the clock is automatically managed\nand released.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99161"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1875de656370c89b99a150d220df876288ee0344"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d476bb76b7d72d8b7ed04a9c614900b097e3af7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aaabefc79b0ff0018e8e3832169bbe359d0551fc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T11:17:36Z"
+  }
+}

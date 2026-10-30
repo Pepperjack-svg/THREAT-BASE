@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-74m8-whmf-rxrq",
+  "modified": "2026-09-30T15:31:33Z",
+  "published": "2026-09-30T15:31:33Z",
+  "aliases": [
+    "CVE-2026-93547"
+  ],
+  "details": "A missing authorization check in the Vaadin Spreadsheet component allows an authenticated user of an application that renders a spreadsheet to add or replace cell comments on a sheet that has protection enabled, including on cells that are locked. Writing a comment to a cell that does not exist yet also creates the row and the cell.\n\n\nUsers of affected versions should apply the following mitigation or upgrade. Releases that have fixed this issue include:\n\nProduct version\nVaadin 23.1.0 - 23.6.13\nVaadin 24.0.0 - 24.9.21\nVaadin 24.10.0 - 24.10.9\nVaadin 25.0.0 - 25.1.11\nVaadin 25.2.0 - 25.2.6\nVaadin Framework 7 and 8 with the Spreadsheet add-on 2.0.0 - 3.1.0\n\nMitigation\nUpgrade to 23.6.14\nUpgrade to 24.9.22\nUpgrade to 24.10.10\nUpgrade to 25.1.12\nUpgrade to 25.2.7 or newer\nUpgrade the Spreadsheet add-on to 3.1.1\n\nPlease note that Vaadin versions 10-13 and 15-22 are no longer supported and you should update either to the latest 23, 24, 25 version.\n\nArtifacts\nMaven coordinates Vulnerable versions Fixed version\ncom.vaadin:vaadin 23.1.0 - 23.6.13 >=23.6.14\ncom.vaadin:vaadin 24.0.0 - 24.9.21 >=24.9.22\ncom.vaadin:vaadin 24.10.0 - 24.10.9 >=24.10.10\ncom.vaadin:vaadin 25.0.0 - 25.1.11 >=25.1.12\ncom.vaadin:vaadin 25.2.0 - 25.2.6 >=25.2.7\ncom.vaadin:vaadin-spreadsheet-flow 23.1.0 - 23.6.13 >=23.6.14\ncom.vaadin:vaadin-spreadsheet-flow 24.0.0 - 24.9.21 >=24.9.22\ncom.vaadin:vaadin-spreadsheet-flow 24.10.0 - 24.10.9 >=24.10.10\ncom.vaadin:vaadin-spreadsheet-flow 25.0.0 - 25.1.11 >=25.1.12\ncom.vaadin:vaadin-spreadsheet-flow 25.2.0 - 25.2.6 >=25.2.7\ncom.vaadin:vaadin-spreadsheet 2.0.0 - 3.1.0 >=3.1.1",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93547"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vaadin/flow-components/pull/9905"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vaadin/flow-components/pull/9907"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vaadin/flow-components/pull/9908"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vaadin/flow-components/pull/9909"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vaadin/flow-components/pull/9910"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vaadin/flow-components/pull/9956"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vaadin/spreadsheet/pull/866"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vaadin.com/security/cve-2026-93547"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T14:17:34Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hvvw-vfw3-rmrq",
+  "modified": "2025-11-01T03:30:23Z",
+  "published": "2025-11-01T03:30:23Z",
+  "aliases": [
+    "CVE-2025-11922"
+  ],
+  "details": "The Inactive Logout plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'ina_redirect_page_individual_user' parameter in all versions up to, and including, 3.5.5 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11922"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/inactive-logout/trunk/core/Controllers/Admin/StoreController.php#L84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/inactive-logout/trunk/core/Controllers/AdminController.php#L32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/inactive-logout/trunk/views/tabs/tpl-inactive-logout-advanced.php#L99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3385001%40inactive-logout%2Ftrunk&old=3362978%40inactive-logout%2Ftrunk&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/fde110ae-c559-4d45-91c0-a3dd5ff05c4d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-01T02:15:33Z"
+  }
+}

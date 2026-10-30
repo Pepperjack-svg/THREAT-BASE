@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ff5j-329x-2xx2",
+  "modified": "2026-10-03T12:31:14Z",
+  "published": "2026-09-24T18:31:34Z",
+  "aliases": [
+    "CVE-2026-97489"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbfs: handle set_blocksize failures\n\nbfs uses buffer_heads, which don't handle block size > PAGE_SIZE well.\nWithout this, mounting will hit the\n\n\tBUG_ON(offset >= folio_size(folio));\n\nin folio_set_bh on the first __bread_gfp call.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97489"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fe260d82555ffebfb627cd23cbb6e880399804c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2430e3380936df0b648af720cae624eef035a2d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7cc713b29eecc0189a184e82f42d174fddaa9e1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a96010d230a8c83181137d88bad4bf71d862628"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/965b53ee91cfda3faf8bd0d0ffff5f70c7d1c479"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab1d6160d26e6ee8939e994999be9b45e90a42ef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c6d069c34d57414c039167967ef826a8516c98f3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:26Z"
+  }
+}

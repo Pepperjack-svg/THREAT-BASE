@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cp2p-wmjj-5m7m",
+  "modified": "2025-04-17T21:30:44Z",
+  "published": "2025-04-17T21:30:44Z",
+  "aliases": [
+    "CVE-2022-49389"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: usbip: fix a refcount leak in stub_probe()\n\nusb_get_dev() is called in stub_device_alloc(). When stub_probe() fails\nafter that, usb_put_dev() needs to be called to release the reference.\n\nFix this by moving usb_put_dev() to sdev_free error path handling.\n\nFind this by code review.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49389"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11c65408bd0ba1d9cd1307caa38169292de9cdfb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/247d3809e45a34d9e1a3a2bb7012e31ed8b46031"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f0ae93ec33c8456cdfbf7876b80403a6318ebce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51422046be504515eb5a591adf0f424b62f46804"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6bafee2f18af5e5ac125e42960bc65496d0e56a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8afb048800919d0ab10c57983940eba956339f21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ec4cbf1cc55d126759051acfe328d489c5d6e60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bcbb795a9e78180d74c6ab21518da87e803dfdce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f20d2d3b3364ce6525c050a8b6b4c54c8c19674d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:15Z"
+  }
+}

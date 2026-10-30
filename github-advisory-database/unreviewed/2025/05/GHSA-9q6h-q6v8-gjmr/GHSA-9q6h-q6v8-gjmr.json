@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9q6h-q6v8-gjmr",
+  "modified": "2025-11-12T18:31:03Z",
+  "published": "2025-05-01T15:31:52Z",
+  "aliases": [
+    "CVE-2022-49918"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvs: fix WARNING in __ip_vs_cleanup_batch()\n\nDuring the initialization of ip_vs_conn_net_init(), if file ip_vs_conn\nor ip_vs_conn_sync fails to be created, the initialization is successful\nby default. Therefore, the ip_vs_conn or ip_vs_conn_sync file doesn't\nbe found during the remove.\n\nThe following is the stack information:\nname 'ip_vs_conn_sync'\nWARNING: CPU: 3 PID: 9 at fs/proc/generic.c:712\nremove_proc_entry+0x389/0x460\nModules linked in:\nWorkqueue: netns cleanup_net\nRIP: 0010:remove_proc_entry+0x389/0x460\nCall Trace:\n<TASK>\n__ip_vs_cleanup_batch+0x7d/0x120\nops_exit_list+0x125/0x170\ncleanup_net+0x4ea/0xb00\nprocess_one_work+0x9bf/0x1710\nworker_thread+0x665/0x1080\nkthread+0x2e4/0x3a0\nret_from_fork+0x1f/0x30\n</TASK>",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49918"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d00c6a0da8ddcf75213e004765e4a42acc71d5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ee2d6b726b0ce339e36569e5849692f4cf4595e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7effc4ce3d1434ce6ff286866585a6e905fdbfc1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/931f56d59c854263b32075bfac56fdb3b1598d1b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e724220b826e008764309d2a1f55a9434a4e1530"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f08ee2aa24c076f81d84e26e213d8c6f4efd9f50"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:17Z"
+  }
+}

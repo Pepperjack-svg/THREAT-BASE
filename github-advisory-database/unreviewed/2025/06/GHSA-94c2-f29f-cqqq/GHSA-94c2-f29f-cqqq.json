@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-94c2-f29f-cqqq",
+  "modified": "2025-11-13T21:31:17Z",
+  "published": "2025-06-18T12:30:43Z",
+  "aliases": [
+    "CVE-2022-50027"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: lpfc: Fix possible memory leak when failing to issue CMF WQE\n\nThere is no corresponding free routine if lpfc_sli4_issue_wqe fails to\nissue the CMF WQE in lpfc_issue_cmf_sync_wqe.\n\nIf ret_val is non-zero, then free the iocbq request structure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50027"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f67dc7970bce3529edce93a0a14234d88b3fcd5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4eb7a1beff03836d3df271cd23b790884e3facb9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c8e2e607270a368834a0ef72aa82d970f89c596"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:30Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fhmc-q37v-9xhx",
+  "modified": "2026-10-16T18:34:47Z",
+  "published": "2026-10-16T18:34:47Z",
+  "aliases": [
+    "CVE-2026-111647"
+  ],
+  "details": "PickMall lilishop through 5.0.0 contains an insecure direct object reference vulnerability that allows authenticated buyers to read other buyers' invoice records because ReceiptServiceImpl.getDetail performs no ownership check. Attackers can supply another buyer's receipt id to GET /buyer/trade/receipt/{id} to obtain invoice titles, taxpayer identification numbers, order numbers, member ids and member names.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111647"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lilishop/lilishop"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lilishop/lilishop/blob/5aa1c7ef04bb9178d8ddd535c3bbbd38a6fe1ccd/buyer-api/src/main/java/cn/lili/controller/order/ReceiptBuyerController.java#L33-L37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lilishop/lilishop/blob/5aa1c7ef04bb9178d8ddd535c3bbbd38a6fe1ccd/framework/src/main/java/cn/lili/modules/order/order/serviceimpl/ReceiptServiceImpl.java#L40-L43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/lilishop-buyer-receipt-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pickmall-lilishop-through-5.0.0-idor-via-buyer-trade-receipt-id"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:45Z"
+  }
+}

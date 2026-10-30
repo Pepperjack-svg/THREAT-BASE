@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qcgg-947w-p2vj",
+  "modified": "2026-10-21T03:32:14Z",
+  "published": "2026-10-21T03:32:14Z",
+  "aliases": [
+    "CVE-2026-114049"
+  ],
+  "details": "vLLM before 0.31.0 contains a cross-request mask leak in InputBatch.condense() that allows remote attackers to constrain other clients' outputs by leaving stale allowed_token_ids rows. Attackers can submit concurrent constrained generate requests, including via unauthenticated /invocations, so recycled batch slots apply their token allowlist to victims' unrestricted requests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/vllm-project/vllm/security/advisories/GHSA-6cxc-2vcg-w5qc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vllm-before-0.31.0-stale-allowed-token-ids-mask-via-inputbatch-condense"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-440"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T01:17:27Z"
+  }
+}
