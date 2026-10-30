@@ -14,7 +14,7 @@ Data comes from its original publishers, who retain their rights and attribution
 | `nvd-json-data-feeds/CVE-<year>/<bucket>/CVE-*.json` | NIST NVD records; automated mirror supplied by FKIE CAD |
 | `github-advisory-database/` | GitHub reviewed, unreviewed and malware advisories |
 | `pypa-advisory-database/` | PyPA/PYSEC package advisories |
-| `mitre-attack/` | MITRE ATT&CK STIX datasets and supplied versions |
+| `mitre-attack/` | MITRE ATT&CK Enterprise, Mobile and ICS STIX datasets and supplied versions |
 | `cisa-kev/` | CISA Known Exploited Vulnerabilities catalog |
 | `cisa-advisories/` | CISA IT/ICS CSAF advisories and current RSS feeds |
 | `epss/` | FIRST / Empirical Security probability scores |

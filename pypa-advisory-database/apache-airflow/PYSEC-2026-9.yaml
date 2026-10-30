@@ -1,0 +1,49 @@
+affected:
+- package:
+    ecosystem: PyPI
+    name: apache-airflow
+    purl: pkg:pypi/apache-airflow
+  ranges:
+  - events:
+    - introduced: 3.1.0
+    - fixed: 3.1.6
+    type: ECOSYSTEM
+  versions:
+  - 3.1.0
+  - 3.1.1
+  - 3.1.1rc1
+  - 3.1.1rc2
+  - 3.1.2
+  - 3.1.2rc1
+  - 3.1.2rc2
+  - 3.1.3
+  - 3.1.3rc1
+  - 3.1.4
+  - 3.1.4rc1
+  - 3.1.4rc2
+  - 3.1.5
+  - 3.1.5rc1
+  - 3.1.6rc1
+aliases:
+- CVE-2025-68438
+- GHSA-3qmm-r55x-hpxx
+details: "In Apache Airflow versions before 3.1.6, when rendered template fields in
+  a Dag exceed [core] max_templated_field_length, sensitive values could be exposed
+  in cleartext in the Rendered Templates UI. This occurred because serialization of
+  those fields used a secrets masker instance that did not include user-registered
+  mask_secret() patterns, so secrets were not reliably masked before truncation and
+  display.\n\nUsers are recommended to upgrade to 3.1.6 or later, which fixes this
+  issue"
+id: PYSEC-2026-9
+modified: '2026-05-20T09:18:53.476280Z'
+published: '2026-01-16T11:16:03.760Z'
+references:
+- type: ADVISORY
+  url: http://www.openwall.com/lists/oss-security/2026/01/15/5
+- type: ADVISORY
+  url: https://lists.apache.org/thread/55n7b4nlsz3vo5n4h5lrj9bfsk8ctyff
+- type: ADVISORY
+  url: https://github.com/advisories/GHSA-3qmm-r55x-hpxx
+severity:
+- score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+  type: CVSS_V3

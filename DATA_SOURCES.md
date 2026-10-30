@@ -351,6 +351,11 @@ origins retain their own terms even when included in a local full OSV download.
 
 ## Additional bulk and mirror endpoints
 
+The full ATT&CK repository also includes MITRE ATT&CK Mobile and its supplied
+versions. MITRE and the contributing ATT&CK community remain the original publishers;
+the repository's retained MITRE license and attribution notices apply.
+Mobile data: https://github.com/mitre-attack/attack-stix-data/tree/master/mobile-attack
+
 - NVD individual-file mirror: https://github.com/fkie-cad/nvd-json-data-feeds
   (FKIE CAD community reconstruction of NIST data; preserve its supplied notices).
 - Official NVD yearly feeds: https://nvd.nist.gov/feeds/json/cve/2.0/

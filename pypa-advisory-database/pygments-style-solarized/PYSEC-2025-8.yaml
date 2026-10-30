@@ -1,0 +1,27 @@
+id: PYSEC-2025-8
+modified: 2025-03-17T16:35:37Z
+summary: After the owner removed the project from PyPI, another user uploaded a new
+  version with non-working code
+details: |
+  The `pygments-style-solarized` project was removed from PyPI by its owner on 2021-08-26.
+  The GitHub repository was also updated to show unmaintained, and archived on 2025-08-31.
+
+  Another user uploaded a new version, `100.10.7`, which contains non-working code,
+  with clear language that it intends to be a dependency confusion attack.
+  It also does not contain working hacking code.
+
+  The name has been prohibited on from use on PyPI on 2021-12-12.
+affected:
+- package:
+    ecosystem: PyPI
+    name: pygments-style-solarized
+    purl: pkg:pypi/pygments-style-solarized
+  versions:
+  - 100.10.7
+references:
+- type: EVIDENCE
+  url: 
+    https://inspector.pypi.io/project/pygments-style-solarized/100.10.7/packages/f8/de/dc31f9eb4322bbce87fe341f9b4e2fc31587dedc785de629af3e53b1c1f5/pygments-style-solarized-100.10.7.tar.gz/pygments-style-solarized-100.10.7/pygments-style-solarized/pygments-style-solarized.py#line.1
+- type: WEB
+  url: https://github.com/shkumagai/pygments-style-solarized/pull/22/files
+published: '2025-03-17T16:35:37Z'

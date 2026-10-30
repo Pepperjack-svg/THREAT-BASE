@@ -1,0 +1,33 @@
+affected:
+- ecosystem_specific: {}
+  package:
+    ecosystem: PyPI
+    name: agentscope
+    purl: pkg:pypi/agentscope
+  ranges:
+  - events:
+    - introduced: '0'
+    - last_affected: 0.0.4
+    type: ECOSYSTEM
+  versions:
+  - 0.0.1
+  - 0.0.2
+  - 0.0.3
+  - 0.0.4
+aliases:
+- CVE-2024-8438
+- GHSA-f4hc-q562-cc5r
+details: A path traversal vulnerability exists in modelscope/agentscope version v.0.0.4.
+  The API endpoint `/api/file` does not properly sanitize the `path` parameter, allowing
+  an attacker to read arbitrary files on the server.
+id: PYSEC-2025-80
+modified: '2026-05-21T14:54:21.087574Z'
+published: '2025-03-20T10:15:42.240Z'
+references:
+- type: EVIDENCE
+  url: https://huntr.com/bounties/3f170c58-42ee-422d-ab6f-32c7aa05b974
+- type: ADVISORY
+  url: https://github.com/advisories/GHSA-f4hc-q562-cc5r
+severity:
+- score: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+  type: CVSS_V3
