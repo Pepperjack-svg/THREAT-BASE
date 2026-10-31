@@ -37,6 +37,8 @@ mirror() {
   done
   [[ ! -f $clone/README.md ]] || cp "$clone/README.md" "$target/README.upstream.md"
   printf '%s %s\n' "$target" "$head" >> "$state"
+  # A runner already holds the full database; release each temporary clone promptly.
+  rm -rf -- "$clone"
 }
 
 mirror CVEProject/cvelistV5 main cvelistV5 cve

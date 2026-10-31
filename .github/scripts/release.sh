@@ -22,7 +22,7 @@ fi
 # Release only a fresh, completed daily synchronization of this code/data lineage.
 branch=${GITHUB_REF_NAME:?}
 gh api "repos/$GITHUB_REPOSITORY/actions/workflows/sync.yml/runs?branch=$branch&per_page=1" > "$dist/runs.json"
-jq -e --arg branch "$branch" '.workflow_runs[0] | .status == "completed" and .conclusion == "success" and .head_branch == $branch and (.event == "schedule" or .event == "workflow_dispatch")' "$dist/runs.json" >/dev/null
+jq -e --arg branch "$branch" '.workflow_runs[0] | .status == "completed" and .conclusion == "success" and .head_branch == $branch and (.event == "schedule" or .event == "workflow_dispatch" or .event == "push")' "$dist/runs.json" >/dev/null
 updated=$(jq -r '.workflow_runs[0].updated_at' "$dist/runs.json")
 age=$(( $(date -u +%s) - $(date -u -d "$updated" +%s) ))
 (( age >= 0 && age <= 129600 )) || { echo 'Daily synchronization is stale' >&2; exit 1; }

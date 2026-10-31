@@ -41,15 +41,18 @@ Downloading an archive does not automatically publish or import it.
 
 ## Updates
 
-[Daily sync](.github/workflows/sync.yml) runs at midnight Asia/Kolkata when repository
-variable `SYNC_ENABLED=true`. **Run workflow** works on the default branch without
-that variable. Start a new run after a workflow fix; old runs use their old revision.
+[Daily sync](.github/workflows/sync.yml) is scheduled at midnight Asia/Kolkata,
+with no repository variable required. It also runs when sync scripts, its workflow,
+the secret scan allowlist or ignore rules change on `main`. **Run workflow** starts
+it manually on the default branch. Old runs use their old revision.
 
 The sync mirrors CVE, the FKIE NVD reconstruction, GitHub/PyPA advisories, ATT&CK and
 CISA CSAF records, plus current KEV, EPSS, CWE, CAPEC and advisory feeds.
 Upstream code is excluded and never executed. Failed downloads stop publication;
 previous records are retained. Git pushes use bounded reconciliation.
-Large OSV and EPSS historical archives are local bulk downloads, not daily Git mirrors.
+Large OSV, EPSS historical and Red Hat CSAF/VEX archives are local bulk downloads;
+they are not refreshed by GitHub Actions or included in monthly releases.
+Your local checkout receives published changes when you run `git pull`.
 
 [Monthly releases](.github/workflows/release.yml) run on the first day of the month
 at 1 AM Asia/Kolkata and can be started manually. They package committed source
