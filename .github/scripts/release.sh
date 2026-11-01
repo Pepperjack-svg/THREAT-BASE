@@ -2,7 +2,11 @@
 # Calendar releases contain the committed source directories and attribution.
 set -Eeuo pipefail
 cd "$(git rev-parse --show-toplevel)"
-bash .github/scripts/validate.sh
+# Catch up after the midnight sync completes, including a repaired run on day one.
+if [[ ${GITHUB_EVENT_NAME:-} == workflow_run && $(TZ=Asia/Kolkata date +%d) != 01 ]]; then
+  echo 'Automatic monthly catch-up only runs on the first day in Asia/Kolkata.'
+  exit 0
+fi
 version=$(TZ=Asia/Kolkata date +%Y.%m)
 tag="v$version"
 sha=$(git rev-parse HEAD)
@@ -22,22 +26,26 @@ fi
 # Release only a fresh, completed daily synchronization of this code/data lineage.
 branch=${GITHUB_REF_NAME:?}
 gh api "repos/$GITHUB_REPOSITORY/actions/workflows/sync.yml/runs?branch=$branch&per_page=1" > "$dist/runs.json"
-jq -e --arg branch "$branch" '.workflow_runs[0] | .status == "completed" and .conclusion == "success" and .head_branch == $branch and (.event == "schedule" or .event == "workflow_dispatch" or .event == "push")' "$dist/runs.json" >/dev/null
+jq -e --arg branch "$branch" '.workflow_runs[0] | .status == "completed" and .conclusion == "success" and .head_branch == $branch and (.event == "schedule" or .event == "workflow_dispatch" or .event == "push")' "$dist/runs.json" >/dev/null || {
+  echo 'Release blocked: latest daily sync has not completed successfully. Run sync.yml first.' >&2
+  exit 1
+}
 updated=$(jq -r '.workflow_runs[0].updated_at' "$dist/runs.json")
 age=$(( $(date -u +%s) - $(date -u -d "$updated" +%s) ))
 (( age >= 0 && age <= 129600 )) || { echo 'Daily synchronization is stale' >&2; exit 1; }
 base=$(jq -r '.workflow_runs[0].head_sha' "$dist/runs.json")
 [[ $base =~ ^[a-f0-9]{40}$ ]]
 git merge-base --is-ancestor "$base" "$sha"
-if git diff --name-only "$base" "$sha" | grep -Ev '^(cvelistV5/|nvd-json-data-feeds/|github-advisory-database/|pypa-advisory-database/|mitre-attack/|cisa-advisories/|cisa-kev/|epss/|cwe/|capec/|redhat-advisories/|\.upstream-state$)'; then
+if git diff --name-only "$base" "$sha" | grep -Ev '^(cvelistV5/|nvd-json-data-feeds/|github-advisory-database/|pypa-advisory-database/|mitre-attack/|cisa-advisories/|cisa-kev/|epss/|cwe/|capec/|redhat-advisories/|\.upstream-state$|\.upstream-feeds\.json$)'; then
   echo 'Code changed since the successful sync; run daily sync again' >&2
   exit 1
 fi
+bash .github/scripts/validate.sh
 for dir in cvelistV5 nvd-json-data-feeds github-advisory-database pypa-advisory-database mitre-attack cisa-kev epss cwe capec cisa-advisories redhat-advisories; do
   git ls-tree -d --name-only HEAD -- "$dir" | grep -qx "$dir" || { echo "Missing committed dataset: $dir" >&2; exit 1; }
-  git archive HEAD -- "$dir" DATA_SOURCES.md LICENSE | gzip -n | split -b 900M - "$dist/$dir-$version.tar.gz.part-"
+  git archive HEAD -- "$dir" DATA_SOURCES.md LICENSE .upstream-state .upstream-feeds.json | gzip -n | split -b 900M - "$dist/$dir-$version.tar.gz.part-"
 done
-printf 'commit=%s\nversion=%s\n' "$sha" "$version" > "$dist/snapshot.txt"
+printf 'commit=%s\nversion=%s\nsync_run=%s\n' "$sha" "$version" "$(jq -r '.workflow_runs[0].html_url' "$dist/runs.json")" > "$dist/snapshot.txt"
 (cd "$dist"; sha256sum -- *.part-* snapshot.txt > SHA256SUMS)
 cat > "$dist/notes.md" <<EOF
 Source-organized snapshot of THREAT-BASE at commit $sha.

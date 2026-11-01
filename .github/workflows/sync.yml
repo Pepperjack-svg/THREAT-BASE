@@ -9,7 +9,9 @@
     ],
     "workflow_dispatch": {},
     "push": {
-      "branches": ["main"],
+      "branches": [
+        "main"
+      ],
       "paths": [
         ".github/workflows/sync.yml",
         ".github/scripts/**",
@@ -50,7 +52,7 @@
           "env": {
             "TARGET_BRANCH": "${{ github.event.repository.default_branch }}"
           },
-          "run": "set -Eeuo pipefail\ngit config user.name 'github-actions[bot]'\ngit config user.email '41898282+github-actions[bot]@users.noreply.github.com'\ngit add -- cvelistV5 nvd-json-data-feeds github-advisory-database pypa-advisory-database mitre-attack cisa-advisories cisa-kev epss cwe capec redhat-advisories .upstream-state\ngit diff --cached --quiet && exit 0\ngit commit -m \"data: synchronize upstream datasets\"\nfor attempt in 1 2 3; do\n  git push origin \"HEAD:$TARGET_BRANCH\" && exit 0\n  git fetch origin \"$TARGET_BRANCH\"\n  if ! git rebase \"origin/$TARGET_BRANCH\"; then\n    git rebase --abort\n    exit 1\n  fi\ndone\nexit 1"
+          "run": "set -Eeuo pipefail\ngit config user.name 'github-actions[bot]'\ngit config user.email '41898282+github-actions[bot]@users.noreply.github.com'\ngit add -- cvelistV5 nvd-json-data-feeds github-advisory-database pypa-advisory-database mitre-attack cisa-advisories cisa-kev epss cwe capec redhat-advisories .upstream-state .upstream-feeds.json\ngit diff --cached --quiet && exit 0\ngit commit -m \"data: synchronize upstream datasets\"\nfor attempt in 1 2 3; do\n  git push origin \"HEAD:$TARGET_BRANCH\" && exit 0\n  git fetch origin \"$TARGET_BRANCH\"\n  if ! git rebase \"origin/$TARGET_BRANCH\"; then\n    git rebase --abort\n    exit 1\n  fi\ndone\nexit 1"
         }
       ]
     }

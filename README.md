@@ -49,7 +49,10 @@ it manually on the default branch. Old runs use their old revision.
 The sync mirrors CVE, the FKIE NVD reconstruction, GitHub/PyPA advisories, ATT&CK and
 CISA CSAF records, plus current KEV, EPSS, CWE, CAPEC and advisory feeds.
 Upstream code is excluded and never executed. Failed downloads stop publication;
-previous records are retained. Git pushes use bounded reconciliation.
+previous records are retained. CISA RSS downloads try official current and legacy
+URLs, validate the complete XML, and stop the sync if neither endpoint works.
+`.upstream-feeds.json` records successful download times, endpoints and SHA-256 hashes.
+Git pushes use bounded reconciliation.
 Large OSV, EPSS historical and Red Hat CSAF/VEX archives are local bulk downloads;
 they are not refreshed by GitHub Actions or included in monthly releases.
 Your local checkout receives published changes when you run `git pull`.
@@ -57,11 +60,12 @@ Your local checkout receives published changes when you run `git pull`.
 [Monthly releases](.github/workflows/release.yml) run on the first day of the month
 at 1 AM Asia/Kolkata and can be started manually. They package committed source
 folders with attribution, use `vYYYY.MM` tags, and never replace a published month.
+On the first day, a successful sync also retries the monthly release automatically.
 Publication requires a successful daily sync within the preceding 36 hours; code
 changes after that run require another sync.
 Archives are split below the per-file limit. Verify `SHA256SUMS`, concatenate each
 dataset's `.part-*` files in filename order, then extract its tar.gz. A failed upload
-leaves a draft for review. Live execution of the replacement workflows is unverified.
+leaves a draft for review. Each archive includes the upstream revision and feed provenance manifests.
 
 ## Contributing and licensing
 

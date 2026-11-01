@@ -5,8 +5,11 @@ cd "$(git rev-parse --show-toplevel)"
 work=$(mktemp -d)
 trap 'rm -rf -- "$work"' EXIT
 state="$work/upstream-state"
+source .github/scripts/feeds.sh
+trap 'echo "Sync failed at line $LINENO: $BASH_COMMAND" >&2' ERR
 mirror() {
   local repo=$1 branch=$2 target=$3 mode=$4 head previous clone from count old
+  echo "Mirroring $repo into $target"
   head=$(git ls-remote "https://github.com/$repo.git" "refs/heads/$branch" | cut -f1)
   [[ $head =~ ^[a-f0-9]{40}$ ]] || { echo "Cannot resolve $repo" >&2; return 1; }
   previous=$(awk -v key="$target" '$1 == key {print $2}' .upstream-state 2>/dev/null || true)
@@ -41,6 +44,24 @@ mirror() {
   rm -rf -- "$clone"
 }
 
+fetch https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json cisa-kev/known_exploited_vulnerabilities.json json
+fetch https://epss.empiricalsecurity.com/epss_scores-current.csv.gz epss/epss_scores-current.csv.gz gzip
+fetch https://cwe.mitre.org/data/xml/cwec_latest.xml.zip cwe/cwec_latest.xml.zip zip
+fetch https://capec.mitre.org/data/xml/capec_latest.xml capec/capec_latest.xml xml
+fetch https://www.cisa.gov/cybersecurity-advisories/all.xml cisa-advisories/all.xml xml \
+  https://www.cisa.gov/uscert/ncas/all.xml
+fetch https://www.cisa.gov/cybersecurity-advisories/ics-advisories.xml cisa-advisories/ics.xml xml \
+  https://www.cisa.gov/uscert/ncas/ics-advisories.xml
+fetch https://security.access.redhat.com/data/metrics/rhsa.rss redhat-advisories/rhsa.rss xml
+fetch https://cwe.mitre.org/about/termsofuse.html cwe/TERMS.html text
+fetch https://capec.mitre.org/about/termsofuse.html capec/TERMS.html text
+python3 - "$work/feed-state" > .upstream-feeds.json <<'PY'
+import datetime, json, sys
+with open(sys.argv[1]) as source:
+    feeds = [dict(zip(('path', 'url', 'sha256'), line.rstrip('\n').split('\t'))) for line in source]
+json.dump({'synced_at': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'feeds': feeds}, sys.stdout, indent=2)
+print()
+PY
 mirror CVEProject/cvelistV5 main cvelistV5 cve
 mirror fkie-cad/nvd-json-data-feeds main nvd-json-data-feeds all
 mirror github/advisory-database main github-advisory-database advisories
@@ -48,27 +69,5 @@ mirror pypa/advisory-database main pypa-advisory-database pypa
 mirror mitre-attack/attack-stix-data master mitre-attack all
 mirror cisagov/CSAF develop cisa-advisories csaf
 
-fetch() {
-  local url=$1 target=$2 kind=$3 file="$work/feed"
-  curl --fail --location --proto '=https' --proto-redir '=https' --retry 2 --connect-timeout 30 --max-time 600 "$url" -o "$file"
-  [[ -s $file ]]
-  case $kind in
-    json) jq -e . "$file" >/dev/null ;;
-    gzip) gzip -t "$file" ;;
-    zip) unzip -tq "$file" >/dev/null ;;
-    xml) head -c 200 "$file" | grep -Eiq '<\?xml|<rss|<feed|<Attack_Pattern_Catalog|<Weakness_Catalog' ;;
-  esac
-  mkdir -p "$(dirname "$target")"
-  cp "$file" "$target"
-}
-fetch https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json cisa-kev/known_exploited_vulnerabilities.json json
-fetch https://epss.empiricalsecurity.com/epss_scores-current.csv.gz epss/epss_scores-current.csv.gz gzip
-fetch https://cwe.mitre.org/data/xml/cwec_latest.xml.zip cwe/cwec_latest.xml.zip zip
-fetch https://capec.mitre.org/data/xml/capec_latest.xml capec/capec_latest.xml xml
-fetch https://www.cisa.gov/cybersecurity-advisories/all.xml cisa-advisories/all.xml xml
-fetch https://www.cisa.gov/cybersecurity-advisories/ics-advisories.xml cisa-advisories/ics.xml xml
-fetch https://security.access.redhat.com/data/metrics/rhsa.rss redhat-advisories/rhsa.rss xml
-fetch https://cwe.mitre.org/about/termsofuse.html cwe/TERMS.html text
-fetch https://capec.mitre.org/about/termsofuse.html capec/TERMS.html text
 bash .github/scripts/validate.sh
 sort "$state" > .upstream-state
