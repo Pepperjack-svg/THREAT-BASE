@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
+trap 'echo "Validation failed at line $LINENO: $BASH_COMMAND" >&2' ERR
 cd "$(git rev-parse --show-toplevel)"
 scope=(--cached)
 [[ ${1:-} == --staged ]] || scope+=(--others --exclude-standard)
-git diff --check
-git diff --cached --check
+source .github/scripts/check-diff.sh
+check_git_whitespace
+check_git_whitespace --staged
 for script in .github/scripts/*.sh; do bash -n "$script"; done
 work=$(mktemp -d)
 trap 'rm -rf -- "$work"' EXIT

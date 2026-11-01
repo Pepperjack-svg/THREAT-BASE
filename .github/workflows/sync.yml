@@ -54,7 +54,20 @@
           },
           "run": "set -Eeuo pipefail\ngit config user.name 'github-actions[bot]'\ngit config user.email '41898282+github-actions[bot]@users.noreply.github.com'\ngit add -- cvelistV5 nvd-json-data-feeds github-advisory-database pypa-advisory-database mitre-attack cisa-advisories cisa-kev epss cwe capec redhat-advisories .upstream-state .upstream-feeds.json\ngit diff --cached --quiet && exit 0\ngit commit -m \"data: synchronize upstream datasets\"\nfor attempt in 1 2 3; do\n  git push origin \"HEAD:$TARGET_BRANCH\" && exit 0\n  git fetch origin \"$TARGET_BRANCH\"\n  if ! git rebase \"origin/$TARGET_BRANCH\"; then\n    git rebase --abort\n    exit 1\n  fi\ndone\nexit 1"
         }
-      ]
+      ],
+      "env": {
+        "GIT_CONFIG_COUNT": "5",
+        "GIT_CONFIG_KEY_0": "core.packedGitLimit",
+        "GIT_CONFIG_VALUE_0": "256m",
+        "GIT_CONFIG_KEY_1": "core.packedGitWindowSize",
+        "GIT_CONFIG_VALUE_1": "16m",
+        "GIT_CONFIG_KEY_2": "core.deltaBaseCacheLimit",
+        "GIT_CONFIG_VALUE_2": "64m",
+        "GIT_CONFIG_KEY_3": "pack.windowMemory",
+        "GIT_CONFIG_VALUE_3": "64m",
+        "GIT_CONFIG_KEY_4": "pack.threads",
+        "GIT_CONFIG_VALUE_4": "2"
+      }
     }
   }
 }
