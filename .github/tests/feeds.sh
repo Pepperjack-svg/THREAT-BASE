@@ -38,4 +38,29 @@ fetch https://fixture/large "$target" xml
 [[ $(wc -c < "$target") -gt 100000 ]]
 printf 'not gzip' > "$work/bad.gz"
 if validate_feed gzip "$work/bad.gz"; then exit 1; fi
+rm "$work/feed-state"
+fetch_supplemental https://fixture/blocked "$target" xml
+write_feed_state "$work/missing.json" "$work/first.json"
+python3 - "$work/first.json" <<'PY'
+import json, sys
+entry = json.load(open(sys.argv[1]))['feeds'][0]
+assert entry['status'] == 'retained' and entry['last_success_at'] is None
+PY
+rm "$work/feed-state"
+fetch_supplemental https://fixture/valid "$target" xml
+write_feed_state "$work/first.json" "$work/fresh.json"
+rm "$work/feed-state"
+fetch_supplemental https://fixture/blocked "$target" xml
+write_feed_state "$work/fresh.json" "$work/retained.json"
+python3 - "$work/fresh.json" "$work/retained.json" <<'PY'
+import json, sys
+fresh, retained = [json.load(open(path))['feeds'][0] for path in sys.argv[1:]]
+assert fresh['status'] == 'refreshed' and fresh['last_success_at']
+assert retained['status'] == 'retained'
+assert retained['last_success_at'] == fresh['last_success_at']
+assert retained['sha256'] == fresh['sha256']
+PY
+if fetch_supplemental https://fixture/blocked "$work/missing.xml" xml; then exit 1; fi
+printf '<html>Denied</html>' > "$target"
+if fetch_supplemental https://fixture/blocked "$target" xml; then exit 1; fi
 echo 'Feed regression checks passed: HTTP failures, HTML, malformed/empty XML, fallback, large XML, corrupt gzip.'

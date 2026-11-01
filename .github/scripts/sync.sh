@@ -48,20 +48,15 @@ fetch https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited
 fetch https://epss.empiricalsecurity.com/epss_scores-current.csv.gz epss/epss_scores-current.csv.gz gzip
 fetch https://cwe.mitre.org/data/xml/cwec_latest.xml.zip cwe/cwec_latest.xml.zip zip
 fetch https://capec.mitre.org/data/xml/capec_latest.xml capec/capec_latest.xml xml
-fetch https://www.cisa.gov/cybersecurity-advisories/all.xml cisa-advisories/all.xml xml \
+fetch_supplemental https://www.cisa.gov/cybersecurity-advisories/all.xml cisa-advisories/all.xml xml \
   https://www.cisa.gov/uscert/ncas/all.xml
-fetch https://www.cisa.gov/cybersecurity-advisories/ics-advisories.xml cisa-advisories/ics.xml xml \
+fetch_supplemental https://www.cisa.gov/cybersecurity-advisories/ics-advisories.xml cisa-advisories/ics.xml xml \
   https://www.cisa.gov/uscert/ncas/ics-advisories.xml
 fetch https://security.access.redhat.com/data/metrics/rhsa.rss redhat-advisories/rhsa.rss xml
 fetch https://cwe.mitre.org/about/termsofuse.html cwe/TERMS.html text
 fetch https://capec.mitre.org/about/termsofuse.html capec/TERMS.html text
-python3 - "$work/feed-state" > .upstream-feeds.json <<'PY'
-import datetime, json, sys
-with open(sys.argv[1]) as source:
-    feeds = [dict(zip(('path', 'url', 'sha256'), line.rstrip('\n').split('\t'))) for line in source]
-json.dump({'synced_at': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'feeds': feeds}, sys.stdout, indent=2)
-print()
-PY
+write_feed_state .upstream-feeds.json "$work/feeds.json"
+cp "$work/feeds.json" .upstream-feeds.json
 mirror CVEProject/cvelistV5 main cvelistV5 cve
 mirror fkie-cad/nvd-json-data-feeds main nvd-json-data-feeds all
 mirror github/advisory-database main github-advisory-database advisories

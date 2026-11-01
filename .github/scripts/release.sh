@@ -56,6 +56,9 @@ publishers and terms; DATA_SOURCES.md and upstream notices are included.
 
 This is the committed database snapshot, not a claim of complete upstream history.
 EOF
+if [[ -f .upstream-feeds.json ]]; then
+  jq -r '.feeds[] | select(.status == "retained") | "Supplemental RSS retained after endpoint failure: \(.path); last successful download: \(.last_success_at // "unknown"). See .upstream-feeds.json in the archives for hashes and endpoints."' .upstream-feeds.json >> "$dist/notes.md"
+fi
 gh release create "$tag" --draft --target "$sha" --title "THREAT-BASE $version" --notes-file "$dist/notes.md"
 gh release upload "$tag" "$dist"/*.part-* "$dist/snapshot.txt" "$dist/SHA256SUMS"
 # Verify uploaded sizes before making the draft visible.

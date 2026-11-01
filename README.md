@@ -48,10 +48,13 @@ it manually on the default branch. Old runs use their old revision.
 
 The sync mirrors CVE, the FKIE NVD reconstruction, GitHub/PyPA advisories, ATT&CK and
 CISA CSAF records, plus current KEV, EPSS, CWE, CAPEC and advisory feeds.
-Upstream code is excluded and never executed. Failed downloads stop publication;
+Upstream code is excluded and never executed. Failed required downloads stop publication;
 previous records are retained. CISA RSS downloads try official current and legacy
-URLs, validate the complete XML, and stop the sync if neither endpoint works.
-`.upstream-feeds.json` records successful download times, endpoints and SHA-256 hashes.
+URLs and validate the complete XML. If GitHub runners cannot access either endpoint,
+these two supplemental RSS files retain their previous validated contents with a warning;
+the official CISA CSAF mirror must still refresh successfully.
+`.upstream-feeds.json` records refresh/retention status, last successful download times,
+endpoints and SHA-256 hashes. Retained RSS is also disclosed in release notes.
 Git pushes use bounded reconciliation.
 Large OSV, EPSS historical and Red Hat CSAF/VEX archives are local bulk downloads;
 they are not refreshed by GitHub Actions or included in monthly releases.
