@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-59h3-w5qx-76fv",
+  "modified": "2026-10-31T09:31:13Z",
+  "published": "2026-10-31T09:31:13Z",
+  "aliases": [
+    "CVE-2026-120019"
+  ],
+  "details": "The W3 Total Cache plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 2.10.7 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires HTML Minify to be enabled with the default 'mfunc' entry present in the ignored-comment stems list, and exploitation depends on the attacker predicting the md5(time()) placeholder namespace by reading the server clock via the HTTP Date response header within the applicable time window.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120019"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BoldGrid/w3-total-cache/commit/35c6896332aff6b41888db0595cf09b4c98c814c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/w3-total-cache/tags/2.10.7/Minify_Plugin.php#L625"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/w3-total-cache/tags/2.10.7/lib/Minify/Minify/IgnoredCommentPreserver.php#L10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/w3-total-cache/tags/2.10.7/lib/Minify/Minify/IgnoredCommentPreserver.php#L25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3757452/w3-total-cache/trunk/lib/Minify/Minify/IgnoredCommentPreserver.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/3a14a537-64e7-415b-be8e-a3a9377fd20d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-31T07:16:37Z"
+  }
+}

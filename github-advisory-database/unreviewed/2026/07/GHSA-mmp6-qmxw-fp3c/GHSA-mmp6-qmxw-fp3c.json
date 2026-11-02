@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mmp6-qmxw-fp3c",
-  "modified": "2026-07-19T18:31:46Z",
+  "modified": "2026-10-30T15:32:50Z",
   "published": "2026-07-19T18:31:46Z",
   "aliases": [
     "CVE-2026-63928"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: serial: omninet: fix memory corruption with small endpoint\n\nMake sure that the bulk-out buffers are at least as large as the\nhardcoded transfer size to avoid user-controlled slab corruption should\na malicious device report a smaller endpoint max packet size than\nexpected.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:11Z"

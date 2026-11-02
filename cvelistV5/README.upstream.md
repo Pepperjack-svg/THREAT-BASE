@@ -118,4 +118,3 @@ You may clone the repository using [git clone](https://github.com/git-guides/git
 
 Please use the [CVE Request Web Forms](https://cveform.mitre.org/) and select “Other” from the dropdown.
 
-

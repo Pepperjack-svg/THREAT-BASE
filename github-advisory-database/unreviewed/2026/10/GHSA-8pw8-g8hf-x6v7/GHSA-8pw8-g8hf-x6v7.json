@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8pw8-g8hf-x6v7",
+  "modified": "2026-10-30T03:32:02Z",
+  "published": "2026-10-30T03:32:02Z",
+  "aliases": [
+    "CVE-2026-65586"
+  ],
+  "details": "Software installed and run as a non-privileged user may conduct improper GPU system calls to free memory in still in use, replace with another allocation and cause arbitrary memory reads or writes to physical memory pages.\n\n\n\nA memory buffer managed by a CPU thread of control (driver) and accessed by a GPU thread of control (firmware) can be freed while in use. Software installed and run as a non-privileged user may replace that buffer with another and replace a shared resource (memory page address list) managed by the CPU thread of control (driver) leading to the GPU accessing memory not managed by the CPU thread of control (driver).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65586"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.imaginationtech.com/gpu-driver-vulnerabilities"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T02:17:09Z"
+  }
+}

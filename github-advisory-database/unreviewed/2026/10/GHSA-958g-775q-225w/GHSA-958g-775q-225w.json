@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-958g-775q-225w",
+  "modified": "2026-10-30T15:33:12Z",
+  "published": "2026-10-30T15:33:12Z",
+  "aliases": [
+    "CVE-2026-74740"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: act_api: fix TOCTOU NULL deref on a->goto_chain\n\ntcf_action_exec() handles TC_ACT_GOTO_CHAIN by first checking\nrcu_access_pointer(a->goto_chain) and then calling\ntcf_action_goto_chain_exec(), which does a second, independent\nrcu_dereference_bh(a->goto_chain) read and immediately dereferences\nchain->filter_chain. A concurrent tcf_action_set_ctrlact() (e.g. the gact\nreplace path) can clear a->goto_chain between the two reads, so the second\nread returns NULL and tcf_action_goto_chain_exec() dereferences NULL.\n\nFix the race by doing a single rcu_dereference_bh() read of a->goto_chain\nin tcf_action_exec(), checking it once for NULL, and passing the resulting\nchain pointer into tcf_action_goto_chain_exec(). This turns the split\ncheck/use into a single check/use on one value.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74740"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ec48b6715c29b20105e3485206602cff6c51ae5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/28aa0c9dd0b1b38436995d4c15621ad3f896c7e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b70886ebc428eed43a069c8944a931b5fb3f4e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91d55fd1fdb85c8371ca8793c788ea7d5192383a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/abceabc4408fca6a9dd52611f5d197dec9390d63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f60b396ee174206fe08ebf997d16cd3801b77b22"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T15:16:52Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cqrq-24rf-5fg8",
+  "modified": "2026-10-31T09:31:13Z",
+  "published": "2026-10-31T09:31:12Z",
+  "aliases": [
+    "CVE-2026-116522"
+  ],
+  "details": "The Relevanssi – A Better Search plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 4.28.5 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires the site to have both the comment indexing and comment highlighting options enabled, and the payload only fires when a visitor reaches a singular page via a Relevanssi search-result permalink carrying the highlight query parameter.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/msaari/relevanssi/commit/b0324957b27e2dfc2aa116c96dcf578fbec9e0e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/relevanssi/tags/4.28.5/lib/common.php#L1037"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/relevanssi/tags/4.28.5/lib/excerpts-highlights.php#L1698"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/relevanssi/tags/4.28.5/lib/excerpts-highlights.php#L521"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/relevanssi/tags/4.28.5/lib/excerpts-highlights.php#L688"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/relevanssi/tags/4.28.5/lib/init.php#L140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3767703%40relevanssi%2Ftags%2F4.28.6&old=3761637%40relevanssi%2Ftags%2F4.28.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/442403ae-9011-4373-a363-e98e07ec7e9b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-31T07:16:35Z"
+  }
+}

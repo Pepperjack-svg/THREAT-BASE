@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7gx5-8c2m-vqr5",
-  "modified": "2026-07-19T18:31:45Z",
+  "modified": "2026-10-30T15:32:49Z",
   "published": "2026-07-19T18:31:45Z",
   "aliases": [
     "CVE-2026-63904"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: usbtmc: check URB actual_length for interrupt-IN notifications\n\nUSBTMC devices can use an optional interrupt endpoint for notification\nmessages. These typically contain two-byte headers indicating the\npayload format, but the driver does not check if these headers are\npresent before accessing the data buffers. In cases where the URB\nactual_length is not enough to fit these headers, the driver will either\ncause an out-of-bounds read, or consume stale leftover data from a\nprevious notification.\n\nFix by checking if actual_data contains enough bytes for the headers,\notherwise resubmit URB to the interrupt endpoint.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:08Z"

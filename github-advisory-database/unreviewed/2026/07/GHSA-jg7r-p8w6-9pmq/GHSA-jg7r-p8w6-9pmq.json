@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jg7r-p8w6-9pmq",
-  "modified": "2026-07-19T18:31:47Z",
+  "modified": "2026-10-30T15:32:52Z",
   "published": "2026-07-19T18:31:47Z",
   "aliases": [
     "CVE-2026-63948"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: fix chan ref leak in l2cap_chan_timeout() on !conn\n\n__set_chan_timer() takes a l2cap_chan reference via l2cap_chan_hold()\nbefore scheduling the delayed work.  The normal path in\nl2cap_chan_timeout() drops this reference with l2cap_chan_put() at the\nend, but the early return when chan->conn is NULL skips the put,\nleaking the reference.\n\nAdd the missing l2cap_chan_put() before the early return.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:13Z"

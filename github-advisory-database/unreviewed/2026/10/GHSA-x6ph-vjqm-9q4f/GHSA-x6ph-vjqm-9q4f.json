@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-x6ph-vjqm-9q4f",
-  "modified": "2026-10-28T12:31:05Z",
+  "modified": "2026-10-31T15:30:22Z",
   "published": "2026-10-28T12:31:05Z",
   "aliases": [
     "CVE-2026-99154"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: libiscsi: Reject a negative task index from parse_pdu_itt\n\nA transport that implements parse_pdu_itt hands libiscsi an index taken\nfrom the PDU, and both lookups bound it from above only:\n\n      if (i >= session->cmds_max)\n\ni and cmds_max are both int, so a negative index passes and\nsession->cmds[i] is read from before the array.\n\nbe2iscsi produces one. beiscsi_parse_pdu() assigns the raw tag,\n\n      *index = (int)itt;\n\nand beiscsi_complete_pdu() forwards an unsolicited NOP-In from the\nhardware async ring without replacing its ITT, so the value is the\ntarget's. It also reports the session's own age rather than the one in\nthe tag, which leaves the age comparison in iscsi_verify_itt() with\nnothing to reject.\n\nBound the index from below in both lookups.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -16,7 +21,19 @@
     },
     {
       "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0eb06ebbbecb122f0df9a1f7f623f5255be741ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24bd9ba431b2daa263f3551bc2f09f6b4487f5ae"
+    },
+    {
+      "type": "WEB",
       "url": "https://git.kernel.org/stable/c/35b60549a956237488c89a2d85352e026e7d55b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6200fb2de579f268742a77b0f3d823cb0a8b1947"
     },
     {
       "type": "WEB",
@@ -25,11 +42,19 @@
     {
       "type": "WEB",
       "url": "https://git.kernel.org/stable/c/8ee2a09a1dbb257c9e828ad2497f8e4832dfb142"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e896a97f336c5edfc13066b57ed431cb3f64e68c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8fabe1fe044f86abc42194b8f86dfd70212115f"
     }
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-28T11:17:35Z"

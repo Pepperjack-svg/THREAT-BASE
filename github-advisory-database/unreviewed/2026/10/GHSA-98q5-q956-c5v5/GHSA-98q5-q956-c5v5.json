@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-98q5-q956-c5v5",
-  "modified": "2026-10-26T15:34:50Z",
+  "modified": "2026-10-31T15:30:21Z",
   "published": "2026-10-26T15:34:50Z",
   "aliases": [
     "CVE-2026-99094"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btintel_pcie: fix TX descriptor bounds check\n\nbtintel_pcie_prepare_tx() uses tfd_index to access the TFD and data\nbuffer arrays before the index is advanced modulo txq->count. An index\nequal to txq->count is one past the end of both arrays, so reject it in\nthe bounds check.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-26T15:16:48Z"

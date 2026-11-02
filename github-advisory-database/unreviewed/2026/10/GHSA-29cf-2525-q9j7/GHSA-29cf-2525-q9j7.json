@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-29cf-2525-q9j7",
+  "modified": "2026-10-30T03:32:02Z",
+  "published": "2026-10-30T03:32:02Z",
+  "aliases": [
+    "CVE-2026-18629"
+  ],
+  "details": "A web page that contains unusual GPU shader code is loaded into the GPU compiler process and can lead memory allocation failure. If the allocation failure is not properly handled, the compiler may dereference a NULL pointer at a controlled offset, resulting in a crash of the compiler process. On certain platforms, when the compiler process has system privileges this could lead to crashes or enable further exploits on the device.\n\n\n\nThe weakness results from performing arithmetic operations on values derived from the shader program without properly preventing integer overflow. The overflow can cause incorrect memory size calculations, leading to memory allocation failures and subsequent invalid program behaviour. Integer overflow can produce unexpected values that affect memory allocation and other security-relevant operations.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18629"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.imaginationtech.com/gpu-driver-vulnerabilities"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T02:17:09Z"
+  }
+}

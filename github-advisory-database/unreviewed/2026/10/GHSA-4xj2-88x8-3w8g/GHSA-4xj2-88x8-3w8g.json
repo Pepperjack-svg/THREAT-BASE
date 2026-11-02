@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4xj2-88x8-3w8g",
-  "modified": "2026-10-21T15:42:28Z",
+  "modified": "2026-10-30T15:34:10Z",
   "published": "2026-10-21T15:42:28Z",
   "aliases": [
     "CVE-2026-82231"
   ],
   "details": "A Thrift client in Apache bRPC (version < 1.18.0, built with WITH_THRIFT which is off by default) can be crashed by the server peer it talks to. When the server returns a T_EXCEPTION reply whose exception struct is malformed, the client decodes it without catching what Apache Thrift throws (TProtocolException, TTransportException or std::length_error). The exception unwinds out of the bthread task function and the process calls std::terminate(), terminating the whole process along with every other in-flight RPC.\n\nThis is the client response path, so the adversary is the server peer, which THREAT_MODEL.md treats as untrusted. It requires a WITH_THRIFT build (off by default).\n\nHow to Fix:\n1. Upgrade bRPC to version 1.18.0, which fixes this issue.\n2. Apply this patch: https://github.com/apache/brpc/pull/3500",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-248"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-21T13:20:03Z"

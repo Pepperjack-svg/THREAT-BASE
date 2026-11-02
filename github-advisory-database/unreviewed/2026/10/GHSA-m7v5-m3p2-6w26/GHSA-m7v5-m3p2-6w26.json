@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m7v5-m3p2-6w26",
-  "modified": "2026-10-21T12:31:08Z",
+  "modified": "2026-10-30T15:34:10Z",
   "published": "2026-10-21T12:31:08Z",
   "aliases": [
     "CVE-2026-54426"
   ],
   "details": "Uncontrolled recursion in the Redis reply parser in Apache bRPC < 1.18.0 allows a remote Redis server peer to crash a bRPC Redis client process by returning a deeply nested RESP array reply. The parser recursed once for each nested array level without enforcing a depth limit. The fix adds a configurable Redis reply depth limit with default value 128 and rejects replies exceeding that limit. \n\nAffected Scenarios:\nApplications using bRPC as a Redis client with ChannelOptions.protocol=\"redis\" and receiving replies from an untrusted or faulty Redis server peer.\n\nHow to Fix:\n1. Upgrade Apache bRPC to 1.18.0.\n2. Apply the patch from PR  https://github.com/apache/brpc/pull/3344 .\n\nNote:\nAfter applying the fix, Redis replies with array nesting deeper than redis_max_reply_depth are rejected.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-674"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-21T12:17:21Z"

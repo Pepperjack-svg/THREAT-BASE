@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4m78-mjgq-hq8g",
-  "modified": "2026-07-19T18:31:47Z",
+  "modified": "2026-10-30T15:32:53Z",
   "published": "2026-07-19T18:31:47Z",
   "aliases": [
     "CVE-2026-63956"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: serial: cypress_m8: fix memory corruption with small endpoint\n\nMake sure that the interrupt-out endpoint max packet size is at least\neight bytes to avoid user-controlled slab corruption or NULL-pointer\ndereference should a malicious device report a smaller size.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:14Z"

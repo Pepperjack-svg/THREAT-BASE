@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j2m8-rg5v-vvqc",
+  "modified": "2026-10-30T18:32:39Z",
+  "published": "2026-10-30T18:32:39Z",
+  "aliases": [
+    "CVE-2026-119714"
+  ],
+  "details": "My Calendar WordPress plugin 3.8.8 before 3.8.11 contains a shortcode injection vulnerability that allows unauthenticated attackers to execute registered shortcodes via the mcs search parameter. The mcs value reaches mc_search_results() in src/my-calendar-search.php without bracket encoding before do_shortcode runs, so a GET request triggers shortcodes on any page or post, enabling content injection and spoofing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119714"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/joedolson/my-calendar/commit/de875c25d9651abb041b2dfe32f60a4320c66496"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/joedolson/my-calendar"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/joedolson/my-calendar/blob/v3.8.10/src/my-calendar-search.php#L170"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/joedolson/my-calendar/releases/tag/v3.8.11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/my-calendar-3.8.8-before-3.8.11-unauthenticated-shortcode-injection-via-mcs-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T16:17:54Z"
+  }
+}

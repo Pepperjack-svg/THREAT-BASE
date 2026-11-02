@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g59q-3pwp-9gcx",
-  "modified": "2026-07-19T18:31:45Z",
+  "modified": "2026-10-30T15:32:49Z",
   "published": "2026-07-19T18:31:45Z",
   "aliases": [
     "CVE-2026-63908"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: atmel_mxt_ts - fix boundary check in mxt_prepare_cfg_mem\n\nWhen a configuration file provides an object size that is larger than the\ndriver's known mxt_obj_size(object), the driver intends to discard the\nextra bytes.\n\nThe loop iterates using for (i = 0; i < size; i++). Inside the loop, the\ncondition to skip processing extra bytes is:\n\n    if (i > mxt_obj_size(object))\n        continue;\n\nSince i is a 0-based index, the valid indices for the object are 0 through\nmxt_obj_size(object) - 1.\n\nWhen i == mxt_obj_size(object), the condition evaluates to false, and the\ncode processes the byte instead of discarding it.\n\nThis causes the code to calculate byte_offset = reg + i - cfg->start_ofs\nand writes the byte there, overwriting exactly one byte of the adjacent\ninstance or object.\n\nUpdate the boundary check to skip extra bytes correctly by using >=.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:08Z"

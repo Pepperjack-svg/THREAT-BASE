@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jr6w-9rm3-jj48",
-  "modified": "2026-07-19T18:31:47Z",
+  "modified": "2026-10-30T18:32:14Z",
   "published": "2026-07-19T18:31:47Z",
   "aliases": [
     "CVE-2026-63966"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: imu: adis16550: fix stack leak in trigger handler\n\nadis16550_trigger_handler() declares the scan data array on the stack\nwithout initializing it.  The memcpy() at the bottom fills only the\nfirst 28 bytes (TEMP + 6 channels of GYRO/ACCEL data), and\niio_push_to_buffers_with_timestamp() writes the s64 timestamp at the\n8-byte-aligned offset 32.  Bytes 28-31 remain uninitialized stack data\nwhich leaks to userspace on ever trigger.\n\nFix this all by just zero-initializing the structure on the stack.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:15Z"

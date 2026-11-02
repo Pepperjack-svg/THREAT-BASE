@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wppp-cf83-wqwx",
+  "modified": "2026-10-30T15:34:37Z",
+  "published": "2026-10-30T15:34:37Z",
+  "aliases": [
+    "CVE-2026-119649"
+  ],
+  "details": "Orchard CMS 1.10.3 through 1.11 contains an improper authorization vulnerability in MediaLibraryService.CheckMediaFolderPermission() that allows authenticated Authors and Contributors to access other users' media. Attackers can display, clone, and delete other users' media items by content id and delete arbitrary media folders via FolderController.Delete().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119649"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OrchardCMS/Orchard/issues/8895"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OrchardCMS/Orchard"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OrchardCMS/Orchard/blob/1.11/src/Orchard.Web/Modules/Orchard.MediaLibrary/Services/IMediaLibraryService.cs#L169-L177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OrchardCMS/Orchard/blob/1.11/src/Orchard.Web/Modules/Orchard.MediaLibrary/Services/MediaLibraryService.cs#L281-L302"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/orchard-media-library-cross-user-broken-access-control"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/orchard-cms-1.10.3-through-1.11-improper-authorization-via-media-library-folder-permission-check"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T15:16:48Z"
+  }
+}

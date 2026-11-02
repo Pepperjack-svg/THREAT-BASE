@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wqmc-6h9q-v6wp",
+  "modified": "2026-10-31T18:30:24Z",
+  "published": "2026-10-31T18:30:23Z",
+  "aliases": [
+    "CVE-2026-120208"
+  ],
+  "details": "libheif 1.18.0 before 1.23.3 contains a heap-based buffer overflow vulnerability in unc_decoder_mixed_interleave::processTile() that allows attackers to write out of bounds by supplying chroma components with unequal bit depths. Attackers can craft a HEIF file declaring, for example, 16-bit Cb and 8-bit Cr to trigger file-controlled heap writes past the Cr plane, potentially achieving code execution in image-processing pipelines.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/strukturag/libheif/security/advisories/GHSA-x8r2-mggj-j6wr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/strukturag/libheif/commit/9d3cd91d7b1c8c68deef6d06057ab956bcb0dfb9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/strukturag/libheif/blob/v1.23.2/libheif/codecs/uncompressed/unc_decoder_mixed_interleave.cc#L95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/strukturag/libheif/releases/tag/v1.23.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libheif-1.18.0-before-1.23.3-heap-buffer-overflow-via-unci-mixed-interleave-decoder"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-31T18:17:09Z"
+  }
+}

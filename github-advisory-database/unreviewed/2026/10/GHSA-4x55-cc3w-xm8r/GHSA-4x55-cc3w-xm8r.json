@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4x55-cc3w-xm8r",
+  "modified": "2026-10-30T18:32:43Z",
+  "published": "2026-10-30T18:32:43Z",
+  "aliases": [
+    "CVE-2026-110533"
+  ],
+  "details": "The FV Flowplayer Video Player plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'fv_player_videos[_fv_player_user_video][]' parameter in all versions up to, and including, 7.5.55.7212 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires an administrator to have enabled the \"Allow visitors to upload videos to their profile\" (profile_videos_enable_bio) setting before Subscriber-level users can submit profile videos.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110533"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/foliovision/fv-wordpress-flowplayer/commit/7ea0b1bcbedcfc26b43a4b41a32e51c9f81b4332"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/flowplayer/modules/ad-popup.module.js#L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/custom-videos.php#L364"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/custom-videos.php#L367"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/custom-videos.php#L370"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/email-subscription.php#L729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/flowplayer-frontend.php#L993"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a24acd18-c94d-4fde-bf6c-7f6b839336d1?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T18:17:20Z"
+  }
+}

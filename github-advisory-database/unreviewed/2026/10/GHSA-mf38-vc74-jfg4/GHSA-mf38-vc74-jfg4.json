@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mf38-vc74-jfg4",
+  "modified": "2026-10-30T15:34:40Z",
+  "published": "2026-10-30T15:34:39Z",
+  "aliases": [
+    "CVE-2026-119663"
+  ],
+  "details": "Tamery (formerly Conar) 0.32.0 before 0.99.0 contains a broken authorization vulnerability in the cloud sync API connectionsResources.create handler that allows authenticated users to attach resources to other users' connections. Attackers owning one connection can include a victim's connectionId in a batch request to insert attacker-named resource rows listed by the victim's client.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119663"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wannabespace/tamery/issues/601"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wannabespace/tamery/commit/400a9001a661e5ab2f87c51de25da1c4afa7ceed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wannabespace/tamery"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wannabespace/tamery/blob/v0.32.0/apps/api/orpc/routers/connections-resources/create.ts#L14-L32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/conar-broken-ownership-cross-user-write"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/tamery-conar-0.32.0-before-0.99.0-broken-authorization-via-connectionsresources-create"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T15:16:50Z"
+  }
+}

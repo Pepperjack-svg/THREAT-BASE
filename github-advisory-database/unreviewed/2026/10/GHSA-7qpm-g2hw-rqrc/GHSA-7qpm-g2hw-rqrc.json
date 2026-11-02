@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7qpm-g2hw-rqrc",
-  "modified": "2026-10-20T21:31:02Z",
+  "modified": "2026-10-29T21:31:12Z",
   "published": "2026-10-20T21:31:02Z",
   "aliases": [
     "CVE-2026-113867"
   ],
   "details": "Thunderbird did not escape attribute values when serializing outgoing XMPP stanzas. Because values from incoming requests were echoed back in automatic replies, a remote XMPP user could send a crafted request that caused Thunderbird to inject arbitrary stanzas into the user's connection, which the server would then process as if sent by the user. This could be used to send messages or change contact and subscription settings on behalf of the user, without any interaction. This bug only affects Thunderbird's chat feature with XMPP accounts. This vulnerability was fixed in Thunderbird 158.0.1 and Thunderbird 153.5.1.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-116"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-20T20:17:19Z"

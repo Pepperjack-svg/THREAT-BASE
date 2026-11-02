@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j499-8gjf-h2jf",
+  "modified": "2026-11-01T03:30:38Z",
+  "published": "2026-11-01T03:30:38Z",
+  "aliases": [
+    "CVE-2026-120249"
+  ],
+  "details": "Thelia Back-office Default Twig Template before 1.1.1 contains a cross-site request forgery vulnerability in the /admin/product/combinations/update and /admin/product/default-price/update routes, which accept GET requests without anti-CSRF token checks. Attackers can lure a logged-in administrator into following a crafted link to rewrite product combination prices, stock, weight, EAN and sale flags, zeroing omitted prices.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thelia/thelia/security/advisories/GHSA-j2c3-9c4q-c2ch"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thelia-templates/default-twig/commit/51b014b06a5b4ee45f15093aa58a3064d4412bd3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thelia-templates/default-twig/commit/aaf540ca552dbc4c63dca77620af4b7936d22e8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thelia-templates/default-twig/blob/6473c164bd86348f4c7d0ef6f194f1ff3d267902/src/Controller/Catalog/ProductAdvancedController.php#L546-L599"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/thelia-back-office-default-twig-template-before-1.1.1-csrf-via-product-combination-routes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-01T01:17:18Z"
+  }
+}

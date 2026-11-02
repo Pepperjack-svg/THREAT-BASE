@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6qrc-rpqw-59wp",
+  "modified": "2026-10-29T15:30:54Z",
+  "published": "2026-10-29T15:30:54Z",
+  "aliases": [
+    "CVE-2026-93009"
+  ],
+  "details": "A flaw was found in dnsmasq. The DHCPv6 client hostname parser can read one byte past the end of a crafted FQDN option because it checks the next label length before confirming the pointer is still inside the option. An attacker on the local network can trigger this with a single DHCPv6 packet. The extra byte is not returned to the client or logged, and no crash has been demonstrated.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93009"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-93009"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2536083"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-29T14:18:00Z"
+  }
+}

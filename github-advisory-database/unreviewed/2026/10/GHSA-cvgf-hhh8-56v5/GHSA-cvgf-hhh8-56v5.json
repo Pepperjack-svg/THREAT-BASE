@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cvgf-hhh8-56v5",
+  "modified": "2026-10-30T15:34:35Z",
+  "published": "2026-10-30T15:34:35Z",
+  "aliases": [
+    "CVE-2026-119599"
+  ],
+  "details": "AxonHub through 1.0.0-beta11 contains a privilege escalation vulnerability that allows project users to assign system-level scopes by creating service_account API keys with unvalidated scopes. Attackers holding write_api_keys can mint keys with read_channels and query /admin/graphql to read every channel's configuration, including base URLs and model lists.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119599"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/looplj/axonhub/issues/2724"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/looplj/axonhub/pull/2741"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/looplj/axonhub/commit/e5c904efbdabd80d74827dfae478330339c5a514"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/looplj/axonhub"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/looplj/axonhub/blob/v1.0.0-beta11/internal/server/biz/api_key.go#L340"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/looplj/axonhub/blob/v1.0.0-beta11/internal/server/biz/api_key.go#L448"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/axonhub-apikey-scope-grant-privilege-escalation"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/axonhub-through-1.0.0-beta11-privilege-escalation-via-service-account-api-key-scopes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-266"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T14:16:48Z"
+  }
+}

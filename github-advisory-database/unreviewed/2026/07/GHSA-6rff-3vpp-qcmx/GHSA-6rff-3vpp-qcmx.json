@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6rff-3vpp-qcmx",
-  "modified": "2026-07-19T18:31:45Z",
+  "modified": "2026-10-30T15:32:48Z",
   "published": "2026-07-19T18:31:44Z",
   "aliases": [
     "CVE-2026-63898"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: serial: mct_u232: fix memory corruption with small endpoint\n\nThe driver overrides the maximum transfer size for a specific device\nwhich only accepts 16 byte packets for its 32 byte bulk-out endpoint.\n\nMake sure to never increase the maximum transfer size to prevent slab\ncorruption should a malicious device report a smaller endpoint max\npacket size than expected.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:07Z"

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g885-v5xm-xh6q",
+  "modified": "2026-10-30T15:34:39Z",
+  "published": "2026-10-30T15:34:39Z",
+  "aliases": [
+    "CVE-2026-119659"
+  ],
+  "details": "Blossom through 1.17.1 contains an authorization bypass vulnerability that allows authenticated users to access other users' folders because FolderService queries filter only on folder id. Attackers can supply another user's folder id to /folder/info, /folder/upd, /folder/open or /folder/del to read storage paths, rename, toggle visibility, or delete folders.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119659"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blossom-editor/blossom/issues/213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blossom-editor/blossom"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blossom-editor/blossom/blob/v1.17.1/blossom-backend/backend/src/main/java/com/blossom/backend/server/folder/FolderService.java#L123-L202"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blossom-editor/blossom/blob/v1.17.1/blossom-backend/backend/src/main/resources/mapper/FolderMapper.xml#L64-L92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/blossom-folder-idor-cross-user-modify-delete"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/blossom-through-1.17.1-authorization-bypass-via-folder-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T15:16:50Z"
+  }
+}

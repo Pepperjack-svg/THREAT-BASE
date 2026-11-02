@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8cf9-783r-h9xg",
-  "modified": "2026-10-28T12:31:06Z",
+  "modified": "2026-10-31T15:30:22Z",
   "published": "2026-10-28T12:31:06Z",
   "aliases": [
     "CVE-2026-99163"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing/histograms: Reject non-stacktrace fields for synthetic stacktrace fields\n\nIn check_synth_field(), when a synthetic event field is a stacktrace\n(field->is_stack) and the histogram field is not a \"long[\" stacktrace\narray, validation falls through to the generic size and signedness\ncomparison.\n\nBecause parse_synth_field() sets a stacktrace field's type to\n\"__data_loc unsigned long[]\", its size is sizeof(u64) and\nsynth_field_signed() marks it as signed.  Consequently, any 8-byte\nsigned scalar histogram field passes the fallback check, and its scalar\nvalue is subsequently dereferenced as a kernel stacktrace pointer in\nget_field_size() and trace_stack().\n\nFurthermore, checking strstr(hist_field->type, \"long[\") is insufficient\nbecause tracepoint fields defined with __bitmask() or __rel_bitmask()\nalso have type \"__data_loc unsigned long[]\" or \"__rel_loc unsigned\nlong[]\", whilst create_hist_field() treats them as 4-byte scalar values\nwithout HIST_FIELD_FL_STACKTRACE.\n\nPropagate HIST_FIELD_FL_STACKTRACE to variable references and field\nvariables (whilst excluding variable aliases from per-element\nstacktrace capture), and reject any mismatch between\nHIST_FIELD_FL_STACKTRACE and field->is_stack in check_synth_field().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,16 +25,36 @@
     },
     {
       "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/326c45c9e201e3ff4c9e9e0e14c2c91364d6c8be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/648687f2b448d8527cd7b112fe5d4bd0fec85a87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c4e4946febb585d2fc93a02a0cd12cec715bb32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7e0d05a6234a984ac23b8a563fb7f66f2572b668"
+    },
+    {
+      "type": "WEB",
       "url": "https://git.kernel.org/stable/c/a244c241593b5b38a08f0df2cb43c26574efbdcb"
     },
     {
       "type": "WEB",
       "url": "https://git.kernel.org/stable/c/deb336ae7c7b341591a6862cf6fcfeca97c77dfd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eba0a6365a0f38f7598a02fc7f9ee341c7efe7f5"
     }
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-28T11:17:36Z"

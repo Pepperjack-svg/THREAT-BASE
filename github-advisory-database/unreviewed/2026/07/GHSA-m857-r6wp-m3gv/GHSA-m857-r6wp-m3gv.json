@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m857-r6wp-m3gv",
-  "modified": "2026-07-19T18:31:47Z",
+  "modified": "2026-10-30T15:32:54Z",
   "published": "2026-07-19T18:31:47Z",
   "aliases": [
     "CVE-2026-63961"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: altmodes/displayport: validate count before reading Status Update VDO\n\nA broken/malicious device can send the incorrect count for a status\nupdate VDO, which will cause the kernel to read uninitialized stack data\nand send it off elsewhere.\n\nFix this up by correctly verifying the count for the update object.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:15Z"

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h3r5-88vp-3qm7",
+  "modified": "2026-10-30T12:31:18Z",
+  "published": "2026-10-30T12:31:18Z",
+  "aliases": [
+    "CVE-2026-119418"
+  ],
+  "details": "CakePHP through 5.4.3 contains an sql injection vulnerability that allows attackers to inject SQL by supplying unvalidated frame offsets and directions to WindowExpression::range() and frame(). Attackers can pass crafted values through applications forwarding user input into the OVER clause to execute SQL with the database connection's privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119418"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/cakephp/pull/19735"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/cakephp/commit/18de3e4cdabba049269421bf43c2ccd1a7451565"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/cakephp/commit/3c1183fb62274c8a1c2780b2d3cc40f40cf31f1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/cakephp/commit/a5ca1748dcdb432631fc2760f898576043ce3df9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://abraxaslabs.tech/research/cakephp-window-sqli"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/cakephp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/cakephp/blob/6f3dd91371ac0698b64024ddb21d57def9fbba91/src/Database/Expression/WindowExpression.php#L152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/cakephp/blob/6f3dd91371ac0698b64024ddb21d57def9fbba91/src/Database/Expression/WindowExpression.php#L330"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cakephp-through-5.4.3-sql-injection-via-windowexpression-range-and-frame"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T12:16:38Z"
+  }
+}

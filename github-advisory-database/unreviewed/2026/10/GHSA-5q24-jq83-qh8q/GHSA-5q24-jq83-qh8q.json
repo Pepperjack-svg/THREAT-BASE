@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5q24-jq83-qh8q",
+  "modified": "2026-10-30T15:34:37Z",
+  "published": "2026-10-30T15:34:37Z",
+  "aliases": [
+    "CVE-2026-119648"
+  ],
+  "details": "Tencent BlueKing CMDB (bk-cmdb) through 3.14.6 contains a missing authorization vulnerability that allows authenticated users to view hosts of other businesses via POST /api/v3/hosts/search/asstdetail. Attackers can submit host search conditions targeting other businesses or omitting business filters to retrieve host attributes and topology association details, because the route is mapped to SkipAction and SearchHostWithAsstDetail skips AuthorizeSearchHost.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119648"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TencentBlueKing/bk-cmdb/issues/8709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TencentBlueKing/bk-cmdb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TencentBlueKing/bk-cmdb/blob/release-v3.14.6/src/ac/parser/host.go#L797-L819"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TencentBlueKing/bk-cmdb/blob/release-v3.14.6/src/scene_server/host_server/logics/hostsearch.go#L36-L72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TencentBlueKing/bk-cmdb/blob/release-v3.14.6/src/scene_server/host_server/service/host.go#L605-L620"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/bk-cmdb-host-search-asstdetail-cross-business-missing-authz"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/blueking-cmdb-through-3.14.6-missing-authorization-via-api-v3-hosts-search-asstdetail"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T15:16:48Z"
+  }
+}

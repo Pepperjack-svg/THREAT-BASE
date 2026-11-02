@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-82wh-j3w4-q4wc",
-  "modified": "2026-10-28T12:31:02Z",
+  "modified": "2026-10-31T15:30:21Z",
   "published": "2026-10-28T12:31:02Z",
   "aliases": [
     "CVE-2026-99110"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix heap overflow in cifs_do_set_acl()\n\ncifs_set_acl() validates ACL size using posix_acl_xattr_size():\n\n        4 + (count * 8)  // 4-byte header + 8 bytes per ACE\n\ncifs_do_set_acl() then calls posix_acl_to_cifs() to write the CIFS\nwire format into the same buffer:\n\n        6 + (count * 10)  // 6-byte header + 10 bytes per ACE\n\nAn ACL that passes the xattr-based check in cifs_set_acl() can\noverflow the heap when posix_acl_to_cifs() writes the larger CIFS\nformat.\n\nValidate the CIFS format size against the remaining buffer space and\nUSHRT_MAX before converting--data_count is __u16, so sizes above\nUSHRT_MAX truncate the on-wire packet length, causing the server to\napply a partial ACL.  Replace MaxDataCount = 1000 with\nmin(CIFSMaxBufSize, USHRT_MAX).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,12 +29,20 @@
     },
     {
       "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/68652afb9b9adf70125971abee9b95341e042249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9312a00215602ba028495ef3fa00fb84af0478e0"
+    },
+    {
+      "type": "WEB",
       "url": "https://git.kernel.org/stable/c/d96f3365ce61c5f39602955af43c8174548dee98"
     }
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-28T11:17:30Z"

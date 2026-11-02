@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x42f-f245-m897",
+  "modified": "2026-10-30T21:32:18Z",
+  "published": "2026-10-30T21:32:18Z",
+  "aliases": [
+    "CVE-2026-119727"
+  ],
+  "details": "A flaw was found in GStreamer's gst-plugins-bad H.265 video parser. When parsing a specially crafted H.265 bitstream containing a Screen Content Coding (SCC) extension with certain palette predictor initializer settings, an integer underflow in the upper-bound computation allows the parser to accept an out-of-range value for the number of palette predictor entries. This causes the parser to write beyond the end of a fixed-size array, resulting in memory corruption and an application crash. Successful exploitation requires an attacker to provide a malformed H.265 media file to a vulnerable application, and is limited to a denial-of-service impact.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119727"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-119727"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2564118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/10902.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gstreamer.freedesktop.org/security/sa-2026-0012.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T19:18:21Z"
+  }
+}

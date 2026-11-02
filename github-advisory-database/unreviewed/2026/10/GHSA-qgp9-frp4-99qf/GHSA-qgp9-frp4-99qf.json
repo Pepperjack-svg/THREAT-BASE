@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qgp9-frp4-99qf",
+  "modified": "2026-10-30T18:32:36Z",
+  "published": "2026-10-30T15:34:30Z",
+  "aliases": [
+    "CVE-2026-116130"
+  ],
+  "details": "HTTP::Parser::XS versions before 0.18 for Perl truncate PATH_INFO at an encoded NUL byte in parse_http_request.\n\nThe XS parser URL-decodes the request path and measures the result with strlen(), so PATH_INFO ends at the first byte decoded from %00. The pure-Perl backend is not affected.\n\nA remote attacker can send a path that a proxy or filter checks in full while the application routes on a shorter one.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116130"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kazuho/p5-http-parser-xs/commit/f388b9d7994722b01edd03d57de7d2fb819e1aae.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/KAZUHO/HTTP-Parser-XS-0.18/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/30/12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-626"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T13:18:31Z"
+  }
+}

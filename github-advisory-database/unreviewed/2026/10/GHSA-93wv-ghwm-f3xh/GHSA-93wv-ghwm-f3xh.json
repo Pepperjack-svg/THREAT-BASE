@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-93wv-ghwm-f3xh",
+  "modified": "2026-10-30T15:34:38Z",
+  "published": "2026-10-30T15:34:38Z",
+  "aliases": [
+    "CVE-2026-119652"
+  ],
+  "details": "HuLa-Server through 3.0.7 contains an insecure direct object reference vulnerability in FriendController.friendList that allows authenticated users to view other users' friend lists by supplying a uid parameter. Attackers can send GET requests to /user/friend/page with a victim's uid, bypassing the missing administrator or owner check to read any user's contact list.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119652"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HuLaSpark/HuLa-Server/issues/34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HuLaSpark/HuLa-Server"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HuLaSpark/HuLa-Server/blob/v3.0.7/luohuo-cloud/luohuo-im/luohuo-im-controller/src/main/java/com/luohuo/flex/im/controller/user/FriendController.java#L59-L66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/hula-server-idor-privacy-feed-friend"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hula-server-through-3.0.7-idor-via-user-friend-page-friend-list-disclosure"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T15:16:48Z"
+  }
+}

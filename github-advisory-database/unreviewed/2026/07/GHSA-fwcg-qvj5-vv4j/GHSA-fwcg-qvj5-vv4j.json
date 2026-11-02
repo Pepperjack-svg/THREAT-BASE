@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fwcg-qvj5-vv4j",
-  "modified": "2026-07-19T18:31:47Z",
+  "modified": "2026-10-30T15:32:54Z",
   "published": "2026-07-19T18:31:47Z",
   "aliases": [
     "CVE-2026-63959"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: tcpm/tcpci_maxim: validate header NDO against RX_BYTE_CNT\n\nA broken/malicious port can transmit a CRC-valid frame whose header\nadvertises up to seven data objects but whose body carries fewer than\nthat.  Check for this, and rightfully reject the message, instead of\nreading from uninitialized stack memory.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -17,6 +22,10 @@
     {
       "type": "WEB",
       "url": "https://git.kernel.org/stable/c/0af00f1459f5dd757f0d392f8caa38039561ac62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a8cd4790b08c9f79ea2250b3bd933fd79f67e56"
     },
     {
       "type": "WEB",
@@ -37,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:14Z"

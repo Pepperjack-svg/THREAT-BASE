@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-68mw-455j-vxm4",
-  "modified": "2026-07-19T18:31:47Z",
+  "modified": "2026-10-30T15:32:53Z",
   "published": "2026-07-19T18:31:47Z",
   "aliases": [
     "CVE-2026-63953"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/migrate_device: fix pgtable leak in migrate_vma_insert_huge_pmd_page\n\nWhen migrate_vma_insert_huge_pmd_page() jumps to unlock_abort due\nto a PMD check failure, the pgtable allocated earlier via\npte_alloc_one() is never freed, causing a memory leak.\n\nAdded free_abort label to release the pgtable in error path.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:14Z"
