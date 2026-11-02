@@ -12,17 +12,21 @@ tag="v$version"
 sha=$(git rev-parse HEAD)
 dist=$(mktemp -d)
 trap 'rm -rf -- "$dist"' EXIT
-if gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" > "$dist/existing.json" 2> "$dist/error"; then
-  if [[ $(jq -r .draft "$dist/existing.json") == false ]]; then
+# List releases rather than resolving a REST tag: a pending draft has no Git tag yet.
+gh api --paginate "repos/$GITHUB_REPOSITORY/releases?per_page=100" > "$dist/release-pages.json"
+jq -s --arg tag "$tag" '[.[][] | select(.tag_name == $tag)]' "$dist/release-pages.json" > "$dist/existing.json"
+existing_count=$(jq length "$dist/existing.json")
+if (( existing_count > 0 )); then
+  (( existing_count == 1 )) || { echo 'Multiple releases match this month; review required' >&2; exit 1; }
+  if [[ $(jq -r '.[0].draft' "$dist/existing.json") == false ]]; then
     echo "$tag already published; preserving it."
     exit 0
   fi
   echo 'Existing draft requires review; no assets or tags will be replaced.' >&2
   exit 1
-else
-  grep -q 'HTTP 404' "$dist/error" || { cat "$dist/error" >&2; exit 1; }
 fi
-[[ -z $(git ls-remote --tags origin "refs/tags/$tag") ]] || { echo 'Version tag already exists; review it manually' >&2; exit 1; }
+remote_tags=$(git ls-remote --tags origin "refs/tags/$tag")
+[[ -z $remote_tags ]] || { echo 'Version tag already exists; review it manually' >&2; exit 1; }
 # Release only a fresh, completed daily synchronization of this code/data lineage.
 branch=${GITHUB_REF_NAME:?}
 gh api "repos/$GITHUB_REPOSITORY/actions/workflows/sync.yml/runs?branch=$branch&per_page=1" > "$dist/runs.json"
@@ -36,7 +40,8 @@ age=$(( $(date -u +%s) - $(date -u -d "$updated" +%s) ))
 base=$(jq -r '.workflow_runs[0].head_sha' "$dist/runs.json")
 [[ $base =~ ^[a-f0-9]{40}$ ]]
 git merge-base --is-ancestor "$base" "$sha"
-if git diff --name-only "$base" "$sha" | grep -Ev '^(cvelistV5/|nvd-json-data-feeds/|github-advisory-database/|pypa-advisory-database/|mitre-attack/|cisa-advisories/|cisa-kev/|epss/|cwe/|capec/|redhat-advisories/|\.upstream-state$|\.upstream-feeds\.json$)'; then
+git diff --no-renames --name-only "$base" "$sha" > "$dist/changed-paths"
+if grep -Ev '^(cvelistV5/|nvd-json-data-feeds/|github-advisory-database/|pypa-advisory-database/|mitre-attack/|cisa-advisories/|cisa-kev/|epss/|cwe/|capec/|redhat-advisories/|\.upstream-state$|\.upstream-feeds\.json$)' "$dist/changed-paths"; then
   echo 'Code changed since the successful sync; run daily sync again' >&2
   exit 1
 fi
@@ -60,9 +65,12 @@ if [[ -f .upstream-feeds.json ]]; then
   jq -r '.feeds[] | select(.status == "retained") | "Supplemental RSS retained after endpoint failure: \(.path); last successful download: \(.last_success_at // "unknown"). See .upstream-feeds.json in the archives for hashes and endpoints."' .upstream-feeds.json >> "$dist/notes.md"
 fi
 gh release create "$tag" --draft --target "$sha" --title "THREAT-BASE $version" --notes-file "$dist/notes.md"
+release_api=$(gh release view "$tag" --json apiUrl --jq .apiUrl)
+release_id=${release_api##*/}
+[[ $release_id =~ ^[0-9]+$ ]] || { echo 'Cannot resolve created draft ID; draft retained' >&2; exit 1; }
 gh release upload "$tag" "$dist"/*.part-* "$dist/snapshot.txt" "$dist/SHA256SUMS"
 # Verify uploaded sizes before making the draft visible.
-gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" > "$dist/release.json"
+gh api "repos/$GITHUB_REPOSITORY/releases/$release_id" > "$dist/release.json"
 for asset in "$dist"/*.part-* "$dist/snapshot.txt" "$dist/SHA256SUMS"; do
   name=$(basename "$asset")
   expected=$(wc -c < "$asset")

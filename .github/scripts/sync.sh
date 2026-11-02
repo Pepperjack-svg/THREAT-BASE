@@ -6,6 +6,7 @@ work=$(mktemp -d)
 trap 'rm -rf -- "$work"' EXIT
 state="$work/upstream-state"
 source .github/scripts/feeds.sh
+source .github/scripts/notices.sh
 trap 'echo "Sync failed at line $LINENO: $BASH_COMMAND" >&2' ERR
 mirror() {
   local repo=$1 branch=$2 target=$3 mode=$4 head previous clone from count old
@@ -35,10 +36,7 @@ mirror() {
   rsync -a --prune-empty-dirs --exclude='.git/' --exclude='.github/' \
     --exclude='_scripts/' --exclude='tools/' --include='*/' --include='*.json' --include='*.yaml' \
     --include='LICENSE*' --include='COPYING*' --include='NOTICE*' --exclude='*' "$from/" "$target/"
-  for notice in "$clone"/LICENSE* "$clone"/COPYING* "$clone"/NOTICE*; do
-    [[ ! -f $notice ]] || cp "$notice" "$target/"
-  done
-  [[ ! -f $clone/README.md ]] || cp "$clone/README.md" "$target/README.upstream.md"
+  copy_upstream_notices "$clone" "$target"
   printf '%s %s\n' "$target" "$head" >> "$state"
   # A runner already holds the full database; release each temporary clone promptly.
   rm -rf -- "$clone"
