@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7h72-q9rr-77j7",
+  "modified": "2026-11-02T15:31:35Z",
+  "published": "2026-11-02T15:31:35Z",
+  "aliases": [
+    "CVE-2026-120428"
+  ],
+  "details": "PandaWiki 3.65.0 through 3.87.5 contains a stored cross-site scripting vulnerability that allows unauthenticated attackers to upload HTML files with image extensions via /share/v1/common/file/upload. Attackers can lure administrators to /static-file/<key>?a=.pdf, bypassing the nginx attachment header to serve HTML inline and steal the panda_wiki_token JWT for session takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120428"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chaitin/PandaWiki/issues/1845"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chaitin/PandaWiki/blob/v3.87.5/backend/handler/share/common.go"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chaitin/PandaWiki/blob/v3.87.5/backend/usecase/file.go"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chaitin/PandaWiki/blob/v3.87.5/web/admin/server.conf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261101/pandawiki"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pandawiki-3.65.0-through-3.87.5-stored-xss-via-static-file-pdf-query-string-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T15:17:24Z"
+  }
+}

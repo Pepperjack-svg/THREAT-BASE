@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-243g-h4f6-prqr",
+  "modified": "2026-11-02T21:31:58Z",
+  "published": "2026-11-02T21:31:58Z",
+  "aliases": [
+    "CVE-2026-81938"
+  ],
+  "details": "Grafana Mimir's Alertmanager rejects tenant-supplied receiver configurations that reference local files, but the check did not cover two HTTP client settings: http_headers.<name>.files and basic_auth.username_file. A tenant permitted to upload an Alertmanager configuration could point these fields at any file readable by the Alertmanager process. When a notification was sent, Alertmanager read the file and put its contents in a header of the outgoing request. By directing the receiver at a server they control, the tenant could read files from the Alertmanager host, such as credentials and configuration.\n\nExploitation requires permission to write the tenant's Alertmanager configuration. Grafana Enterprise Metrics (GEM), which is built on Mimir, is also affected. The issue is fixed in Mimir 3.1.7 and 3.2.2 and in GEM 2.17.20. GEM 2.11 through 2.16 will not receive a fix; users on those versions should upgrade to 2.17.20 or later.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81938"
+    },
+    {
+      "type": "WEB",
+      "url": "https://grafana.com/security/security-advisories/cve-2026-81938"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T19:18:11Z"
+  }
+}

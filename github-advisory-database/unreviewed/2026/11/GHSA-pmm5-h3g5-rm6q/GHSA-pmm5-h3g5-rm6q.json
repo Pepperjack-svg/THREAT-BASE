@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pmm5-h3g5-rm6q",
+  "modified": "2026-11-02T21:31:55Z",
+  "published": "2026-11-02T21:31:55Z",
+  "aliases": [
+    "CVE-2026-105605"
+  ],
+  "details": "Joomla Extension - dj-extensions.com - IDOR vulnerability allowing cross-account ad access in DJ-Classifieds < 3.11.3 - A “duplicate my ad” convenience feature on the new-ad form (site/models/additem.php) loaded an existing advert by its raw numeric ID with no check that the ad belonged to the requesting user, and no check of whether it was published, blocked, or still a pending draft. Any logged-in user, regardless of role, could request the new-ad form with another ad’s ID and have that ad’s full content, including the seller’s phone number, address, email, and price, rendered into the response, even for ads that had never been published. Advert IDs are small sequential integers.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105605"
+    },
+    {
+      "type": "WEB",
+      "url": "https://dj-extensions.com/dj-classifieds"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T19:17:50Z"
+  }
+}

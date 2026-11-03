@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gmh6-98p7-vvcx",
-  "modified": "2026-10-28T18:32:04Z",
+  "modified": "2026-11-02T15:31:27Z",
   "published": "2026-10-28T18:32:04Z",
   "aliases": [
     "CVE-2026-117616"
   ],
   "details": "Jenkins 2.587 and earlier, LTS 2.580.1 and earlier provides an HTTP endpoint that loads agents by name without validating the name, allowing attackers with Overall/Read permission to load any config.xml file on the controller file system as an agent configuration, and to overwrite an arbitrary config.xml file when that agent is saved, potentially resulting in arbitrary code execution.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-28T17:18:20Z"

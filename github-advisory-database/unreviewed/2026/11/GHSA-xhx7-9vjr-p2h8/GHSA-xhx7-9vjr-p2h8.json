@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xhx7-9vjr-p2h8",
+  "modified": "2026-11-02T15:31:51Z",
+  "published": "2026-11-02T15:31:51Z",
+  "aliases": [
+    "CVE-2026-120492"
+  ],
+  "details": "Chainlit 2.12.0 contains a server-side request forgery vulnerability that allows unauthenticated attackers to bypass path-scoped MCP allowed_urls entries because validate_mcp_url does not reject the semicolon character. Attackers can submit MCP URLs with '..;' segments to the /mcp endpoint, causing requests to paths outside the operator's grant on origins that strip semicolon path parameters.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Chainlit/chainlit/security/advisories/GHSA-hvfh-5mj3-5f3j"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120492"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Chainlit/chainlit/blob/2.12.0/backend/chainlit/mcp.py#L199-L208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Chainlit/chainlit/blob/2.12.0/backend/chainlit/mcp.py#L90-L177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/chainlit-2.12.0-ssrf-via-semicolon-path-segment-in-mcp-allowed-urls"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T15:17:31Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mg75-66wv-hfxw",
+  "modified": "2026-11-02T18:32:28Z",
+  "published": "2026-11-02T18:32:28Z",
+  "aliases": [
+    "CVE-2026-120596"
+  ],
+  "details": "A remotely exploitable denial-of-service vulnerability exists in the TCP options parser of the Nut/Net TCP/IP stack included in Nut/OS, developed by Ethernut/Egnite. Nut/OS releases up to version 5.1 are affected. An unauthenticated attacker can send a single TCP segment containing an unknown TCP option with a length byte of zero to any open TCP port on a vulnerable device. When processed, this malformed option triggers an infinite loop in the function NutTcpInputOptions, permanently blocking the TCP processing thread and rendering all TCP-based services unresponsive until the device is rebooted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120596"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ethernut.de/en/download/index.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T17:17:40Z"
+  }
+}

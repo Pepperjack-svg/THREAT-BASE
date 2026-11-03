@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q7pj-x362-2v3p",
+  "modified": "2026-11-02T15:31:44Z",
+  "published": "2026-11-02T15:31:44Z",
+  "aliases": [
+    "CVE-2026-120456"
+  ],
+  "details": "L-SMASH through 2.14.5 contains a heap out-of-bounds write vulnerability in isom_read_hdlr() and isom_read_dref_entry() in core/read.c triggered by oversized box sizes. Attackers can supply crafted MP4 or MOV files declaring hdlr or url box sizes larger than remaining data, stalling the stream position and corrupting heap memory to crash applications.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120456"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/l-smash/l-smash/issues/112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/l-smash/l-smash/commit/805ee3c9632e054198d3cb5b09c7b7aa36cdd791"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/l-smash/l-smash/blob/v2.14.5/core/read.c#L688-L717"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/l-smash/l-smash/blob/v2.14.5/core/read.c#L853-L876"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/lsmash-hdlr-dref-box-size-oob-write"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/l-smash-through-2.14.5-heap-out-of-bounds-write-via-hdlr-and-url-boxes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T15:17:29Z"
+  }
+}

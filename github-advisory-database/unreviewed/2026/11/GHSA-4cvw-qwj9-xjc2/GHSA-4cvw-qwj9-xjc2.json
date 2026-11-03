@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4cvw-qwj9-xjc2",
+  "modified": "2026-11-02T15:31:43Z",
+  "published": "2026-11-02T15:31:43Z",
+  "aliases": [
+    "CVE-2026-120452"
+  ],
+  "details": "libgphoto2 through 2.5.34 contains a heap out-of-bounds read and write vulnerability in jl2005bcd_decompress() that allows malicious USB cameras to corrupt heap memory via oversized thumbnail processing. Attackers can supply small allocation-table values and a thumbnail header byte so in-place byte-swapping exceeds the buffer by about 30 KB, leaking heap contents in preview images.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:P/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120452"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gphoto/libgphoto2/issues/1326"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gphoto/libgphoto2/commit/30bf7ace6d47cfe1232ea73bde2aceb95aba4bfb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gphoto/libgphoto2/commit/af3b8e9c542cda863fb5f2f3cfeb261bd78e4442"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gphoto/libgphoto2/blob/v2.5.34/camlibs/jl2005c/jl2005bcd_decompress.c#L127-L130"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/libgphoto2-jl2005c-init-alloc-table-buffer-overflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libgphoto2-through-2.5.34-heap-out-of-bounds-read-write-via-jl2005c-thumbnail-conversion"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T15:17:28Z"
+  }
+}

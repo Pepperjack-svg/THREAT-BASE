@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-239q-q7g3-5876",
+  "modified": "2026-11-02T21:31:57Z",
+  "published": "2026-11-02T21:31:57Z",
+  "aliases": [
+    "CVE-2026-120058"
+  ],
+  "details": "psqlODBC sizes its row cache from the column count of a cursor's first result, but recomputes the column count from each later FETCH reply without checking that it matches. A server not trusted under current SSL settings can answer a later FETCH with more columns and make the driver write tuple records past the end of the heap allocation. A keyset reply with fewer columns than the key fields also underflows the unsigned field count. This is reachable with UseDeclareFetch enabled. Versions before psqlODBC 18.00.0006 are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-6rmx-9q62-4w6m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120058"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T19:18:02Z"
+  }
+}

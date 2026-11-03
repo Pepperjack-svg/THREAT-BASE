@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-p6wg-qjmq-cvgh",
-  "modified": "2026-10-28T18:32:04Z",
+  "modified": "2026-11-02T15:31:27Z",
   "published": "2026-10-28T18:32:04Z",
   "aliases": [
     "CVE-2026-117617"
   ],
   "details": "Jenkins 2.587 and earlier, LTS 2.580.1 and earlier checks for symbolic links in the path of an extracted file only before creating its parent directories, not immediately before writing it, and allows symbolic links in artifacts to replace existing files or empty directories, allowing attackers with Item/Configure permission to write files to arbitrary locations on the Jenkins controller file system.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-28T17:18:21Z"

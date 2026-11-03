@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3m4r-974p-rpwj",
-  "modified": "2026-10-26T18:32:59Z",
+  "modified": "2026-11-02T18:32:02Z",
   "published": "2026-10-26T18:32:59Z",
   "aliases": [
     "CVE-2026-106677"
   ],
   "details": "Homestay3 homestay-backend 0.0.1-SNAPSHOT contains an IDOR in ChatServiceImpl. An authenticated user can view conversations, read messages, send messages, and mark messages as read for arbitrary conversation ids because the service does not verify that the caller is a conversation participant.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-26T17:17:11Z"

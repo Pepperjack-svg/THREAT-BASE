@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-53f2-cv5f-35mr",
+  "modified": "2026-11-02T18:32:27Z",
+  "published": "2026-11-02T18:32:27Z",
+  "aliases": [
+    "CVE-2026-99242"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: fix race between fallocate and mmap reads\n\nThe fallocate implementation only takes invalidate_lock for punch hole,\ncollapse range, and insert range operations. For standard allocation modes\n(mode == 0, FALLOC_FL_KEEP_SIZE), the lock is not held.\n\nDuring ntfs_attr_fallocate(), new clusters are mapped to the runlist via\nntfs_attr_map_cluster() before being zeroed by ntfs_dio_zero_range(). This\ncreates a window where concurrent mmap page faults can read uninitialized\ndisk data.\n\nSince mmap uses filemap_fault() which takes invalidate_lock in shared mode,\nit can fault in pages during this window and expose old disk contents to\nuserspace. This is an information leak and data integrity issue.\n\nFix by taking invalidate_lock for all fallocate operations, not just for\npunch/collapse/insert modes. This prevents concurrent page faults from\naccessing unzeroed clusters during the allocation window.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99242"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67aded1da114dc44808315f249bd9e7e440f799d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7dd1c2fec6ebdd1a88a02cb58ff515a258eeb327"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T16:17:50Z"
+  }
+}
