@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mc8q-8prc-j4hf",
+  "modified": "2026-11-04T00:32:19Z",
+  "published": "2026-11-04T00:32:18Z",
+  "aliases": [
+    "CVE-2026-121736"
+  ],
+  "details": "NocoDB 0.300.0 before 2026.08.0 contains a missing authentication vulnerability in the POST /api/v2/oauth/authorize handler that allows unauthenticated attackers to create OAuth authorization codes. Attackers can send anonymous requests with client_id, redirect_uri and approved=true to insert unbounded ownerless authorization code records, limited only by rate limiting.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/nocodb/nocodb/security/advisories/GHSA-532v-ccph-m3xg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121736"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nocodb/nocodb/commit/42128735eba328d157c2e90b98795cb248dc0847"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nocodb/nocodb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nocodb/nocodb/blob/2026.07.0/packages/nocodb/src/modules/oauth/controllers/oauth.controller.ts#L56-L92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nocodb/nocodb/releases/tag/2026.08.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nocodb-0.300.0-before-2026.08.0-unauthenticated-oauth-authorization-code-creation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T23:17:37Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xvx6-5cj7-5p8g",
+  "modified": "2026-11-03T18:31:05Z",
+  "published": "2026-11-03T18:31:05Z",
+  "aliases": [
+    "CVE-2026-121556"
+  ],
+  "details": "FastBee through 2.1.0 contains an insecure direct object reference vulnerability in ProductController that allows authenticated tenant users to access other tenants' products by supplying their product IDs. Attackers can enumerate sequential product IDs to read MQTT account, password, and secret values, overwrite product configuration including tenant_id, or delete products with cascading rows.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121556"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beecue/FastBee/issues/32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beecue/FastBee/commit/3393e3223965a9dc9682dfb2bd37635fffa0fbd2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kerwincui/FastBee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kerwincui/FastBee/blob/v2.1.0/springboot/fastbee-open-api/src/main/java/com/fastbee/data/controller/ProductController.java#L77-L141"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kerwincui/FastBee/blob/v2.1.0/springboot/fastbee-service/fastbee-iot-service/src/main/java/com/fastbee/iot/service/impl/ProductServiceImpl.java#L72-L92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kerwincui/FastBee/blob/v2.1.0/springboot/fastbee-service/fastbee-iot-service/src/main/resources/mapper/iot/ProductMapper.xml#L37-L67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/fastbee-through-2.1.0-idor-via-iot-product-by-id-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T16:17:27Z"
+  }
+}

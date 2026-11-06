@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5gqw-c8wj-82xp",
+  "modified": "2026-11-04T15:32:30Z",
+  "published": "2026-11-04T15:32:30Z",
+  "aliases": [
+    "CVE-2026-121946"
+  ],
+  "details": "zbateson mail-mime-parser before 3.0.9 and 4.x before 4.0.6 contains a CRLF header injection vulnerability in message-building helpers that fail to strip CR and LF characters. Attackers supplying crafted MIME type, charset, encoding, micalg, or protocol values can inject extra header lines such as a forged Bcc into outgoing messages.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/zbateson/mail-mime-parser/security/advisories/GHSA-gmgm-r6fh-fq6g"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121946"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zbateson/mail-mime-parser/commit/1fa840ef367958e991e6840b4e3ffd41aca9d147"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zbateson/mail-mime-parser/commit/b032920875c6cb35bb2ddd7abfd7e98608d75bc0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zbateson/mail-mime-parser/commit/c31c62ccc3e66a7a7da0d79954ef83807f9daa20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zbateson/mail-mime-parser/commit/f385b2923023a9a7b69003468e363a4661f1c85a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zbateson/mail-mime-parser/blob/4.0.5/src/Message/Helper/MultipartHelper.php#L270-L273"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/zbateson-mail-mime-parser-before-3.0.9-and-4-x-before-4.0.6-crlf-header-injection-via-message-builders"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-93"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T13:17:29Z"
+  }
+}

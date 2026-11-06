@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7686-ccqp-qmhx",
+  "modified": "2026-11-06T18:35:06Z",
+  "published": "2026-11-03T15:31:50Z",
+  "aliases": [
+    "CVE-2026-99270"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: Fix potential UAF in reqsk_timer_handler().\n\nWhen TCP socket migration fails at inet_ehash_insert() in\nreqsk_timer_handler(), we jump to the no_ownership: label\nand free the new reqsk immediately with __reqsk_free().\n\nThus, we must stop the new reqsk's timer before jumping to the\nlabel, but the timer might be missed since the cited commit,\nresulting in UAF.\n\nAs we are in the original reqsk's timer context, we can safely\ncall timer_delete_sync() for the new reqsk.\n\nLet's pass false to __inet_csk_reqsk_queue_drop() to stop\nthe new reqsk's timer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97c8a3c1f73d828de43a5a88e8a9a143efb2b661"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3b56e95f6fad7fa7281450b443e861d82616fdb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T13:17:24Z"
+  }
+}

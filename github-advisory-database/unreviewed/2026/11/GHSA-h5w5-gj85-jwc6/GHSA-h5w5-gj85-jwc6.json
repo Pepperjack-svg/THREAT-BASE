@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h5w5-gj85-jwc6",
+  "modified": "2026-11-06T09:31:32Z",
+  "published": "2026-11-06T09:31:32Z",
+  "aliases": [
+    "CVE-2026-110291"
+  ],
+  "details": "The Graphina – Charts and Graphs For Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'iq_tree_chart_node_font_family (and any text control serialized into chart_data['settings'])' parameter in all versions up to, and including, 3.1.13 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Elementor's Utils::kses_post_deep() does not strip the attack payload on save because the payload contains no disallowed HTML tags — only a single quote and an event-handler fragment — allowing the malicious value to survive persistence.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/graphina-elementor-charts-and-graphs/tags/3.1.13/includes/Charts/Elementor/Elements/ApexTree/TreeChart.php#L143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/graphina-elementor-charts-and-graphs/tags/3.1.13/includes/Charts/Elementor/GraphinaApexTreeBase.php#L122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/graphina-elementor-charts-and-graphs/tags/3.1.13/includes/Charts/Elementor/GraphinaApexTreeBase.php#L153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/graphina-elementor-charts-and-graphs/tags/3.1.13/templates/graphina-apex-tree/tree-chart.php#L16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/graphina-elementor-charts-and-graphs/tags/3.1.13/templates/graphina-apex-tree/tree-chart.php#L17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/graphina-elementor-charts-and-graphs/tags/3.1.13/templates/graphina-apex-tree/tree-chart.php#L18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/graphina-elementor-charts-and-graphs/tags/3.1.14/templates/graphina-apex-tree/tree-chart.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2d31adfe-9b4b-43df-8077-9420a2643313?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-06T09:16:59Z"
+  }
+}

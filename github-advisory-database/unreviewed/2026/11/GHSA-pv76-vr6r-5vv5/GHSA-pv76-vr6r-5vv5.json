@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pv76-vr6r-5vv5",
+  "modified": "2026-11-05T18:33:14Z",
+  "published": "2026-11-05T18:33:14Z",
+  "aliases": [
+    "CVE-2026-111253"
+  ],
+  "details": "A flaw was found in dnf5daemon-server. Session methods on dynamically exported D-Bus session objects do not verify that the caller is the unique sender that created the session. A local attacker can modify another user's live package-management session and replace its resolved transaction plan. If the legitimate session party later authorizes execution, the root daemon may apply the attacker-chosen package operations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rpm-software-management/dnf5/commit/46a4a8ad8d34af91ec2add6bb29e487571ea6c85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-111253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2553683"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T17:17:37Z"
+  }
+}

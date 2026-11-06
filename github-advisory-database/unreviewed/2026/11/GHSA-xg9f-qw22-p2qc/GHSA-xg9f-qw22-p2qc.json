@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xg9f-qw22-p2qc",
-  "modified": "2026-11-02T21:31:55Z",
+  "modified": "2026-11-03T15:31:43Z",
   "published": "2026-11-02T21:31:55Z",
   "aliases": [
     "CVE-2026-117069"
   ],
   "details": "An integer truncation vulnerability in the NAS decoder of OpenAirInterface (OAI) CN5G AMF v2.2.1 allows an unauthenticated remote attacker to cause a denial of service (DoS) via crafted NAS Registration Requests containing a malformed IMEISV in the 5GS Mobile Identity IE. The Type6NasIe::Validate() function truncates a 32-bit length value to 16 bits, bypassing length validation and causing an out-of-bounds heap read in DecodeImeisv(), which can crash the AMF process.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-197"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-11-02T19:18:00Z"

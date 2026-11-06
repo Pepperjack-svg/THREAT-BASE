@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qx4w-wvv4-8jv6",
+  "modified": "2026-11-03T18:31:05Z",
+  "published": "2026-11-03T18:31:05Z",
+  "aliases": [
+    "CVE-2026-121562"
+  ],
+  "details": "CTFd 3.1.0 before 3.8.7 contains an information disclosure vulnerability in the /api/v1/teams list endpoint that exposes non-public team custom field values. Unauthenticated attackers can paginate GET requests to collect hidden registration data such as emails, phone numbers, and student IDs when team mode and public visibility are enabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121562"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CTFd/CTFd/commit/122c224030224ca6a04d2928280055a84bbd4850"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.ctfd.io/ctfd-3-8-7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CTFd/CTFd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CTFd/CTFd/blob/3.8.6/CTFd/api/v1/teams.py#L128-L131"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CTFd/CTFd/blob/3.8.6/CTFd/schemas/teams.py#L336-L363"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CTFd/CTFd/releases/tag/3.8.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ctfd-3.1.0-before-3.8.7-information-disclosure-via-api-v1-teams-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T16:17:29Z"
+  }
+}

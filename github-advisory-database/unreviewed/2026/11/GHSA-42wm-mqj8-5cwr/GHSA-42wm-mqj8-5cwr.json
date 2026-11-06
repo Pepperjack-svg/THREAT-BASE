@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-42wm-mqj8-5cwr",
+  "modified": "2026-11-06T18:35:07Z",
+  "published": "2026-11-05T18:33:17Z",
+  "aliases": [
+    "CVE-2026-97174"
+  ],
+  "details": "A flaw was found in the Client-Initiated Backchannel Authentication (CIBA) implementation of Keycloak. The CIBA endpoint fails to properly validate the sub parameter, allowing it to be stored as an additional request parameter. During the token issuance process, this injected value overwrites the legitimate subject identifier. This allows an attacker to authenticate as themselves but receive security tokens belonging to a different victim user, leading to unauthorized account access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:95761"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:95762"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-97174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2539961"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T18:17:11Z"
+  }
+}

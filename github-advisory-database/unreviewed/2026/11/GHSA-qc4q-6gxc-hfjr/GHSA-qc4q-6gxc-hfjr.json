@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qc4q-6gxc-hfjr",
+  "modified": "2026-11-05T18:33:13Z",
+  "published": "2026-11-05T18:33:12Z",
+  "aliases": [
+    "CVE-2026-122317"
+  ],
+  "details": "SplitPro through 2.1.6 contains an authorization bypass vulnerability that allows authenticated users to retrieve any account's details by supplying arbitrary userId values to user.getUserDetails. Attackers can iterate sequential integer user ids to harvest every user's email, name, avatar, currency, and bankingId and obapiProviderId open-banking identifiers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122317"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/oss-apps/split-pro/issues/786"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/oss-apps/split-pro"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/oss-apps/split-pro/blob/v2.1.6/prisma/schema.prisma#L41-L51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/oss-apps/split-pro/blob/v2.1.6/src/server/api/routers/user.ts#L202-L212"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieund/splitpro-trpc-idor-user-expense-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/splitpro-through-2.1.6-authorization-bypass-via-user-getuserdetails-trpc-query"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T16:17:44Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c5m8-q98x-42wx",
-  "modified": "2026-10-28T18:32:12Z",
+  "modified": "2026-11-05T21:34:41Z",
   "published": "2026-10-28T18:32:12Z",
   "aliases": [
     "CVE-2026-116266"
   ],
   "details": "MIME::Head versions from 5.518 before 5.521 for Perl decode a partly encoded multipart boundary without flagging the parse as ambiguous.\n\nThe multipart_boundary() method decodes RFC 2047 encoded words anywhere in the boundary, but the ambiguity check only fires when the whole value is one encoded word. A boundary such as abc=?us-ascii?Q?def?= is used as abcdef, and ambiguous_content() returns false.\n\nEncoded words are not allowed in parameters, so other mail readers split the message on the literal value. A remote sender can hide an attachment from a filter that relies on ambiguous_content() while the recipient's mail client shows it.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-436"
     ],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-28T18:17:13Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8mr9-wfcj-h3rm",
-  "modified": "2026-10-28T18:32:12Z",
+  "modified": "2026-11-05T21:34:41Z",
   "published": "2026-10-28T18:32:12Z",
   "aliases": [
     "CVE-2026-116264"
   ],
   "details": "MIME::Field::ParamVal versions before 5.521 for Perl allow one invalid Content-Type parameter to hide the parameters after it, including the multipart boundary.\n\nParameter parsing stops at the first parameter whose name it cannot read, such as x:y=1 or a name containing an 8-bit byte, and drops every parameter after it. When the boundary is among them, MIME::Parser keeps the multipart body as a single undecoded part without marking the parse as ambiguous.\n\nMail readers that skip the invalid parameter still find the boundary. A remote sender can hide an attachment from a filter that relies on ambiguous_content() while the recipient's mail client shows it.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-436"
     ],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-28T18:17:12Z"

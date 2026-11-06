@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cxhw-v53j-7rhq",
-  "modified": "2026-10-30T15:34:31Z",
+  "modified": "2026-11-06T18:34:59Z",
   "published": "2026-10-30T15:34:31Z",
   "aliases": [
     "CVE-2026-118995"
   ],
   "details": "CallBackery versions before 0.62.0 for Perl accept unintended values in form fields checked by createRxValidator.\n\ncreateRxValidator() is documented to anchor the supplied pattern at both ends, but builds /^${rx}$/ without grouping the pattern. An alternation such as yes|no then accepts any value starting with yes or ending with no, and $ also accepts a value with one trailing newline.\n\nAn authenticated user can submit values the pattern was meant to reject, which an application may then write into generated configuration files.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-625"
     ],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-30T13:18:32Z"

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4pvm-qh3q-ccrf",
+  "modified": "2026-11-03T12:31:50Z",
+  "published": "2026-11-03T12:31:50Z",
+  "aliases": [
+    "CVE-2026-99258"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/hyperv: Avoid using per-cpu output page in hv_apicid_to_vp_index()\n\nhv_apicid_to_vp_index() currently uses the per-cpu hypercall input\nand output pages. This function is called when running in VTL2 and\nwhen running in an SEV-SNP CoCo VM with no paravisor. In the former\ncase, the output page is allocated, but in the latter case it is\nnot, so the hypervisor stores the output VP index in memory that has\nnot been allocated by the guest.\n\nFix this by using the input page for both input and output. The\nhypercall has very small input and output, so sharing the same\npage for both is straightforward. An alternative fix is to\nallocate the per-cpu output page when running in an SEV-SNP CoCo\nguest, but this uses significantly more memory, particularly\nwith larger vCPUs counts.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99258"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b561786c9076a892ef8b8f416c9828bc87ed44f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b74c117e2aac78e0f723e1c9c3644451c56b0d9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc8ca0f4769627ae7d04e7ffdbd20de4f27a9bf9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bdba5f1b8bd0d18b1df61f769b559ed272902489"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T12:17:32Z"
+  }
+}

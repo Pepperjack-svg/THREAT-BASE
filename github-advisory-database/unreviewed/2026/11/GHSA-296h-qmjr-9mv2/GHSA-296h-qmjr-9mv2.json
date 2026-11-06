@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-296h-qmjr-9mv2",
+  "modified": "2026-11-03T15:32:17Z",
+  "published": "2026-11-03T15:32:17Z",
+  "aliases": [
+    "CVE-2026-121438"
+  ],
+  "details": "Mistune before 3.3.3 contains a denial of service vulnerability in InlineParser.parse_link that allows attackers to cause quadratic CPU growth by supplying balanced nested brackets. Attackers can submit crafted Markdown with thousands of nested bracket pairs not forming a valid link, triggering repeated _contains_nested_link scans that exhaust CPU in parsing applications.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/lepture/mistune/security/advisories/GHSA-47p6-w2rc-5qf7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121438"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lepture/mistune/commit/fe02f40faf091f86da9ed62c865f31e11da111d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mistune-before-3.3.3-denial-of-service-via-balanced-bracket-link-parsing"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T15:17:35Z"
+  }
+}

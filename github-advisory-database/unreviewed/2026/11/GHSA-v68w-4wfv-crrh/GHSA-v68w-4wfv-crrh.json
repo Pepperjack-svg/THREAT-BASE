@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v68w-4wfv-crrh",
+  "modified": "2026-11-04T21:32:32Z",
+  "published": "2026-11-04T21:32:32Z",
+  "aliases": [
+    "CVE-2026-122136"
+  ],
+  "details": "Powerlevel10k before 1.20.19 contains a symlink following vulnerability in _p9k_dump_instant_prompt that allows local attackers to overwrite victim-writable files via a predictable temporary path. Attackers can pre-plant symlinks at p10k-instant-prompt-output-<user>-<pid> in TMPDIR, guessing the victim's shell PID, so shell startup truncates and overwrites targeted files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/romkatv/powerlevel10k/issues/2972"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/romkatv/powerlevel10k/commit/7ddd1b2715c3844275214347a3572ac1fdd6dc39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/romkatv/powerlevel10k"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/romkatv/powerlevel10k/blob/v1.20.0/internal/p10k.zsh#L6445-L6452"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/powerlevel10k-before-1.20.19-symlink-following-via-instant-prompt-temporary-file"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T21:18:09Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8qrv-3gh4-gx4r",
+  "modified": "2026-11-03T18:31:02Z",
+  "published": "2026-11-03T18:31:02Z",
+  "aliases": [
+    "CVE-2026-121454"
+  ],
+  "details": "Padloc through 4.3.0 contains a missing authentication vulnerability in ScimServer._handleScimGet() that allows unauthenticated attackers to read SCIM directories by sending any non-empty bearer token. Attackers who know an organization id can query the Users and Groups SCIM endpoints to retrieve provisioned usernames, emails, names, externalIds, and group memberships.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121454"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/padloc/padloc/issues/795"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/padloc/padloc/commit/90dda7c6f417b28bee86ec60eff532eb18870125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/padloc/padloc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/padloc/padloc/blob/v4.3.0/packages/server/src/scim.ts#L702-L714"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/padloc-through-4.3.0-missing-scim-token-validation-via-scim-get-requests"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T16:17:24Z"
+  }
+}

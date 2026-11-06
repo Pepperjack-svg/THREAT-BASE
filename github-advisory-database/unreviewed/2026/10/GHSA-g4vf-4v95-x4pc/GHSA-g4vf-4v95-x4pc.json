@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g4vf-4v95-x4pc",
-  "modified": "2026-10-27T21:33:41Z",
+  "modified": "2026-11-04T18:30:48Z",
   "published": "2026-10-27T21:33:41Z",
   "aliases": [
     "CVE-2026-118176"
   ],
   "details": "Thunderbird's check that prevents mailbox: URLs from accessing files on remote Windows network shares could be bypassed using extended-length UNC paths. Displaying a specially crafted email could cause Thunderbird to connect to an SMB server chosen by the attacker, disclosing the user's Windows account name and NTLM authentication data, which could be used for offline password cracking or relay attacks.\nThis bug only affects Thunderbird on Windows. Other operating systems are unaffected. This vulnerability was fixed in Thunderbird 159 and Thunderbird 153.6.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-27T19:17:29Z"

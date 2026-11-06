@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h3x9-8c36-m89w",
+  "modified": "2026-11-05T21:34:51Z",
+  "published": "2026-11-05T21:34:51Z",
+  "aliases": [
+    "CVE-2026-123272"
+  ],
+  "details": "Mark3labs mcp-go before v1.2.1 contains an improper validation vulnerability in OAuthHandler.fetchServerMetadata that allows malicious MCP servers to obtain tokens for other resources by declaring arbitrary resources in well-known metadata. Attackers can declare a different MCP server as the RFC 8707 resource indicator, causing the authorization server to mint tokens the attacker replays against that resource.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mark3labs/mcp-go/security/advisories/GHSA-xf6j-693p-wqxx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123272"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mark3labs/mcp-go/pull/1053"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mark3labs/mcp-go/commit/90d247ed8d45cbb7d71d9a95e112789b78760443"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mark3labs/mcp-go/blob/4cb0d2015f24b669726fd8e5e53fc8c6d3f57abf/client/transport/oauth.go#L799-L821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mark3labs/mcp-go/releases/tag/v1.2.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mcp-go-before-1.2.1-origin-validation-error-via-unvalidated-well-known-protected-resource-metadata"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-346"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T19:17:20Z"
+  }
+}

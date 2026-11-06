@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2gm2-hpg7-78f2",
+  "modified": "2026-11-05T21:34:51Z",
+  "published": "2026-11-05T21:34:51Z",
+  "aliases": [
+    "CVE-2026-123271"
+  ],
+  "details": "ChatCLI before v1.215.2 contains an improper validation vulnerability in the MCP OAuth login flow that uses server-supplied Protected Resource Metadata as the resource indicator without checking it matches the configured server URL. A malicious MCP server can declare another resource on the same authorization server, obtain the user's bearer token for it, and replay that token against the other resource.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/diillson/chatcli/security/advisories/GHSA-95vg-3r9c-2v5q"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123271"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/diillson/chatcli/commit/951fe24b8e090eae86bf8edb13a788916b1e6c91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/diillson/chatcli/blob/359eb27debc4de78289a9662551a51ab4528e16c/cli/mcp/oauth.go#L477-L493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/diillson/chatcli/releases/tag/v1.215.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/chatcli-before-1.215.2-origin-validation-error-via-unvalidated-mcp-oauth-resource-indicator"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-346"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T19:17:20Z"
+  }
+}

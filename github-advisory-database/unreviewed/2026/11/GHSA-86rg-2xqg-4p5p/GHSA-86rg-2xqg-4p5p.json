@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-86rg-2xqg-4p5p",
-  "modified": "2026-11-01T18:30:25Z",
+  "modified": "2026-11-06T15:31:20Z",
   "published": "2026-11-01T18:30:25Z",
   "aliases": [
     "CVE-2026-74760"
   ],
   "details": "Google::Auth versions from 0.11 through 0.12 for Perl accept an authorization code from any local process because the gcloud-auth login callback does not check the OAuth state.\n\nThe gcloud-auth login and application-default login commands send a state parameter with the authorization request, then take the code from the first request to reach their loopback listener without comparing the returned state.\n\nA local attacker can submit an authorization code for their own Google account. The CLI exchanges it and stores the refresh token as the user's credentials, so the user's tools then act as the attacker's account.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-346"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-11-01T17:16:34Z"

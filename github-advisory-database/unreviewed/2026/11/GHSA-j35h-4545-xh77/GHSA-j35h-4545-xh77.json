@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j35h-4545-xh77",
+  "modified": "2026-11-03T21:32:09Z",
+  "published": "2026-11-03T18:31:01Z",
+  "aliases": [
+    "CVE-2026-120754"
+  ],
+  "details": "HDF5 through 2.2.0 contains an uninitialized memory read vulnerability in H5Z__filter_scaleoffset() in src/H5Zscaleoffset.c. The decode path validates reads against the allocated size of the chunk buffer rather than the number of bytes actually read from the file. Because H5D__chunk_lock() deliberately sizes filtered chunk buffers to the larger of the stored and unfiltered chunk sizes and fills only the stored bytes, a truncated chunk passes these bounds checks and is decompressed from the uninitialized remainder of the allocation. Unrelated heap contents are then returned to the caller as dataset data. Because the reads remain within the allocation, the issue is not detected by AddressSanitizer. An attacker who can get a user or application to read a dataset from a crafted HDF5 file can cause disclosure of process memory. This issue exists because of an incomplete fix for CVE-2026-19029.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HDFGroup/hdf5/pull/6585"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T16:17:22Z"
+  }
+}

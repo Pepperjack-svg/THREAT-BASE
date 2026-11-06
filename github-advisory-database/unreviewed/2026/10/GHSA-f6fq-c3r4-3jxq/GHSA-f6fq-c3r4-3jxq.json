@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f6fq-c3r4-3jxq",
-  "modified": "2026-10-30T18:32:36Z",
+  "modified": "2026-11-06T18:34:59Z",
   "published": "2026-10-30T15:34:30Z",
   "aliases": [
     "CVE-2026-118988"
   ],
   "details": "CallBackery versions before 0.60.1 for Perl let unauthenticated clients read the POD of any file via path traversal in the /doc route.\n\nEvery CallBackery application mounts its documentation plugin at /doc, ahead of any session check. The route passes the requested name to Pod::Simple::Search->find without validation. find splits the name on \"::\" and joins the parts into a file path, so a name such as \"..::..::..::etc::motd\" escapes @INC.\n\nAny file the server process can read is reachable. Only POD is rendered, but a file with a POD directive and no \"=cut\" is POD to the end of the file.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -31,7 +36,7 @@
     "cwe_ids": [
       "CWE-22"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-30T13:18:31Z"

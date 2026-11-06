@@ -1,7 +1,7 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7p85-w9px-jpjp",
-  "modified": "2026-05-21T21:24:53Z",
+  "modified": "2026-11-04T00:00:31Z",
   "published": "2026-05-21T21:24:53Z",
   "aliases": [
     "CVE-2026-46633"
@@ -9,6 +9,10 @@
   "summary": "Twig: PHP code injection via `{% use %}` template name",
   "details": "### Description\n\n`Compiler::string()` escapes `\"`, `$`, `\\`, NUL and TAB when generating PHP double-quoted string literals, but does not escape single quotes. In `ModuleNode::compileConstructor()`, the template name from a `{% use %}` tag is compiled via `subcompile()` -> `string()` and placed inside a surrounding PHP single-quoted string literal. A template name containing a single quote terminates that surrounding string early, allowing arbitrary PHP expressions to be injected into the compiled cache file.\n\nThe injected code executes within the PHP process when the cache file is first loaded, bypassing the Twig sandbox entirely and achieving remote code execution. `SecurityPolicy` unconditionally allows `{% use %}` regardless of the configured `allowedTags`, so this primitive is reachable from sandboxed templates as well.\n\n### Resolution\n\n`Compiler::string()` now also escapes single quotes so that template names placed inside single-quoted PHP literals can no longer break out of the surrounding context.\n\n### Credits\n\nTwig would like to thank Anvil Secure in collaboration with Claude and Anthropic Research for reporting the issue and providing the fix.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
@@ -25,7 +29,7 @@
           "type": "ECOSYSTEM",
           "events": [
             {
-              "introduced": "0"
+              "introduced": "1.15.1"
             },
             {
               "fixed": "3.26.0"
@@ -41,12 +45,36 @@
       "url": "https://github.com/twigphp/Twig/security/advisories/GHSA-7p85-w9px-jpjp"
     },
     {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/twigphp/Twig/commit/679447fa29083043665482ccf7d64372472621b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/twigphp/Twig/commit/a2c6db7ea7d2c90923e6708019ec1442526d1c30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/twigphp/Twig/commit/e9ff55f6910832428e48a35b2e0748189ad49ae3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/vladko312/d61b950f168c791db4786b83dc7a81e6"
+    },
+    {
       "type": "WEB",
       "url": "https://github.com/FriendsOfPHP/security-advisories/blob/master/twig/twig/CVE-2026-46633.yaml"
     },
     {
       "type": "PACKAGE",
       "url": "https://github.com/twigphp/Twig"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/twigphp/Twig/releases/tag/v3.26.0"
     },
     {
       "type": "WEB",
@@ -60,6 +88,6 @@
     "severity": "CRITICAL",
     "github_reviewed": true,
     "github_reviewed_at": "2026-05-21T21:24:53Z",
-    "nvd_published_at": null
+    "nvd_published_at": "2026-07-14T22:16:55Z"
   }
 }

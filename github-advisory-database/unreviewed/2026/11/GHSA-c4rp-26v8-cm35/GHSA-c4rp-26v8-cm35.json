@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c4rp-26v8-cm35",
-  "modified": "2026-11-02T18:32:28Z",
+  "modified": "2026-11-05T18:32:18Z",
   "published": "2026-11-02T18:32:28Z",
   "aliases": [
     "CVE-2026-106806"
   ],
   "details": "A memory exhaustion issue exists in Open5GS v2.8.0 in the HTTP/2 SBI server. Repeated header names cause previously allocated header strings to be leaked, and HPACK compression allows an unauthenticated remote attacker to trigger tens of thousands of duplicate headers with a small request. Repeated crafted requests can cause persistent heap growth, exhaust process memory, and terminate the affected Open5GS network function, resulting in denial of service.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-11-02T18:18:33Z"

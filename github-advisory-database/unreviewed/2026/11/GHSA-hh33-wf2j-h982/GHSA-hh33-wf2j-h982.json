@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hh33-wf2j-h982",
+  "modified": "2026-11-05T15:32:38Z",
+  "published": "2026-11-05T15:32:38Z",
+  "aliases": [
+    "CVE-2026-74841"
+  ],
+  "details": "In multitenant deployments, ContextFilter and LoginWorker built a per-tenant delegator name from a request-supplied userTenantId parameter and requested a delegator for it before confirming the tenant existed. DelegatorFactory's internal cache retains every delegator name it is asked to resolve, including ones that fail to resolve, so an unauthenticated attacker could submit a stream of arbitrary tenant IDs to grow this cache without bound, driving unnecessary memory and database load.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74841"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/7b2syzksp7klt9fvhdg0olldvs2g83lz"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T15:17:22Z"
+  }
+}

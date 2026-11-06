@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j652-wcpg-cqmf",
-  "modified": "2026-11-02T21:32:06Z",
+  "modified": "2026-11-03T21:32:03Z",
   "published": "2026-11-02T21:32:06Z",
   "aliases": [
     "CVE-2026-58926"
   ],
   "details": "A Use-After-Free (UAF) vulnerability exists in the EVS HAL, allowing a privileged client to free a `buffer_handle_t` while the producer thread is still using it. This race condition, triggered via `doneWithFrame` and `setMaxFramesInFlight`, enables an attacker to manipulate freed heap memory, potentially leading to the leakage of file descriptors from the EVS HAL process.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-11-02T21:17:36Z"

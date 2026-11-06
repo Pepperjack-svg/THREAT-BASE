@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2v39-q9qf-3m9g",
+  "modified": "2026-11-04T21:32:31Z",
+  "published": "2026-11-04T21:32:31Z",
+  "aliases": [
+    "CVE-2026-121969"
+  ],
+  "details": "netrek-client-cow through 3.3.3 contains a stack-based buffer overflow vulnerability in handleSMessage() in short.c that allows malicious servers to overflow a 100-byte stack buffer by sending oversized SP_S_MESSAGE packets. A malicious Netrek server or man-in-the-middle on the plaintext TCP connection can send overlong or unterminated message bodies to write server-controlled bytes onto the stack and crash the client.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121969"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/quozl/netrek-client-cow/issues/11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/quozl/netrek-client-cow/commit/fb322e74abee3b0b76a9c5a31df6aab5585d3127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/quozl/netrek-client-cow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/quozl/netrek-client-cow/blob/3.3.3/short.c#L949"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netrek-client-cow-through-3.3.3-stack-buffer-overflow-via-handlesmessage"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T21:18:06Z"
+  }
+}

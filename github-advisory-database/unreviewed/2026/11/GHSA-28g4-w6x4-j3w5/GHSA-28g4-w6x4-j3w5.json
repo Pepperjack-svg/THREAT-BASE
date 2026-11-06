@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28g4-w6x4-j3w5",
+  "modified": "2026-11-03T12:31:50Z",
+  "published": "2026-11-03T12:31:50Z",
+  "aliases": [
+    "CVE-2026-99257"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: shared: gracefully handle no-device lookup of shared GPIOs\n\nWe use platform lookup tables for shared GPIOs. This mechanism needs a\nstruct device to work so fwnode-based lookup with no device associated\ncurrently causes a NULL-pointer deference.\n\nAdding this functionality will require a larger rework and it has never\nworked anyway so add a check that allows the kernel to gracefully handle\nthis situation with an error ahead of implementing that functionality as\na new feature.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99257"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f9eb6aaf9a3ab7fa2b7dcc38660c27db12d4ec1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf73c3fc03c43a8a86fd487c62390b4744eff9ec"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T12:17:32Z"
+  }
+}

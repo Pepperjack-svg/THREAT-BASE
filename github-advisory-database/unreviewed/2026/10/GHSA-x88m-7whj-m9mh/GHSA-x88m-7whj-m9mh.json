@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-x88m-7whj-m9mh",
-  "modified": "2026-10-27T21:33:42Z",
+  "modified": "2026-11-04T18:30:48Z",
   "published": "2026-10-27T21:33:41Z",
   "aliases": [
     "CVE-2026-118180"
   ],
   "details": "When logging in to a Matrix account, Thunderbird used the homeserver address provided in the server's login response without validating it. A malicious or compromised homeserver could provide a file: URL, causing Thunderbird to send all further Matrix requests of that session to local files or, on Windows, to an attacker-controlled network share, which could leak the user's NTLM credentials.\nThe NTLM credential leak only affects Thunderbird on Windows. Other operating systems are unaffected. This vulnerability was fixed in Thunderbird 159 and Thunderbird 153.6.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-27T19:17:29Z"

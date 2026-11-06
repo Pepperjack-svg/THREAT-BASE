@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6q7q-x7h2-hrfr",
+  "modified": "2026-11-06T09:31:32Z",
+  "published": "2026-11-06T09:31:32Z",
+  "aliases": [
+    "CVE-2026-120671"
+  ],
+  "details": "The UsersWP – Front-end login form, User Registration, User Profile & Members Directory plugin for WP plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'badge' parameter in all versions up to, and including, 1.2.80 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The exploit is particularly effective against higher-privileged users — such as editors and administrators — who preview a Contributor's pending post containing the malicious shortcode.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120671"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AyeCode/userswp/archive/refs/heads/master.zip"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/userswp/tags/1.2.80/includes/helpers/pages.php#L388"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/userswp/tags/1.2.80/includes/helpers/pages.php#L545"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/userswp/tags/1.2.80/vendor/ayecode/wp-ayecode-ui/includes/components/class-aui-component-button.php#L119"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/userswp/tags/1.2.80/vendor/ayecode/wp-super-duper/wp-super-duper.php#L1383"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/userswp/tags/1.2.80/widgets/user-badge.php#L304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3782042/userswp/trunk/includes/helpers/pages.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/19a8c690-ebdd-44a9-a042-7363b8f8b0b3?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-06T09:17:00Z"
+  }
+}

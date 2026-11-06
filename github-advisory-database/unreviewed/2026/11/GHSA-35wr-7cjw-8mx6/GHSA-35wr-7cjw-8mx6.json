@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-35wr-7cjw-8mx6",
+  "modified": "2026-11-04T21:32:27Z",
+  "published": "2026-11-04T21:32:27Z",
+  "aliases": [
+    "CVE-2026-82029"
+  ],
+  "details": "Invoice Ninja before 5.13.28 contains a broken access control vulnerability that allows authenticated vendor-portal contacts to access documents belonging to other vendors and clients by exploiting authorization checks that validate only company_id scope instead of vendor ownership. Attackers can request GET /vendor/documents/{hashid}/download or POST /vendor/documents/download_multiple, enumerating predictable sequential Hashids document identifiers due to a default empty HASH_SALT, to read any invoice PDFs, contracts, payment receipts, and expense attachments within the company.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82029"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/invoiceninja/invoiceninja/commit/4895dce820e37b849b34af46548afd8520bb81d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/invoiceninja/invoiceninja/releases/tag/v5.13.28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/invoice-ninja-broken-access-control-via-vendor-portal"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T19:17:41Z"
+  }
+}

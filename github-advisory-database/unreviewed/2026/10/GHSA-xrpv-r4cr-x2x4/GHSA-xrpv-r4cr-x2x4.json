@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xrpv-r4cr-x2x4",
-  "modified": "2026-10-28T18:32:13Z",
+  "modified": "2026-11-05T21:34:42Z",
   "published": "2026-10-28T18:32:13Z",
   "aliases": [
     "CVE-2026-116273"
   ],
   "details": "MIME::Parser versions before 5.521 for Perl set no limit on the number of message parts by default, allowing memory exhaustion.\n\nThe max_parts option defaulted to -1, which disables the limit, so a parser created with default settings builds an entity for every part however many a message has.\n\nVersion 5.521 sets max_parts to 1000 and max_depth to 64 by default. Setting either to -1 still removes the limit.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-770"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-28T18:17:13Z"

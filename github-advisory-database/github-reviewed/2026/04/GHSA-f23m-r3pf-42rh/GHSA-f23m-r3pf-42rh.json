@@ -1,13 +1,13 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f23m-r3pf-42rh",
-  "modified": "2026-04-01T23:50:27Z",
+  "modified": "2026-11-03T15:37:10Z",
   "published": "2026-04-01T23:50:27Z",
   "aliases": [
     "CVE-2026-2950"
   ],
-  "summary": "lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit`",
-  "details": "### Impact\n\nLodash versions 4.17.23 and earlier are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. The fix for [CVE-2025-13465](https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as `Object.prototype`, `Number.prototype`, and `String.prototype`.\n\nThe issue permits deletion of prototype properties but does not allow overwriting their original behavior.\n\n### Patches\n\nThis issue is patched in 4.18.0.\n\n### Workarounds\n\nNone. Upgrade to the patched version.",
+  "summary": "lodash vulnerable to prototype pollution via array-path bypass in `_.unset`, `_.omit`, and `_.pullAt",
+  "details": "### Impact\n\nThe `_.unset`, `_.omit`, and `_.pullAt` functions are vulnerable to prototype pollution. The fix for [CVE-2025-13465](https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as `Object.prototype`, `Number.prototype`, and `String.prototype`.\n\nThe issue permits deletion of prototype properties but does not allow overwriting their original behavior.\n\n### Patches\n\nThe issue is patched from 4.18.0 to 4.18.1 depending on the package: `lodash`, `lodash-es`, and `lodash-amd` in 4.18.1, and the standalone `lodash.unset` and `lodash.omit` packages in 4.18.0.\n\n### Workarounds\n\nNone. Upgrade to the patched version.\n\n### References\n\n- [CVE-2025-13465 / GHSA-xxjr-mmjv-4gpg](https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg) (original fix that this bypasses)",
   "severity": [
     {
       "type": "CVSS_V3",
@@ -25,17 +25,17 @@
           "type": "ECOSYSTEM",
           "events": [
             {
-              "introduced": "0"
+              "introduced": "4.17.23"
             },
             {
-              "fixed": "4.18.0"
+              "fixed": "4.18.1"
             }
           ]
         }
       ],
-      "database_specific": {
-        "last_known_affected_version_range": "<= 4.17.23"
-      }
+      "versions": [
+        "4.17.23"
+      ]
     },
     {
       "package": {
@@ -47,17 +47,17 @@
           "type": "ECOSYSTEM",
           "events": [
             {
-              "introduced": "0"
+              "introduced": "4.17.23"
             },
             {
-              "fixed": "4.18.0"
+              "fixed": "4.18.1"
             }
           ]
         }
       ],
-      "database_specific": {
-        "last_known_affected_version_range": "<= 4.17.23"
-      }
+      "versions": [
+        "4.17.23"
+      ]
     },
     {
       "package": {
@@ -69,17 +69,17 @@
           "type": "ECOSYSTEM",
           "events": [
             {
-              "introduced": "0"
+              "introduced": "4.17.23"
             },
             {
-              "fixed": "4.18.0"
+              "fixed": "4.18.1"
             }
           ]
         }
       ],
-      "database_specific": {
-        "last_known_affected_version_range": "<= 4.17.23"
-      }
+      "versions": [
+        "4.17.23"
+      ]
     },
     {
       "package": {
@@ -91,7 +91,26 @@
           "type": "ECOSYSTEM",
           "events": [
             {
-              "introduced": "4.0.0"
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.18.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "lodash.omit"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
             },
             {
               "fixed": "4.18.0"
@@ -115,8 +134,36 @@
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2950"
     },
     {
+      "type": "WEB",
+      "url": "https://github.com/lodash/lodash/commit/4f0e376589e1889e8993e212a5c9041112ad178e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lodash/lodash/commit/87e6676934f7b4450fad68c35f0325ba165b48f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lodash/lodash/commit/bbcf0036d27ef936f175bf26e73e247994d8e1e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lodash/lodash/commit/db27b6bb14b12a1451b20edf87dfe307b87a337d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lodash/lodash/commit/fe8d32eda854377349a4f922ab7655c8e5df9a0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cna.openjsf.org/security-advisories.html"
+    },
+    {
       "type": "PACKAGE",
       "url": "https://github.com/lodash/lodash"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lodash/lodash/releases/tag/4.18.1"
     }
   ],
   "database_specific": {

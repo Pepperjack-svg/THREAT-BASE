@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3fw5-5q64-5hwx",
+  "modified": "2026-11-04T21:32:32Z",
+  "published": "2026-11-04T21:32:32Z",
+  "aliases": [
+    "CVE-2026-122134"
+  ],
+  "details": "Mistral Vibe before 2.25.7 contains a remote code execution vulnerability that allows attackers to run commands by configuring malicious Git clean or process filter drivers in a repository. When a user opens a crafted repository, ProjectContextProvider._fetch_git_status runs git status at startup, invoking the filters and executing commands with user privileges before any trust prompt.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mistralai/mistral-vibe/commit/4a96003186b166d55b9f06895c45bb136eef61cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mistralai/mistral-vibe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mistralai/mistral-vibe/blob/v2.25.5/vibe/core/system_prompt.py#L108-L120"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mistralai/mistral-vibe/blob/v2.25.7/CHANGELOG.md?plain=1#L17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mistralai/mistral-vibe/releases/tag/v2.25.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mistral-vibe-before-2.25.7-code-execution-via-git-filter-drivers"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-829"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T21:18:09Z"
+  }
+}

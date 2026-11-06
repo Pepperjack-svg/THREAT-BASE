@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xqg5-g7cj-f6x6",
+  "modified": "2026-11-05T18:32:19Z",
+  "published": "2026-11-05T15:32:37Z",
+  "aliases": [
+    "CVE-2026-84728"
+  ],
+  "details": "Incorrect Authorization in Apache OFBiz \n24.09 before 24.09.08 on all platforms, when documented multitenancy is \nenabled, allows a remote authenticated attacker holding only a valid \nlow-privilege account in one tenant to read and write data belonging to a\n different tenant, by submitting their own tenant's userTenantId \nalongside their own credentials to the normal Party Manager login \nagainst a hostname mapped to a different tenant: ContextFilter resolves \nthe tenant from the hostname via TenantDomainName, but LoginWorker gives\n priority to the conflicting userTenantId request parameter and \nauthenticates against the attacker's own tenant, so a subsequent \nordinary request to the same hostname combines the hostname-mapped \ntenant's Entity Engine delegator with the attacker's tenant's session \ndispatcher, security object, and identity, letting the permission check \nrun against the attacker's own tenant while the resulting read or write \nis performed against the hostname-mapped tenant's data. Users are \nrecommended to upgrade to version 24.09.08, which fixes this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84728"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/7b2syzksp7klt9fvhdg0olldvs2g83lz"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T14:17:07Z"
+  }
+}

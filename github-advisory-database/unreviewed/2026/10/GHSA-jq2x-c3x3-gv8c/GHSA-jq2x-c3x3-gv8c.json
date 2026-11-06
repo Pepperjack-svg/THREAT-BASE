@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jq2x-c3x3-gv8c",
-  "modified": "2026-10-28T18:32:13Z",
+  "modified": "2026-11-05T21:34:42Z",
   "published": "2026-10-28T18:32:13Z",
   "aliases": [
     "CVE-2026-116270"
   ],
   "details": "MIME::Words versions before 5.521 for Perl allow memory exhaustion via repeated \"=?\" sequences in decode_mimewords.\n\nFor each \"=?\" that does not start a complete encoded word, decode_mimewords appends an error message containing the whole input string to $@. A boundary of 8,000 \"=?\" pairs (16,000 bytes) adds 8,000 copies of itself to $@, about 128 MB.\n\nFrom version 5.518, MIME::Parser decodes every multipart boundary this way, so a remote sender can exhaust the memory of the parsing process with one Content-Type header.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-407"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-28T18:17:13Z"

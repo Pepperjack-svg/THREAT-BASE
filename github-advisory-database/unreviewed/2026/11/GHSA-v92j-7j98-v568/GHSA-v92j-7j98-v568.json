@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v92j-7j98-v568",
+  "modified": "2026-11-05T03:30:33Z",
+  "published": "2026-11-05T03:30:32Z",
+  "aliases": [
+    "CVE-2026-122309"
+  ],
+  "details": "Kyverno before 1.19.2 contains a denial of service vulnerability that allows namespace-scoped policy authors to exhaust CPU and memory by submitting CEL expressions evaluated without runtime cost limits. Attackers can create a NamespacedValidatingPolicy or NamespacedDeletingPolicy with nested map comprehensions over large ConfigMap fields to OOM-kill Kyverno pods and block cluster-wide admission.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/kyverno/kyverno/security/advisories/GHSA-m8p2-qqmx-j53x"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122309"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/kyverno-before-1.19.2-denial-of-service-via-unbounded-cel-policy-evaluation-cost"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T03:17:23Z"
+  }
+}

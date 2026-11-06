@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3x4w-vq7f-5f76",
+  "modified": "2026-11-04T21:32:32Z",
+  "published": "2026-11-04T21:32:32Z",
+  "aliases": [
+    "CVE-2026-122138"
+  ],
+  "details": "BlueprintUE Self-Hosted Edition 4.2.0 before 4.3.4 contains a login rate limit bypass vulnerability in LoginMiddleware.php that keys failed-login counters on case-sensitive usernames. Unauthenticated attackers can vary username casing against case-insensitive MySQL lookups to get extra attempts and brute-force passwords past the per-account lockout.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/security/advisories/GHSA-773r-585g-6vc3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122138"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/pull/267"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/commit/bd4af38d2f7d499be23fc4106f93980a1348ddd7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/blob/v4.3.3/app/middlewares/LoginMiddleware.php#L119-L158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/releases/tag/v4.3.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/blueprintue-self-hosted-edition-4.2.0-before-4.3.4-login-rate-limit-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-307"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T21:18:10Z"
+  }
+}

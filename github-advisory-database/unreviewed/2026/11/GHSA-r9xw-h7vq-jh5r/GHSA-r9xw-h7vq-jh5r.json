@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r9xw-h7vq-jh5r",
+  "modified": "2026-11-05T21:34:50Z",
+  "published": "2026-11-05T21:34:50Z",
+  "aliases": [
+    "CVE-2026-123197"
+  ],
+  "details": "WPPConnect Server through 2.10.76 contains a missing authentication vulnerability that allows unauthenticated attackers to read decrypted sticker media through the /files static mount. Attackers can enumerate Unix timestamps in GET /files/file<timestamp>.webp requests to retrieve stickers from any session, bypassing per-session token checks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123197"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wppconnect-team/wppconnect-server/issues/2708"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wppconnect-team/wppconnect-server/pull/2709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wppconnect-team/wppconnect-server/commit/bf1faac7a14892207348c3dc5f6e03ed180e09e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wppconnect-team/wppconnect-server/blob/d08285afca862e60fb82675ce73e630de6c857bf/src/index.ts#L68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieund/wppconnect-files-unauth-cross-session-sticker-media-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wppconnect-server-through-2.10.76-unauthenticated-sticker-media-disclosure-via-files"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-552"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T19:17:18Z"
+  }
+}

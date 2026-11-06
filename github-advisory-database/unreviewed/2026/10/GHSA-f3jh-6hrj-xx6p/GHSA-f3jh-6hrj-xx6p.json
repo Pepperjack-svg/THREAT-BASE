@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f3jh-6hrj-xx6p",
-  "modified": "2026-10-30T15:34:31Z",
+  "modified": "2026-11-06T18:34:59Z",
   "published": "2026-10-30T15:34:31Z",
   "aliases": [
     "CVE-2026-119036"
   ],
   "details": "Business::GoCardless versions before 1.01 for Perl allow memory exhaustion by flattening legacy webhook payloads before checking their signature.\n\nA webhook body with a top-level \"payload\" key is verified as a legacy webhook. To rebuild the signed string, the payload is flattened into one key and value pair per leaf, each key carrying the full path to that leaf, and the pairs are then encoded, sorted and joined. A long key holding a long array costs memory proportional to the key length times the array length.\n\nA remote attacker can exhaust memory in the process receiving webhooks with a single request that carries no valid signature.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-770"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-30T13:18:32Z"

@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4fcc-vm97-gx3x",
+  "modified": "2026-11-05T21:34:49Z",
+  "published": "2026-11-05T18:33:14Z",
+  "aliases": [
+    "CVE-2026-123158"
+  ],
+  "details": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/goonami-scanner/pull/277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openssh/openssh-portable/commit/4353fdc43ef646c43a8dda7025cc1a898caf1482"
+    },
+    {
+      "type": "WEB",
+      "url": "https://alpinelinux.org/posts/2026-11-05-openssh-password-authentication-bypass"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/leonjza/sshhole-lab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/predkambrij/sshhole-repro"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hachyderm.io/@damienmiller/117563026759098135"
+    },
+    {
+      "type": "WEB",
+      "url": "https://marc.info/?l=openssh-unix-dev&m=179388064263131&w=2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://news.ycombinator.com/item?id=50377976"
+    },
+    {
+      "type": "WEB",
+      "url": "https://news.ycombinator.com/item?id=50378228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://news.ycombinator.com/item?id=50379704"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sshhole.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openssh.org/releasenotes.html#10.6p2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-394"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T16:17:47Z"
+  }
+}

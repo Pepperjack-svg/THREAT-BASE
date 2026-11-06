@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wxpj-24h4-8v79",
+  "modified": "2026-11-05T18:33:13Z",
+  "published": "2026-11-05T18:33:13Z",
+  "aliases": [
+    "CVE-2026-119751"
+  ],
+  "details": "Content Egg plugin for WordPress before 12.1.0 contains a broken access control vulnerability that allows unauthenticated attackers to retrieve Content Egg product data from unpublished posts by calling the REST route POST /wp-json/content-egg/v1/render-blocks, whose permission_check() improperly returns true when no X-WP-Nonce header is supplied. Attackers can supply the post_id and module id of a draft, pending, scheduled, or private post to handle_render(), which lacks a publish-status check, to disclose product titles, destination and affiliate URLs, merchant or domain information, and descriptions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119751"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/content-egg/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/content-egg-wordpress-plugin-unauthenticated-information-disclosure-via-render-blocks"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T16:17:40Z"
+  }
+}

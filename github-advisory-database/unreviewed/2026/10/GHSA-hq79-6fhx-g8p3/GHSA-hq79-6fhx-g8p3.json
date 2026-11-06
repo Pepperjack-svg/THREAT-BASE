@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hq79-6fhx-g8p3",
-  "modified": "2026-10-30T15:34:31Z",
+  "modified": "2026-11-06T18:34:59Z",
   "published": "2026-10-30T15:34:31Z",
   "aliases": [
     "CVE-2026-118996"
   ],
   "details": "CallBackery versions before 0.62.0 for Perl send users their own password hash and the admin-only user note via getUserConfig.\n\ngetUserConfig() returns the caller's whole cbuser row, including the stored password hash and the note field that the user interface shows only to administrators. getTableData() and getAllFieldValues() in the user management plugins also return the note to users without the admin right.\n\nA non-administrator can read the notes administrators keep about them, and an attacker who obtains a session token can get that user's password hash and crack it offline.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-212"
     ],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-30T13:18:32Z"

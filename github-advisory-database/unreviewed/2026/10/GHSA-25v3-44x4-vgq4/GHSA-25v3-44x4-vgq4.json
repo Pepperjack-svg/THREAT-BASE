@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-25v3-44x4-vgq4",
-  "modified": "2026-10-30T15:34:31Z",
+  "modified": "2026-11-06T18:34:59Z",
   "published": "2026-10-30T15:34:31Z",
   "aliases": [
     "CVE-2026-119037"
   ],
   "details": "Business::GoCardless versions before 1.01 for Perl accept forged webhooks when a configured webhook secret is undef or empty.\n\nsignature_valid uses each configured secret as the HMAC key, and nothing rejects undef or an empty string, both of which Digest::SHA treats as an empty key. A secret read from an unset environment variable, or an empty entry in a list of rotated secrets, is used as is.\n\nA remote attacker can sign a forged webhook with an empty key and have it accepted as sent by GoCardless.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-347"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-30T13:18:32Z"

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v6rr-x6vh-q7q4",
+  "modified": "2026-11-04T21:32:27Z",
+  "published": "2026-11-04T15:32:30Z",
+  "aliases": [
+    "CVE-2026-121943"
+  ],
+  "details": "Irontec sngrep through 1.9.0 contains an out-of-bounds stack read vulnerability in sip_check_packet and sip_validate_packet caused by an off-by-one length check on 10240-byte SIP payloads. Remote attackers can send a crafted UDP or TCP SIP packet or supply a pcap file to crash sngrep or leak adjacent stack bytes into displayed SIP fields.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121943"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/irontec/sngrep/issues/589"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/irontec/sngrep/blob/v1.9.0/src/sip.c#L396-L410"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/cve-2026-121943-121944-sngrep-sip-payload-missing-nul-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/sngrep-sip-payload-missing-nul-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/irontec-sngrep-through-1.9.0-out-of-bounds-stack-read-via-sip-check-packet"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-170"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T13:17:28Z"
+  }
+}

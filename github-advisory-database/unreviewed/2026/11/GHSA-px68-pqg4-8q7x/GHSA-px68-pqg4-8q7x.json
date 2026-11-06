@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-px68-pqg4-8q7x",
+  "modified": "2026-11-03T18:31:09Z",
+  "published": "2026-11-03T18:31:09Z",
+  "aliases": [
+    "CVE-2026-119674"
+  ],
+  "details": "MongoDB Database Tools mongorestore incorrectly URL-decodes an original collection name read from metadata when the corresponding dump filename has been truncated. A database user who can create and populate a suitably encoded collection can cause a later authorized directory restore to write those documents into a different collection that the user cannot modify directly. When both collection names resolve to the same destination, backed-up documents may be omitted; use of --drop can also replace the unintended destination collection. Exploitation requires an operator to restore the affected collection from a directory dump with write access to the destination. This issue affects MongoDB Database Tools versions 100.0.2 through versions before 100.20.1.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:P/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119674"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mongodb/mongo-tools/blob/master/CHANGELOG.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-174"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T17:18:06Z"
+  }
+}

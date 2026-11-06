@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xh68-jpqj-pv76",
+  "modified": "2026-11-03T18:31:03Z",
+  "published": "2026-11-03T18:31:03Z",
+  "aliases": [
+    "CVE-2026-121544"
+  ],
+  "details": "Koodo Reader through 2.4.6 contains a path traversal vulnerability in the self-hosted HTTP server's OPDS handlers that allows authenticated attackers to read files outside the upload directory. Attackers can upload a crafted books.db with a cover value containing ../ sequences, then request /opds/cover/{key} to read files accessible to the server process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121544"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/koodo-reader/koodo-reader/issues/1654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/koodo-reader/koodo-reader/commit/cbc79a1ab5cbbd61c8252d6ab3cc6dbb694663b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/koodo-reader/koodo-reader"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/koodo-reader/koodo-reader/blob/v2.4.6/httpserver/opds.go#L167-L194"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/koodo-reader/koodo-reader/blob/v2.4.6/httpserver/opds.go#L384-L431"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/koodo-reader/koodo-reader/compare/205539043b0a2afd9fd8bf99ef8434bd1833c2bf...cbc79a1ab5cbbd61c8252d6ab3cc6dbb694663b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/koodo-reader-through-2.4.6-path-traversal-via-opds-cover-and-download-handlers"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T16:17:25Z"
+  }
+}

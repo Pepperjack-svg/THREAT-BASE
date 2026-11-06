@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p5r3-pjjx-rggv",
+  "modified": "2026-11-06T21:31:29Z",
+  "published": "2026-11-06T21:31:29Z",
+  "aliases": [
+    "CVE-2026-124025"
+  ],
+  "details": "Faveo Helpdesk through 2.0.3 contains a broken access control vulnerability in TicketController::ticket_print and the pdfThread endpoint that fails to verify ticket department or assignment. Authenticated agents can request arbitrary ticket ids via GET /ticket/print/{id} to render PDFs of other departments' tickets, including full conversation threads.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124025"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/faveosuite/faveo-helpdesk/issues/8369"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/faveosuite/faveo-helpdesk/commit/408076c7fa921133920decceec306b194affdcee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/faveosuite/faveo-helpdesk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/faveosuite/faveo-helpdesk/blob/v2.0.3/app/Http/Controllers/Agent/helpdesk/TicketController.php#L490"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/faveosuite/faveo-helpdesk/releases/tag/v2.0.4.RC.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/faveo-helpdesk-through-2.0.3-cross-department-ticket-disclosure-via-ticket-print"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-06T20:17:20Z"
+  }
+}

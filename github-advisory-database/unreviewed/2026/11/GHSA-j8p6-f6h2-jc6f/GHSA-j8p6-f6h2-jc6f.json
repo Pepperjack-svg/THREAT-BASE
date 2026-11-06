@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j8p6-f6h2-jc6f",
+  "modified": "2026-11-04T00:32:17Z",
+  "published": "2026-11-04T00:32:17Z",
+  "aliases": [
+    "CVE-2026-121728"
+  ],
+  "details": "SourceHut meta.sr.ht 0.56.11 before 0.89.0 contains an authorization bypass vulnerability that allows unauthenticated attackers to register accounts when public registration is disabled. Attackers can obtain a CSRF token from /login and POST credentials to /register/step2, which invokes the unchecked GraphQL RegisterAccount mutation to create accounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121728"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.arusekk.pl/posts/srht-disabled-registration-bypass"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.sr.ht/~sircmpwn/meta.sr.ht/commit/1ea24685a76f6456245d0bc7fe6accf6231c4044"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.sr.ht/~sircmpwn/meta.sr.ht/commit/e471ffe75bb6ef11366e46c3b721dd0278f746b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.sr.ht/~sircmpwn/meta.sr.ht/refs/0.89.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.sr.ht/~sircmpwn/meta.sr.ht/tree/0.88.9/item/metasrht/blueprints/auth.py#L121"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sourcehut-meta-sr-ht-0.56.11-before-0.89.0-registration-authorization-bypass-via-register-step2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T23:17:36Z"
+  }
+}

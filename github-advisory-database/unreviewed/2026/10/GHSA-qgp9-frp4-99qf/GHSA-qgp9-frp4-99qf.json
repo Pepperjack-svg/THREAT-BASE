@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qgp9-frp4-99qf",
-  "modified": "2026-10-30T18:32:36Z",
+  "modified": "2026-11-06T18:34:59Z",
   "published": "2026-10-30T15:34:30Z",
   "aliases": [
     "CVE-2026-116130"
   ],
   "details": "HTTP::Parser::XS versions before 0.18 for Perl truncate PATH_INFO at an encoded NUL byte in parse_http_request.\n\nThe XS parser URL-decodes the request path and measures the result with strlen(), so PATH_INFO ends at the first byte decoded from %00. The pure-Perl backend is not affected.\n\nA remote attacker can send a path that a proxy or filter checks in full while the application routes on a shorter one.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -31,7 +36,7 @@
     "cwe_ids": [
       "CWE-626"
     ],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-10-30T13:18:31Z"
