@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6hvg-fq9h-5pm6",
+  "modified": "2025-10-31T12:30:21Z",
+  "published": "2025-10-31T12:30:21Z",
+  "aliases": [
+    "CVE-2025-40106"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncomedi: fix divide-by-zero in comedi_buf_munge()\n\nThe comedi_buf_munge() function performs a modulo operation\n`async->munge_chan %= async->cmd.chanlist_len` without first\nchecking if chanlist_len is zero. If a user program submits a command with\nchanlist_len set to zero, this causes a divide-by-zero error when the device\nprocesses data in the interrupt handler path.\n\nAdd a check for zero chanlist_len at the beginning of the\nfunction, similar to the existing checks for !map and\nCMDF_RAWDATA flag. When chanlist_len is zero, update\nmunge_count and return early, indicating the data was\nhandled without munging.\n\nThis prevents potential kernel panics from malformed user commands.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2670932f2465793fea1ef073e40883e8390fa4d9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ffea48c69cb2b96a281cb7e5e42d706996631db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55520f65fd447e04099a2c44185453c18ea73b7e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6db19822512396be1a3e1e20c16c97270285ba1a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87b318ba81dda2ee7b603f4f6c55e78ec3e95974"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f3e4cd9be4b47246ea73ce5e3e0fa2f57f0d10c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4bb5d1bc2f238461bcbe5303eb500466690bb2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4854eff25efb06d0d84c13e7129bbdba4125f8c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-31T10:15:50Z"
+  }
+}

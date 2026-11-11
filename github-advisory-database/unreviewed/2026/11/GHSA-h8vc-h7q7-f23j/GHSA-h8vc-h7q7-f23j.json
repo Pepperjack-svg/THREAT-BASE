@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h8vc-h7q7-f23j",
+  "modified": "2026-11-05T21:34:49Z",
+  "published": "2026-11-05T18:33:13Z",
+  "aliases": [
+    "CVE-2026-122326"
+  ],
+  "details": "Chevereto before 4.5.8 contains an authorization bypass vulnerability in the get-album-contents action of the /json route that allows unauthenticated attackers to list private albums by supplying another user's album id. Attackers with a session token from any public page and an album's encoded id can obtain image filenames, viewer and direct file URLs, and download private images.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122326"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chevereto/chevereto/issues/136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chevereto/chevereto/commit/fe56eb789ecf5e26c84068ba7d88b7a20ea65f5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chevereto/chevereto"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chevereto/chevereto/blob/4.5.7/app/legacy/routes/json.php#L336-L410"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chevereto/chevereto/blob/4.5.7/app/src/Legacy/Classes/Listing.php#L834-L885"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chevereto/chevereto/releases/tag/4.5.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieund/chevereto-get-album-contents-private-album-image-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieund/cve-2026-122326-chevereto-get-album-contents-private-album-image-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/chevereto-before-4.5.8-private-album-image-disclosure-via-get-album-contents"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T16:17:45Z"
+  }
+}

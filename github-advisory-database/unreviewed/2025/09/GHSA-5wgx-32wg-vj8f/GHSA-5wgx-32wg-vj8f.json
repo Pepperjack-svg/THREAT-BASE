@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5wgx-32wg-vj8f",
+  "modified": "2025-12-04T15:30:31Z",
+  "published": "2025-09-15T15:31:28Z",
+  "aliases": [
+    "CVE-2023-53207"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: fail to recover device if queue setup is interrupted\n\nIn ublk_ctrl_end_recovery(), if wait_for_completion_interruptible() is\ninterrupted by signal, queues aren't setup successfully yet, so we\nhave to fail UBLK_CMD_END_USER_RECOVERY, otherwise kernel oops can be\ntriggered.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c0cbd4ebc375ceebc75c89df04b74f215fab23a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/84415f934ad4e96f3507fd09b831953d60fb04ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3a1e243a74632f88b22e713f1c7256754017d58"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T15:15:47Z"
+  }
+}

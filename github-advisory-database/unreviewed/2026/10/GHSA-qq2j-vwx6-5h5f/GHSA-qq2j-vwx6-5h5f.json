@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qq2j-vwx6-5h5f",
+  "modified": "2026-10-15T21:36:14Z",
+  "published": "2026-10-15T21:36:14Z",
+  "aliases": [
+    "CVE-2026-106700"
+  ],
+  "details": "ELADMIN v2.7 and earlier contains an improper access control vulnerability in the user-management endpoint PUT /api/users/resetPwd of me.zhengjie.modules.system.rest.UserController. The method lacks the method-level authorization check applied to all other user-management endpoints and performs no role-level or ownership validation in UserServiceImpl.resetPwd. Any authenticated user of any role can reset the password of arbitrary users, including the built-in administrator.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106700"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/elunez/eladmin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tao0845/CVE-Request/blob/main/CVE-2026-106700.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T20:17:06Z"
+  }
+}

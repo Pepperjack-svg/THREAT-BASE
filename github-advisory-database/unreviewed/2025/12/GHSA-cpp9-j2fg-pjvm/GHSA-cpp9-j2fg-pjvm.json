@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cpp9-j2fg-pjvm",
+  "modified": "2026-10-21T15:40:12Z",
+  "published": "2025-12-24T12:30:30Z",
+  "aliases": [
+    "CVE-2025-68376"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncoresight: ETR: Fix ETR buffer use-after-free issue\n\nWhen ETR is enabled as CS_MODE_SYSFS, if the buffer size is changed\nand enabled again, currently sysfs_buf will point to the newly\nallocated memory(buf_new) and free the old memory(buf_old). But the\netr_buf that is being used by the ETR remains pointed to buf_old, not\nupdated to buf_new. In this case, it will result in a memory\nuse-after-free issue.\n\nFix this by checking ETR's mode before updating and releasing buf_old,\nif the mode is CS_MODE_SYSFS, then skip updating and releasing it.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68376"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/35501ac3c7d40a7bb9568c2f89d6b56beaf9bed3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e83434247ff8005a0b9a1ee997864abf8f259ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d5d130835b417c7bfd6c942f0149e34397d4463"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70acbc9c77686b7a521af6d7a543dcd9c324cf07"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cda077a19f5c8d6ec61e5b97deca203d95e3a422"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:16:01Z"
+  }
+}

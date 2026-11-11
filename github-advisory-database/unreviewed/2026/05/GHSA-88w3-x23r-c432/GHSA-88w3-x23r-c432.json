@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-88w3-x23r-c432",
+  "modified": "2026-06-16T15:33:41Z",
+  "published": "2026-05-27T15:33:20Z",
+  "aliases": [
+    "CVE-2026-46017"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: fix deferred split queue races during migration\n\nmigrate_folio_move() records the deferred split queue state from src and\nreplays it on dst.  Replaying it after remove_migration_ptes(src, dst, 0)\nmakes dst visible before it is requeued, so a concurrent rmap-removal path\ncan mark dst partially mapped and trip the WARN in deferred_split_folio().\n\nMove the requeue before remove_migration_ptes() so dst is back on the\ndeferred split queue before it becomes visible again.\n\nBecause migration still holds dst locked at that point, teach\ndeferred_split_scan() to requeue a folio when folio_trylock() fails. \nOtherwise a fully mapped underused folio can be dequeued by the shrinker\nand silently lost from split_queue.\n\n[ziy@nvidia.com: move the comment]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46017"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3bac01168982ec3e3bf87efdc1807c7933590a85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cbf75cf212ee6e499abc1757fb4b5ae6d70ed0aa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:20Z"
+  }
+}

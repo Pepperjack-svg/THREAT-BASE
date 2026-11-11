@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-92w2-g272-fr77",
+  "modified": "2026-11-01T15:30:20Z",
+  "published": "2026-11-01T15:30:19Z",
+  "aliases": [
+    "CVE-2026-120308"
+  ],
+  "details": "A Beta9 tenant can attach a volume when deploying a function, endpoint, or task queue. The gateway builds the host path by joining the shared volumes root, the workspace name, and the volume identifier from the stub configuration. Nothing checks that the identifier names a volume that workspace owns. Parent-directory segments in the identifier collapse the joined path to the worker's filesystem root, and the worker bind-mounts that path into the sandbox read-write unless the volume was explicitly marked read-only. A tenant with a workspace token can therefore read and write the worker's files, including other tenants' volumes stored on that machine. Confirmed against gateway 0.1.769 and worker 0.1.745. Fixed in gateway 0.1.776 and worker 0.1.756: volume identifiers and mount paths are validated before a mount is built, including for stubs saved before the check existed, and the gateway rejects a volume that does not exist or is not owned by the workspace.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120308"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beam-cloud/beta9/pull/1897"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beam-cloud/beta9/commit/a28bf12cf0007c792a25d8ed282b4e8bf6f30393"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beam-cloud/beta9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beam-cloud/beta9/releases/tag/gateway-0.1.769"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beam-cloud/beta9/releases/tag/gateway-0.1.776"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beam-cloud/beta9/releases/tag/worker-0.1.745"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beam-cloud/beta9/releases/tag/worker-0.1.756"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-01T13:18:01Z"
+  }
+}

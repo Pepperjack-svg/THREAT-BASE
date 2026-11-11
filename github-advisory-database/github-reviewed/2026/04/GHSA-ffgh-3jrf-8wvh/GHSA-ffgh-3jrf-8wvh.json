@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ffgh-3jrf-8wvh",
+  "modified": "2026-04-16T21:08:47Z",
+  "published": "2026-04-16T21:08:47Z",
+  "aliases": [
+    "CVE-2026-40256"
+  ],
+  "summary": "Weblate: Prefix-Based Repository Boundary Check Bypass via Symlink/Junction Path Prefix Collision",
+  "details": "### Impact\nWeblate repository-boundary validation relies on string prefix checks on resolved absolute paths. In multiple code paths, the check uses startswith against the repository root path. This is not path-segment aware and can be bypassed when the external path shares the same string prefix as the repository path (for example, repo and repo_outside).\n\n### Patches\n* https://github.com/WeblateOrg/weblate/pull/18847\n\n### References\nThanks to [m9nx4u](https://hackerone.com/m9nx4u) for reporting this issue via HackerOne.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "weblate"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.17"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/security/advisories/GHSA-ffgh-3jrf-8wvh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/pull/18847"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/commit/e30dbcb33ae78e754ecef192d54f996b89cb4e15"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/WeblateOrg/weblate"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-16T21:08:47Z",
+    "nvd_published_at": "2026-04-15T19:16:37Z"
+  }
+}

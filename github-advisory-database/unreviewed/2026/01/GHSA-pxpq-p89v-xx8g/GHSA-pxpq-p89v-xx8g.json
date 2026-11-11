@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pxpq-p89v-xx8g",
+  "modified": "2026-07-30T06:32:28Z",
+  "published": "2026-01-13T18:31:04Z",
+  "aliases": [
+    "CVE-2025-68799"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncaif: fix integer underflow in cffrml_receive()\n\nThe cffrml_receive() function extracts a length field from the packet\nheader and, when FCS is disabled, subtracts 2 from this length without\nvalidating that len >= 2.\n\nIf an attacker sends a malicious packet with a length field of 0 or 1\nto an interface with FCS disabled, the subtraction causes an integer\nunderflow.\n\nThis can lead to memory exhaustion and kernel instability, potential\ninformation disclosure if padding contains uninitialized kernel memory.\n\nFix this by validating that len >= 2 before performing the subtraction.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68799"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21fdcc00656a60af3c7aae2dea8dd96abd35519c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ec29714aa4e0601ea29d2f02b461fc0ac92c2c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/785c7be6361630070790f6235b696da156ac71b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a11ff0948b5ad09b71896b7ccc850625f9878d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c54091eec6fed19e94182aa05dd6846600a642f7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f407f1c9f45bbf5c99fd80b3f3f4a94fdbe35691"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f818cd472565f8b0c2c409b040e0121c5cf8592c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-13T16:16:01Z"
+  }
+}

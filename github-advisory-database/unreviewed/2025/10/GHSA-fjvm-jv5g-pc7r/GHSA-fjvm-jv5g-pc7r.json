@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fjvm-jv5g-pc7r",
+  "modified": "2025-10-22T15:31:11Z",
+  "published": "2025-10-22T15:31:11Z",
+  "aliases": [
+    "CVE-2023-53714"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/stm: ltdc: fix late dereference check\n\nIn ltdc_crtc_set_crc_source(), struct drm_crtc was dereferenced in a\ncontainer_of() before the pointer check. This could cause a kernel panic.\n\nFix this smatch warning:\ndrivers/gpu/drm/stm/ltdc.c:1124 ltdc_crtc_set_crc_source() warn: variable dereferenced before check 'crtc' (see line 1119)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53714"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04fe3b82528232aa85a6c45464906d0727ef4f20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/340dba127bbed51e8425cd8e097aacfadd175462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/898a9e3f56db9860ab091d4bf41b6caa99aafc3d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-22T14:15:46Z"
+  }
+}

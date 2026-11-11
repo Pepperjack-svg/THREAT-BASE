@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r6xw-vr9q-6g8x",
+  "modified": "2026-10-13T21:33:38Z",
+  "published": "2026-10-13T21:33:38Z",
+  "aliases": [
+    "CVE-2026-110223"
+  ],
+  "details": "Kavita 0.9.0 through 0.9.1.4 contains a server-side request forgery vulnerability that allows authenticated users to bypass the SSRF blocklist through DNS rebinding or HTTPS redirects. Attackers can submit a URL to POST /api/Cbl/upload-cbl-file whose host rebinds or redirects to internal addresses after validation, enabling blind internal port and service probing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110223"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Kareadita/Kavita"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Kareadita/Kavita/blob/879b8b73eb41d66f88dde8eb874cc99a3397eb11/Kavita.Common/Helpers/FlurlConfiguration.cs#L46-L89"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Kareadita/Kavita/blob/879b8b73eb41d66f88dde8eb874cc99a3397eb11/Kavita.Server/Controllers/CBLController.cs#L82-L108"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/kavita-cbl-url-preflight-ssrf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/kavita-0.9.0-through-0.9.1.4-ssrf-blocklist-bypass-via-upload-cbl-file-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:46Z"
+  }
+}

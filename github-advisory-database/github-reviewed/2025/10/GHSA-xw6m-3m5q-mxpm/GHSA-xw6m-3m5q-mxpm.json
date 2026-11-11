@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xw6m-3m5q-mxpm",
+  "modified": "2025-10-11T01:22:44Z",
+  "published": "2025-10-10T15:31:28Z",
+  "aliases": [
+    "CVE-2025-62238"
+  ],
+  "summary": "Liferay Portal's Membership page is vulnerable to XSS through “name“ text field",
+  "details": "Stored cross-site scripting (XSS) vulnerability on the Membership page in Account Settings in Liferay Portal 7.4.3.21 through 7.4.3.111, and Liferay DXP 2023.Q4.0 through 2023.Q4.5, 2023.Q3.1 through 2023.Q3.8, and 7.4 update 21 through update 92 allows remote authenticated attackers to inject arbitrary web script or HTML via a crafted payload injected into a Account's “Name“ text field.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay:com.liferay.account.admin.web"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.40"
+            },
+            {
+              "fixed": "2.0.114"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-62238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/89a043bface29bf924e25d1c2c3b05f85d750a75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.atlassian.net/browse/LPE-17920"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.dev/portal/security/known-vulnerabilities/-/asset_publisher/jekt/content/CVE-2025-62238"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-11T01:22:44Z",
+    "nvd_published_at": "2025-10-10T13:15:48Z"
+  }
+}

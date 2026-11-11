@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77rf-83g8-2rfh",
+  "modified": "2026-07-08T15:31:36Z",
+  "published": "2026-06-08T18:31:53Z",
+  "aliases": [
+    "CVE-2026-46313"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: intel/ipu6: fix error pointer dereference\n\nIn a error path isp->psys is confirmed to be an error pointer not NULL so\nthis condition is true and the error pointer is dereferenced. So isp-psys\nshould be set to NULL before going to out_ipu6_bus_del_devices.\n\nDetected by Smatch:\ndrivers/media/pci/intel/ipu6/ipu6.c:690 ipu6_pci_probe() error:\n'isp->psys' dereferencing possible ERR_PTR()\n\n[Sakari Ailus: Fix commit message.]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46313"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8dd088b8b106f7b119664f965b691785998edcfb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c352f90e093ae49902e47f41579e1aa41899ff64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f43e30646fc93799f3f48530d0ccbd52902c0541"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fad134c446189e9bb48cea1a5ca426d2889a9c71"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-08T17:16:50Z"
+  }
+}

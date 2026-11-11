@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pr9x-c379-2x4g",
+  "modified": "2026-10-29T18:30:59Z",
+  "published": "2026-10-29T18:30:59Z",
+  "aliases": [
+    "CVE-2026-119130"
+  ],
+  "details": "Wasmtime before 36.0.18, 37.0.0 before 48.0.6, and 49.0.0 before 49.0.3 does not verify that set-path-with-query values in wasmtime-wasi-http are paths, so absolute-form URLs are written verbatim as the HTTP/1.1 request target while the connection uses the allowed authority. A malicious guest can supply an absolute URL that a forward proxy or gateway at that authority honors, reaching hosts disallowed by embedder filtering policies.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/bytecodealliance/wasmtime/security/advisories/GHSA-5qpp-g3j2-8frx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119130"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wasmtime-before-36.0.18-37.0.0-before-48.0.6-and-49.0.0-before-49.0.3-http-request-target-smuggling"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-29T16:18:05Z"
+  }
+}

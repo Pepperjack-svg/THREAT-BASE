@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8r84-g6v2-vrq6",
+  "modified": "2026-05-07T18:30:34Z",
+  "published": "2026-05-01T15:30:34Z",
+  "aliases": [
+    "CVE-2026-31730"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: fastrpc: possible double-free of cctx->remote_heap\n\nfastrpc_init_create_static_process() may free cctx->remote_heap on the\nerr_map path but does not clear the pointer. Later, fastrpc_rpmsg_remove()\nfrees cctx->remote_heap again if it is non-NULL, which can lead to a\ndouble-free if the INIT_CREATE_STATIC ioctl hits the error path and the rpmsg\ndevice is subsequently removed/unbound.\nClear cctx->remote_heap after freeing it in the error path to prevent the\nlater cleanup from freeing it again.\n\nThis issue was found by an in-house analysis workflow that extracts AST-based\ninformation and runs static checks, with LLM assistance for triage, and was\nconfirmed by manual code review.\nNo hardware testing was performed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31730"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0bdee4118340c5a756220c1b29a7dab86bb0aa65"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a164f640953cc982804746e772d379171aff5c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b8e527aca357a6488680713bd88007cf8f547fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba2c83167b215da30fa2aae56b140198cf8d8408"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f67d368d26764a357691b2b3a33d3cb55b435bfc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:35Z"
+  }
+}

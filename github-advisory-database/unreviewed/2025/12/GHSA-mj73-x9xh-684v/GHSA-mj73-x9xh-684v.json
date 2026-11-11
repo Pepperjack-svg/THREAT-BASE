@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mj73-x9xh-684v",
+  "modified": "2026-10-21T15:40:12Z",
+  "published": "2025-12-16T15:30:46Z",
+  "aliases": [
+    "CVE-2025-68230"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix gpu page fault after hibernation on PF passthrough\n\nOn PF passthrough environment, after hibernate and then resume, coralgemm\nwill cause gpu page fault.\n\nMode1 reset happens during hibernate, but partition mode is not restored\non resume, register mmCP_HYP_XCP_CTL and mmCP_PSP_XCP_CTL is not right\nafter resume. When CP access the MQD BO, wrong stride size is used,\nthis will cause out of bound access on the MQD BO, resulting page fault.\n\nThe fix is to ensure gfx_v9_4_3_switch_compute_partition() is called\nwhen resume from a hibernation.\nKFD resume is called separately during a reset recovery or resume from\nsuspend sequence. Hence it's not required to be called as part of\npartition switch.\n\n(cherry picked from commit 5d1b32cfe4a676fe552416cb5ae847b215463a1a)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68230"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a45d6359eefb41e08d374a3260b10bff5626823b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb6e7f520d6efa4d4ebf1671455abe4a681f7a05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eef72d856f978955e633c270abb1f7ec7b61c6d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0ee42f47cc1b0a95d2d22ba352ff89fc0cd13d4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T14:15:57Z"
+  }
+}

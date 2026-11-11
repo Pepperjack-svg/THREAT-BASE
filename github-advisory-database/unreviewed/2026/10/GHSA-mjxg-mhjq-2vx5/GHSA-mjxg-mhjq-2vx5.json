@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mjxg-mhjq-2vx5",
+  "modified": "2026-10-01T09:30:36Z",
+  "published": "2026-10-01T09:30:36Z",
+  "aliases": [
+    "CVE-2026-89424"
+  ],
+  "details": "The Duplicate Post plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'noti_token' parameter in all versions up to, and including, 1.5.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires that the site owner has enabled the plugin's User Level Permissions for the Subscriber role, as this grants access to the i_saw_this_noti AJAX branch needed to deliver the payload.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89424"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/copy-delete-posts/tags/1.5.6/menu/notifications.php#L53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/copy-delete-posts/tags/1.5.6/menu/notifications.php#L84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/copy-delete-posts/tags/1.5.6/post/handler.php#L15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/copy-delete-posts/tags/1.5.6/post/handler.php#L1598"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/copy-delete-posts/tags/1.5.6/post/handler.php#L1601"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3709767/copy-delete-posts/trunk/menu/notifications.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3709767%40copy-delete-posts%2Ftags%2F1.5.7&old=3652254%40copy-delete-posts%2Ftags%2F1.5.6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c475c51e-f01d-4698-822f-5b8df999bf6d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-01T09:17:09Z"
+  }
+}

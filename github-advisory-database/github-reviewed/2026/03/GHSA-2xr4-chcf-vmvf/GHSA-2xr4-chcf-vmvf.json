@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2xr4-chcf-vmvf",
+  "modified": "2026-03-19T19:37:04Z",
+  "published": "2026-03-19T19:37:04Z",
+  "aliases": [
+    "CVE-2026-4267"
+  ],
+  "summary": "The Query Monitor plugin for WordPress has Reflected Cross-Site Scripting via Request URI",
+  "details": "### Impact\n\nThe Query Monitor plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the `$_SERVER['REQUEST_URI']` parameter in all versions up to, and including, 3.20.3 due to insufficient output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick an Administrator-level user into performing an action such as clicking on a link.\n\nOn admin requests, the plugin reads user controlled data from `$_SERVER['REQUEST_URI']` and stores it in the request field, then renders `request`, `matched_query`, and `query_string` through `format_url()`. If the attacker supplied string does not contain `&`, `format_url()` returns it without HTML escaping, which allows injected HTML or JavaScript from the request target to be inserted directly into the page inside a `<code>` element and executed in the victim's browser.\n\n### Patches\n\nThis issue has been patched in Query Monitor 3.20.4.\n\n### Credits\n\nMany thanks to Dmitrii Ignatyev at CleanTalk for responsibly disclosing this vulnerability.\n\n### How can I report a security bug?\n\nYou can submit a private security vulnerability report to Query Monitor via [the Security tab on the GitHub repo](https://github.com/johnbillion/query-monitor/security). The GitHub Security Advisory process facilitates private collaboration on security issues. You'll receive credit for a valid report and a CVE if necessary.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "johnbillion/query-monitor"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.20.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/johnbillion/query-monitor/security/advisories/GHSA-2xr4-chcf-vmvf"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/johnbillion/query-monitor"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-80"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-19T19:37:04Z",
+    "nvd_published_at": null
+  }
+}

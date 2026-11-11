@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5pv8-92g5-57vm",
+  "modified": "2026-10-13T15:31:51Z",
+  "published": "2026-10-11T15:31:07Z",
+  "aliases": [
+    "CVE-2026-108856"
+  ],
+  "details": "UnicomAI Wanwu through 0.6.5 contains an authorization bypass vulnerability that allows authenticated users to mint AppKeys bound to other users' MCP servers via POST /v1/appspace/app/key. Attackers supplying a victim's MCP server UUID with appType mcpserver can open MCP sessions and invoke the server's tools using the victim's upstream authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108856"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/UnicomAI/wanwu"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/UnicomAI/wanwu/blob/v0.6.5/internal/app-service/client/orm/app_key.go#L37-L49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/UnicomAI/wanwu/blob/v0.6.5/internal/bff-service/server/http/middleware/auth_openapi.go#L46-L70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/cve-2026-108856-unicomai-wanwu-mcp-key-arbitrary-resource"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/unicomai-wanwu-mcp-key-arbitrary-resource"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/unicomai-wanwu-through-0.6.5-authorization-bypass-via-v1-appspace-app-key-appkey-minting"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T14:17:05Z"
+  }
+}

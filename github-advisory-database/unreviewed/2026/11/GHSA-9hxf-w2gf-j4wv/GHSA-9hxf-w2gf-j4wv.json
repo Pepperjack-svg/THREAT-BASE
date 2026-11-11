@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9hxf-w2gf-j4wv",
+  "modified": "2026-11-05T06:34:37Z",
+  "published": "2026-11-05T06:34:37Z",
+  "aliases": [
+    "CVE-2026-123014"
+  ],
+  "details": "iTerm2 before 3.7.7beta2 has an argument injection vulnerability in the x-man-page: URL handler, allowing an attacker to execute arbitrary commands with the privileges of the logged-in user by inducing the user to open a crafted URL in iTerm2. Percent-encoded NUL characters survive input sanitization and are subsequently converted to whitespace during command-line parsing, allowing injection of additional arguments to /usr/bin/man. An attacker can inject the -P option to select an attacker-controlled pager command. NOTE: this issue exists because of an incomplete fix for CVE-2023-46321.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123014"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/gnachman/iterm2/-/commit/314ba43920dbce08808c032e89966918090bdf8e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/gnachman/iterm2/-/commit/f29420ae4d3e0f986ee24ea286885d32af58175a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://iterm2.com/downloads.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-88"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T06:17:07Z"
+  }
+}

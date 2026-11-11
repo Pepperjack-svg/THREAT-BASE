@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c385-5282-v7jj",
+  "modified": "2026-10-10T09:30:27Z",
+  "published": "2026-10-10T09:30:26Z",
+  "aliases": [
+    "CVE-2026-103897"
+  ],
+  "details": "The Responsive Lightbox & Gallery plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 2.7.9 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with editor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires the plugin's 'Comments' lightbox setting to be enabled (disabled by default), a moderator to approve the injected comment, and a site visitor to click the affected image to open the lightbox.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103897"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/responsive-lightbox/tags/2.7.9/assets/glightbox/glightbox.js#L1489"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/responsive-lightbox/tags/2.7.9/includes/class-frontend.php#L1981"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/responsive-lightbox/tags/2.7.9/includes/class-frontend.php#L409"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/responsive-lightbox/tags/2.7.9/includes/class-frontend.php#L410"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/responsive-lightbox/tags/2.7.9/includes/class-frontend.php#L488"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3694843/responsive-lightbox/trunk/includes/class-frontend.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3729072"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5bb2a893-d254-42bc-8b50-2a88306dbbd7?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T07:16:40Z"
+  }
+}

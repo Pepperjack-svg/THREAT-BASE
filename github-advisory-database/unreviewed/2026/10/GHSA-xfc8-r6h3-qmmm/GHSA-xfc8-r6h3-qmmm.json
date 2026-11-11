@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xfc8-r6h3-qmmm",
+  "modified": "2026-11-06T18:34:58Z",
+  "published": "2026-10-30T15:34:30Z",
+  "aliases": [
+    "CVE-2026-115865"
+  ],
+  "details": "Starlet versions before 0.33 for Perl allow a request declaring a large Content-Length to kill a worker by exhausting memory.\n\nThe request body is read in a loop that asks sysread for all of the remaining declared length at once. Perl grows the read buffer to that size before any data arrives, so a length larger than available memory makes the worker exit with an uncatchable out of memory error before the application is called.\n\nA remote attacker can force a worker restart with each request of a few bytes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115865"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kazuho/Starlet/commit/598947ac620fd31b390335c683d79fa244770782.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/KAZUHO/Starlet-0.33/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-789"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T13:18:30Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rwc6-qv5w-3mrv",
+  "modified": "2025-12-12T21:31:32Z",
+  "published": "2025-10-01T09:30:24Z",
+  "aliases": [
+    "CVE-2025-39897"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: xilinx: axienet: Add error handling for RX metadata pointer retrieval\n\nAdd proper error checking for dmaengine_desc_get_metadata_ptr() which\ncan return an error pointer and lead to potential crashes or undefined\nbehaviour if the pointer retrieval fails.\n\nProperly handle the error by unmapping DMA buffer, freeing the skb and\nreturning early to prevent further processing with invalid data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39897"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bbceba7dc5090c00105e006ce28d1292cfda8dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92e2fc92bc4eb2bc0e84404316fbc02ddd0a3196"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0ecda6fdd840b406df6617b003b036f65dd8926"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T08:15:32Z"
+  }
+}

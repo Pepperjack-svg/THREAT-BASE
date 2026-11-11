@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9v49-jvp7-mg86",
+  "modified": "2026-10-06T09:31:33Z",
+  "published": "2026-10-06T09:31:33Z",
+  "aliases": [
+    "CVE-2026-98285"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bridge: vlan: fix bugs caused by switchdev deletion errors\n\nAllowing switchdev to prevent vlan deletion and error out in __vlan_del\ncould cause multiple different issues - inconsistent state, memory leaks\nwhen flushing, NULL pointer dereference on bridge error when flushing.\nIt doesn't make sense to allow it to stop __vlan_del, so log the error\nand continue with software vlan deletion. This is also consistent with\n8021q behaviour.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98285"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2842ce397dd09882530b42f7fdb0c855767eb24e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed3ea86db736a30bebf49b947c42730e8451bcd2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:18Z"
+  }
+}

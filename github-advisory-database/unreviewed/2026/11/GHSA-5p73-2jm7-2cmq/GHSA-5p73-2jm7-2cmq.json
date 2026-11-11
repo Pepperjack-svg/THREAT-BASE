@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5p73-2jm7-2cmq",
+  "modified": "2026-11-08T03:30:37Z",
+  "published": "2026-11-08T03:30:37Z",
+  "aliases": [
+    "CVE-2026-123606"
+  ],
+  "details": "The hickory-dns recursor in hickory-recursor 0.25.0-alpha.3 through 0.25.2 and hickory-resolver 0.26.0-alpha.1 before 0.26.2 iterates every out-of-bailiwick NS target lacking glue in a referral without any per-query work budget. Remote attackers can serve such referrals to force A and AAAA lookups per target, amplifying traffic against remote servers or exhausting recursor resources.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/hickory-dns/hickory-dns/security/advisories/GHSA-6h5c-jjg5-wj59"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123606"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hickory-dns-recursor-0.25.0-alpha.3-through-0.25.2-glueless-ns-referral-amplification"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-08T02:16:55Z"
+  }
+}

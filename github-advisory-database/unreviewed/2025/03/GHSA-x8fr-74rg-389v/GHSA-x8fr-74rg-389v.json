@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x8fr-74rg-389v",
+  "modified": "2025-03-07T21:31:04Z",
+  "published": "2025-03-07T21:31:04Z",
+  "aliases": [
+    "CVE-2022-49731"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nata: libata-core: fix NULL pointer deref in ata_host_alloc_pinfo()\n\nIn an unlikely (and probably wrong?) case that the 'ppi' parameter of\nata_host_alloc_pinfo() points to an array starting with a NULL pointer,\nthere's going to be a kernel oops as the 'pi' local variable won't get\nreassigned from the initial value of NULL. Initialize 'pi' instead to\n'&ata_dummy_port_info' to fix the possible kernel oops for good...\n\nFound by Linux Verification Center (linuxtesting.org) with the SVACE static\nanalysis tool.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49731"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07cbdb4807d369fbda73062a91b570c4dc5ec429"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ac5efee33f29e704226506d429b84575a5d66f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/253334f84c81bc6a43af489f108c0bddad989eef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36cd19e7d4e5571d77a2ed20c5b6ef50cf57734a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a810bd5af06977a847d1f202b22d7defd5c62497"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf476fe22aa1851bab4728e0c49025a6a0bea307"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca4693e6e06e4fd2b240c0fec47aa2498c94848e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff128fbea720bf763fa345680dda5f050bc24a47"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:48Z"
+  }
+}

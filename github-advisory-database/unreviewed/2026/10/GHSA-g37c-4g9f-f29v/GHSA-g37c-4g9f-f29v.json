@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g37c-4g9f-f29v",
+  "modified": "2026-10-29T21:31:31Z",
+  "published": "2026-10-29T21:31:31Z",
+  "aliases": [
+    "CVE-2026-119325"
+  ],
+  "details": "Bricks Theme 2.4 and before for WordPress contains an unauthenticated broken access control vulnerability in the load_popup_content REST endpoint that allows anonymous attackers to read draft and unpublished page content by supplying a popupId parameter without any status or capability checks. Attackers can obtain a public nonce via the bricks_regenerate_query_nonce action and then increment the popupId value in requests to the /wp-json/bricks/v1/load_popup_content endpoint to enumerate and disclose confidential content from any unpublished post on the site.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119325"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bricksbuilder.io/release/bricks-2-4-1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bricks-theme-broken-access-control-via-load-popup-content"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-29T21:17:21Z"
+  }
+}

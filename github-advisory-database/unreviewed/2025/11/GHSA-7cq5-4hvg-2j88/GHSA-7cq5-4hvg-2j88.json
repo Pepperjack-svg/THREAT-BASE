@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7cq5-4hvg-2j88",
+  "modified": "2025-11-13T18:31:04Z",
+  "published": "2025-11-13T18:31:04Z",
+  "aliases": [
+    "CVE-2025-60687"
+  ],
+  "details": "An unauthenticated command injection vulnerability exists in the ToToLink LR1200GB Router firmware V9.1.0u.6619_B20230130 within the cstecgi.cgi binary (sub_41EC68 function). The binary reads the \"imei\" parameter from a web request and verifies only that it is 15 characters long. The parameter is then directly inserted into a system command using sprintf() and executed with system(). Maliciously crafted IMEI input can execute arbitrary commands on the router without authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-60687"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yifan20020708/SGTaint-0-day/blob/main/ToToLink/ToToLink-LR1200GB/CVE-2025-60687.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.totolink.net"
+    },
+    {
+      "type": "WEB",
+      "url": "http://totolink.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-13T16:15:52Z"
+  }
+}

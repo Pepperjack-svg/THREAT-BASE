@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q399-23r3-hfx4",
+  "modified": "2026-03-19T21:22:35Z",
+  "published": "2026-03-02T22:03:29Z",
+  "aliases": [
+    "CVE-2026-31997"
+  ],
+  "summary": "OpenClaw: system.run approvals did not bind PATH-token executable identity, enabling post-approval executable rebind",
+  "details": "### Summary\nFor `host=node` runs, approvals validated command context but did not pin executable identity for non-path-like `argv[0]` tokens (for example `tr`). If PATH resolution changed after approval, execution could run a different binary.\n\n### Impact\nA previously approved action could execute a different executable than the operator approved.\n\n### Fix\nNode `system.run` approvals now require immutable `systemRunPlan` data, and path-token commands are pinned to canonical executable identity (`realpath`) across approval and execution.\n\n### Affected and Patched Versions\n- Affected: `<= 2026.2.26`\n- Patched: `2026.3.1`",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "openclaw"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2026.3.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-q399-23r3-hfx4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31997"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/openclaw/openclaw"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-executable-rebind-via-unbound-path-token-in-system-run-approvals"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367",
+      "CWE-426"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-02T22:03:29Z",
+    "nvd_published_at": null
+  }
+}

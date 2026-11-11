@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-672g-v9f2-v4c8",
+  "modified": "2026-04-22T21:31:44Z",
+  "published": "2026-04-22T21:31:44Z",
+  "aliases": [
+    "CVE-2026-4011"
+  ],
+  "details": "The Power Charts Lite plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'id' parameter of the [pc] shortcode in all versions up to, and including, 0.1.0. This is due to insufficient input sanitization and output escaping on the 'id' shortcode attribute. Specifically, in the pc_shortcode() function, the 'id' attribute is extracted from user-supplied shortcode attributes and directly concatenated into an HTML div element's class attribute without any escaping or sanitization at line 62. The resulting HTML is then passed through html_entity_decode() before being returned, further undermining any potential safety. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4011"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpgo-power-charts-lite/tags/0.1.0/classes/power-charts-shortcodes.php#L40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpgo-power-charts-lite/tags/0.1.0/classes/power-charts-shortcodes.php#L62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpgo-power-charts-lite/trunk/classes/power-charts-shortcodes.php#L40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpgo-power-charts-lite/trunk/classes/power-charts-shortcodes.php#L62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/ea41d391-ba8d-43d9-8eda-69ac28c49328?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-15T09:16:32Z"
+  }
+}

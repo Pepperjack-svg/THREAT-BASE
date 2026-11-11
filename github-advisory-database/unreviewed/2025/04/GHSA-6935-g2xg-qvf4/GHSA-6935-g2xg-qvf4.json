@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6935-g2xg-qvf4",
+  "modified": "2025-05-12T18:31:20Z",
+  "published": "2025-04-22T09:30:35Z",
+  "aliases": [
+    "CVE-2025-26413"
+  ],
+  "details": "Improper Input Validation vulnerability in Apache Kvrocks.\n\nThe SETRANGE command didn't check if the `offset` input is a positive integer and use it as an index\nof a string. So it will cause the server to crash due to its index is  out of range.\nThis issue affects Apache Kvrocks: through 2.11.1.\n\nUsers are recommended to upgrade to version 2.12.0, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-26413"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/388743qrr8yq8qm0go8tls6rf1kog8dw"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/04/22/1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-22T08:15:28Z"
+  }
+}

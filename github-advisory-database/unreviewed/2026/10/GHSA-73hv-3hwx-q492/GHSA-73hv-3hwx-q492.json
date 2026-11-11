@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73hv-3hwx-q492",
+  "modified": "2026-10-14T03:30:33Z",
+  "published": "2026-10-08T18:32:30Z",
+  "aliases": [
+    "CVE-2026-97147"
+  ],
+  "details": "In OpenStack Mistral through 23.0.0, several of the v2 API write paths resolve the target object with a query that can return another project's resource, then write to it. An authenticated project member can use this to rewrite and un-publish another project's public action definitions and environments. A project administrator can create a workbook whose embedded ad-hoc action or workflow name collides with a resource of another project, which moves that resource into the caller's project and causes the original owner's subsequent updates of it to fail with server errors. Only deployments exposing the Mistral API are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97147"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.launchpad.net/mistral/+bug/2160267"
+    },
+    {
+      "type": "WEB",
+      "url": "https://launchpad.net/bugs/2160267"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.openstack.org/ossa/OSSA-2026-044.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T18:18:33Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-42xg-w685-8874",
+  "modified": "2026-06-11T03:30:23Z",
+  "published": "2026-05-28T12:30:32Z",
+  "aliases": [
+    "CVE-2026-46184"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsound: ua101: fix division by zero at probe\n\nAdd a missing sanity check for bNrChannels in detect_usb_format()\nto prevent a division by zero in playback_urb_complete() and\ncapture_urb_complete().\n\nUSB core does not validate class-specific descriptor fields such\nas bNrChannels, so drivers must verify them before use. If a\ndevice provides bNrChannels = 0, frame_bytes becomes zero and is\nlater used as a divisor in the URB completion handlers, leading\nto a kernel crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46184"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ff2b713f406e9ecadb406014d74e7a020ac12b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/593dd7e6c890d8e4ca21b3e2f796b7cb8e8da983"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6162e8212e88c39492d981b248b5e37002486c66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66d9c2ed081f299cfb201d9e9c4faf920e56e0bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aae1498c59f48d03ee358df84f07a5af9885f827"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1f73f169c1014463b5060e3f60813e13ddc7b87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e02897c5b041c9b980055fa9a6167023d6dc5caf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1862dbf09080254c52175a448290c784dd7d3de"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-369"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:34Z"
+  }
+}

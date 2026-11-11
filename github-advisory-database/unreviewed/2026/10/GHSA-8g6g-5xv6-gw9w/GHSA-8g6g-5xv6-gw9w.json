@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8g6g-5xv6-gw9w",
+  "modified": "2026-10-13T18:30:54Z",
+  "published": "2026-10-13T18:30:54Z",
+  "aliases": [
+    "CVE-2026-110105"
+  ],
+  "details": "B3log Symphony through 3.6.4 contains a missing authorization vulnerability that allows unauthenticated attackers to reach admin routes because PermissionMidware.check permits routes lacking permission.rule.url entries. Attackers can request /admin/report/ignore/{reportId}, /admin/tags/remove-unused, or /admin/user/{userId}/init-point to ignore reports, delete unused tags, or grant points without audit logging.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110105"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/88250/symphony"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/88250/symphony/blob/827a7dd8b74316aa62f370f893a8382a8b45ba0f/src/main/java/org/b3log/symphony/processor/AdminProcessor.java#L316-L386"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/88250/symphony/blob/827a7dd8b74316aa62f370f893a8382a8b45ba0f/src/main/java/org/b3log/symphony/processor/middleware/PermissionMidware.java#L94-L97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/b3log-symphony-admin-endpoints-missing-authorization"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/b3log-symphony-through-3.6.4-missing-authorization-in-admin-console-routes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T17:17:34Z"
+  }
+}

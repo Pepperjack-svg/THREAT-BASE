@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-87q3-cqqr-mvcg",
+  "modified": "2026-02-19T18:31:49Z",
+  "published": "2026-02-19T18:31:49Z",
+  "aliases": [
+    "CVE-2025-13587"
+  ],
+  "details": "The Two Factor (2FA) Authentication via Email plugin for WordPress is vulnerable to Two-Factor Authentication Bypass in versions up to, and including, 1.9.8. This is because the SS88_2FAVE::wp_login() method only enforces the 2FA requirement if the 'token' HTTP GET parameter is undefined, which makes it possible to bypass two-factor authentication by supplying any value in the 'token' parameter during login, including an empty one.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13587"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/two-factor-2fa-via-email/trunk/ss88-two-factor-via-email.php#L218"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3408531%40two-factor-2fa-via-email&new=3408531%40two-factor-2fa-via-email&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/11fbe76c-dc5c-413c-b6a8-d0f4aa56935d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-19T07:17:31Z"
+  }
+}

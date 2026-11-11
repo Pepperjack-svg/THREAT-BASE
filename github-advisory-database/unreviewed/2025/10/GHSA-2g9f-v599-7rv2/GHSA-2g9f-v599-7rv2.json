@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2g9f-v599-7rv2",
+  "modified": "2025-10-09T21:31:10Z",
+  "published": "2025-10-02T18:31:00Z",
+  "aliases": [
+    "CVE-2025-34210"
+  ],
+  "details": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host and Application (VA/SaaS deployments) store a large number of sensitive credentials (database passwords, MySQL root password, SaaS keys, Portainer admin password, etc.) in cleartext files that are world-readable. Any local user - or any process that can read the host filesystem - can retrieve all of these secrets in plain text, leading to credential theft and full compromise of the appliance. The vendor does not consider this to be a security vulnerability as this product \"follows a shared responsibility model, where administrators are expected to configure persistent storage encryption.\"",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34210"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/saas/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/va/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pierrekim.github.io/blog/2025-04-08-vasion-printerlogic-83-vulnerabilities.html#va-readable-passwords"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vasion-print-printerlogic-readble-cleartext-passwords"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-256"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-02T17:16:05Z"
+  }
+}

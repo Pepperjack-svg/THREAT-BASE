@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6hjr-v6g4-3fm8",
+  "modified": "2025-12-10T15:47:42Z",
+  "published": "2025-12-10T15:47:42Z",
+  "aliases": [
+    "CVE-2025-66628"
+  ],
+  "summary": "ImageMagick is vulnerable to an integer Overflow in TIM decoder leading to out of bounds read (32-bit only)",
+  "details": "### Summary\nThe TIM (PSX TIM) image parser in ImageMagick contains a critical integer overflow vulnerability in the `ReadTIMImage` function (`coders/tim.c`). The code reads `width` and `height` (16-bit values) from the file header and calculates `image_size = 2 * width * height` without checking for overflow.\nOn 32-bit systems (or where `size_t` is 32-bit), this calculation can overflow if `width` and `height` are large (e.g., 65535), wrapping around to a small value. This results in a small heap allocation via `AcquireQuantumMemory` and later operations relying on the dimensions can trigger an out of bounds read.\n### Vulnerable Code\nFile: `coders/tim.c`\n```c\nwidth=ReadBlobLSBShort(image);\nheight=ReadBlobLSBShort(image);\nimage_size=2*width*height;       // Line 234 - NO OVERFLOW CHECK!\n```\n\n### Impact\nThis vulnerability can lead to Arbitrary Memory Disclosure due to an out of bounds read on 32-bit systems.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Magick.NET-Q16-AnyCPU"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "14.10.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Magick.NET-Q16-HDRI-AnyCPU"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "14.10.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Magick.NET-Q16-HDRI-x86"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "14.10.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Magick.NET-Q16-x86"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "14.10.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Magick.NET-Q8-AnyCPU"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "14.10.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Magick.NET-Q8-x86"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "14.10.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-6hjr-v6g4-3fm8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dlemstra/Magick.NET/commit/2dfa08e15cfd11016a79615994787b14f9048b1c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ImageMagick/ImageMagick"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-10T15:47:42Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jgc9-fr2g-9r52",
+  "modified": "2026-05-07T21:30:23Z",
+  "published": "2026-05-01T15:30:34Z",
+  "aliases": [
+    "CVE-2026-31749"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncomedi: ni_atmio16d: Fix invalid clean-up after failed attach\n\nIf the driver's COMEDI \"attach\" handler function (`atmio16d_attach()`)\nreturns an error, the COMEDI core will call the driver's \"detach\"\nhandler function (`atmio16d_detach()`) to clean up.  This calls\n`reset_atmio16d()` unconditionally, but depending on where the error\noccurred in the attach handler, the device may not have been\nsufficiently initialized to call `reset_atmio16d()`.  It uses\n`dev->iobase` as the I/O port base address and `dev->private` as the\npointer to the COMEDI device's private data structure.  `dev->iobase`\nmay still be set to its initial value of 0, which would result in\nundesired writes to low I/O port addresses.  `dev->private` may still be\n`NULL`, which would result in null pointer dereferences.\n\nFix `atmio16d_detach()` by checking that `dev->private` is valid\n(non-null) before calling `reset_atmio16d()`.  This implies that\n`dev->iobase` was set correctly since that is set up before\n`dev->private`.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/101ab946b79ad83b36d5cfd47de587492a80acf0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3848ae00b1642e2c98ff8cbfd2d3b38c6f53b5c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/43c68a2c7cc35b7c2a83c285cb4ad3d472b8caa2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d8d88c8c0eec230de8f1f60e0920a4337939a88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/933a2d6a95f9bfb203e562c9be1dd990c735535c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a01dd339ea6ac58b0967a50085622a6017351140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d07d97ca4f7fac467cdcf4a012690853958b7e89"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f517646e008fe99ca1800601cd011b110f8684ae"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:37Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jgqv-5673-896c",
+  "modified": "2026-11-03T21:32:03Z",
+  "published": "2026-11-02T21:32:06Z",
+  "aliases": [
+    "CVE-2026-58915"
+  ],
+  "details": "A physical occupant on an Android Automotive OS (AAOS) Multi-User Multi-Display (MUMD) passenger display can view sensitive Heads-Up Notification (HUN) content and execute actions for a secure passenger user (User N) without authenticating. This bypasses the PassengerKeyguard because the HUN system only checks the global keyguard state, which is tied to the driver's unlocked display, and the PassengerKeyguard implementation fails to suppress HUNs or intercept action PendingIntents. Consequently, private notification data is disclosed, and user-N actions are executed without credential verification.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58915"
+    },
+    {
+      "type": "WEB",
+      "url": "https://source.android.com/docs/security/bulletin/aaos/2026/2026-11-01"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T21:17:35Z"
+  }
+}

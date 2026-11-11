@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4j4-wgmj-58wh",
+  "modified": "2025-12-16T15:30:44Z",
+  "published": "2025-12-16T15:30:44Z",
+  "aliases": [
+    "CVE-2025-68187"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mdio: Check regmap pointer returned by device_node_to_regmap()\n\nThe call to device_node_to_regmap() in airoha_mdio_probe() can return\nan ERR_PTR() if regmap initialization fails. Currently, the driver\nstores the pointer without validation, which could lead to a crash\nif it is later dereferenced.\n\nAdd an IS_ERR() check and return the corresponding error code to make\nthe probe path more robust.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68187"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2b526c2cf57d14ee269e012ed179081871f45a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc8ed3823473bb38ba43cfb34f1e1c1baa22f975"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T14:15:51Z"
+  }
+}

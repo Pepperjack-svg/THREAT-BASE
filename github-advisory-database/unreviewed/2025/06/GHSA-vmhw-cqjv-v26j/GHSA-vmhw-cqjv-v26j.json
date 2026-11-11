@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vmhw-cqjv-v26j",
+  "modified": "2025-06-09T06:30:22Z",
+  "published": "2025-06-09T06:30:22Z",
+  "aliases": [
+    "CVE-2025-25209"
+  ],
+  "details": "The AuthPolicy metadata on Red Hat Connectivity Link contains an object which stores secretes, however it assumes those secretes are already in the kuadrant-system instead of copying it to the referred namespace. This creates space for a malicious actor with a developer persona access to leak those secrets over HTTP connection, as long the attacker knows the name of the targeted secrets and those secrets are limited to one line only.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-25209"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2025-25209"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2347438"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-09T06:15:24Z"
+  }
+}

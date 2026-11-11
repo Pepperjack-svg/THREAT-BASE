@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77pg-jq65-mg2f",
+  "modified": "2026-10-08T18:32:28Z",
+  "published": "2026-10-08T18:32:28Z",
+  "aliases": [
+    "CVE-2026-107676"
+  ],
+  "details": "FFmpeg through 9.0.2 contains an uninitialized memory disclosure vulnerability in av_dynamic_hdr_plus_to_t35() that leaves up to three payload bytes uninitialized when tone_mapping_flag is 0. Attackers can supply crafted Matroska T.35 BlockAdditional or HEVC/AV1 SEI metadata so that remuxing or transcoding writes leaked process memory into output files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107676"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/2c2f6e96e31795ae95a8f8323a493ffbc493111f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24590"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ffmpeg.org"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavutil/hdr_dynamic_metadata.c#L374-L385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ffmpeg-through-9.0.2-uninitialized-memory-disclosure-via-hdr10-metadata-serializer"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T16:17:05Z"
+  }
+}

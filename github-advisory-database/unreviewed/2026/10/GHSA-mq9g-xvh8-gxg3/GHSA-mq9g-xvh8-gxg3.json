@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mq9g-xvh8-gxg3",
+  "modified": "2026-10-16T00:31:58Z",
+  "published": "2026-10-16T00:31:58Z",
+  "aliases": [
+    "CVE-2026-111355"
+  ],
+  "details": "zhontai Admin.Core through 10.1.0 contains an authorization bypass vulnerability that allows authenticated users to ignore department DataScope restrictions by supplying out-of-scope record ids. Attackers holding user or organization module permissions with Dept or Self scope can call UserService and OrgService by-id methods to read, modify, disable, and delete users in other departments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111355"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhontai/Admin.Core/blob/v10.1.0/src/modules/admin/ZhonTai.Admin/Services/Org/OrgService.cs#L64-L68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhontai/Admin.Core/blob/v10.1.0/src/modules/admin/ZhonTai.Admin/Services/User/UserService.cs#L118-L144"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhontai/Admin.Core/blob/v10.1.0/src/modules/admin/ZhonTai.Admin/Services/User/UserService.cs#L595-L636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhontai/Admin.Core/blob/v10.1.0/src/modules/admin/ZhonTai.Admin/Services/User/UserService.cs#L887-L900"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhontai/Admin.Core/blob/v10.1.0/src/modules/admin/ZhonTai.Admin/Services/User/UserService.cs#L977-L1000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/zhontai-admin-core-by-id-missing-data-scope-cross-dept"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/zhontai-admin-core-through-10.1.0-authorization-bypass-via-user-and-organization-by-id-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T22:19:33Z"
+  }
+}

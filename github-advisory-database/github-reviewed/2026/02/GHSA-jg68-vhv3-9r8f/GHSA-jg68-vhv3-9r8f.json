@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jg68-vhv3-9r8f",
+  "modified": "2026-02-10T19:58:15Z",
+  "published": "2026-02-02T23:12:57Z",
+  "aliases": [
+    "CVE-2026-25523"
+  ],
+  "summary": "Magento's X-Original-Url header can expose admin url",
+  "details": "### Impact\n\nThe admin url can be discovered without prior knowledge of it's location by exploiting the X-Original-Url header on some configurations.\n\n### Patches\n\nThe bug comes from the Zend library and is patche by unsetting the header in the bootstrap process.\n\n### Workarounds\n\nUnset the `X-Original-Url` header in the web server configuration.\n\n### References\n\nThe activation of these headers is coming from the Zend_Controller module. It appears this has been known to some degree since 2016 -\nhttps://peterocallaghan.co.uk/2016/12/magento-poisoning-cache/ (dead link now..)\n\n### Credit\n\nAnees Hyder ( @anees0xdev ) via HackerOne\nhttps://hackerone.com/anees0x_dev/hacktivity",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "openmage/magento-lts"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "20.16.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/security/advisories/GHSA-jg68-vhv3-9r8f"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25523"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/OpenMage/magento-lts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackerone.com/bugs?subject=openmage&report_id=3416312"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-02T23:12:57Z",
+    "nvd_published_at": "2026-02-04T22:15:59Z"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v6gv-hpqc-pwrv",
+  "modified": "2026-02-10T00:30:26Z",
+  "published": "2025-10-04T18:31:14Z",
+  "aliases": [
+    "CVE-2023-53533"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: raspberrypi-ts - fix refcount leak in rpi_ts_probe\n\nrpi_firmware_get() take reference, we need to release it in error paths\nas well. Use devm_rpi_firmware_get() helper to handling the resources.\nAlso remove the existing rpi_firmware_put().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53533"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d6a5c9489c8a3d434e685066119c4333476dccd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1dfa3c9dd27bdc347733d06e980395768520bc3e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36d087e49dabd28d2c13a7532dac72d625ce69fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5bca3688bdbc3b58a2894b8671a8e2378efe28bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7acad58049acc6ac148e8b613a6eceeca4bcb4a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9216aa5cfd86809a2681be3683cd9ac30432de0c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9dbbe9db224c23a60dc7b1e00c701be93328c873"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-04T16:15:48Z"
+  }
+}

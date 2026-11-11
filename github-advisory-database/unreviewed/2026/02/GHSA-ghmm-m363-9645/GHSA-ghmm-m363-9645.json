@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ghmm-m363-9645",
+  "modified": "2026-10-15T03:35:14Z",
+  "published": "2026-02-04T18:30:44Z",
+  "aliases": [
+    "CVE-2026-23103"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvlan: Make the addrs_lock be per port\n\nMake the addrs_lock be per port, not per ipvlan dev.\n\nInitial code seems to be written in the assumption,\nthat any address change must occur under RTNL.\nBut it is not so for the case of IPv6. So\n\n1) Introduce per-port addrs_lock.\n\n2) It was needed to fix places where it was forgotten\nto take lock (ipvlan_open/ipvlan_close)\n\nThis appears to be a very minor problem though.\nSince it's highly unlikely that ipvlan_add_addr() will\nbe called on 2 CPU simultaneously. But nevertheless,\nthis could cause:\n\n1) False-negative of ipvlan_addr_busy(): one interface\niterated through all port->ipvlans + ipvlan->addrs\nunder some ipvlan spinlock, and another added IP\nunder its own lock. Though this is only possible\nfor IPv6, since looks like only ipvlan_addr6_event() can be\ncalled without rtnl_lock.\n\n2) Race since ipvlan_ht_addr_add(port) is called under\ndifferent ipvlan->addrs_lock locks\n\nThis should not affect performance, since add/remove IP\nis a rare situation and spinlock is not taken on fast\npaths.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23103"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04ba6de6eff61238e5397c14ac26a6578c7735a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f300c10d92c547c3a7d978e1212ff52f18256ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c149b662cbb202a450e81f938e702ba333864ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a81e2db096913d7e43aada1c350c1282e76db39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70feb16e3fbfb10b15de1396557c38e99f1ab8df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88f83e6c9cdb46b8c8ddd0ba01393362963cf589"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3ba32162488283c0a4c5bedd8817aec91748802"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362",
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-04T17:16:21Z"
+  }
+}

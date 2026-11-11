@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qhg5-7qj6-827m",
+  "modified": "2025-11-19T15:31:29Z",
+  "published": "2025-06-18T12:30:54Z",
+  "aliases": [
+    "CVE-2022-50196"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoc: qcom: ocmem: Fix refcount leak in of_get_ocmem\n\nof_parse_phandle() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nAdd missing of_node_put() to avoid refcount leak.\nof_node_put() will check NULL pointer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50196"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07aea6819d569d1e172227486655e4fb5bd4cdb9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/84a928b44cb303d5756e3bff2734921de8dce4f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92a563fcf14b3093226fb36f12e9b5cf630c5a5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1e4243c0dddeafb4ace6d9906d3f5129b81a9fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed40a48d0a9166edb22e2b8efafea822e93dd79a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:50Z"
+  }
+}

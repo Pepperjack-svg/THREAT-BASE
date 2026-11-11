@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fgwp-pq6g-c2g2",
+  "modified": "2025-11-13T18:31:05Z",
+  "published": "2025-11-13T18:31:05Z",
+  "aliases": [
+    "CVE-2025-60691"
+  ],
+  "details": "A stack-based buffer overflow exists in the httpd binary of Linksys E1200 v2 routers (Firmware E1200_v2.0.11.001_us.tar.gz). The apply_cgi and block_cgi functions copy user-supplied input from the \"url\" CGI parameter into stack buffers (v36, v29) using sprintf without bounds checking. Because these buffers are allocated as single-byte variables, any non-empty input will trigger a buffer overflow. Remote attackers can exploit this vulnerability via crafted HTTP requests to execute arbitrary code or cause denial of service without authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-60691"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yifan20020708/SGTaint-0-day/blob/main/Linksys/Linksys-E1200/CVE-2025-60691.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.linksys.com"
+    },
+    {
+      "type": "WEB",
+      "url": "http://linksys.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-13T17:15:49Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r7xh-cr9c-6wxq",
+  "modified": "2025-12-10T18:30:21Z",
+  "published": "2025-09-17T15:30:37Z",
+  "aliases": [
+    "CVE-2022-50355"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: vt6655: fix some erroneous memory clean-up loops\n\nIn some initialization functions of this driver, memory is allocated with\n'i' acting as an index variable and increasing from 0. The commit in\n\"Fixes\" introduces some clean-up codes in case of allocation failure,\nwhich free memory in reverse order with 'i' decreasing to 0. However,\nthere are some problems:\n  - The case i=0 is left out. Thus memory is leaked.\n  - In case memory allocation fails right from the start, the memory\n    freeing loops will start with i=-1 and invalid memory locations will\n    be accessed.\n\nOne of these loops has been fixed in commit c8ff91535880 (\"staging:\nvt6655: fix potential memory leak\"). Fix the remaining erroneous loops.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50355"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a2db520e3ca5aafba7c211abfd397666c9b5f9d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/637672a71f5016a40b0a6c0f3c8ad25eacedc8c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88b9cc60f26e8a05d1ddbddf91b09ca2915f20e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95ac62e8545be2b0a8cae0beef7c682e2e470e48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9e9806d1c315bc50dce05479a079b9a104474b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed11b73c963292e7b49c0f37025c58ed3b7921d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f19e5b7df54590c831f350381963f25585c8f7d5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-17T15:15:34Z"
+  }
+}

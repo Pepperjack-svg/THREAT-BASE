@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mg5c-fjcx-j5g5",
+  "modified": "2025-11-03T21:33:25Z",
+  "published": "2025-04-01T18:30:53Z",
+  "aliases": [
+    "CVE-2025-21962"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: Fix integer overflow while processing closetimeo mount option\n\nUser-provided mount parameter closetimeo of type u32 is intended to have\nan upper limit, but before it is validated, the value is converted from\nseconds to jiffies which can lead to an integer overflow.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21962"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c46673be93dd2954f44fe370fb4f2b8e6214224"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/513f6cf2e906a504b7ab0b62b2eea993a6f64558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c13fcb7cf59ae65940da1dfea80144e42921e53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9968fcf02cf6b0f78fbacf3f63e782162603855a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b24edd5c191c2689c59d0509f0903f9487eb6317"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5a30fddfe2f2e540f6c43b59cf701809995faef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-01T16:15:27Z"
+  }
+}

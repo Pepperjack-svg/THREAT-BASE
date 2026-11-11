@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vm9w-mqxm-485q",
+  "modified": "2026-06-02T15:32:01Z",
+  "published": "2026-06-01T21:30:42Z",
+  "aliases": [
+    "CVE-2026-37231"
+  ],
+  "details": "FlexRIC v2.0.0 uses a uint16_t counter for xapp_id assignment but stores the value in uint32_t message fields. After 65,530+ E42_SETUP_REQUESTs, the 16-bit counter wraps around and produces duplicate xapp_ids. The iApp (port 36422) crashes when attempting to register a duplicate ID in its internal data structure. A remote attacker can trigger this by repeatedly connecting and requesting new xApp registrations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-37231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MinamiKotor1/oran-security-advisories-zhongnan-luo/blob/main/advisories/CVE-2026-37231.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eurecom.fr/mosaic5g/flexric"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-01T19:16:33Z"
+  }
+}

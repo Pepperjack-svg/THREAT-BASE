@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8vc2-h54q-6258",
+  "modified": "2026-06-28T09:31:45Z",
+  "published": "2026-06-25T09:31:21Z",
+  "aliases": [
+    "CVE-2026-53216"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mvpp2: limit XDP frame size to the RX buffer\n\nmvpp2 has short and long BM pools, and short pool buffers can be smaller\nthan PAGE_SIZE. The XDP path nevertheless initializes every xdp_buff with\nPAGE_SIZE as frame size.\n\nXDP helpers use frame_sz to validate tail growth and to derive the hard\nend of the data area. Advertising PAGE_SIZE for short buffers can let\nbpf_xdp_adjust_tail() grow a packet past the real allocation, corrupting\nmemory or later tripping skb tailroom checks.\n\nInitialize the XDP buffer with bm_pool->frag_size so XDP tailroom matches\nthe actual buffer backing the packet.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53216"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b8b0c3631b19faee53f0d15a49924129b063eec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/910617a4e67dbdd5fdb39d9dc6a51e491e1b2c3e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9545cc5ef18ca22d031f2f47c157192460652359"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/994bd2b58d2bd08aa97ec0836cc813cfcb00d749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3ee9231ccec6ec3be2de89c56f897055fd9eab1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec8e1e5842bc0dbd4c272761f4db3651eecd0339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f3c6aa078927e6fe8121c9c591ddee8716c5305a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:39Z"
+  }
+}

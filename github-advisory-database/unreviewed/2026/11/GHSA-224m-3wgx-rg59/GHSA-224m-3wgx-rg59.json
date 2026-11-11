@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-224m-3wgx-rg59",
+  "modified": "2026-11-06T15:31:27Z",
+  "published": "2026-11-06T15:31:27Z",
+  "aliases": [
+    "CVE-2026-123617"
+  ],
+  "details": "Openwhyd before 1.65.1 contains a NoSQL injection vulnerability that allows unauthenticated attackers to manipulate user lookups by passing JSON objects in the id parameter. Attackers can send MongoDB query operators such as $ne or $gt to POST /api/user to select and enumerate other users' public profile records.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openwhyd/openwhyd/security/advisories/GHSA-hfg3-vq24-hprp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123617"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openwhyd/openwhyd/commit/167c45d6754df0adb3415f71cbd7cde91cbe7874"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openwhyd/openwhyd/blob/v1.65.0/app/models/user.js#L288-L294"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openwhyd/openwhyd/releases/tag/v1.65.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openwhyd-before-1.65.1-nosql-injection-via-post-api-user"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-943"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-06T15:17:19Z"
+  }
+}

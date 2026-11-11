@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v995-44v6-5fqm",
+  "modified": "2026-11-10T20:52:38Z",
+  "published": "2026-11-10T20:52:38Z",
+  "aliases": [
+    "CVE-2026-126062"
+  ],
+  "summary": "JRuby: NONET is bypassed for external DTDs and entities when the systemId uses a short-form IPv4 host",
+  "details": "### Summary\n\nOn JRuby, the `NONET` parse option did not block an external DTD or entity whose system identifier used a short-form IPv4 host, such as `http://127.1/` or `http://169.254.43518/`, or was an absolute path such as `/x.dtd` in a document parsed from a network URL. An application that parses untrusted XML with `DTDLOAD`, `DTDVALID` or `NOENT` could be made to send network requests, potentially enabling SSRF.\n\nNokogiri 1.19.5 applies the `XML::Schema` check from [GHSA-8678-w3jw-xfc2](https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-8678-w3jw-xfc2): with `NONET` set, only local resources are loaded.\n\nOnly JRuby is affected. Default parse options are not affected.\n\n### Severity\n\nThe Nokogiri maintainers have evaluated this as low severity.\n\n### Mitigation\n\nUpgrade to Nokogiri 1.19.5 or later, or do not enable `DTDLOAD`, `DTDVALID` or `NOENT` for untrusted input.\n\n### Credit\n\nThis issue was responsibly reported by @arpitjain099.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "nokogiri"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.19.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-v995-44v6-5fqm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/pull/3752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/commit/97f41b65f4ee0cac859b87f0b26d2648c4806cb8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/commit/e448ca2827a9198644610fb730259e12baacdeac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/nokogiri/GHSA-v995-44v6-5fqm.yml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/sparklemotion/nokogiri"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/releases/tag/v1.19.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-611",
+      "CWE-918"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-11-10T20:52:38Z",
+    "nvd_published_at": null
+  }
+}

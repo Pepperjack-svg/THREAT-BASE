@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c93c-7385-p2gq",
+  "modified": "2025-10-23T18:31:07Z",
+  "published": "2025-02-27T03:34:01Z",
+  "aliases": [
+    "CVE-2024-58000"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: prevent reg-wait speculations\n\nWith *ENTER_EXT_ARG_REG instead of passing a user pointer with arguments\nfor the waiting loop the user can specify an offset into a pre-mapped\nregion of memory, in which case the\n[offset, offset + sizeof(io_uring_reg_wait)) will be intepreted as the\nargument.\n\nAs we address a kernel array using a user given index, it'd be a subject\nto speculation type of exploits. Use array_index_nospec() to prevent\nthat. Make sure to pass not the full region size but truncate by the\nmaximum offset allowed considering the structure size.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29b95ac917927ce9f95bf38797e16333ecb489b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a6de94df7bfa76d9850443547e7b3333f63a16a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T02:15:14Z"
+  }
+}

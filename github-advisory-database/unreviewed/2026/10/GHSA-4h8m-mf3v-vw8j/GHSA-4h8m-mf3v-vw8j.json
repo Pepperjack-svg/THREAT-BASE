@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4h8m-mf3v-vw8j",
+  "modified": "2026-10-29T18:30:53Z",
+  "published": "2026-10-29T18:30:53Z",
+  "aliases": [
+    "CVE-2026-111734"
+  ],
+  "details": "P-Net before 1.0.3 does not validate the length of a received Ethernet frame in pf_eth_recv() before reading the EtherType, any VLAN tags and the PROFINET FrameID. The VLAN tag loop had no upper bound, so a truncated frame, or a frame consisting only of VLAN tags, makes the function read past the end of the receive buffer. This can cause a crash (denial of service) or disclose memory content.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111734"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rt-labs.com/wp-content/uploads/2026/10/RRTL-261019-01.pdf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-29T16:17:57Z"
+  }
+}

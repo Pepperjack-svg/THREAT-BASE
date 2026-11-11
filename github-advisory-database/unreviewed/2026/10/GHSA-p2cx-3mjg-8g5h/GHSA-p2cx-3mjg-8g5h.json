@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p2cx-3mjg-8g5h",
+  "modified": "2026-10-04T00:31:00Z",
+  "published": "2026-10-04T00:31:00Z",
+  "aliases": [
+    "CVE-2026-105126"
+  ],
+  "details": "LaraDashboard before 1.4.8 contains an improper privilege management vulnerability that allows authenticated Admin users to escalate to Superadmin by editing or renaming roles. Attackers with role.edit can rename their role to Superadmin or grant user.login_as permissions to take over accounts and reach core upgrade and module installation functions for code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/security/advisories/GHSA-555v-6rfr-r969"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105126"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/pull/344"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/commit/286f150e4d0c924ec1ce7eb256b2326e871e9517"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/blob/v1.4.2/app/Http/Controllers/Backend/RoleController.php#L144"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/blob/v1.4.2/app/Http/Controllers/Backend/RoleController.php#L180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/blob/v1.4.2/app/Http/Requests/CoreUpgrade/UploadRequest.php#L23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/blob/v1.4.2/app/Policies/RolePolicy.php#L39-L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/releases/tag/v1.4.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/laradashboard-before-1.4.8-privilege-escalation-via-superadmin-role-tampering"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-04T00:16:36Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h9xw-f6mh-953j",
+  "modified": "2026-06-30T18:31:39Z",
+  "published": "2026-06-30T18:31:38Z",
+  "aliases": [
+    "CVE-2026-58170"
+  ],
+  "details": "Vibe-Trading before 0.1.10 builds the proposal file path by joining a caller-supplied proposal identifier onto the broker proposals directory without sanitization (agent/src/live/mandate/commit.py). A proposal identifier containing path traversal sequences causes the application to load an attacker-controlled JSON file as an authoritative live trading mandate. Combined with the file upload endpoint, an admitted caller can write a JSON file to a known location and traverse to it, and because the ceilings validation is skipped when ceilings are absent, the attacker fully controls the committed mandate.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58170"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/Vibe-Trading/pull/256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/Vibe-Trading/commit/0ab701302f90e701c9dc558a898a217a376610c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/Vibe-Trading/releases/tag/v0.1.10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vibe-trading-path-traversal-in-proposal-identifier-allows-forging-live-trading-mandates"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-30T17:16:24Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xjw8-49g8-mg8p",
+  "modified": "2026-02-03T15:30:20Z",
+  "published": "2025-10-15T09:30:16Z",
+  "aliases": [
+    "CVE-2025-39967"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbcon: fix integer overflow in fbcon_do_set_font\n\nFix integer overflow vulnerabilities in fbcon_do_set_font() where font\nsize calculations could overflow when handling user-controlled font\nparameters.\n\nThe vulnerabilities occur when:\n1. CALC_FONTSZ(h, pitch, charcount) performs h * pith * charcount\n   multiplication with user-controlled values that can overflow.\n2. FONT_EXTRA_WORDS * sizeof(int) + size addition can also overflow\n3. This results in smaller allocations than expected, leading to buffer\n   overflows during font data copying.\n\nAdd explicit overflow checking using check_mul_overflow() and\ncheck_add_overflow() kernel helpers to safety validate all size\ncalculations before allocation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a194e6c8e1ee745e914b0b7f50fa86c89ed13fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a4bac869560f943edbe3c2b032062f6673b13d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/994bdc2d23c79087fbf7dcd9544454e8ebcef877"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c8ec14075c5317edd6b242f1be8167aa1e4e333"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6eb9f423b3db000aaedf83367b8539f6b72dcfc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/adac90bb1aaf45ca66f9db8ac100be16750ace78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8a6e85328aeb9881531dbe89bcd2637a06c3c95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0c01f9aa08c8e10e10e8c9ebb5be01a4eff6eb7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-15T08:15:34Z"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3c9-j6h9-66v4",
+  "modified": "2025-11-05T20:55:04Z",
+  "published": "2025-10-30T12:31:11Z",
+  "aliases": [
+    "CVE-2025-54941"
+  ],
+  "summary": "Apache Airflow has a command injection vulnerability in \"example_dag_decorator\"",
+  "details": "An example dag `example_dag_decorator` had non-validated parameter that allowed the UI user to redirect the example to a malicious server and execute code on worker. This however required that the example dags are enabled in production (not default) or the example dag code copied to build your own similar dag. If you used the `example_dag_decorator` please review it and apply the changes implemented in Airflow 3.0.5 accordingly.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "apache-airflow"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.0.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-54941"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/airflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/c6q6nofc6xl5bms039ks9b34v0v36df1"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/10/29/6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-30T17:09:19Z",
+    "nvd_published_at": "2025-10-30T10:15:35Z"
+  }
+}

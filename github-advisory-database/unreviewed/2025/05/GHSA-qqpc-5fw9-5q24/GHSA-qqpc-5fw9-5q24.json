@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qqpc-5fw9-5q24",
+  "modified": "2025-11-07T00:30:26Z",
+  "published": "2025-05-01T15:31:45Z",
+  "aliases": [
+    "CVE-2022-49766"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetlink: Bounds-check struct nlmsgerr creation\n\nIn preparation for FORTIFY_SOURCE doing bounds-check on memcpy(),\nswitch from __nlmsg_put to nlmsg_put(), and explain the bounds check\nfor dealing with the memcpy() across a composite flexible array struct.\nAvoids this future run-time warning:\n\n  memcpy: detected field-spanning write (size 32) of single field \"&errmsg->msg\" at net/netlink/af_netlink.c:2447 (size 16)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49766"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/710d21fdff9a98d621cd4e64167f3ef8af4e2fd1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aff4eb16f589c3af322a2582044bca365381fcd6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:15:59Z"
+  }
+}

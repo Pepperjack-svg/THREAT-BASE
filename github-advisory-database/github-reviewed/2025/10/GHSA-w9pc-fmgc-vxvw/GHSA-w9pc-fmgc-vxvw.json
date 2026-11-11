@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9pc-fmgc-vxvw",
+  "modified": "2025-10-13T15:29:51Z",
+  "published": "2025-10-07T17:27:07Z",
+  "aliases": [
+    "CVE-2025-61771"
+  ],
+  "summary": "Rack: Multipart parser buffers large non‑file fields entirely in memory, enabling DoS (memory exhaustion)",
+  "details": "## Summary\n\n`Rack::Multipart::Parser` stores non-file form fields (parts without a `filename`) entirely in memory as Ruby `String` objects. A single large text field in a multipart/form-data request (hundreds of megabytes or more) can consume equivalent process memory, potentially leading to out-of-memory (OOM) conditions and denial of service (DoS).\n\n## Details\n\nDuring multipart parsing, file parts are streamed to temporary files, but non-file parts are buffered into memory:\n\n```ruby\nbody = String.new  # non-file → in-RAM buffer\n@mime_parts[mime_index].body << content\n```\n\nThere is no size limit on these in-memory buffers. As a result, any large text field—while technically valid—will be loaded fully into process memory before being added to `params`.\n\n## Impact\n\nAttackers can send large non-file fields to trigger excessive memory usage. Impact scales with request size and concurrency, potentially leading to worker crashes or severe garbage-collection overhead. All Rack applications processing multipart form submissions are affected.\n\n## Mitigation\n\n* **Upgrade:** Use a patched version of Rack that enforces a reasonable size cap for non-file fields (e.g., 2 MiB).\n* **Workarounds:**\n  * Restrict maximum request body size at the web-server or proxy layer (e.g., Nginx `client_max_body_size`).\n  * Validate and reject unusually large form fields at the application level.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "rack"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.2.19"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "rack"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.1"
+            },
+            {
+              "fixed": "3.1.17"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "rack"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.2"
+            },
+            {
+              "fixed": "3.2.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/rack/rack/security/advisories/GHSA-w9pc-fmgc-vxvw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61771"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rack/rack/commit/589127f4ac8b5cf11cf88fb0cd116ffed4d2181e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rack/rack/commit/d869fed663b113b95a74ad53e1b5cae6ab31f29e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rack/rack/commit/e08f78c656c9394d6737c022bde087e0f33336fd"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/rack/rack"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/rack/CVE-2025-61771.yml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-07T17:27:07Z",
+    "nvd_published_at": "2025-10-07T15:16:03Z"
+  }
+}

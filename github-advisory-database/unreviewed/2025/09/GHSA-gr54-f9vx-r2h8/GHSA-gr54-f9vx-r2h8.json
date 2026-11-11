@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gr54-f9vx-r2h8",
+  "modified": "2025-12-11T15:30:30Z",
+  "published": "2025-09-17T15:30:38Z",
+  "aliases": [
+    "CVE-2023-53355"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: pi433: fix memory leak with using debugfs_lookup()\n\nWhen calling debugfs_lookup() the result must have dput() called on it,\notherwise the memory will leak over time.  To make things simpler, just\ncall debugfs_lookup_and_remove() instead which handles all of the logic\nat once.  This requires saving off the root directory dentry to make\ncreation of individual device subdirectories easier.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53355"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04f3cda40e9f6653ae15ed3fcf26ef2860f4df66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f36e789e540df6a9fbf471b3a2ba62a8b361586"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb16f3102607b69e1a0233f4b73c6e337f86ef8d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-17T15:15:39Z"
+  }
+}

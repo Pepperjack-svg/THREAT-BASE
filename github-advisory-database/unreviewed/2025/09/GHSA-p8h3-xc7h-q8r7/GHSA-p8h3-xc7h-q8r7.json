@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p8h3-xc7h-q8r7",
+  "modified": "2025-12-04T15:30:31Z",
+  "published": "2025-09-15T15:31:28Z",
+  "aliases": [
+    "CVE-2023-53201"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/bnxt_re: wraparound mbox producer index\n\nDriver is not handling the wraparound of the mbox producer index correctly.\nCurrently the wraparound happens once u32 max is reached.\n\nBit 31 of the producer index register is special and should be set\nonly once for the first command. Because the producer index overflow\nsetting bit31 after a long time, FW goes to initialization sequence\nand this causes FW hang.\n\nFix is to wraparound the mbox producer index once it reaches u16 max.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53201"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0af91306e17ef3d18e5f100aa58aa787869118af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/50d77c3739b2b15e9e1f1c9cbe50037d294800f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79226176cdd1b65a1e6a90e0e1a2b490f0a9df33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7bfa0303fbc265c94cfbd17505c55b99848aa4e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9341501e2f7af29f5b5562c2840a7fde40eb7de4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9be352be9bb15e6b83e40abc4df7f4776b435ba"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T15:15:46Z"
+  }
+}

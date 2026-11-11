@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-22gf-2q7p-998g",
+  "modified": "2025-12-10T21:31:30Z",
+  "published": "2025-12-09T18:30:41Z",
+  "aliases": [
+    "CVE-2025-65287"
+  ],
+  "details": "An unauthenticated directory traversal vulnerability in cgi-bin/upload.cgi in SNMP Web Pro 1.1 allows a remote attacker to read arbitrary files. The CGI concatenates the user-supplied params directly onto the base path (/var/www/files/userScript/) using memcpy + strcat without validation or canonicalization, enabling ../ sequences to escape the intended directory. The download branch also echoes the unsanitized params into Content-Disposition, introducing header-injection risk.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-65287"
+    },
+    {
+      "type": "WEB",
+      "url": "https://damiri.fr/en/cve/CVE-2025-65287"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T16:18:17Z"
+  }
+}

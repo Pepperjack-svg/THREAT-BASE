@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-964f-vc2f-ch6j",
+  "modified": "2026-02-18T15:31:24Z",
+  "published": "2026-02-14T00:32:42Z",
+  "aliases": [
+    "CVE-2025-70955"
+  ],
+  "details": "A Stack Overflow vulnerability was discovered in the TON Virtual Machine (TVM) before v2024.10. The vulnerability stems from the improper handling of vmstate and continuation jump instructions, which allow for continuous dynamic tail calls. An attacker can exploit this by crafting a smart contract with deeply nested jump logic. Even within permissible gas limits, this nested execution exhausts the host process's stack space, causing the validator node to crash. This results in a Denial of Service (DoS) for the TON blockchain network.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-70955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ton-blockchain/ton/commit/b5734d2e30b9c93cfdacb4ea37c9ebdf11ca5d49#diff-17eca9db515992a081522236bf9bad767fac171044f7c00c20bf740f4206b3de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/Lucian-code233/25b0a13be569db9160340d9ecd2fdf0d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ton-blockchain/ton/releases/tag/v2024.10#:~:text=krigga%20%28emulator%29%2C-%2CArayz%2C-%40%20TonBit%20%28LS%20security"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mp.weixin.qq.com/s/wy2ea6udkNZzIsp1K2LEOQ"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-13T22:16:10Z"
+  }
+}

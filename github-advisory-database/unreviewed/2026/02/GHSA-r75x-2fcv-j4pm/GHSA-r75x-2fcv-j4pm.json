@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r75x-2fcv-j4pm",
+  "modified": "2026-02-02T12:31:14Z",
+  "published": "2026-02-02T12:31:14Z",
+  "aliases": [
+    "CVE-2024-5386"
+  ],
+  "details": "In lunary-ai/lunary version 1.2.2, an account hijacking vulnerability exists due to a password reset token leak. A user with a 'viewer' role can exploit this vulnerability to hijack another user's account by obtaining the password reset token. The vulnerability is triggered when the 'viewer' role user sends a specific request to the server, which responds with a password reset token in the 'recoveryToken' parameter. This token can then be used to reset the password of another user's account without authorization. The issue results from an excessive attack surface, allowing lower-privileged users to escalate their privileges and take over accounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-5386"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lunary-ai/lunary/commit/fc7ab3d5621c18992da5dab3a2a9a8d227d42311"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/602eb4a1-305d-46d6-b975-5a5d8b040ad1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1125"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-02T11:16:16Z"
+  }
+}

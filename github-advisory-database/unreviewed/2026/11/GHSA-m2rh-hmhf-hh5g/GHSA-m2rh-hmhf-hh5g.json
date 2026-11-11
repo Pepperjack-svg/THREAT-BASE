@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m2rh-hmhf-hh5g",
+  "modified": "2026-11-10T09:31:04Z",
+  "published": "2026-11-02T18:32:28Z",
+  "aliases": [
+    "CVE-2026-65059"
+  ],
+  "details": "Furl versions through 3.15 for Perl allow memory exhaustion via unbounded decompression of HTTP responses.\n\nFurl inflates a response body sent with a gzip, x-gzip or deflate Content-Encoding and appends the output to the response string with no size limit. It does this whether or not the request asked for compression, and no option caps the decompressed size. Responses read with write_file or write_code are streamed rather than held in memory.\n\nA malicious server, or an attacker on a plain HTTP connection, can send a small compressed response that expands to exhaust the client's memory and end the process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tokuhirom/Furl/pull/139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/SYOHEX/Furl-3.15/source/lib/Furl/ZlibStream.pm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/TOKUHIROM/Furl-3.16/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/11/02/5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-409"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T17:17:44Z"
+  }
+}

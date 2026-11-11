@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2jh5-q7j2-v3r6",
+  "modified": "2026-03-25T18:31:34Z",
+  "published": "2026-01-13T18:31:07Z",
+  "aliases": [
+    "CVE-2025-71100"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtlwifi: 8192cu: fix tid out of range in rtl92cu_tx_fill_desc()\n\nTID getting from ieee80211_get_tid() might be out of range of array size\nof sta_entry->tids[], so check TID is less than MAX_TID_COUNT. Othwerwise,\nUBSAN warn:\n\n UBSAN: array-index-out-of-bounds in drivers/net/wireless/realtek/rtlwifi/rtl8192cu/trx.c:514:30\n index 10 is out of range for type 'rtl_tid_data [9]'",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71100"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90a15ff324645aa806d81fa349497cd964861b66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9765d6eb8298b07d499cdf9ef7c237d3540102d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd39edb445f07400e748da967a07d5dca5c5f96e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125",
+      "CWE-129"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-13T16:16:09Z"
+  }
+}

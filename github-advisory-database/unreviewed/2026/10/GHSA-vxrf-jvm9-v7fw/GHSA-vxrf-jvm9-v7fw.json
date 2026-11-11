@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vxrf-jvm9-v7fw",
+  "modified": "2026-10-13T21:33:47Z",
+  "published": "2026-10-13T21:33:46Z",
+  "aliases": [
+    "CVE-2026-110256"
+  ],
+  "details": "Finsys Dockhand through 1.0.18 contains an LDAP injection vulnerability in the tryLdapAuth function in src/lib/server/auth.ts, which inserts the login username into the LDAP search filter without escaping wildcard characters. Unauthenticated attackers can submit incremental wildcard patterns such as 'a*' to /api/auth/login and measure response timing to enumerate valid LDAP usernames while evading per-username rate limiting.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Finsys/dockhand/security/advisories/GHSA-vmm5-cjvh-7vmv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dockhand-before-1.0.19-username-enumeration-via-ldap-injection-in-tryldapauth"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-90"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:49Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g3vp-47q6-cfx3",
+  "modified": "2026-10-16T00:31:56Z",
+  "published": "2026-10-16T00:31:56Z",
+  "aliases": [
+    "CVE-2026-111323"
+  ],
+  "details": "RedAmon through 7.0.1 contains an unauthenticated server-side request forgery vulnerability in the agent POST /tradecraft/verify endpoint because validate_url checks only the initial hostname. Attackers can submit a public URL that redirects or DNS-rebinds to internal addresses like cloud metadata services, receiving fetched content through the model-generated summary.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111323"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samugit83/redamon"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samugit83/redamon/blob/e1dfdff671b7e76d3a002eeba37b01d92cb949e1/agentic/api.py#L1688"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samugit83/redamon/blob/e1dfdff671b7e76d3a002eeba37b01d92cb949e1/agentic/orchestrator_helpers/tradecraft_lookup.py#L231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samugit83/redamon/blob/e1dfdff671b7e76d3a002eeba37b01d92cb949e1/agentic/orchestrator_helpers/tradecraft_lookup.py#L539"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/redamon-tradecraft-verify-unauth-ssrf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/redamon-through-7.0.1-unauthenticated-ssrf-via-tradecraft-verify-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T22:19:30Z"
+  }
+}

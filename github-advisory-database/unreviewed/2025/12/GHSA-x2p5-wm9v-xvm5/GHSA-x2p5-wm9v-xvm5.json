@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x2p5-wm9v-xvm5",
+  "modified": "2025-12-09T18:30:33Z",
+  "published": "2025-12-09T18:30:33Z",
+  "aliases": [
+    "CVE-2023-53833"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915: Fix NULL ptr deref by checking new_crtc_state\n\nintel_atomic_get_new_crtc_state can return NULL, unless crtc state wasn't\nobtained previously with intel_atomic_get_crtc_state, so we must check it\nfor NULLness here, just as in many other places, where we can't guarantee\nthat intel_atomic_get_crtc_state was called.\nWe are currently getting NULL ptr deref because of that, so this fix was\nconfirmed to help.\n\n(cherry picked from commit 1d5b09f8daf859247a1ea65b0d732a24d88980d8)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53833"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b3c0d2d1685ba40b0af4ee1f8d8824a73870f88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a41d985902c153c31c616fe183cf2ee331e95ecb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dbf25cc21beff4fd2e730573845a266504b21bb2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T16:17:22Z"
+  }
+}

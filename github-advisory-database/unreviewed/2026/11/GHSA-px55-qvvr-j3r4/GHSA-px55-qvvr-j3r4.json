@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-px55-qvvr-j3r4",
+  "modified": "2026-11-09T21:31:58Z",
+  "published": "2026-11-09T21:31:57Z",
+  "aliases": [
+    "CVE-2026-125213"
+  ],
+  "details": "FFmpeg through 9.0.2 contains a heap buffer overflow vulnerability in the PSD decoder in libavcodec/psd.c that allows attackers to corrupt heap memory on 32-bit builds by supplying a crafted PSD image. Attackers can choose dimensions and channel counts whose product exceeds 4 GB, truncating the av_malloc allocation size so decode_rle() writes attacker-controlled data past the buffer, causing crashes or possible code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg/commit/aa4b80b54ee8645b5a77fe835ab2bbae1c9c465c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25702"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/psd.c#L450"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ffmpeg-through-9.0.2-heap-buffer-overflow-via-psd-decoder-rle-path"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-197"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T19:16:58Z"
+  }
+}

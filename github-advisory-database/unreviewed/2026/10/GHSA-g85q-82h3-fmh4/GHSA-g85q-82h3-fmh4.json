@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g85q-82h3-fmh4",
+  "modified": "2026-10-06T09:31:36Z",
+  "published": "2026-10-06T09:31:36Z",
+  "aliases": [
+    "CVE-2026-98351"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: virt_wifi: free skb when disconnected\n\nWhen the simulated link is disconnected, virt_wifi_start_xmit() returns\nNET_XMIT_DROP without freeing the skb. dev_hard_start_xmit() treats this\nreturn value as consumed, so every packet sent while disconnected leaks its\nskb.\n\nFree the skb before returning the drop status.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98351"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36727a702cf8e3399e3da60d0856378f6afcfb34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38d3a5df85345f158f78b478b265ca906224454e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46371442847a725cc0df3697fea2eba1dd54b82b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f266738af45675faa0e8afee08c6e780afa8b06"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/56469996c10a0240653fc00576b4d33bdfb4cc51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d177eca79e1106834bc423d3969a4a2e3987996a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee053ea35c759135460f03d1c574f4ed08de844a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9edf7cf63b96d2b776fca8d258d3c5256e40c8e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:28Z"
+  }
+}

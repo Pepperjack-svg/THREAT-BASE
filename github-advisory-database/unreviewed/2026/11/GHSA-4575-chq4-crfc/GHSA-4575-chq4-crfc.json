@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4575-chq4-crfc",
+  "modified": "2026-11-04T21:32:31Z",
+  "published": "2026-11-04T21:32:31Z",
+  "aliases": [
+    "CVE-2026-122127"
+  ],
+  "details": "CESNET ipfixcol2 2.7.1 before 2.9.0 contains a heap-based buffer overflow in Lz4Decoder.cpp that allows unauthenticated network peers to write past heap buffers. Attackers can declare a small ring buffer_size followed by a large decompressed_size to write up to 65535 controlled bytes and crash the collector.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CESNET/ipfixcol2/commit/fd5cb168efb4b864d33f655174711b2779cef502"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CESNET/ipfixcol2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CESNET/ipfixcol2/blob/v2.8.0/src/plugins/input/tcp/src/Lz4Decoder.cpp#L139-L151"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CESNET/ipfixcol2/releases/tag/v2.9.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cesnet-ipfixcol2-2.7.1-before-2.9.0-heap-buffer-overflow-via-tcp-lz4-decoder"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T21:18:08Z"
+  }
+}

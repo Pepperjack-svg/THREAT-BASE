@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fx49-4h83-wjv9",
+  "modified": "2026-10-06T16:21:52Z",
+  "published": "2026-10-06T16:21:52Z",
+  "aliases": [
+    "CVE-2026-105855"
+  ],
+  "summary": "Payload didn't enforce field-level password update restrictions",
+  "details": "## Impact\n\nWhen an auth collection defined a field-level access.update restriction on the password field, the restriction was not enforced on the server correctly.\n\n## Patches\n\nUsers should upgrade Payload packages to `>= 3.90.0` or `>= 4.0.0-canary.34`.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "payload"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.90.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "payload"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-canary.0"
+            },
+            {
+              "fixed": "4.0.0-canary.34"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/payloadcms/payload/security/advisories/GHSA-fx49-4h83-wjv9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/payloadcms/payload/commit/9de9e7911e29d60870a1d5480412524c63d6411e"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/payloadcms/payload"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/payloadcms/payload/releases/tag/v3.90.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-06T16:21:52Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wgfh-hh9v-wmvg",
+  "modified": "2026-11-02T21:31:57Z",
+  "published": "2026-11-02T21:31:57Z",
+  "aliases": [
+    "CVE-2026-120060"
+  ],
+  "details": "psqlODBC trusts counts and lengths in server data in three places. SQLBulkOperations uses a server-supplied row count in a size subtraction that can underflow. SQLStatistics iterates index keys using a server-supplied key count without bounding it to the fixed storage. Bytea octal decoding reads up to two bytes past the end of a truncated escape sequence. A server not trusted under current SSL settings can crash the client or make it read out of bounds. Versions before psqlODBC 18.00.0006 are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-4mfx-cfxx-c877"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120060"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T19:18:03Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pmvw-96hq-2x7q",
+  "modified": "2026-11-07T12:31:53Z",
+  "published": "2026-11-07T12:31:52Z",
+  "aliases": [
+    "CVE-2026-120685"
+  ],
+  "details": "The Real Testimonials – Testimonial Slider, Collect Customer Reviews and Video Testimonials plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'tpro_client_image (JPEG IPTC caption) + tpro_client_testimonial ([gallery] shortcode)' parameter in all versions up to, and including, 4.1.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires an administrator to have the display block configured with the Strip All HTML Tags option disabled, which is the plugin's native setting for rendering formatted testimonial content, and to have approved the submitted testimonials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/testimonial-free/tags/4.1.0/src/Blocks/API/APIHelper.php#L151"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/testimonial-free/tags/4.1.0/src/Blocks/API/APIHelper.php#L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/testimonial-free/tags/4.1.0/src/Blocks/API/ManageAPI.php#L352"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/testimonial-free/tags/4.1.0/src/Blocks/Includes/TestimonialQuery.php#L240"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/testimonial-free/tags/4.1.0/src/Blocks/Templates/template-parts/testimonial-content.php#L34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3781836/testimonial-free"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3781836/testimonial-free/trunk/src/Blocks/Templates/template-parts/testimonial-content.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/756c203e-8fbe-46f0-8ae7-a3f2d005cd6f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-07T12:17:44Z"
+  }
+}

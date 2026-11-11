@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vhwh-fhm6-mq7v",
+  "modified": "2026-11-06T15:31:19Z",
+  "published": "2026-10-31T15:30:23Z",
+  "aliases": [
+    "CVE-2026-78189"
+  ],
+  "details": "WebDyne versions from 3.007 before 3.022 for Perl execute .psp files outside the document root via path traversal in the PSGI API route fallback.\n\nWhen a request matches no file, the PSGI handler retries it as an API route through api_filename. That keeps .. segments in the request path and only checks that the joined path starts with the document root, which a request for /../private passes.\n\nA remote attacker can run the embedded Perl in any .psp file the server can read, such as one uploaded to a directory outside the document root.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78189"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/ASPEER/WebDyne-3.022/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-31T15:16:54Z"
+  }
+}

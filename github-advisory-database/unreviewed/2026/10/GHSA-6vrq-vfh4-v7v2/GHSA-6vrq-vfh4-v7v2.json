@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vrq-vfh4-v7v2",
+  "modified": "2026-10-30T15:34:39Z",
+  "published": "2026-10-30T15:34:39Z",
+  "aliases": [
+    "CVE-2026-119657"
+  ],
+  "details": "FilePress through 3.0.1 contains a missing authorization vulnerability in dzz/pichome/library that allows authenticated users to manage other libraries' folders because checkuserperm_by_uid only checks membership of any library. Attackers who know another library's appid or folder id can invoke folder.php operations like deletefolder and rename, or rightdata.php getfolderdata, to delete, modify, or read foreign folders.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119657"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zyx0814/FilePress/issues/76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zyx0814/FilePress"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zyx0814/FilePress/blob/3.0.1/core/class/table/table_pichome_vappmember.php#L56-L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zyx0814/FilePress/blob/3.0.1/dzz/pichome/library.php#L9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zyx0814/FilePress/blob/3.0.1/dzz/pichome/library/folder.php#L6-L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zyx0814/FilePress/blob/3.0.1/dzz/pichome/library/rightdata.php#L6-L30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/filepress-pichome-library-missing-per-library-authorization-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/filepress-through-3.0.1-missing-authorization-in-pichome-library-folder-operations"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T15:16:49Z"
+  }
+}

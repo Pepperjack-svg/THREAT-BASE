@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-26v7-mr7m-fqqx",
+  "modified": "2026-11-03T15:32:03Z",
+  "published": "2026-11-03T15:32:02Z",
+  "aliases": [
+    "CVE-2026-121404"
+  ],
+  "details": "FreeRDP before 3.32.2 contains a denial of service vulnerability in the shadow server that allows authenticated RDP clients to spin server threads by sending zero-length drdynvc DATA PDUs. Attackers can send empty DATA messages on opened audin or rdpgfx channels, so that FreeRDP_WTSVirtualChannelRead never consumes them, consuming full CPU cores until disconnect.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-fqcj-rwww-2498"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121404"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/freerdp-before-3.32.2-shadow-server-cpu-exhaustion-via-zero-length-dvc-data"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T15:17:28Z"
+  }
+}

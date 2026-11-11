@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jp9m-rpm6-97j7",
+  "modified": "2025-12-30T15:30:36Z",
+  "published": "2025-12-30T15:30:36Z",
+  "aliases": [
+    "CVE-2023-54324"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm: fix a race condition in retrieve_deps\n\nThere's a race condition in the multipath target when retrieve_deps\nraces with multipath_message calling dm_get_device and dm_put_device.\nretrieve_deps walks the list of open devices without holding any lock\nbut multipath may add or remove devices to the list while it is\nrunning. The end result may be memory corruption or use-after-free\nmemory access.\n\nSee this description of a UAF with multipath_message():\nhttps://listman.redhat.com/archives/dm-devel/2022-October/052373.html\n\nFix this bug by introducing a new rw semaphore \"devices_lock\". We grab\ndevices_lock for read in retrieve_deps and we grab it for write in\ndm_get_device and dm_put_device.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38f6e5ae5d9ff4a4050ea6f7b543d5d5a4e087cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dbf1a719850577bb51fc7512a3972994b797a17b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6007dce0cd35d634d9be91ef3515a6385dcee16"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:21Z"
+  }
+}

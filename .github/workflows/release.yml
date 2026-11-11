@@ -1,0 +1,70 @@
+{
+  "name": "Monthly THREAT-BASE release",
+  "on": {
+    "schedule": [
+      {
+        "cron": "0 1 1 * *",
+        "timezone": "Asia/Kolkata"
+      }
+    ],
+    "workflow_dispatch": {},
+    "workflow_run": {
+      "workflows": [
+        "Sync THREAT-BASE datasets"
+      ],
+      "types": [
+        "completed"
+      ],
+      "branches": [
+        "main"
+      ]
+    }
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "threat-base-data-publication",
+    "cancel-in-progress": false
+  },
+  "jobs": {
+    "release": {
+      "if": "github.ref_name == github.event.repository.default_branch && github.ref_type == 'branch' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')",
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 180,
+      "permissions": {
+        "contents": "write",
+        "actions": "read"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "with": {
+            "fetch-depth": 0,
+            "persist-credentials": false
+          }
+        },
+        {
+          "name": "Package and verify dataset snapshot",
+          "env": {
+            "GH_TOKEN": "${{ github.token }}"
+          },
+          "run": "bash .github/scripts/release.sh"
+        }
+      ],
+      "env": {
+        "GIT_CONFIG_COUNT": "5",
+        "GIT_CONFIG_KEY_0": "core.packedGitLimit",
+        "GIT_CONFIG_VALUE_0": "256m",
+        "GIT_CONFIG_KEY_1": "core.packedGitWindowSize",
+        "GIT_CONFIG_VALUE_1": "16m",
+        "GIT_CONFIG_KEY_2": "core.deltaBaseCacheLimit",
+        "GIT_CONFIG_VALUE_2": "64m",
+        "GIT_CONFIG_KEY_3": "pack.windowMemory",
+        "GIT_CONFIG_VALUE_3": "64m",
+        "GIT_CONFIG_KEY_4": "pack.threads",
+        "GIT_CONFIG_VALUE_4": "2"
+      }
+    }
+  }
+}

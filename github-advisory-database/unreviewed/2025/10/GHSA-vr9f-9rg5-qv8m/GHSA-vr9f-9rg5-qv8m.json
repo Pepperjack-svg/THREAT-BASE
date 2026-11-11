@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vr9f-9rg5-qv8m",
+  "modified": "2026-01-16T21:30:29Z",
+  "published": "2025-10-01T12:30:29Z",
+  "aliases": [
+    "CVE-2022-50467"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: lpfc: Fix null ndlp ptr dereference in abnormal exit path for GFT_ID\n\nAn error case exit from lpfc_cmpl_ct_cmd_gft_id() results in a call to\nlpfc_nlp_put() with a null pointer to a nodelist structure.\n\nChanged lpfc_cmpl_ct_cmd_gft_id() to initialize nodelist pointer upon\nentry.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50467"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04e7cd8c85636a329d1a6e5a269a7c8b6f71c41c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59b7e210a522b836a01516c71ee85d1d92c1f075"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82dc1fe4324e2c897f2ed1c66f4fcff03094ac3a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:40Z"
+  }
+}

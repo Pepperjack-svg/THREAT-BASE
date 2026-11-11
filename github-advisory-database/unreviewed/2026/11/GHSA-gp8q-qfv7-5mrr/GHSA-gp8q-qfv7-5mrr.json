@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gp8q-qfv7-5mrr",
+  "modified": "2026-11-05T18:32:19Z",
+  "published": "2026-11-05T15:32:36Z",
+  "aliases": [
+    "CVE-2026-82910"
+  ],
+  "details": "Improper Neutralization of Special Elements Used in a Template Engine ('Server-Side Template Injection') in MacroScreenRenderer in Apache OFBiz 24.09 before 24.09.08 on all platforms allows a remote authenticated attacker holding only the two view permissions of a control-servlet webapp (e.g. CATALOG_VIEW and OFBTOOLS_VIEW on /catalog, held by OFBiz's own shipped order-entry clerk role) to execute arbitrary operating system commands as the OFBiz service account with a single GET request, by placing an apostrophe followed by FreeMarker expression source in a screen link parameter value, because renderLink concatenates link parameter values verbatim between apostrophes into an unquoted, unescaped template-source string that is compiled and evaluated at render time, allowing the injected expression to reach the allow-listed FlexibleStringExpander.expandString call and, through a runtime-assembled Groovy interpolation, unsandboxed code execution. Users are recommended to upgrade to version 24.09.08, which fixes this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82910"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/7b2syzksp7klt9fvhdg0olldvs2g83lz"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T14:17:05Z"
+  }
+}

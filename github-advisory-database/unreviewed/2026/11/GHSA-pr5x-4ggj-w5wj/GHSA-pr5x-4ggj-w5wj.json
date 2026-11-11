@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pr5x-4ggj-w5wj",
+  "modified": "2026-11-09T21:32:05Z",
+  "published": "2026-11-09T21:32:05Z",
+  "aliases": [
+    "CVE-2026-125259"
+  ],
+  "details": "FFmpeg through 9.0.2 contains an integer overflow vulnerability in ff_prores_kostya_encode_init() that miscalculates frame_size_upper_bound using 32-bit arithmetic for large frame dimensions. Attackers can supply a high-resolution video transcoded with the prores_ks encoder, causing encode_frame() to write slices past an undersized packet buffer and corrupt heap memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125259"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg/commit/439b452f9fe916a9f7d8788ab6afee8fac846b0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25573"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/proresenc_kostya_common.c#L286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ffmpeg-through-9.0.2-heap-buffer-overflow-via-prores-prores-ks-encoder"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T20:18:12Z"
+  }
+}

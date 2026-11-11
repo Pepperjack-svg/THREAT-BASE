@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h8h9-7p7r-7rpq",
+  "modified": "2026-10-02T06:30:55Z",
+  "published": "2026-10-02T06:30:55Z",
+  "aliases": [
+    "CVE-2026-15897"
+  ],
+  "details": "The Super Forms – Drag & Drop Form Builder plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 6.3.316. This is due to the Register & Login add-on's before_email_success_msg() function, in its register_login_action='update' flow, trusting an attacker-supplied user_id value and passing it to wp_update_user() without any ownership or capability check. Because the super_save_form AJAX action also enforces no capability check, any authenticated user with Subscriber-level access and above can create the required malicious form (register_login_action='update' with register_login_user_id_update='true') and then submit it with user_id set to an administrator's ID along with a new user_pass/user_email. This makes it possible for authenticated attackers with Subscriber-level access and above to overwrite the credentials of arbitrary existing accounts — including administrators — resulting in account takeover and full site compromise.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15897"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RensTillmann/super-forms/pull/205"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/94297481-9ebb-42cb-9362-be8bc52b126f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-02T06:16:41Z"
+  }
+}

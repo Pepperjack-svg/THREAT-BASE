@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-354g-72cf-fpqr",
+  "modified": "2025-06-23T18:30:26Z",
+  "published": "2025-06-23T18:30:26Z",
+  "aliases": [
+    "CVE-2025-52969"
+  ],
+  "details": "ClickHouse 25.7.1.557 allows low-privileged users to execute shell commands by querying existing Executable() tables created by higher-privileged users. Although the CREATE TABLE privilege is restricted, there is no access control preventing low-privileged users from invoking Executable tables already present in the system. If an attacker can influence the contents of the script referenced by the Executable() engine through writable paths, they may execute controlled commands in the context of the ClickHouse server, leading to privilege escalation and unauthorized code execution. NOTE: the Supplier's position is that these types of executions by low-privileged users are the expected behavior.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-52969"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/skraft9/clickhouse-security-research"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-420"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-23T17:15:31Z"
+  }
+}

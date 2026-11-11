@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vggc-4cwp-hvvp",
+  "modified": "2025-03-12T00:31:48Z",
+  "published": "2025-03-12T00:31:48Z",
+  "aliases": [
+    "CVE-2022-49671"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/cm: Fix memory leak in ib_cm_insert_listen\n\ncm_alloc_id_priv() allocates resource for the cm_id_priv. When\ncm_init_listen() fails it doesn't free it, leading to memory leak.\n\nAdd the missing error unwind.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49671"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2990f223ffa7bb25422956b9f79f9176a5b38346"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2febf09a8a8ae4accf908f043f1bab1421056568"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/889000874c1204e47c7f2a4945db262a47e7efc9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0cab8b517aeaf2592c3479294f934209c41a26f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:42Z"
+  }
+}

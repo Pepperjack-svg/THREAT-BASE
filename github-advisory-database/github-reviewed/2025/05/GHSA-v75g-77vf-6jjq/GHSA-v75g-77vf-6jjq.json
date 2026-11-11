@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v75g-77vf-6jjq",
+  "modified": "2025-06-03T01:10:53Z",
+  "published": "2025-05-30T20:01:10Z",
+  "aliases": [
+    "CVE-2025-48955"
+  ],
+  "summary": "Para Server Logs Sensitive Information",
+  "details": "CWE ID: CWE-532 (Insertion of Sensitive Information into Log File)\nCVSS:  7.5 (High)\nVector: CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N\n\n**Affected Component:** Para Server Initialization Logging\n**Version:** Para v1.50.6\n**File Path:** `para-1.50.6/para-server/src/main/java/com/erudika/para/server/utils/HealthUtils.java`\n**Vulnerable Line(s):** Line 132 (via `logger.info(...)` with root credentials)\n\nTechnical Details:\n\nThe vulnerability is located in the HealthUtils.java file, where a failed configuration file write triggers the following logging statement:\n```java\nlogger.info(\"Initialized root app with access key '{}' and secret '{}', but could not write these to {}.\",\n    rootAppCredentials.get(\"accessKey\"),\n    rootAppCredentials.get(\"secretKey\"),\n    confFile);\n```\nThis exposes both access and secret keys in logs without redaction. These credentials are later reused in variable assignments for persistence but do not require logging for debugging or system health purposes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.erudika:para-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.50.8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Erudika/para/security/advisories/GHSA-v75g-77vf-6jjq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-48955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Erudika/para/commit/1e8a89558542854bb0683ab234c4429ad93b0835"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Erudika/para"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-05-30T20:01:10Z",
+    "nvd_published_at": "2025-06-02T12:15:25Z"
+  }
+}

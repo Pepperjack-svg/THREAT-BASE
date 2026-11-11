@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wg2w-8j36-3rqh",
+  "modified": "2025-12-24T15:30:39Z",
+  "published": "2025-12-24T15:30:39Z",
+  "aliases": [
+    "CVE-2023-54146"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/kexec: Fix double-free of elf header buffer\n\nAfter\n\n  b3e34a47f989 (\"x86/kexec: fix memory leak of elf header buffer\"),\n\nfreeing image->elf_headers in the error path of crash_load_segments()\nis not needed because kimage_file_post_load_cleanup() will take\ncare of that later. And not clearing it could result in a double-free.\n\nDrop the superfluous vfree() call at the error path of\ncrash_load_segments().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54146"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c71a552b97fb4f46eb300224434fe56fcf4f254"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/554a880a1fff46dd5a355dec21cd77d542a0ddf2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5bd3c7abeb69fb4133418b846a1c6dc11313d6f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d00dd2f2645dca04cf399d8fc692f3f69b6dd996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fbdbf8ac333d3d47c0d9ea81d7d445654431d100"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:16Z"
+  }
+}

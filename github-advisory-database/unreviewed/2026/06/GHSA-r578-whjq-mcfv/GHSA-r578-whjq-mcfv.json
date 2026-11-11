@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r578-whjq-mcfv",
+  "modified": "2026-08-04T12:34:50Z",
+  "published": "2026-06-26T12:30:29Z",
+  "aliases": [
+    "CVE-2026-13325"
+  ],
+  "details": "A flaw was found in KubeVirt's migration proxy. When spec.configuration.migrations.disableTLS is set to true on the KubeVirt custom resource, the target virt-handler binds a plain TCP listener on all interfaces (0.0.0.0/::) on a random port with no authentication, peer allow-list, or handshake token. This listener proxies directly into the target virt-launcher's virtqemud control socket. An attacker with a running pod on the cluster network can connect to this listener and issue unfiltered libvirt RPC commands against another tenant's virtual machine, including reading VM memory and configuration, modifying VM state via QMP, or destroying the VM. The bind address is unconditionally 0.0.0.0 — configuring a dedicated migration network via migrations.network only changes the advertised migration IP, not the listener bind address, so the port remains reachable on the pod network even when a dedicated migration network is configured. The API documentation describes disableTLS as removing \"the additional layer of live migration encryption\" without disclosing that it also removes all mutual authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13325"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-13325"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2493378"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-26T11:16:30Z"
+  }
+}

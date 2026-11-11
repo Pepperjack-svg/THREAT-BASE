@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p96w-fc3f-mj48",
+  "modified": "2025-11-25T21:32:04Z",
+  "published": "2025-09-11T18:35:50Z",
+  "aliases": [
+    "CVE-2025-39740"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/migrate: prevent potential UAF\n\nIf we hit the error path, the previous fence (if there is one) has\nalready been put() prior to this, so doing a fence_wait could lead to\nUAF. Tweak the flow to do to the put() until after we do the wait.\n\n(cherry picked from commit 9b7ca35ed28fe5fad86e9d9c24ebd1271e4c9c3e)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39740"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/145832fbdd17b1d77ffd6cdd1642259e101d1b7e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7e46fa64a4b94208563c3a5bf1d7f4346f94abea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-11T17:15:36Z"
+  }
+}

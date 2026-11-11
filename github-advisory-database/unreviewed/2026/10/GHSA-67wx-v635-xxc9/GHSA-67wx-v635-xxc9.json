@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-67wx-v635-xxc9",
+  "modified": "2026-10-30T15:34:37Z",
+  "published": "2026-10-30T15:34:37Z",
+  "aliases": [
+    "CVE-2026-119647"
+  ],
+  "details": "RuoYi-Vue-Plus through 6.0.0 contains an authorization bypass vulnerability in SysUserServiceImpl.selectUserListByDept that allows authenticated users to read users of other departments. Users holding system:user:list under a department-restricted role can request GET /system/user/list/dept/{deptId} with any department id to obtain usernames, nicknames, account status, last login IP and time, and remarks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119647"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/RuoYi-Vue-Plus/issues/60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/RuoYi-Vue-Plus/commit/a8b1bea7b7a4ca260172cf74fbf4ea7763092996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/RuoYi-Vue-Plus"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/RuoYi-Vue-Plus/blob/v6.0.0/ruoyi-modules/ruoyi-system/src/main/java/org/dromara/system/controller/system/SysUserController.java#L352-L356"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/RuoYi-Vue-Plus/blob/v6.0.0/ruoyi-modules/ruoyi-system/src/main/java/org/dromara/system/service/impl/SysUserServiceImpl.java#L555-L560"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/ruoyi-vue-plus-user-list-by-dept-datascope-bypass"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ruoyi-vue-plus-through-6.0.0-data-scope-bypass-via-system-user-list-dept-deptid"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T15:16:48Z"
+  }
+}

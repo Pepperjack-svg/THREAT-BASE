@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-62xr-88cq-2vgw",
+  "modified": "2026-05-27T09:31:14Z",
+  "published": "2026-05-27T09:31:14Z",
+  "aliases": [
+    "CVE-2026-8911"
+  ],
+  "details": "The WP AutoBuzz plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.1.1. This is due to missing or incorrect nonce validation on a function. This makes it possible for unauthenticated attackers to update settings and inject malicious web scripts via a forged request granted they can trick a site administrator into performing an action such as clicking on a link. This vulnerability bypasses WordPress's DISALLOW_UNFILTERED_HTML protection because the unsanitized value is written directly via update_option at the plugin level, entirely outside of WordPress post content handling.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8911"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-autobuzz/tags/1.1.1/wp-autobuzz.php#L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-autobuzz/tags/1.1.1/wp-autobuzz.php#L81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-autobuzz/tags/1.1.1/wp-autobuzz.php#L93"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/481dc27b-0d64-49cc-8d67-50fa53636398?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T07:16:18Z"
+  }
+}

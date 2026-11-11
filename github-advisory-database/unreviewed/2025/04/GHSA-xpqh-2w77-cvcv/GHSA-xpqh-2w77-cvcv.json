@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xpqh-2w77-cvcv",
+  "modified": "2025-11-03T21:33:36Z",
+  "published": "2025-04-16T15:34:42Z",
+  "aliases": [
+    "CVE-2025-22066"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: imx-card: Add NULL check in imx_card_probe()\n\ndevm_kasprintf() returns NULL when memory allocation fails. Currently,\nimx_card_probe() does not check for this case, which results in a NULL\npointer dereference.\n\nAdd NULL check after devm_kasprintf() to prevent this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22066"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/018e6cf2503e60087747b0ebc190e18b3640766f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38253922a89a742e7e622f626b41c64388367361"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d8458e48ff135bddc402ad79821dc058ea163d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93d34608fd162f725172e780b1c60cc93a920719"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b01700e08be99e3842570142ec5973ccd7e73eaf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd2bbb9564d0d24a2643ad90008a79840368c4b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e283a5bf4337a7300ac5e6ae363cc8b242a0b4b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:16:00Z"
+  }
+}

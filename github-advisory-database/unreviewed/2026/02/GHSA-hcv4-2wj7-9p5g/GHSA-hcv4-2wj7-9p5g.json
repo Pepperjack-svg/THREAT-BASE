@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hcv4-2wj7-9p5g",
+  "modified": "2026-02-27T21:31:20Z",
+  "published": "2026-02-26T21:31:31Z",
+  "aliases": [
+    "CVE-2026-27509"
+  ],
+  "details": "Unitree Go2 firmware versions V1.1.7 through V1.1.9 and V1.1.11 (EDU) do not implement DDS authentication or authorization for the Eclipse CycloneDDS topic rt/api/programming_actuator/request handled by actuator_manager.py. A network-adjacent, unauthenticated attacker can join DDS domain 0 and publish a crafted message (api_id=1002) containing arbitrary Python, which the robot writes to disk under /unitree/etc/programming/ and binds to a physical controller keybinding. When the keybinding is pressed, the code executes as root and the binding persists across reboots.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27509"
+    },
+    {
+      "type": "WEB",
+      "url": "https://boschko.ca/unitree-go2-rce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://shop.unitree.com/products/unitree-go2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/unitree-go2-missing-dds-authentication-enables-adjacent-rce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-26T20:31:38Z"
+  }
+}

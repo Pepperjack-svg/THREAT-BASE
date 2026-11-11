@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8r55-jh7v-855p",
+  "modified": "2026-10-15T03:35:08Z",
+  "published": "2026-01-23T18:31:29Z",
+  "aliases": [
+    "CVE-2026-22994"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix reference count leak in bpf_prog_test_run_xdp()\n\nsyzbot is reporting\n\n  unregister_netdevice: waiting for sit0 to become free. Usage count = 2\n\nproblem. A debug printk() patch found that a refcount is obtained at\nxdp_convert_md_to_buff() from bpf_prog_test_run_xdp().\n\nAccording to commit ec94670fcb3b (\"bpf: Support specifying ingress via\nxdp_md context in BPF_PROG_TEST_RUN\"), the refcount obtained by\nxdp_convert_md_to_buff() will be released by xdp_convert_buff_to_md().\n\nTherefore, we can consider that the error handling path introduced by\ncommit 1c1949982524 (\"bpf: introduce frags support to\nbpf_prog_test_run_xdp()\") forgot to call xdp_convert_buff_to_md().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22994"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/368569bc546d3368ee9980ba79fc42fdff9a3365"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/737be05a765761d7d7c9f7fe92274bd8e6f6951e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98676ee71fd4eafeb8be63c7f3f1905d40e03101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec69daabe45256f98ac86c651b8ad1b2574489a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb9ef40cccdbacce36029b305d0ef1e12e4fea38"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-23T16:15:55Z"
+  }
+}

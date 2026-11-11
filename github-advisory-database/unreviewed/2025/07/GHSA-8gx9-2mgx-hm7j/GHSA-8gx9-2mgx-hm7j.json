@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8gx9-2mgx-hm7j",
+  "modified": "2025-12-23T21:30:21Z",
+  "published": "2025-07-25T15:30:53Z",
+  "aliases": [
+    "CVE-2025-38409"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm: Fix another leak in the submit error path\n\nput_unused_fd() doesn't free the installed file, if we've already done\nfd_install().  So we need to also free the sync_file.\n\nPatchwork: https://patchwork.freedesktop.org/patch/653583/",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38409"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00b3401f692082ddf6342500d1be25560bba46d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30d3819b0b9173e31b84d662a592af8bad351427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f6ce8433a9035b0aa810e1f5b708e9dc1c367b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c40ad1c04d306f7fde26337fdcf8a5979657d93f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f681c2aa8676a890eacc84044717ab0fd26e058f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T14:15:32Z"
+  }
+}

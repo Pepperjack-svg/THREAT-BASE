@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v5rp-5hx5-3vwq",
+  "modified": "2025-05-09T03:30:25Z",
+  "published": "2025-05-09T03:30:25Z",
+  "aliases": [
+    "CVE-2025-3811"
+  ],
+  "details": "The WPBookit plugin for WordPress is vulnerable to privilege escalation via account takeover in all versions up to, and including, 1.0.2. This is due to the plugin not properly validating a user's identity prior to updating their details like email through the edit_newdata_customer_callback() function. This makes it possible for unauthenticated attackers to change arbitrary user's email addresses, including administrators, and leverage that to reset the user's password and gain access to their account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-3811"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3278939/wpbookit/trunk/core/admin/classes/controllers/class.wpb-customer-controller.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a61cce43-0df7-4ca9-8897-24c7d131b505?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-09T03:15:24Z"
+  }
+}

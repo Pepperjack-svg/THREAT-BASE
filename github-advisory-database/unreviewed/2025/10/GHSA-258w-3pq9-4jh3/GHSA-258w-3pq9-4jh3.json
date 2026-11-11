@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-258w-3pq9-4jh3",
+  "modified": "2026-02-26T18:31:33Z",
+  "published": "2025-10-28T12:30:16Z",
+  "aliases": [
+    "CVE-2025-40039"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: Fix race condition in RPC handle list access\n\nThe 'sess->rpc_handle_list' XArray manages RPC handles within a ksmbd\nsession. Access to this list is intended to be protected by\n'sess->rpc_lock' (an rw_semaphore). However, the locking implementation was\nflawed, leading to potential race conditions.\n\nIn ksmbd_session_rpc_open(), the code incorrectly acquired only a read lock\nbefore calling xa_store() and xa_erase(). Since these operations modify\nthe XArray structure, a write lock is required to ensure exclusive access\nand prevent data corruption from concurrent modifications.\n\nFurthermore, ksmbd_session_rpc_method() accessed the list using xa_load()\nwithout holding any lock at all. This could lead to reading inconsistent\ndata or a potential use-after-free if an entry is concurrently removed and\nthe pointer is dereferenced.\n\nFix these issues by:\n1. Using down_write() and up_write() in ksmbd_session_rpc_open()\n   to ensure exclusive access during XArray modification, and ensuring\n   the lock is correctly released on error paths.\n2. Adding down_read() and up_read() in ksmbd_session_rpc_method()\n   to safely protect the lookup.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40039"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/305853cce379407090a73b38c5de5ba748893aee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5cc679ba0f4505936124cd4179ba66bb0a4bd9f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69674b029002b1d90b655f014bdf64f404efa54d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b615a8fb3af0baf8126cde3d4fee97d57222ffc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6bd7e0e55dcea2cf0d391bbc21c2eb069b4be3e1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-28T12:15:37Z"
+  }
+}

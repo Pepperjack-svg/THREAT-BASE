@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8252-q96p-5jpg",
+  "modified": "2025-12-09T18:30:33Z",
+  "published": "2025-12-09T18:30:33Z",
+  "aliases": [
+    "CVE-2023-53839"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndccp: fix data-race around dp->dccps_mss_cache\n\ndccp_sendmsg() reads dp->dccps_mss_cache before locking the socket.\nSame thing in do_dccp_getsockopt().\n\nAdd READ_ONCE()/WRITE_ONCE() annotations,\nand change dccp_sendmsg() to check again dccps_mss_cache\nafter socket is locked.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53839"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/162fa1e3cfb62aa780d7c40c8cccb6c2f8bef7c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2bdc7f272b3a110a4e1fdee6c47c8d20f9b20817"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67eebc7a9217f999b779d46fba5312a716f0dc1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d701c95ee6463abcbb6da543060d6e444554135"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a47e598fbd8617967e49d85c49c22f9fc642704c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6ddc1c774874dc704f96a99d015dc759627bba7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1f38d313bdfc52fb2f662e66d0c60dd1cfe2384"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f239c9e1d98b313435481b4926e8bdd06197e4d8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T16:17:23Z"
+  }
+}

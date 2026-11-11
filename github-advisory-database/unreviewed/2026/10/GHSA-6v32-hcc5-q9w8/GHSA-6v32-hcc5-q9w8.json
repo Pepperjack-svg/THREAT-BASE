@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6v32-hcc5-q9w8",
+  "modified": "2026-10-06T09:31:35Z",
+  "published": "2026-10-06T09:31:35Z",
+  "aliases": [
+    "CVE-2026-98327"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: mesh: reset the CSA state when leaving\n\nifmsh->csa is allocated in ieee80211_mesh_csa_beacon() and only freed\nin ieee80211_mesh_finish_csa(), i.e. when the channel switch completes.\nLeaving the mesh while a switch is still pending therefore leaks it.\n\nAdditionally, ifmsh->csa_role and ifmsh->chsw_ttl have their state leak\nin this case, so things can get mixed up in addition to the memory\nleak.\n\nRefactor the reset and call it in ieee80211_stop_mesh() to fix it all.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98327"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/860134b3af77970e006feab7e5decb8c84771c7f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aba8dfb45864441199748c33ce3c1c8ca121c8bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba5bf83a81e8832cb84bb3a2da67512f81f57a02"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd3b21145ae2e781daac1bbd19216a63ab4e0cbd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:24Z"
+  }
+}

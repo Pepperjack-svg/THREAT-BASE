@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9686-4jg7-g9h3",
+  "modified": "2026-11-09T18:32:01Z",
+  "published": "2026-11-09T18:32:01Z",
+  "aliases": [
+    "CVE-2026-19706"
+  ],
+  "details": "During ABI bootstrap, the bootstrap node's approve-csr.service approves and signs every CSR without identity validation.\n\nAn attacker on the install network can retrieve the unauthenticated Ignition file (ports 22623/22624), extract a limited kubeconfig, submit a CSR for CN=system:admin, receive the signed certificate, and gain full cluster-admin access.\n\nExploitable only during the narrow bootstrap window.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19706"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-19706"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2515215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html/installing_an_on-premise_cluster_with_the_agent-based_installer/index"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T18:17:27Z"
+  }
+}

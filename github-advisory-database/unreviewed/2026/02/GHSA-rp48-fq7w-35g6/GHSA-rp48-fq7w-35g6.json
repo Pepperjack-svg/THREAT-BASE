@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rp48-fq7w-35g6",
+  "modified": "2026-03-18T15:30:40Z",
+  "published": "2026-02-14T15:32:19Z",
+  "aliases": [
+    "CVE-2026-23129"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndpll: Prevent duplicate registrations\n\nModify the internal registration helpers dpll_xa_ref_{dpll,pin}_add()\nto reject duplicate registration attempts.\n\nPreviously, if a caller attempted to register the same pin multiple\ntimes (with the same ops, priv, and cookie) on the same device, the core\nsilently increments the reference count and return success. This behavior\nis incorrect because if the caller makes these duplicate registrations\nthen for the first one dpll_pin_registration is allocated and for others\nthe associated dpll_pin_ref.refcount is incremented. During the first\nunregistration the associated dpll_pin_registration is freed and for\nothers WARN is fired.\n\nFix this by updating the logic to return `-EEXIST` if a matching\nregistration is found to enforce a strict \"register once\" policy.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23129"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/236a657422a564859dcd0db7bdb486abb21a721a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dfec0501dba8f4711ef142a6a890e4812b7af88c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f3ddbaaaaf4d0633b40482f471753f9c71294a4a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T15:16:08Z"
+  }
+}

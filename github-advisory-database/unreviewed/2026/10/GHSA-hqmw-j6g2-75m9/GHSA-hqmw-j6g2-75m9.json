@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hqmw-j6g2-75m9",
+  "modified": "2026-10-24T15:32:46Z",
+  "published": "2026-10-18T18:31:50Z",
+  "aliases": [
+    "CVE-2026-98471"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SEV: Do cache maintenance on the source VM during intra-host migration\n\nManually perform cache maintenance on the source VM during intra-host\nmigration to ensure no stale data is left in CPU caches after the VM is\ndestroyed.  Because the source VM is \"converted\" to a non-SEV VM, KVM's\nmemory reclaim flows won't trigger cache maintenance, e.g. when all guest\nmemory is reclaimed in response to detaching from the mmu_notifier.\n\nNote, relying on the destination VM to do cache maintenance isn't an option\nas KVM doesn't require identical guest memory configurations, i.e. the\nsource VM may have access to memory that the destination VM does not.\nEnforcing equivalent memory configurations is infeasible, as it would\nrequire a *deep* comparison of memslots, e.g. to verify that not only are\nthe memslot identical, but what the memslots point at is also identical.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98471"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/37dfb676fafd1eef36fe0bb649607afbb0d5521b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93de2a6a4b91b72607136dd656edf03fb399d27f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4cc2dff12116a700add601c0262132cc26e1b2c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:16:57Z"
+  }
+}

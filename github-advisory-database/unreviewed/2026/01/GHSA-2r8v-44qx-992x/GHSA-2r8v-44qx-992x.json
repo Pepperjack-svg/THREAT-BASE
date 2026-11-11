@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2r8v-44qx-992x",
+  "modified": "2026-01-26T12:30:28Z",
+  "published": "2026-01-26T12:30:28Z",
+  "aliases": [
+    "CVE-2025-59099"
+  ],
+  "details": "The Access Manager is using the open source web server CompactWebServer written in C#. This web server is affected by a path traversal vulnerability, which allows an attacker to directly access files via simple GET requests without prior authentication. \n\nHence, it is possible to retrieve all files stored on the file system, including the SQLite database Database.sq3, containing badge information and the corresponding PIN codes. Additionally, when trying to access certain files, the web server crashes and becomes unreachable for about 60 seconds. This can be abused to continuously send the request and cause denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59099"
+    },
+    {
+      "type": "WEB",
+      "url": "https://r.sec-consult.com/dkaccess"
+    },
+    {
+      "type": "WEB",
+      "url": "https://r.sec-consult.com/dormakaba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.dormakabagroup.com/en/security-advisories"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-35"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-26T10:16:07Z"
+  }
+}

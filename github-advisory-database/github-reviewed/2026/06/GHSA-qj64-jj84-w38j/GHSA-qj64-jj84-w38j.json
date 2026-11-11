@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qj64-jj84-w38j",
+  "modified": "2026-11-03T21:24:23Z",
+  "published": "2026-06-25T09:31:23Z",
+  "aliases": [
+    "CVE-2026-56091"
+  ],
+  "summary": "Apache Shiro shiro-guice module vulnerable to authentication bypass",
+  "details": "When using Apache Shiro with the shiro-guice module in a web servlet context, a specially crafted HTTP request may cause an authentication bypass.\nThis vulnerability is similar to  https://www.cve.org/CVERecord?id=CVE-2020-1957, except that it affects the `shiro-guice` module instead of the `shiro-spring` module.\n\nThis issue affects all Apache Shiro versions through 2.x, and 3.0.0-alpha-1 only when using `shiro-guice` module in a web servlet context.\n\nUpgrade to version 3.0.0 or later, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/S:P/AU:Y/V:D/RE:L/U:Amber"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.shiro:shiro-guice"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "3.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/github/advisory-database/pull/10078"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/shiro/commit/42aa34467ad30f085fc8e003042db0c397fe8d57"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/shiro"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/onmtxmy2qonbpx7xlw3o34x8sctv47r7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-289"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-11-03T21:24:22Z",
+    "nvd_published_at": "2026-06-25T09:16:46Z"
+  }
+}

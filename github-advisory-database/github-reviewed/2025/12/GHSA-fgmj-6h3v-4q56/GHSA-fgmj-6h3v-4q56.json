@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fgmj-6h3v-4q56",
+  "modified": "2025-12-02T00:32:08Z",
+  "published": "2025-12-01T06:30:25Z",
+  "aliases": [
+    "CVE-2025-13805"
+  ],
+  "summary": "NutzBoot vulnerable to deserialization",
+  "details": "A weakness has been identified in nutzam NutzBoot up to 2.6.0-SNAPSHOT. This affects the function getInputStream of the file nutzcloud/nutzcloud-literpc/src/main/java/org/nutz/boot/starter/literpc/impl/endpoint/http/HttpServletRpcEndpoint.java of the component LiteRpc-Serializer. Executing manipulation can lead to deserialization. The attack may be launched remotely. This attack is characterized by high complexity. The exploitability is reported as difficult. The exploit has been made available to the public and could be exploited.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.nutz:nutzboot-parent"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "2.6.0-SNAPSHOT"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13805"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Xzzz111/exps/blob/main/archives/nutzboot-RCE-1/report.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Xzzz111/exps/blob/main/archives/nutzboot-RCE-1/report.md#vulnerability-details-and-poc"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/nutzam/nutzboot"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?ctiid.333815"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?id.333815"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?submit.692053"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-02T00:32:08Z",
+    "nvd_published_at": "2025-12-01T04:16:05Z"
+  }
+}

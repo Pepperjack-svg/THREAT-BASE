@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gf86-x9mr-j23m",
+  "modified": "2025-12-12T09:30:20Z",
+  "published": "2025-12-12T09:30:20Z",
+  "aliases": [
+    "CVE-2025-12655"
+  ],
+  "details": "The Hippoo Mobile App for WooCommerce plugin for WordPress is vulnerable to arbitrary file write via a missing authorization check in all versions up to, and including, 1.7.1. This is due to the REST API endpoint `/wp-json/hippoo/v1/wc/token/save_callback/{token_id}` being registered with `permission_callback => '__return_true'`, which allows unauthenticated access. This makes it possible for unauthenticated attackers to write arbitrary JSON content to the server's publicly accessible upload directory via the vulnerable endpoint.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12655"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/hippoo/tags/1.6.1/app/utils.php#L1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/hippoo/tags/1.6.1/app/web_api.php#L117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/hippoo/tags/1.6.1/app/web_api.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d34701a0-c745-441c-8d6c-7befc877f8d0?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-12T07:15:44Z"
+  }
+}

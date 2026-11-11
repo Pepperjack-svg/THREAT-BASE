@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pq9p-38r9-fjq5",
+  "modified": "2025-10-29T15:31:53Z",
+  "published": "2025-10-28T12:30:16Z",
+  "aliases": [
+    "CVE-2025-40049"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nSquashfs: fix uninit-value in squashfs_get_parent\n\nSyzkaller reports a \"KMSAN: uninit-value in squashfs_get_parent\" bug.\n\nThis is caused by open_by_handle_at() being called with a file handle\ncontaining an invalid parent inode number.  In particular the inode number\nis that of a symbolic link, rather than a directory.\n\nSquashfs_get_parent() gets called with that symbolic link inode, and\naccesses the parent member field.\n\n\tunsigned int parent_ino = squashfs_i(inode)->parent;\n\nBecause non-directory inodes in Squashfs do not have a parent value, this\nis uninitialised, and this causes an uninitialised value access.\n\nThe fix is to initialise parent with the invalid inode 0, which will cause\nan EINVAL error to be returned.\n\nRegular inodes used to share the parent field with the block_list_start\nfield.  This is removed in this commit to enable the parent field to\ncontain the invalid inode number 0.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b3ccd0019132880c94bb00ca7088c1749308f82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/382a47fae449e554ef1e8c198667fd2f3270b945"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61d38b5ce2782bff3cacaacbb8164087a73ed1a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74058c0a9fc8b2b4d5f4a0ef7ee2cfa66a9e49cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81a2bca52d43fc9d9abf07408b91255131c5dc53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91b99db7a92e57ff48a96a1b10fddfd2547e7f53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c28b0ca029edf5d0558abcd76cb8c732706cd339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f81a5bc9e924ee1950e0dd82bd10749048390f6e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-28T12:15:39Z"
+  }
+}

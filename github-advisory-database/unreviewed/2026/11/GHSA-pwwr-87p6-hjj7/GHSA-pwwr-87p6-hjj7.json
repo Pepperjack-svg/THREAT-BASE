@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pwwr-87p6-hjj7",
+  "modified": "2026-11-09T15:32:09Z",
+  "published": "2026-11-09T15:32:09Z",
+  "aliases": [
+    "CVE-2026-121601"
+  ],
+  "details": "A flaw was found in GStreamer's MXF demuxer plugin (gst-plugins-bad). When processing a specially crafted MXF media file, the demuxer indexes its internal delta-entry and slice-offset tables using values from the file without validating that they are within the bounds of the allocated arrays. A local attacker who tricks a user into opening a malicious MXF file can cause the application to crash (denial of service) and may be able to read limited amounts of heap memory adjacent to the affected arrays.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121601"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-121601"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2565920"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gstreamer.freedesktop.org/security/sa-2026-0093.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T13:17:06Z"
+  }
+}

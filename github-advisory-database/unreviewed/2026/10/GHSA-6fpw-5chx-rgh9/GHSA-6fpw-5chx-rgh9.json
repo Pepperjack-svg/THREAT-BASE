@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6fpw-5chx-rgh9",
+  "modified": "2026-10-26T15:34:50Z",
+  "published": "2026-10-26T15:34:50Z",
+  "aliases": [
+    "CVE-2026-99097"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntee: shm: reject zero-sized allocations in tee_dyn_shm_alloc_helper()\n\ntee_dyn_shm_alloc_helper() derives nr_pages from a caller-supplied size\nand passes it to alloc_pages_exact() without checking it. For size == 0\nnr_pages is 0, and alloc_pages_exact(0) calls get_order(0), which is\ndocumented as undefined and returns BITS_PER_LONG - PAGE_SHIFT. The page\nallocator then trips its order > MAX_PAGE_ORDER warning and fails the\nallocation; on a panic_on_warn kernel that ends the boot.\n\nThis can be triggered by TEE_IOC_SHM_ALLOC with struct\ntee_ioctl_shm_alloc_data where size is 0.\n\nReject a zero page count, as register_shm_helper() already does for the\nregister path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99097"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65cb86860a80ffc6af897d53f5bd4b1733bca0ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7f925fd5226deb953c8dcdc9677d3fcc2717c00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2a97703359e25ec7ef8b2b0ef32fb3982add90a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5dc7af9c3a5373ee7a84959126e7dfa9e4ad50d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T15:16:48Z"
+  }
+}

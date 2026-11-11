@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j3g5-wx45-hj5x",
+  "modified": "2025-10-22T15:31:09Z",
+  "published": "2025-10-22T15:31:09Z",
+  "aliases": [
+    "CVE-2022-50562"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntpm: acpi: Call acpi_put_table() to fix memory leak\n\nThe start and length of the event log area are obtained from\nTPM2 or TCPA table, so we call acpi_get_table() to get the\nACPI information, but the acpi_get_table() should be coupled with\nacpi_put_table() to release the ACPI memory, add the acpi_put_table()\nproperly to fix the memory leak.\n\nWhile we are at it, remove the redundant empty line at the\nend of the tpm_read_log_acpi().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50562"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/638cd298dfebce46919cbd6cf1884701215f506d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/694a3d66f493afd77c704c6de91d9be4d6e004e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8740a12ca2e2959531ad253bac99ada338b33d80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ddc48068ac85740d3d5f9f3b0b323e733a35b33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf31e3f8077af539feaf4e9bbf82e8eb51e7e5a8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-22T14:15:40Z"
+  }
+}

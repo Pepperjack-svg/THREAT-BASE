@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r5x9-822m-2crg",
+  "modified": "2026-11-09T12:31:39Z",
+  "published": "2026-11-09T12:31:38Z",
+  "aliases": [
+    "CVE-2026-111395"
+  ],
+  "details": "Apache Airflow did not reject reserved serialization keys inside a Dag run's `conf`. A user allowed to trigger a Dag that uses a deadline alert with an asynchronous callback could pass a `conf` that, once the deadline was missed, either crashed the scheduler repeatedly or was rebuilt into objects inside the Triggerer. Users are advised to upgrade to apache-airflow 3.4.0 or later.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/74834"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/qb4qxr40s0q6w9b9t5mfw5qf53pg97p3"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/11/09/13"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T10:17:02Z"
+  }
+}

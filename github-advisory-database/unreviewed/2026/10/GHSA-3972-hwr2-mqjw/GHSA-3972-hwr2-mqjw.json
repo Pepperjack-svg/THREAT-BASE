@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3972-hwr2-mqjw",
+  "modified": "2026-10-17T06:30:33Z",
+  "published": "2026-10-17T06:30:33Z",
+  "aliases": [
+    "CVE-2026-92715"
+  ],
+  "details": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.1.0 via the 'ID' parameter due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with author-level access and above, to modify arbitrary courses created by other instructors — overwriting their title, content, and status — and reassign ownership of those courses to themselves. This is possible because Input::sanitize_array() preserves attacker-supplied POST keys (including 'ID') without stripping them, and WordPress interprets a non-empty ID in the wp_insert_post() argument array as an update to the existing post rather than a new insert.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92715"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.8/classes/Course.php#L1009"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.8/classes/Course.php#L1053"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.8/classes/Course.php#L303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.8/classes/Course.php#L850"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3730615/tutor/trunk/classes/Course.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/12f093bd-5230-4103-b571-80543c1b43cf?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-17T04:17:10Z"
+  }
+}

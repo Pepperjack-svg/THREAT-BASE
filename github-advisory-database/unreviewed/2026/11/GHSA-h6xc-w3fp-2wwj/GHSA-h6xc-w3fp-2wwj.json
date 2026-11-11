@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h6xc-w3fp-2wwj",
+  "modified": "2026-11-09T12:31:42Z",
+  "published": "2026-11-09T12:31:42Z",
+  "aliases": [
+    "CVE-2026-96285"
+  ],
+  "details": "Apache Airflow 3.3.1 shipped a fix for CVE-2026-67260 that checks the scheduler's decoded `next_kwargs` value is a dictionary, but performs that check only after deserializing the whole stored payload. Deserialization reconstructs nested objects of classes permitted by the deserialization allow-list — which by default includes Airflow's own classes — and runs their constructors inside the scheduler process before the check can reject the value. A Dag author, who controls a task's `next_kwargs` through the task execution API, can therefore still trigger constructor execution in the scheduler when the `awaiting_input` timeout sweep processes the task, and in the API server when the task instance is served to a worker using an older Execution API version; no non-default configuration is required. Versions before 3.3.0 are not affected. This is an incomplete fix for CVE-2026-67260: deployments that upgraded to 3.3.1 for that issue must also upgrade to apache-airflow 3.4.0 or later.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96285"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/73576"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/73577"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/5grvgsjw0c47q0pko8vnfy35drj4jyck"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-67260"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T10:17:16Z"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fp2w-r96h-w2cp",
+  "modified": "2026-10-07T09:32:15Z",
+  "published": "2026-10-06T09:31:34Z",
+  "aliases": [
+    "CVE-2026-98318"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: validate absolute native symlink targets before NT fixups\n\nWith symlinkroot unset, an absolute target is copied without conversion\nto an NT drive path. Later code still assumes an NT prefix is present\nwhen modifying the target and calculating the print name length.\n\nFor \"/ab\", this causes two failures: sym[5] and path[5] are written\npast their allocations, and plen -= 2 * poff subtracts an assumed\n8-byte prefix from a 6-byte UTF-16 target, wrapping u16 plen to 65534.\nThat underflow causes another overflow: memcpy() copies 65534 bytes\ninto a 24-byte buffer. A user with write access to a mounted share\ncan trigger these bugs with default settings.\n\nValidate the NT drive prefix, including an ASCII drive letter, before\naccessing fixed offsets or subtracting the prefix length.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98318"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23c240d9509e15f72e4112fc95f0160ab32ec430"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6913ff607c2bc8694193e1fcc40bf16d75f35f16"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:23Z"
+  }
+}

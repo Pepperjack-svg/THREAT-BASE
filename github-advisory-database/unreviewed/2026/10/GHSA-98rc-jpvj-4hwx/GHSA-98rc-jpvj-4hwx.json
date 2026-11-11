@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-98rc-jpvj-4hwx",
+  "modified": "2026-10-03T09:31:17Z",
+  "published": "2026-10-03T09:31:17Z",
+  "aliases": [
+    "CVE-2026-103519"
+  ],
+  "details": "The The WP Ultimate Review plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 2.4.3. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for authenticated attackers, with subscriber-level access and above, to execute arbitrary shortcodes. The bypass relies on WordPress's own strip_shortcodes() function unwrapping the [[tag]] double-bracket escape to a bare [tag] that survives wp_insert_post storage and fires when the publicly queryable xs_review post type is rendered through the_content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103519"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-ultimate-review/tags/2.4.3/app/content.php#L217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-ultimate-review/tags/2.4.3/app/content.php#L347"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-ultimate-review/tags/2.4.3/app/content.php#L366"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-ultimate-review/tags/2.4.3/init.php#L291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3720426%40wp-ultimate-review&new=3720426%40wp-ultimate-review"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/76986a3a-67f8-4d91-9f48-88fad356c3b4?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-03T07:16:47Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-835v-3mj2-2w29",
+  "modified": "2026-10-30T21:32:21Z",
+  "published": "2026-10-30T21:32:21Z",
+  "aliases": [
+    "CVE-2026-116246"
+  ],
+  "details": "To pass a server's password to psql and to the utilities pgAdmin 4 runs as background processes, the server manager wrote it into pgAdmin's own process environment: as PGPASSWORD for the PSQL tool, and under a per-process variable for a utility. Nothing removed it afterwards. pgAdmin's environment is shared by every user's requests and copied into every process it starts, so in server mode another user's later PSQL session or utility inherited the password, and libpq used PGPASSWORD for any connection made without a password of its own, letting one user connect with another user's saved password.\n\nThe fix puts the password only into the environment built for the process that needs it and starts psql with a copy of pgAdmin's environment instead of the environment itself.\n\nThis issue affects pgAdmin 4: before 9.19.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:P/VC:H/VI:N/VA:N/SC:H/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116246"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pgadmin-org/pgadmin4/issues/10653"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pgadmin-org/pgadmin4/commit/0eefa38f774dce07c1f939d87f2993b36e2313b9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-214"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T20:17:04Z"
+  }
+}

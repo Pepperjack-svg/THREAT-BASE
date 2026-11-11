@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4574-jvgw-55gr",
+  "modified": "2026-03-29T18:30:20Z",
+  "published": "2026-03-29T18:30:19Z",
+  "aliases": [
+    "CVE-2026-0558"
+  ],
+  "details": "A vulnerability in parisneo/lollms, up to and including version 2.2.0, allows unauthenticated users to upload and process files through the `/api/files/extract-text` endpoint. This endpoint does not enforce authentication, unlike other file-related endpoints, and lacks the `Depends(get_current_active_user)` dependency. This issue can lead to denial of service (DoS) through resource exhaustion, information disclosure, and violation of the application's documented security policies.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/parisneo/lollms/commit/a6625dc83786ff21d109b0d545ca61b770607ef3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/0a722001-89ce-4c91-b6a6-a55ee5ba2113"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-29T18:16:13Z"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gx6c-pv62-9mcf",
+  "modified": "2026-03-02T21:39:59Z",
+  "published": "2026-02-27T06:31:28Z",
+  "aliases": [
+    "CVE-2026-3293"
+  ],
+  "summary": "Snowflake JDBC Driver is Vulnerable to Uncontrolled Resource Consumption through SdkProxyRoutePlanner",
+  "details": "A weakness has been identified in Snowflake JDBC Driver up to 4.0.1. Impacted is the function SdkProxyRoutePlanner of the file src/main/java/net/snowflake/client/internal/core/SdkProxyRoutePlanner.java of the component JDBC URL Handler. Executing a manipulation of the argument nonProxyHosts can lead to inefficient regular expression complexity. The attack can only be executed locally. The exploit has been made available to the public and could be used for attacks. This patch is called 5fb0a8a318a2ed87f4022a1f56e742424ba94052. A patch should be applied to remediate this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "net.snowflake:snowflake-jdbc"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "4.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3293"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/snowflakedb/snowflake-jdbc/issues/2505"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/snowflakedb/snowflake-jdbc/issues/2505#issue-3951994646"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/snowflakedb/snowflake-jdbc/commit/5fb0a8a318a2ed87f4022a1f56e742424ba94052"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/snowflakedb/snowflake-jdbc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://snowflakecomputing.atlassian.net/browse/SNOW-3104251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?ctiid.348035"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?id.348035"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?submit.760428"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-28T02:26:37Z",
+    "nvd_published_at": "2026-02-27T06:18:00Z"
+  }
+}

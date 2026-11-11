@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8jw9-cqx6-7g57",
+  "modified": "2026-10-15T03:35:06Z",
+  "published": "2026-01-14T15:33:00Z",
+  "aliases": [
+    "CVE-2025-71112"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hns3: add VLAN id validation before using\n\nCurrently, the VLAN id may be used without validation when\nreceive a VLAN configuration mailbox from VF. The length of\nvlan_del_fail_bmap is BITS_TO_LONGS(VLAN_N_VID). It may cause\nout-of-bounds memory access once the VLAN id is bigger than\nor equal to VLAN_N_VID.\n\nTherefore, VLAN id needs to be checked to ensure it is within\nthe range of VLAN_N_VID.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00e56a7706e10b3d00a258d81fcb85a7e96372d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42c91dfa772c57de141e5a55a187ac760c0fd7e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46c7d9fe8dd869ea5de666aba8c1ec1061ca44a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ef935e65902bfed53980ad2754b06a284ea8ac1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91a51d01be5c9f82c12c2921ca5cceaa31b67128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95cca255a7a5ad782639ff0298c2a486707d1046"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7b4f3bf118f51b67691a55b464f04452e5dc6fc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125",
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-14T15:16:00Z"
+  }
+}

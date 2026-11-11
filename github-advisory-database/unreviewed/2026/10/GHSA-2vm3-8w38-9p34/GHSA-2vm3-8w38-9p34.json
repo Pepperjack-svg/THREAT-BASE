@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2vm3-8w38-9p34",
+  "modified": "2026-10-08T12:34:27Z",
+  "published": "2026-10-08T12:34:27Z",
+  "aliases": [
+    "CVE-2026-107583"
+  ],
+  "details": "Inefficient algorithmic complexity in the webmail's message view of the REST API in Progressive Robot hMailServer 6.3.2 through 6.3.5 allows a remote unauthenticated attacker to make the webmail, the administration console and the REST API unavailable by sending a message. The route that renders a received message's HTML replaced each reference to an embedded image in place, with work that grew with the square of the number of references, and wrote the image out for every reference while counting it against its size limit only once. A message whose HTML refers to one small embedded image a very large number of times, opened in the webmail by its recipient, therefore keeps one of the listener's four worker threads busy for minutes and makes it build a document of gigabytes, so that a few such messages leave the HTTP listener unable to answer anybody.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107583"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/hmailserver/hmailserver/-/work_items/65"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T12:17:16Z"
+  }
+}

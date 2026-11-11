@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jf9-9h82-x8qc",
+  "modified": "2025-07-09T21:31:05Z",
+  "published": "2025-06-26T21:31:03Z",
+  "aliases": [
+    "CVE-2025-34033"
+  ],
+  "details": "An OS command injection vulnerability exists in the Blue Angel Software Suite running on embedded Linux devices via the ping_addr parameter in the webctrl.cgi script. The application fails to properly sanitize input before passing it to the system-level ping command. An authenticated attacker can inject arbitrary commands by appending shell metacharacters to the ping_addr parameter in a crafted GET request to /cgi-bin/webctrl.cgi?action=pingtest_update. The command's output is reflected in the application's web interface, enabling attackers to view results directly. Default and backdoor credentials can be used to access the interface and exploit the issue. Successful exploitation results in arbitrary command execution as the root user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34033"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vulncheck.com/advisories/5vtechnologies-blue-angel-command-injection"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/46792"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/raw/46792"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20",
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-24T01:15:24Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5rc7-wrfq-2h25",
+  "modified": "2026-10-22T09:31:48Z",
+  "published": "2026-10-22T09:31:48Z",
+  "aliases": [
+    "CVE-2026-86696"
+  ],
+  "details": "Allocation of Resources Without Limits or Throttling vulnerability in esaml in dropbox esaml allows an unauthenticated attacker to exhaust the Erlang VM atom table and crash the node via unsigned LogoutResponse messages.\n\nesaml:status_code_map/1 in src/esaml.erl maps any StatusCode value it does not recognize to an atom with list_to_atom/1 on the last colon-separated segment of the URN. esaml_sp:validate_logout_response/2 verifies a signature only when the message carries one, so an unsigned LogoutResponse posted to the single-logout endpoint reaches esaml:decode_logout_response/1 and mints one permanent atom per distinct status value. Atoms are never reclaimed and the VM caps the atom table at about one million entries, so an attacker who posts that many distinct values aborts the node.\n\nThis issue affects esaml: from 0.1.0 onward.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86696"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/arekinath/esaml/commit/be692b56245071899757afa7ef47e43593d3de96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dropbox/esaml/commit/be692b56245071899757afa7ef47e43593d3de96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/handnot2/esaml/commit/be692b56245071899757afa7ef47e43593d3de96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cna.erlef.org/cves/CVE-2026-86696.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osv.dev/vulnerability/EEF-CVE-2026-86696"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T09:17:16Z"
+  }
+}

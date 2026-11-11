@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6c72-qmmh-6499",
+  "modified": "2025-07-24T21:30:39Z",
+  "published": "2025-07-21T15:30:31Z",
+  "aliases": [
+    "CVE-2025-46121"
+  ],
+  "details": "An issue was discovered in CommScope Ruckus Unleashed prior to 200.15.6.212.14 and 200.17.7.0.139, where the functions `stamgr_cfg_adpt_addStaFavourite` and `stamgr_cfg_adpt_addStaIot` pass a client hostname directly to snprintf as the format string. A remote attacker can exploit this flaw either by sending a crafted request to the authenticated endpoint `/admin/_conf.jsp`, or without authentication and without direct network access to the controller by spoofing the MAC address of a favourite station and embedding malicious format specifiers in the DHCP hostname field, resulting in unauthenticated format-string processing and arbitrary code execution on the controller.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-46121"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sector7.computest.nl/post/2025-07-ruckus-unleashed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.ruckuswireless.com/security_bulletins/330"
+    },
+    {
+      "type": "WEB",
+      "url": "http://commscope.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-134"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-21T15:15:28Z"
+  }
+}

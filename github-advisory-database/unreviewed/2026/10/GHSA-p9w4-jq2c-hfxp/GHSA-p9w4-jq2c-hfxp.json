@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p9w4-jq2c-hfxp",
+  "modified": "2026-10-29T15:30:52Z",
+  "published": "2026-10-29T15:30:52Z",
+  "aliases": [
+    "CVE-2026-119048"
+  ],
+  "details": "JeeSite 5.11.0 through 5.19.1 contains an insecure direct object reference vulnerability in the AI CMS chat module that allows authenticated users to access other users' conversations due to missing and reversed ownership checks. Attackers who know or derive a victim's conversation id can call /a/cms/chat/message, /a/cms/chat/delete, or /a/cms/chat/completions to read, delete, or append to the victim's AI chat transcripts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119048"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thinkgem/jeesite5/issues/43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thinkgem/jeesite5/commit/cbc5ba7a37fd93f38c46ef656bd31442fe6f8015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thinkgem/jeesite5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thinkgem/jeesite5/blob/5b5e2cf0adc45a1abe33d0f4ca149590d149b82d/modules/ai/ai-cms/src/main/java/com/jeesite/modules/ai/cms/service/AiCmsChatService.java#L111-L116"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thinkgem/jeesite5/blob/5b5e2cf0adc45a1abe33d0f4ca149590d149b82d/modules/ai/ai-cms/src/main/java/com/jeesite/modules/ai/cms/service/CacheChatMemoryRepository.java#L59-L62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieund/jeesite5-ai-cms-chat-conversation-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jeesite-5.11.0-through-5.19.1-idor-in-ai-cms-chat-module"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-29T14:17:51Z"
+  }
+}

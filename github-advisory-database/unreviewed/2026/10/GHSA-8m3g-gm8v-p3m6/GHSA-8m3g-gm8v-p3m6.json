@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8m3g-gm8v-p3m6",
+  "modified": "2026-10-07T09:32:15Z",
+  "published": "2026-10-06T09:31:33Z",
+  "aliases": [
+    "CVE-2026-98282"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npowerpc/iommu: Fix the overflow validation in iommu_tce_check_ioba\n\nThe commit b1af23d836f8 (\"KVM: PPC: iommu: Unify TCE checking\") unified\nIOBA parameter checking across KVM and VFIO into iommu_tce_check_ioba().\nWhile doing so, the passed in argument npages is ignored and constant\nvalue '1' is used leaving out a possible overflow as the callers can\nlegitimately be using npages > 1 for H_STUFF_TCE or H_PUT_TCE_INDIRECT\ncases.\n\nFix this by accounting for 'npages', checking for arithmetic overflow,\nand verifying that the entire requested range (ioba - offset + npages)\ndoes not exceed the table capacity 'size'.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0543813753ef5cfbd6fa96694f7acf783fa01af7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b271f7d7f5ed45bc498a03ce0aa9cfd8402fc71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/314091243159f8e3749bc719bb129f423f72fd86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3776bf56e06980e8a12c8c0565d9e6ac44965f03"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98d8dcc4ebd10523507d4478e148809a7771a213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9fd9c9bbb05417f468a11fb6d145d7ff61f4a868"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d48ceb6e1a6915c7bac4f902554a1047365cdff2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d6a1779129d936bc1fbab80181165da544eab736"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:18Z"
+  }
+}

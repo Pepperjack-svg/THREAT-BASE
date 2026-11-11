@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wpmp-4grc-56ph",
+  "modified": "2026-10-26T15:34:45Z",
+  "published": "2026-10-26T15:34:45Z",
+  "aliases": [
+    "CVE-2026-97200"
+  ],
+  "details": "Allocation of Resources Without Limits or Throttling vulnerability in hackney_conn in benoitc hackney allows a malicious HTTP server to exhaust client memory via an oversized or highly compressed response body. hackney:request/5 and hackney:body/1 return the whole response body, and nothing bounds how much the connection process buffers. Any server the client requests can trigger it.\n\nhackney_conn:read_full_body/2 and the HTTP/2 and HTTP/3 accumulators append every chunk until the body ends. With {auto_decompress, true} the buffered body is then inflated in one step with zlib:gunzip/1 or zlib:inflate/2, which return the whole output at once.\n\nThis issue affects hackney: from 2.0.0-beta.1 before 4.9.0.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97200"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/pull/980"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/commit/493e8bf83a391548e5101792276ab3fc428fa76c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/commit/dc41b79339ca0c41e16d3f2dd17172bc2de855d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cna.erlef.org/cves/CVE-2026-97200.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/releases/tag/4.9.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osv.dev/vulnerability/EEF-CVE-2026-97200"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-409"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T14:16:42Z"
+  }
+}

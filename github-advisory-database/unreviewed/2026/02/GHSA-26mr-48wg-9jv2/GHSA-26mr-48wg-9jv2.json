@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-26mr-48wg-9jv2",
+  "modified": "2026-02-06T18:30:29Z",
+  "published": "2026-02-04T18:30:42Z",
+  "aliases": [
+    "CVE-2025-71196"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nphy: stm32-usphyc: Fix off by one in probe()\n\nThe \"index\" variable is used as an index into the usbphyc->phys[] array\nwhich has usbphyc->nphys elements.  So if it is equal to usbphyc->nphys\nthen it is one element out of bounds.  The \"index\" comes from the\ndevice tree so it's data that we trust and it's unlikely to be wrong,\nhowever it's obviously still worth fixing the bug.  Change the > to >=.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71196"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/76b870fdaad82171a24b8aacffe5e4d9e0d2ee2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c27eaf183563b86d815ff6e9cca0210b4cfa051"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9eec890879731c280697fdf1c50699e905b2fa7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b91c9f6bfb04e430adeeac7e7ebc9d80f9d72bad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c06f13876cbad702582cd67fc77356e5524d02cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cabd25b57216ddc132efbcc31f972baa03aad15a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb9d513cdf1614bf0f0e785816afb1faae3f81af"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-04T17:16:11Z"
+  }
+}

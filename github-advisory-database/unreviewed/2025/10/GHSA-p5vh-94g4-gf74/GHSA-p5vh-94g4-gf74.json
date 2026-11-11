@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p5vh-94g4-gf74",
+  "modified": "2026-02-03T21:31:46Z",
+  "published": "2025-10-07T18:31:10Z",
+  "aliases": [
+    "CVE-2023-53664"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nOPP: Fix potential null ptr dereference in dev_pm_opp_get_required_pstate()\n\n\"opp\" pointer is dereferenced before the IS_ERR_OR_NULL() check. Fix it by\nremoving the dereference to cache opp_table and dereference it directly\nwhere opp_table is used.\n\nThis fixes the following smatch warning:\n\ndrivers/opp/core.c:232 dev_pm_opp_get_required_pstate() warn: variable\ndereferenced before IS_ERR check 'opp' (see line 230)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53664"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/25130b27e0352acb83e91c467853eb9afad3b644"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ddd8deb1c3c0363a7e14fafb5df26e2089a69a5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:50Z"
+  }
+}

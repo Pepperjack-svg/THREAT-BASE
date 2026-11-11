@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4jvq-vx5m-qjj9",
+  "modified": "2026-11-10T00:31:43Z",
+  "published": "2026-11-10T00:31:43Z",
+  "aliases": [
+    "CVE-2026-125364"
+  ],
+  "details": "frab through 0.9.1 contains a privilege escalation vulnerability that allows authenticated crew users to grant themselves orga roles by submitting unchecked nested conference_users_attributes. Attackers can abuse UsersController#update or #create, which skip filter_conference_users, to gain orga on any conference and fully manage its events, schedule, reviewers and crew.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125364"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/frab/frab/issues/1053"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/frab/frab/commit/8d14d491ac73f2e19030e95a86b6575106270eeb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/frab/frab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/frab/frab/blob/0.9.1/app/controllers/users_controller.rb#L51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/frab-through-0.9.1-privilege-escalation-via-conference-users-attributes-in-userscontroller"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T00:17:08Z"
+  }
+}

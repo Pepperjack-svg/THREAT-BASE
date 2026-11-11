@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gjh2-vjq2-jqwc",
+  "modified": "2025-05-07T15:31:27Z",
+  "published": "2025-05-01T15:31:53Z",
+  "aliases": [
+    "CVE-2022-49923"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfc: nxp-nci: Fix potential memory leak in nxp_nci_send()\n\nnxp_nci_send() will call nxp_nci_i2c_write(), and only free skb when\nnxp_nci_i2c_write() failed. However, even if the nxp_nci_i2c_write()\nrun succeeds, the skb will not be freed in nxp_nci_i2c_write(). As the\nresult, the skb will memleak. nxp_nci_send() should also free the skb\nwhen nxp_nci_i2c_write() succeeds.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49923"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cba1f061bfe23fece2841129ca2862cdec29d5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ecf0f4227029b2c42e036b10ff6e5d09e20821e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7bf1ed6aff0f70434bd0cdd45495e83f1dffb551"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ae2c9a91ff068f4c3e392f47e8e26a1c9f85ebb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:17Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h36v-27jx-93r3",
+  "modified": "2026-10-14T18:32:18Z",
+  "published": "2026-10-14T18:32:18Z",
+  "aliases": [
+    "CVE-2026-110719"
+  ],
+  "details": "Portkey AI Gateway 1.14.0 through 1.15.2 contains a server-side request forgery vulnerability that allows unauthenticated attackers to reach loopback and Docker host services because isValidCustomHost trusts localhost-style hosts when TRUSTED_CUSTOM_HOSTS is unset. Attackers can send /v1 requests with a crafted x-portkey-custom-host header, such as via the ollama provider, to make the gateway call internal services and return their responses.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110719"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Portkey-AI/gateway"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Portkey-AI/gateway/blob/ca7712947ec8c0887803990b746740d36011c697/src/middlewares/requestValidator/index.ts#L289"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/BJypv-aiMg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/portkey-ai-gateway-1.14.0-through-1.15.2-ssrf-via-x-portkey-custom-host-header"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T16:17:44Z"
+  }
+}

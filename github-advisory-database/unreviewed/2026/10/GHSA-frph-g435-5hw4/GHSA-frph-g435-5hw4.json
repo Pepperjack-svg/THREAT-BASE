@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-frph-g435-5hw4",
+  "modified": "2026-10-30T18:32:44Z",
+  "published": "2026-10-30T18:32:44Z",
+  "aliases": [
+    "CVE-2026-109984"
+  ],
+  "details": "The FV Flowplayer Video Player plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 7.5.55.7212 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires the 'Parse Vimeo and YouTube links' option to be enabled and a site administrator to approve the comment containing the malicious shortcode; execution is then triggered for any visitor who interacts with the video player on that page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109984"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/foliovision/fv-wordpress-flowplayer/commit/62aaa66a560923a4ba75f5d0a557744599345d35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/controller/frontend.php#L664"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/flowplayer/modules/ad-popup.module.js#L39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/flowplayer-frontend.php#L684"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/flowplayer-frontend.php#L829"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fv-wordpress-flowplayer/trunk/models/flowplayer-frontend.php#L844"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c7ce7b9d-7284-4a31-b60d-aa66b7871685?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T18:17:19Z"
+  }
+}

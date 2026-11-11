@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cvj4-ggf5-jg54",
+  "modified": "2026-11-06T06:30:23Z",
+  "published": "2026-11-06T06:30:23Z",
+  "aliases": [
+    "CVE-2026-123037"
+  ],
+  "details": "A flaw was found in the ansible-core user module. When generate_ssh_key is enabled, User.ssh_key_gen() guards the key files against symlinks but checks the ~/.ssh directory only with os.path.exists(). An unprivileged user on a managed node who replaces their ~/.ssh with a symlink to an existing root-writable directory causes the privileged module to write the generated key pair through the symlink and then chown both files to that user. Because such files can be dropped into directories processed by schedulers (e.g. /etc/cron.daily) or dynamic MOTD (/etc/update-motd.d), the user can escalate to root on the managed node. This is an incomplete fix of CVE-2024-9902.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123037"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-123037"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2567189"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-06T06:16:42Z"
+  }
+}

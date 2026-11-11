@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-93fv-4pm9-xp28",
+  "modified": "2025-12-09T17:23:54Z",
+  "published": "2025-12-09T17:23:54Z",
+  "aliases": [],
+  "summary": "JDA (Java Discord API) downloads external URLs when updating message components",
+  "details": "### Impact\n\nAnyone using untrusted message components may be affected. On versions >=6.0.0,<6.1.3 of JDA, the requester will attempt to download external media URLs from components if they are used in an update or send request.\n\nIf you are used `Message#getComponents` or similar to get a list of components and then send those components with `sendMessageComponents` or other methods, you might unintentionally download media from an external URL in the resolved media of a `Thumbnail`, `FileDisplay`, or `MediaGallery`.\n\n### Patches\n\nThis bug has been fixed in 6.1.3, and we recommend updating.\n\n### Workarounds\n\nAvoid sending components from untrusted messages or update to version 6.1.3.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "net.dv8tion:JDA"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.1.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/discord-jda/JDA/security/advisories/GHSA-93fv-4pm9-xp28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/discord-jda/JDA/commit/bb6d2ce5cf514429327c257f5c6fa95a137e3ab6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/discord-jda/JDA"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-09T17:23:54Z",
+    "nvd_published_at": null
+  }
+}

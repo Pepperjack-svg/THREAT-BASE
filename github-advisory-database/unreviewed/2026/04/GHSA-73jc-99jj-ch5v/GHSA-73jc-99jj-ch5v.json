@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73jc-99jj-ch5v",
+  "modified": "2026-05-20T15:35:22Z",
+  "published": "2026-04-03T18:31:23Z",
+  "aliases": [
+    "CVE-2026-31400"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsunrpc: fix cache_request leak in cache_release\n\nWhen a reader's file descriptor is closed while in the middle of reading\na cache_request (rp->offset != 0), cache_release() decrements the\nrequest's readers count but never checks whether it should free the\nrequest.\n\nIn cache_read(), when readers drops to 0 and CACHE_PENDING is clear, the\ncache_request is removed from the queue and freed along with its buffer\nand cache_head reference. cache_release() lacks this cleanup.\n\nThe only other path that frees requests with readers == 0 is\ncache_dequeue(), but it runs only when CACHE_PENDING transitions from\nset to clear. If that transition already happened while readers was\nstill non-zero, cache_dequeue() will have skipped the request, and no\nsubsequent call will clean it up.\n\nAdd the same cleanup logic from cache_read() to cache_release(): after\ndecrementing readers, check if it reached 0 with CACHE_PENDING clear,\nand if so, dequeue and free the cache_request.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31400"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17ad31b3a43b72aec3a3d83605891e1397d0d065"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1dfedb293943e491379c9302b428e6f920a73d12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/301670dcd098c1fe5c2fe90fb3c7a8f4814d2351"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/373457de14281c1fc7cace6fc4c8a267fc176673"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41f6ba6c98a618043d2cd71030bf9a752dfab8b2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7bcd5e318876ac638c8ceade7a648e76ac8c48e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be5c35960e5ead70862736161836e2d1bc7352dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f18c1f2a88ca91357916997cdb0f7adaf14fc497"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-03T16:16:38Z"
+  }
+}

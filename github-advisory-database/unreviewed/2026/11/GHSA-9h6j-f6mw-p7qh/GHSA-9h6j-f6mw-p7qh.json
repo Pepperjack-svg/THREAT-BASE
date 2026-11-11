@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9h6j-f6mw-p7qh",
+  "modified": "2026-11-04T21:32:26Z",
+  "published": "2026-11-04T15:32:29Z",
+  "aliases": [
+    "CVE-2026-121937"
+  ],
+  "details": "loonflow before r3.2.3 contains a missing authorization vulnerability in TicketFlowHistoryView that allows any authenticated user to read other users' ticket flow history by supplying a ticket UUID. Attackers can request the ticket_flow_history endpoint, which skips ticket_view_permission_check, to obtain approval comments and processor names, emails and phone numbers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121937"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blackholll/loonflow/issues/591"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blackholll/loonflow/commit/a6495b0c2ca9e5dede8e49217a0468bcfa946de4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blackholll/loonflow/blob/r3.2.2/backend/apps/ticket/views.py#L265-L286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/cve-2026-121937-loonflow-ticket-flow-history-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/loonflow-ticket-flow-history-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/loonflow-before-r3-2.3-idor-via-ticket-flow-history-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T13:17:27Z"
+  }
+}

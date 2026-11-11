@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-42jv-6664-mx8r",
+  "modified": "2025-09-22T21:30:15Z",
+  "published": "2025-09-22T21:30:15Z",
+  "aliases": [
+    "CVE-2022-49249"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: codecs: wc938x: fix accessing array out of bounds for enum type\n\nAccessing enums using integer would result in array out of bounds access\non platforms like aarch64 where sizeof(long) is 8 compared to enum size\nwhich is 4 bytes.\n\nFix this by using enumerated items instead of integers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/adafea71b49ec4dbc44e0b84ec6eb602004a7a08"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc587b7c8fbbe128f6bd0dad025a0caea5e6d164"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d09aee1b1da196be11ed86dd4897f228f2487613"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f03c0c94186d5876857132d97e28f20cdc100bdc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:01Z"
+  }
+}

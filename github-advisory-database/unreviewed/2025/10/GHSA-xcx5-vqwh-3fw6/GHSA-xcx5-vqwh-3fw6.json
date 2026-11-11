@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xcx5-vqwh-3fw6",
+  "modified": "2026-01-20T18:31:51Z",
+  "published": "2025-10-01T12:30:29Z",
+  "aliases": [
+    "CVE-2023-53470"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nionic: catch failure from devlink_alloc\n\nAdd a check for NULL on the alloc return.  If devlink_alloc() fails and\nwe try to use devlink_priv() on the NULL return, the kernel gets very\nunhappy and panics. With this fix, the driver load will still fail,\nbut at least it won't panic the kernel.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53470"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0020c16c8af7f4bc9503a2088fb30793b6771fac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d02efe7f25158c93146e3bb827bc7bb3cd5e71a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a54903ff68ddb33b6463c94b4eb37fc584ef760"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5325f50de5b1433b27dda7ccff5cb7283722a3f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c177dd465f5c1e5f242cdb9258826c591c257e9a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:49Z"
+  }
+}

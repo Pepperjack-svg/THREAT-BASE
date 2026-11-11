@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9gfr-r435-56mx",
+  "modified": "2026-10-16T18:34:57Z",
+  "published": "2026-10-16T18:34:57Z",
+  "aliases": [
+    "CVE-2026-111723"
+  ],
+  "details": "LingGuo-Drama through commit 8a6924a contains a missing authorization vulnerability that allows any registered user to manage all accounts through the /admin/v1/admins API protected only by AuthAdminJWT. Attackers can self-register, read every account's bcrypt hash, reset the bootstrap administrator's password via PUT, raise their authority_id, and delete accounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111723"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LingGuoAI/LingGuo-Drama/blob/8a6924adf8142678919b4d9a08b9d60c49dcfbed/server/app/http/controllers/admin/v1/admins_controller.go#L166-L198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LingGuoAI/LingGuo-Drama/blob/8a6924adf8142678919b4d9a08b9d60c49dcfbed/server/app/models/admins/admins.go#L14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LingGuoAI/LingGuo-Drama/blob/8a6924adf8142678919b4d9a08b9d60c49dcfbed/server/routes/admin.go#L244-L255"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/lingguo-drama-broken-access-control"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lingguo-drama-through-commit-8a6924a-broken-access-control-via-admin-v1-admins-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:56Z"
+  }
+}

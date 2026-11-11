@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vxcv-gc68-4r3q",
+  "modified": "2025-08-11T15:32:42Z",
+  "published": "2025-08-11T15:32:42Z",
+  "aliases": [
+    "CVE-2012-10040"
+  ],
+  "details": "Openfiler v2.x contains a command injection vulnerability in the system.html page. The device parameter is used to instantiate a NetworkCard object, whose constructor in network.inc calls exec() with unsanitized input. An authenticated attacker can exploit this to execute arbitrary commands as the openfiler user. Due to misconfigured sudoers, the openfiler user can escalate privileges to root via sudo /bin/bash without a password.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2012-10040"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/linux/http/openfiler_networkcard_exec.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sourceforge.net/projects/openfiler"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/21191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openfiler.com"
+    },
+    {
+      "type": "WEB",
+      "url": "http://web.archive.org/web/20210922060411/https://itsecuritysolutions.org/2012-09-06-Openfiler-v2.x-multiple-vulnerabilities"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-11T15:15:27Z"
+  }
+}

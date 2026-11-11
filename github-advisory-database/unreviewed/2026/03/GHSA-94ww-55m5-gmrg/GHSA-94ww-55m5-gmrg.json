@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-94ww-55m5-gmrg",
+  "modified": "2026-05-26T15:32:06Z",
+  "published": "2026-03-25T12:30:22Z",
+  "aliases": [
+    "CVE-2026-23313"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni40e: Fix preempt count leak in napi poll tracepoint\n\nUsing get_cpu() in the tracepoint assignment causes an obvious preempt\ncount leak because nothing invokes put_cpu() to undo it:\n\n  softirq: huh, entered softirq 3 NET_RX with preempt_count 00000100, exited with 00000101?\n\nThis clearly has seen a lot of testing in the last 3+ years...\n\nUse smp_processor_id() instead.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23313"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b3d54a85bd37ebf2d9836f0d0de775c0ff21af9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e0f091821571f0da387462803ee42f0bb157582"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7e91827e1cf89cd34ad11dc8f8c010b70ab786e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dca4ea596a3b0a1b82bc1d9f3e4d88bd9ad9561f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa5d5baf67f619c7aa70697a194b5a9edd9f5bb7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:27Z"
+  }
+}

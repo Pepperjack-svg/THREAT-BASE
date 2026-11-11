@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73p4-hh43-4h48",
+  "modified": "2025-03-20T12:32:42Z",
+  "published": "2025-03-20T12:32:42Z",
+  "aliases": [
+    "CVE-2024-11301"
+  ],
+  "details": "In lunary-ai/lunary before version 1.6.3, the application allows the creation of evaluators without enforcing a unique constraint on the combination of projectId and slug. This allows an attacker to overwrite existing data by submitting a POST request with the same slug as an existing evaluator. The lack of database constraints or application-layer validation to prevent duplicates exposes the application to data integrity issues. This vulnerability can result in corrupted data and potentially malicious actions, impairing the system's functionality.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11301"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lunary-ai/lunary/commit/79dc370596d979b756f6ea0250d97a2d02385ecd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/3d99aca5-b135-4833-b48b-7806bc4bf861"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-837"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-20T10:15:24Z"
+  }
+}

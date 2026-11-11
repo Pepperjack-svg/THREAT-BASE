@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j7hg-ffg5-7mfr",
+  "modified": "2026-11-09T15:32:07Z",
+  "published": "2026-11-09T12:31:41Z",
+  "aliases": [
+    "CVE-2026-50204"
+  ],
+  "details": "Apache Airflow's audit log stored Connection and Variable secret values in cleartext in the `Log.extra` column because the secrets masker matched only on configured sensitive key names. An authenticated low-privilege user with read access to the event-log / audit API — with no prior access to the affected connection or variable — could read those rows and recover the credentials verbatim. Users should upgrade to apache-airflow 3.4.0 or later, which masks these values and restricts the affected audit rows to authorized users.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-50204"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/68049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/70759"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/1rfswowf30yck0ql4nhnc5vlk854s8jy"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/11/09/4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-312"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T10:17:10Z"
+  }
+}

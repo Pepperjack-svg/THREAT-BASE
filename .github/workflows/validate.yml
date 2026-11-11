@@ -1,0 +1,58 @@
+{
+  "name": "Validate THREAT-BASE datasets",
+  "on": {
+    "push": {},
+    "pull_request": {},
+    "workflow_dispatch": {}
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "jobs": {
+    "validate": {
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 30,
+      "steps": [
+        {
+          "uses": "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "with": {
+            "fetch-depth": 0,
+            "persist-credentials": false
+          }
+        },
+        {
+          "name": "Feed failure and fallback regression checks",
+          "run": "bash .github/tests/feeds.sh"
+        },
+        {
+          "name": "Batched Git whitespace regression checks",
+          "run": "bash .github/tests/check-diff.sh"
+        },
+        {
+          "name": "Upstream notice symlink regression checks",
+          "run": "bash .github/tests/notices.sh"
+        },
+        {
+          "name": "Monthly release failure and draft regression checks",
+          "run": "bash .github/tests/release.sh"
+        },
+        {
+          "run": "bash .github/scripts/validate.sh"
+        }
+      ],
+      "env": {
+        "GIT_CONFIG_COUNT": "5",
+        "GIT_CONFIG_KEY_0": "core.packedGitLimit",
+        "GIT_CONFIG_VALUE_0": "256m",
+        "GIT_CONFIG_KEY_1": "core.packedGitWindowSize",
+        "GIT_CONFIG_VALUE_1": "16m",
+        "GIT_CONFIG_KEY_2": "core.deltaBaseCacheLimit",
+        "GIT_CONFIG_VALUE_2": "64m",
+        "GIT_CONFIG_KEY_3": "pack.windowMemory",
+        "GIT_CONFIG_VALUE_3": "64m",
+        "GIT_CONFIG_KEY_4": "pack.threads",
+        "GIT_CONFIG_VALUE_4": "2"
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w332-8qhm-mmxw",
+  "modified": "2026-11-10T21:34:25Z",
+  "published": "2026-11-10T21:34:24Z",
+  "aliases": [
+    "CVE-2026-99287"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen-netback: Zero out sring pointers on unmap\n\nIf xenvif_map_frontend_data_rings() fails when a ring is already mapped,\nit unmaps them via xenvif_unmap_frontend_data_rings() which keeps the\nring pointers unchanged. xenvif_connect_data()'s cleanup path calls\nxenvif_disconnect_queue() which in turn calls\nxenvif_unmap_frontend_data_rings() again, which will attempt to unmap the\npointers a second time.\n\nZero out the ring pointers after they are unmapped to avoid this issue.\n\nThis is XSA-532",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99287"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87fd475dc4e354088f6534285388e7b061f54b35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5f54af611ff6fe1d53fa05d8e87b469dc56122b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7ba61734d6ad6adfd5bf617052e590743211669"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/11/10/26"
+    },
+    {
+      "type": "WEB",
+      "url": "http://xenbits.xen.org/xsa/advisory-532.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T19:22:32Z"
+  }
+}

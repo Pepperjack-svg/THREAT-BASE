@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g7m3-95cx-3cxg",
+  "modified": "2026-10-27T00:32:49Z",
+  "published": "2026-10-27T00:32:49Z",
+  "aliases": [
+    "CVE-2026-116745"
+  ],
+  "details": "QloApps through 1.7.0 contains an information disclosure vulnerability in OrderConfirmationController::init() that allows unauthenticated attackers to obtain guest order references and emails by supplying guest id_cart values. Attackers can iterate sequential id_cart values, read the Location redirect header, view booking details via guest-tracking, and convert guests into accounts with attacker-chosen passwords.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116745"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/pull/1912"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/commit/64c62aca58779c9b507d9dc2c80b216b28f55bae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/blob/v1.7.0/controllers/front/OrderConfirmationController.php#L59-L62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/qloapps-through-1.7.0-guest-order-disclosure-via-id-cart-in-order-confirmation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T22:16:59Z"
+  }
+}

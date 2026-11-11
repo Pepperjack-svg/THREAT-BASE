@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7pjf-qfpr-qf9x",
+  "modified": "2026-11-06T15:31:28Z",
+  "published": "2026-11-06T15:31:28Z",
+  "aliases": [
+    "CVE-2026-123782"
+  ],
+  "details": "ChatWiki before 2.10.0 contains an insecure direct object reference vulnerability in SaveFormField and UpdateFormRequired that allows authenticated users to modify other tenants' form fields. Attackers can pass their own form_id to satisfy the ownership check alongside another tenant's sequential form_field id to alter field names, descriptions, types and required flags, disrupting how submitted entries are stored.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123782"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhimaAi/chatwiki/issues/182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhimaAi/chatwiki/commit/81dd7a34be0322dd0881e1b8cfe85de337fdaf2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhimaAi/chatwiki/commit/d1ca145e283e2cb652e0b1002d5f14d6a46671e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhimaAi/chatwiki"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhimaAi/chatwiki/blob/v2.9.6/internal/app/chatwiki/business/manage/form.go#L307-L352"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhimaAi/chatwiki/blob/v2.9.6/internal/app/chatwiki/business/manage/form.go#L385-L411"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhimaAi/chatwiki/releases/tag/v2.10.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieund/chatwiki-form-field-cross-tenant-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/chatwiki-before-2.10.0-cross-tenant-idor-via-saveformfield-and-updateformrequired"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-06T15:17:20Z"
+  }
+}

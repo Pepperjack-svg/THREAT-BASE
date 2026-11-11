@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gj23-c8mg-cv5r",
+  "modified": "2026-02-26T21:31:27Z",
+  "published": "2026-01-23T18:31:28Z",
+  "aliases": [
+    "CVE-2026-22978"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: avoid kernel-infoleak from struct iw_point\n\nstruct iw_point has a 32bit hole on 64bit arches.\n\nstruct iw_point {\n  void __user   *pointer;       /* Pointer to the data  (in user space) */\n  __u16         length;         /* number of fields or size in bytes */\n  __u16         flags;          /* Optional params */\n};\n\nMake sure to zero the structure to avoid disclosing 32bits of kernel data\nto user space.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22978"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/024f71a57d563fbe162e528c8bf2d27e9cac7c7b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21cbf883d073abbfe09e3924466aa5e0449e7261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/442ceac0393185e9982323f6682a52a53e8462b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3827e310b5a73535646ef4a552d53b3c8bf74f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d21ec867d84c9f3a9845d7d8c90c9ce35dbe48f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d943b5f592767b107ba8c12a902f17431350378c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3c35177103ead4658b8a62f41e3080d45885464"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-23T16:15:53Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5pxx-cc47-2282",
+  "modified": "2025-05-02T21:30:42Z",
+  "published": "2025-05-01T09:32:27Z",
+  "aliases": [
+    "CVE-2025-47153"
+  ],
+  "details": "Certain build processes for libuv and Node.js for 32-bit systems, such as for the nodejs binary package through nodejs_20.19.0+dfsg-1_i386.deb for Debian GNU/Linux, have an inconsistent off_t size (e.g., building on i386 Debian always uses _FILE_OFFSET_BITS=64 for the libuv dynamic library, but uses the _FILE_OFFSET_BITS global system default of 32 for nodejs), leading to out-of-bounds access. NOTE: this is not a problem in the Node.js software itself. In particular, the Node.js website's download page does not offer prebuilt Node.js for Linux on i386.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-47153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nodejs/node-v0.x-archive/issues/4549"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1076350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=922075"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=892601"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00003.html"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/05/02/2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1102"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T07:15:58Z"
+  }
+}

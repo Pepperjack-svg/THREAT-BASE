@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gv9g-ccx2-9xj9",
+  "modified": "2025-03-10T21:31:09Z",
+  "published": "2025-03-10T21:31:09Z",
+  "aliases": [
+    "CVE-2022-49534"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: lpfc: Protect memory leak for NPIV ports sending PLOGI_RJT\n\nThere is a potential memory leak in lpfc_ignore_els_cmpl() and\nlpfc_els_rsp_reject() that was allocated from NPIV PLOGI_RJT\n(lpfc_rcv_plogi()'s login_mbox).\n\nCheck if cmdiocb->context_un.mbox was allocated in lpfc_ignore_els_cmpl(),\nand then free it back to phba->mbox_mem_pool along with mbox->ctx_buf for\nservice parameters.\n\nFor lpfc_els_rsp_reject() failure, free both the ctx_buf for service\nparameters and the login_mbox.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49534"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/672d1cb40551ea9c95efad43ab6d45e4ab4e015f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c00df0f34a6d5e14da379f96ea67e501ce67b002"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:29Z"
+  }
+}

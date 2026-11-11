@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3wqv-wjx5-m93q",
+  "modified": "2026-06-19T15:33:11Z",
+  "published": "2026-05-27T15:33:20Z",
+  "aliases": [
+    "CVE-2026-45996"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: imx: fix use-after-free on unbind\n\nThe SPI subsystem frees the controller and any subsystem allocated\ndriver data as part of deregistration (unless the allocation is device\nmanaged).\n\nTake another reference before deregistering the controller so that the\ndriver data is not freed until the driver is done with it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/132e47030b0b5e398e0da6c59df5a5dae9b52cff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c78c2002380a1fe31bfb01a3d5f29809e55a096"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/385a330083f8dd47c15b02e9a83aef9234a37003"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa9025a498036b6012769f7af36d421385386c17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7c40c3e7b9fb900504aa746de3e53c5275b24bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f99165ef067723221472ce1aff632bc74f562643"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:17Z"
+  }
+}

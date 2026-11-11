@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jc3q-v54h-r8hh",
+  "modified": "2026-03-25T12:30:18Z",
+  "published": "2025-09-15T15:31:29Z",
+  "aliases": [
+    "CVE-2023-53228"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: drop redundant sched job cleanup when cs is aborted\n\nOnce command submission failed due to userptr invalidation in\namdgpu_cs_submit, legacy code will perform cleanup of scheduler\njob. However, it's not needed at all, as former commit has integrated\njob cleanup stuff into amdgpu_job_free. Otherwise, because of double\nfree, a NULL pointer dereference will occur in such scenario.\n\nBug: https://gitlab.freedesktop.org/drm/amd/-/issues/2457",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1253685f0d3eb3eab0bfc4bf15ab341a5f3da0c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1564d4b105ae535eb3183ecaaa987685b20a888"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cdce1644d85e858c68fb5fa67d78eb1035bf34f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec02a29c3c2ef8ad3e15a0e3f96b99a00e5d97b4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T15:15:49Z"
+  }
+}

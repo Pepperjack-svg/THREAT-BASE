@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wm7q-49mg-7frh",
+  "modified": "2026-11-06T12:30:45Z",
+  "published": "2026-11-06T12:30:45Z",
+  "aliases": [
+    "CVE-2026-66295"
+  ],
+  "details": "Saxy's XML encoder writes the target and the content of a processing instruction into the output document verbatim, without validation or escaping. The encoder builds the construct by concatenating both fields between <? and ?>, so neither field is checked against the constraints the XML specification places on it.\n\nBecause ?> terminates a processing instruction, a target or content value containing that sequence closes the construct at a position the attacker chooses. Everything the attacker writes after it is emitted as ordinary markup at document level, which allows arbitrary elements, attributes, and further processing instructions to be injected into the serialized document. Appending a matching <? keeps the encoder's own terminator well-formed, so the result still parses and the injection is silent rather than a visible corruption. The target is additionally unconstrained by the XML Name production, which permits injection before the remainder of the processing instruction.\n\nThe result is XML injection into a serialized document: the tree the application asks Saxy to encode and the tree a downstream parser reads back are no longer the same. Character data, attribute values, and comments are all escaped by the encoder, so processing instructions are the one construct that passes user bytes through untouched. Since Saxy.XML.processing_instruction/2 is a documented public builder, an application inherits the flaw without misusing the API. The consequences depend on what consumes the XML: forged records in a feed or export read by another system, injected stylesheet or rendering directives, or active content where the output is served to a browser as XML or SVG.\n\nThis issue affects saxy: from 0.7.0 before 1.7.0.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/qcam/saxy/security/advisories/GHSA-f9r9-vrxq-g566"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66295"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/qcam/saxy/commit/4aeb80e2acc318f57bd7453ad2eafd59101a90e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/qcam/saxy/commit/7266632e9407842f28ffac254c56dc41210a5690"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cna.erlef.org/cves/CVE-2026-66295.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osv.dev/vulnerability/EEF-CVE-2026-66295"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-91"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-06T11:17:16Z"
+  }
+}

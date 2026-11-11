@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vggp-xwf8-34q8",
+  "modified": "2026-06-01T18:31:30Z",
+  "published": "2026-05-06T12:30:27Z",
+  "aliases": [
+    "CVE-2026-43105"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vc4: Fix memory leak of BO array in hang state\n\nThe hang state's BO array is allocated separately with kzalloc() in\nvc4_save_hang_state() but never freed in vc4_free_hang_state(). Add the\nmissing kfree() for the BO array before freeing the hang state struct.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43105"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d3c014a84396a147705f523a8fd6fc873e76502"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/421cea4f71f7cf65abaae878562ee4aa2b684628"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/686bb2fce082f043db50db02b5de5c64ca4dc4c4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7235fc096ece53211bd2c0e958c65f9b802aeb98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c092941fc1d00933bcb46ecac1cb930db3abf5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a812008fe3a0aebb778d277b35717f64e23d0302"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8138567c4a80fd76a647849ebd4284996cf4b17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4dfd6847b3e5d24e336bca6057485116d17aea4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T10:16:24Z"
+  }
+}

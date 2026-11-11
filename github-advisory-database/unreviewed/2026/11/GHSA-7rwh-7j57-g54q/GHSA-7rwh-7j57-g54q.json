@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7rwh-7j57-g54q",
+  "modified": "2026-11-09T21:31:51Z",
+  "published": "2026-11-09T21:31:51Z",
+  "aliases": [
+    "CVE-2026-125101"
+  ],
+  "details": "FFmpeg through 9.0.2 contains an information disclosure vulnerability in the VMnc decoder in libavcodec/vmnc.c that restores an unwritten cursor save area into later frames. Attackers can supply a crafted VMnc stream where a frame fails after loading a cursor shape, causing uninitialized heap bytes from screendta to appear in decoded output.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg/commit/50865f20b1f474e6b11735c88f668751bc9aa528"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25716"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/vmnc.c#L348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ffmpeg-through-9.0.2-vmnc-decoder-uninitialized-heap-memory-disclosure"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T19:16:51Z"
+  }
+}

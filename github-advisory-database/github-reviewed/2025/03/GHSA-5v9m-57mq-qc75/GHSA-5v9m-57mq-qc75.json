@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5v9m-57mq-qc75",
+  "modified": "2025-03-21T21:23:47Z",
+  "published": "2025-03-20T12:32:47Z",
+  "aliases": [
+    "CVE-2024-7983"
+  ],
+  "summary": "Open WebUI denial of service through endpoint for converting markdown",
+  "details": "In version 0.3.8 of open-webui, an endpoint for converting markdown to HTML is exposed without authentication. A maliciously crafted markdown payload can cause the server to spend excessive time converting it, leading to a denial of service. The server becomes unresponsive to other requests until the conversion is complete.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "open-webui"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.3.8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-7983"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/open-webui/open-webui"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-webui/open-webui/blob/eff736acd2e0bbbdd0eeca4cc209b216a1f23b6a/backend/apps/webui/routers/utils.py#L49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/f8156ca5-1328-480f-a72b-8d3dfdad87dc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400",
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-03-21T21:23:47Z",
+    "nvd_published_at": "2025-03-20T10:15:38Z"
+  }
+}

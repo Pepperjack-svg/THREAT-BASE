@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rjmr-3p2x-vr92",
+  "modified": "2025-03-10T21:31:10Z",
+  "published": "2025-03-10T21:31:10Z",
+  "aliases": [
+    "CVE-2022-49566"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: qat - fix memory leak in RSA\n\nWhen an RSA key represented in form 2 (as defined in PKCS #1 V2.1) is\nused, some components of the private key persist even after the TFM is\nreleased.\nReplace the explicit calls to free the buffers in qat_rsa_exit_tfm()\nwith a call to qat_rsa_clear_ctx() which frees all buffers referenced in\nthe TFM context.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49566"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f967fdc09955221a1951a279481b0bf4d359941"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80a52e1ee7757b742f96bfb0d58f0c14eb6583d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a843925e0287eebb4aa808666bf22c664dfe4c53"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:32Z"
+  }
+}

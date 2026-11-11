@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pfmc-fx47-cpg8",
+  "modified": "2025-11-13T00:30:16Z",
+  "published": "2025-05-08T09:30:24Z",
+  "aliases": [
+    "CVE-2025-37809"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: class: Fix NULL pointer access\n\nConcurrent calls to typec_partner_unlink_device can lead to a NULL pointer\ndereference. This patch adds a mutex to protect USB device pointers and\nprevent this issue. The same mutex protects both the device pointers and\nthe partner device registration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37809"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fdde62411fe65640e69bc55ea027d5b7b2f0093"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de7c24febd21413ea8f49f61b36338b676c02852"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec27386de23a511008c53aa2f3434ad180a3ca9a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-08T07:15:52Z"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vccx-p757-pv6h",
+  "modified": "2026-03-18T20:17:12Z",
+  "published": "2026-03-18T20:17:12Z",
+  "aliases": [],
+  "summary": "mo has a XSS via inline SVG script tags in Markdown rendering",
+  "details": "### Summary\n\nWhen rendering Markdown files containing inline SVG elements with `<script>` tags, the embedded JavaScript is executed in the browser. This is due to `rehype-raw` passing raw HTML (including SVG) through to the DOM without sanitization.\n\n### PoC\n\n```html\n<svg><script>alert(1)</script></svg>\n```\n\nEmbedding the above in a Markdown file opened with mo causes the script to execute.\n\n### Impact\n\nArbitrary JavaScript execution in the context of the mo application when a user opens a malicious Markdown file. This could lead to data exfiltration of other opened Markdown file contents.\n\n### Remediation\n\nFixed by adding `rehype-sanitize` to the Markdown rendering pipeline, which strips dangerous elements such as `<script>` while preserving safe HTML.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/k1LoW/mo"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.18.5"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.18.4"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/k1LoW/mo/security/advisories/GHSA-vccx-p757-pv6h"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/k1LoW/mo"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-18T20:17:12Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-53j4-26mm-gcr3",
+  "modified": "2026-05-19T09:31:19Z",
+  "published": "2026-04-28T09:34:13Z",
+  "aliases": [
+    "CVE-2026-41525"
+  ],
+  "details": "KDE Dolphin before 25.12.3 allows applications in a Flatpak (or with AppArmor confinement) to open folders outside of the application sandbox without additional scrutiny. Dolphin's implementation of the FileManager1 protocol allows the path given to be any type of file, including scripts or executables. (By default, Dolphin will then prompt the user to determine if they want to launch a script or executable; however, the intended behavior is to block the attempted action, not present a consent prompt.)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41525"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/KDE/dolphin/releases/tag/v25.12.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://invent.kde.org/system/dolphin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kde.org/info/security/advisory-20260427-2.txt"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/05/19/1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-669"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-28T08:16:01Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-38qg-7h9q-7h29",
+  "modified": "2025-11-05T00:31:32Z",
+  "published": "2025-10-31T12:30:21Z",
+  "aliases": [
+    "CVE-2025-58149"
+  ],
+  "details": "When passing through PCI devices, the detach logic in libxl won't remove\naccess permissions to any 64bit memory BARs the device might have.  As a\nresult a domain can still have access any 64bit memory BAR when such\ndevice is no longer assigned to the domain.\n\nFor PV domains the permission leak allows the domain itself to map the memory\nin the page-tables.  For HVM it would require a compromised device model or\nstubdomain to map the leaked memory into the HVM domain p2m.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-58149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://xenbits.xenproject.org/xsa/advisory-476.html"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/10/24/1"
+    },
+    {
+      "type": "WEB",
+      "url": "http://xenbits.xen.org/xsa/advisory-476.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284",
+      "CWE-672"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-31T12:15:35Z"
+  }
+}

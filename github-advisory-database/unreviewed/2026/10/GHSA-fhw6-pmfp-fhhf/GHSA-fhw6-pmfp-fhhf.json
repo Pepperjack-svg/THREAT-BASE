@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fhw6-pmfp-fhhf",
+  "modified": "2026-10-11T15:31:06Z",
+  "published": "2026-10-11T15:31:06Z",
+  "aliases": [
+    "CVE-2026-108760"
+  ],
+  "details": "LlamaFarm through 0.0.34 contains an insecure default configuration that binds its unauthenticated FastAPI server to 0.0.0.0 on port 14345, while the lf CLI silently discards HOST overrides. Network-adjacent attackers can call the project and dataset management API to read stored provider API keys, modify projects, trigger ingestion, and irreversibly delete projects.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108760"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/llama-farm/llamafarm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/llama-farm/llamafarm/blob/853e7eabdf70dd78054d93fabfa396452951377e/cli/cmd/orchestrator/services.go#L138-L149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/llama-farm/llamafarm/blob/853e7eabdf70dd78054d93fabfa396452951377e/server/core/settings.py#L41-L42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind03/llamafarm-default-all-interface-bind-unauthenticated-api"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/llamafarm-through-0.0.34-unauthenticated-api-exposed-on-all-interfaces"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1327"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T13:17:21Z"
+  }
+}

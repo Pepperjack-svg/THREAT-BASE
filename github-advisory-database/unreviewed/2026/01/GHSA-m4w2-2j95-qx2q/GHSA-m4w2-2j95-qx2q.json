@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m4w2-2j95-qx2q",
+  "modified": "2026-10-15T03:35:08Z",
+  "published": "2026-01-23T18:31:29Z",
+  "aliases": [
+    "CVE-2026-22982"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mscc: ocelot: Fix crash when adding interface under a lag\n\nCommit 15faa1f67ab4 (\"lan966x: Fix crash when adding interface under a lag\")\nfixed a similar issue in the lan966x driver caused by a NULL pointer dereference.\nThe ocelot_set_aggr_pgids() function in the ocelot driver has similar logic\nand is susceptible to the same crash.\n\nThis issue specifically affects the ocelot_vsc7514.c frontend, which leaves\nunused ports as NULL pointers. The felix_vsc9959.c frontend is unaffected as\nit uses the DSA framework which registers all ports.\n\nFix this by checking if the port pointer is valid before accessing it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22982"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03fb1708b7d1e76aecebf767ad059c319845039f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2985712dc76dfa670eb7fd607c09d4d48e5f5c6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34f3ff52cb9fa7dbf04f5c734fcc4cb6ed5d1a95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8767f238b0e6c3d0b295ac6dce9fbe6a99bd1b9d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b17818307446c5a8d925a39a792261dbfa930041"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f490af47bbee02441e356a1e0b86e3b3dd5120ff"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-23T16:15:54Z"
+  }
+}

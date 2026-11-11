@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xg9x-h37w-h3r3",
+  "modified": "2026-05-29T19:07:38Z",
+  "published": "2026-05-29T19:07:38Z",
+  "aliases": [
+    "CVE-2026-38739"
+  ],
+  "summary": "ezsystems/ezpublish-legacy has a SQL injection in dfscleanup",
+  "details": "NB: All tags and branches in this repository are past their end of life, so the vulnerability will not be fixed. The advisory is posted on the request of the researcher, for the information of anyone who might still use this software.\n\n### Impact\nThere is a security vulnerability in eZ Publish Legacy, affecting the dfscleanup.php script and the `_getFileList` function of the `eZDFSFileHandlerMySQLiBackend` class (kernel/private/classes/clusterfilehandlers/dfsbackends/mysqli.php). The vulnerability allows an attacker with local shell access and sufficient privileges to run dfscleanup.php to perform a union-based SQL injection against the eZ Publish MySQL database, potentially exposing sensitive data such as user credentials.\n\nIt is known to affect the branch 2019.03, and it may well affect other branches.\n\n### Credit\nThe issue was found and reported by security auditor Timothé Ridel from Advens:\nhttps://www.advens.com/\n\n### Patches\nNone, the software is past its end of life.\n\n### Workarounds\nNone.\n\n### Resources\n- Report by Advens: https://github.com/Goaterino/ezpublish-legacy-lab/blob/main/SQL%20injection%20and%20arbitrary%20file%20deletion%20in%20dfscleanup.md",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "ezsystems/ezpublish-legacy"
+      },
+      "versions": [
+        "2019.03"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ezsystems/ezpublish-legacy/security/advisories/GHSA-xg9x-h37w-h3r3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ezsystems/ezpublish-legacy"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-29T19:07:38Z",
+    "nvd_published_at": null
+  }
+}

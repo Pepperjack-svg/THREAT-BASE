@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4j5-9x6g-rgxc",
+  "modified": "2026-04-24T21:06:19Z",
+  "published": "2026-04-14T20:02:50Z",
+  "aliases": [
+    "CVE-2026-24907"
+  ],
+  "summary": "October CMS has Stored XSS in Event Log Mail Preview",
+  "details": "A stored cross-site scripting (XSS) vulnerability was identified in the Event Log mail preview feature. When viewing logged mail messages, HTML content was rendered in an iframe without proper sandboxing, allowing JavaScript execution in the viewer's browser context.\n\n### Impact\n- Stored XSS via mail template content rendered in Event Log\n- Could allow privilege escalation if a superuser views a malicious log entry\n- Requires authenticated backend access with mail template editing permissions\n- Requires a superuser to view the specific Event Log entry to trigger\n\n### Patches\nThe vulnerability has been patched in v3.7.14 and v4.1.10. All users are encouraged to upgrade to the latest patched version.\n\n### Workarounds\nIf upgrading immediately is not possible:\n- Restrict mail template editing permissions to fully trusted administrators only\n- Restrict Event Log viewing permissions to minimize exposure\n\n### References\n- Reported by [Chris Alupului](https://github.com/neosprings)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "october/system"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.1.10"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.1.9"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "october/system"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.7.14"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.7.13"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/octobercms/october/security/advisories/GHSA-j4j5-9x6g-rgxc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24907"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/octobercms/october"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-14T20:02:50Z",
+    "nvd_published_at": "2026-04-14T18:16:45Z"
+  }
+}

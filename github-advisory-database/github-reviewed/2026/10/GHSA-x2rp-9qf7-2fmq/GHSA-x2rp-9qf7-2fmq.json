@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x2rp-9qf7-2fmq",
+  "modified": "2026-10-09T20:54:09Z",
+  "published": "2026-10-09T20:54:09Z",
+  "aliases": [
+    "CVE-2026-107842"
+  ],
+  "summary": "Contao: Protected page content is disclosed to anonymous visitors after contao.search.index_protected is disabled",
+  "details": "`ModuleSearch` decides whether to filter protected pages out of search results based on the current value of `contao.search.index_protected`, but the authorisation data lives per row in `tl_search`. Turning the setting off removes\nthe filter without removing the rows, so protected pages that were indexed while it was on are returned to unauthenticated visitors such as title, URL and context snippet, even though the pages themselves still answer 401.\n\n## Impact\n\nDisclosure of member-only page titles, URLs and indexed text to unauthenticated visitors through the site search. The pages themselves remain access-controlled, so this is not a page-access bypass.\n\n## Credits\n\nThis security vulnerability was found by @iRevivalx .",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "contao/core-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "5.3.50"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "contao/core-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.4.0-RC1"
+            },
+            {
+              "fixed": "5.7.12"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/security/advisories/GHSA-x2rp-9qf7-2fmq"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/commit/572686a113bca60f92cf2d0496cf3a74d0b6b457"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/contao/contao"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/releases/tag/5.3.50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/releases/tag/5.7.12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-09T20:54:09Z",
+    "nvd_published_at": null
+  }
+}

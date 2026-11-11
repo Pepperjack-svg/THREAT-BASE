@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wxxm-77v6-p8hq",
+  "modified": "2026-07-24T00:32:32Z",
+  "published": "2026-07-01T15:35:19Z",
+  "aliases": [
+    "CVE-2026-53335"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/damon/lru_sort: handle ctx allocation failure\n\nDAMON_LRU_SORT allocates the damon_ctx object for its kdamond in its init\nfunction.  damon_lru_sort_enabled_store() wrongly assumes the allocation\nwill always succeed once tried.  If the damon_ctx allocation was failed,\ntherefore, code execution reaches to damon_commit_ctx() while 'ctx' is\nNULL.  As a result, it dereferences the NULL 'ctx' pointer.  Avoid the\nNULL dereference by returning -ENOMEM if 'ctx' is NULL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53335"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d48f15659395bf1381114f01be91bc68e0be46a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab04340b5ae5d52c1d46b750538febcde9d889e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/daab1996431a71f43219dcac48ecc9ad2aad3f1c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-01T14:16:41Z"
+  }
+}

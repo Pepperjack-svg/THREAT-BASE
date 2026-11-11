@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xpr9-pcwr-h574",
+  "modified": "2026-05-03T09:33:10Z",
+  "published": "2026-05-01T15:30:37Z",
+  "aliases": [
+    "CVE-2026-43031"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: xilinx: axienet: Fix BQL accounting for multi-BD TX packets\n\nWhen a TX packet spans multiple buffer descriptors (scatter-gather),\naxienet_free_tx_chain sums the per-BD actual length from descriptor\nstatus into a caller-provided accumulator. That sum is reset on each\nNAPI poll. If the BDs for a single packet complete across different\npolls, the earlier bytes are lost and never credited to BQL. This\ncauses BQL to think bytes are permanently in-flight, eventually\nstalling the TX queue.\n\nThe SKB pointer is stored only on the last BD of a packet. When that\nBD completes, use skb->len for the byte count instead of summing\nper-BD status lengths. This matches netdev_sent_queue(), which debits\nskb->len, and naturally survives across polls because no partial\npacket contributes to the accumulator.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43031"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a0323a913109b52bfc9f5ea7b92a1b249e07d3e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c3a6b9020c01fde7b22e8550105de0b59904f61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1978d03e86785872871bff9c2623174b10740de"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:47Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m97c-3wp7-wp45",
+  "modified": "2025-11-26T15:34:10Z",
+  "published": "2025-11-17T18:30:32Z",
+  "aliases": [
+    "CVE-2025-34323"
+  ],
+  "details": "Nagios Log Server versions prior to 2026R1.0.1 are vulnerable to local privilege escalation due to unsafe interaction between sudo rules and file system permissions. The web server account is granted passwordless sudo access to certain maintenance scripts while also being a member of a group that has write access to the directory containing those scripts. A local attacker running as the web server user can replace one of the permitted scripts with a malicious program and then execute it via sudo, resulting in arbitrary code execution with root privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34323"
+    },
+    {
+      "type": "WEB",
+      "url": "https://theyhack.me/Rooting-Nagios-Log-Server"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nagios.com/changelog/nagios-log-server/nagios-log-server-2026r1-0-1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nagios.com/products/security/#log-server"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nagios-log-server-local-privilege-escalation-via-writable-scripts-and-sudo-rules"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-732"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-17T18:15:56Z"
+  }
+}

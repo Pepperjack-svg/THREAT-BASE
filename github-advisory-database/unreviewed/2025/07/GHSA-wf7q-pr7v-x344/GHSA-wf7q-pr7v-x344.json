@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wf7q-pr7v-x344",
+  "modified": "2025-11-03T21:34:11Z",
+  "published": "2025-07-27T03:30:26Z",
+  "aliases": [
+    "CVE-2025-6241"
+  ],
+  "details": "LsiAgent.exe, a component of SysTrack from Lakeside Software, attempts to load several DLL files which are not present in the default installation. If a user-writable directory is present in the SYSTEM PATH environment variable, the user can write a malicious DLL to that directory with arbitrary code. This malicious DLL is executed in the context of NT AUTHORITY\\SYSTEM upon service start or restart, due to the Windows default dynamic-link library search order, resulting in local elevation of privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-6241"
+    },
+    {
+      "type": "WEB",
+      "url": "https://documentation.lakesidesoftware.com/en/Content/Release%20Notes/Agent/10_10_0%20Hotfix%20Agent%20Release%20Notes%20On%20Premises.htm?tocpath=Release%20Notes%7CAgent%7C_____13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.kb.cert.org/vuls/id/335798"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-27T01:15:29Z"
+  }
+}

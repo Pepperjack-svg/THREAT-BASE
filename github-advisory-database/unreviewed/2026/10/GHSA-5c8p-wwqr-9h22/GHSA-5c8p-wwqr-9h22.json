@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5c8p-wwqr-9h22",
+  "modified": "2026-10-21T18:33:29Z",
+  "published": "2026-10-21T18:33:29Z",
+  "aliases": [
+    "CVE-2026-76505"
+  ],
+  "details": "A vulnerability in the IPv4 packet processing functionality of Cisco IOS XR Software that affects Cisco ASR 9000 and 9900 Series Aggregation Services Routers as well as Cisco ASR 9902 and 9903 Compact High-Performance Routers could allow an unauthenticated, remote attacker to cause network processor (NP) errors, resulting in a line card reset or shutdown and a denial of service (DoS) condition.&nbsp;\n\nThis vulnerability is due to the incorrect handling of crafted IPv4 packets that are received on an affected line card interface and processed as for-us traffic. The issue can result in an NP reset, causing traffic loss on the affected line card while it recovers. Under repeated reset conditions, the network processor may enter a persistent shutdown state, in which case an explicit line card reload may be required to restore traffic.\nThe vulnerability is within the IPv4 packet-processing path. Transit IPv4 traffic does not trigger this issue and IPv6 traffic cannot trigger it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76505"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asr9k-tUyxcyXN"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T17:19:09Z"
+  }
+}

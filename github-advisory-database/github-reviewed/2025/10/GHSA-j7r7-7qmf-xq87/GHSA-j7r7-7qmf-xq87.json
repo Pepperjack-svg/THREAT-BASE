@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j7r7-7qmf-xq87",
+  "modified": "2025-11-05T20:51:56Z",
+  "published": "2025-10-29T15:31:56Z",
+  "aliases": [
+    "CVE-2025-64131"
+  ],
+  "summary": "Jenkins SAML Plugin does not implement a replay cache",
+  "details": "Jenkins SAML Plugin 4.583.vc68232f7018a_ and earlier does not implement a replay cache.\n\nThis allows attackers able to obtain information about the SAML authentication flow between a user’s web browser and Jenkins to replay those requests, authenticating to Jenkins as that user.\n\nSAML Plugin 4.583.585.v22ccc1139f55 implements a replay cache that rejects replayed requests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.plugins:saml"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.583.585.v22ccc1139f55"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-64131"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/saml-plugin/commit/6170b1013daf52770de29a66aeb57893aae1d7d6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/saml-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2025-10-29/#SECURITY-3613"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/10/29/2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-294"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-29T22:03:43Z",
+    "nvd_published_at": "2025-10-29T14:15:57Z"
+  }
+}

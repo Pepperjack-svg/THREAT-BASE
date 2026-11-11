@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9ff2-p842-45wq",
+  "modified": "2026-10-09T20:54:00Z",
+  "published": "2026-10-09T20:54:00Z",
+  "aliases": [
+    "CVE-2026-107848"
+  ],
+  "summary": "Contao: Cross-site request forgery in custom backend actions",
+  "details": "`RequestTokenListener` is the only generic `REQUEST_TOKEN` validator in Contao and it only runs on POST. On the GET side the guard is local and declarative, and it only fires when an `act` parameter is present. Every back end action dispatched through a different parameter therefore has no CSRF protection at all. This is a family rather than a single bug.\n\n### Impact\n\nAn attacker who gets a logged in back end user to load a URL performs back end actions as that user, with no token and no confirmation. Because the exposure follows from the dispatch mechanism rather than from one callback, every present and future `key=` action inherits it.\n\n**Honest bound.** The victim must be authenticated in the back end and must load the URL, and the reachable actions are limited to the modules that user can access. We have not found a `key=` action that grants privileges; the ones we verified are destructive or state changing rather than escalating.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "contao/core-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "5.3.50"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "contao/core-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.4.0-RC1"
+            },
+            {
+              "fixed": "5.7.12"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/security/advisories/GHSA-9ff2-p842-45wq"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/commit/34dd27ee6739f10568d3d95d8784862255c925b4"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/contao/contao"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/releases/tag/5.7.12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-09T20:54:00Z",
+    "nvd_published_at": null
+  }
+}

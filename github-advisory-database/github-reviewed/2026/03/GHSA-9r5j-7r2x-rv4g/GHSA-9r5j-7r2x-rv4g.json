@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9r5j-7r2x-rv4g",
+  "modified": "2026-03-10T01:21:24Z",
+  "published": "2026-03-09T12:31:38Z",
+  "aliases": [
+    "CVE-2025-69219"
+  ],
+  "summary": "Apache Airflow Providers Http has Unsafe Pickle Deserializatio leading to RCE via HttpOperator",
+  "details": "A user with access to the DB could craft a database entry that would result in executing code on Triggerer - which gives anyone who have access to DB the same permissions as Dag Author. Since direct DB access is not usual and recommended for Airflow, the likelihood of it making any damage is low.\n\nUsers should upgrade to version 6.0.0 of the provider to avoid even that risk.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "apache-airflow-providers-http"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-69219"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/61662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/commit/97839f7b0a8ae66d6079bb7fad5a363068f61617"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/airflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/zjkfb2njklro68tqzym092r4w65m5dq0"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/03/09/1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-913"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-10T01:21:24Z",
+    "nvd_published_at": "2026-03-09T11:16:05Z"
+  }
+}

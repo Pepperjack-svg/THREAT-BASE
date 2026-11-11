@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rp4v-7m3g-89vg",
+  "modified": "2026-10-08T18:32:28Z",
+  "published": "2026-10-08T18:32:28Z",
+  "aliases": [
+    "CVE-2026-107678"
+  ],
+  "details": "FFmpeg through 9.0.2 contains a stack exhaustion vulnerability in av_encryption_init_info_free() in libavutil/encryption_info.c, which recursively frees AVEncryptionInitInfo linked lists built by the MOV demuxer's mov_read_pssh(). Attackers can supply a crafted MP4 file with tens of thousands of small pssh boxes to exhaust the stack and crash the process, while also causing quadratic CPU consumption.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107678"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ffmpeg.org"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavformat/mov.c#L8070"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavutil/encryption_info.c#L219-L231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ffmpeg-through-9.0.2-stack-exhaustion-via-recursive-free-of-pssh-boxes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T16:17:05Z"
+  }
+}

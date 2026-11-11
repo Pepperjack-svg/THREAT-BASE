@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jpxw-c2j5-6fpx",
+  "modified": "2026-06-19T15:33:14Z",
+  "published": "2026-05-28T12:30:33Z",
+  "aliases": [
+    "CVE-2026-46208"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: stop tp_meter sessions during mesh teardown\n\nTP meter sessions remain linked on bat_priv->tp_list after the netlink\nrequest has already finished. When the mesh interface is removed,\nbatadv_mesh_free() currently tears down the mesh without first draining\nthese sessions.\n\nA running sender thread or a late incoming tp_meter packet can then keep\nprocessing against a mesh instance which is already shutting down.\nSynchronize tp_meter with the mesh lifetime by stopping all active\nsessions from batadv_mesh_free() and waiting for sender threads to exit\nbefore teardown continues.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03660dab86f93319178a24667f6998526dc4355d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/268078acae72daa12b17b2b299701cb9924e469a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26dfeee8db81354bfdade155f27f9e16510ad196"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d3cf6a7314aca4df0a6dde28ce784a2a30d0166"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58943b7ea356294749dae3e75b96c0ee292c00be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5e7d0ac936354c36810e74ac3056b334ed1f4058"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79bc0eaeef2c5797317bf2da8e3159a74d62ec47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8634c1dbd73adb74d40533ebb7e914efb82e71fb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:36Z"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pj6f-rc94-gw53",
+  "modified": "2025-08-29T21:00:27Z",
+  "published": "2025-08-21T18:31:29Z",
+  "aliases": [
+    "CVE-2025-6465"
+  ],
+  "summary": "Mattermost Fails to Sanitize File Names",
+  "details": "Mattermost versions 10.8.x <= 10.8.3, 10.5.x <= 10.5.8, 10.10.x <= 10.10.0, 10.9.x <= 10.9.3 fail to sanitize file names which allows users with file upload permission to overwrite file attachment thumbnails via path traversal in file streaming APIs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/mattermost/mattermost-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "10.8.0"
+            },
+            {
+              "fixed": "10.8.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 10.8.3"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/mattermost/mattermost-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "10.5.0"
+            },
+            {
+              "fixed": "10.5.9"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 10.5.8"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/mattermost/mattermost-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "10.9.0"
+            },
+            {
+              "fixed": "10.9.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 10.9.3"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/mattermost/mattermost-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "10.10.0"
+            },
+            {
+              "fixed": "10.10.1"
+            }
+          ]
+        }
+      ],
+      "versions": [
+        "10.10.0"
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/mattermost/mattermost/server/v8"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.0.0-20250708173752-d6b35c41f0ae5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-6465"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mattermost/mattermost"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mattermost.com/security-updates"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pkg.go.dev/vuln/GO-2025-3906"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-08-22T16:58:51Z",
+    "nvd_published_at": "2025-08-21T17:15:32Z"
+  }
+}

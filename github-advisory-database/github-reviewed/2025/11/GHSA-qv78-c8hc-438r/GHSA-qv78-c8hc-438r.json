@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qv78-c8hc-438r",
+  "modified": "2025-11-06T23:13:18Z",
+  "published": "2025-11-03T20:24:10Z",
+  "aliases": [
+    "CVE-2025-64174"
+  ],
+  "summary": "OpenMage vulnerable to XSS in Admin Notifications",
+  "details": "### Summary\nOpenMage versions v20.15.0 and earlier are affected by a stored Cross-Site Scripting (XSS) vulnerability that could be abused by an admin with direct database access or the admin notification feed source to inject malicious scripts into vulnerable fields. Malicious JavaScript may be executed in a victim’s browser when they browse to the page containing the vulnerable field.\n\n### Details\nUnescaped translation strings and URLs are printed into contexts inside `app/code/core/Mage/Adminhtml/Block/Notification/Grid/Renderer/Actions.php`. A malicious translation or polluted data can inject script. \n- Link labels use __() without escaping.\n- ’deleteConfirm()’ embeds a message without escaping.\n\n### PoC\n1. Add XSS to admin locale (e.g. app/locale/en_US/local.csv):\n    ```\n    \"Read Details\",\"<img src=x onerror=alert(123)>\"\n    \"Mark as Read\",\"<script>alert(123)</script>\"\n    ```\n2. Flush Cache. Make sure locale is set to en_US.\n3. Add any admin notification (e.g. via test.php)\n     ```\n    <?php\n    require 'app/Mage.php';\n    Mage::app('admin');\n    Mage::getModel('adminnotification/inbox')->setData([\n        'severity'  => Mage_AdminNotification_Model_Inbox::SEVERITY_NOTICE,\n        'date_added' => now(),\n        'title' => 'XSS renderer test',\n        'description' => 'Testing actions renderer',\n        'url' => 'https://example.com', // makes the \"Read Details\" link appear\n        'is_read' => 0, // makes the \"Mark as Read\" link appear\n        'is_remove' => 0,\n    ])->save();\n    ```\n4. Open Admin → System → Notifications → Inbox.\n5. Profit.\n\n### Impact\nThe vulnerability is only exploitable by an attacker with administrative or translation privileges. Malicious JavaScript may be executed in a victim’s browser when they browse to the admin page containing the vulnerable fields.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "openmage/magento-lts"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "20.16.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/security/advisories/GHSA-qv78-c8hc-438r"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-64174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/commit/9d604f5489851c54a96fca31b0e13c414b0fb20a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/OpenMage/magento-lts"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-11-03T20:24:10Z",
+    "nvd_published_at": "2025-11-06T21:15:43Z"
+  }
+}

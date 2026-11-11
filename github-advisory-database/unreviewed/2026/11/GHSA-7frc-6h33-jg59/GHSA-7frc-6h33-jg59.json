@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7frc-6h33-jg59",
+  "modified": "2026-11-06T18:35:08Z",
+  "published": "2026-11-06T06:30:23Z",
+  "aliases": [
+    "CVE-2026-96447"
+  ],
+  "details": "A flaw was found in the TokenManager component of Keycloak, an open-source identity and access management solution. The issue occurs during the validation of stateless access tokens when the original user ID no longer exists. Keycloak incorrectly falls back to using the username to identify the user without verifying if the identity matches the original token subject. This could allow an attacker with an old token to gain access to a newly created service account if it shares the same client ID as a previously deleted one.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96447"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:95761"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:95762"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-96447"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2539288"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-06T06:16:44Z"
+  }
+}

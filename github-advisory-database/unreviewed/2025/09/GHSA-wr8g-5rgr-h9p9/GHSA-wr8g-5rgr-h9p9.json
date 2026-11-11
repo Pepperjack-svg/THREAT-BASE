@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wr8g-5rgr-h9p9",
+  "modified": "2025-12-02T21:31:26Z",
+  "published": "2025-09-16T15:32:32Z",
+  "aliases": [
+    "CVE-2023-53264"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nclk: imx: clk-imxrt1050: fix memory leak in imxrt1050_clocks_probe\n\nUse devm_of_iomap() instead of of_iomap() to automatically\nhandle the unused ioremap region. If any error occurs, regions allocated by\nkzalloc() will leak, but using devm_kzalloc() instead will automatically\nfree the memory using devm_kfree().\n\nAlso, fix error handling of hws by adding unregister_hws label, which\nunregisters remaining hws when iomap failed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53264"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02e54db221bb001b32f839e0149ee8d890ab9aa1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fbdfd2542252e4c02e8158a06b7c0c9cfd40f99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1839032251a66f2ae5a043c495532830a55d28c4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b280598ab3bd8a2dc8b96a12530d5b1ee7a8f4a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T08:15:35Z"
+  }
+}

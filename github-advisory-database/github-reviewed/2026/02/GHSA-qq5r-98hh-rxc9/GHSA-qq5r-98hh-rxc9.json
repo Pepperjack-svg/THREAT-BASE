@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qq5r-98hh-rxc9",
+  "modified": "2026-06-29T20:37:29Z",
+  "published": "2026-02-17T21:31:13Z",
+  "aliases": [
+    "CVE-2026-24733"
+  ],
+  "summary": "Apache Tomcat - Security constraint bypass with HTTP/0.9",
+  "details": "Improper Input Validation vulnerability in Apache Tomcat.\n\nTomcat did not limit HTTP/0.9 requests to the GET method. If a security constraint was configured to allow HEAD requests to a URI but deny GET requests, the user could bypass that constraint on GET requests by sending a (specification invalid) HEAD request using HTTP/0.9.\n\nThis issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.14, from 10.1.0-M1 through 10.1.49, from 9.0.0.M1 through 9.0.112.\n\n\nOlder, EOL versions are also affected.\n\nUsers are recommended to upgrade to version 11.0.15 or later, 10.1.50 or later or 9.0.113 or later, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat:tomcat-coyote"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "11.0.0-M1"
+            },
+            {
+              "fixed": "11.0.15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat:tomcat-coyote"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "10.1.0-M1"
+            },
+            {
+              "fixed": "10.1.50"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat:tomcat-coyote"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.0.113"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24733"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/tomcat/commit/2e2fa23f2635bbb819759576a2f2f5e64ecf7c5f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/tomcat/commit/6c73d74ff281260d74c836370ff6b82f1da8048b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/tomcat/commit/711b465cf22684a1acf0cb43501cdbbce9b6c5f4"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/tomcat"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/6xk3t65qpn1myp618krtfotbjn1qt90f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://tomcat.apache.org/security-10.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://tomcat.apache.org/security-11.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://tomcat.apache.org/security-9.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-19T15:06:26Z",
+    "nvd_published_at": "2026-02-17T19:21:56Z"
+  }
+}

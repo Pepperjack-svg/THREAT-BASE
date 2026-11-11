@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fvm2-c629-pcjf",
+  "modified": "2026-11-08T03:30:38Z",
+  "published": "2026-11-08T03:30:38Z",
+  "aliases": [
+    "CVE-2026-124422"
+  ],
+  "details": "SunEditor from 3.0.0 before 3.4.0 contains a stored cross-site scripting vulnerability in html.clean() that rebuilds iframes from data-se-iframe-holder-attrs JSON without filtering srcdoc or uppercase SRC keys. Attackers can inject crafted HTML through paste, html.set, or html.insert to execute script in the host page origin when victims load or paste the content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/JiHong88/suneditor/security/advisories/GHSA-q867-q2hw-f8gp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124422"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/JiHong88/suneditor/commit/57db24ac218cd10942fed0bb8288e9cb40b334bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/JiHong88/suneditor/blob/3.3.3/src/core/logic/dom/html.js#L336-L350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/JiHong88/suneditor/releases/tag/3.4.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/suneditor-3.0.0-before-3.4.0-stored-xss-via-html-clean-iframe-placeholder"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-08T02:16:57Z"
+  }
+}

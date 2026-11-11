@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-458g-4r9f-c8x2",
+  "modified": "2025-11-21T06:30:50Z",
+  "published": "2025-11-21T06:30:50Z",
+  "aliases": [
+    "CVE-2025-11368"
+  ],
+  "details": "The LearnPress – WordPress LMS Plugin plugin for WordPress is vulnerable to Sensitive Information Disclosure in all versions up to, and including, 4.2.9.4. This is due to missing capability checks in the REST endpoint /wp-json/lp/v1/load_content_via_ajax which allows arbitrary callback execution of admin-only template methods. This makes it possible for unauthenticated attackers to retrieve admin curriculum HTML, quiz questions with correct answers, course materials, and other sensitive educational content via the REST API endpoint granted they can supply valid numeric IDs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11368"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/trunk/inc/rest-api/v1/frontend/class-lp-rest-ajax-controller.php#L23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/trunk/inc/rest-api/v1/frontend/class-lp-rest-ajax-controller.php#L41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?old_path=/learnpress/tags/4.2.9.4&new_path=/learnpress/tags/4.3.0&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/0c9856db-3779-4649-9a48-1c7b6d019816?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-21T06:15:47Z"
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p9fm-f462-ggrg",
+  "modified": "2026-05-06T21:23:02Z",
+  "published": "2026-03-25T21:04:50Z",
+  "aliases": [
+    "CVE-2026-33658"
+  ],
+  "summary": "Rails Active Storage has a possible DoS vulnerability in proxy mode via multi-range requests",
+  "details": "### Impact\nActive Storage's proxy controller does not limit the number of byte ranges in an HTTP Range header. A request with thousands of small ranges causes disproportionate CPU usage compared to a normal request for the same file, possibly resulting in a DoS vulnerability.\n\n### Releases\nThe fixed releases are available at the normal locations.\n\n### Credit\nThis issue was responsibly reported by Hackerone researcher [thwin_htet](https://hackerone.com/thwin_htet).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "activestorage"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.1.0"
+            },
+            {
+              "fixed": "8.1.2.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "activestorage"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.0.0"
+            },
+            {
+              "fixed": "8.0.4.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "activestorage"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "7.2.3.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/rails/rails/security/advisories/GHSA-p9fm-f462-ggrg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33658"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/rails/rails"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rails/rails/releases/tag/v7.2.3.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rails/rails/releases/tag/v8.0.4.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rails/rails/releases/tag/v8.1.2.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/activestorage/CVE-2026-33658.yml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-25T21:04:50Z",
+    "nvd_published_at": "2026-03-26T22:16:29Z"
+  }
+}

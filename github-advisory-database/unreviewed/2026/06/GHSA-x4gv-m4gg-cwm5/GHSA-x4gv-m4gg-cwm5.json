@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x4gv-m4gg-cwm5",
+  "modified": "2026-06-16T15:33:47Z",
+  "published": "2026-06-15T21:30:39Z",
+  "aliases": [
+    "CVE-2026-45390"
+  ],
+  "details": "In OCaml-tar before 3.4.0, a crafted archive with ../ path segments in its name allows escaping the current working directory. This is not desired behavior, and tar(1) rejects such extractions, but ocaml-tar decompresses it anyway. The impact is that it allows arbitrary file writes outside of the desired extraction directory (to an attacker that can reach a tar decompression endpoint).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45390"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osv.dev/vulnerability/OSEC-2026-08"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-15T20:16:28Z"
+  }
+}

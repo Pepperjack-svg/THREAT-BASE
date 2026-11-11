@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-595p-g7xc-c333",
+  "modified": "2026-01-14T21:46:11Z",
+  "published": "2026-01-14T21:46:11Z",
+  "aliases": [],
+  "summary": "Algolia Search & Discovery for Magento 2 Has Untrusted Data Handling",
+  "details": "### Impact\n\nVersions of the Algolia Search & Discovery extension for Magento 2 prior to **3.17.2** and **3.16.2** contain a vulnerability where data read from the database was treated as a trusted source during job execution.\n\nIf an attacker is able to modify records used by the extension’s indexing queue, this could result in **arbitrary PHP code execution** when the affected job is processed.\n\nExploitation requires the ability to write malicious data to the Magento database and for the indexing queue to be enabled.\n\n---\n\n### Patches\n\nThis vulnerability has been fixed in the following versions:\n\n- **3.17.2**\n- **3.16.2**\n\nMerchants should upgrade to a supported patched version immediately.\n\nVersions outside the supported maintenance window do **not** receive security updates and remain vulnerable.\n\n---\n\n### Workarounds\n\nUpgrading to a patched version is the only recommended remediation.\n\nIf an immediate upgrade is not possible, the following temporary risk mitigations may reduce exposure:\n\n- Disable the Algolia indexing queue to prevent queued jobs from being executed.\n- Restrict job execution logic to an explicit allowlist of permitted operations.\n- Review the contents of the `algoliasearch_queue` table for unexpected or unrecognized entries.\n- If queue archiving is enabled, review historical records in `algoliasearch_queue_archive`.\n\nThese mitigations are provided as guidance only and do not replace upgrading to a patched version.\n\n---\n\n### References\n\n- Algolia Search & Discovery for Magento 2 releases:\n  - [3.16.2](https://github.com/algolia/algoliasearch-magento-2/releases/tag/3.16.2)\n  - [3.17.2](https://github.com/algolia/algoliasearch-magento-2/releases/tag/3.17.2)",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "algolia/algoliasearch-magento-2"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.17.0-beta.1"
+            },
+            {
+              "fixed": "3.17.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.17.1"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "algolia/algoliasearch-magento-2"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.16.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.16.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/algolia/algoliasearch-magento-2/security/advisories/GHSA-595p-g7xc-c333"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/algolia/algoliasearch-magento-2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/algolia/algoliasearch-magento-2/releases/tag/3.16.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/algolia/algoliasearch-magento-2/releases/tag/3.17.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-74"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-14T21:46:11Z",
+    "nvd_published_at": null
+  }
+}

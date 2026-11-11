@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fphv-qqwf-v9gp",
+  "modified": "2026-02-19T18:31:50Z",
+  "published": "2026-02-19T18:31:50Z",
+  "aliases": [
+    "CVE-2026-0722"
+  ],
+  "details": "The Shield Security plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 21.0.8. This is due to the plugin allowing nonce verification to be bypassed via user-supplied parameter in the 'isNonceVerifyRequired' function. This makes it possible for unauthenticated attackers to execute SQL injection attacks, extracting sensitive information from the database, via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0722"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-simple-firewall/tags/21.0.8/src/lib/src/ActionRouter/Actions/BaseAction.php#L125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-simple-firewall/tags/21.0.8/src/lib/src/ActionRouter/CaptureAjaxAction.php#L42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-simple-firewall/tags/21.0.8/src/lib/src/Tables/DataTables/LoadData/Traffic/BuildTrafficTableData.php#L114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3439494%40wp-simple-firewall&new=3439494%40wp-simple-firewall&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://research.cleantalk.org/cve-2026-0722"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f53d9579-56e9-41aa-b6b7-2472734ee719?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-19T07:17:41Z"
+  }
+}

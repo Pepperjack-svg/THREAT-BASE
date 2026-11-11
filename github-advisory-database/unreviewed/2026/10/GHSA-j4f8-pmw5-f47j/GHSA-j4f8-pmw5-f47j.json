@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4f8-pmw5-f47j",
+  "modified": "2026-10-30T18:32:46Z",
+  "published": "2026-10-30T18:32:46Z",
+  "aliases": [
+    "CVE-2026-97638"
+  ],
+  "details": "The Forminator Forms – Contact Form, Payment Form & Custom Form Builder plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 1.57.3.1 via the 'previous_draft_id' parameter due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to delete arbitrary saved drafts belonging to other users and take over those draft identifiers by overwriting them with attacker-controlled form submissions. This requires the attacker to have obtained a victim's draft_id, which may be harvested from a shared \"continue later\" link; the nominally present nonce check is effectively bypassed because the nonce is publicly obtainable by any unauthenticated visitor loading a form page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97638"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/forminator/tags/1.57.3/library/abstracts/abstract-class-front-action.php#L127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/forminator/tags/1.57.3/library/abstracts/abstract-class-front-action.php#L196"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/forminator/tags/1.57.3/library/model/class-form-entry-model.php#L3110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/forminator/tags/1.57.3/library/model/class-form-entry-model.php#L429"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/forminator/tags/1.57.3/library/modules/custom-forms/front/front-action.php#L1685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/forminator/tags/1.57.3/library/modules/custom-forms/front/front-action.php#L3662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3732209/forminator/trunk/library/modules/custom-forms/front/front-action.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3732192%40forminator%2Ftags%2F1.57.3.1&old=3700727%40forminator%2Ftags%2F1.57.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/61d065d0-d61e-4e65-99ae-eded211681ac?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T18:18:21Z"
+  }
+}

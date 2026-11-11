@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3w8q-xq97-5j7x",
+  "modified": "2025-12-04T16:23:15Z",
+  "published": "2025-12-03T16:57:50Z",
+  "aliases": [
+    "CVE-2025-66453"
+  ],
+  "summary": "Rhino has high CPU usage and potential DoS when passing specific numbers to `toFixed()` function",
+  "details": "When an application passed an attacker controlled float poing number into the `toFixed()` function, it might lead to high CPU consumption and a potential Denial of Service.\n\nSmall numbers go through this call stack: `NativeNumber.numTo > DToA.JS_dtostr > DToA.JS_dtoa > DToA.pow5mult`\nwhere `pow5mult` attempts to raise `5` to a ridiculous power.\n\nExample code: `(4.47118444E-314).toFixed(2)`",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.mozilla:rhino"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.7.14.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.mozilla:rhino"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.7.15"
+            },
+            {
+              "fixed": "1.7.15.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.mozilla:rhino"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.8.0"
+            },
+            {
+              "fixed": "1.8.1"
+            }
+          ]
+        }
+      ],
+      "versions": [
+        "1.8.0"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mozilla/rhino/security/advisories/GHSA-3w8q-xq97-5j7x"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mozilla/rhino/commit/2bcf4c43deace35f1f57d86377c6767b0608986e"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mozilla/rhino"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-03T16:57:50Z",
+    "nvd_published_at": "2025-12-03T20:16:26Z"
+  }
+}

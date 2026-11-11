@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v5pm-g3x4-2pmj",
+  "modified": "2026-10-15T03:35:26Z",
+  "published": "2026-03-25T12:30:24Z",
+  "aliases": [
+    "CVE-2026-23372"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfc: rawsock: cancel tx_work before socket teardown\n\nIn rawsock_release(), cancel any pending tx_work and purge the write\nqueue before orphaning the socket.  rawsock_tx_work runs on the system\nworkqueue and calls nfc_data_exchange which dereferences the NCI\ndevice.  Without synchronization, tx_work can race with socket and\ndevice teardown when a process is killed (e.g. by SIGKILL), leading\nto use-after-free or leaked references.\n\nSet SEND_SHUTDOWN first so that if tx_work is already running it will\nsee the flag and skip transmitting, then use cancel_work_sync to wait\nfor any in-progress execution to finish, and finally purge any\nremaining queued skbs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23372"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ae592ed91bb4b6b51df256b51045c13d2656049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/722a28b635ec281bb08a23885223526d8e7d6526"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78141b8832e16d80d09cbefb4258612db0777a24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b2d23cd09e1cb56bdf0e4d5614703094159f16c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cdeed45ce8c92defd057f7d67ee9a69374d8fa16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d793458c45df2aed498d7f74145eab7ee22d25aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da4515fc8263c5933ed605e396af91079806dc45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/edc988613def90c5b558e025b1b423f48007be06"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:36Z"
+  }
+}

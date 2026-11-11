@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pqfp-6qg3-j74h",
+  "modified": "2025-11-20T21:30:29Z",
+  "published": "2025-07-03T09:30:33Z",
+  "aliases": [
+    "CVE-2025-38130"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/connector: only call HDMI audio helper plugged cb if non-null\n\nOn driver remove, sound/soc/codecs/hdmi-codec.c calls the plugged_cb\nwith NULL as the callback function and codec_dev, as seen in its\nhdmi_remove function.\n\nThe HDMI audio helper then happily tries calling said null function\npointer, and produces an Oops as a result.\n\nFix this by only executing the callback if fn is non-null. This means\nthe .plugged_cb and .plugged_cb_dev members still get appropriately\ncleared.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38130"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/933f3eab1d489af8d734bff855b10d29dd5968a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be9b3f9a54101c19226c25ba7163d291183777a0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-03T09:15:27Z"
+  }
+}

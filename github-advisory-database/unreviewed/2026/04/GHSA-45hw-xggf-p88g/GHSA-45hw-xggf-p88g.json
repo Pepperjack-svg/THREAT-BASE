@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-45hw-xggf-p88g",
+  "modified": "2026-05-20T15:35:21Z",
+  "published": "2026-04-03T18:31:22Z",
+  "aliases": [
+    "CVE-2026-23464"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoc: microchip: mpfs: Fix memory leak in mpfs_sys_controller_probe()\n\nIn mpfs_sys_controller_probe(), if of_get_mtd_device_by_node() fails,\nthe function returns immediately without freeing the allocated memory\nfor sys_controller, leading to a memory leak.\n\nFix this by jumping to the out_free label to ensure the memory is\nproperly freed.\n\nAlso, consolidate the error handling for the mbox_request_channel()\nfailure case to use the same label.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23464"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17c84fb7cf3971cc621646185d785670e9530ca1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a741f8cc6fe62542f955cd8d24933a1b6589cbd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da4b44c42f40501db35f5d0a6243708a061490a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3dd5cffba07de6574165a72851471cd42cc6d15"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-03T16:16:33Z"
+  }
+}

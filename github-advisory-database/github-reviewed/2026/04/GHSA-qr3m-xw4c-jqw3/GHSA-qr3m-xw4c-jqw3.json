@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qr3m-xw4c-jqw3",
+  "modified": "2026-04-24T20:51:04Z",
+  "published": "2026-04-16T21:09:40Z",
+  "aliases": [
+    "CVE-2026-40324"
+  ],
+  "summary": "ChilliCream GraphQL Platform: Utf8GraphQLParser Stack Overflow via Deeply Nested GraphQL Documents",
+  "details": "### Impact\n\nHot Chocolate's `Utf8GraphQLParser` is a recursive descent parser with no recursion depth limit. A crafted GraphQL document with deeply nested selection sets, object values, list values, or list types can trigger a `StackOverflowException` on payloads as small as **40 KB**.\n\nBecause `StackOverflowException` is **uncatchable in .NET** (since .NET 2.0), the entire worker process is terminated immediately. All in-flight HTTP requests, background `IHostedService` tasks, and open WebSocket subscriptions on that worker are dropped. The orchestrator (Kubernetes, IIS, etc.) must restart the process.\n\nThis occurs **before any validation rules run** — `MaxExecutionDepth`, complexity analyzers, persisted query allow-lists, and custom `IDocumentValidatorRule` implementations cannot intercept the crash because `Utf8GraphQLParser.Parse` is invoked before validation. The existing `MaxAllowedFields=2048` limit does not help because the crashing payloads contain very few fields.\n\n**Severity:** Critical (9.1) — `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H`\n\n### Patches\n\n- **v12 line:** Fixed in `12.22.7`\n- **v13 line:** Fixed in `13.9.16`\n- **v14 line:** Fixed in `14.3.1`\n- **v15 line:** Fixed in `15.1.14`\n\nThe fix adds a `MaxAllowedRecursionDepth` option to `ParserOptions` with a safe default, and enforces it across all recursive parser methods (`ParseSelectionSet`, `ParseValueLiteral`, `ParseObject`, `ParseList`, `ParseTypeReference`, etc.). When the limit is exceeded, a catchable `SyntaxException` is thrown instead of overflowing the stack.\n\n### Workarounds\n\nThere is no application-level workaround. `StackOverflowException` cannot be caught in .NET. The only mitigation is to upgrade to a patched version.\n\nOperators can reduce (but not eliminate) risk by limiting HTTP request body size at the reverse proxy or load balancer layer, though the smallest crashing payload (40 KB) is well below most default body size limits and is highly compressible (~few hundred bytes via gzip).\n\n### References\n\n- Fix for v15: https://github.com/ChilliCream/graphql-platform/pull/9528",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "HotChocolate.Language"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "12.22.7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "HotChocolate.Language"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "13.0.0"
+            },
+            {
+              "fixed": "13.9.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "HotChocolate.Language"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "14.0.0"
+            },
+            {
+              "fixed": "14.3.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "HotChocolate.Language"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "15.0.0"
+            },
+            {
+              "fixed": "15.1.14"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChilliCream/graphql-platform/security/advisories/GHSA-qr3m-xw4c-jqw3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChilliCream/graphql-platform/pull/9528"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChilliCream/graphql-platform/pull/9530"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChilliCream/graphql-platform/pull/9531"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChilliCream/graphql-platform/commit/08c0caa42ca33c121bbed49d2db892e5bf6fb541"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChilliCream/graphql-platform/commit/4cbaf67d366f800fc1e484bc5c06dfcf27b45023"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChilliCream/graphql-platform/commit/b185eb276c9ee227bd44616ff113be7f01a66c69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChilliCream/graphql-platform/commit/b9271e6a500484c002fd528dcd34d1a9b445480f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ChilliCream/graphql-platform"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChilliCream/graphql-platform/releases/tag/12.22.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChilliCream/graphql-platform/releases/tag/13.9.16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChilliCream/graphql-platform/releases/tag/14.3.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ChilliCream/graphql-platform/releases/tag/15.1.14"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-16T21:09:40Z",
+    "nvd_published_at": "2026-04-18T00:16:36Z"
+  }
+}

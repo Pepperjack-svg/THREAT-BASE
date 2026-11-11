@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r33w-fg8j-9c94",
+  "modified": "2026-02-12T22:11:56Z",
+  "published": "2026-02-12T22:11:56Z",
+  "aliases": [],
+  "summary": "MagicLink: Insecure Deserialization of MagicLink Actions Leads to Remote Code Execution",
+  "details": "## Description\n\nMagicLink stores serialized action objects in the `magic_links.action` database column and deserializes them without integrity validation or class allowlisting in [src/MagicLink.php](src/MagicLink.php#L59-L77) and [src/Actions/ResponseAction.php](src/Actions/ResponseAction.php#L64-L77). An attacker with the ability to manipulate database records (e.g., via SQL injection or compromised admin access) could inject malicious serialized objects containing arbitrary closures, leading to Remote Code Execution (RCE) when the magic link is visited.\n\n## Resolution\n\nThe vulnerability has been mitigated through HMAC-signed serialization using the application key, class allowlisting restricted to `ActionAbstract` subclasses and framework classes, strict type validation preventing arbitrary object storage, and backward compatibility support for legacy data via `allowed_classes` in `unserialize()`. Implementation includes a new [Serializable](src/Security/Serializable/Serializable.php) security class with signing/verification, refactored getter/setter methods in MagicLink.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "cesargb/laravel-magiclink"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "2.25.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/cesargb/laravel-magiclink/security/advisories/GHSA-r33w-fg8j-9c94"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/cesargb/laravel-magiclink"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cesargb/laravel-magiclink/releases/tag/v2.25.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-12T22:11:56Z",
+    "nvd_published_at": null
+  }
+}

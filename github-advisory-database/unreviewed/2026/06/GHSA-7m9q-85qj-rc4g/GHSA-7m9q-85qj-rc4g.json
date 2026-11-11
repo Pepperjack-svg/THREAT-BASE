@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7m9q-85qj-rc4g",
+  "modified": "2026-10-15T03:36:18Z",
+  "published": "2026-06-25T09:31:23Z",
+  "aliases": [
+    "CVE-2026-53269"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: synproxy: add mutex to guard hook reference counting\n\nAs the synproxy infrastructure register netfilter hooks on-demand when a\nuser adds the first iptables target or nftables expression, if done\nconcurrently they can race each other.\n\nIntroduce a mutex to serialize the refcount control blocks access from\nboth frontends. While a per namespace mutex might be more efficient, it\nis not needed for target/expression like SYNPROXY.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53269"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ec9ddc1bda261a2c57636c74c8b4e53000102c9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f8ba5e4c53d2e4a536aa68140beda9fe59b2f88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fcba19caaeb2a33017459d3430f057967bb91b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/56ffbe3a08c01dcdb0d6adee9ce1e535bfb3b389"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/640441348258220e78daed40528b85b8afcedab6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aaf80701dc2f7a48fe543961e21f8ca3924d587c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/debc57b83d5b323df74bf010c8d50fe26ad2ed6b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fbf0591275f50eae5733c3d7a8cd6c1e79933ffa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:45Z"
+  }
+}

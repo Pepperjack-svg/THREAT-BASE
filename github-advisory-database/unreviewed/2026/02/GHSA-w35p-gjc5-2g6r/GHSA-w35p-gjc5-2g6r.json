@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w35p-gjc5-2g6r",
+  "modified": "2026-02-18T18:30:40Z",
+  "published": "2026-02-18T18:30:40Z",
+  "aliases": [
+    "CVE-2026-2230"
+  ],
+  "details": "The Booking Calendar plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 10.14.14 via the handle_ajax_save function due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with Subscriber-level access and above, and booking permissions granted by an Administrator, to modify other users' plugin settings, such as booking calendar display options, which can disrupt the booking calendar functionality for the targeted user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2230"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/booking/trunk/includes/save-user-meta/save-user-meta.php#L90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3456856"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/60f7df44-22f9-4a9e-a20c-4b8628674079?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-18T17:21:36Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7jqw-rhp8-c8vf",
+  "modified": "2026-10-12T21:31:56Z",
+  "published": "2026-10-12T21:31:56Z",
+  "aliases": [
+    "CVE-2026-109575"
+  ],
+  "details": "In HAProxy Data Plane API 2.2.0 through 3.4.3 (and corresponding Enterprise Edition releases), Server.ConfigureAPI() has process-global authentication logic that improperly drops security controls across multiple transport types. When a TLS Certificate Authority (tls_ca) is configured and a numeric TLS port (tls_port) is specified, the application globally disables Basic authentication on its shared internal request handler. Because this handler is shared concurrently among HTTP, HTTPS, and UNIX domain socket listeners, and mutual TLS (mTLS) client certificate verification (tls.RequireAndVerifyClientCert) is enforced exclusively on the HTTPS server path, all other simultaneously active non-mTLS listeners fail open. Consequently, an unauthenticated attacker capable of reaching an affected HTTP or UNIX management endpoint can completely bypass credentials to gain full API administrative access. This allows unauthorized remote or local actors to read sensitive, cleartext HAProxy configuration data or replace the managed configuration entirely via the raw configuration endpoint. This has been fixed in versions 3.4.4, 3.3.9, 3.2.17, 3.0.25, 2.9.29, and their respective EE backports by migrating to a per-request TLS connection-state validation model.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/haproxytech/dataplaneapi/commit/c3ae4e3ccff5490d44650565e445c4b15e8aff8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/haproxytech/dataplaneapi/releases/tag/v3.4.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.haproxy.com/documentation/haproxy-data-plane-api"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.haproxy.com/documentation/haproxy-data-plane-api/community/changelog/#version-3.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T20:17:09Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hv9x-x7p8-5xpf",
+  "modified": "2026-10-13T15:32:23Z",
+  "published": "2026-10-13T15:32:23Z",
+  "aliases": [
+    "CVE-2026-109957"
+  ],
+  "details": "EspoCRM before 10.0.7 contains an insecure direct object reference vulnerability that allows authenticated users with Import scope access to read other users' attachments by supplying a foreign attachmentId to the Import endpoint. Attackers can create an Import record referencing a known attachment ID, then call the error export endpoint to copy source rows into a downloadable CSV they own.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/espocrm/espocrm/security/advisories/GHSA-5729-xq64-4h22"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109957"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/espocrm-before-10.0.7-idor-via-import-attachmentid-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T14:17:34Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qv92-hwc3-chxf",
+  "modified": "2026-05-29T21:31:16Z",
+  "published": "2026-03-18T18:31:18Z",
+  "aliases": [
+    "CVE-2026-23258"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: liquidio: Initialize netdev pointer before queue setup\n\nIn setup_nic_devices(), the netdev is allocated using alloc_etherdev_mq().\nHowever, the pointer to this structure is stored in oct->props[i].netdev\nonly after the calls to netif_set_real_num_rx_queues() and\nnetif_set_real_num_tx_queues().\n\nIf either of these functions fails, setup_nic_devices() returns an error\nwithout freeing the allocated netdev. Since oct->props[i].netdev is still\nNULL at this point, the cleanup function liquidio_destroy_nic_device()\nwill fail to find and free the netdev, resulting in a memory leak.\n\nFix this by initializing oct->props[i].netdev before calling the queue\nsetup functions. This ensures that the netdev is properly accessible for\ncleanup in case of errors.\n\nCompile tested only. Issue found using a prototype static analysis tool\nand code review.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23258"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d4590fde856cb94bd9a46e795c29d8288c238fc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/926ede0c85e1e57c97d64d9612455267d597bb2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0e57c0b68c9e6f9a8fd7c1167861a5a730eb2f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be109646cdaecab262f6276303b1763468c94378"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0ed6c77ec34050971fd0df2a94dfdea66d09331"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c81a8515fb8c8fb5d0dbc21f48337494bf1d60df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d028147ae06407cb355245db1774793600670169"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-18T18:16:24Z"
+  }
+}

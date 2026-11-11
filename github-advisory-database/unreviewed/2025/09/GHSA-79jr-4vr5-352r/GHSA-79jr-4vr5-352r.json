@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-79jr-4vr5-352r",
+  "modified": "2025-09-23T18:30:20Z",
+  "published": "2025-09-23T18:30:20Z",
+  "aliases": [
+    "CVE-2022-49109"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nceph: fix inode reference leakage in ceph_get_snapdir()\n\nThe ceph_get_inode() will search for or insert a new inode into the\nhash for the given vino, and return a reference to it. If new is\nnon-NULL, its reference is consumed.\n\nWe should release the reference when in error handing cases.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/322794d3355c33adcc4feace0045d85a8e4ed813"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ae7163598c611a8892698e0c056fe794e52b44b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9cd21981dedfb4fe9f344529e4be35727cb10940"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2d9bb3f06abddefdfa740b0a604575b6797e1bf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:48Z"
+  }
+}

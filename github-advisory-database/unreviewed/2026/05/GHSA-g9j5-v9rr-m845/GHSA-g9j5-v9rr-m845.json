@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g9j5-v9rr-m845",
+  "modified": "2026-09-15T12:31:33Z",
+  "published": "2026-05-06T12:30:29Z",
+  "aliases": [
+    "CVE-2026-43133"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: nSVM: Always use vmcb01 in VMLOAD/VMSAVE emulation\n\nCommit cc3ed80ae69f (\"KVM: nSVM: always use vmcb01 to for vmsave/vmload\nof guest state\") made KVM always use vmcb01 for the fields controlled by\nVMSAVE/VMLOAD, but it missed updating the VMLOAD/VMSAVE emulation code\nto always use vmcb01.\n\nAs a result, if VMSAVE/VMLOAD is executed by an L2 guest and is not\nintercepted by L1, KVM will mistakenly use vmcb02. Always use vmcb01\ninstead of the current VMCB.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:65334"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:66180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:66357"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:67468"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:67469"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-43133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2467065"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0004ecb798b30e90d7ebfe74efae2d9423315a64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10063e1251c1485034a018236080792ad083dcc5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/127ccae2c185f62e6ecb4bf24f9cb307e9b9c619"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3880e331b0b31d0d5d3702b124f6c93539cd478a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3b7015000988ba35ecd5648f4b2283960f00543"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d464cf1ed900d47c85393d40b00017b6adfc2e6c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fce2fd4a2ca05670a91015aacccf96a1c26268fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-43133.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-628",
+      "CWE-754"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:30Z"
+  }
+}

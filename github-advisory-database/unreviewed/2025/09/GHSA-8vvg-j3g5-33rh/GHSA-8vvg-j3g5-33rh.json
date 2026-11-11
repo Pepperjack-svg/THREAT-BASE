@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8vvg-j3g5-33rh",
+  "modified": "2025-09-29T21:30:20Z",
+  "published": "2025-09-19T21:31:18Z",
+  "aliases": [
+    "CVE-2025-34194"
+  ],
+  "details": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host and Application (Windows client deployments) contain an insecure temporary-file handling vulnerability in the PrinterInstallerClient components. The software creates files as NT AUTHORITY\\SYSTEM inside a directory under the control of the local user (C:\\Users\\%USER%\\AppData\\Local\\Temp\\). An attacker who can place symbolic links or otherwise influence filenames in that directory can cause the service to follow the link and write to arbitrary filesystem locations as SYSTEM. This allows a local, unprivileged user to overwrite or create files as SYSTEM, leading to local privilege escalation and the ability to modify configuration files, replace or inject binaries, or otherwise compromise confidentiality, integrity, and availability of the system. NOTE: This vulnerability has been addressed, but an affected version range is not yet fully determined. This record will be updated when the vendor provides confirmed version information.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34194"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/saas/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/va/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pierrekim.github.io/blog/2025-04-08-vasion-printerlogic-83-vulnerabilities.html#win-lpe-02"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vasion-print-printerlogic-lpe-via-insecure-temporary-file-handling"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-19T19:15:39Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-32v3-8rp4-cq83",
+  "modified": "2026-11-04T21:32:31Z",
+  "published": "2026-11-04T21:32:31Z",
+  "aliases": [
+    "CVE-2026-122126"
+  ],
+  "details": "reSIProcate reTurn client through 1.14.0 contains a heap buffer overflow in TurnTcpSocket::handleReadHeader() that allows malicious TURN servers to overwrite memory via oversized frame lengths. Attackers can send STUN or ChannelData frames declaring up to 65535 bytes, writing roughly 57 KB past the fixed 8192-byte mReadBuffer and crashing the client.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122126"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/resiprocate/resiprocate/pull/496"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/resiprocate/resiprocate/commit/5bb559fd96298073cab369fdfa610f981fb01e95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/resiprocate/resiprocate"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/resiprocate/resiprocate/blob/resiprocate-1.14.0/reTurn/client/TurnTcpSocket.cxx#L124-L147"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/resiprocate-return-client-through-1.14.0-heap-buffer-overflow-via-turntcpsocket"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T21:18:08Z"
+  }
+}

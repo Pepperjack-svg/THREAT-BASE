@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vgjg-qrh9-w8x6",
+  "modified": "2026-05-13T21:31:58Z",
+  "published": "2026-05-06T12:30:30Z",
+  "aliases": [
+    "CVE-2026-43157"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-af: CGX: fix bitmap leaks\n\nThe RX/TX flow-control bitmaps (rx_fc_pfvf_bmap and tx_fc_pfvf_bmap)\nare allocated by cgx_lmac_init() but never freed in cgx_lmac_exit().\nUnbinding and rebinding the driver therefore triggers kmemleak:\n\n    unreferenced object (size 16):\n        backtrace:\n          rvu_alloc_bitmap\n          cgx_probe\n\nFree both bitmaps during teardown.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/013ac469596a0b8671e62d89c89ae0bd46bbe667"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3def995c4ede842adf509c410e92d09a0cedc965"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d389382ee655128056fbdab86baad8495ffbf33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ad8a13a45c5c24d0d32de9a1c3fd58498a675ece"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ccca14bbdcc25829d355b9f4d3249f43dadb71c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ccef79af58b43787c25710c9da96651c6ddfe50f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:33Z"
+  }
+}

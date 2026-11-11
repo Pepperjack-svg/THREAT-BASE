@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vpf7-2j6x-pp68",
+  "modified": "2026-10-07T09:32:18Z",
+  "published": "2026-10-06T21:31:58Z",
+  "aliases": [
+    "CVE-2026-105111"
+  ],
+  "details": "Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Apache Commons BCEL.\n\n\n\nThis only happens when you're using Class2HTML to generate webpages for possibly-attacker-controlled class files, where Class2HTML emitters write attacker class-file strings into HTML unescaped (stored XSS in reports).\n\n\n\nThis issue affects Apache Commons BCEL: before 6.13.0.\n\n\n\nUsers are recommended to upgrade to version 6.13.0, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/commons-bcel/commit/fb72c225cbc6ec3d94060ed6edb269f07428d504.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/co1wfk2lyrmpnfhn49o370pvfl978rw6"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/07/13"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T20:17:15Z"
+  }
+}

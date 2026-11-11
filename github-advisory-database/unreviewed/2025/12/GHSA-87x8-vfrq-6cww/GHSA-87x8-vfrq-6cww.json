@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-87x8-vfrq-6cww",
+  "modified": "2025-12-30T15:30:29Z",
+  "published": "2025-12-30T15:30:28Z",
+  "aliases": [
+    "CVE-2022-50870"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npowerpc/rtas: avoid device tree lookups in rtas_os_term()\n\nrtas_os_term() is called during panic. Its behavior depends on a couple\nof conditions in the /rtas node of the device tree, the traversal of\nwhich entails locking and local IRQ state changes. If the kernel panics\nwhile devtree_lock is held, rtas_os_term() as currently written could\nhang.\n\nInstead of discovering the relevant characteristics at panic time,\ncache them in file-static variables at boot. Note the lookup for\n\"ibm,extended-os-term\" is converted to of_property_read_bool() since it\nis a boolean property, not an RTAS function token.\n\n[mpe: Incorporate suggested change from Nick]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50870"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06a07fbb32b3a23eec20a42b1e64474da0a3b33e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/464d10e8d797454e16a173ef1292a446b2adf21c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/698e682c849e356fb47a8be47ca8baa817cf31e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2fa91abf22a705cf02f886cd99cff41f4ceda60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8939315b7342860df143afe0adda6212cdd3193"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e23822c7381c59d9e42e65771b6e17c71ed30ea7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed2213bfb192ab51f09f12e9b49b5d482c6493f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2167f10fcca68ab9ae3f8d94d2c704c5541ac69"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:01Z"
+  }
+}

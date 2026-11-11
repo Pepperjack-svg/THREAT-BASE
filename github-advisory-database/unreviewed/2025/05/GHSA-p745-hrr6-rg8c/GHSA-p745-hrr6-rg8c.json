@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p745-hrr6-rg8c",
+  "modified": "2025-05-28T15:34:29Z",
+  "published": "2025-05-28T00:30:35Z",
+  "aliases": [
+    "CVE-2025-40911"
+  ],
+  "details": "Net::CIDR::Set versions 0.10 through 0.13 for Perl does not properly handle leading zero characters in IP CIDR address strings, which could allow attackers to bypass access control that is based on IP addresses.\n\nLeading zeros are used to indicate octal numbers, which can confuse users who are intentionally using octal notation, as well as users who believe they are using decimal notation.\n\nNet::CIDR::Set used code from Net::CIDR::Lite, which had a similar vulnerability CVE-2021-47154.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40911"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/robrwo/perl-Net-CIDR-Set/commit/be7d91e8446ad8013b08b4be313d666dab003a8a.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.urth.org/2021/03/29/security-issues-in-perl-ip-address-distros"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/RRWO/Net-CIDR-Set-0.14/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-27T22:15:22Z"
+  }
+}

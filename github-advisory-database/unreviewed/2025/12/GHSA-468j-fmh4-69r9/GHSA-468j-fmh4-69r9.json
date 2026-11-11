@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-468j-fmh4-69r9",
+  "modified": "2025-12-16T15:30:42Z",
+  "published": "2025-12-16T15:30:42Z",
+  "aliases": [
+    "CVE-2025-40348"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nslab: Avoid race on slab->obj_exts in alloc_slab_obj_exts\n\nIf two competing threads enter alloc_slab_obj_exts() and one of them\nfails to allocate the object extension vector, it might override the\nvalid slab->obj_exts allocated by the other thread with\nOBJEXTS_ALLOC_FAIL. This will cause the thread that lost this race and\nexpects a valid pointer to dereference a NULL pointer later on.\n\nUpdate slab->obj_exts atomically using cmpxchg() to avoid\nslab->obj_exts overrides by racing threads.\n\nThanks for Vlastimil and Suren's help with debugging.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ed8bfd24ce1cb31742b09a3eb557cd008533eec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c34feda6a9a203c9744281f1b6671b7dad2012d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7af5300d78460fc5037ddc77113ba3dbfe77dc0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T14:15:46Z"
+  }
+}

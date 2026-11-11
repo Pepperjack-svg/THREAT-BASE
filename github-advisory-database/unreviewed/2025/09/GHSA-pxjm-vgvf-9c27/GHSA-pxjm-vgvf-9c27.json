@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pxjm-vgvf-9c27",
+  "modified": "2025-12-10T18:30:21Z",
+  "published": "2025-09-17T15:30:37Z",
+  "aliases": [
+    "CVE-2022-50358"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbrcmfmac: return error when getting invalid max_flowrings from dongle\n\nWhen firmware hit trap at initialization, host will read abnormal\nmax_flowrings number from dongle, and it will cause kernel panic when\ndoing iowrite to initialize dongle ring.\nTo detect this error at early stage, we directly return error when getting\ninvalid max_flowrings(>256).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50358"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10c4b63d09a5b0ebf1b61af1dae7f25555cf58b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/200347eb3b2608cc8b54c13dd1d5e03809ba2eb2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2aca4f3734bd717e04943ddf340d49ab62299a00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e8bb402b060a6c22160de3d72cee057698177c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cc9299036bdb647408e11e41de3eb1ff6d428cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87f126b25fa8562196f0f4c0aa46a446026199bf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-17T15:15:34Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hxqm-jx76-mpgf",
+  "modified": "2026-01-20T06:30:25Z",
+  "published": "2026-01-20T06:30:25Z",
+  "aliases": [
+    "CVE-2025-14348"
+  ],
+  "details": "The weMail - Email Marketing, Lead Generation, Optin Forms, Email Newsletters, A/B Testing, and Automation plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.0.7. This is due to the plugin's REST API trusting the `x-wemail-user` HTTP header to identify users without verifying the request originates from an authenticated WordPress session. This makes it possible for unauthenticated attackers who know or can guess an admin email (easily enumerable via `/wp-json/wp/v2/users`) to impersonate that user and access the CSV subscriber endpoints, potentially exfiltrating subscriber PII (emails, names, phone numbers) from imported CSV files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wemail/tags/2.0.6/includes/Rest/Csv.php#L79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wemail/tags/2.0.6/includes/Rest/Csv.php#L85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3442404%40wemail%2Ftrunk&old=3423372%40wemail%2Ftrunk&sfp_email=&sfph_mail=#file1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/59c0caa2-d0c2-472e-83c3-d11ad313720d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-20T05:16:04Z"
+  }
+}

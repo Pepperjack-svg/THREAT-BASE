@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cmj8-gm9j-p86q",
+  "modified": "2026-10-16T06:30:28Z",
+  "published": "2026-10-16T06:30:28Z",
+  "aliases": [
+    "CVE-2026-96570"
+  ],
+  "details": "The Schema & Structured Data for WP & AMP plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'saswp_review_text' parameter in all versions up to, and including, 1.67 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The nonce that serves as the only authorization gate is publicly printed in the [saswp-reviews-form] shortcode HTML, making it obtainable by any anonymous visitor and rendering it ineffective as an access control boundary.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96570"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/schema-and-structured-data-for-wp/tags/1.66/admin_section/common-function.php#L1874"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/schema-and-structured-data-for-wp/tags/1.66/admin_section/common-function.php#L5158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/schema-and-structured-data-for-wp/tags/1.66/modules/reviews/class-saswp-reviews-admin.php#L159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/schema-and-structured-data-for-wp/tags/1.66/modules/reviews/class-saswp-reviews-admin.php#L258"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/schema-and-structured-data-for-wp/tags/1.66/modules/reviews/class-saswp-reviews-form.php#L170"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/schema-and-structured-data-for-wp/tags/1.66/modules/reviews/class-saswp-reviews-service.php#L126"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3740790%40schema-and-structured-data-for-wp&new=3740790%40schema-and-structured-data-for-wp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/1285322f-be3a-4015-b96d-79589a0897c8?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T06:17:13Z"
+  }
+}

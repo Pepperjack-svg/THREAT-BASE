@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v6fq-v4c3-2qr7",
+  "modified": "2026-10-08T15:32:59Z",
+  "published": "2026-10-08T15:32:59Z",
+  "aliases": [
+    "CVE-2026-107614"
+  ],
+  "details": "An integer underflow in WinCursorShapeUtils::trimTransparent() in GlavSoft TightVNC Server for Windows before 2.8.88 allows a local authenticated user to crash the server, and potentially read out-of-bounds memory, by causing a cursor shape with a width or height of zero to be processed on the DXGI capture path. The loop bound width - 1 wraps to 0xFFFFFFFF, producing an access roughly 4 GB beyond the 64 KB cursor buffer; a monochrome cursor of height 1 also becomes 0 because getCursorHeight() halves the height in place.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107614"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sourceforge.net/p/vnc-tight/bugs/1661"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tightvnc.com/whatsnew.php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T14:16:50Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g5v7-9x6w-f3xq",
+  "modified": "2026-10-21T18:33:32Z",
+  "published": "2026-10-21T18:33:32Z",
+  "aliases": [
+    "CVE-2026-114491"
+  ],
+  "details": "pdfmake 0.3.8 before 0.3.12 fails to apply the setLocalAccessPolicy() restriction to images referenced inside SVG content, allowing attackers to read blocked local files. Attackers supplying a document definition can add an SVG image href pointing to a local path, embedding restricted file contents in the generated PDF.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114491"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bpampuch/pdfmake/commit/4ad4cbf2713568304dd4cbc3090bfb912a78dfdd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bpampuch/pdfmake/blob/0.3.11/src/Renderer.js#L350-L372"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bpampuch/pdfmake/releases/tag/0.3.12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pdfmake-0.3.8-before-0.3.12-local-file-policy-bypass-via-svg-images"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T18:17:27Z"
+  }
+}

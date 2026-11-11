@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6wxc-8mgq-w26m",
+  "modified": "2026-06-11T13:30:15Z",
+  "published": "2026-05-15T17:14:37Z",
+  "aliases": [
+    "CVE-2026-45106"
+  ],
+  "summary": "Weblate: Stored HTML injection in editor search preview",
+  "details": "### Impact\nWeblate's live search preview renders unit `source` and `context` as HTML without escaping. Any contributor whose content reaches those fields stores HTML and CSS that runs inside the authenticated editor of every user who runs a matching search.\n\n### Patches\n* https://github.com/WeblateOrg/weblate/pull/19422\n\n### Workarounds\nOnly the search preview on the selected views is affected.\n\n### Resources\nWeblate thanks @adrgs for reporting this issue responsibly via GitHub.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "weblate"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2026.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/security/advisories/GHSA-6wxc-8mgq-w26m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/pull/19422"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/commit/8b0adf1d0b43dfc0d09da4b878857b2288b84f2d"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/WeblateOrg/weblate"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/releases/tag/weblate-2026.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-15T17:14:37Z",
+    "nvd_published_at": "2026-06-10T20:17:27Z"
+  }
+}

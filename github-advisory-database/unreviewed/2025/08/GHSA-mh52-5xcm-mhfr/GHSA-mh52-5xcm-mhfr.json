@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mh52-5xcm-mhfr",
+  "modified": "2025-08-07T15:33:12Z",
+  "published": "2025-08-05T21:31:38Z",
+  "aliases": [
+    "CVE-2025-51541"
+  ],
+  "details": "A stored cross-site scripting (XSS) vulnerability exists in the Shopware 6 installation interface at /recovery/install/database-configuration/. The c_database_schema field fails to properly sanitize user-supplied input before rendering it in the browser, allowing an attacker to inject malicious JavaScript. This vulnerability can be exploited via a Cross-Site Request Forgery (CSRF) attack due to the absence of CSRF protections on the POST request. An unauthenticated remote attacker can craft a malicious web page that, when visited by a victim, stores the payload persistently in the installation configuration. As a result, the payload executes whenever any user subsequently accesses the vulnerable installation page, leading to persistent client-side code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-51541"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/anonx-hunter/a7ef32a01d7d888413b08bf8589fdd7e#file-cve-2025-51541-shopware-xss-md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.dax-tokaido.com/recovery/install/database-configuration"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-05T20:15:37Z"
+  }
+}

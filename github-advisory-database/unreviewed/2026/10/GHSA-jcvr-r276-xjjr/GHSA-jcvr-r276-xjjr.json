@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jcvr-r276-xjjr",
+  "modified": "2026-10-10T09:30:27Z",
+  "published": "2026-10-10T09:30:27Z",
+  "aliases": [
+    "CVE-2026-107742"
+  ],
+  "details": "The 10Web Booster – Website speed optimization, Cache & Page Speed optimizer plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'author' parameter in all versions up to, and including, 2.34.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is exploitable because a comment author Name value containing ' src=' and an event-handler payload contains no HTML tags or quote characters, allowing it to survive WordPress core's sanitize_text_field and land verbatim inside the alt attribute, where the plugin's own str_replace subsequently injects the single quote that breaks out of the attribute context.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107742"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tenweb-speed-optimizer/tags/2.34.10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tenweb-speed-optimizer/tags/2.34.8/includes/OptimizerImages.php#L186"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tenweb-speed-optimizer/tags/2.34.8/includes/OptimizerImages.php#L310"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tenweb-speed-optimizer/tags/2.34.8/includes/OptimizerImages.php#L445"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tenweb-speed-optimizer/tags/2.34.8/tenweb_speed_optimizer.php#L175"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b14945a5-c5e7-45cb-b2cc-8d1a265b6c52?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T07:16:40Z"
+  }
+}

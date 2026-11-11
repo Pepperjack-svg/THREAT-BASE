@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7qq3-fmc6-w4w4",
+  "modified": "2026-05-11T09:30:31Z",
+  "published": "2026-05-08T15:31:29Z",
+  "aliases": [
+    "CVE-2026-43447"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niavf: fix PTP use-after-free during reset\n\nCommit 7c01dbfc8a1c5f (\"iavf: periodically cache PHC time\") introduced a\nworker to cache PHC time, but failed to stop it during reset or disable.\n\nThis creates a race condition where `iavf_reset_task()` or\n`iavf_disable_vf()` free adapter resources (AQ) while the worker is still\nrunning. If the worker triggers `iavf_queue_ptp_cmd()` during teardown, it\naccesses freed memory/locks, leading to a crash.\n\nFix this by calling `iavf_ptp_release()` before tearing down the adapter.\nThis ensures `ptp_clock_unregister()` synchronously cancels the worker and\ncleans up the chardev before the backing resources are destroyed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43447"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b034f2429ce6b45ce74dc266175d277acafc5c4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90cc8b2add29b57288025b51c70bc647e7cccb12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/efc54fb13d79117a825fef17364315a58682c7ec"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T15:16:57Z"
+  }
+}

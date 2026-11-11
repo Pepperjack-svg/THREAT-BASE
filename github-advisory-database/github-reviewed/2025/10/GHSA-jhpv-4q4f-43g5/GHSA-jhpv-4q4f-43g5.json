@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jhpv-4q4f-43g5",
+  "modified": "2025-10-07T21:15:45Z",
+  "published": "2025-10-07T21:15:44Z",
+  "aliases": [
+    "CVE-2025-61778"
+  ],
+  "summary": "Akka.Remote TLS did not properly implement certificate-based authentication",
+  "details": "### Impact\n\nThis is a critical network security vulnerability for Akka.Remote **users who have SSL / TLS enabled** on their Akka.Remote connections and were expecting certificate-based authentication to be enforced on all peers attempting to join the network.\n\nIn all versions of Akka.Remote from v1.2.0 to v1.5.51, TLS could be enabled via our `akka.remote.dot-netty.tcp` transport and this would correctly enforce private key validation on the server-side of inbound connections. Akka.Remote, however, never asked the outbound-connecting client to present ITS certificate - therefore it's possible for untrusted parties to connect to a private key'd Akka.NET cluster and begin communicating with it **without any certificate**. \n\nThe issue here is that for certificate-based authentication to work properly, ensuring that all members of the Akka.Remote network are secured with the same private key, Akka.Remote needed to implement mutual TLS. This was not the case before Akka.NET v1.5.52.\n\nIf you are running Akka.NET inside a private network you fully control or you were never using TLS in the first place, then this bug has no impact on you. However: if you are using TLS to secure your network YOU MUST upgrade to Akka.NET V1.5.52 or later.\n\n### Patches\n\nhttps://github.com/akkadotnet/akka.net/pull/7847 - forces \"fail fast\" semantics if TLS is enabled but the private key is missing or invalid. Previous versions would only check that once connection attempts occurred.\nhttps://github.com/akkadotnet/akka.net/pull/7851 - **critical fix**: enforces mutual TLS (mTLS) by default, so both parties must be keyed using the same certificate. This fulfills the original security \n\nThese updates have been shipped into Akka.NET v1.5.52: https://github.com/akkadotnet/akka.net/releases/tag/1.5.52\n\n### Workarounds\n\nIf your application isn't exposed publicly, then CVE-2025-61778 has no practical impact on your application. That being said: upgrading to Akka.NET v1.5.52 or later is a good idea.\n\n### References\n\nPlease view our latest network security documentation here: https://getakka.net/articles/remoting/security.html",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Akka.Remote"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.2.0"
+            },
+            {
+              "fixed": "1.5.52"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Akka.Cluster"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.2.0"
+            },
+            {
+              "fixed": "1.5.52"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/akkadotnet/akka.net/security/advisories/GHSA-jhpv-4q4f-43g5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61778"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/akkadotnet/akka.net/pull/7847"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/akkadotnet/akka.net/pull/7851"
+    },
+    {
+      "type": "WEB",
+      "url": "https://getakka.net/articles/remoting/security.html"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/akkadotnet/akka.net"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/akkadotnet/akka.net/releases/tag/1.5.52"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-290"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-07T21:15:44Z",
+    "nvd_published_at": "2025-10-06T17:16:08Z"
+  }
+}

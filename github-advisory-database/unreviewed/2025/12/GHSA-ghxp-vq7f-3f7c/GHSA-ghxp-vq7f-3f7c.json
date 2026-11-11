@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ghxp-vq7f-3f7c",
+  "modified": "2026-08-04T12:34:48Z",
+  "published": "2025-12-30T15:30:32Z",
+  "aliases": [
+    "CVE-2023-54220"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: 8250: Fix oops for port->pm on uart_change_pm()\n\nUnloading a hardware specific 8250 driver can produce error \"Unable to\nhandle kernel paging request at virtual address\" about ten seconds after\nunloading the driver. This happens on uart_hangup() calling\nuart_change_pm().\n\nTurns out commit 04e82793f068 (\"serial: 8250: Reinit port->pm on port\nspecific driver unbind\") was only a partial fix. If the hardware specific\ndriver has initialized port->pm function, we need to clear port->pm too.\nJust reinitializing port->ops does not do this. Otherwise serial8250_pm()\nwill call port->pm() instead of serial8250_do_pm().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c05493341d6f2097f75f0a5dbb7b53a9e8c5f6c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/18e27df4f2b4e257c317ba8076f31a888f6cc64b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/375806616f8c772c33d40e112530887b37c1a816"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66f3e55960698c874b0598277913b478ecd29573"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/720a297b334e85d34099e83d1f375b92c3efedd6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b653289ca6460a6552c8590b75dfa84a0140a46b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd70d0b28010d560a8be96b44fea86fe2ba016ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dfe2aeb226fd5e19b0ee795f4f6ed8bc494c1534"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:10Z"
+  }
+}

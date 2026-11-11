@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2789-v55f-r7v6",
+  "modified": "2025-11-20T21:30:29Z",
+  "published": "2025-07-03T09:30:34Z",
+  "aliases": [
+    "CVE-2025-38133"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: ad4851: fix ad4858 chan pointer handling\n\nThe pointer returned from ad4851_parse_channels_common() is incremented\ninternally as each channel is populated. In ad4858_parse_channels(),\nthe same pointer was further incremented while setting ext_scan_type\nfields for each channel. This resulted in indio_dev->channels being set\nto a pointer past the end of the allocated array, potentially causing\nmemory corruption or undefined behavior.\n\nFix this by iterating over the channels using an explicit index instead\nof incrementing the pointer. This preserves the original base pointer\nand ensures all channel metadata is set correctly.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/499a8cee812588905cc940837e69918c1649a19e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c3b9e1167d072ce2d01cafec7866647cf8d3616"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-03T09:15:27Z"
+  }
+}

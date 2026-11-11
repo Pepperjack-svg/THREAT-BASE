@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m495-gxx4-gw2p",
+  "modified": "2026-11-03T18:31:07Z",
+  "published": "2026-11-03T18:31:07Z",
+  "aliases": [
+    "CVE-2026-115297"
+  ],
+  "details": "NULL Pointer Dereference (CWE-476) in the AMQP protocol parser in Packetbeat can lead to denial of service via specially crafted network traffic. An unauthenticated attacker who can send traffic on a network segment that Packetbeat monitors for AMQP can cause a Go runtime panic that terminates the Packetbeat process. A single crafted packet is sufficient. No AMQP authentication is necessary. While Packetbeat is not running, it does not collect network telemetry.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115297"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/packetbeat-8-19-24-9-4-9-9-5-6-security-update-esa-2026-208/391361"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T17:17:55Z"
+  }
+}

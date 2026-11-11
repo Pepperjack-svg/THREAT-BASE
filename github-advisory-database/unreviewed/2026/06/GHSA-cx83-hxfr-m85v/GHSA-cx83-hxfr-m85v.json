@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cx83-hxfr-m85v",
+  "modified": "2026-09-14T12:31:30Z",
+  "published": "2026-06-25T09:31:22Z",
+  "aliases": [
+    "CVE-2026-53250"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxsk: cache csum_start/csum_offset to fix TOCTOU in xsk_skb_metadata()\n\nThe TX metadata area resides in the UMEM buffer which is memory-mapped\nand concurrently writable by userspace. In xsk_skb_metadata(),\ncsum_start and csum_offset are read from shared memory for bounds\nvalidation, then read again for skb assignment. A malicious userspace\napplication can race to overwrite these values between the two reads,\nbypassing the bounds check and causing out-of-bounds memory access\nduring checksum computation in the transmit path.\n\nFix this by reading csum_start and csum_offset into local variables\nonce, then using the local copies for both validation and assignment.\n\nNote that other metadata fields (flags, launch_time) and the cached\ncsum fields may be mutually inconsistent due to concurrent userspace\nwrites, but this is benign: the only security-critical invariant is\nthat each field's validated value is the same one used, which local\ncaching guarantees.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53250"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0dfe05b938435892875e07771170051346412df9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22ba97ea9cc1f63a0d0244fae38057ed452b6ac7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bfdfd2706d5fb2cd496a1506e680daf979309c8b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb778aed8a9b2381668fcb1247ae4fa011224768"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:42Z"
+  }
+}

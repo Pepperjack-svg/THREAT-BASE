@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f2f7-qfwq-94j2",
+  "modified": "2025-11-14T18:31:23Z",
+  "published": "2025-06-18T12:30:38Z",
+  "aliases": [
+    "CVE-2022-49967"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix a data-race around bpf_jit_limit.\n\nWhile reading bpf_jit_limit, it can be changed concurrently via sysctl,\nWRITE_ONCE() in __do_proc_doulongvec_minmax(). The size of bpf_jit_limit\nis long, so we need to add a paired READ_ONCE() to avoid load-tearing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0947ae1121083d363d522ff7518ee72b55bd8d29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba632ad0bacb13197a8f38e7526448974e87f292"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:24Z"
+  }
+}

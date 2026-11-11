@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g3wq-cg32-6xwx",
+  "modified": "2025-11-10T18:30:29Z",
+  "published": "2025-05-02T18:31:37Z",
+  "aliases": [
+    "CVE-2023-53113"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: nl80211: fix NULL-ptr deref in offchan check\n\nIf, e.g. in AP mode, the link was already created by userspace\nbut not activated yet, it has a chandef but the chandef isn't\nvalid and has no channel. Check for this and ignore this link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53113"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/201a836c2385fdd2b9d0a8e7737bba5b26f1863a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87e80ea4fbc9ce2f2005905fdbcd38baaa47463a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f624bb6fad23df3270580b4fcef415c6e7bf7705"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-02T16:15:30Z"
+  }
+}

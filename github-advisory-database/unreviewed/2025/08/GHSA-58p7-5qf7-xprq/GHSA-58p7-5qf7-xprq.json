@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-58p7-5qf7-xprq",
+  "modified": "2025-11-03T21:34:23Z",
+  "published": "2025-08-25T15:32:00Z",
+  "aliases": [
+    "CVE-2025-54480"
+  ],
+  "details": "A stack-based buffer overflow vulnerability exists in the MFER parsing functionality of The Biosig Project libbiosig 3.9.0 and Master Branch (35a819fa). A specially crafted MFER file can lead to arbitrary code execution. An attacker can provide a malicious file to trigger this vulnerability.This vulnerability manifests on line 8719 of biosig.c on the current master branch (35a819fa), when the Tag is 0:\n\n\t\t\t\tif (tag==0) {\n\t\t\t\t\tif (len!=1) fprintf(stderr,\"Warning MFER tag0 incorrect length %i!=1\\n\",len);\n\t\t\t\t\tcurPos += ifread(buf,1,len,hdr);\n\t\t\t\t}",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-54480"
+    },
+    {
+      "type": "WEB",
+      "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2025-2234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.talosintelligence.com/vulnerability_reports/TALOS-2025-2234"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-25T14:15:33Z"
+  }
+}

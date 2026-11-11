@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xq67-hr2w-mm32",
+  "modified": "2026-10-05T15:32:22Z",
+  "published": "2026-10-05T15:32:22Z",
+  "aliases": [
+    "CVE-2026-77803"
+  ],
+  "details": "In Progress® Telerik® Fiddler® Classic for Windows, versions prior to v6.0.20262.10021, front-end request desynchronization is possible in the proxy request forwarding component. A request that contains both a Content-Length and a Transfer-Encoding header is forwarded with both headers present, while Fiddler frames the body using Transfer-Encoding only. The remaining bytes on the reused client connection are then parsed as a separate pipelined request, so a local threat actor with low privileges can cause a single malformed request to be split into two requests forwarded to the origin server and receive an additional smuggled response, without requiring a vulnerable server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.telerik.com/fiddler/knowledge-base/kb-security-front-end-desynchronization-cve-2026-77803"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-444"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-05T13:16:54Z"
+  }
+}

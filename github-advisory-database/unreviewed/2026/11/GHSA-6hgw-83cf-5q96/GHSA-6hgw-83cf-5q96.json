@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6hgw-83cf-5q96",
+  "modified": "2026-11-09T15:32:06Z",
+  "published": "2026-11-09T09:31:43Z",
+  "aliases": [
+    "CVE-2026-123145"
+  ],
+  "details": "The WooCommerce Stripe Payment Gateway WordPress plugin before 11.1.0 does not exclude the account password from the checkout fields it saves to order metadata during express checkout, causing the password a customer chooses when creating an account at checkout to be stored in plaintext in the database, readable by anyone with access to order data or the database. Version 10.9.0 stored the passwords. Version 10.9.1 stopped new ones from being stored but left existing ones in place, and version 11.1.0 removes them on update. Passwords stored this way should be considered exposed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123145"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/9a9ff174-9bb4-4944-b95e-d389fd6fe940"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T07:17:30Z"
+  }
+}

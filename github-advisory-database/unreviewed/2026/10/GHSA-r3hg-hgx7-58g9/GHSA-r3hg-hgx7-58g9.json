@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r3hg-hgx7-58g9",
+  "modified": "2026-10-04T00:31:00Z",
+  "published": "2026-10-04T00:30:59Z",
+  "aliases": [
+    "CVE-2026-105123"
+  ],
+  "details": "W (vincent-peugnet/wcms) through 3.18.0 contains a remote code execution vulnerability that allows authenticated editors to write arbitrary files by abusing the unvalidated path in POST /api/v0/media/upload/[*:path]. Attackers can upload .php files executed by the web server, use encoded ../ sequences to write outside the media directory, and delete arbitrary files via DELETE /api/v0/media/[*:path].",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vincent-peugnet/wcms/issues/662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vincent-peugnet/wcms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vincent-peugnet/wcms/blob/cda5bcdb95dbdb1e804fdfe0e5fd2e2b2f8a90e2/app/class/Controllerapimedia.php#L24-L44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vincent-peugnet/wcms/blob/cda5bcdb95dbdb1e804fdfe0e5fd2e2b2f8a90e2/app/class/Media.php#L98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/w-wcms-through-3.18.0-rce-and-arbitrary-file-write-via-media-upload-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-04T00:16:35Z"
+  }
+}

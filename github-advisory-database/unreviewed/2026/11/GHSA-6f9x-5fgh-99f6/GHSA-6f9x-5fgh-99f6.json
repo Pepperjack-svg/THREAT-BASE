@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6f9x-5fgh-99f6",
+  "modified": "2026-11-09T18:31:46Z",
+  "published": "2026-11-01T12:30:23Z",
+  "aliases": [
+    "CVE-2026-13575"
+  ],
+  "details": "HTTP::Session versions before 0.54 for Perl allow memcached command injection via unfiltered session ids in HTTP::Session::Store::CHI.\n\nThe session id from the client's cookie reaches the CHI cache unchanged. The sibling HTTP::Session::Store::Memcached rejects ids that contain control characters, but the CHI store has no such check, and CHI does not escape keys for its memcached drivers.\n\nWith a memcached driver, a CR and LF in the session id end the cache command early, and the server reads the bytes after them as further commands.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tokuhirom/http-session/commit/58288cbf941da6d2aad4ff5c0c79e523d9e583b4.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/KTAT/http-session-0.53/source/lib/HTTP/Session/Store/CHI.pm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/TOKUHIROM/http-session-0.54/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/11/01/2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-93"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-01T11:18:58Z"
+  }
+}

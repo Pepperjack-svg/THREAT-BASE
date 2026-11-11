@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5jmj-h7xm-6q6v",
+  "modified": "2026-07-16T21:25:45Z",
+  "published": "2026-06-23T21:23:58Z",
+  "aliases": [
+    "CVE-2026-54515"
+  ],
+  "summary": "jackson-databind has case-insensitive deserialization bypasses per-property @JsonIgnoreProperties",
+  "details": "## Summary\nIn `BeanDeserializerBase.createContextual()`, per-property `@JsonIgnoreProperties` exclusions are applied by `_handleByNameInclusion()`, producing a `contextual` deserializer whose `BeanPropertyMap` has the ignored properties removed. The subsequent per-property case-insensitivity block (triggered by `@JsonFormat(ACCEPT_CASE_INSENSITIVE_PROPERTIES)`) rebuilds from `this._beanProperties` (the original, unfiltered map) instead of `contextual._beanProperties`, then overwrites the filtered map — restoring every property `_handleByNameInclusion` had just removed. The ignored property becomes writable again.\n\n## Impact\nAn application that both enables case-insensitive matching and relies on per-property `@JsonIgnoreProperties` to keep a field unwritable can have that field set from untrusted JSON (mass-assignment-style write).\n\n## Affected / Patched\nWill be fixed in 2.18.9, 2.21.5, 2.22.1 and 3.1.4.\n\n## Severity / CWE\nMaintainer: minor. Reporter: Moderate. CWE-915.\n\n## Upstream fix\nFasterXML/jackson-databind#5962 (PR #5964, `0e1b0b2`), milestone 3.1.4. Released 2026-06-04.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.fasterxml.jackson.core:jackson-databind"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.1.0"
+            },
+            {
+              "fixed": "3.1.4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "tools.jackson.core:jackson-databind"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.1.0"
+            },
+            {
+              "fixed": "3.1.4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.fasterxml.jackson.core:jackson-databind"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.8.0"
+            },
+            {
+              "fixed": "2.18.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.fasterxml.jackson.core:jackson-databind"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.19.0"
+            },
+            {
+              "fixed": "2.21.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.fasterxml.jackson.core:jackson-databind"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.22.0"
+            },
+            {
+              "fixed": "2.22.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-5jmj-h7xm-6q6v"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54515"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FasterXML/jackson-databind/issues/5962"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FasterXML/jackson-databind/issues/5964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FasterXML/jackson-databind/commit/0e1b0b211f7a53baa62ba2f4c9bd006c7bf4d5fa"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/FasterXML/jackson-databind"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-915"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-23T21:23:58Z",
+    "nvd_published_at": "2026-06-23T21:17:02Z"
+  }
+}

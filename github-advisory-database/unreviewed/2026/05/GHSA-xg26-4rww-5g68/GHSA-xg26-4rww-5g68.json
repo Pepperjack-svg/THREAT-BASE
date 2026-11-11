@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xg26-4rww-5g68",
+  "modified": "2026-10-15T03:35:56Z",
+  "published": "2026-05-27T15:33:20Z",
+  "aliases": [
+    "CVE-2026-46015"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: call sk_data_ready() after listener migration\n\nWhen inet_csk_listen_stop() migrates an established child socket from\na closing listener to another socket in the same SO_REUSEPORT group,\nthe target listener gets a new accept-queue entry via\ninet_csk_reqsk_queue_add(), but that path never notifies the target\nlistener's waiters. A nonblocking accept() still works because it\nchecks the queue directly, but poll()/epoll_wait() waiters and\nblocking accept() callers can also remain asleep indefinitely.\n\nCall READ_ONCE(nsk->sk_data_ready)(nsk) after a successful migration\nin inet_csk_listen_stop().\n\nHowever, after inet_csk_reqsk_queue_add() succeeds, the ref acquired\nin reuseport_migrate_sock() is effectively transferred to\nnreq->rsk_listener. Another CPU can then dequeue nreq via accept()\nor listener shutdown, hit reqsk_put(), and drop that listener ref.\nSince listeners are SOCK_RCU_FREE, wrap the post-queue_add()\ndereferences of nsk in rcu_read_lock()/rcu_read_unlock(), which also\ncovers the existing sock_net(nsk) access in that path.\n\nThe reqsk_timer_handler() path does not need the same changes for two\nreasons: half-open requests become readable only after the final ACK,\nwhere tcp_child_process() already wakes the listener; and once nreq is\nvisible via inet_ehash_insert(), the success path no longer touches\nnsk directly.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12625b4da84caf4d84a04988710a7b9bcf702b18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14e9bb6eba8f59dcc637702e4744ae5e30660d76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3864c6ba1e041bc75342353a70fa2a2c6f909923"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7aa7933a5607b1e5b56f322d17265c1d0ea02c51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83bb57635d7cbafde32f865b577ecfd969f02337"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab5fdcd535645f6dbe6e9e21d96a08d141e88b4b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bebd058ef40c67a81fe6d9ee8beaa4ede90e0704"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-408"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:19Z"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2p6r-x3vv-xqm2",
+  "modified": "2026-05-06T21:49:34Z",
+  "published": "2026-05-06T21:49:33Z",
+  "aliases": [],
+  "summary": "rpassword affected by partial password reveal when input is interrupted ",
+  "details": "rpassword maintainers were made aware of a possible issue with a partial password reveal when input is interrupted.\n\nTo quote @squell:\n\n> @conradkleinespel I've confirmed this problem with SequoiaPGP, which I think uses rpassword, e.g.:\n>\n> Suppose we use pkill -9 sq in a different terminal right after the password has been typed in:\n>\n> $ sq key generate --userid \"barf\" --with-password\n> Enter password to protect the key: Killed\n> $ hello^C\n>\n> Where the password I typed in is \"hello\".\n\nThis has been fixed in version v7.5.0 and above.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:H/PR:H/UI:R/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "crates.io",
+        "name": "rpassword"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "7.5.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 7.4.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/conradkleinespel/rpassword/security/advisories/GHSA-2p6r-x3vv-xqm2"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/conradkleinespel/rpassword"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/conradkleinespel/rpassword/releases/tag/v7.5.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200",
+      "CWE-755"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-06T21:49:33Z",
+    "nvd_published_at": null
+  }
+}

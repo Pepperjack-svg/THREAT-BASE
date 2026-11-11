@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gpw6-7fmv-fc4m",
+  "modified": "2025-11-21T09:30:27Z",
+  "published": "2025-11-21T09:30:27Z",
+  "aliases": [
+    "CVE-2025-12138"
+  ],
+  "details": "The URL Image Importer plugin for WordPress is vulnerable to arbitrary file uploads due to insufficient file type validation in all versions up to, and including, 1.0.6. This is due to the plugin relying on a user-controlled Content-Type HTTP header to validate file uploads in the 'uimptr_import_image_from_url()' function which writes the file to the server before performing proper validation. This makes it possible for authenticated attackers, with Author-level access and above, to upload arbitrary files on the affected site's server which may make remote code execution possible via the uploaded PHP file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12138"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/url-image-importer/trunk/url-image-importer.php#L1319"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/url-image-importer/trunk/url-image-importer.php#L1353"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/url-image-importer/trunk/url-image-importer.php#L1358"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/url-image-importer/trunk/url-image-importer.php#L198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3395852%40url-image-importer&new=3395852%40url-image-importer&sfp_email=&sfph_mail=#file9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/1da18430-1bd0-4f63-9e22-5d26de2be410?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-21T08:15:52Z"
+  }
+}

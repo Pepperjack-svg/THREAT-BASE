@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9fvp-phgh-6gx2",
+  "modified": "2026-09-14T15:32:23Z",
+  "published": "2026-09-11T21:31:24Z",
+  "aliases": [
+    "CVE-2026-81017"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/chrome: sensorhub: Bound the EC-reported sensor number\n\nEach EC FIFO event carries an 8-bit sensor number (in->sensor_num).\ncros_ec_sensorhub_ring_handler() validates the FIFO event count, the\nper-read count and the ring bound, but not the sensor number, which\ncros_ec_sensor_ring_process_event() then uses unchecked to index\nsensorhub->batch_state[] - allocated with only sensorhub->sensor_num\nentries. A sensor number of sensor_num or larger is an out-of-bounds\nread and write of batch_state[].\n\nValidate the sensor number in the ring handler, where each event is read\nfrom the EC, and drop a malformed event before it is used.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81017"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b602ecf6193ecb9720c78b6728d7e09370b1ff1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/324880f94ba3c6269a607e04f78a4dd4a66b3f53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a76b87e1d065183e2e7ae5b800cb1f6e84f543d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d2636dce0a8fe9eecad29010699847be425dc80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d9bf63ed74f859c6698bc01d8fb216ef9253867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5eaf7faa99578ae090030d1e2e6ea3b37a615496"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/833740a2333c2e4db4e02e3d0ffba04e8718a5f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1b4add68dabfdd6481a4fa198bf3b473d2634d7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:10Z"
+  }
+}

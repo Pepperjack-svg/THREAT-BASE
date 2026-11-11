@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5jm4-j7g4-8xfh",
+  "modified": "2026-05-04T18:30:31Z",
+  "published": "2026-05-04T18:30:31Z",
+  "aliases": [
+    "CVE-2026-42373"
+  ],
+  "details": "D-Link DIR-605L Hardware Revision B2 (End-of-Life, EOL) contains a hardcoded telnet backdoor. The device starts a telnet daemon at boot via /bin/telnetd.sh with the username \"Alphanetworks\" and the static password \"wrgn76_dlwbr_dir605L\" read from /etc/alpha_config/image_sign. The custom telnetd binary accepts a -u user:password flag, and the custom login binary uses strcmp() to validate credentials. Successful authentication grants an unauthenticated attacker on the local network a root shell with full administrative control. The device has reached End-of-Life (EOL) and will not receive patches.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42373"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.securin.io/zero-day/cve-2026-42373-hardcoded-telnet-backdoor-in-d-link-dir-605l-b2-end-of-life-"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-798"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-04T17:16:25Z"
+  }
+}

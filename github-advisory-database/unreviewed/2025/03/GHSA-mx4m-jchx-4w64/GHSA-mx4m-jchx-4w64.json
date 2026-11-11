@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mx4m-jchx-4w64",
+  "modified": "2025-03-18T18:30:49Z",
+  "published": "2025-03-18T18:30:49Z",
+  "aliases": [
+    "CVE-2022-49061"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: stmmac: fix altr_tse_pcs function when using a fixed-link\n\nWhen using a fixed-link, the altr_tse_pcs driver crashes\ndue to null-pointer dereference as no phy_device is provided to\ntse_pcs_fix_mac_speed function. Fix this by adding a check for\nphy_dev before calling the tse_pcs_fix_mac_speed() function.\n\nAlso clean up the tse_pcs_fix_mac_speed function a bit. There is\nno need to check for splitter_base and sgmii_adapter_base\nbecause the driver will fail if these 2 variables are not\nderived from the device tree.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49061"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08d5e3e954537931c8da7428034808d202e98299"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62a48383ebe2e159fd68425dd3e16d4c6bd6599a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c020f05253df04c3480b586fe188a3582740049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7e59fdf9547c4f948d1d917ec7ffa5fb5ac53bdb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6aaa00324240967272b451bfa772547bd576ee6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:43Z"
+  }
+}

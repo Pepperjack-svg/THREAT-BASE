@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q46q-p96m-rvh8",
+  "modified": "2025-09-22T18:30:34Z",
+  "published": "2025-09-22T18:30:34Z",
+  "aliases": [
+    "CVE-2025-40925"
+  ],
+  "details": "Starch versions 0.14 and earlier generate session ids insecurely.\n\nThe default session id generator returns a SHA-1 hash seeded with a counter, the epoch time, the built-in rand function, the PID, and internal Perl reference addresses. The PID will come from a small set of numbers, and the epoch time may be guessed, if it is not leaked from the HTTP Date header. The built-in rand function is unsuitable for cryptographic usage.\n\nPredicable session ids could allow an attacker to gain access to systems.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40925"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bluefeet/Starch/pull/5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bluefeet/Starch/commit/5573449e64e0660f7ee209d1eab5881d4ccbee3b.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/dist/Starch/source/lib/Starch/Manager.pm"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-338"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-20T13:15:34Z"
+  }
+}

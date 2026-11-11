@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xfhg-wvc5-5xpc",
+  "modified": "2025-11-18T18:32:47Z",
+  "published": "2025-07-06T12:30:25Z",
+  "aliases": [
+    "CVE-2025-38235"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: appletb-kbd: fix \"appletb_backlight\" backlight device reference counting\n\nDuring appletb_kbd_probe, probe attempts to get the backlight device\nby name. When this happens backlight_device_get_by_name looks for a\ndevice in the backlight class which has name \"appletb_backlight\" and\nupon finding a match it increments the reference count for the device\nand returns it to the caller. However this reference is never released\nleading to a reference leak.\n\nFix this by decrementing the backlight device reference count on removal\nvia put_device and on probe failure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4540e41e753a7d69ecd3f5bad51fe620205c3a18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/751d5437112a3f387de4ef6d2d1c131068ff7627"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-06T10:15:24Z"
+  }
+}

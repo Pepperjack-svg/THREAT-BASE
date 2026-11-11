@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jj3w-p9wg-m6hq",
+  "modified": "2026-05-12T18:30:33Z",
+  "published": "2026-05-11T18:31:44Z",
+  "aliases": [
+    "CVE-2026-31249"
+  ],
+  "details": "CosyVoice thru commit 6e01309e01bc93bbeb83bdd996b1182a81aaf11e (2025-30-21) contains an insecure deserialization vulnerability (CWE-502) in its make_parquet_list.py data processing tool. The script loads PyTorch .pt files (utterance embeddings, speaker embeddings, speech tokens) using torch.load() without enabling the weights_only=True security parameter. This allows the deserialization of arbitrary Python objects via the pickle module. An attacker can exploit this by providing malicious .pt files within a data directory. When a victim processes this directory using the tool, arbitrary code is executed on the victim's system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FunAudioLLM/CosyVoice"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.notion.so/CVE-2026-31249-35d1e13931888112af48f0bddf18f0b9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-11T17:16:19Z"
+  }
+}

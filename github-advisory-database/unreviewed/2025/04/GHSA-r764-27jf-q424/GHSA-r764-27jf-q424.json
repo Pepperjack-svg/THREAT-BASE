@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r764-27jf-q424",
+  "modified": "2025-11-03T21:33:36Z",
+  "published": "2025-04-16T15:34:41Z",
+  "aliases": [
+    "CVE-2025-22063"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetlabel: Fix NULL pointer exception caused by CALIPSO on IPv4 sockets\n\nWhen calling netlbl_conn_setattr(), addr->sa_family is used\nto determine the function behavior. If sk is an IPv4 socket,\nbut the connect function is called with an IPv6 address,\nthe function calipso_sock_setattr() is triggered.\nInside this function, the following code is executed:\n\nsk_fullsock(__sk) ? inet_sk(__sk)->pinet6 : NULL;\n\nSince sk is an IPv4 socket, pinet6 is NULL, leading to a\nnull pointer dereference.\n\nThis patch fixes the issue by checking if inet6_sk(sk)\nreturns a NULL pointer before accessing pinet6.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22063"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/078aabd567de3d63d37d7673f714e309d369e6e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/172a8a996a337206970467e871dd995ac07640b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1927d0bcd5b81e80971bf6b8eba267508bd1c78b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ad9166cab6a0f5c0b10344a97bdf749ae11dcbf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e38f7a6cdd68377f8a4189b2fbaec14a6dd5152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ba9cf69de50e8abed32b448616c313baa4c5712"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/797e5371cf55463b4530bab3fef5f27f7c6657a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9fe3839588db7519030377b7dee3f165e654f6c5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a7e89541d05b98c79a51c0f95df020f8e82b62ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:15:59Z"
+  }
+}

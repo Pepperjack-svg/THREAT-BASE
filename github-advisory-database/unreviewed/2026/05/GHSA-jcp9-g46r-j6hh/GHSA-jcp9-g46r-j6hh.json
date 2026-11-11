@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jcp9-g46r-j6hh",
+  "modified": "2026-06-10T21:31:25Z",
+  "published": "2026-05-28T12:30:33Z",
+  "aliases": [
+    "CVE-2026-46224"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: Fix bo leak in xe_dma_buf_init_obj() on allocation failure\n\nWhen drm_gpuvm_resv_object_alloc() fails, the pre-allocated storage bo\nis not freed. Add xe_bo_free(storage) before returning the error.\n\nxe_dma_buf_init_obj() calls xe_bo_init_locked(), which frees the bo on\nerror. Therefore, xe_dma_buf_init_obj() must also free the bo on its own\nerror paths. Otherwise, since xe_gem_prime_import() cannot distinguish\nwhether the failure originated from xe_dma_buf_init_obj() or from\nxe_bo_init_locked(), it cannot safely decide whether the bo should be\nfreed.\n\nAdd comments documenting the ownership semantics: on success, ownership\nof storage is transferred to the returned drm_gem_object; on failure,\nstorage is freed before returning.\n\nv2: Add comments to explain the free logic.\n\n(cherry picked from commit 78a6c5f899f22338bbf48b44fb8950409c5a69b9)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46224"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8fa8c2a22585fcb31dc605b91a67bbcca223fdd7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93a528f67ce5095bcab46a69839eca97f43dd352"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9ad21b90162baf1d78f8036ff3813c3ec1ac88e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:38Z"
+  }
+}

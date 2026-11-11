@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xqwv-9f36-ccgr",
+  "modified": "2026-10-03T03:31:33Z",
+  "published": "2026-10-03T03:31:33Z",
+  "aliases": [
+    "CVE-2026-94539"
+  ],
+  "details": "The SupportCandy – AI Customer Support Ticket System & Live Chatbot Agent plugin for WordPress is vulnerable to time-based SQL Injection via the 'sort_by' parameter in all versions up to, and including, 3.5.3 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with custom-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Exploitation requires the authenticated attacker to hold both a Subscriber-level (or higher) WordPress role and a SupportCandy Agent account with the 'Assign Agents' permission configured.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94539"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.svn.wordpress.org/supportcandy"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/supportcandy/tags/3.5.3/includes/admin/tickets/class-wpsc-ticket-list.php#L2367"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/supportcandy/tags/3.5.3/includes/class-wpsc-functions.php#L279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/supportcandy/tags/3.5.3/includes/models/class-wpsc-agent.php#L370"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/supportcandy/tags/3.5.3/includes/models/class-wpsc-agent.php#L578"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3718257/supportcandy/trunk/includes/models/class-wpsc-agent.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/9c105a36-452e-4fa7-9c8b-f142e1eb27aa?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-03T03:16:37Z"
+  }
+}

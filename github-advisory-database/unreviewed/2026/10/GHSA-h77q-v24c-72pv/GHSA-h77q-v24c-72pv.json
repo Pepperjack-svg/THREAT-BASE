@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h77q-v24c-72pv",
+  "modified": "2026-10-23T12:31:36Z",
+  "published": "2026-10-23T12:31:36Z",
+  "aliases": [
+    "CVE-2026-98880"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs3: handle set_blocksize failures\n\nntfs3 uses buffer_heads, which don't handle block size > PAGE_SIZE well.\nWithout this, mounting we will hit the\n\n        BUG_ON(offset >= folio_size(folio));\n\nin folio_set_bh on the first __bread_gfp call.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98880"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24f7d1824b7581ae3daf9d443c5dfeabd89df6d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78e10082f3e919b8863958feac5f269d3ade9469"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5b8a7ec9a0a71518915c82b8552be1ccbb88288"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df9dac4dbe557f6455a61e68cc09ef98b22f3686"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:21Z"
+  }
+}

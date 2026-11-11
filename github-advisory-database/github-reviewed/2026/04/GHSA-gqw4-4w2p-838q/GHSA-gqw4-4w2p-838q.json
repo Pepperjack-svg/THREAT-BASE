@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gqw4-4w2p-838q",
+  "modified": "2026-07-20T19:12:36Z",
+  "published": "2026-04-14T20:01:42Z",
+  "aliases": [
+    "CVE-2026-40261"
+  ],
+  "summary": "Composer has a command injection via malicious perforce reference",
+  "details": "### Impact\nThe `Perforce::syncCodeBase()` method appended the `$sourceReference` parameter to a shell command without proper escaping, allowing an attacker to inject arbitrary commands through a crafted source reference containing shell metacharacters. Further as in GHSA-wg36-wvj6-r67p / CVE-2026-40176 the `Perforce::generateP4Command()` method constructed shell commands by interpolating user-supplied Perforce connection parameters (port, user, client) without proper escaping from the source url field. Composer would execute these injected commands even if Perforce is not installed.\n\nThe source reference and url are provided as part of package metadata. Any Composer package repository can serve package metadata declaring perforce as a source type with a malicious source reference or source url. This means the vulnerability can be exploited through any package served by a compromised or malicious Composer repository. An attack does not require Perforce to be installed on the client, as Composer will attempt to execute the constructed command regardless.\n\nThis vulnerability is exploitable when installing or updating dependencies from source (`--prefer-source`, default when installing dev prefixed versions), even if you do not use Perforce.\n\n### Patches\nFixed in Composer 2.2.27 (2.2 LTS) and 2.9.6 (mainline)\n\nNote, the fix for the source url in the `Perforce::generateP4Command()` was addressed as part of the patches for GHSA-wg36-wvj6-r67p / CVE-2026-40176 in the same versions.\n\n### Workarounds\n\n- Avoid installing dependencies from source by using `--prefer-dist` or the `preferred-install: dist` config setting.\n- Only use trusted Composer repositories.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "composer/composer"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.3.0"
+            },
+            {
+              "fixed": "2.9.6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "composer/composer"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "2.2.27"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/composer/composer/security/advisories/GHSA-gqw4-4w2p-838q"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:8165"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-40261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2458841"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FriendsOfPHP/security-advisories/blob/master/composer/composer/CVE-2026-40261.yaml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/composer/composer"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/composer/composer/releases/tag/2.9.6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-40261.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20",
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-14T20:01:42Z",
+    "nvd_published_at": "2026-04-15T21:17:27Z"
+  }
+}

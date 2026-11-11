@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c3xf-7jfj-cpqv",
+  "modified": "2025-08-13T21:30:30Z",
+  "published": "2025-08-13T21:30:30Z",
+  "aliases": [
+    "CVE-2012-10057"
+  ],
+  "details": "Lattice Semiconductor ispVM System v18.0.2 contains a buffer overflow vulnerability in its handling of .xcf project files. When parsing the version attribute of the ispXCF XML tag, the application fails to properly validate input length, allowing a specially crafted file to overwrite memory on the stack. This can result in arbitrary code execution under the context of the user who opens the file. The vulnerability is triggered locally by opening a malicious .xcf file and does not require elevated privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2012-10057"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/fileformat/ispvm_xcf_ispxcf.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web.archive.org/web/20121014002756/http://secunia.com/advisories/48740"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/18947"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.latticesemi.com/ispvm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lattice-semiconductor-ispvm-system-xcf-file-handling-buffer-overflow"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-13T21:15:30Z"
+  }
+}

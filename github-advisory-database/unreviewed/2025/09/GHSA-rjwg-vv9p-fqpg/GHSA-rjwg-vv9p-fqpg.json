@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rjwg-vv9p-fqpg",
+  "modified": "2025-11-03T21:34:28Z",
+  "published": "2025-09-12T12:30:23Z",
+  "aliases": [
+    "CVE-2025-8699"
+  ],
+  "details": "Some \"Stored Value\" Unattended Payment Solutions of KioSoft use vulnerable NFC cards. Attackers could potentially use this vulnerability to change the balance on the cards and generate money. The account balance is stored on an insecure MiFare Classic NFC card and can be read and written back. By carefully observing changes in card dumps, one can identify fields that store the cash value of the card. Additionally, a checksum can be identified, which is created by XOR-ing the cash and an unknown field with a certain value. By updating the fields accordingly, arbitrary amounts of money can be loaded onto the card (up to $655,35) to pay for goods.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-8699"
+    },
+    {
+      "type": "WEB",
+      "url": "https://r.sec-consult.com/kiosoft"
+    },
+    {
+      "type": "WEB",
+      "url": "http://seclists.org/fulldisclosure/2025/Sep/33"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-922"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-12T12:15:32Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c89m-ff4c-f99w",
+  "modified": "2026-10-20T18:31:44Z",
+  "published": "2026-10-20T18:31:44Z",
+  "aliases": [
+    "CVE-2026-113606"
+  ],
+  "details": "Stirling-PDF 3.0.0 through 3.2.0 contains an authorization bypass vulnerability that allows authenticated users to access other users' stored files by pointing a processing folder at the server storage directory. Attackers can create a folder via POST /api/v1/processing-folders targeting storage/<victimUserId>, list files, and run pipelines to read, modify, or destroy victims' files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113606"
+    },
+    {
+      "type": "WEB",
+      "url": "https://abraxaslabs.tech/research/stirling-pdf-3.2.0-leftovers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://abraxaslabs.tech/research/stirling-storage-folder-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Stirling-Tools/Stirling-PDF/blob/v3.2.0/app/proprietary/src/main/java/stirling/software/proprietary/policy/config/FolderAccessGuard.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Stirling-Tools/Stirling-PDF/blob/v3.2.0/app/proprietary/src/main/java/stirling/software/proprietary/policy/controller/ProcessingFolderController.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/abraxas/stirling-storage-folder-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/stirling-pdf-3.0.0-through-3.2.0-authorization-bypass-via-processing-folders"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T16:17:10Z"
+  }
+}

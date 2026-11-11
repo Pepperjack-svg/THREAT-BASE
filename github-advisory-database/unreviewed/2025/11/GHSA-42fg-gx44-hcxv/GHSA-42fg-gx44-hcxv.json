@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-42fg-gx44-hcxv",
+  "modified": "2025-11-19T09:30:28Z",
+  "published": "2025-11-19T09:30:28Z",
+  "aliases": [
+    "CVE-2025-13085"
+  ],
+  "details": "The SiteSEO – SEO Simplified plugin for WordPress is vulnerable to Improper Authorization leading to Sensitive Post Meta Disclosure in versions up to and including 1.3.2. This is due to missing object-level authorization checks in the resolve_variables() AJAX handler. This makes it possible for authenticated attackers with the siteseo_manage capability (e.g., Author-level users who have been granted SiteSEO access by an administrator) to read arbitrary post metadata from any post, page, attachment, or WooCommerce order they cannot edit, via the custom field variable resolution feature granted they have been given access to SiteSEO by an administrator and legacy storage is enabled. In affected WooCommerce installations, this exposes sensitive customer billing information including names, email addresses, phone numbers, physical addresses, and payment methods.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13085"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/siteseo/trunk/main/admin.php#L106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/siteseo/trunk/main/ajax.php#L542"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/siteseo/trunk/main/titlesmetas.php#L494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3397272/siteseo/trunk?contextall=1&old=3387094&old_path=%2Fsiteseo%2Ftrunk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4d740ba8-4877-4b27-a1cb-26095f851ea6?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-19T07:15:50Z"
+  }
+}

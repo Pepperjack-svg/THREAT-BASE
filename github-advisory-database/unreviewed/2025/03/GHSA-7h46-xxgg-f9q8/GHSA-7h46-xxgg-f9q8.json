@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7h46-xxgg-f9q8",
+  "modified": "2025-03-20T12:32:40Z",
+  "published": "2025-03-20T12:32:40Z",
+  "aliases": [
+    "CVE-2024-10834"
+  ],
+  "details": "eosphoros-ai/db-gpt version 0.6.0 contains a vulnerability in the RAG-knowledge endpoint that allows for arbitrary file write. The issue arises from the ability to pass an absolute path to a call to `os.path.join`, enabling an attacker to write files to arbitrary locations on the target server. This vulnerability can be exploited by setting the `doc_file.filename` to an absolute path, which can lead to overwriting system files or creating new SSH-key entries.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10834"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/0d598508-151a-4050-9ccd-31bb82955e7a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-20T10:15:20Z"
+  }
+}

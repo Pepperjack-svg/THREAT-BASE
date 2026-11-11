@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hwxj-pq7h-rq2r",
+  "modified": "2026-10-14T15:32:19Z",
+  "published": "2026-10-14T15:32:19Z",
+  "aliases": [
+    "CVE-2026-98397"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: x86-android-tablets: hold device reference for secondary fwnode teardown\n\nIn gpio_secondary_fwnode_init(), acpi_bus_find_device_by_name() returns a\ndevice reference, but the local dev variable is declared with\n__free(put_device), dropping the reference at the end of each iteration.\nMeanwhile, devm_add_action_or_reset() saves the dev pointer for\ngpio_secondary_unset() without incrementing its reference count, which\ncould lead to a use-after-free during driver teardown if the device is\nreleased in the interim.\n\nAcquire an explicit device reference with get_device() when registering\nthe devres action, and drop it with put_device() inside\ngpio_secondary_unset().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98397"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/144113b0a70fa18033a747ee5db6803308f7688c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c62b6e081119f2ab03cfcafde1f83c0f50e8e726"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T14:17:50Z"
+  }
+}

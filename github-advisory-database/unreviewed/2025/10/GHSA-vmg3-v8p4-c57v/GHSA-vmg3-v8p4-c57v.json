@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vmg3-v8p4-c57v",
+  "modified": "2025-12-11T18:30:35Z",
+  "published": "2025-10-01T09:30:25Z",
+  "aliases": [
+    "CVE-2025-39922"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nixgbe: fix incorrect map used in eee linkmode\n\nincorrectly used ixgbe_lp_map in loops intended to populate the\nsupported and advertised EEE linkmode bitmaps based on ixgbe_ls_map.\nThis results in incorrect bit setting and potential out-of-bounds\naccess, since ixgbe_lp_map and ixgbe_ls_map have different sizes\nand purposes.\n\nixgbe_lp_map[i] -> ixgbe_ls_map[i]\n\nUse ixgbe_ls_map for supported and advertised linkmodes, and keep\nixgbe_lp_map usage only for link partner (lp_advertised) mapping.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39922"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/129c1cb8a081a02d99267cb51708f1326395f4e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/682105ab63826fb7ca7c112b42b478d156fbb19f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7e5c3e3bfa9dc8af75ff6d8633ad7070e1985e4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T08:15:35Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wcj5-244x-rmgx",
+  "modified": "2026-04-27T00:30:27Z",
+  "published": "2026-04-27T00:30:27Z",
+  "aliases": [
+    "CVE-2026-42363"
+  ],
+  "details": "An insufficient encryption vulnerability exists in the Device Authentication functionality of GeoVision GV-IP Device Utility 9.0.5. Listening to broadcast packets can lead to credentials leak. An attacker can listen to broadcast messages to trigger this vulnerability.\n\n\nWhen interacting with various Geovision devices on the network, the utility may send privileged commands; in order to do so, the username and password of the device need to be provided. In some instances the command is broadcasted over UDP and the username/password are encrypted using a cryptographic protocol that appears to be derivated from Blowfish. However the symmetric key used for the encryption is also included in the packet, and thus the security of the username/password only relies on the \"obscurity\" of the encryption scheme. An attacker on the same LAN can listen to the broadcast traffic once an admin user interacts with the device, and decrypt the credentials using their own implementation of the algorithm. With this password the attacker would have full control over the device configuration, allowing them to change its ip address or even reset it to factory default.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42363"
+    },
+    {
+      "type": "WEB",
+      "url": "https://talosintelligence.com/vulnerability_reports"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.geovision.com.tw/cyber_security.php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-656"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-27T00:16:20Z"
+  }
+}

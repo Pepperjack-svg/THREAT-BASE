@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xp6f-p933-2gqg",
+  "modified": "2026-02-20T18:31:26Z",
+  "published": "2026-02-12T18:30:23Z",
+  "aliases": [
+    "CVE-2026-26214"
+  ],
+  "details": "Galaxy FDS Android SDK (XiaoMi/galaxy-fds-sdk-android) version 3.0.8 and prior disable TLS hostname verification when HTTPS is enabled (the default configuration). In GalaxyFDSClientImpl.createHttpClient(), the SDK configures Apache HttpClient with SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER, which accepts any valid TLS certificate regardless of hostname mismatch. Because HTTPS is enabled by default in FDSClientConfiguration, all applications using the SDK with default settings are affected. This vulnerability allows a man-in-the-middle attacker to intercept and modify SDK communications to Xiaomi FDS cloud storage endpoints, potentially exposing authentication credentials, file contents, and API responses. The XiaoMi/galaxy-fds-sdk-android open source project has reached end-of-life status.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26214"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/XavLimSG/Vulnerability-Research/blob/main/CVE-2026-26214/CVE-2026-26214.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/XiaoMi/galaxy-fds-sdk-android"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/xiaomi-galaxy-fds-android-sdk-tls-hostname-verification-disabled-enables-mitm"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-297"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-12T16:16:17Z"
+  }
+}

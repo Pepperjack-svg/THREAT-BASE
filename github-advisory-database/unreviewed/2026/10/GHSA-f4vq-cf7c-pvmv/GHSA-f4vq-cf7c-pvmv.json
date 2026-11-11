@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f4vq-cf7c-pvmv",
+  "modified": "2026-10-12T21:31:59Z",
+  "published": "2026-10-12T21:31:59Z",
+  "aliases": [
+    "CVE-2026-109426"
+  ],
+  "details": "Telegram-Stremio through 5.1.0 contains an insecure storage vulnerability that allows attackers with access to the MongoDB database, backups, or logs to recover the operator's authenticated Telegram session string, which is protected only by a keyless, reversible encoding transform rather than actual encryption. Attackers can round-trip the stored value through the repository's own decode_string function with no secret key to obtain a fully authenticated Telegram session, granting complete control of the operator's Telegram account even when two-step verification is enabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109426"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/mansurmavlankulov/489554cad7b38e07b9651c217f00fffb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/telegram-stremio-insecure-session-storage-via-encode-string"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-312"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T21:17:11Z"
+  }
+}

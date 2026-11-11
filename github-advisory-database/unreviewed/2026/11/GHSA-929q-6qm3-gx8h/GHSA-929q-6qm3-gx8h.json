@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-929q-6qm3-gx8h",
+  "modified": "2026-11-10T15:33:19Z",
+  "published": "2026-11-07T12:31:52Z",
+  "aliases": [
+    "CVE-2026-121265"
+  ],
+  "details": "SQL::Abstract versions before 2.000003 for Perl allow SQL injection via an arrayref column value in insert and update.\n\nWith the array_datatypes option off, which is the default, insert(), update() and values() treat an arrayref column value as literal SQL. Its first element goes into the SQL text unescaped and the rest become bind values. A JSON array, or a repeated form field decoded as an arrayref, is such a value.\n\nAn application that passes request data as column values to insert or update with the default options allows SQL injection.\n\nReleases before 2.000003 also treat an arrayref in generate() as literal SQL, including through AUTOLOAD when allow_autoload is on, whatever array_datatypes is set to.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121265"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/GETTY/SQL-Abstract-2.000003/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/GETTY/SQL-Abstract-2.000003/diff/GETTY/SQL-Abstract-2.000001_04"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/11/07/10"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-07T12:17:44Z"
+  }
+}

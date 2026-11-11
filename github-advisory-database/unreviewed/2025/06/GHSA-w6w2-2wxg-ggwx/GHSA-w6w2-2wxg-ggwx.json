@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w6w2-2wxg-ggwx",
+  "modified": "2025-06-16T15:32:26Z",
+  "published": "2025-06-16T12:30:26Z",
+  "aliases": [
+    "CVE-2025-40916"
+  ],
+  "details": "Mojolicious::Plugin::CaptchaPNG version 1.05 for Perl uses a weak random number source for generating the captcha.\n\nThat version uses the built-in rand() function for generating the captcha text as well as image noise, which is insecure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40916"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/pod/perlfunc#rand"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/GRYPHON/Mojolicious-Plugin-CaptchaPNG-1.04/diff/GRYPHON/Mojolicious-Plugin-CaptchaPNG-1.05/lib/Mojolicious/Plugin/CaptchaPNG.pm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/GRYPHON/Mojolicious-Plugin-CaptchaPNG-1.06/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.metacpan.org/docs/guides/random-data-for-security.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-338"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-16T11:15:17Z"
+  }
+}

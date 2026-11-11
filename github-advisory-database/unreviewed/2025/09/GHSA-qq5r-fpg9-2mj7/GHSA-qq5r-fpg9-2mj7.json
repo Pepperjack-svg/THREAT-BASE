@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qq5r-fpg9-2mj7",
+  "modified": "2026-05-12T15:30:59Z",
+  "published": "2025-09-05T18:31:15Z",
+  "aliases": [
+    "CVE-2025-38685"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: Fix vmalloc out-of-bounds write in fast_imageblit\n\nThis issue triggers when a userspace program does an ioctl\nFBIOPUT_CON2FBMAP by passing console number and frame buffer number.\nIdeally this maps console to frame buffer and updates the screen if\nconsole is visible.\n\nAs part of mapping it has to do resize of console according to frame\nbuffer info. if this resize fails and returns from vc_do_resize() and\ncontinues further. At this point console and new frame buffer are mapped\nand sets display vars. Despite failure still it continue to proceed\nupdating the screen at later stages where vc_data is related to previous\nframe buffer and frame buffer info and display vars are mapped to new\nframe buffer and eventully leading to out-of-bounds write in\nfast_imageblit(). This bheviour is excepted only when fg_console is\nequal to requested console which is a visible console and updates screen\nwith invalid struct references in fbcon_putcs().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/078e62bffca4b7e72e8f3550eb063ab981c36c7a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27b118aebdd84161c8ff5ce49d9d536f2af10754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c4d7ddaf1d43780b106bedc692679f965dc5a3a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/56701bf9eeb63219e378cb7fcbd066ea4eaeeb50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af0db3c1f898144846d4c172531a199bb3ca375d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cfec17721265e72e50cc69c6004fe3475cd38df2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed9b8e5016230868c8d813d9179523f729fec8c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-04T16:15:36Z"
+  }
+}

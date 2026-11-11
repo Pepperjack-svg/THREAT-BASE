@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-36m8-w8qf-g76p",
+  "modified": "2026-05-29T17:29:23Z",
+  "published": "2026-05-18T12:31:47Z",
+  "aliases": [
+    "CVE-2026-7304"
+  ],
+  "summary": "SGLang: Unauthenticated RCE via --enable-custom-logit-processor",
+  "details": "SGLang's multimodal generation runtime is vulnerable to unauthenticated remote code execution when the --enable-custom-logit-processor option is enabled, as Python objects loaded via dill.loads() will be deserialized without validation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "sglang"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.4.1.post7"
+            },
+            {
+              "last_affected": "0.5.12"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://antiproof.ai/blog/three-rces-in-sglang"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/sgl-project/sglang"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/tree/main/python/sglang"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-29T17:29:23Z",
+    "nvd_published_at": "2026-05-18T12:16:16Z"
+  }
+}

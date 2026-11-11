@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rwg8-pmp2-gw36",
+  "modified": "2026-11-05T03:30:33Z",
+  "published": "2026-11-05T03:30:33Z",
+  "aliases": [
+    "CVE-2026-122314"
+  ],
+  "details": "Kyverno before 1.19.2 contains an unchecked type assertion in its variable-substitution engine that allows users who can submit resources to crash the policy engine. Attackers can submit resources with non-string fields referenced by {{- variable }} shallow substitution in policies, causing a panic that yields webhook denial of service and policy bypass under failurePolicy Ignore.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/kyverno/kyverno/security/advisories/GHSA-x4xq-p8g4-6fwg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122314"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/kyverno-before-1.19.2-denial-of-service-via-shallow-variable-substitution-panic"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-248"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T03:17:24Z"
+  }
+}

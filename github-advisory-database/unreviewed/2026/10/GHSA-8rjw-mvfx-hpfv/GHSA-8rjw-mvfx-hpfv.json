@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8rjw-mvfx-hpfv",
+  "modified": "2026-10-12T21:31:56Z",
+  "published": "2026-10-12T21:31:56Z",
+  "aliases": [
+    "CVE-2026-109422"
+  ],
+  "details": "NetEase Cloud Music client for Windows (cloudmusic.exe) versions 3.1.38 and 3.1.39.205426 contains a remote code execution vulnerability in the renderer-process IPC bridge os.navigateExternal, which passes caller-supplied URLs to ShellExecuteW without validating the URL scheme. An attacker able to inject content into the renderer, such as by forging the /pc/upgrade/get API response using a publicly known AES key over an unvalidated TLS connection, can invoke os.navigateExternal with a file:// URL through an img onerror payload to execute arbitrary local binaries under the logged-in user's account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109422"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/LeoWSY-hashblue/10e5383fc2d4d75faf74a9507c6bba9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hr.163.com/product.html/music"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netease-cloud-music-rce-via-os-navigateexternal-ipc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-749"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T20:17:08Z"
+  }
+}

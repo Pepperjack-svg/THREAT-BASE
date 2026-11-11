@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-prq3-3cx6-vrj4",
+  "modified": "2026-07-30T06:32:24Z",
+  "published": "2025-12-16T15:30:47Z",
+  "aliases": [
+    "CVE-2025-68255"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix stack buffer overflow in OnAssocReq IE parsing\n\nThe Supported Rates IE length from an incoming Association Request frame\nwas used directly as the memcpy() length when copying into a fixed-size\n16-byte stack buffer (supportRate). A malicious station can advertise an\nIE length larger than 16 bytes, causing a stack buffer overflow.\n\nClamp ie_len to the buffer size before copying the Supported Rates IE,\nand correct the bounds check when merging Extended Supported Rates to\nprevent a second potential overflow.\n\nThis prevents kernel stack corruption triggered by malformed association\nrequests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68255"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/25411f5fcf5743131158f337c99c2bbf3f8477f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34620eb602aa432f090b2b784ee5c5070fb16cf9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4445adedae770037078803d1ce41f9e88a1944b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49b7806851f93fd342838c93f4f765e0cc5029b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61871c83259a511980ec2664964cecc69005398b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ef0e1c10455927867cac8f0ed6b49f328f8cf95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d129dc2a5d59b4d9cd2cc0b6eeb04df8461199f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e841d8ea722315b781c4fc5bf4f7670fbca88875"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T15:15:54Z"
+  }
+}

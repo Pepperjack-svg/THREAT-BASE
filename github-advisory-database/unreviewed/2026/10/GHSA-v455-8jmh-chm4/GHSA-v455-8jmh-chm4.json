@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v455-8jmh-chm4",
+  "modified": "2026-10-19T15:32:42Z",
+  "published": "2026-10-19T15:32:42Z",
+  "aliases": [
+    "CVE-2026-112294"
+  ],
+  "details": "FlyCms through commit edfdf724 contains a missing authorization vulnerability in ActionService.counter() that allows authenticated users to modify other users' content rows because checkRowOwner never verifies ownership. Any registered user can send requests to /ucenter/action/{modelCode}/{id}/counter or /ucenter/action/compose to add arbitrary deltas to numeric fields like price, stock, or points.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112294"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sunkaifei/FlyCms/issues/19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sunkaifei/FlyCms/blob/edfdf724c3b944310f60c29aa755d03a00a75837/backend/src/main/java/com/flycms/module/model/service/ActionService.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sunkaifei/FlyCms/blob/edfdf724c3b944310f60c29aa755d03a00a75837/backend/src/main/java/com/flycms/web/front/ActionController.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flycms-through-commit-edfdf724-missing-authorization-via-action-counter-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T14:17:08Z"
+  }
+}

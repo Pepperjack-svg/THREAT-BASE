@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m4w7-955p-fwcr",
+  "modified": "2025-03-07T21:31:04Z",
+  "published": "2025-02-27T03:33:58Z",
+  "aliases": [
+    "CVE-2024-57953"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtc: tps6594: Fix integer overflow on 32bit systems\n\nThe problem is this multiply in tps6594_rtc_set_offset()\n\n\ttmp = offset * TICKS_PER_HOUR;\n\nThe \"tmp\" variable is an s64 but \"offset\" is a long in the\n(-277774)-277774 range.  On 32bit systems a long can hold numbers up to\napproximately two billion.  The number of TICKS_PER_HOUR is really large,\n(32768 * 3600) or roughly a hundred million.  When you start multiplying\nby a hundred million it doesn't take long to overflow the two billion\nmark.\n\nProbably the safest way to fix this is to change the type of\nTICKS_PER_HOUR to long long because it's such a large number.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57953"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09c4a610153286cef54d4f0c85398f4e32fc227e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5127f3cbfc78a7b301b86328247230bec47e0bb3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53b0c7b15accb18d15d95c7fe68f61630ebfd1ca"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T02:15:10Z"
+  }
+}

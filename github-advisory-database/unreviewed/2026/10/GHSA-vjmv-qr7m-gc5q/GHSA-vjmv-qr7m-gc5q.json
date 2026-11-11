@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vjmv-qr7m-gc5q",
+  "modified": "2026-10-23T12:31:36Z",
+  "published": "2026-10-23T12:31:36Z",
+  "aliases": [
+    "CVE-2026-98887"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211_hwsim: reject undersized HWSIM_ATTR_TX_INFO\n\nhwsim_tx_info_frame_received_nl() casts the HWSIM_ATTR_TX_INFO payload\nto a struct hwsim_tx_rate * and unconditionally reads\nIEEE80211_TX_MAX_RATES entries (8 bytes) from it. The policy only bounds\nthe attribute from above (NLA_BINARY .len is a maximum) and the op sets\nGENL_DONT_VALIDATE_STRICT, so a short or zero-length attribute is\naccepted and the loop reads past the payload.\n\nRequire the exact length in the policy, so a malformed attribute is\nrejected before the handler runs.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98887"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13edd8ea7ff2ce6a964b290ef2034cd8cbed96c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ae85bb34fe3510659b86d6a5f8036dd498233f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a96bb65b4b820d8b41fa155781ec1c29e3479d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3dc723ac78a6e4fa0fd49e27e487ed319da40a9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59e1f2a0242232b4a3af144ae317d3913fc09046"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f6368b20f8c9481fa7ba7b672dcb3c9f36b2695"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5b1234bbfa25537fb9a5c0d62c328ed4547f721"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:22Z"
+  }
+}

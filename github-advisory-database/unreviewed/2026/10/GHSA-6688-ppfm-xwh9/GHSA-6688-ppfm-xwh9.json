@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6688-ppfm-xwh9",
+  "modified": "2026-10-18T18:31:56Z",
+  "published": "2026-10-18T18:31:56Z",
+  "aliases": [
+    "CVE-2026-98599"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reject non-negative offsets in stack_slot_obj_get_spi()\n\nbpf_get_spi() computes (-off - 1) / BPF_REG_SIZE using C division,\nwhich truncates toward zero. For off == 0, this produces spi 0, the\nsame index used by the valid stack slot at fp-8.\n\nstack_slot_obj_get_spi() currently checks alignment and the resulting\nspi bounds, but does not reject the non-negative offset itself. It can\ntherefore validate a PTR_TO_STACK register holding fp+0 against an\niterator stored at fp-8 even though the runtime receives the actual fp+0\npointer. An effectful iterator kfunc can then interpret memory outside\nthe BPF stack as iterator state.\n\nReject non-negative offsets before converting the offset to an spi. All\nvalid stack objects begin at a negative offset from the frame pointer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98599"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79a9172f3ab4ad8392c5e5c8944b9b7710ade620"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/89a7241fc7ecc1b5e47c3f071081e314523b8d9d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:12Z"
+  }
+}

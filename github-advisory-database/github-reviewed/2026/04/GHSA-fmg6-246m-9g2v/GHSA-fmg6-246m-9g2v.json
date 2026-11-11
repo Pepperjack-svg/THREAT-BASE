@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fmg6-246m-9g2v",
+  "modified": "2026-04-03T03:41:04Z",
+  "published": "2026-04-03T03:41:04Z",
+  "aliases": [],
+  "summary": "Auth0 laravel-auth0 SDK has Insufficient Entropy in Cookie Encryption",
+  "details": "### Impact\nIn applications built with the Auth0 PHP SDK, cookies are encrypted with insufficient entropy, which may result in threat actors brute-forcing the encryption key and forging session cookies.\n\n### Am I Affected?\nYou are affected if you meet the following preconditions:\n\n- Applications using laravel-auth0 SDK, versions between 7.0.0 and 7.20.0\n- Laravel-auth0 SDK using the Auth0-PHP SDK versions between 8.0.0 to 8.18.0.\n\n\n### Resolution\nUpgrade Auth0/laravel-auth0 to version 7.21.0 or greater.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "auth0/login"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.21.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 7.20.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/auth0/laravel-auth0/security/advisories/GHSA-fmg6-246m-9g2v"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/auth0/laravel-auth0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-331"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-03T03:41:04Z",
+    "nvd_published_at": null
+  }
+}

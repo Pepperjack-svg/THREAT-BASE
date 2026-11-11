@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q346-h3vj-6v27",
+  "modified": "2025-12-08T18:30:26Z",
+  "published": "2025-12-04T21:31:05Z",
+  "aliases": [
+    "CVE-2025-65806"
+  ],
+  "details": "The E-POINT CMS eagle.gsam-1169.1 file upload feature improperly handles nested archive files. An attacker can upload a nested ZIP (a ZIP containing another ZIP) where the inner archive contains an executable file (e.g. webshell.php). When the application extracts the uploaded archives, the executable may be extracted into a web-accessible directory. This can lead to remote code execution (RCE), data disclosure, account compromise, or further system compromise depending on the web server/process privileges. The issue arises from insufficient validation of archive contents and inadequate restrictions on extraction targets.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-65806"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Bidon47/CVE-2025-65806/blob/main/CVE-2025-65806.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.e-point.pl/produkty/e-point-cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-04T20:16:19Z"
+  }
+}

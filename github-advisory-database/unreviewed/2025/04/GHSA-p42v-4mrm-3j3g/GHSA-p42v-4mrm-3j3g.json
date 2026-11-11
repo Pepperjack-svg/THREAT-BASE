@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p42v-4mrm-3j3g",
+  "modified": "2025-11-03T21:33:29Z",
+  "published": "2025-04-03T09:32:15Z",
+  "aliases": [
+    "CVE-2025-21996"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/radeon: fix uninitialized size issue in radeon_vce_cs_parse()\n\nOn the off chance that command stream passed from userspace via\nioctl() call to radeon_vce_cs_parse() is weirdly crafted and\nfirst command to execute is to encode (case 0x03000001), the function\nin question will attempt to call radeon_vce_cs_reloc() with size\nargument that has not been properly initialized. Specifically, 'size'\nwill point to 'tmp' variable before the latter had a chance to be\nassigned any value.\n\nPlay it safe and init 'tmp' with 0, thus ensuring that\nradeon_vce_cs_reloc() will catch an early error in cases like these.\n\nFound by Linux Verification Center (linuxtesting.org) with static\nanalysis tool SVACE.\n\n(cherry picked from commit 2d52de55f9ee7aaee0e09ac443f77855989c6b68)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0effb378ebce52b897f85cd7f828854b8c7cb636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ce08215cad55c10a6eeeb33d3583b6cfffe3ab8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b4d9d20fd455a97920cf158dd19163b879cf65d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78b07dada3f02f77762d0755a96d35f53b02be69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b2da9c673a0da1359a2151f7ce773e2f77d71a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd1801aa01bba1760357f2a641346ae149686713"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd8689b52a24807c2d5ce0a17cb26dc87f75235c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f5e049028124f755283f2c07e7a3708361ed1dc8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-03T08:15:15Z"
+  }
+}

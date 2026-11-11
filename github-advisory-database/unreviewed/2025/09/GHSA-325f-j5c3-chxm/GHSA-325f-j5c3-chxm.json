@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-325f-j5c3-chxm",
+  "modified": "2025-10-28T21:30:29Z",
+  "published": "2025-09-29T18:33:13Z",
+  "aliases": [
+    "CVE-2025-56233"
+  ],
+  "details": "Openindiana, kernel SunOS 5.11 has a denial of service vulnerability. For the processing of TCP packets with RST or SYN flag set, Openindiana has a wide acceptable range of sequence numbers. It does not require the sequence number to exactly match the next expected sequence value, just to be within the current receive window, which violates RFC5961. This flaw allows attackers to send multiple random TCP RST/SYN packets to hit the acceptable range of sequence numbers, thereby interrupting normal connections and causing a denial of service attack.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-56233"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zq-star/TCP-Vuln-Report/blob/master/Openindiana%20minimal/tcp-rst-syn/openindiana-minimal-tcp-rst-syn.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-29T17:15:31Z"
+  }
+}

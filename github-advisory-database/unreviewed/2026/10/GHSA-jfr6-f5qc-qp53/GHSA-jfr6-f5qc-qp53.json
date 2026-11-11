@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jfr6-f5qc-qp53",
+  "modified": "2026-10-11T15:31:11Z",
+  "published": "2026-10-11T15:31:11Z",
+  "aliases": [
+    "CVE-2026-108905"
+  ],
+  "details": "pH7Builder (pH7 Social Dating CMS) before 18.6.0 contains a hard-coded API key vulnerability in Tool.class.php that allows unauthenticated attackers to bypass API access checks by spoofing the Host header. Attackers can send Host: localhost with private_api_key=dev772277 and the default allowed URL to retrieve member emails, IP addresses, phone numbers, and bank account fields.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108905"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pH7Software/pH7-Social-Dating-CMS/commit/cfe1e0c418946b868db8c399d0cf6b122552efd2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pH7Software/pH7-Social-Dating-CMS"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pH7Software/pH7-Social-Dating-CMS/blob/v18.5.1/_protected/framework/Api/Tool.class.php#L25-L48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ph7builder-before-18.6.0-hard-coded-api-key-bypass-via-host-header"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-798"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T15:16:56Z"
+  }
+}

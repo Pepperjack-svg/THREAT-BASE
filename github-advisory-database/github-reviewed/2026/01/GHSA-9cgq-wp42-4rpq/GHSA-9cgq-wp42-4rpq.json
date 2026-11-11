@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9cgq-wp42-4rpq",
+  "modified": "2026-01-23T20:14:41Z",
+  "published": "2026-01-23T00:31:16Z",
+  "aliases": [
+    "CVE-2026-20888"
+  ],
+  "summary": "Gitea does not properly verify authorization when canceling scheduled auto-merges via the web interface",
+  "details": "Gitea does not properly verify authorization when canceling scheduled auto-merges via the web interface. A user with read access to pull requests may be able to cancel auto-merges scheduled by other users.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/go-gitea/gitea"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.25.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-20888"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/pull/36341"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/pull/36356"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.gitea.com/release-of-1.25.4"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/go-gitea/gitea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/releases/tag/v1.25.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-23T20:14:41Z",
+    "nvd_published_at": "2026-01-22T22:16:17Z"
+  }
+}

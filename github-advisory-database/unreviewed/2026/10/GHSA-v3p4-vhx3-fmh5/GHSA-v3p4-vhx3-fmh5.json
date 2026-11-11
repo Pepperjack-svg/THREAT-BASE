@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3p4-vhx3-fmh5",
+  "modified": "2026-10-30T18:32:39Z",
+  "published": "2026-10-30T18:32:39Z",
+  "aliases": [
+    "CVE-2026-119709"
+  ],
+  "details": "Grimoire before 1.0.0 contains an unauthenticated server-side request forgery vulnerability in the /api/fetch-metadata POST handler that passes user-supplied URLs to getMetadata() without authentication checks. Attackers can submit URLs targeting loopback, internal-network, or cloud metadata endpoints and read the parsed title, description, and page content returned.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/goniszewski/grimoire/issues/237"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/goniszewski/grimoire"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/goniszewski/grimoire/blob/v0.5.0/src/lib/utils/get-metadata.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/goniszewski/grimoire/blob/v0.5.0/src/routes/api/fetch-metadata/%2Bserver.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/grimoire-fetch-metadata-ssrf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grimoire-before-1.0.0-unauthenticated-ssrf-via-api-fetch-metadata"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T16:17:53Z"
+  }
+}

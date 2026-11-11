@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-76hf-r86r-7ch3",
+  "modified": "2026-10-30T18:32:43Z",
+  "published": "2026-10-30T18:32:42Z",
+  "aliases": [
+    "CVE-2026-102905"
+  ],
+  "details": "The The Ad Inserter – Ad Manager & AdSense Ads plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 2.8.19 This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for unauthenticated attackers to execute arbitrary shortcodes. Exploitation requires an administrator to have configured an ad block containing a dynamic tag such as {title}, {tag}, {category}, or {smart-tag} with display enabled on search pages, which is a normal and documented plugin configuration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102905"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ad-inserter/tags/2.8.19/ad-inserter.php#L12974"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ad-inserter/tags/2.8.19/ad-inserter.php#L13142"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ad-inserter/tags/2.8.19/class.php#L3297"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3770281/ad-inserter/trunk/ad-inserter.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a36f813c-97c5-466d-92e0-7341c12b5a46?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T18:17:14Z"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vf7g-hg9j-7w2w",
+  "modified": "2026-05-30T12:30:24Z",
+  "published": "2026-05-28T12:30:28Z",
+  "aliases": [
+    "CVE-2026-46105"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: mpt3sas: Limit NVMe request size to 2 MiB\n\nThe HBA firmware reports NVMe MDTS values based on the underlying drive\ncapability. However, because the driver allocates a fixed 4K buffer for\nthe PRP list, accommodating at most 512 entries, the driver supports a\nmaximum I/O transfer size of 2 MiB.\n\nLimit max_hw_sectors to the smaller of the reported MDTS and the 2 MiB\ndriver limit to prevent issuing oversized I/O that may lead to a kernel\noops.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46105"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04631f55afc543d5431a2bdee7f6cc0f2c0debe7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45dcc815fc5539e88154315f36cbcb11d3a52fc2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5f9824817c6358b9f9738bdb92dec9e4e794d3c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:25Z"
+  }
+}

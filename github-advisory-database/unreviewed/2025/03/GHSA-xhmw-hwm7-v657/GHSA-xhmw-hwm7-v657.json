@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xhmw-hwm7-v657",
+  "modified": "2025-10-30T18:31:03Z",
+  "published": "2025-03-27T18:31:23Z",
+  "aliases": [
+    "CVE-2022-49739"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngfs2: Always check inode size of inline inodes\n\nCheck if the inode size of stuffed (inline) inodes is within the allowed\nrange when reading inodes from disk (gfs2_dinode_in()).  This prevents\nus from on-disk corruption.\n\nThe two checks in stuffed_readpage() and gfs2_unstuffer_page() that just\ntruncate inline data to the maximum allowed size don't actually make\nsense, and they can be removed now as well.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49739"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45df749f827c286adbc951f2a4865b67f0442ba9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46c9088cabd4d0469fdb61ac2a9c5003057fe94d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d4cb76636134bf9a0c9c3432dae936f99954586"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70376c7ff31221f1d21db5611d8209e677781d3a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c414f6f06e9a3934901b6edc3177ae5a1e07094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d458a0984429c2d47e60254f5bc4119cbafe83a2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-27T17:15:38Z"
+  }
+}

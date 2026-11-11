@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6c5g-4xv7-7fmm",
+  "modified": "2026-10-27T21:33:27Z",
+  "published": "2026-10-13T21:33:45Z",
+  "aliases": [
+    "CVE-2026-110247"
+  ],
+  "details": "Several buffer-growth sites in libmime performed size arithmetic in 32-bit types without overflow checks. On a sufficiently large message the growth guard could fail open, or the buffer could be reallocated smaller than required, and a subsequent memcpy would then write attacker-controlled data across adjacent heap allocations. This vulnerability was fixed in Thunderbird 158.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=2071621"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.mozilla.org/security/advisories/mfsa2026-109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.mozilla.org/security/advisories/mfsa2026-122"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:49Z"
+  }
+}

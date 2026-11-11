@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gjpq-2gcq-78q9",
+  "modified": "2026-10-25T12:30:26Z",
+  "published": "2026-10-25T12:30:25Z",
+  "aliases": [
+    "CVE-2026-116136"
+  ],
+  "details": "ProjectSend 2.0.0 through 2.7.1 contains an incomplete authorization vulnerability in FileVersions::link() that allows staff users to share files without authorization by linking file versions. Attackers can link their file onto an intermediate revision or assign out-of-scope clients, causing moveAssignmentsToRoot() to expose protected original files to unauthorized clients.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectsend/projectsend/commit/a6ce4f51cfd05e1c9895f8daed261ef1fdfd194d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectsend/projectsend"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectsend/projectsend/blob/v2.7.1/app/Modules/Files/Versions/FileVersions.php#L456-L467"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectsend/projectsend/blob/v2.7.1/app/Modules/Files/Versions/FileVersions.php#L534-L575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/projectsend-2.0.0-through-2.7.1-incorrect-authorization-via-file-version-linking"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-25T12:16:30Z"
+  }
+}

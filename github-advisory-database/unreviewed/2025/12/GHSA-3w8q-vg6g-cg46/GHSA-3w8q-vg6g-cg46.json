@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3w8q-vg6g-cg46",
+  "modified": "2026-08-04T12:34:40Z",
+  "published": "2025-12-09T03:31:11Z",
+  "aliases": [
+    "CVE-2023-53817"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: lib/mpi - avoid null pointer deref in mpi_cmp_ui()\n\nDuring NVMeTCP Authentication a controller can trigger a kernel\noops by specifying the 8192 bit Diffie Hellman group and passing\na correctly sized, but zeroed Diffie Hellamn value.\nmpi_cmp_ui() was detecting this if the second parameter was 0,\nbut 1 is passed from dh_is_pubkey_valid(). This causes the null\npointer u->d to be dereferenced towards the end of mpi_cmp_ui()",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53817"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fc7147c694394f8a8cbc19570c6bc918cac0906"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12ac013ad7ff0df066451e825801d805095b3776"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61f5453e9706e99713825594e0c8f9031485fb5f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67589d247909043e94d2dd5fb590958e0f99d58d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e47a758b70167c9301d2b44d2569f86c7796f2d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae63e84ffda74267bf7277c38415ba38389229a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3ad023a39f1127dcfd331c562673355dc078650"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fde791e8a96a64ea7b0ad2440e43586447a209c6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T01:16:53Z"
+  }
+}

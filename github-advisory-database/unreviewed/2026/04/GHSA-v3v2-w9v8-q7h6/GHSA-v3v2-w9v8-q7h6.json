@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3v2-w9v8-q7h6",
+  "modified": "2026-04-08T09:31:30Z",
+  "published": "2026-04-08T09:31:30Z",
+  "aliases": [
+    "CVE-2026-5167"
+  ],
+  "details": "The Masteriyo LMS – Online Course Builder for eLearning, LMS & Education plugin for WordPress is vulnerable to Authorization Bypass Through User-Controlled Key in versions up to and including 2.1.7. This is due to insufficient webhook signature verification in the handle_webhook() function. The webhook endpoint processes unauthenticated requests and only performs signature verification if both the webhook_secret setting is configured AND the HTTP_STRIPE_SIGNATURE header is present. Since webhook_secret defaults to an empty string, the webhook processes attacker-controlled JSON payloads without any verification. This makes it possible for unauthenticated attackers to send fake Stripe webhook events with arbitrary order_id values in the metadata, mark any order as completed without payment, and gain unauthorized access to paid course content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5167"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learning-management-system/tags/2.1.4/addons/stripe/StripeAddon.php#L563-639"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learning-management-system/tags/2.1.4/addons/stripe/StripeAddon.php#L649-704"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learning-management-system/trunk/addons/stripe/StripeAddon.php#L563-639"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learning-management-system/trunk/addons/stripe/StripeAddon.php#L649-704"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3499458/learning-management-system/trunk/addons/stripe/StripeAddon.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b6d51dc3-b695-4e9d-b25a-d1b302be1fec?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-08T07:16:22Z"
+  }
+}

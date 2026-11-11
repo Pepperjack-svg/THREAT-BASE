@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fj4q-cf3c-rrp2",
+  "modified": "2026-10-21T15:42:28Z",
+  "published": "2026-10-21T15:42:27Z",
+  "aliases": [
+    "CVE-2026-114397"
+  ],
+  "details": "Trudesk through 1.2.11 contains a missing authentication vulnerability in debug routes enabled whenever NODE_ENV is unset, letting unauthenticated attackers invoke them remotely. Attackers can call /debug/populatedb to delete all groups, tags and tickets, then log in with seeded accounts using the password 'password'.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114397"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/polonel/trudesk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/polonel/trudesk/blob/v1.2.11/app.js#L32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/polonel/trudesk/blob/v1.2.11/src/routes/index.js#L398-L433"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@leediay/multiple-vuln-trudesk-1211"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/trudesk-through-1.2.11-missing-authentication-on-debug-routes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1188"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T13:18:30Z"
+  }
+}

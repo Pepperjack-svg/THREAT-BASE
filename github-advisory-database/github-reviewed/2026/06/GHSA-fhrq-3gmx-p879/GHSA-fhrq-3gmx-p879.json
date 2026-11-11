@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fhrq-3gmx-p879",
+  "modified": "2026-10-28T15:27:52Z",
+  "published": "2026-06-22T20:39:06Z",
+  "aliases": [
+    "CVE-2026-44793"
+  ],
+  "summary": "OpenAM SAML2 Cluster Cookie-Hash-Redirect Path has Pre-authentication Reflected XSS via `FSUtils.postToTarget`",
+  "details": "## Summary\n\nCertain federation endpoints do not consistently apply output encoding when rendering user-supplied parameters into HTML responses. Under a non-default configuration used in some clustered deployments, this inconsistency can result in reflected XSS in the OpenAM origin without authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.openidentityplatform.openam:openam-federation-library"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "16.1.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenIdentityPlatform/OpenAM/security/advisories/GHSA-fhrq-3gmx-p879"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44793"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenIdentityPlatform/OpenAM/commit/2f5e9bf4c28a4c9e97ded6ebd75e4e1ec241c894"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/OpenIdentityPlatform/OpenAM"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenIdentityPlatform/OpenAM/releases/tag/16.1.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-22T20:39:06Z",
+    "nvd_published_at": "2026-09-15T10:17:03Z"
+  }
+}

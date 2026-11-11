@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rr8v-fxxf-c986",
+  "modified": "2026-11-09T21:48:13Z",
+  "published": "2026-11-09T21:48:13Z",
+  "aliases": [
+    "CVE-2026-75598"
+  ],
+  "summary": "Gradle Shadow: Zip Slip path traversal in ShadowCopyAction — no independent entry-name sanitization",
+  "details": "### Summary\nShadowCopyAction in the Shadow plugin does not validate or sanitize ZIP entry names before writing them to the output fat JAR. A malicious upstream dependency containing path traversal sequences (e.g. `../../../../tmp/pwned.txt`) in entry names will have those entries reproduced verbatim in the output shadow JAR.\n\n### Details\nThe vulnerability exists because Shadow relies entirely on Gradle's ZipFileTree for entry sanitization rather than implementing its own path validation. This means:\n\n1. Users on Gradle < 7.6.2 / 8.x < 8.2.0 are directly exploitable\n2. The produced shadow JAR becomes a Zip Slip weapon against any \ndownstream consumer using unprotected extraction (raw ZipInputStream, \nolder CI tooling, custom Java unpackers)\n3. If Shadow ever uses a non-ZipFileTree code path, protection \ndisappears silently\n\nAffected file: `src/main/kotlin/com/github/jengelman/gradle/plugins/shadow/internal/ShadowCopyAction.kt`\n\n### PoC\n1. Create a malicious JAR with path traversal entry:\n```python\nimport zipfile\nwith zipfile.ZipFile('evil.jar', 'w') as zf:\n    zf.writestr('../../../../tmp/zipslip_proof.txt', 'pwned')\n```\n2. Add as dependency in a shadow project\n3. Run `gradle shadowJar`\n4. Run `unzip -l build/libs/*.jar | grep \"\\.\\.\"`\n5. Traversal entry survives in output JAR\n\n### Impact\nAny tool extracting the shadow JAR with unprotected extraction is subject to arbitrary file overwrite. Users on older Gradle versions  are directly vulnerable at build time.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.gradleup.shadow:com.gradleup.shadow.gradle.plugin"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.6.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/GradleUp/shadow/security/advisories/GHSA-rr8v-fxxf-c986"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75598"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/GradleUp/shadow/commit/0c2744fcc050e34a084f5131d5e167b13c342bfd"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/GradleUp/shadow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/GradleUp/shadow/releases/tag/9.6.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-11-09T21:48:13Z",
+    "nvd_published_at": "2026-11-06T18:18:18Z"
+  }
+}

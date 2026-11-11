@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jh46-85jr-6ph9",
+  "modified": "2026-03-25T20:45:55Z",
+  "published": "2026-03-23T20:36:49Z",
+  "aliases": [
+    "CVE-2026-32279"
+  ],
+  "summary": "Connect CMS has SSRF in the External Page Migration Feature of its Page Management Plugin",
+  "details": "# Security Advisory — Page Management Plugin (SSRF)\n\n## Summary\n\nA Server-Side Request Forgery (SSRF) issue exists in the external page migration feature of the Page Management Plugin.\n\n## Affected Versions\n\n- 1.x series: <= 1.41.0\n- 2.x series: <= 2.41.0\n\n## Patched Versions\n\n- 1.41.1\n- 2.41.1\n\n## Description\n\nIn the external page migration feature of the Page Management Plugin, a Server-Side Request Forgery (SSRF) issue could occur. If exploited, it may allow access to internal destinations and could result in information disclosure. Exploitation requires privileges that allow use of the page management screen. Users affected by this vulnerability should update to a fixed version.\n\n## Solution\n\nUpdate to the fixed version.\nFor the 1.x series, update to 1.41.1 or later.\nFor the 2.x series, update to 2.41.1 or later.\n\n## Credits\n\nOpenSource WorkShop thanks **Sho Odagiri** (小田切 祥) of **GMO Cybersecurity by Ierae, Inc.** for reporting this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "opensource-workshop/connect-cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.41.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.41.0"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "opensource-workshop/connect-cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "2.41.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2.41.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/opensource-workshop/connect-cms/security/advisories/GHSA-jh46-85jr-6ph9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/opensource-workshop/connect-cms/commit/4a1a64a8f768a53e06a4239e25782d9e2e88fc63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/opensource-workshop/connect-cms/commit/617a874e14b8476da7c0760a06384b9da21bdd4f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/opensource-workshop/connect-cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/opensource-workshop/connect-cms/releases/tag/v1.41.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/opensource-workshop/connect-cms/releases/tag/v2.41.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-23T20:36:49Z",
+    "nvd_published_at": "2026-03-23T22:16:27Z"
+  }
+}

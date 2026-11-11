@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pwg9-vp4w-mc97",
+  "modified": "2026-06-23T03:31:41Z",
+  "published": "2026-05-20T03:31:34Z",
+  "aliases": [
+    "CVE-2026-6555"
+  ],
+  "details": "The ProSolution WP Client plugin for WordPress is vulnerable to Arbitrary File Upload in versions up to, and including, 2.0.0. This is due to an array validation mismatch where only the first file in the upload array undergoes extension and MIME type validation, while all files are processed and uploaded to a web-accessible directory. This makes it possible for unauthenticated attackers to upload malicious PHP files and achieve remote code execution by sending a valid first file followed by a malicious file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6555"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.0/includes/UploadHandler.php#L1345"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.0/includes/UploadHandler.php#L384"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.0/public/class-prosolwpclient-public.php#L1072"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.0/public/class-prosolwpclient-public.php#L998"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/trunk/includes/UploadHandler.php#L1345"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/trunk/includes/UploadHandler.php#L384"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/trunk/public/class-prosolwpclient-public.php#L1072"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/trunk/public/class-prosolwpclient-public.php#L998"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3535622"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/0b870d35-7e10-4fb5-8c3b-2bf299d1f3d5?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-20T02:16:38Z"
+  }
+}

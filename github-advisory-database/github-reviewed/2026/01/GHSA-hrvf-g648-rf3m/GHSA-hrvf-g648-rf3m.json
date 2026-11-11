@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hrvf-g648-rf3m",
+  "modified": "2026-01-16T20:45:39Z",
+  "published": "2026-01-16T06:30:15Z",
+  "aliases": [
+    "CVE-2026-0858"
+  ],
+  "summary": "PlantUML is vulnerable to Stored XSS due to insufficient sanitization of interactive attributes in GraphViz diagrams",
+  "details": "Versions of the package net.sourceforge.plantuml:plantuml before 1.2026.0 are vulnerable to Stored XSS due to insufficient sanitization of interactive attributes in GraphViz diagrams. As a result, a crafted PlantUML diagram can inject malicious JavaScript into generated SVG output, leading to arbitrary script execution in the context of applications that render the SVG.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:L/VA:N/SC:L/SI:L/SA:N/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "net.sourceforge.plantuml:plantuml"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.2026.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0858"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/plantuml/plantuml/commit/6826315db092d2e432aeab1a0894e08017c6e4bd"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/plantuml/plantuml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/plantuml/plantuml/releases/tag/v1.2026.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.snyk.io/vuln/SNYK-JAVA-NETSOURCEFORGEPLANTUML-14552230"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-16T20:45:39Z",
+    "nvd_published_at": "2026-01-16T05:16:16Z"
+  }
+}

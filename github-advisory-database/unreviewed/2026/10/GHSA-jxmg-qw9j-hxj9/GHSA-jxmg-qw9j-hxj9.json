@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jxmg-qw9j-hxj9",
+  "modified": "2026-10-20T03:32:45Z",
+  "published": "2026-10-20T03:32:45Z",
+  "aliases": [
+    "CVE-2026-77938"
+  ],
+  "details": "Letta through 0.16.8 contains an information disclosure vulnerability that allows users running tools to read server secrets because LocalSandbox subprocesses inherit the full server environment. Attackers can run code via POST /v1/tools/run or custom tools to read LETTA_PG_URI, POSTGRES_PASSWORD, and provider API keys, then access cross-tenant database data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77938"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/letta-ai/letta/blob/1131535716e8a31c9a437f8695e25ac98f203a24/letta/services/tool_sandbox/base.py#L487"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.lasso.security/vulnerability-database/cve-2026-77938"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/letta-through-0.16.8-credential-exposure-via-tool-sandbox-environment-inheritance"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-526"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T01:17:20Z"
+  }
+}

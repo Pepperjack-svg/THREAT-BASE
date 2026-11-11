@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pmq6-ggff-fwmg",
+  "modified": "2026-02-03T18:30:30Z",
+  "published": "2025-10-07T18:31:10Z",
+  "aliases": [
+    "CVE-2023-53684"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: Zero padding when dumping algos and encap\n\nWhen copying data to user-space we should ensure that only valid\ndata is copied over.  Padding in structures may be filled with\nrandom (possibly sensitve) data and should never be given directly\nto user-space.\n\nThis patch fixes the copying of xfrm algorithms and the encap\ntemplate in xfrm_user so that padding is zeroed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53684"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0725daaa9a879388ed312110f62dbd5ea2d75f8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a351e26cc010d6991fbbd5701ac16581372e26f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5218af4ad5d8948faac19f71583bcd786c3852df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8222d5910dae08213b6d9d4bc9a7f8502855e624"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:52Z"
+  }
+}

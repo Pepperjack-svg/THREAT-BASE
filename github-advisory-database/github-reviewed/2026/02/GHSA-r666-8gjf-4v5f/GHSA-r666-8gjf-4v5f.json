@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r666-8gjf-4v5f",
+  "modified": "2026-02-04T17:45:47Z",
+  "published": "2026-02-03T20:49:58Z",
+  "aliases": [
+    "CVE-2026-25151"
+  ],
+  "summary": "Qwik City has a CSRF Protection Bypass via Content-Type Header Validation",
+  "details": "### Summary\nQwik City’s server-side request handler inconsistently interprets HTTP request headers, which can be abused by a remote attacker to circumvent form submission CSRF protections using specially crafted or multi-valued Content-Type headers.\n\n### Impact\nA vulnerability in checkCSRF lets an attacker bypass Origin-based CSRF checks by using malformed or multi-valued Content-Type headers. Exploitation requires the CORS preflight to succeed (so it’s blocked if preflight is denied) and is possible when the application accepts cross-origin requests or via non-browser clients. Impact varies with server CORS and cookie policies and may enable unauthorized state changes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@builder.io/qwik-city"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.19.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/QwikDev/qwik/security/advisories/GHSA-r666-8gjf-4v5f"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25151"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/QwikDev/qwik/commit/eebf610e04cc3a690f11e10191d09ff0fca1c7ed"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/QwikDev/qwik"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-03T20:49:58Z",
+    "nvd_published_at": "2026-02-03T22:16:30Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jqrw-5fq8-4hx8",
+  "modified": "2025-07-10T21:31:53Z",
+  "published": "2025-07-10T21:31:53Z",
+  "aliases": [
+    "CVE-2025-53709"
+  ],
+  "details": "Secure-upload is a data submission service that validates single-use tokens when accepting submissions to channels. The service only installed on a small number of environments.\n\nUnder specific circumstances, privileged users of secure-upload could have selected email templates not necessarily created for their enrollment when sending data upload requests.\nAuthenticated and privileged users of one enrollment could have abused an endpoint to redirect existing submission channels to a dataset they control.\nAn endpoint handling domain validation allowed unauthenticated users to enumerate existing enrollments.\nFinally, other endpoints allowed enumerating if a resource with a known RID exists across enrollments.\n\nThe affected service has been patched with version 0.815.0 and automatically deployed to all Apollo-managed Foundry instances.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-53709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cwe.mitre.org/data/definitions/285.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-10T19:15:27Z"
+  }
+}

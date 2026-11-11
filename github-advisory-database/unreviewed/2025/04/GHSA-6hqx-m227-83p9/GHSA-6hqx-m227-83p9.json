@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6hqx-m227-83p9",
+  "modified": "2026-10-15T03:34:47Z",
+  "published": "2025-04-16T15:34:44Z",
+  "aliases": [
+    "CVE-2025-22095"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: brcmstb: Fix error path after a call to regulator_bulk_get()\n\nIf the regulator_bulk_get() returns an error and no regulators\nare created, we need to set their number to zero.\n\nIf we don't do this and the PCIe link up fails, a call to the\nregulator_bulk_free() will result in a kernel panic.\n\nWhile at it, print the error value, as we cannot return an error\nupwards as the kernel will WARN() on an error from add_bus().\n\n[kwilczynski: commit log, use comma in the message to match style with\nother similar messages]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22095"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3651ad5249c51cf7eee078e12612557040a6bdb4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f44e1fdb006db61394aa4d4c25728ada00842e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7842e842a9bf6bd5866c84f588353711d131ab1a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/99a0efba9f903acbdece548862b6b4cbe7d999e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df63321a40cc98e52313cffbff376b8ae9ceffa7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eedd054834930b8d678f0776cd4b091b8fffbb4a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:16:03Z"
+  }
+}

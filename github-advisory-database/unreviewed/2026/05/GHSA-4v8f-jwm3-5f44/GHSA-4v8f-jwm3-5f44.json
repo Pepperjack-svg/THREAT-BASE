@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4v8f-jwm3-5f44",
+  "modified": "2026-05-11T09:30:30Z",
+  "published": "2026-05-08T15:31:24Z",
+  "aliases": [
+    "CVE-2026-43339"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: prevent possible UaF in addrconf_permanent_addr()\n\nThe mentioned helper try to warn the user about an exceptional\ncondition, but the message is delivered too late, accessing the ipv6\nafter its possible deletion.\n\nReorder the statement to avoid the possible UaF; while at it, place the\nwarning outside the idev->lock as it needs no protection.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/25357b670afb5b517096da783abaa5cc4bf8359e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d88ed7fa000e19c2dc0fa31b3a849e3f5bca5c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cd4efb5df72843dfac892d0b3c7a4a8bd926b65"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7bfafa1b0cd582983ebec6bb20f0a435528fe567"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d9f2f4aabd116ca68fbdab5d8fb8dac74c2ea1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bacc7f31085c9820922f00bc7d79756ffa13123a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eec49a33611f20336b357b3953df44f1a02049e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd63f185979b047fb22a0dfc6bd94d0cab6a6a70"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:43Z"
+  }
+}

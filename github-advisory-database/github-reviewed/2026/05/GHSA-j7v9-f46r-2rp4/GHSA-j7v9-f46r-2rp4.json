@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j7v9-f46r-2rp4",
+  "modified": "2026-06-09T10:23:38Z",
+  "published": "2026-05-11T19:39:22Z",
+  "aliases": [
+    "CVE-2026-41897"
+  ],
+  "summary": "MantisBT is Vulnerable to Reflected XSS in Rendering Dynamic Custom Textarea Field",
+  "details": "Lack of validation of filter_target parameter on return_dynamic_filters.php (normally used as an AJAX in View Issues Page) allows an attacker to inject arbitrary HTML if the target is a TEXTAREA custom field.\n\n### Impact\nCross-site scripting (XSS)\n\n### Patches\n- c885af13f0b8596714ffe11df757c09f35fbd8f4\n\n### Workarounds\nNone\n\n### Credits\n\nThanks to siunam (Tang Cheuk Hei) for discovering and responsibly reporting the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mantisbt/mantisbt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "2.28.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/security/advisories/GHSA-j7v9-f46r-2rp4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41897"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/commit/c885af13f0b8596714ffe11df757c09f35fbd8f4"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mantisbt/mantisbt"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mantisbt.org/bugs/view.php?id=37013"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-11T19:39:22Z",
+    "nvd_published_at": "2026-05-28T21:16:29Z"
+  }
+}

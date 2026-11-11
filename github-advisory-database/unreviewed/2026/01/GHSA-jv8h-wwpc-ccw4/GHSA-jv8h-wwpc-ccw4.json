@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jv8h-wwpc-ccw4",
+  "modified": "2026-03-25T18:31:35Z",
+  "published": "2026-01-31T12:30:12Z",
+  "aliases": [
+    "CVE-2026-23024"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nidpf: fix memory leak of flow steer list on rmmod\n\nThe flow steering list maintains entries that are added and removed as\nethtool creates and deletes flow steering rules. Module removal with active\nentries causes memory leak as the list is not properly cleaned up.\n\nPrevent this by iterating through the remaining entries in the list and\nfreeing the associated memory during module removal. Add a spinlock\n(flow_steer_list_lock) to protect the list access from multiple threads.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23024"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1aedff70a5e97628eaaf17b169774cb6a45a1dc5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9841bd28b600526ca4f6713b0ca49bf7bb98452"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-31T12:16:05Z"
+  }
+}

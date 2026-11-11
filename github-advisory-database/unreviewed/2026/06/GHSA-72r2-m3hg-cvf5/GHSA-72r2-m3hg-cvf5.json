@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-72r2-m3hg-cvf5",
+  "modified": "2026-06-24T21:30:44Z",
+  "published": "2026-06-24T21:30:44Z",
+  "aliases": [
+    "CVE-2026-13208"
+  ],
+  "details": "A flaw was found in KubeVirt's virt-handler domain notify server. The gRPC handlers for HandleDomainEvent and HandleK8SEvent derive the VMI identity (namespace/name) solely from the request body without validating it against the connection's origin. Each virt-launcher pod connects through a per-VMI pipe socket, but no identity tag is propagated from the pipe path to the server handlers. This allows a compromised virt-launcher process to send forged domain lifecycle events for any other VMI scheduled on the same node, causing virt-handler to erroneously update that VMI's state and disrupt its lifecycle management.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-13208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2492220"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-24T21:16:52Z"
+  }
+}

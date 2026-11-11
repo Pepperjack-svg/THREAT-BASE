@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5fjh-wjgp-25ph",
+  "modified": "2026-05-18T18:31:23Z",
+  "published": "2026-04-29T12:33:07Z",
+  "aliases": [
+    "CVE-2026-42248"
+  ],
+  "details": "Ollama for Windows does not perform integrity or authenticity verification of downloaded update executables. Unlike other platforms, the Windows implementation of the update verification routine unconditionally returns success so no digital signature or trust validation is performed before staging or executing update payloads, enabling attacker‑supplied executables to be accepted and later executed by the application.\n\nCritically, Ollama for Windows performs silent automatic updates, so the malicious payload may be installed automatically without user awareness.\n\nMaintainers of this project were notified early about this vulnerability, but didn't respond with the details of vulnerability or vulnerable version range. Versions from 0.12.10 to 0.17.5 were tested and confirmed as vulnerable, other versions were not tested but might also be vulnerable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42248"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2026/04/CVE-2026-42248"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ollama.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-494"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-29T12:16:18Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9qv5-27hf-7pmq",
+  "modified": "2025-11-18T18:32:46Z",
+  "published": "2025-06-18T12:30:50Z",
+  "aliases": [
+    "CVE-2022-50137"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/irdma: Fix a window for use-after-free\n\nDuring a destroy CQ an interrupt may cause processing of a CQE after CQ\nresources are freed by irdma_cq_free_rsrc(). Fix this by moving the call\nto irdma_cq_free_rsrc() after the irdma_sc_cleanup_ceqes(), which is\ncalled under the cq_lock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0abf2eef80295923b819ce89ff9edc1fe61be17c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/350ac793a03c8a30a3f2b27fc282cd1c67070763"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ecef7890b3aea78c8bbb501a4b5b8134367b821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92520864ef9f912f38b403d172a0ded020683d55"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:43Z"
+  }
+}

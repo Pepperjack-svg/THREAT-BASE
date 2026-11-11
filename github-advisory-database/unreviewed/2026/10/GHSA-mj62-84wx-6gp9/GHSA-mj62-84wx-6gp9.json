@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mj62-84wx-6gp9",
+  "modified": "2026-10-13T21:33:38Z",
+  "published": "2026-10-13T21:33:38Z",
+  "aliases": [
+    "CVE-2026-110218"
+  ],
+  "details": "Aureus ERP through 1.6.0 contains an authorization bypass vulnerability that allows unauthenticated attackers to read unpublished draft blog posts via the customer-facing post view page. Attackers who know or guess a post slug can retrieve the full title, content, image, tags, author and publish date because PostResource skips authorization and ViewPost ignores is_published.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110218"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aureuserp/aureuserp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aureuserp/aureuserp/blob/v1.6.0/plugins/webkul/blogs/src/Filament/Customer/Resources/PostResource.php#L23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aureuserp/aureuserp/blob/v1.6.0/plugins/webkul/blogs/src/Filament/Customer/Resources/PostResource/Pages/ViewPost.php#L9-L24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aureuserp/aureuserp/releases/tag/v1.6.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@leediay/ryPaE-t9fl"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/aureus-erp-through-1.6.0-unpublished-blog-post-disclosure-via-direct-url"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:46Z"
+  }
+}

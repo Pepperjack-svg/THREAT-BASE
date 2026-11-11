@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8xcr-xgj2-cmf5",
+  "modified": "2026-11-09T21:31:46Z",
+  "published": "2026-11-07T15:30:29Z",
+  "aliases": [
+    "CVE-2026-124311"
+  ],
+  "details": "Fraunhofer HHI VVdeC through 3.2.1 contains a NULL pointer dereference vulnerability in InterPrediction::xPredInterBlk that allows attackers to crash the decoder by switching SPS to enable reference wrap-around. Attackers can supply a crafted VVC bitstream activating a new SPS with sps_ref_wraparound_enabled_flag set, causing reads from missing PIC_RECON_WRAP buffers and denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124311"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fraunhoferhhi/vvdec/issues/420"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fraunhoferhhi/vvdec/commit/fb73aca37b48f89814f57edbc8072a37d47bbe06"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fraunhoferhhi/vvdec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fraunhoferhhi/vvdec/blob/v3.2.1/source/Lib/CommonLib/InterPrediction.cpp#L790-L796"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/fraunhofer-hhi-vvdec-through-3.2.1-null-pointer-dereference-via-interprediction-xpredinterblk"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/11/09/22"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-07T15:17:14Z"
+  }
+}

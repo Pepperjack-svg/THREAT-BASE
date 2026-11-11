@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mvr8-9v2m-pg6f",
+  "modified": "2026-06-25T21:31:19Z",
+  "published": "2026-05-27T15:33:14Z",
+  "aliases": [
+    "CVE-2026-45880"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI/P2PDMA: Release per-CPU pgmap ref when vm_insert_page() fails\n\nWhen vm_insert_page() fails in p2pmem_alloc_mmap(), p2pmem_alloc_mmap()\ndoesn't invoke percpu_ref_put() to free the per-CPU ref of pgmap acquired\nafter gen_pool_alloc_owner(), and memunmap_pages() will hang forever when\ntrying to remove the PCI device.\n\nFix it by adding the missed percpu_ref_put().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45880"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51b7181cfbedf289ce794b6d97a1c596c309ec38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6220694c52a5a04102b48109e4f24e958b559bd3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1f4dc72efc3204db95d052058d785cad7ce755f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/baa42b756d183a59572f3890981a3d32b8d05d40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e19cce88ec4c4877f4ff2469099b9cf23cc3e93e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:01Z"
+  }
+}

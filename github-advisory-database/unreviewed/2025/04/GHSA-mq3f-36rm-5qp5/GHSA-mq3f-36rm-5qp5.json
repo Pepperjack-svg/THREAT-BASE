@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mq3f-36rm-5qp5",
+  "modified": "2025-11-03T21:33:38Z",
+  "published": "2025-04-16T15:34:45Z",
+  "aliases": [
+    "CVE-2025-22112"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\neth: bnxt: fix out-of-range access of vnic_info array\n\nThe bnxt_queue_{start | stop}() access vnic_info as much as allocated,\nwhich indicates bp->nr_vnics.\nSo, it should not reach bp->vnic_info[bp->nr_vnics].",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/919f9f497dbcee75d487400e8f9815b74a6a37df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1e081d331ab3a0dea25425f2b6ddeb365fc9d22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e1724f07693439deaa413ebc2a2640325cf247f5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:16:05Z"
+  }
+}

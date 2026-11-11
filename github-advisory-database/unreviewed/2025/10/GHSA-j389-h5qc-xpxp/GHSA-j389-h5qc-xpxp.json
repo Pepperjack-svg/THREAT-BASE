@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j389-h5qc-xpxp",
+  "modified": "2026-02-04T00:30:26Z",
+  "published": "2025-10-07T18:31:09Z",
+  "aliases": [
+    "CVE-2023-53633"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/qaic: Fix a leak in map_user_pages()\n\nIf get_user_pages_fast() allocates some pages but not as many as we\nwanted, then the current code leaks those pages.  Call put_page() on\nthe pages before returning.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73274c33d961f4aa0f968f763e2c9f4210b4f4a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cdcba752a3d48fbe6f05cf2c91ab9497c8daad0c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:46Z"
+  }
+}

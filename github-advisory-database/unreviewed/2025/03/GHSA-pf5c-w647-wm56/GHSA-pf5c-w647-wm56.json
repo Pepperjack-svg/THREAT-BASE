@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pf5c-w647-wm56",
+  "modified": "2025-03-04T18:33:25Z",
+  "published": "2025-03-04T18:33:25Z",
+  "aliases": [
+    "CVE-2022-49182"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hns3: add vlan list lock to protect vlan list\n\nWhen adding port base VLAN, vf VLAN need to remove from HW and modify\nthe vlan state in vf VLAN list as false. If the periodicity task is\nfreeing the same node, it may cause \"use after free\" error.\nThis patch adds a vlan list lock to protect the vlan list.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09e383ca97e798f9954189b741af54b5c51e7a97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1932a624ab88ff407d1a1d567fe581faa15dc725"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30f0ff7176efe8ac6c55f85bce26ed58bb608758"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f58af41deeab0f45c9c80adf5f2de489ebbac3dd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:55Z"
+  }
+}

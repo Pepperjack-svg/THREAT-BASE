@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7mm4-g6qh-3j8p",
+  "modified": "2026-10-28T12:31:08Z",
+  "published": "2026-10-28T12:31:08Z",
+  "aliases": [
+    "CVE-2026-99199"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hisilicon: hip04_eth: Move setting of netops to fix crash\n\nhip04_mac_probe() calls of_phy_connect() before ndev->netdev_ops is\nassigned. phy_attach_direct() -> phy_link_topo_add_phy() reads\ndev->netdev_ops through netdev_need_ops_lock() since the commit in\nquestion, so probing crashes with a NULL pointer dereference when\nCONFIG_NET_SHAPER is enabled.\n\nAssign netdev_ops before the PHY attach, as was done for emac in commit\n7c9f391ec89c (\"net: emac: move setting of netops to fix crash\").",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d9342701f14ec0a9465772b7cd5d515c1ecd818"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c2f9c3a63baabfb965a23a00f026f3ddcaadb24"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T11:17:41Z"
+  }
+}

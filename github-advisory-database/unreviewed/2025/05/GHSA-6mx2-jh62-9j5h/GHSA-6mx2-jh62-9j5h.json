@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6mx2-jh62-9j5h",
+  "modified": "2025-11-07T21:31:19Z",
+  "published": "2025-05-01T15:31:47Z",
+  "aliases": [
+    "CVE-2022-49804"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390: avoid using global register for current_stack_pointer\n\nCommit 30de14b1884b (\"s390: current_stack_pointer shouldn't be a\nfunction\") made current_stack_pointer a global register variable like\non many other architectures. Unfortunately on s390 it uncovers old\ngcc bug which is fixed only since gcc-9.1 [gcc commit 3ad7fed1cc87\n(\"S/390: Fix PR89775. Stackpointer save/restore instructions removed\")]\nand backported to gcc-8.4 and later. Due to this bug gcc versions prior\nto 8.4 generate broken code which leads to stack corruptions.\n\nCurrent minimal gcc version required to build the kernel is declared\nas 5.1. It is not possible to fix all old gcc versions, so work\naround this problem by avoiding using global register variable for\ncurrent_stack_pointer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49804"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a478952a8ac44e32316dc046a063a7dc34825aa6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3c11025bcd2142a61abe5806b2f86a0e78118df"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:03Z"
+  }
+}

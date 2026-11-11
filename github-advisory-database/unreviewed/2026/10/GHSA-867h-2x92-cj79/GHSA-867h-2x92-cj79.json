@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-867h-2x92-cj79",
+  "modified": "2026-10-06T09:31:29Z",
+  "published": "2026-10-06T09:31:29Z",
+  "aliases": [
+    "CVE-2026-98183"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: avoid out-of-bounds read for empty PREQ elements\n\nieee80211_mesh_preq_size_ok() derives the location of the PREQ bottom\nfields before checking whether the element contains even the fixed\nheader. ieee80211_mesh_hwmp_preq_get_bottom() reads the flags byte to\naccount for the optional Address Extension field. Consequently, an\nempty PREQ element causes a one-byte read beyond its declared payload.\n\nMove the helper call after both size checks, so the bottom fields are\nonly accessed when they are present.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98183"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3beddbd56946577478fd5e649f556aaaebe15b0a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6031f02269c0f51cf67886d177f02bc300b47cd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:03Z"
+  }
+}

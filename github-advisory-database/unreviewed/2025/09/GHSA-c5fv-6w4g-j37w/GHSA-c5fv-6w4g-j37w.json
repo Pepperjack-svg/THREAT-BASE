@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c5fv-6w4g-j37w",
+  "modified": "2025-11-24T21:30:57Z",
+  "published": "2025-09-15T15:31:23Z",
+  "aliases": [
+    "CVE-2023-53163"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: don't hold ni_lock when calling truncate_setsize()\n\nsyzbot is reporting hung task at do_user_addr_fault() [1], for there is\na silent deadlock between PG_locked bit and ni_lock lock.\n\nSince filemap_update_page() calls filemap_read_folio() after calling\nfolio_trylock() which will set PG_locked bit, ntfs_truncate() must not\ncall truncate_setsize() which will wait for PG_locked bit to be cleared\nwhen holding ni_lock lock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53163"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0226635c304cfd5c9db9b78c259cb713819b057e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6bb6b1c6b0c31e36736b87a39dd1cbbd9d5ec22f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73fee7e1e5ea11b51c51c46e0577a197ca3602cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8414983c2e649364d8af29080a0869266b31abb6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T14:15:37Z"
+  }
+}

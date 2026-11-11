@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f2w5-mmwp-c76h",
+  "modified": "2026-10-15T03:34:59Z",
+  "published": "2025-11-12T12:30:27Z",
+  "aliases": [
+    "CVE-2025-40149"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntls: Use __sk_dst_get() and dst_dev_rcu() in get_netdev_for_sock().\n\nget_netdev_for_sock() is called during setsockopt(),\nso not under RCU.\n\nUsing sk_dst_get(sk)->dev could trigger UAF.\n\nLet's use __sk_dst_get() and dst_dev_rcu().\n\nNote that the only ->ndo_sk_get_lower_dev() user is\nbond_sk_get_lower_dev(), which uses RCU.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13159c7125636371543a82cb7bbae00ab36730cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b1bef126bbb8d0da51491357559126d567c1dee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c65f27b9c3be2269918e1cbad6d8884741f835c5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e37ca0092ddace60833790b4ad7a390408fb1be9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f09cd209359a23f88d4f3fa3d2379d057027e53c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/feb474ddbf26b51f462ae2e60a12013bdcfc5407"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-12T11:15:44Z"
+  }
+}

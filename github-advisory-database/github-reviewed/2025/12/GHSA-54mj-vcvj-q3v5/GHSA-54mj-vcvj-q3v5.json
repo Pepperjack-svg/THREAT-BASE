@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-54mj-vcvj-q3v5",
+  "modified": "2026-01-22T16:53:47Z",
+  "published": "2025-12-22T21:30:33Z",
+  "aliases": [
+    "CVE-2025-67288"
+  ],
+  "summary": "Umbraco CMS has an arbitrary file upload vulnerability",
+  "details": "An arbitrary file upload vulnerability in Umbraco CMS v16.3.3 allows attackers to execute arbitrary code via uploading a crafted PDF file. While Umbraco provides [hooks to perform file validation](https://docs.umbraco.com/umbraco-cms/reference/security/serverside-file-validation), it does not do implement filtering by default. Users are expected to implement their own validation.\n\nNote: This vulnerability is [disputed by Ubraco](https://github.com/github/advisory-database/pull/6633).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:H/SI:H/SA:H/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Umbraco.Cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "16.3.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-67288"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/github/advisory-database/pull/6633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.umbraco.com/umbraco-cms/reference/security/serverside-file-validation"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/umbraco/Umbraco-CMS"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vuquyen03/CVE/tree/main/CVE-2025-67288"
+    },
+    {
+      "type": "WEB",
+      "url": "http://umbraco.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434",
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-22T22:47:47Z",
+    "nvd_published_at": "2025-12-22T19:15:49Z"
+  }
+}

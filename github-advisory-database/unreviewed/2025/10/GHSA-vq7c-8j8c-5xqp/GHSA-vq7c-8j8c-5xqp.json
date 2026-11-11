@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vq7c-8j8c-5xqp",
+  "modified": "2025-10-24T18:30:56Z",
+  "published": "2025-10-24T18:30:56Z",
+  "aliases": [
+    "CVE-2022-49675"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntick/nohz: unexport __init-annotated tick_nohz_full_setup()\n\nEXPORT_SYMBOL and __init is a bad combination because the .init.text\nsection is freed up after the initialization. Hence, modules cannot\nuse symbols annotated __init. The access to a freed symbol may end up\nwith kernel panic.\n\nmodpost used to detect it, but it had been broken for a decade.\n\nCommit 28438794aba4 (\"modpost: fix section mismatch check for exported\ninit/exit sections\") fixed it so modpost started to warn it again, then\nthis showed up:\n\n    MODPOST vmlinux.symvers\n  WARNING: modpost: vmlinux.o(___ksymtab_gpl+tick_nohz_full_setup+0x0): Section mismatch in reference from the variable __ksymtab_tick_nohz_full_setup to the function .init.text:tick_nohz_full_setup()\n  The symbol tick_nohz_full_setup is exported and annotated __init\n  Fix this by removing the __init annotation of tick_nohz_full_setup or drop the export.\n\nDrop the export because tick_nohz_full_setup() is only called from the\nbuilt-in code in kernel/sched/isolation.c.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49675"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2390095113e98fc52fffe35c5206d30d9efe3f78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4ff3ffe0138234774602152fe67e3a898c615c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea32b27e2f8c58c92bff5ecba7fcf64b97707089"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4a80ec8c51d68be4b7a7830c510f75080c5e417"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:42Z"
+  }
+}

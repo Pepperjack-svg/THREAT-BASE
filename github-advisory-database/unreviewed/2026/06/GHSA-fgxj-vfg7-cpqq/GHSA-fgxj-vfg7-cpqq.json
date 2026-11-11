@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fgxj-vfg7-cpqq",
+  "modified": "2026-10-21T15:40:40Z",
+  "published": "2026-06-25T09:31:23Z",
+  "aliases": [
+    "CVE-2026-53277"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Take the SRCU lock for page table walks in fault injection and AT emulation\n\nwalk_s1() and kvm_walk_nested_s2() expect to be called while holding\nkvm->srcu to guard against memslot changes. While this is generally\nthe case, __kvm_at_s12() and __kvm_find_s1_desc_level() call into the\nrespective walkers without taking kvm->srcu.\n\nFix by acquiring kvm->srcu prior to the table walk in both instances.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:64775"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-53277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2492725"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0648b375aa951cc15d9e90f9ac4de71e0b51fa45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97706097f9b851cfe55c3b00b083dfc2bcf542bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec42b4ed1b072ea2d03f086061aa67bad6d8de39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2ca45b50d4216c9cc7ffabf50d9ad1932209251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-53277.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-662",
+      "CWE-820"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:45Z"
+  }
+}

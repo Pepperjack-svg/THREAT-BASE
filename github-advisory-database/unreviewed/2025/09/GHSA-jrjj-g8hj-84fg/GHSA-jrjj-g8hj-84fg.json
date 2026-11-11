@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jrjj-g8hj-84fg",
+  "modified": "2025-12-11T18:30:32Z",
+  "published": "2025-09-17T15:30:38Z",
+  "aliases": [
+    "CVE-2022-50374"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_{ldisc,serdev}: check percpu_init_rwsem() failure\n\nsyzbot is reporting NULL pointer dereference at hci_uart_tty_close() [1],\nfor rcu_sync_enter() is called without rcu_sync_init() due to\nhci_uart_tty_open() ignoring percpu_init_rwsem() failure.\n\nWhile we are at it, fix that hci_uart_register_device() ignores\npercpu_init_rwsem() failure and hci_uart_unregister_device() does not\ncall percpu_free_rwsem().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50374"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3124d320c22f3f4388d9ac5c8f37eaad0cefd6b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75b2c71ea581c7bb1303860d89366a42ad0506d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98ce10f3f345e61fc6c83bff9cd11cda252b05ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8917dce2134739b39bc0a5648b18427f2cad569"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7cc0d51ffcbfd1caaa809fcf9cff05c46d0fb4d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-17T15:15:36Z"
+  }
+}

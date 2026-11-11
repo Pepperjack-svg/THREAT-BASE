@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p76v-2jpq-7gvc",
+  "modified": "2026-10-08T09:31:54Z",
+  "published": "2026-10-07T03:30:23Z",
+  "aliases": [
+    "CVE-2026-106061"
+  ],
+  "details": "A flaw was found in GIMP’s X cursor (XMC) thumbnail loader. When GIMP generates a thumbnail for a crafted XMC file, it allocates a pixel buffer using a width * height size computed in 32-bit signed arithmetic. If that product overflows, the allocation is smaller than the true image extent. A subsequent GEGL buffer read uses the unwrapped dimensions and performs an out-of-bounds read on the heap (CWE-125), after integer overflow in the size calculation (CWE-190). This can crash GIMP or corrupt process memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106061"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-106061"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2546640"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-07T03:16:57Z"
+  }
+}

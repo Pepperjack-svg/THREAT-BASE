@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7762-mmrx-x9p5",
+  "modified": "2026-10-21T03:32:16Z",
+  "published": "2026-10-21T03:32:16Z",
+  "aliases": [
+    "CVE-2026-114056"
+  ],
+  "details": "ArcadeDB from 26.8.1 before 26.10.1 contains an authorization bypass vulnerability that allows read-only users to modify edge type lightweight and unique schema flags without UPDATE_SCHEMA permission. Attackers can send a bare ALTER TYPE edgeType WITH lightweight = true command over the HTTP, gRPC, or Bolt command API to persistently alter edge storage declarations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-9c7g-grf7-j2r5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114056"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/arcadedb-from-26.8.1-before-26.10.1-authorization-bypass-via-alter-type-with"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T01:17:28Z"
+  }
+}

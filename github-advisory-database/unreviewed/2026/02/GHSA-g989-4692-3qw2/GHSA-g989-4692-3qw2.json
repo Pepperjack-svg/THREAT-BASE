@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g989-4692-3qw2",
+  "modified": "2026-02-19T18:31:50Z",
+  "published": "2026-02-19T18:31:50Z",
+  "aliases": [
+    "CVE-2025-14864"
+  ],
+  "details": "The Virusdie - One-click website security plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 1.1.7. This is due to missing capability checks on the `vd_get_apikey` function which is hooked to `wp_ajax_virusdie_apikey`. This makes it possible for authenticated attackers, with Subscriber-level access and above, to retrieve the site's Virusdie API key, which could be used to access the site owner's Virusdie account and potentially compromise site security.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14864"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/virusdie/trunk/inc/class-virusdie.php#L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/virusdie/trunk/inc/tools/class-virusdie-behavior.php#L240"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3450727%40virusdie&new=3450727%40virusdie&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/8ef2e0b1-52ef-4f70-9e95-d010a586d060?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-19T07:17:35Z"
+  }
+}

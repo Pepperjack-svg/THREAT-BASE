@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g367-xhx5-qhm5",
+  "modified": "2026-10-18T18:31:55Z",
+  "published": "2026-10-18T18:31:54Z",
+  "aliases": [
+    "CVE-2026-98582"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfc: st21nfca: validate received frame size\n\nst21nfca_hci_i2c_repack() trims a received frame at its EOF marker\nbefore removing byte stuffing.  It then assumes the truncated frame\ncontains the LLC header and two CRC bytes, and it unconditionally reads\nthe byte after an escape marker.\n\nA malformed frame can place EOF immediately after the start marker or can\nend its data portion with an escape marker.  The former leaves too few\nbytes for check_crc(), while the latter makes the unstuffing loop read past\nthe current skb length.\n\nRequire the minimum framing bytes both before and after unstuffing.  Use\nseparate input and output cursors while removing byte stuffing, and reject\nan escape marker without its encoded byte.  This keeps malformed frames\nwithin the received frame boundary before CRC processing.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98582"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57919d0662d8856211b794140172e51ca389f23d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b996cc06dda54c02a5aa607bda01109f0ac51e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8934d2889ae16a7c77520e002398d0689c1ecea5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91be5161f37b0a2795ad6806d69be5fa74522e5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a653c01ce447f10c36b901646888c0330363af4f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0596ee6c4b928a5c288790522a7495ee867da72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4008c3499dba7829bfe002edd99a8bff8ae3a7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f526c218a149a30f110ce434ff17e033042404b8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:10Z"
+  }
+}

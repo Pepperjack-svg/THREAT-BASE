@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p96p-6mvh-mgpr",
+  "modified": "2026-01-26T21:30:30Z",
+  "published": "2025-10-01T12:30:31Z",
+  "aliases": [
+    "CVE-2023-53522"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncgroup,freezer: hold cpu_hotplug_lock before freezer_mutex\n\nsyzbot is reporting circular locking dependency between cpu_hotplug_lock\nand freezer_mutex, for commit f5d39b020809 (\"freezer,sched: Rewrite core\nfreezer logic\") replaced atomic_inc() in freezer_apply_state() with\nstatic_branch_inc() which holds cpu_hotplug_lock.\n\ncpu_hotplug_lock => cgroup_threadgroup_rwsem => freezer_mutex\n\n  cgroup_file_write() {\n    cgroup_procs_write() {\n      __cgroup_procs_write() {\n        cgroup_procs_write_start() {\n          cgroup_attach_lock() {\n            cpus_read_lock() {\n              percpu_down_read(&cpu_hotplug_lock);\n            }\n            percpu_down_write(&cgroup_threadgroup_rwsem);\n          }\n        }\n        cgroup_attach_task() {\n          cgroup_migrate() {\n            cgroup_migrate_execute() {\n              freezer_attach() {\n                mutex_lock(&freezer_mutex);\n                (...snipped...)\n              }\n            }\n          }\n        }\n        (...snipped...)\n      }\n    }\n  }\n\nfreezer_mutex => cpu_hotplug_lock\n\n  cgroup_file_write() {\n    freezer_write() {\n      freezer_change_state() {\n        mutex_lock(&freezer_mutex);\n        freezer_apply_state() {\n          static_branch_inc(&freezer_active) {\n            static_key_slow_inc() {\n              cpus_read_lock();\n              static_key_slow_inc_cpuslocked();\n              cpus_read_unlock();\n            }\n          }\n        }\n        mutex_unlock(&freezer_mutex);\n      }\n    }\n  }\n\nSwap locking order by moving cpus_read_lock() in freezer_apply_state()\nto before mutex_lock(&freezer_mutex) in freezer_change_state().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34fbb7b45bae20b551dda24337c7761ca13ce69d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3756171b97c307d9df8b8ded1d883eec30172085"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57dcd64c7e036299ef526b400a8d12b8a2352f26"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:56Z"
+  }
+}

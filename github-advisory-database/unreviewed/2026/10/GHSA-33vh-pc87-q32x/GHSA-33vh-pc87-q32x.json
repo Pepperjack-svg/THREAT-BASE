@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-33vh-pc87-q32x",
+  "modified": "2026-10-06T09:31:36Z",
+  "published": "2026-10-06T09:31:36Z",
+  "aliases": [
+    "CVE-2026-98363"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scpi: reject DVFS OPP count above MAX_DVFS_OPPS\n\nscpi_dvfs_get_info() already rejected a zero opp_count, but still trusted\nany larger value from the SCP firmware. The shared-memory reply only holds\nMAX_DVFS_OPPS entries in buf.opps[]; a bigger count over-reads that array\nand then sizes the allocated OPP table incorrectly (garbage OPPs / OOB).\nThe missing upper bound dates back to the original SCPI DVFS support.\n\nReject zero and out-of-range counts in one check and return -EINVAL.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98363"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0130f9ad3974a5b2ad0fa03d0b300a9fb83ed901"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1aadbef648e92ca642125f188f99b0a26628e3ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32471d84a487c7fd74532bc96be56f8028cf4a3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69ec03cd481973e4be44a7158ed6c0fa06a9a5f9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7daaa684097377b66b98a832de307688a7f3bbc7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc563a59aded6f3b02d75dcc3c0bc5e90755d99e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e9887eeaa138c6b5697af3d2f7c71dc82407b154"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f17865332cc4ceaac846bcd7c28badbaedfabeff"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:30Z"
+  }
+}

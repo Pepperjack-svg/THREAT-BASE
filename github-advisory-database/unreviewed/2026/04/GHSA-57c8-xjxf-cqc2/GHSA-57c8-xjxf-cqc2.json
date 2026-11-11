@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-57c8-xjxf-cqc2",
+  "modified": "2026-04-08T09:31:31Z",
+  "published": "2026-04-08T09:31:31Z",
+  "aliases": [
+    "CVE-2026-4654"
+  ],
+  "details": "The Awesome Support – WordPress HelpDesk & Support Plugin plugin for WordPress is vulnerable to Insecure Direct Object Reference in versions up to, and including, 6.3.7. This is due to the wpas_get_ticket_replies_ajax() function failing to verify whether the authenticated user has permission to view the specific ticket being requested. This makes it possible for authenticated attackers, with subscriber-level access and above, to access sensitive information from all support tickets in the system by manipulating the ticket_id parameter.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/awesome-support/tags/6.3.7/includes/functions-post.php#L1823"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/awesome-support/tags/6.3.7/includes/functions-post.php#L1851"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/awesome-support/trunk/includes/functions-post.php#L1823"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/awesome-support/trunk/includes/functions-post.php#L1851"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3497662%40awesome-support&new=3497662%40awesome-support&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/9f9015fa-b3f0-4312-8acd-02b715e26f33?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-08T08:16:24Z"
+  }
+}

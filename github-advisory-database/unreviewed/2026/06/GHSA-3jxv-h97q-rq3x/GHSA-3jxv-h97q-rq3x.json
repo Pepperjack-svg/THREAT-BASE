@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3jxv-h97q-rq3x",
+  "modified": "2026-10-15T03:36:09Z",
+  "published": "2026-06-24T09:30:48Z",
+  "aliases": [
+    "CVE-2026-52928"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naf_unix: Reject SIOCATMARK on non-stream sockets\n\nSIOCATMARK reports whether the receive queue is at the urgent mark for\nMSG_OOB.\n\nIn AF_UNIX, MSG_OOB is supported only for SOCK_STREAM sockets.\nSOCK_DGRAM and SOCK_SEQPACKET reject MSG_OOB in sendmsg() and recvmsg(),\nso they should not support SIOCATMARK either.\n\nReturn -EOPNOTSUPP for non-stream sockets before checking the receive\nqueue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-52928"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3147ddf5a41c20c45c2eb69e00b62f10f822056a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/645b1ed3259af38b7814242a420bc2081bdd1eb6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b741c9c6ef59f17c1f104ddf1217ef77f79ed29b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c34c41446acf6c0d13b5b06c809be11e0f7f2729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d119775f2bad827edc28071c061fdd4a91f889a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec123873fdc83e7244c8ed6d17b8f8ea6c416a67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f085971de6d6b8ef946a5e0bcd73ff24509a0f85"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-24T08:16:22Z"
+  }
+}

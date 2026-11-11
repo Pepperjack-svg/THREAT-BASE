@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-65xf-rr4q-2829",
+  "modified": "2025-11-21T15:31:18Z",
+  "published": "2025-06-18T12:30:51Z",
+  "aliases": [
+    "CVE-2022-50155"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmtd: parsers: ofpart: Fix refcount leak in bcm4908_partitions_fw_offset\n\nof_find_node_by_path() returns a node pointer with refcount incremented,\nwe should use of_node_put() on it when not need anymore.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50155"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01bc3840d943cf725dea6ca13e11ffda82bad49a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3193c3a3f4fca65cb06d9d48d07fb96bc1f5b2bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/762475464982b15014f364ec0cf2a843407f5af1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e607879b0da18c451de5e91daf239cc2f2f8ff2d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:45Z"
+  }
+}

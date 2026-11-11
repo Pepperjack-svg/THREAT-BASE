@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8g9h-q4wq-r7gp",
+  "modified": "2026-04-11T03:30:30Z",
+  "published": "2026-04-11T03:30:30Z",
+  "aliases": [
+    "CVE-2026-5217"
+  ],
+  "details": "The Optimole – Optimize Images | Convert WebP & AVIF | CDN & Lazy Load | Image Optimization plugin for WordPress is vulnerable to Stored Cross-Site Scripting in all versions up to, and including, 4.2.2. This is due to insufficient input sanitization and output escaping on the user-supplied 's' parameter (srcset descriptor) in the unauthenticated /wp-json/optimole/v1/optimizations REST endpoint. The endpoint validates requests using an HMAC signature and timestamp, but these values are exposed directly in the frontend HTML making them accessible to any visitor. The plugin uses sanitize_text_field() on the descriptor value of rest.php, which strips HTML tags but does not escape double quotes. The poisoned descriptor is then stored via transients (backed by the WordPress options table) and later retrieved and injected verbatim into the srcset attribute of tag_replacer.php without proper escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts into pages that will execute whenever a user accesses the injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optimole-wp/tags/4.2.1/inc/rest.php#L1008"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optimole-wp/tags/4.2.1/inc/rest.php#L159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optimole-wp/tags/4.2.1/inc/tag_replacer.php#L526"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optimole-wp/trunk/inc/rest.php#L1008"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optimole-wp/trunk/inc/rest.php#L159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optimole-wp/trunk/inc/tag_replacer.php#L526"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/50417068-339a-4ae5-9c90-8f08f54ce0af?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-11T02:16:02Z"
+  }
+}

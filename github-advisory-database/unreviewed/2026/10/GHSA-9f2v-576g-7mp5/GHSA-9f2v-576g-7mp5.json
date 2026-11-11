@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9f2v-576g-7mp5",
+  "modified": "2026-10-14T15:32:23Z",
+  "published": "2026-10-14T15:32:23Z",
+  "aliases": [
+    "CVE-2026-110598"
+  ],
+  "details": "Libyal libpff through 20260926 contains an integer underflow in libpff_record_entry_get_multi_value() that allows attackers to trigger heap out-of-bounds reads via non-monotonic multi-value offsets. Attackers can craft PST, OST or PAB files with decreasing PT_MV_STRING8, PT_MV_UNICODE or PT_MV_BINARY offsets to crash libpff, pypff or pffexport and expose adjacent heap memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110598"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libyal/libpff/blob/03545511ab7a7a609e50ec715bdd3985c3be71c5/libpff/libpff_multi_value.c#L207-L271"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libyal/libpff/blob/03545511ab7a7a609e50ec715bdd3985c3be71c5/libpff/libpff_record_entry.c#L2825-L2874"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/libpff-multivalue-offset-underflow-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libyal-libpff-through-20260926-heap-out-of-bounds-read-via-libpff-record-entry-get-multi-value"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T15:17:11Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jqgv-3ch9-c9qv",
+  "modified": "2025-03-20T12:32:48Z",
+  "published": "2025-03-20T12:32:48Z",
+  "aliases": [
+    "CVE-2024-8763"
+  ],
+  "details": "A Regular Expression Denial of Service (ReDoS) vulnerability exists in the lunary-ai/lunary repository, specifically in the compileTextTemplate function. The affected version is git be54057. An attacker can exploit this vulnerability by manipulating the regular expression /{{(.*?)}}/g, causing the server to hang indefinitely and become unresponsive to any requests. This is due to the regular expression's susceptibility to second-degree polynomial time complexity, which can be triggered by a large number of braces in the input.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-8763"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lunary-ai/lunary/commit/7ff89b0304d191534b924cf063f3648206d497fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/4fb63a6e-0056-4550-a34d-e161de1c13b8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1333",
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-20T10:15:43Z"
+  }
+}

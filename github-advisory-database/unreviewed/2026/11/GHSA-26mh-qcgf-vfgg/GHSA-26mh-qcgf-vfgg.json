@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-26mh-qcgf-vfgg",
+  "modified": "2026-11-06T18:35:25Z",
+  "published": "2026-11-06T18:35:25Z",
+  "aliases": [
+    "CVE-2026-123976"
+  ],
+  "details": "EDFbrowser before 2.16 contains an out-of-bounds write vulnerability in check_edf_file() that allows attackers to overflow the 256-element annot_ch array by supplying excessive annotation signals. Attackers can craft an EDF+ or BDF+ file with more than 256 annotation signals to overwrite edfhdrblock members, including the signal parameter pointer, crashing the application when opened.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123976"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/Teuniz/EDFbrowser"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/Teuniz/EDFbrowser/-/blob/v2.15/check_edf_file.c#L686-L708"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/Teuniz/EDFbrowser/-/blob/v2.15/global.h#L250"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/Teuniz/EDFbrowser/-/commit/f64cec4a22af34adb7bbdf5fec12cb3a880ddc5a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/Teuniz/EDFbrowser/-/tags/v2.16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/edfbrowser-before-2.16-out-of-bounds-write-via-check-edf-file-annotation-signals"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-06T18:18:05Z"
+  }
+}

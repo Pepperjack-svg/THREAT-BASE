@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mw5f-8wgh-2m29",
+  "modified": "2026-10-13T21:33:36Z",
+  "published": "2026-10-13T21:33:36Z",
+  "aliases": [
+    "CVE-2026-110210"
+  ],
+  "details": "Phase Console through 2.77.3 contains a missing authorization vulnerability that allows organisation members without Secrets read permission to read secret history via the secretHistory GraphQL query. Attackers holding an environment key can supply a known secret identifier to retrieve encrypted secret events and decrypt values using their wrapped environment key.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110210"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phasehq/console"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phasehq/console/blob/v2.77.3/backend/api/utils/access/permissions.py#L78-L92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phasehq/console/blob/v2.77.3/backend/backend/schema.py#L1022-L1052"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phasehq/console/blob/v2.77.3/backend/backend/schema.py#L985-L1009"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/SyZJ_mjize"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/phase-console-through-2.77.3-missing-authorization-via-secrethistory-graphql-query"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:44Z"
+  }
+}

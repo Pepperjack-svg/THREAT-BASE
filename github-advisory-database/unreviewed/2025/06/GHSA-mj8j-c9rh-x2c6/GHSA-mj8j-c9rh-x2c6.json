@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mj8j-c9rh-x2c6",
+  "modified": "2025-06-04T18:30:58Z",
+  "published": "2025-06-04T18:30:58Z",
+  "aliases": [
+    "CVE-2025-20286"
+  ],
+  "details": "A vulnerability in Amazon Web Services (AWS), Microsoft Azure, and Oracle Cloud Infrastructure (OCI) cloud deployments of Cisco Identity Services Engine (ISE) could allow an unauthenticated, remote attacker to access sensitive data, execute limited administrative operations, modify system configurations, or disrupt services within the impacted systems.\n\nThis vulnerability exists  because credentials are improperly generated when Cisco ISE is being deployed on cloud platforms, resulting in different Cisco ISE deployments sharing the same credentials. These credentials are shared across multiple Cisco ISE deployments as long as the software release and cloud platform are the same. An attacker could exploit this vulnerability by extracting the user credentials from Cisco ISE that is deployed in the cloud and then using them to access Cisco ISE that is deployed in other cloud environments through unsecured ports. A successful exploit could allow the attacker to access sensitive data, execute limited administrative operations, modify system configurations, or disrupt services within the impacted systems.\nNote: If the Primary Administration node is deployed in the cloud, then Cisco ISE is affected by this vulnerability. If the Primary Administration node is on-premises, then it is not affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-20286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-ise-aws-static-cred-FPMjUcm7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-259"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-04T17:15:28Z"
+  }
+}

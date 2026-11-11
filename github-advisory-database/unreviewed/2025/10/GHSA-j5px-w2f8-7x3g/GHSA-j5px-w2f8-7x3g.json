@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j5px-w2f8-7x3g",
+  "modified": "2026-02-04T00:30:27Z",
+  "published": "2025-10-07T18:31:10Z",
+  "aliases": [
+    "CVE-2023-53652"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvdpa: Add features attr to vdpa_nl_policy for nlattr length check\n\nThe vdpa_nl_policy structure is used to validate the nlattr when parsing\nthe incoming nlmsg. It will ensure the attribute being described produces\na valid nlattr pointer in info->attrs before entering into each handler\nin vdpa_nl_ops.\n\nThat is to say, the missing part in vdpa_nl_policy may lead to illegal\nnlattr after parsing, which could lead to OOB read just like CVE-2023-3773.\n\nThis patch adds the missing nla_policy for vdpa features attr to avoid\nsuch bugs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53652"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44b508cc96889e61799cc0fc6c00766a54f3ab5a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/645d17e06c502e71b880b2b854930e5a64014640"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79c8651587504ba263d2fd67fd4406240fb21f69"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:48Z"
+  }
+}

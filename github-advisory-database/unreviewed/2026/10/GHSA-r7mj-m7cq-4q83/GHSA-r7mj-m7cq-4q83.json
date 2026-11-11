@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r7mj-m7cq-4q83",
+  "modified": "2026-10-12T09:31:21Z",
+  "published": "2026-10-12T09:31:21Z",
+  "aliases": [
+    "CVE-2026-93581"
+  ],
+  "details": "User-controlled values are not sufficiently neutralized when included in CSV exports. Values originating from user input, including data submitted by authenticated users or received through external communication channels such as email, may be stored in fields that are later included in CSV exports. An attacker can therefore inject values beginning with spreadsheet formula characters such as =, +, -, or @. An attacker does not necessarily require an authenticated account if the affected field can be populated through an external input channel such as incoming email.\n\nWhen an affected CSV file is opened in spreadsheet software, the application may interpret these values as formulas instead of plain text. Depending on the spreadsheet application and its security configuration, a malicious formula may cause unintended actions, disclose information, or invoke external functionality. Exploitation may require the user opening the exported CSV file to confirm one or more security warning dialogs. The vulnerability does not execute code on the OTRS server; any additional impact occurs in the spreadsheet application used to process the exported file.\n\nThis issue affects OTRS:\n\n  *  7.0.X\n  *  8.0.X\n  *  2023.X\n  *  2024.X\n  *  2025.X\n  *  2026.X before 2026.7.X\n\nPlease note that ((OTRS)) Community Edition 6.x and before are vulnerable. Products based on the ((OTRS)) Community Edition also very likely to be affected",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93581"
+    },
+    {
+      "type": "WEB",
+      "url": "https://otrs.com/release-notes/otrs-security-advisory-2026-17"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1236"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T07:16:37Z"
+  }
+}

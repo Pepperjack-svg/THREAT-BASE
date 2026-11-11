@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7gx2-37rw-xc9h",
+  "modified": "2025-03-12T00:31:47Z",
+  "published": "2025-03-12T00:31:47Z",
+  "aliases": [
+    "CVE-2022-49632"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nicmp: Fix a data-race around sysctl_icmp_errors_use_inbound_ifaddr.\n\nWhile reading sysctl_icmp_errors_use_inbound_ifaddr, it can be changed\nconcurrently.  Thus, we need to add READ_ONCE() to its reader.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49632"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2efabce81db7eed1c98fa1a3f203f0edd738ac3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de9490c32bc10020efdd1509689a28f197d6dfb8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9617844e4d5d6331dbce3fb19a24e5bda201e58"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:38Z"
+  }
+}

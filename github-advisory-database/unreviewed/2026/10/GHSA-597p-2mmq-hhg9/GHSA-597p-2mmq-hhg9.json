@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-597p-2mmq-hhg9",
+  "modified": "2026-10-15T00:31:19Z",
+  "published": "2026-10-15T00:31:19Z",
+  "aliases": [
+    "CVE-2026-110870"
+  ],
+  "details": "Nodemailer from 3.0.0 before 10.0.13 contains an improper input validation vulnerability in its address parser that fails to strip RFC 5322 comments inside angle-bracket addresses. Attackers can supply recipients like a display name with a parenthesized comment in the domain, so illegal characters reach envelope.to and RCPT TO, causing rejected delivery or parser interpretation conflicts that bypass domain allow-lists.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/nodemailer/nodemailer/security/advisories/GHSA-g73g-hqqh-jr95"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110870"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nodemailer-before-10.0.13-improper-input-validation-via-angle-bracket-address-comments"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T23:17:28Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4vjj-g4g8-7pwg",
+  "modified": "2026-11-07T12:31:53Z",
+  "published": "2026-11-07T12:31:53Z",
+  "aliases": [
+    "CVE-2026-93755"
+  ],
+  "details": "The Happyforms plugin for WordPress is vulnerable to Stored Cross-Site Scripting via spoofable client IP headers in versions up to, and including, 1.38.9. This is due to the happyforms_get_client_ip() function reading raw HTTP_CLIENT_IP and HTTP_X_FORWARDED_FOR request headers without any validation or sanitization, storing the value as post meta ('client_ip') via update_post_meta() during unauthenticated form submissions, and later echoing it in the admin submission edit screen's Details metabox without output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user (typically an administrator reviewing a submission) accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93755"
+    },
+    {
+      "type": "WEB",
+      "url": "https://happyforms.io/whats-new"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/17e95c94-0a63-494e-b4b0-823b9cd0f7d3?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-07T12:17:47Z"
+  }
+}

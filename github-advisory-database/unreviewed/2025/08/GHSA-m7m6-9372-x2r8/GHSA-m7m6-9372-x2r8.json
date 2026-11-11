@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m7m6-9372-x2r8",
+  "modified": "2025-08-19T21:30:36Z",
+  "published": "2025-08-19T18:31:32Z",
+  "aliases": [
+    "CVE-2025-51539"
+  ],
+  "details": "EzGED3 3.5.0 contains an unauthenticated arbitrary file read vulnerability due to improper access control and insufficient input validation in a script exposed via the web interface. A remote attacker can supply a crafted path parameter to a PHP script to read arbitrary files from the filesystem. The script lacks both authentication checks and secure path handling, allowing directory traversal attacks (e.g., ../../../) to access sensitive files such as configuration files, database dumps, source code, and password reset tokens. If phpMyAdmin is exposed, extracted credentials can be used for direct administrative access. In environments without such tools, attacker-controlled file reads still allow full database extraction by targeting raw MySQL data files. The vendor states that the issue is fixed in 3.5.72.27183.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-51539"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ballpoint.fr/en/blog/ezged3-preauth-file-read-admin-takeover"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-19T16:15:28Z"
+  }
+}

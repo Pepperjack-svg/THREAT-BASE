@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9h33-65cj-82pc",
+  "modified": "2026-10-15T03:35:55Z",
+  "published": "2026-05-27T15:33:20Z",
+  "aliases": [
+    "CVE-2026-45997"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: sd: fix missing put_disk() when device_add(&disk_dev) fails\n\nIf device_add(&sdkp->disk_dev) fails, put_device() runs\nscsi_disk_release(), which frees the scsi_disk but leaves the gendisk\nreferenced. The device_add_disk() error path in sd_probe() calls\nput_disk(gd); call put_disk(gd) here to mirror that cleanup.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45997"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13e550fbfccdb311e76ec96892dfe35f0dba0657"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e111c4b3a726df1254670a5cc4868cedb946d37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/262152ec37101f9dc524743ccdbd6c7641d14573"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c2c14b7dfccad8c5a28802849e40c21252e4c28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a95d38c5701431bfc826e7b18acc0785919d5c88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b64b4f499801b12d0e2785447e4df6c164c608a9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:17Z"
+  }
+}

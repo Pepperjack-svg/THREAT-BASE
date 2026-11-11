@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7qx5-gmgg-gjcv",
+  "modified": "2026-11-03T18:31:10Z",
+  "published": "2026-11-03T18:31:10Z",
+  "aliases": [
+    "CVE-2026-121628"
+  ],
+  "details": "Bagisto before 2.3.16 and 2.4.x before 2.4.1 contains a race condition vulnerability in manageCartRule() that allows attackers to redeem single-use coupons multiple times. Attackers can submit concurrent order requests to the onepage orders checkout endpoint, bypassing unlocked times_used checks to apply discounts repeatedly.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121628"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bagisto/bagisto/commit/1f57c10eb9cb61b37de4706ffa439fd26aa7c405"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bagisto/bagisto/commit/81cb2a2a35b355492f704fd216d679f2145a5650"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/Ayxpp/5358d9fff045e94e0ddb51677ed5d195"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bagisto/bagisto"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bagisto/bagisto/blob/v2.4.0/packages/Webkul/CartRule/src/Listeners/Order.php#L30-L95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bagisto/bagisto/releases/tag/v2.3.16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bagisto/bagisto/releases/tag/v2.4.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bagisto-before-2.3.16-and-2.4-x-before-2.4.1-race-condition-in-coupon-usage-accounting"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T18:17:58Z"
+  }
+}

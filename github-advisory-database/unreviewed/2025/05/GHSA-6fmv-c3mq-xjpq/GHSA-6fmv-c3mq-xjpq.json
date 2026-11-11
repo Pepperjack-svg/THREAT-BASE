@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6fmv-c3mq-xjpq",
+  "modified": "2025-05-07T15:31:27Z",
+  "published": "2025-05-01T15:31:53Z",
+  "aliases": [
+    "CVE-2022-49922"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfc: nfcmrvl: Fix potential memory leak in nfcmrvl_i2c_nci_send()\n\nnfcmrvl_i2c_nci_send() will be called by nfcmrvl_nci_send(), and skb\nshould be freed in nfcmrvl_i2c_nci_send(). However, nfcmrvl_nci_send()\nwill only free skb when i2c_master_send() return >=0, which means skb\nwill memleak when i2c_master_send() failed. Free skb no matter whether\ni2c_master_send() succeeds.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49922"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52438e734c1566f5e2bcd9a065d2d65e306c0555"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5dfdac5e3f8db5f4445228c44f64091045644a3b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/825656ae61e73ddc05f585e6258d284c87064b10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92a1df9c6da20c02cf9872f8b025a66ddb307aeb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93d904a734a74c54d945a9884b4962977f1176cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8e7d4a1166f063703955f1b2e765a6db5bf1771"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd0ee55ead91fbb16889dbe7ff0b0f7c9e4e849d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f30060efcf18883748a0541aa41acef183cd9c0e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:17Z"
+  }
+}

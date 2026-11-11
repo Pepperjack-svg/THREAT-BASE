@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hpc6-p9x9-m2fc",
+  "modified": "2026-10-07T09:32:16Z",
+  "published": "2026-10-06T09:31:35Z",
+  "aliases": [
+    "CVE-2026-98330"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: cfg80211: get the wiphy out of a dying network namespace\n\nWhen a network namespace is destroyed, cfg80211_pernet_exit() moves any\nwiphy back to the initial namespace, and just warns if that fails. But\nmoving an interface can fail (due to allocation failures), and then the\nwiphy is left behind with a garbage netns pointer:\n\n  Kernel mode fault at addr 0x30\n  genlmsg_multicast_netns.constprop.0+0x46/0xcf [cfg80211]\n  nl80211_notify_wiphy+0xcd/0xe8 [cfg80211]\n  wiphy_unregister+0x169/0x3fc [cfg80211]\n\nNote that commit debac3a20dec (\"net: Remove conflicting altnames for\ndying netns in __dev_change_net_namespace().\") fixed another path\nthat could reach it without allocation failures.\n\nRemove interfaces that cannot be moved instead of failing the switch,\nso that the wiphy always ends up in the initial namespace. In this\ncase the netdev core will unregister the interfaces anyway.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98330"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4635b1a1c1d693178a537446a6e09963f0fdae52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b949b2720688691f1e41bdbfbe3df2b6dc77c34d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/caa02072b2986d4b0e7a824de05782ef7b03a0ba"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:25Z"
+  }
+}

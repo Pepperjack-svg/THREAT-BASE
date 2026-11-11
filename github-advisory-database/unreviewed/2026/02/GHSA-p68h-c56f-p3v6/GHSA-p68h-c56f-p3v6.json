@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p68h-c56f-p3v6",
+  "modified": "2026-10-19T21:33:27Z",
+  "published": "2026-02-18T18:30:40Z",
+  "aliases": [
+    "CVE-2026-23230"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: split cached_fid bitfields to avoid shared-byte RMW races\n\nis_open, has_lease and on_list are stored in the same bitfield byte in\nstruct cached_fid but are updated in different code paths that may run\nconcurrently. Bitfield assignments generate byte read–modify–write\noperations (e.g. `orb $mask, addr` on x86_64), so updating one flag can\nrestore stale values of the others.\n\nA possible interleaving is:\n    CPU1: load old byte (has_lease=1, on_list=1)\n    CPU2: clear both flags (store 0)\n    CPU1: RMW store (old | IS_OPEN) -> reintroduces cleared bits\n\nTo avoid this class of races, convert these flags to separate bool\nfields.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23230"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-253495.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3eaa22d688311c708b73f3c68bc6d0c8e3f0f77a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4386f6af8aaedd0c5ad6f659b40cadcc8f423828"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4cfa4c37dcbcfd70866e856200ed8a2894cac578"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/569fecc56bfe4df66f05734d67daef887746656b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4b9edd55987384a1f201d3d07ff71e448d79c1b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec306600d5ba7148c9dbf8f5a8f1f5c1a044a241"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-18T16:22:32Z"
+  }
+}

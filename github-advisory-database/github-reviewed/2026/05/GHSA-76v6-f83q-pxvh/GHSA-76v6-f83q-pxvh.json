@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-76v6-f83q-pxvh",
+  "modified": "2026-06-30T17:15:56Z",
+  "published": "2026-05-26T13:30:46Z",
+  "withdrawn": "2026-06-30T17:15:56Z",
+  "aliases": [],
+  "summary": "Duplicate Advisory: Hackney has an Allocation of Resources Without Limits or Throttling vulnerabilit",
+  "details": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-jq4m-q6p2-8gwc. This link is maintained to preserve external references.\n\n## Original Description\nAllocation of Resources Without Limits or Throttling vulnerability in benoitc hackney allows Flooding. hackney_h3:await_response_loop/6 accumulates the HTTP/3 response body in memory without any size cap. The after Timeout clause is a per-message inactivity timer that resets on every received chunk, housekeeping message, or settings frame — it is not a wall-clock deadline. A malicious HTTP/3 server that emits one small chunk every Timeout - 1 ms with Fin = false and never sends a final frame keeps the loop alive indefinitely while the accumulation buffer grows linearly without bound, eventually exhausting the BEAM process heap and causing an out-of-memory condition.\n\nThis issue affects hackney: from 2.0.0 before 4.0.1.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Hex",
+        "name": "hackney"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "4.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/security/advisories/GHSA-jq4m-q6p2-8gwc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47077"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/commit/3d25f9fea26c90609de9d64366fedfe5065413bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cna.erlef.org/cves/CVE-2026-47077.html"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/benoitc/hackney"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osv.dev/vulnerability/EEF-CVE-2026-47077"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-30T17:00:40Z",
+    "nvd_published_at": "2026-05-25T15:16:22Z"
+  }
+}

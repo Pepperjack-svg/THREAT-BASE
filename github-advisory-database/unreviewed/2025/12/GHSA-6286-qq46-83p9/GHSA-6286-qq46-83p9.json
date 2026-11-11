@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6286-qq46-83p9",
+  "modified": "2026-10-15T03:34:59Z",
+  "published": "2025-12-16T15:30:46Z",
+  "aliases": [
+    "CVE-2025-68239"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinfmt_misc: restore write access before closing files opened by open_exec()\n\nbm_register_write() opens an executable file using open_exec(), which\ninternally calls do_open_execat() and denies write access on the file to\navoid modification while it is being executed.\n\nHowever, when an error occurs, bm_register_write() closes the file using\nfilp_close() directly. This does not restore the write permission, which\nmay cause subsequent write operations on the same file to fail.\n\nFix this by calling exe_file_allow_write_access() before filp_close() to\nrestore the write permission properly.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68239"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/480ac88431703f2adbb8e6b5bd73c3f3cf9f3d7f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/54274ff90488b6c0f595a6518faed3cf0bc966eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cce7bc7fac8471c832696720d9c8f2a976d9c54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90f601b497d76f40fa66795c3ecf625b6aced9fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e785f552ab04dbca01d31f0334f4561240b04459"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fbab8c08e1a6dbaef81e22d672a7647553101d16"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T15:15:53Z"
+  }
+}

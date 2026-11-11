@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r5mc-mc43-5gch",
+  "modified": "2026-05-30T12:30:25Z",
+  "published": "2026-05-28T12:30:30Z",
+  "aliases": [
+    "CVE-2026-46155"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/client: fix out-of-bounds read in smb2_compound_op()\n\nIf a server sends a truncated response but a large OutputBufferLength, and\nterminates the EA list early, check_wsl_eas() returns success without\nvalidating that the entire OutputBufferLength fits within iov_len.\n\nThen smb2_compound_op() does:\n    memcpy(idata->wsl.eas, data[0], size[0]);\n\nWhere size[0] is OutputBufferLength. If iov_len is smaller than size[0],\nmemcpy can read beyond the end of the rsp_iov allocation and leak adjacent\nkernel heap memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46155"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/512d33bc8ea4ea5c19728ee118715f4b1f4d1926"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d09328dfda089675e4c049f3f256064a1d1996b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b3af35645ff9cd334edc130249f9a2fb2bea25f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a16f70a71be4b5a4eccf39a9bf09b47285f4cb7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dffb44b2e06a2908e249f0f93156fc987eee1d1c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:31Z"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2587-vvww-5v6h",
+  "modified": "2026-10-24T15:32:47Z",
+  "published": "2026-10-23T12:31:37Z",
+  "aliases": [
+    "CVE-2026-98889"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: fix sched scan IE sizing\n\nScheduled scan built the probe request before iwl_mvm_scan_fits(),\nso oversized IEs could be copied into the fixed preq buffer before\nlength validation. Move iwl_mvm_build_scan_probe() after the fits\ncheck.\n\nAlso advertise max_sched_scan_ie_len using iwl_mvm_max_scan_ie_len()\nso userspace limits account for driver-inserted DS/TPC bytes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98889"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05f79cea3b15cfe600b205ddcfd51ebee15d908a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a63f98e5163a2ec2822dfb691ee5a6094de08ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/358eca9a898ad4cce7453e9dcfd005d019a2b01f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f155d262b31b9b17e0f9856bdabe0968eb4930f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a24417478f90e9f1a4ea24cd4b784afccb56fbae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2268060e99f94314b9988dfa17393c2694fa9b2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:22Z"
+  }
+}

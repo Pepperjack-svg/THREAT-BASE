@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3x4-26xj-qrvg",
+  "modified": "2025-05-07T18:30:48Z",
+  "published": "2025-05-07T18:30:48Z",
+  "aliases": [
+    "CVE-2025-20151"
+  ],
+  "details": "A vulnerability in the implementation of the Simple Network Management Protocol Version 3 (SNMPv3) feature of Cisco IOS Software and Cisco IOS XE Software could allow an authenticated, remote attacker to poll an affected device using SNMP, even if the device is configured to deny SNMP traffic from an unauthorized source or the SNMPv3 username is removed from the configuration.\n\nThis vulnerability exists because of the way that the SNMPv3 configuration is stored in the Cisco IOS Software and Cisco IOS XE Software startup configuration. An attacker could exploit this vulnerability by polling an affected device from a source address that should have been denied. A successful exploit could allow the attacker to perform SNMP operations from a source that should be denied.\nNote: The attacker has no control of the SNMPv3 configuration. To exploit this vulnerability, the attacker must have valid SNMPv3 user credentials.\nFor more information, see the  section of this advisory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-20151"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-snmpv3-qKEYvzsy"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-07T18:15:37Z"
+  }
+}

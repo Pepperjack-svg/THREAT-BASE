@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rmxr-45gj-889w",
+  "modified": "2026-09-02T15:33:46Z",
+  "published": "2026-05-01T09:30:25Z",
+  "aliases": [
+    "CVE-2026-43003"
+  ],
+  "summary": "OpenStack Ironic Python Agent Includes Functionality from Untrusted Control Sphere",
+  "details": "An issue was discovered in OpenStack ironic-python-agent 1.0.0 through 11.5.0. Ironic Python Agent (IPA) sometimes executes grub-install from within a chroot of the deployed partition image, leading to code execution in the case of a malicious image.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "ironic-python-agent"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "11.6.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 11.5.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43003"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:51038"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:57801"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:60446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:60454"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-43003"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.launchpad.net/ironic-python-agent/+bug/2148310"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2464306"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/openstack/ironic-python-agent"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openstack/ironic-python-agent/blob/236b33abffe6688afc39c21e351cc3889b3db2dd/ironic_python_agent/efi_utils.py#L134-L139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/ironic-python-agent/PYSEC-2026-205.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://opendev.org/openstack/ironic-python-agent/commit/6cd463a657edcddf7b79416ac69bdef5b6f30099"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-43003.json"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/06/16/11"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78",
+      "CWE-829"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-07T02:38:57Z",
+    "nvd_published_at": "2026-05-01T09:16:17Z"
+  }
+}

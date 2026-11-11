@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-67f9-vvv7-wpq7",
+  "modified": "2026-10-24T15:32:50Z",
+  "published": "2026-10-23T15:31:34Z",
+  "aliases": [
+    "CVE-2026-99017"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nriscv: errata: select RISCV_ALTERNATIVE_EARLY for THEAD GHOSTWRITE\n\nerrata_probe_ghostwrite() only marks the CPU as vulnerable when it is\ncalled at the RISCV_ALTERNATIVES_EARLY_BOOT stage, and the mitigation\nin ghostwrite_enable_mitigation() only takes effect if the vulnerable\nstate was recorded before the boot alternatives are patched.\n\nThe early boot stage is only executed when CONFIG_RISCV_ALTERNATIVE_EARLY\nis enabled, which currently is only selected by ERRATA_THEAD_MAE. In a\nkernel built with ERRATA_THEAD_GHOSTWRITE=y but ERRATA_THEAD_MAE=n, the\nearly alternatives never run, so ghostwrite_state is never set to\nVULNERABLE: ghostwrite_enable_mitigation() returns false, xtheadvector\nremains enabled, and sysfs reports \"Not affected\" on a vulnerable\nT-Head C9xx CPU.\n\nSelect RISCV_ALTERNATIVE_EARLY from ERRATA_THEAD_GHOSTWRITE so that the\nvulnerability is detected in the early boot stage and the default\nmitigation is applied.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99017"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/298510bbc7c3017c0faf481c6ea66f1065b657b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7fee577a2fa78b9a76da015beec1ccf978746ebb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa465a7819ecbe5801b78c088d3cadaf2664b8ca"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:24Z"
+  }
+}

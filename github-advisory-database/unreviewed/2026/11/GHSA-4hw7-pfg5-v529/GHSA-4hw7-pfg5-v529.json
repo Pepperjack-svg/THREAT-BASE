@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4hw7-pfg5-v529",
+  "modified": "2026-11-04T15:32:31Z",
+  "published": "2026-11-04T15:32:31Z",
+  "aliases": [
+    "CVE-2026-120421"
+  ],
+  "details": "In Eclipse Mojarra versions 2.2.0 through 4.0.28, 4.1.0 through 4.1.19, and 5.0.0-M1 through 5.0.0-M11, when URL client window mode is enabled (`jakarta.faces.CLIENT_WINDOW_MODE=url`), the client window id from the `jfwid` or `jakarta.faces.ClientWindow` request parameter is appended to generated URLs without URL-encoding. `h:button` renders such a URL into a JavaScript string literal, which allows reflected cross-site scripting. With `com.sun.faces.enableCspNonce=true`, the injected script runs on page load inside the nonce script element, bypassing the Content Security Policy.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120421"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/536"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/1332"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T15:17:41Z"
+  }
+}

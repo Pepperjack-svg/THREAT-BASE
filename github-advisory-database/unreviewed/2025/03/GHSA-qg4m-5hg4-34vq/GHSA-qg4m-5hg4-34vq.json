@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qg4m-5hg4-34vq",
+  "modified": "2025-03-05T21:32:07Z",
+  "published": "2025-03-03T15:31:34Z",
+  "aliases": [
+    "CVE-2024-45779"
+  ],
+  "details": "An integer overflow flaw was found in the BFS file system driver in grub2. When reading a file with an indirect extent map, grub2 fails to validate the number of extent entries to be read. A crafted or corrupted BFS filesystem may cause an integer overflow during the file reading, leading to a heap of bounds read. As a consequence, sensitive data may be leaked, or grub2 will crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-45779"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2024-45779"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2345854"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.gnu.org/archive/html/grub-devel/2025-02/msg00024.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125",
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-03T15:15:14Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hqvj-j27r-9j7c",
+  "modified": "2026-11-06T21:31:14Z",
+  "published": "2026-11-05T06:34:37Z",
+  "aliases": [
+    "CVE-2026-123012"
+  ],
+  "details": "In Gogs 0.14.3, the Git Smart HTTP authorization layer in internal/route/repo/http.go allows a push when only read access was intended, a different vulnerability than CVE-2026-52810. This occurs because of inconsistency about whether a verb is checked in a case-sensitive manner.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:L/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/gogs/gogs/security/advisories/GHSA-wmfg-5p4h-5fw3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123012"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gogs/gogs/blob/3ba8aca90e17e5410b7e8b227c9f29256ac3e875/internal/route/repo/http.go#L415-L418"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gogs/gogs/blob/3ba8aca90e17e5410b7e8b227c9f29256ac3e875/internal/route/repo/http.go#L64-L68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://humanoid.sh/blog/gogs-cve-2026-123012"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-178"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T05:18:36Z"
+  }
+}

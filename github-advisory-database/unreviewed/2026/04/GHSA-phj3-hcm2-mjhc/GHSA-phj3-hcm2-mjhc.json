@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-phj3-hcm2-mjhc",
+  "modified": "2026-04-14T18:30:33Z",
+  "published": "2026-04-13T18:30:40Z",
+  "aliases": [
+    "CVE-2025-69627"
+  ],
+  "details": "Nitro PDF Pro for Windows 14.41.1.4 contains a heap use-after-free vulnerability in the implementation of the JavaScript method this.mailDoc(). During execution, an internal XID object is allocated and then freed prematurely, after which the freed pointer is still passed into UI and logging helper functions. Because the freed memory region may contain unpredictable heap data or remnants of attacker-controlled JavaScript strings, downstream routines such as wcscmp() may process invalid or stale pointers. This can result in access violations and non-deterministic crashes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-69627"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jeroscope.com/advisories/2025/jero-2025-016"
+    },
+    {
+      "type": "WEB",
+      "url": "http://nitro.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-13T16:16:24Z"
+  }
+}

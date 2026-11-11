@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8jxw-hq6x-qqhf",
+  "modified": "2026-11-04T21:32:27Z",
+  "published": "2026-11-04T15:32:30Z",
+  "aliases": [
+    "CVE-2026-121945"
+  ],
+  "details": "CoopCycle coopcycle-web before 6.20.1 contains a broken access control vulnerability that allows any courier to read and modify every incident because Incident operations only check ROLE_COURIER. Attackers can enumerate sequential incident ids and use PUT /api/incidents/{id}/action to re-price, cancel or reschedule other stores' orders and tasks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121945"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/coopcycle/coopcycle-web/issues/5390"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/coopcycle/coopcycle-web/commit/d997393d128afa1febe34e8f295b9511c12d19a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/coopcycle/coopcycle-web/blob/v6.19.1/src/Entity/Incident/Incident.php#L43-L71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieund/coopcycle-incident-courier-cross-tenant-bola"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieund/cve-2026-121945-coopcycle-incident-courier-cross-tenant-bola"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/coopcycle-coopcycle-web-before-6.20.1-idor-via-incident-resource-and-action-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T13:17:29Z"
+  }
+}

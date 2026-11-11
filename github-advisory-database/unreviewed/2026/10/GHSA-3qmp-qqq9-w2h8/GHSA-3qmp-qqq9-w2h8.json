@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3qmp-qqq9-w2h8",
+  "modified": "2026-10-01T09:30:35Z",
+  "published": "2026-10-01T09:30:34Z",
+  "aliases": [
+    "CVE-2026-101925"
+  ],
+  "details": "The bbp style pack plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'display_name (via /wp-admin/profile.php) + bbp_reply_content (via bbPress reply form)' parameter in all versions up to, and including, 6.4.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Successful exploitation requires the attacker to wrap their crafted reply in a &lt;pre&gt; block, which prevents WordPress's wpautop/wptexturize processors from converting straight double quotes in the stored display name into typographic curly-quote entities that would otherwise neutralize the attribute-injection.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101925"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bbp-style-pack/tags/6.4.8/includes/functions_quote.php#L223"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bbp-style-pack/tags/6.4.8/includes/functions_quote.php#L244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bbp-style-pack/tags/6.4.8/includes/functions_quote.php#L249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bbp-style-pack/tags/6.4.8/includes/functions_quote.php#L275"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bbp-style-pack/tags/6.4.8/includes/functions_quote.php#L83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3719484%40bbp-style-pack&new=3719484%40bbp-style-pack"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/31c9b86b-c971-4a0b-95ef-10bc7781e93f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-01T09:17:07Z"
+  }
+}

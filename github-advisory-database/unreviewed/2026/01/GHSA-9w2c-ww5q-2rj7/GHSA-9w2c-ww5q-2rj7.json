@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9w2c-ww5q-2rj7",
+  "modified": "2026-01-07T12:31:23Z",
+  "published": "2026-01-07T12:31:23Z",
+  "aliases": [
+    "CVE-2025-15018"
+  ],
+  "details": "The Optional Email plugin for WordPress is vulnerable to Privilege Escalation via Account Takeover in all versions up to, and including, 1.3.11. This is due to the plugin not restricting its 'random_password' filter to registration contexts, allowing the filter to affect password reset key generation. This makes it possible for unauthenticated attackers to set a known password reset key when initiating a password reset, reset the password of any user including administrators, and gain access to their accounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-15018"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optional-email/tags/1.3.11/optional-email.php?marks=44,51#L44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/ff4243e9-cf72-40d5-bc7d-204426024a1d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-07T12:16:58Z"
+  }
+}

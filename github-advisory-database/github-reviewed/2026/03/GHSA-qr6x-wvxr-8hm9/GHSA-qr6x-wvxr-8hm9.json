@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qr6x-wvxr-8hm9",
+  "modified": "2026-03-25T20:46:16Z",
+  "published": "2026-03-23T20:39:10Z",
+  "aliases": [
+    "CVE-2026-32300"
+  ],
+  "summary": "Connect CMS: Improper Authorization in the My Page Profile Update Feature Allows Modification of Arbitrary User Information",
+  "details": "# Security Advisory — My Page Profile Update (Improper Authorization)\n\n## Summary\n\nAn improper authorization issue in the My Page profile update feature may allow modification of arbitrary user information.\n\n## Affected Versions\n\n- 1.x series: <= 1.41.0\n- 2.x series: <= 2.41.0\n\n## Patched Versions\n\n- 1.41.1\n- 2.41.1\n\n## Description\n\nIn part of the My Page profile update feature, another user's profile information or password could be modified. If exploited, arbitrary user accounts may be taken over. Exploitation requires that the attacker be able to reach the affected functionality as an authenticated user. Users affected by this vulnerability should update to a fixed version.\n\n## Solution\n\nUpdate to the fixed version.\nFor the 1.x series, update to 1.41.1 or later.\nFor the 2.x series, update to 2.41.1 or later.\n\n## Credits\n\nOpenSource WorkShops thanks **Sho Odagiri** (小田切 祥) of **GMO Cybersecurity by Ierae, Inc.** for reporting this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "opensource-workshop/connect-cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.41.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.41.0"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "opensource-workshop/connect-cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "2.41.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2.41.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/opensource-workshop/connect-cms/security/advisories/GHSA-qr6x-wvxr-8hm9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32300"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/opensource-workshop/connect-cms/commit/7c9951738c62a1d51b91e9956d1eb756c5d52cce"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/opensource-workshop/connect-cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/opensource-workshop/connect-cms/releases/tag/v1.41.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/opensource-workshop/connect-cms/releases/tag/v2.41.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285",
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-23T20:39:10Z",
+    "nvd_published_at": "2026-03-23T22:16:27Z"
+  }
+}

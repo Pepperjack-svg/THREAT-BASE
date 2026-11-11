@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ffrw-gp84-hx8m",
+  "modified": "2026-10-24T15:32:47Z",
+  "published": "2026-10-23T12:31:37Z",
+  "aliases": [
+    "CVE-2026-98899"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ipset: mark the rcu locked areas properly\n\nWhen we bump the uref counter, there's no need to keep\nthe rcu lock because the referred hash table can't\ndisappear. Also, from the same reason in mtype_gc we\nneed the rcu lock and not a spinlock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98899"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c46c9ce24130657ec7460c27fba5d445f5abd06"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d0c22e73656d050daffad10a2ba8765ce8441c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67bd3d2350d17c2f4fb158c3f917c10b15ecbc94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/892399abd1a005a455d5b74d86d82b9773405f2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca9fab1ca15534cef1630e81a479e94b3bbcdb6a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ecb48c6b9edc78de8dd456c365727ae14b88c1ee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eee5172741b2c0e73210020732043e5d589295d3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:23Z"
+  }
+}

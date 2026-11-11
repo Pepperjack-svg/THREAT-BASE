@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pxq5-v3xq-vvp3",
+  "modified": "2025-11-26T18:31:01Z",
+  "published": "2025-08-22T18:31:22Z",
+  "aliases": [
+    "CVE-2025-38657"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw89: mcc: prevent shift wrapping in rtw89_core_mlsr_switch()\n\nThe \"link_id\" value comes from the user via debugfs.  If it's larger\nthan BITS_PER_LONG then that would result in shift wrapping and\npotentially an out of bounds access later.  In fact, we can limit it\nto IEEE80211_MLD_MAX_NUM_LINKS (15).\n\nFortunately, only root can write to debugfs files so the security\nimpact is minimal.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38657"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/417cfa9cc44fbe6bceab786f9a4ee5a210f1288e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53cf488927a0f79968f9c03c4d1e00d2a79731c3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-22T16:15:40Z"
+  }
+}

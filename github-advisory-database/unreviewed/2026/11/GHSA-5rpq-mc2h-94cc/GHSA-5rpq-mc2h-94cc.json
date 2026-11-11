@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5rpq-mc2h-94cc",
+  "modified": "2026-11-04T15:32:30Z",
+  "published": "2026-11-04T15:32:29Z",
+  "aliases": [
+    "CVE-2026-121936"
+  ],
+  "details": "easyVoice before 0.0.23 contains a server-side request forgery vulnerability that allows unauthenticated attackers to make the server send POST requests by supplying openaiBaseUrl with useLLM enabled. Attackers can target loopback and internal services through /api/v1/tts endpoints, using reflected error messages in the x-generate-tts-warning header to probe internal hosts and ports.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121936"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cosin2077/easyVoice/issues/87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cosin2077/easyVoice/pull/88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cosin2077/easyVoice/commit/82fcb5b2f324c84b3f1808b29c6f44df16ccd42e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cosin2077/easyVoice/blob/be08c5f3fed07f3af749defcf04e590ffcb0c48d/packages/backend/src/utils/ssrf.ts#L28-L47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cosin2077/easyVoice/releases/tag/v0.0.23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/easyvoice-before-0.0.23-ssrf-via-openaibaseurl-in-tts-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T13:17:27Z"
+  }
+}

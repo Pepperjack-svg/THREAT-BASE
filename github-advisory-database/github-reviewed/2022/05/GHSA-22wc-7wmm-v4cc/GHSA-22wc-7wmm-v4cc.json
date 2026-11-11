@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-22wc-7wmm-v4cc",
+  "modified": "2025-06-27T21:07:40Z",
+  "published": "2022-05-24T19:09:46Z",
+  "aliases": [
+    "CVE-2021-33327"
+  ],
+  "summary": "Liferay Portal and Liferay DXP does not properly check user permission",
+  "details": "The Portlet Configuration module before 4.0.13 in Liferay Portal 7.2.0 through 7.3.3, and Liferay DXP 7.0 fix pack pack 93 and 94, 7.1 fix pack 18, and 7.2 before fix pack 8, does not properly check user permission, which allows remote authenticated users to view the Guest and User role even if \"Role Visibility\" is enabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay:com.liferay.portlet.configuration.web"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.0.13"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay.portal:release.dxp.bom"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.10.fp93"
+            },
+            {
+              "fixed": "7.0.10.fp95"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay.portal:release.dxp.bom"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.1.10.fp18"
+            },
+            {
+              "fixed": "7.1.10.fp19"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay.portal:release.dxp.bom"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.2.0"
+            },
+            {
+              "fixed": "7.2.10.fp8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-33327"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/44317eb5274d24bb91c43c91cd5c678392eb9eeb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/9e1628110ca5f0b7b867e1f55e3886c92fc67ca1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/liferay/liferay-portal"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.liferay.com/browse/LPE-17075"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.dev/portal/security/known-vulnerabilities/-/asset_publisher/jekt/content/cve-2021-33327-unauthorized-users-can-view-the-guest-and-user-roles?p_r_p_assetEntryId=121611305&_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_jekt_redirect=https%3A%2F%2Fliferay.dev%3A443%2Fportal%2Fsecurity%2Fknown-vulnerabilities%3Fp_p_id%3Dcom_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_jekt%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26p_r_p_assetEntryId%3D121611305%26p_r_p_resetCur%3Dfalse%26_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_jekt_cur%3D0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-276"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-06-27T21:07:40Z",
+    "nvd_published_at": "2021-08-03T19:15:00Z"
+  }
+}

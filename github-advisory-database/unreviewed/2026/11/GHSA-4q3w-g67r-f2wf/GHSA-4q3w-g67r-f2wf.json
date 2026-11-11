@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4q3w-g67r-f2wf",
+  "modified": "2026-11-10T15:33:20Z",
+  "published": "2026-11-10T15:33:19Z",
+  "aliases": [
+    "CVE-2026-125745"
+  ],
+  "details": "Custom Post Types and Custom Fields creator (WCK) before 2.4.1 contains a missing authorization vulnerability that allows authenticated attackers with access to any WCK meta box to read custom-field values on posts they cannot edit by exploiting the wck_show_update_form AJAX handler, which lacks the capability checks enforced by other handlers and relies on a shared, non-unique nonce action. Attackers can send a crafted admin-ajax.php request with a valid wck-edit-entry nonce, a target meta key, and an arbitrary post ID to disclose sensitive post-meta or option values belonging to other users, including private or draft post data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125745"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/wck-custom-fields-and-custom-post-types-creator/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wck-before-missing-authorization-via-wck-show-update-form-ajax"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T13:18:23Z"
+  }
+}

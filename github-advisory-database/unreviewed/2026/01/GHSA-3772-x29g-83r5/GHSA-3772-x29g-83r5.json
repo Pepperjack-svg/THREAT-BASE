@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3772-x29g-83r5",
+  "modified": "2026-03-25T21:30:21Z",
+  "published": "2026-01-13T18:31:06Z",
+  "aliases": [
+    "CVE-2025-71083"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/ttm: Avoid NULL pointer deref for evicted BOs\n\nIt is possible for a BO to exist that is not currently associated with a\nresource, e.g. because it has been evicted.\n\nWhen devcoredump tries to read the contents of all BOs for dumping, we need\nto expect this as well -- in this case, ENODATA is recorded instead of the\nbuffer contents.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71083"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d004f7341d4898889801ebb2ef61ffca610dd6f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47a85604a761005d255ae38115ee630cc6931756"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/491adc6a0f9903c32b05f284df1148de39e8e644"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b9944493c6d92d7b29cfd83aaf3deb842b8da79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a81095d3e1b521ac7cfe3b14d5f149bace3d6e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b94182b3d7228aec18d069cba56d5982e9bfe1b1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-13T16:16:07Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9gm-5q74-cxmg",
+  "modified": "2026-05-12T15:31:07Z",
+  "published": "2025-09-11T18:35:52Z",
+  "aliases": [
+    "CVE-2025-39772"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/hisilicon/hibmc: fix the hibmc loaded failed bug\n\nWhen hibmc loaded failed, the driver use hibmc_unload to free the\nresource, but the mutexes in mode.config are not init, which will\naccess an NULL pointer. Just change goto statement to return, because\nhibnc_hw_init() doesn't need to free anything.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39772"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93a08f856fcc5aaeeecad01f71bef3088588216a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4f1b9c57092c48bdc7958abd23403ccaed437b2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c950e1be3a24d021475b56efdb49daa7fbba63a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3e774266c28aefab3e9db334fdf568f936cae04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ddf1691f25345699296e642f0f59f2d464722fa3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f93032e5d68f459601c701f6ab087b5feb3382e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-11T17:15:42Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2fpp-f9vq-796f",
+  "modified": "2026-11-09T18:31:52Z",
+  "published": "2026-11-05T18:33:13Z",
+  "aliases": [
+    "CVE-2026-122324"
+  ],
+  "details": "SplitPro through 2.1.6 contains an authorization bypass vulnerability that allows authenticated users to read other users' expenses by supplying arbitrary expenseId values to expense.getExpenseDetails. Attackers who obtain an expense UUID, such as removed former participants, can retrieve expense notes, recurrence schedules, and full user rows of participants and group members.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/oss-apps/split-pro/issues/786"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/oss-apps/split-pro/commit/1a0f8f498098e4b90bd73e7b710860e1ea98cc49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/oss-apps/split-pro"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/oss-apps/split-pro/blob/v2.1.6/src/server/api/routers/expense.ts#L351-L424"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieund/cve-2026-122317-122324-splitpro-trpc-idor-user-expense-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieund/splitpro-trpc-idor-user-expense-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/splitpro-through-2.1.6-authorization-bypass-via-expense-getexpensedetails"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T16:17:45Z"
+  }
+}

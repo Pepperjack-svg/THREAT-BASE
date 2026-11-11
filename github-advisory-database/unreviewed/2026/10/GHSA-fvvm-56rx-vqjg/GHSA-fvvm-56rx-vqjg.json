@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fvvm-56rx-vqjg",
+  "modified": "2026-10-18T18:31:56Z",
+  "published": "2026-10-18T18:31:56Z",
+  "aliases": [
+    "CVE-2026-98603"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\novpn: replace bind when clearing stale local source\n\nThe UDP output fallback clears bind->local in place when the remembered\nsource address is no longer usable. The bind is RCU-published and read\nlocklessly by concurrent TX, so an IPv6 reader can observe a torn\naddress.\n\nRetry the route lookup with source address autoselection without\nmodifying the bind. After a successful lookup, revalidate the bind and\nroute key under peer->lock, reset the dst cache, and best-effort publish\na replacement bind with a wildcard local address.\n\nDo not cache the resolved dst when clearing the local source. Replacing\nthe source invalidates all per-CPU cache entries, while\ndst_cache_set_ip4 and dst_cache_set_ip6 update only the current CPU\nslot. The current packet can still use the resolved route; if bind\nallocation fails, a later cache miss retries the repair.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72bd1bea37ea2c8553938f086bf48ccd2147dfe1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d8104988f423572df1f3347ce578037b1043f34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c44a04722f7dae9a45a101b8e100931ab59f1c18"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:13Z"
+  }
+}

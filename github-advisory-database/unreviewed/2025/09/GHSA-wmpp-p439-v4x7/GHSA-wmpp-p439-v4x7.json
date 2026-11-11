@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wmpp-p439-v4x7",
+  "modified": "2026-10-21T15:40:10Z",
+  "published": "2025-09-23T06:30:27Z",
+  "aliases": [
+    "CVE-2025-39878"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nceph: fix crash after fscrypt_encrypt_pagecache_blocks() error\n\nThe function move_dirty_folio_in_page_array() was created by commit\nce80b76dd327 (\"ceph: introduce ceph_process_folio_batch() method\") by\nmoving code from ceph_writepages_start() to this function.\n\nThis new function is supposed to return an error code which is checked\nby the caller (now ceph_process_folio_batch()), and on error, the\ncaller invokes redirty_page_for_writepage() and then breaks from the\nloop.\n\nHowever, the refactoring commit has gone wrong, and it by accident, it\nalways returns 0 (= success) because it first NULLs the pointer and\nthen returns PTR_ERR(NULL) which is always 0.  This means errors are\nsilently ignored, leaving NULL entries in the page array, which may\nlater crash the kernel.\n\nThe simple solution is to call PTR_ERR() before clearing the pointer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39878"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/249e0a47cdb46bb9eae65511c569044bd8698d7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a918f04cf97b2436a8dfe5cb51bb33f8e8831f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd1616ecbea920d228c56729461ed223cc501425"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-23T06:15:47Z"
+  }
+}

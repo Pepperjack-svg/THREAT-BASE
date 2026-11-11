@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qj3g-jvfm-6934",
+  "modified": "2026-10-19T12:32:52Z",
+  "published": "2026-10-19T12:32:52Z",
+  "aliases": [
+    "CVE-2026-85313"
+  ],
+  "details": "Permissive Cross-domain Policy with Untrusted Domains vulnerability in Apache Camel Jetty component.\n\nThis issue affects Apache Camel: from 4.0.0 before 4.18.5, from 4.19.0 before 4.22.1.\n\nSetting enableCORS on a Jetty endpoint installed Jetty's CrossOriginFilter with its stock defaults, which accept every origin and allow credentials. An operator asking for CORS therefore obtained a policy that lets a page on any origin make credentialed cross-origin requests to the endpoint and read the responses, without any indication that turning the option on had chosen an allow-all policy rather than an empty one to be filled in. This is the same defect class as the platform-http-vertx advisory published alongside it, in a different component.\n\nUpgrade to Apache Camel 4.23.0, which fixes the issue. Users on the 4.18.x LTS releases stream should upgrade to 4.18.5. Users on the 4.22.x LTS releases stream should upgrade to 4.22.1. enableCORS no longer grants credentials to an origin the operator did not name. A deployment that relied on any origin being accepted must now list its origins explicitly. For deployments that cannot upgrade immediately, configure the CrossOriginFilter parameters explicitly rather than relying on what enableCORS installs, naming the allowed origins.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85313"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/25829"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/25937"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/25938"
+    },
+    {
+      "type": "WEB",
+      "url": "https://camel.apache.org/security/CVE-2026-85313.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.apache.org/jira/browse/CAMEL-24450"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-942"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T11:17:24Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-49jc-5c97-fh4p",
+  "modified": "2026-10-10T09:30:28Z",
+  "published": "2026-10-10T09:30:28Z",
+  "aliases": [
+    "CVE-2026-96574"
+  ],
+  "details": "The User Frontend – Membership, User Registration, User Profile, User Directory & Content Restriction with Frontend Post Submission plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'wpuf_payment_method' parameter in all versions up to, and including, 4.3.12 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The bypass technique involves appending a valid gateway keyword such as 'bank' to the HTML payload, causing sanitize_text_field() to yield only the keyword for routing purposes while the full malicious raw value is stored and later rendered unescaped.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96574"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.3.12/Lib/Gateway/Bank.php#L102"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.3.12/includes/Admin/List_Table_Transactions.php#L204"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.3.12/includes/Frontend/Payment.php#L503"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.3.12/includes/Frontend/Payment.php#L566"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.3.12/wpuf-functions.php#L2498"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3722911/wp-user-frontend/trunk/includes/Admin/List_Table_Transactions.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/12f1cbc1-42c1-4ace-88ec-8aa981367c85?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T07:16:42Z"
+  }
+}

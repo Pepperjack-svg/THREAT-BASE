@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pwqg-g4m5-54gf",
+  "modified": "2026-10-09T18:31:44Z",
+  "published": "2026-10-09T18:31:44Z",
+  "aliases": [
+    "CVE-2026-108156"
+  ],
+  "details": "LobsterAI 2026.5.27 through 2026.9.23 contains an external control of file path vulnerability in the skills:delete IPC handler that trusts the openclawSourceDir value from a skill's _meta.json during uninstall. Attackers who convince a user to install a crafted skill can make uninstallation recursively delete arbitrary user-writable directories, such as the home directory, since the security scanner never inspects _meta.json.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108156"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netease-youdao/LobsterAI/issues/2793"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netease-youdao/LobsterAI/commit/82fdfe10d1b85d0ff734aa720e18c866b4be2406"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netease-youdao/LobsterAI"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netease-youdao/LobsterAI/blob/791a352dee3b3d8c6f64edcaf229ce474a68f6c5/src/main/ipcHandlers/skills/handlers.ts#L60-L78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lobsterai-2026.5.27-through-2026.9.23-arbitrary-directory-deletion-via-skill-meta-json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-09T17:16:46Z"
+  }
+}

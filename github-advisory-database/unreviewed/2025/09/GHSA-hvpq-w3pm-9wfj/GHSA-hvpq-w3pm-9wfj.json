@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hvpq-w3pm-9wfj",
+  "modified": "2025-12-02T03:31:36Z",
+  "published": "2025-09-15T15:31:24Z",
+  "aliases": [
+    "CVE-2023-53195"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmlxsw: minimal: fix potential memory leak in mlxsw_m_linecards_init\n\nThe line cards array is not freed in the error path of\nmlxsw_m_linecards_init(), which can lead to a memory leak. Fix by\nfreeing the array in the error path, thereby making the error path\nidentical to mlxsw_m_linecards_fini().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53195"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08fc75735fda3be97194bfbf3c899c87abb3d0fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd716022c968bc6748f23708b986f845b45791b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4f5b1dd816dccd4ee6bb60b2a81a3d4373636a9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T14:15:41Z"
+  }
+}

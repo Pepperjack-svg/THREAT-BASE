@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h238-5mwf-8xw8",
+  "modified": "2025-11-07T16:40:40Z",
+  "published": "2025-11-03T21:49:26Z",
+  "aliases": [
+    "CVE-2025-64179"
+  ],
+  "summary": "lakeFS affected by unauthenticated access to API usage metrics",
+  "details": "### Impact\n\nMissing authentication in the `/api/v1/usage-report/summary` endpoint allows anyone to retrieve aggregate API usage counts. While no sensitive data is disclosed, the endpoint may reveal information about service activity or uptime.\n\n### Patches\nUpgrade to >v1.70.1\n\n### Workarounds\n\nAny **ONE** of these is sufficient to block this reporting:\n- Disable usage reporting by setting configuration option `usage_report.enabled` or environment variable `LAKEFS_USAGE_REPORT_ENABLED` to `false`.\n- Using load-balancer or application level firewall - blocking the request route /api/v1/usage-report/summary.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/treeverse/lakefs"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.71.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/treeverse/lakeFS/security/advisories/GHSA-h238-5mwf-8xw8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-64179"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/treeverse/lakeFS/commit/1c8adab852dac2387fcb00a256402b308a610c60"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/treeverse/lakeFS"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200",
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-11-03T21:49:26Z",
+    "nvd_published_at": "2025-11-06T22:15:44Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wc9x-qc4f-7pj3",
+  "modified": "2026-10-22T03:33:37Z",
+  "published": "2026-10-22T03:33:37Z",
+  "aliases": [
+    "CVE-2026-114725"
+  ],
+  "details": "Roundcube Webmail before 1.6.20 and 1.7.x before 1.7.5 is affected by a mail header injection vulnerability. rcmail_sendmail stripped newline characters only from the Subject and Organization headers, leaving other header values taken from request parameters unsanitized, so a remote authenticated attacker could inject arbitrary headers into an outgoing message via the References, In-Reply-To, Message-ID and From parameters. Upstream fixed this in the commit “Fix mail header injection via References/In-Reply-To/Message-ID/From parameters”, which normalizes whitespace in every string header value.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114725"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/79adcfc0c48012bbbe930278471425027fd7331c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/commit/acd32a86f631dd6dcda8ac3ec7bd9ba4d4c0c117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.debian.org/1151279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.6.20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/roundcube/roundcubemail/releases/tag/1.7.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://roundcube.net/news/2026/10/19/security-updates-1.6.20-and-1.7.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-99"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T02:17:00Z"
+  }
+}

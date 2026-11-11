@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4qx3-f25j-qfgw",
+  "modified": "2025-08-05T21:31:38Z",
+  "published": "2025-08-05T21:31:38Z",
+  "aliases": [
+    "CVE-2012-10031"
+  ],
+  "details": "BlazeVideo HDTV Player Pro v6.6.0.3 is vulnerable to a stack-based buffer overflow due to improper handling of user-supplied input embedded in .plf playlist files. When parsing a crafted .plf file, the MediaPlayerCtrl.dll component invokes PathFindFileNameA() to extract a filename from a URL-like string. The returned value is then copied to a fixed-size stack buffer using an inline strcpy call without bounds checking. If the input exceeds the buffer size, this leads to a stack overflow and potential arbitrary code execution under the context of the user.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2012-10031"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/fileformat/blazedvd_hdtv_bof.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web.archive.org/web/20100302202333/https://blazevideo.com/help_center/hdtv-help/Technical-Support.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/18693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/22931"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/23052"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/blazevideo-hdtv-player-pro-filename-handling-buffer-overflow"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-05T20:15:34Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-78w3-3c52-99hr",
+  "modified": "2026-07-06T21:30:26Z",
+  "published": "2026-06-26T21:32:18Z",
+  "aliases": [
+    "CVE-2026-53324"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mana: Use pci_name() for debugfs directory naming\n\nUse pci_name(pdev) for the per-device debugfs directory instead of\nhardcoded \"0\" for PFs and pci_slot_name(pdev->slot) for VFs. The\nprevious approach had two issues:\n\n1. pci_slot_name() dereferences pdev->slot, which can be NULL for VFs\n   in environments like generic VFIO passthrough or nested KVM,\n   causing a NULL pointer dereference.\n\n2. Multiple PFs would all use \"0\", and VFs across different PCI\n   domains or buses could share the same slot name, leading to\n   -EEXIST errors from debugfs_create_dir().\n\npci_name(pdev) returns the unique BDF address, is always valid, and is\nunique across the system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34dbd7b819544c99c9d96b400fe4db613f40ac4b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9211eb97e8f8c28bf9313ab97862d143dbbbef97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c116f07ab9d22bb6f355f3cf9e44c1e6a47fe559"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-26T20:17:25Z"
+  }
+}

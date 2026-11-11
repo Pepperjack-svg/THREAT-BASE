@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mmv9-fq67-57xh",
+  "modified": "2026-10-23T12:31:36Z",
+  "published": "2026-10-23T12:31:36Z",
+  "aliases": [
+    "CVE-2026-98886"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/gma500: return errors from Oaktrail HDMI I2C reads\n\nxfer_read() waits for the HDMI I2C transaction to reach\nI2C_TRANSACTION_DONE, but it ignores both timeout and signal returns from\nwait_for_completion_interruptible_timeout().  If the interrupt never\nadvances the transaction state, the loop can wait forever.\n\nReturn -ETIMEDOUT when the completion wait expires, propagate interrupted\nwaits, and make the I2C master_xfer callback return the first transfer\nerror instead of reporting a successful message count.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98886"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09a950950e7e4e74e021e60941c8e816ef1b4f71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15c6d7f7127a53b7312232178ecf03e5850161d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/898d209157fe2a245f7d9fe28c5921037d8b5033"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8add43887cca1fe11a0ded62199ce726901d3f20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b5ce5c496efd20c1c662cedba88465d39ec1f93"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c268df0653ab07bafc3d191e74ea097e3d9b9e69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f85e8224bd4e1a0939cbfe13a6220fbddf61127c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:22Z"
+  }
+}

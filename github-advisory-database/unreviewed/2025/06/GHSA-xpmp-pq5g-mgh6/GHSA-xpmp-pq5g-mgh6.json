@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xpmp-pq5g-mgh6",
+  "modified": "2025-11-17T21:31:17Z",
+  "published": "2025-06-18T12:30:46Z",
+  "aliases": [
+    "CVE-2022-50075"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing/eprobes: Have event probes be consistent with kprobes and uprobes\n\nCurrently, if a symbol \"@\" is attempted to be used with an event probe\n(eprobes), it will cause a NULL pointer dereference crash.\n\nBoth kprobes and uprobes can reference data other than the main registers.\nSuch as immediate address, symbols and the current task name. Have eprobes\ndo the same thing.\n\nFor \"comm\", if \"comm\" is used and the event being attached to does not\nhave the \"comm\" field, then make it the \"$comm\" that kprobes has. This is\nconsistent to the way histograms and filters work.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50075"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47cc883f21fa3bcf24891b4b455f4cd461ce2d6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a832ec3d680b3a4f4fad5752672827d71bae501"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b489aca082a23033a3d8355cfb0032f0e2523440"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:36Z"
+  }
+}

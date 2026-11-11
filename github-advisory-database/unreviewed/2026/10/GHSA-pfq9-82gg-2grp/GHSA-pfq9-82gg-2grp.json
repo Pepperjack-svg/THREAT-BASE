@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pfq9-82gg-2grp",
+  "modified": "2026-10-31T18:30:23Z",
+  "published": "2026-10-31T18:30:23Z",
+  "aliases": [
+    "CVE-2026-120205"
+  ],
+  "details": "Thelia before 3.1.0 contains a stored cross-site scripting vulnerability in ForSomeCustomers::getSummary() that allows unauthenticated attackers to inject scripts via unescaped customer names. Attackers can register with a script payload as their name that executes when administrators view related coupons, stealing CSRF tokens to create administrator accounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thelia/thelia/security/advisories/GHSA-r63g-6wfg-v5v9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120205"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thelia/thelia/commit/c90d59375089a0833a56703c6f9f9ddea17bddc9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thelia/thelia/blob/3.0.0/core/lib/Thelia/Condition/Implementation/ForSomeCustomers.php#L119"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thelia/thelia/releases/tag/3.1.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/thelia-before-3.1.0-stored-xss-via-coupon-condition-customer-name"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-31T18:17:08Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wx8p-85p4-gfr8",
+  "modified": "2025-03-17T18:31:49Z",
+  "published": "2025-03-17T18:31:49Z",
+  "aliases": [
+    "CVE-2022-49451"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scmi: Fix list protocols enumeration in the base protocol\n\nWhile enumerating protocols implemented by the SCMI platform using\nBASE_DISCOVER_LIST_PROTOCOLS, the number of returned protocols is\ncurrently validated in an improper way since the check employs a sum\nbetween unsigned integers that could overflow and cause the check itself\nto be silently bypassed if the returned value 'loop_num_ret' is big\nenough.\n\nFix the validation avoiding the addition.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49451"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1052f22e127d0c34c3387bb389424ba1c61491ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ccfcd7a09c826516edcfe464b05071961aada3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/444a2d27fe9867d0da4b28fc45b793f32e099ab8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e7978695f4a6cbd83616b5a702b77fa2087b247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8009120e0354a67068e920eb10dce532391361d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98342148a8cd242855d7e257f298c966c96dba9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0e4bafac8963c2d85ee18d3d01f393735acceec"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:21Z"
+  }
+}

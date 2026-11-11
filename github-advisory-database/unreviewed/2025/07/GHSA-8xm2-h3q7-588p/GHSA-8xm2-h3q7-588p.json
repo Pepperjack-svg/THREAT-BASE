@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8xm2-h3q7-588p",
+  "modified": "2025-11-20T00:31:20Z",
+  "published": "2025-07-10T09:32:29Z",
+  "aliases": [
+    "CVE-2025-38281"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: Add NULL check in mt7996_thermal_init\n\ndevm_kasprintf() can return a NULL pointer on failure,but this\nreturned value in mt7996_thermal_init() is not checked.\nAdd NULL check in mt7996_thermal_init(), to handle kernel NULL\npointer dereference error.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8340cb173750c1ea99cd643006b72f8b0e6c21f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/caf4b347c5dc40fdd125793b5e82ba9fc4de5275"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-10T08:15:26Z"
+  }
+}

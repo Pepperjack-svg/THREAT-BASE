@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mxh2-28rw-2fwm",
+  "modified": "2026-10-11T00:30:52Z",
+  "published": "2026-10-11T00:30:52Z",
+  "aliases": [
+    "CVE-2026-108614"
+  ],
+  "details": "JeecgBoot through 3.9.5 contains a missing authorization vulnerability in the AiragExtDataController exportXls handler that allows any authenticated user to export AI evaluator data. Low-privileged attackers can request /airag/extData/exportXls to download every user's airag_ext_data evaluator definitions and test-tracking records as an Excel workbook.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108614"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AnkesKasty/cve-request-poc/blob/a7b6d1423555812d8efa26c91c5d0683164b31e5/JeecgBoot/poc_airag_extdata_prompts_export.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jeecgboot/JeecgBoot/blob/e3b9dc0aefe1943d9772b026f64ed671a7c82802/jeecg-boot/jeecg-boot-module/jeecg-boot-module-airag/src/main/java/org/jeecg/modules/airag/prompts/controller/AiragExtDataController.java#L190-L199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jeecgboot-through-3.9.5-missing-authorization-via-airag-extdata-exportxls"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T22:16:35Z"
+  }
+}

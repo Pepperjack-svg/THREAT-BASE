@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4m8c-59q5-hc8f",
+  "modified": "2026-06-06T06:30:29Z",
+  "published": "2026-06-06T06:30:29Z",
+  "aliases": [
+    "CVE-2026-8839"
+  ],
+  "details": "The MapPress Maps for WordPress plugin for WordPress is vulnerable to Authorization Bypass Through User-Controlled Key in all versions up to, and including, 2.96.6. This is due to missing ownership verification in the REST API routes registered via `Mappress_Api::rest_api_init()`, where the GET `/wp-json/mapp/v1/maps/{mapid}` endpoint uses `'permission_callback' => '__return_true'` and the write endpoints (POST update, DELETE, PATCH mutate, POST clone, POST empty_trash) only check the generic `edit_posts` capability without confirming that the requester owns the targeted map — a gap that is not compensated at the model layer, as `Mappress_Map::get()`, `save()`, `delete()`, `mutate()`, and `empty_trash()` all operate on any caller-supplied map ID without an ownership check. This makes it possible for unauthenticated attackers to read sensitive map data — including POI titles, addresses, coordinates, and body content — for any map on the site by enumerating map IDs, and for authenticated attackers with Contributor-level access and above to modify, delete, trash/restore, or clone any map regardless of its author.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8839"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.95.10/mappress_api.php#L253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.95.10/mappress_api.php#L268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.95.10/mappress_api.php#L328"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.95.10/mappress_api.php#L39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.95.10/mappress_api.php#L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.95.10/mappress_api.php#L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.95.10/mappress_api.php#L90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.95.10/mappress_map.php#L239"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.95.10/mappress_map.php#L379"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.95.10/mappress_map.php#L493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.95.10/mappress_map.php#L550"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.96.6/mappress_api.php#L253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.96.6/mappress_api.php#L268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.96.6/mappress_api.php#L328"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.96.6/mappress_api.php#L39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.96.6/mappress_api.php#L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.96.6/mappress_api.php#L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.96.6/mappress_api.php#L90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.96.6/mappress_map.php#L239"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.96.6/mappress_map.php#L379"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.96.6/mappress_map.php#L493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mappress-google-maps-for-wordpress/tags/2.96.6/mappress_map.php#L550"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?old_path=/mappress-google-maps-for-wordpress/tags/2.96.6&new_path=/mappress-google-maps-for-wordpress/tags/2.97.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/9f402aa7-24d6-448b-a1d3-5ee7c90b39bc?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-06T05:16:29Z"
+  }
+}

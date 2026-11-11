@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4gv-6x9v-v23g",
+  "modified": "2025-11-24T23:35:30Z",
+  "published": "2025-11-24T23:35:30Z",
+  "aliases": [],
+  "summary": "OMERO.web uses jquery-form library, which may be vulnerable to XSS attack",
+  "details": "### Impact\nOMERO.web uses the jquery-form library throughout to handle form submission and response processing. Due to some unpatched potential vulnerabilities in jquery-form, OMERO.web 5.29.2 and earlier may be susceptible to XSS attacks.\n\n### Patches\nUser should upgrade OMERO.web to 5.29.3 or higher.\n\n### Workarounds\nNone.\n\n### Resources\nhttps://github.com/jquery-form/form/issues/604",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "omero-web"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.29.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ome/omero-web/security/advisories/GHSA-j4gv-6x9v-v23g"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jquery-form/form/issues/604"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ome/omero-web/commit/a3eadf722cfada2b844b97abe65baf5856e77c4f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ome/omero-web"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-11-24T23:35:30Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f3jf-wgcf-hqjr",
+  "modified": "2025-09-19T00:30:58Z",
+  "published": "2025-09-19T00:30:58Z",
+  "aliases": [
+    "CVE-2025-59692"
+  ],
+  "details": "PureVPN client applications on Linux through September 2025 mishandle firewalling. They flush the system's existing iptables rules and apply default ACCEPT policies when connecting to a VPN server. This removes firewall rules that may have been configured manually or by other software (e.g., UFW, container engines, or system security policies). Upon VPN disconnect, the original firewall state is not restored. As a result, the system may become unintentionally exposed to network traffic that was previously blocked. This affects CLI 2.0.1 and GUI 2.10.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://anagogistis.com/posts/purevpn-ipv6-leak"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-669"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T23:15:34Z"
+  }
+}

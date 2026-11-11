@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5cpq-9538-jm2j",
+  "modified": "2025-10-15T16:10:36Z",
+  "published": "2025-03-20T12:32:49Z",
+  "aliases": [
+    "CVE-2024-8966"
+  ],
+  "summary": "Gradio DOS in multipart boundry while uploading the file",
+  "details": "A vulnerability in the file upload process of gradio-app/gradio version @gradio/video@0.10.2 allows for a Denial of Service (DoS) attack. An attacker can append a large number of characters to the end of a multipart boundary, causing the system to continuously process each character and issue warnings. This can render Gradio inaccessible for extended periods, disrupting services and causing significant downtime.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "gradio"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "5.22.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-8966"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gradio-app/gradio/commit/f1718c47137f9c60240da7afe5e3290aa0f1cb47"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/gradio-app/gradio"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/7b5932bb-58d1-4e71-b85c-43dc40522ff2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400",
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-03-21T03:24:15Z",
+    "nvd_published_at": "2025-03-20T10:15:45Z"
+  }
+}

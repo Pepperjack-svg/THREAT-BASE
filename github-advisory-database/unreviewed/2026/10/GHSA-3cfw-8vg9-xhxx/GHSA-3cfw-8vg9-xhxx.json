@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3cfw-8vg9-xhxx",
+  "modified": "2026-10-10T15:30:23Z",
+  "published": "2026-10-10T15:30:23Z",
+  "aliases": [
+    "CVE-2026-108546"
+  ],
+  "details": "Spotweb through 1.5.8 contains an OS command injection vulnerability in the runcommand NZB handler that allows remote attackers to execute commands by publishing spots with malicious titles. Attackers can post self-signed spots over Usenet with shell metacharacters in the title, which are substituted unescaped for $SPOTTITLE and passed to exec() when a user downloads the spot, running commands as the Spotweb PHP process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spotweb/spotweb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spotweb/spotweb/blob/1.5.8/lib/services/NzbHandler/Services_NzbHandler_Runcommand.php#L41-L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind/spotweb-runcommand-title-injection"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/spotweb-through-1.5.8-os-command-injection-via-spot-title-in-runcommand-integration"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T15:16:57Z"
+  }
+}

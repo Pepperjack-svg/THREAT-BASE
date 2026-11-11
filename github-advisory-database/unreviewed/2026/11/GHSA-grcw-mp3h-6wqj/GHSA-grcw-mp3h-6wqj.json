@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-grcw-mp3h-6wqj",
+  "modified": "2026-11-10T00:31:42Z",
+  "published": "2026-11-10T00:31:42Z",
+  "aliases": [
+    "CVE-2026-115934"
+  ],
+  "details": "An unauthenticated SQL injection can occur on the front end of any site that uses craft.search to perform a search, allowing stacked query execution and enabling escalation to an administrator.\n\n\n\nNote that this only affects MySQL/MariaDB.\n\nImpact  *  SQL injection — The attribute parameter is concatenated into the query unsanitized, and because PDO runs with emulated prepares, stacked statements execute. This gives unauthenticated read and write access to the application database.\n  *  Privilege escalation to administrator — The write primitive was used to set the admin flag on user ID 1 in the users table, confirmed by reading the value back. Craft short-circuits its permission checks on this single column, so no further changes were needed. The same primitive can overwrite any account’s password hash.\n\n\n\n\nUpdate to the patched versions (4.18.9 and 5.11.2) to get the fix.\n\n\n\nIf you cannot update immediately, you can block front-end requests with %5Battribute%5D and [attribute] anywhere in the query string as a temporary mitigation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:A/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-qcvp-ggx3-97r6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115934"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/releases/tag/5.11.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.hckrt.com/hacktivity/HCKRT-Y64NY8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T23:17:12Z"
+  }
+}

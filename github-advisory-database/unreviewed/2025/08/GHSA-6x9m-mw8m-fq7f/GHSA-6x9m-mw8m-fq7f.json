@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6x9m-mw8m-fq7f",
+  "modified": "2025-11-18T18:32:48Z",
+  "published": "2025-08-16T12:30:33Z",
+  "aliases": [
+    "CVE-2025-38536"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: airoha: fix potential use-after-free in airoha_npu_get()\n\nnp->name was being used after calling of_node_put(np), which\nreleases the node and can lead to a use-after-free bug.\nPreviously, of_node_put(np) was called unconditionally after\nof_find_device_by_node(np), which could result in a use-after-free if\npdev is NULL.\n\nThis patch moves of_node_put(np) after the error check to ensure\nthe node is only released after both the error and success cases\nare handled appropriately, preventing potential resource issues.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38536"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cd582e7d0787506990ef0180405eb6224fa90a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df6bf96b41e547e350667bc4c143be53646d070d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-16T12:15:29Z"
+  }
+}

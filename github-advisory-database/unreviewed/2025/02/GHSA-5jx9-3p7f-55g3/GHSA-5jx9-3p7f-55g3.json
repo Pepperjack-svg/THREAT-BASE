@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5jx9-3p7f-55g3",
+  "modified": "2025-10-28T03:30:13Z",
+  "published": "2025-02-27T21:32:17Z",
+  "aliases": [
+    "CVE-2025-21822"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nptp: vmclock: Set driver data before its usage\n\nIf vmclock_ptp_register() fails during probing, vmclock_remove() is\ncalled to clean up the ptp clock and misc device.\nIt uses dev_get_drvdata() to access the vmclock state.\nHowever the driver data is not yet set at this point.\n\nAssign the driver data earlier.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21822"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6dbd8b91a065d1d8001446a28e72cd140f9acef0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7d07cd4f77d77f366c8ffbb8ba8b61f614e5fce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T20:16:04Z"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cwcx-382v-8m9g",
+  "modified": "2026-05-08T21:47:36Z",
+  "published": "2026-04-30T17:28:41Z",
+  "aliases": [
+    "CVE-2026-41654"
+  ],
+  "summary": "Weblate Vulnerable to Authenticated SSRF via Project Backup Import bypassing validate_repo_url",
+  "details": "### Impact\nAn authenticated user with `project.add` permission (default on hosted Weblate SaaS and for any user holding an active billing/trial plan) can import a crafted project backup ZIP whose `components/<name>.json` contains an attacker-chosen `repo` URL pointing at a **private address** (e.g. `http://127.0.0.1:9999/`) or using a **non-allow-listed scheme** (e.g. `file://`, `git://`). Weblate persists the component via `Component.objects.bulk_create([component])[0]`, which bypasses Django's `full_clean()` and therefore never runs the `validate_repo_url` validator. The URL is subsequently written verbatim into `.git/config` by `configure_repo(pull=False)`.\n\n### Patches\n* https://github.com/WeblateOrg/weblate/pull/19061\n* https://github.com/WeblateOrg/weblate/pull/19062 \n\n### Workarounds\nLimiting who can create projects limits the scope.\n\n### Resources\nWeblate thanks @fg0x0 for reporting this vulnerability via GitHub.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "weblate"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.17.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/security/advisories/GHSA-cwcx-382v-8m9g"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/pull/19061"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/pull/19062"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/commit/e1eff1f517c1ee315d69581910baaabb724e5ef0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/commit/e4b67a76d95d5165ecb9937f7485fd79223b7f14"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/WeblateOrg/weblate"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/releases/tag/weblate-5.17.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20",
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-30T17:28:41Z",
+    "nvd_published_at": "2026-05-07T15:16:07Z"
+  }
+}

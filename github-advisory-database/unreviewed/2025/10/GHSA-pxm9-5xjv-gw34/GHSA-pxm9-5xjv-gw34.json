@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pxm9-5xjv-gw34",
+  "modified": "2026-07-30T06:32:15Z",
+  "published": "2025-10-29T15:31:56Z",
+  "aliases": [
+    "CVE-2025-40084"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: transport_ipc: validate payload size before reading handle\n\nhandle_response() dereferences the payload as a 4-byte handle without\nverifying that the declared payload size is at least 4 bytes. A malformed\nor truncated message from ksmbd.mountd can lead to a 4-byte read past the\ndeclared payload size. Validate the size before dereferencing.\n\nThis is a minimal fix to guard the initial handle read.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40084"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2dc125f5da134c0915a840b62565c60a595673dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f40e50ceb99fc8ef37e5c56e2ec1d162733fef0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/867ffd9d67285612da3f0498ca618297f8e41f01"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/898d527ed94c19980a4d848f10057f1fed578ffb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a02e432d5130da4c723aabe1205bac805889fdb2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-29T14:15:55Z"
+  }
+}

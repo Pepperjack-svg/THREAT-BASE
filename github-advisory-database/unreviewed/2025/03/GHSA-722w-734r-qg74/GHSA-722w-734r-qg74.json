@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-722w-734r-qg74",
+  "modified": "2025-03-02T03:30:31Z",
+  "published": "2025-03-02T03:30:31Z",
+  "aliases": [
+    "CVE-2025-25724"
+  ],
+  "details": "list_item_verbose in tar/util.c in libarchive through 3.7.7 does not check an strftime return value, which can lead to a denial of service or unspecified other impact via a crafted TAR archive that is read with a verbose value of 2. For example, the 100-byte buffer may not be sufficient for a custom locale.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-25724"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/Ekkosun/a83870ce7f3b7813b9b462a395e8ad92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Ekkosun/pocs/blob/main/bsdtarbug"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libarchive/libarchive/blob/b439d586f53911c84be5e380445a8a259e19114c/tar/util.c#L751-L752"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-252"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-02T02:15:36Z"
+  }
+}

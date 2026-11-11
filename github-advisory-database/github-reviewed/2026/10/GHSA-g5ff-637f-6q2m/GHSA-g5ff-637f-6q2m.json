@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g5ff-637f-6q2m",
+  "modified": "2026-10-27T15:32:36Z",
+  "published": "2026-10-27T15:32:36Z",
+  "aliases": [],
+  "summary": "LiteLLM: internal_user_viewer arbitrary local file read via `vertex_ai_credentials`",
+  "details": "## Summary\n\nAn authenticated LiteLLM proxy user could read arbitrary local files from the proxy runtime by sending a crafted `vertex_ai_credentials` value to `/utils/transform_request`. The request-body safety blocklist rejected `vertex_credentials` but missed its alias `vertex_ai_credentials`, which let the value reach the Vertex AI credential loader and trigger a file read that is sent to an attacker-controlled URL.\n\n## Impact\n\nA low-privilege authenticated user (only `internal_user_viewer`, obtainable through SSO login on many deployments) could read any file readable by the LiteLLM process. Reading files such as `/proc/self/environ` can disclose `LITELLM_MASTER_KEY` and provider API keys, so the impact can escalate to full proxy-admin control.\n\n## Remediation\n\nUpgrade to `1.95.0` or later. The fix adds the missing alias to the request-body blocklist, so no configuration change is needed once you upgrade. There is no reliable configuration workaround on affected versions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "litellm"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.95.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/BerriAI/litellm/security/advisories/GHSA-g5ff-637f-6q2m"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BerriAI/litellm/pull/34189"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BerriAI/litellm/commit/065faf6e695be64a1a367601271839914e4a6621"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/BerriAI/litellm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.95.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20",
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-27T15:32:36Z",
+    "nvd_published_at": null
+  }
+}

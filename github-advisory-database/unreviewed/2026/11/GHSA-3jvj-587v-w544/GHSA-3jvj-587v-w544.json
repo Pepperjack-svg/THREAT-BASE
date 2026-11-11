@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3jvj-587v-w544",
+  "modified": "2026-11-10T21:31:59Z",
+  "published": "2026-11-07T15:30:28Z",
+  "aliases": [
+    "CVE-2026-99273"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: reserve space for the UTF-16 terminator in stream info\n\nsmb_strtoUTF16() always writes a terminating zero UTF-16 unit after the\nconverted characters, but get_file_stream_info() budgets only\nsizeof(struct smb2_file_stream_info) + streamlen * 2 for a stream entry\nand sizeof(struct smb2_file_stream_info) + 7 * 2 for the trailing\n\"::$DATA\" entry. When an entry exactly fills the 448-byte small response\nbuffer, the terminator is written two bytes past the allocation.\n\nReserve one extra UTF-16 unit in both budget checks. The terminator is\nnot part of the wire format, so the reported lengths are unchanged.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99273"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06a751809ebd33e95b05bf733697318a17a4872b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e64f89563164719ceb1aa33f2a8bfd6391fa340"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/583ede545a14f275a959772b5e1e50fe3e14b861"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a025c4991a7d83edc4dd339e3ea86d8ff6226eca"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-07T14:17:02Z"
+  }
+}

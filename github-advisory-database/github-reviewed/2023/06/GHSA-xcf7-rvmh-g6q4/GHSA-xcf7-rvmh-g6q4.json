@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xcf7-rvmh-g6q4",
+  "modified": "2025-07-28T15:55:01Z",
+  "published": "2023-06-21T22:07:52Z",
+  "aliases": [
+    "CVE-2023-53159"
+  ],
+  "summary": "`openssl` `X509VerifyParamRef::set_host` buffer over-read",
+  "details": "When this function was passed an empty string, `openssl` would attempt to call `strlen` on it, reading arbitrary memory until it reached a NUL byte.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "crates.io",
+        "name": "openssl"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.10.0"
+            },
+            {
+              "fixed": "0.10.55"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sfackler/rust-openssl/issues/1965"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sfackler/rust-openssl/pull/1968"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/sfackler/rust-openssl"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rustsec.org/advisories/RUSTSEC-2023-0044.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-126"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2023-06-21T22:07:52Z",
+    "nvd_published_at": null
+  }
+}

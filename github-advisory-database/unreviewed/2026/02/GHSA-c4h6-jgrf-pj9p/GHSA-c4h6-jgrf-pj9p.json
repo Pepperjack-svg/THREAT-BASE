@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c4h6-jgrf-pj9p",
+  "modified": "2026-03-17T21:31:41Z",
+  "published": "2026-02-14T18:30:14Z",
+  "aliases": [
+    "CVE-2025-71202"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/sva: invalidate stale IOTLB entries for kernel address space\n\nIntroduce a new IOMMU interface to flush IOTLB paging cache entries for\nthe CPU kernel address space.  This interface is invoked from the x86\narchitecture code that manages combined user and kernel page tables,\nspecifically before any kernel page table page is freed and reused.\n\nThis addresses the main issue with vfree() which is a common occurrence\nand can be triggered by unprivileged users.  While this resolves the\nprimary problem, it doesn't address some extremely rare case related to\nmemory unplug of memory that was present as reserved memory at boot, which\ncannot be triggered by unprivileged users.  The discussion can be found at\nthe link below.\n\nEnable SVA on x86 architecture since the IOMMU can now receive\nnotification to flush the paging cache before freeing the CPU kernel page\ntable pages.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71202"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f0a7ab700f8620e433b05c57fbd26c92ea186d9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e37d5a2d60a338c5917c45296bac65da1382eda5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-457"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T16:15:52Z"
+  }
+}

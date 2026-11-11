@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f5fh-phpc-hrv4",
+  "modified": "2026-10-18T12:30:26Z",
+  "published": "2026-10-18T12:30:26Z",
+  "aliases": [
+    "CVE-2026-112003"
+  ],
+  "details": "ProjectSend 2.0.0 before 2.7.0 contains a path validation flaw in OrphanFileScanner::isOrphan() that allows staff with import_orphans permission to treat tracked files as orphans. Attackers can submit ./ path aliases to the orphans import or delete endpoints, deleting or adopting other owners' files while bypassing delete_others_files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectsend/projectsend/security/advisories/GHSA-pv88-7863-5hwq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112003"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectsend/projectsend/commit/1e34773ad39c256f1320f4d2b47b93a5805f07c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectsend/projectsend/blob/v2.6.0/app/Modules/Files/OrphanFileScanner.php#L109-L120"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectsend/projectsend/releases/tag/v2.7.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/projectsend-2.0.0-before-2.7.0-path-validation-bypass-via-orphan-file-import-delete"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-180"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T12:17:12Z"
+  }
+}

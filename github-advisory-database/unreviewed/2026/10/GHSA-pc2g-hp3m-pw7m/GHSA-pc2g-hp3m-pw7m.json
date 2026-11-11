@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pc2g-hp3m-pw7m",
+  "modified": "2026-10-16T09:30:28Z",
+  "published": "2026-10-16T09:30:28Z",
+  "aliases": [
+    "CVE-2026-111069"
+  ],
+  "details": "The GeoDirectory – WP Business Directory Plugin and Classified Listings Directory plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'twitterusername' parameter in all versions up to, and including, 2.8.192 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The client-side HTML pattern attribute enforcing alphanumeric-only input on the twitterusername field is not validated server-side, allowing a listing owner with Subscriber-level access to submit an attribute-breakout payload that bypasses sanitization and is stored directly to the custom field table.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111069"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AyeCode/geodirectory/archive/refs/heads/master.zip"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.192/includes/class-geodir-ajax.php#L821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.192/includes/class-geodir-post-data.php#L1661"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.192/includes/class-geodir-post-data.php#L450"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.192/includes/custom-fields/output-filter-functions.php#L42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.192/includes/post-functions.php#L1950"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3748786/geodirectory/trunk/includes/custom-fields/output-filter-functions.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/32052509-2fa6-4317-8861-314e6da0869f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T07:17:11Z"
+  }
+}

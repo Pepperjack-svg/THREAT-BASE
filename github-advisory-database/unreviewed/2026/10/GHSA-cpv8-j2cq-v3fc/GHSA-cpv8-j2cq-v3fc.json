@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cpv8-j2cq-v3fc",
+  "modified": "2026-10-21T15:41:59Z",
+  "published": "2026-10-18T18:32:03Z",
+  "aliases": [
+    "CVE-2026-98782"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mediatek: Fix ovl adaptor platform device leak\n\nmtk_drm_probe() creates an OVL adaptor platform device with\nplatform_device_register_data() when the display pipeline requires the\nOVL adaptor.\n\nIf a later initialization step fails, the probe error path releases\nthe DRM resources without unregistering the already registered OVL\nadaptor device. The normal remove path likewise leaves the device\nregistered after the DRM driver is unbound.\n\nKeep track of whether the OVL adaptor was successfully registered and\nunregister it on probe failure. Also recover the platform device from\nthe stored DDP component device and unregister it during normal\nremoval.\n\nThe issue was identified by a static analysis tool I developed and\nconfirmed by manual review.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98782"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03fb1c657028cb9f189b400f3adb46e3ba676aa5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/048739be3e9cacae5301b68245668002fe6f0ce5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d85bd738aba61df14dfaf8fe638e2172d8427bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/629458b7e49559593823e351535294db17331be7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e3a350075b556f2fed4517705935bfee4529fb6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:32Z"
+  }
+}

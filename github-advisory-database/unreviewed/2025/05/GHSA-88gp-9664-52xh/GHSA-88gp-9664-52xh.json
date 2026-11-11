@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-88gp-9664-52xh",
+  "modified": "2026-04-08T18:33:53Z",
+  "published": "2025-05-24T06:30:39Z",
+  "aliases": [
+    "CVE-2025-4603"
+  ],
+  "details": "The eMagicOne Store Manager for WooCommerce plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the delete_file() function in all versions up to, and including, 1.2.5. This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). This is only exploitable by unauthenticated attackers in default configurations where the the default password is left as 1:1, or where the attacker gains access to the credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-4603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/d0n601/CVE-2025-4603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/store-manager-connector/trunk/classes/class-emosmconnectorcommon.php#L2167"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/store-manager-connector/trunk/classes/class-emosmcwoocommerceoverrider.php#L380"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/store-manager-connector/trunk/smconnector.php#L35-36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3308544"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ryankozak.com/posts/cve-2025-4603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/242ad00b-3602-4988-ab7a-76fba2e9d4cf?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-24T04:15:30Z"
+  }
+}

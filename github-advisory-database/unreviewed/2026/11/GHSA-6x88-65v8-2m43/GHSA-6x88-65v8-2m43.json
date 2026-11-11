@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6x88-65v8-2m43",
+  "modified": "2026-11-07T06:31:13Z",
+  "published": "2026-11-07T06:31:13Z",
+  "aliases": [
+    "CVE-2026-119158"
+  ],
+  "details": "The Pie Register – User Registration, Profiles & Content Restriction plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'first_name' parameter in all versions up to, and including, 3.8.4.16 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is exploitable when public registration is enabled and the registration form includes a Profile Picture field; the attacker registers via the publicly accessible form (nonce is emitted to unauthenticated visitors) to store the payload, then logs in as the newly created Subscriber to post a comment that triggers delivery to all page visitors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pie-register/tags/3.8.4.14/pie-register.php#L3805"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pie-register/tags/3.8.4.14/pie-register.php#L423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pie-register/tags/3.8.4.14/pie-register.php#L7767"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3783288/pie-register/trunk/pie-register.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/dd9a4fa5-17b0-41dc-94f9-b07ada23a6e1?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-07T04:17:13Z"
+  }
+}

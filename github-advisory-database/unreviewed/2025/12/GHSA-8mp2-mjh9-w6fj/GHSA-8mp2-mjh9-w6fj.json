@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8mp2-mjh9-w6fj",
+  "modified": "2025-12-09T18:30:34Z",
+  "published": "2025-12-09T18:30:34Z",
+  "aliases": [
+    "CVE-2023-53854"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: mediatek: mt8186: Fix use-after-free in driver remove path\n\nWhen devm runs function in the \"remove\" path for a device it runs them\nin the reverse order. That means that if you have parts of your driver\nthat aren't using devm or are using \"roll your own\" devm w/\ndevm_add_action_or_reset() you need to keep that in mind.\n\nThe mt8186 audio driver didn't quite get this right. Specifically, in\nmt8186_init_clock() it called mt8186_audsys_clk_register() and then\nwent on to call a bunch of other devm function. The caller of\nmt8186_init_clock() used devm_add_action_or_reset() to call\nmt8186_deinit_clock() but, because of the intervening devm functions,\nthe order was wrong.\n\nSpecifically at probe time, the order was:\n1. mt8186_audsys_clk_register()\n2. afe_priv->clk = devm_kcalloc(...)\n3. afe_priv->clk[i] = devm_clk_get(...)\n\nAt remove time, the order (which should have been 3, 2, 1) was:\n1. mt8186_audsys_clk_unregister()\n3. Free all of afe_priv->clk[i]\n2. Free afe_priv->clk\n\nThe above seemed to be causing a use-after-free. Luckily, it's easy to\nfix this by simply using devm more correctly. Let's move the\ndevm_add_action_or_reset() to the right place. In addition to fixing\nthe use-after-free, code inspection shows that this fixes a leak\n(missing call to mt8186_audsys_clk_unregister()) that would have\nhappened if any of the syscon_regmap_lookup_by_phandle() calls in\nmt8186_init_clock() had failed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53854"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e56a1c04882852e3e7d6c59756a16211ebbc457"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a93d2afd3f77a7331271a0f25c6a11003db69b3c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dffd9e2b57cb845930fa885aa634a847ba2130dd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T16:17:26Z"
+  }
+}

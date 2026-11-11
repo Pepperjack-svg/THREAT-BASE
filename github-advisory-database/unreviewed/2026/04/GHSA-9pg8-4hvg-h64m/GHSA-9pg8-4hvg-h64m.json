@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9pg8-4hvg-h64m",
+  "modified": "2026-04-01T15:31:15Z",
+  "published": "2026-04-01T15:31:15Z",
+  "aliases": [
+    "CVE-2026-35094"
+  ],
+  "details": "A flaw was found in libinput. An attacker capable of deploying a Lua plugin file in specific system directories can exploit a dangling pointer vulnerability. This occurs when a garbage collection cleanup function is called, leaving a pointer that can then be printed to system logs. This could potentially expose sensitive data if the memory location is re-used, leading to information disclosure. For this exploit to work, Lua plugins must be enabled in libinput and loaded by the compositor.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-35094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-35094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2453840"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.freedesktop.org/libinput/libinput/-/work_items/1272"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-825"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-01T14:16:57Z"
+  }
+}

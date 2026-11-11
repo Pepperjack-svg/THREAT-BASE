@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-44f9-rxj6-p8rg",
+  "modified": "2026-10-21T15:40:33Z",
+  "published": "2026-06-03T18:33:12Z",
+  "aliases": [
+    "CVE-2026-46256"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFS/localio: prevent direct reclaim recursion into NFS via nfs_writepages\n\nLOCALIO is an NFS loopback mount optimization that avoids using the\nnetwork for READ, WRITE and COMMIT if the NFS client and server are\ndetermined to be on the same system. But because LOCALIO is still\nfundamentally \"just NFS loopback mount\" it is susceptible to recursion\ndeadlock via direct reclaim, e.g.: NFS LOCALIO down to XFS and then\nback into NFS via nfs_writepages.\n\nFix LOCALIO's potential for direct reclaim deadlock by ensuring that\nall its page cache allocations are done from GFP_NOFS context.\n\nThanks to Ben Coddington for pointing out commit ad22c7a043c2 (\"xfs:\nprevent stack overflows from page cache allocation\").",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67435d2d8a33a75f9647724952cb1b18279d2e95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a5de0c4fc0f217eea945d3d72c34ee30d72cbc9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9118e1cab8a5571c6a95011f77ff28480aee9cb0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae26a4cf2baf0a44c538dc093504d1994b02dade"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-03T18:16:26Z"
+  }
+}

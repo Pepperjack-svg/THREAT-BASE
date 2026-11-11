@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7rr3-6945-h32g",
+  "modified": "2025-12-30T15:30:29Z",
+  "published": "2025-12-30T15:30:29Z",
+  "aliases": [
+    "CVE-2022-50882"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: uvcvideo: Fix memory leak in uvc_gpio_parse\n\nPreviously the unit buffer was allocated before checking the IRQ for\nprivacy GPIO. In case of error, the unit buffer was leaked.\n\nAllocate the unit buffer after the IRQ to avoid it.\n\nAddresses-Coverity-ID: 1474639 (\"Resource leak\")",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50882"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a7ae8d982a89b3b43b36ec7d62a2e3d06ffa16e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c5da92103bddd1f0c36cb69446ff7cae3043986"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/deb8f32ae4b10a48c433f2da1b1159521ac24674"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0f078457f18f10696888f8d0e6aba9deb9cde92"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:03Z"
+  }
+}

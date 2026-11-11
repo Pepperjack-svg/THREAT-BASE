@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2wqg-w33r-qx37",
+  "modified": "2026-05-28T09:31:19Z",
+  "published": "2026-05-28T09:31:19Z",
+  "aliases": [
+    "CVE-2026-9618"
+  ],
+  "details": "The PeachPay — Payments & Express Checkout for WooCommerce (supports Stripe, PayPal, Square, Authorize.net, NMI) plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.120.46. This is due to missing or incorrect nonce validation on the peachpay_stripe_handle_admin_actions function. This makes it possible for unauthenticated attackers to permanently delete all stored Stripe credentials — including publishable keys, secret keys, webhook secrets, and Apple Pay configuration — from the WordPress database, disabling Stripe payment processing for the store via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9618"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/peachpay-for-woocommerce/tags/1.120.23/core/admin/settings.php#L190"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/peachpay-for-woocommerce/tags/1.120.23/core/payments/stripe/functions.php#L612"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/peachpay-for-woocommerce/tags/1.120.23/core/payments/stripe/functions.php#L640"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/peachpay-for-woocommerce/tags/1.120.45/core/admin/settings.php#L190"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/peachpay-for-woocommerce/tags/1.120.45/core/payments/stripe/functions.php#L612"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/peachpay-for-woocommerce/tags/1.120.45/core/payments/stripe/functions.php#L640"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3550723%40peachpay-for-woocommerce&new=3550723%40peachpay-for-woocommerce&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2270b66f-b07c-44ce-b161-7b2123f8c21e?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T08:16:37Z"
+  }
+}

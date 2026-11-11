@@ -1,0 +1,455 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rvm3-566m-v7fv",
+  "modified": "2026-10-05T22:53:10Z",
+  "published": "2026-10-05T22:53:10Z",
+  "aliases": [
+    "CVE-2026-103922"
+  ],
+  "summary": "Capacitor Android and iOS: remote content can be loaded at the app origin via the internal HTTP proxy path",
+  "details": "### Impact\n\nCapacitor's WebView navigation guard validated only the **host and scheme** of a\ntarget URL, not its **path**. Because the internal HTTP proxy path\n(`/_capacitor_http_interceptor_`) is served at the application's own origin, a\nframe navigation to it was always treated as in-app navigation and allowed.\n\nLoading that path as a document caused the native layer to fetch an arbitrary,\ncaller-specified URL and return the response body to the WebView **at the app's\nown origin**. Script in that response then ran with full same-origin trust:\naccess to `localStorage`, cookies, and every native capability the application\nexposes through its registered Capacitor plugins.\n\nThe proxy handler was additionally served **regardless of whether the\n`CapacitorHttp` plugin was enabled**, so applications that never enabled\n`CapacitorHttp` were also affected.\n\nExploitation requires a victim to activate a link inside the application's\nWebView. Any Capacitor application that renders user-controlled or unsanitized\nlinks (chat messages, comments, rich-text content) is a viable delivery surface.\n\nBoth **Android and iOS** are affected.\n\n### Patches\n\nTwo changes on each platform:\n\n1. The navigation guard now blocks frame navigations whose path is the internal\n   proxy path.\n2. The proxy handler is served only when `CapacitorHttp` is enabled, and never\n   for a document (main frame) request.\n\nLegitimate `CapacitorHttp` usage is unaffected. `fetch` and `XMLHttpRequest` are\nsubresource requests and do not pass through the navigation guard.\n\nUpgrade to a patched version, then rebuild and redistribute your application.\n\n### Workarounds\n\nIf you cannot upgrade immediately, note first that **disabling `CapacitorHttp`\nis not sufficient** on affected versions, because the proxy path is served\nregardless of that setting.\n\nRegistered plugins are consulted before the navigation guard runs, so a small\nplugin can block the path. On Android, override `shouldOverrideLoad(Uri url)` and\nreturn `true` when `url.getPath()` starts with `/_capacitor_http_interceptor_`.\nOn iOS, implement `shouldOverrideLoad(_:)` and return `true` for the same path.\nReturning `true` cancels the navigation; return `null`/`nil` for all other URLs\nso normal navigation is unchanged.\n\nIndependently, sanitize user-controlled link targets before rendering them in the\nWebView.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@capacitor/android"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.2.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@capacitor/android"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.6.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@capacitor/ios"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.2.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@capacitor/ios"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.6.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "SwiftURL",
+        "name": "github.com/ionic-team/capacitor-swift-pm"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.2.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "SwiftURL",
+        "name": "github.com/ionic-team/capacitor-swift-pm"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.6.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.capacitorjs:core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.2.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.capacitorjs:core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.6.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@capacitor/android"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.5.0"
+            },
+            {
+              "fixed": "8.5.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@capacitor/ios"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.5.0"
+            },
+            {
+              "fixed": "8.5.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "SwiftURL",
+        "name": "github.com/ionic-team/capacitor-swift-pm"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.5.0"
+            },
+            {
+              "fixed": "8.5.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.capacitorjs:core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.5.0"
+            },
+            {
+              "fixed": "8.5.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.capacitorjs:core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.3.5"
+            },
+            {
+              "fixed": "8.4.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@capacitor/android"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.3.5"
+            },
+            {
+              "fixed": "8.4.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@capacitor/ios"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.3.5"
+            },
+            {
+              "fixed": "8.4.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "SwiftURL",
+        "name": "github.com/ionic-team/capacitor-swift-pm"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.3.5"
+            },
+            {
+              "fixed": "8.4.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "SwiftURL",
+        "name": "github.com/ionic-team/capacitor-swift-pm"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.0.0"
+            },
+            {
+              "last_affected": "8.3.4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.capacitorjs:core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.0.0"
+            },
+            {
+              "last_affected": "8.3.4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@capacitor/android"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.0.0"
+            },
+            {
+              "last_affected": "8.3.4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@capacitor/ios"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "8.0.0"
+            },
+            {
+              "last_affected": "8.3.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ionic-team/capacitor/security/advisories/GHSA-rvm3-566m-v7fv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103922"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ionic-team/capacitor/commit/430356a91e1419fc66862dc09835081aa501677e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ionic-team/capacitor/commit/745b5f805bf77bc6463977cc7d718cd9de44ccbc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ionic-team/capacitor/commit/80b6c5e81d062e1e158914040f49e044d95b7ccb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ionic-team/capacitor/commit/85ccc44151fdd5ae5e0d806d875766ef4b84ad5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ionic-team/capacitor/commit/af9a287fef45f0ac68ce640cb42fed2d06b0f1b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ionic-team/capacitor/commit/d5e3170ba0ff155fc542b7e6d16cff5201406540"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ionic-team/capacitor/commit/ee586ae680887ba99d066616f976db149542d922"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ionic-team/capacitor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ionic-team/capacitor/releases/tag/8.5.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-346",
+      "CWE-441"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-05T22:53:10Z",
+    "nvd_published_at": "2026-10-01T18:17:12Z"
+  }
+}

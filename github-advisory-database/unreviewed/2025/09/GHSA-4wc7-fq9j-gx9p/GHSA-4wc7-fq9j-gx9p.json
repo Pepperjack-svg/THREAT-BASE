@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4wc7-fq9j-gx9p",
+  "modified": "2026-05-12T15:31:00Z",
+  "published": "2025-09-05T18:31:16Z",
+  "aliases": [
+    "CVE-2025-38699"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: bfa: Double-free fix\n\nWhen the bfad_im_probe() function fails during initialization, the memory\npointed to by bfad->im is freed without setting bfad->im to NULL.\n\nSubsequently, during driver uninstallation, when the state machine enters\nthe bfad_sm_stopping state and calls the bfad_im_probe_undo() function,\nit attempts to free the memory pointed to by bfad->im again, thereby\ntriggering a double-free vulnerability.\n\nSet bfad->im to NULL if probing fails.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38699"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13f613228cf3c96a038424cd97aa4d6aadc66294"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39cfe2c83146aad956318f866d0ee471b7a61fa5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/50d9bd48321038bd6e15af5a454bbcd180cf6f80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/684c92bb08a25ed3c0356bc7eb532ed5b19588dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8456f862cb95bcc3a831e1ba87c0c17068be0f3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e03dd9fadf76db5b9799583074a1a2a54f787f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9337c2affbaebe00b75fdf84ea0e2fcf93c140af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/add4c4850363d7c1b72e8fce9ccb21fdd2cf5dc9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba024d92564580bb90ec367248ace8efe16ce815"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-04T16:15:38Z"
+  }
+}

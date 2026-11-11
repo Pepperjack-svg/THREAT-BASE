@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-966g-vp32-mvpw",
+  "modified": "2026-11-09T21:31:49Z",
+  "published": "2026-11-09T21:31:49Z",
+  "aliases": [
+    "CVE-2026-125073"
+  ],
+  "details": "FFmpeg through 9.0.2 contains an infinite loop vulnerability in bit_allocation() in libavcodec/imc.c that allows attackers to hang decoding by supplying audio blocks with a negative bit budget. Attackers can craft IMC or IAC audio files that drive freebits negative, causing the reduction loop to never terminate and consuming 100% CPU.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125073"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg/commit/9b26bb4c9a4457d480899a1bf64ec080eceb1acd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25696"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FFmpeg/FFmpeg/blob/n9.0.2/libavcodec/imc.c#L572"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ffmpeg-through-9.0.2-infinite-loop-denial-of-service-via-imc-iac-decoder"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T19:16:50Z"
+  }
+}

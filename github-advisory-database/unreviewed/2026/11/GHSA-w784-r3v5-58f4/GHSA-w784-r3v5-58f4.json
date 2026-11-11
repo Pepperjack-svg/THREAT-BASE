@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w784-r3v5-58f4",
+  "modified": "2026-11-10T21:34:26Z",
+  "published": "2026-11-10T21:34:26Z",
+  "aliases": [
+    "CVE-2026-120805"
+  ],
+  "details": "In MongoDB Server, an authenticated user with insert privileges on a collection could craft a command with specially constructed encryption-related parameters to redirect internal Queryable Encryption metadata writes to metadata belonging to other encrypted collections within the same database. The server’s authorization layer validated only the user-facing target collection namespace, while subsequent internal writes derived from client-supplied parameters were performed with elevated internal privileges, bypassing the original caller’s permission scope. This could allow unauthorized writes into another collection’s Queryable Encryption metadata, potentially corrupting encrypted index state and compaction operations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120805"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jira.mongodb.org/browse/SERVER-130498"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T20:18:50Z"
+  }
+}

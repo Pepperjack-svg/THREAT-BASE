@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fmmr-q3xv-r2hc",
+  "modified": "2026-10-12T21:31:55Z",
+  "published": "2026-10-12T21:31:55Z",
+  "aliases": [
+    "CVE-2026-89140"
+  ],
+  "details": "Temporal Server does not bind internal completion callbacks to the namespace that attached them, which allows an authenticated caller with write permission in one namespace to alter Scheduler V2 schedule state in another namespace. The callback address temporal://internal is reserved for callbacks that Scheduler V2 attaches to the Workflows it starts. In affected releases, any authenticated caller could attach a callback with that address to a Workflow start request, the address was exempt from the component.callbacks.allowedAddresses allowlist, and the History service delivered the callback to the component its token named, in whatever namespace that was, without authorizing the original caller there. When the forged completion matches an action a target schedule is running, the schedule records the action as completed while its Workflow still runs, which can defeat an overlap policy such as SKIP, and passes caller-controlled data to the next scheduled Workflow as its last completion result. A forged failure may also pause a schedule configured to pause on failure. A forgery requires the target namespace identifier, the schedule identifier, and the identity and timing of a running action. No disclosure of Workflow payloads or history was identified. Only namespaces that hold Scheduler V2 schedules can be targeted; Scheduler V2 is off by default, and existing Scheduler V2 schedules remain targets after the settings that create them are turned off.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/temporalio/temporal/pull/11876"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/temporalio/temporal/pull/12318"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/temporalio/temporal/pull/12319"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/temporalio/temporal/pull/12320"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/temporalio/temporal/pull/12382"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/temporalio/temporal/commit/a210eeb8c2cc7e22338bb4f552ff1171d8f35969"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/temporalio/temporal/commit/d0bd72e85014f31ecfbada1b436b08806496dbef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/temporalio/temporal/releases/tag/v1.30.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/temporalio/temporal/releases/tag/v1.31.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/temporalio/temporal/releases/tag/v1.32.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T19:16:40Z"
+  }
+}

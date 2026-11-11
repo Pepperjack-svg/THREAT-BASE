@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-78r2-qf6v-6gr4",
+  "modified": "2026-10-22T03:33:35Z",
+  "published": "2026-10-22T03:33:35Z",
+  "aliases": [
+    "CVE-2026-114660"
+  ],
+  "details": "Grav from 2.0.0 before 2.2.5 contains an improper access control vulnerability in FlexDirectory::dynamicFlexField() that allows page authors to call arbitrary Flex object methods via flex-*@ directives in page frontmatter. When a user with page edit rights opens the page, directives calling setStorageKey() and delete() run in their session, deleting protected pages neither account may delete.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-95jr-q4xh-27vr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114660"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-2.0.0-before-2.2.5-unauthorized-page-deletion-via-flex-form-directives"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-470"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T02:16:58Z"
+  }
+}

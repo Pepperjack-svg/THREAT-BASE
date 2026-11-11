@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wg4g-q6wc-f4xf",
+  "modified": "2026-10-14T15:32:25Z",
+  "published": "2026-10-14T15:32:25Z",
+  "aliases": [
+    "CVE-2026-110609"
+  ],
+  "details": "Dromara Skyeye through commit 65d3ddcede70 contains an sql injection vulnerability that allows authenticated low-privileged users to inject SQL via the keyword parameter in the queryErpOrderItem MyBatis statement using raw ${} substitution. Attackers can send crafted keyword values to the queryWarehousingDetails or queryOutgoingDetails endpoints to extract database data, including other tenants' data, using boolean, UNION, error or time-based techniques.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110609"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/skyeye"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/skyeye/blob/65d3ddcede701d33ea5416e47c9b656e47d56401/skyeye-erp/erp-pro/src/main/java/com/skyeye/controller/StatisticsController.java#L33-L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/skyeye/blob/65d3ddcede701d33ea5416e47c9b656e47d56401/skyeye-erp/erp-pro/src/main/resources/mapper/erp/StatisticsMapper.xml#L29-L31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/skyeye-erp-statistics-keyword-sqli"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dromara-skyeye-through-commit-65d3ddcede70-sql-injection-via-keyword-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T15:17:12Z"
+  }
+}

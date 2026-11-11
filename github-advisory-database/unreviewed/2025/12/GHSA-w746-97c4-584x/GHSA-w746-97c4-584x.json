@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w746-97c4-584x",
+  "modified": "2025-12-30T15:30:30Z",
+  "published": "2025-12-30T15:30:30Z",
+  "aliases": [
+    "CVE-2023-54169"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5e: fix memory leak in mlx5e_ptp_open\n\nWhen kvzalloc_node or kvzalloc failed in mlx5e_ptp_open, the memory\npointed by \"c\" or \"cparams\" is not freed, which can lead to a memory\nleak. Fix by freeing the array in the error path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54169"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4892e1e548b5bd6524c1c89df06e4849df26fc20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7035e3ae600c4e9cb3dc220c24dd77112ddff8b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83a8f7337a14cdb215c76a8f4cf3f3be8b59177d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d543b649ffe58a0cb4b6948b3305069c5980a1fa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:04Z"
+  }
+}

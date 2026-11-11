@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j7j9-5253-f7vh",
+  "modified": "2026-05-14T20:52:47Z",
+  "published": "2026-05-06T21:41:44Z",
+  "aliases": [
+    "CVE-2026-42555"
+  ],
+  "summary": "Valtimo has SpEL injection via StandardEvaluationContext that allows Remote Code Execution by admin users",
+  "details": "### Summary\n\nMultiple classes evaluate Spring Expression Language (SpEL) expressions from user-supplied input using `StandardEvaluationContext`, which provides unrestricted access to Java types and methods. An authenticated user with the ADMIN role can achieve Remote Code Execution and credential exfiltration.\n\n### Impact\n\nAn attacker with ADMIN credentials can:\n- **Execute arbitrary OS commands** via `T(java.lang.Runtime).getRuntime().exec('...')`\n- **Exfiltrate all environment variables** (database passwords, API keys, Keycloak secrets) via `T(java.lang.System).getenv()`\n- **Read JVM system properties** via `T(java.lang.System).getProperties()`\n- **Load arbitrary classes** via `T(java.lang.Class).forName('...')`\n\n### Affected Components\n\n**1. DocumentMigrationService** (since 12.0.0)\n\nExploitable through the document migration REST API:\n- `POST /api/management/v1/document-definition/migrate`\n- `POST /api/management/v1/document-definition/migration/conflicts`\n\nThe malicious SpEL expression is supplied in the `source` or `target` field of a `DocumentMigrationPatch` object in the request body, using the `${...}` template syntax.\n\n- In 12.x: `com.ritense.document.service.DocumentMigrationService#handleSpelExpression` (document module)\n- In 13.x: same class, moved to the case module\n\n**2. Condition** (since 13.4.0)\n\nExploitable through any admin-configured widget, dashboard, or feature that uses the `Condition` framework. The SpEL expression is supplied in the `value` field of a condition's JSON configuration.\n\n- `com.ritense.valtimo.contract.conditions.Condition#resolveValue` (contract module)\n\nThis component has a significantly wider attack surface than DocumentMigrationService, as conditions are used across many modules.\n\n### Remediation\n\nReplace `StandardEvaluationContext` with `SimpleEvaluationContext` in both affected classes, which disallows Java type references and arbitrary method invocation:\n\n```kotlin\nval evaluationContext = SimpleEvaluationContext\n    .forPropertyAccessors(MapAccessor(), jsonPropertyAccessor)\n    .build()\n```",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.ritense.valtimo:document"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "12.0.0"
+            },
+            {
+              "fixed": "12.32.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.ritense.valtimo:case"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "13.0.0"
+            },
+            {
+              "fixed": "13.23.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.ritense.valtimo:contract"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "13.4.0"
+            },
+            {
+              "fixed": "13.23.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/valtimo-platform/valtimo/security/advisories/GHSA-j7j9-5253-f7vh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42555"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/valtimo-platform/valtimo"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-06T21:41:44Z",
+    "nvd_published_at": "2026-05-14T17:16:21Z"
+  }
+}

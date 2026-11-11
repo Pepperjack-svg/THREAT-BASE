@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cx4x-jmw3-mhpf",
+  "modified": "2026-10-24T12:30:23Z",
+  "published": "2026-10-24T12:30:23Z",
+  "aliases": [
+    "CVE-2026-116008"
+  ],
+  "details": "DaybydayCRM through 2.2.1 contains a missing authorization vulnerability in ProjectsController::updateAssign() that allows any authenticated user to reassign projects without the can-assign-new-user-to-project permission. Low-privileged employees can send PATCH or POST requests to /projects/updateassign/{external_id} with a chosen user_assigned_id to redirect project ownership and notifications.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116008"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Bottelet/DaybydayCRM/issues/347"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Bottelet/DaybydayCRM/pull/362"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Bottelet/DaybydayCRM/commit/20a161e6c3e7ad60ee0430678bcbace593dfd1d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Bottelet/DaybydayCRM/blob/2.2.1/app/Http/Controllers/ProjectsController.php#L232-L245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/daybydaycrm-through-2.2.1-missing-authorization-via-projectscontroller-updateassign"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-24T12:16:56Z"
+  }
+}

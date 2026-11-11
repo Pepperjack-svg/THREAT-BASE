@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f436-rh44-wfp7",
+  "modified": "2025-10-30T18:31:04Z",
+  "published": "2025-03-27T18:31:27Z",
+  "aliases": [
+    "CVE-2023-52997"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: prevent potential spectre v1 gadget in ip_metrics_convert()\n\nif (!type)\n\t\tcontinue;\n\tif (type > RTAX_MAX)\n\t\treturn -EINVAL;\n\t...\n\tmetrics[type - 1] = val;\n\n@type being used as an array index, we need to prevent\ncpu speculation or risk leaking kernel memory content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-52997"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d1d63b612801b3f0a39b7d4467cad0abd60e5c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34c6142f0df9cd75cba5a7aa9df0960d2854b415"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6850fe301d015a7d2012d1de8caf43dafb7cc2f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/746db9ec1e672eee13965625ddac0d97e16fa20c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d50e7348b44f1e046121ff5be01b7fb6978a1149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ef050cf5fb70d995a0d03244e25179b7c66a924a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-27T17:15:48Z"
+  }
+}

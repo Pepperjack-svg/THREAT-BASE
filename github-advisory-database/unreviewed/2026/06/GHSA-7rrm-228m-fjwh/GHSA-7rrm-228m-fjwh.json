@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7rrm-228m-fjwh",
+  "modified": "2026-06-10T15:31:30Z",
+  "published": "2026-06-10T12:33:23Z",
+  "aliases": [
+    "CVE-2026-24066"
+  ],
+  "details": "Slate Digital Connect 1.37.0 for macOS installs a privileged helper tool, com.slatedigital.connect.privileged.helper.tool, which exposes the XPC service com.slatedigital.connect.privileged.helper.tool2. The helper validates connecting XPC clients by checking only the subject.OU value of the client's signing certificate and does not verify that the certificate chains to a trusted code-signing authority. A local attacker can sign a malicious client with a self-signed certificate containing the expected organizational unit value and connect to the privileged XPC service. This allows unauthorized access to privileged helper functionality and may lead to local privilege escalation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24066"
+    },
+    {
+      "type": "WEB",
+      "url": "https://r.sec-consult.com/slate"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec-consult.com/vulnerability-lab/advisory/local-privilege-escalation-in-slate-digital-connect"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-296"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-10T12:16:25Z"
+  }
+}

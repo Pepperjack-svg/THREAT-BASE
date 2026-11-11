@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9r8x-f5f3-r8cv",
+  "modified": "2026-02-06T18:30:29Z",
+  "published": "2026-01-27T21:31:49Z",
+  "aliases": [
+    "CVE-2025-12810"
+  ],
+  "details": "Improper Authentication vulnerability in Delinea Inc. Secret Server On-Prem (RPC Password Rotation modules).This issue affects Secret Server On-Prem: 11.8.1, 11.9.6, 11.9.25.\n\nA secret with \"change password on check in\" enabled automatically checks in even when the password change fails after reaching its retry limit.  This leaves the secret in an inconsistent state with the wrong password.\n\nRemediation: Upgrade to 11.9.47 or later. The secret will remain checked out when the password change fails.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:Y/R:A/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12810"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.delinea.com/online-help/secret-server/release-notes/ss-rn-11-9-000047.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://trust.delinea.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://trust.delinea.com/?tcuUid=48260de9-954d-45c2-9c66-2c9510798a0b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-27T20:16:14Z"
+  }
+}

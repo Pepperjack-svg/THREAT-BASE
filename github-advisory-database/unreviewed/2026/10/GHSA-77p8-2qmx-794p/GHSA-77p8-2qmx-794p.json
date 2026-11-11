@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77p8-2qmx-794p",
+  "modified": "2026-10-30T15:34:39Z",
+  "published": "2026-10-30T15:34:39Z",
+  "aliases": [
+    "CVE-2026-119660"
+  ],
+  "details": "MuseBot before 2.0.0 contains an authentication bypass vulnerability that allows unauthenticated attackers to forge admin sessions by using the hard-coded default session_key 'muse_bot_session_key'. Attackers can sign a MuseBot-session cookie carrying a user_id to gain full administrative access, reading password hashes, chat records, and bot configuration, and stopping bots.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119660"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yincongcyincong/MuseBot/issues/61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yincongcyincong/MuseBot/commit/139f6158b50283b983d76976f593a3a09a064681"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yincongcyincong/MuseBot/commit/3e64518948fe7037058f07ef987d35216c3f0cae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yincongcyincong/MuseBot"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yincongcyincong/MuseBot/blob/v1.0.42/admin/conf/conf.go#L28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yincongcyincong/MuseBot/blob/v1.0.42/admin/controller/login.go#L19-L88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/musebot-admin-default-session-key-auth-bypass"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/musebot-before-2.0.0-authentication-bypass-via-hard-coded-session-key"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1394"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T15:16:50Z"
+  }
+}

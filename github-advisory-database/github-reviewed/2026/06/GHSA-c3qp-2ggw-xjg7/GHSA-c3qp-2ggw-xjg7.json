@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c3qp-2ggw-xjg7",
+  "modified": "2026-06-05T20:35:51Z",
+  "published": "2026-06-05T20:35:51Z",
+  "aliases": [
+    "CVE-2026-47744"
+  ],
+  "summary": "Shopper: Authorization bypass and RBAC privilege escalation in team settings",
+  "details": "## Impact\n\nTwo distinct authorization defects in the team settings allowed any authenticated panel user to take over the RBAC system:\n\n- `Settings/Team/Index` had no `mount()` authorization. Any authenticated user could load the page and use its public actions to create new roles and delete other users, including administrators.\n- `Settings/Team/RolePermission` gated its write actions on the read-only `view_users` permission. Any user holding `view_users` could grant themselves or any other user arbitrary permissions, including `manage_users` and `edit_orders`, effectively escalating to full panel administrator from a read-only account.\n\nCombined, these two defects allow a low-privilege authenticated user to obtain administrator privileges and remove the legitimate administrators from the panel.\n\n## Patches\n\nFixed in `v2.8.0`:\n\n- `Settings/Team/Index::mount()` now authorizes against `manage_users`.\n- `Settings/Team/RolePermission` write actions now require `manage_users` instead of `view_users`.\n\nUpgrade via:\n\n```bash\ncomposer require shopper/admin:^2.8\n```\n\n## Workarounds\n\nNone. Upgrade to `v2.8.0`.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "shopper/framework"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.8.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopperlabs/shopper/security/advisories/GHSA-c3qp-2ggw-xjg7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47744"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopperlabs/shopper/pull/511"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/shopperlabs/shopper"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269",
+      "CWE-285"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-05T20:35:51Z",
+    "nvd_published_at": "2026-05-29T19:16:26Z"
+  }
+}

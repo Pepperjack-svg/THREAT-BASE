@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p7cm-h8w6-p4cm",
+  "modified": "2026-10-16T18:34:46Z",
+  "published": "2026-10-16T18:34:46Z",
+  "aliases": [
+    "CVE-2026-111642"
+  ],
+  "details": "FastapiAdmin through 3.0 contains a hard-coded JWT signing secret in backend/app/config/setting.py that allows low-privileged users to forge tokens impersonating the superuser. Attackers can register via the unauthenticated /api/v1/system/user/register endpoint, log in, and forge an HS256 token keeping their session_id but naming the superuser in user_name to gain superuser privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111642"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fastapiadmin/FastapiAdmin/blob/v3.0/backend/app/config/setting.py#L67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fastapiadmin/FastapiAdmin/blob/v3.0/backend/app/core/dependencies.py#L72-L112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/fastapiadmin-unauthenticated-autologin-and-hardcoded-jwt-secret"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/fastapiadmin-through-3.0-hard-coded-jwt-secret-privilege-escalation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-321"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:44Z"
+  }
+}

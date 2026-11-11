@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4f82-h634-f877",
+  "modified": "2026-02-26T18:31:34Z",
+  "published": "2025-12-24T12:30:29Z",
+  "aliases": [
+    "CVE-2025-68351"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nexfat: fix refcount leak in exfat_find\n\nFix refcount leaks in `exfat_find` related to `exfat_get_dentry_set`.\n\nFunction `exfat_get_dentry_set` would increase the reference counter of\n`es->bh` on success. Therefore, `exfat_put_dentry_set` must be called\nafter `exfat_get_dentry_set` to ensure refcount consistency. This patch\nrelocate two checks to avoid possible leaks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68351"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9aee8de970f18c2aaaa348e3de86c38e2d956c1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d009ff8959d28d2a33aeb96a5f7e7161c421d78f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc9ce762525e73438d31b613f18bca92a4d3d578"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:15:58Z"
+  }
+}

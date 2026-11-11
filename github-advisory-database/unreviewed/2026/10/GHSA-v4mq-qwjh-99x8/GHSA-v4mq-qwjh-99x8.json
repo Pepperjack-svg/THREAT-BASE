@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v4mq-qwjh-99x8",
+  "modified": "2026-10-16T18:34:49Z",
+  "published": "2026-10-16T18:34:49Z",
+  "aliases": [
+    "CVE-2026-111677"
+  ],
+  "details": "Antiword through 0.37 contains a heap out-of-bounds read vulnerability in vGet8LstInfo in prop8.c caused by an inverted bounds check on the PlcfLst record count. Attackers can supply a crafted Word 8 .doc file claiming up to 0xffff LSTF records in a tiny buffer, causing reads past the heap allocation that crash the process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111677"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rsdoiel/antiword/blob/fe4b579067122a2d9d62647efb1ee7cfe3ca92bb/prop8.c#L799-L825"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/antiword-word8-plcflst-count-and-fkp-run-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/antiword-through-0.37-heap-out-of-bounds-read-via-vget8lstinfo-in-prop8-c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:50Z"
+  }
+}

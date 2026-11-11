@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xgcq-34qv-mmr7",
+  "modified": "2025-10-01T21:31:20Z",
+  "published": "2025-09-30T15:30:30Z",
+  "aliases": [
+    "CVE-2025-56301"
+  ],
+  "details": "An issue was discovered in Chipsalliance Rocket-Chip commit f517abbf41abb65cea37421d3559f9739efd00a9 (2025-01-29) allowing attackers to corrupt exception handling and privilege state transitions via a flawed interaction between exception handling and MRET return mechanisms in the CSR logic when an exception is triggered during MRET execution. The Control and Status Register (CSR) logic has a flawed interaction between exception handling and exception return (MRET) mechanisms which can cause faulty trap behavior. When the MRET instruction is executed in machine mode without being in an exception state, an Instruction Access Fault may be triggered. This results in both the exception handling logic and the exception return logic activating simultaneously, leading to conflicting updates to the control and status registers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-56301"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chipsalliance/rocket-chip"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chipsalliance/rocket-chip/blob/f517abbf41abb65cea37421d3559f9739efd00a9/src/main/scala/rocket/CSR.scala"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chipsalliance/rocket-chip/blob/master/src/main/scala/rocket/CSR.scala"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/heyfenny/Vulnerability_disclosure/blob/main/RISCV/Rocket-chip/CVE-2025-56301/details.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lf-riscv.atlassian.net/wiki/spaces/HOME/pages/16154769/RISC-V+Technical+Specifications#ISA-Specifications"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1281"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-30T15:15:52Z"
+  }
+}

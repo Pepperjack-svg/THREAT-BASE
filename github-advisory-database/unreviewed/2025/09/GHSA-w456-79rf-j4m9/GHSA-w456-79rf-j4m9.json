@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w456-79rf-j4m9",
+  "modified": "2025-09-06T03:30:22Z",
+  "published": "2025-09-06T03:30:22Z",
+  "aliases": [
+    "CVE-2025-9085"
+  ],
+  "details": "The User Registration & Membership plugin for WordPress is vulnerable to SQL Injection via the 's' parameter in version 4.3.0. This is due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-9085"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/user-registration/tags/4.3.0/modules/membership/includes/Admin/Members/MembersListTable.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/user-registration/tags/4.3.0/modules/membership/includes/Admin/Repositories/MembersRepository.php#L116"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3351639/user-registration/tags/4.4.0/modules/membership/includes/Admin/Repositories/MembersRepository.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/ba326241-46a3-4891-a180-d7977f4e83ed?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-06T03:15:41Z"
+  }
+}

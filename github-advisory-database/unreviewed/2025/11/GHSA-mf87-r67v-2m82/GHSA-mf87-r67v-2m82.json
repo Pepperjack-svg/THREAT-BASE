@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mf87-r67v-2m82",
+  "modified": "2025-11-25T21:32:06Z",
+  "published": "2025-11-25T21:32:06Z",
+  "aliases": [
+    "CVE-2025-64067"
+  ],
+  "details": "Primakon Pi Portal 1.0.18 API endpoints responsible for retrieving object-specific or filtered data (e.g., user profiles, project records) fail to implement sufficient server-side validation to confirm that the requesting user is authorized to access the requested object or dataset. This vulnerability can be exploited in two ways: Direct ID manipulation and IDOR, by changing an ID parameter (e.g., user_id, project_id) in the request, an attacker can access the object and data belonging to another user; and filter Omission, by omitting the filtering parameter entirely, an attacker can cause the endpoint to return an entire unfiltered dataset of all stored records for all users. This flaw leads to the unauthorized exposure of sensitive personal and organizational information.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-64067"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/n3k7ar91/Vulnerabilites/blob/main/Primakon/CVE-2025-64067.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.primakon.com/rjesenja/primakon-pcm"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-25T19:15:50Z"
+  }
+}

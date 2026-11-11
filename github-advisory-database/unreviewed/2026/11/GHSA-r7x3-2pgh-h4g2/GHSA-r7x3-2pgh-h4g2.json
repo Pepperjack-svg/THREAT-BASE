@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r7x3-2pgh-h4g2",
+  "modified": "2026-11-03T18:31:05Z",
+  "published": "2026-11-03T18:31:05Z",
+  "aliases": [
+    "CVE-2026-121559"
+  ],
+  "details": "GLPI 10.0.0 before 10.0.28 and 11.0.0 before 11.0.10 contains a privilege escalation vulnerability that allows authenticated users to obtain elevated profiles by cloning accounts. A user with the Technician profile can clone a Super-Admin account with a new login and password, since User::getCloneRelations() copies every Profile_User and Group_User assignment without permission checks, yielding an attacker-controlled Super-Admin account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/glpi-project/glpi/security/advisories/GHSA-c46f-4v9j-5gpc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121559"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/glpi-project/glpi/commit/10a827c8c1868a0a65ab977d30878ff16547d9a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/glpi-project/glpi/commit/d30faa501e8b549ae507615b05e7d99dacfe5d98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/glpi-10.0.0-before-10.0.28-and-11.0.0-before-11.0.10-privilege-escalation-via-user-cloning"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T16:17:28Z"
+  }
+}

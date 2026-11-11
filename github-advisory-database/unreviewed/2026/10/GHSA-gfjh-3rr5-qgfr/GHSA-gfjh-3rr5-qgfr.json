@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gfjh-3rr5-qgfr",
+  "modified": "2026-10-18T18:31:53Z",
+  "published": "2026-10-18T18:31:53Z",
+  "aliases": [
+    "CVE-2026-98546"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\narm64/boot: Disable trapping of PMZR_EL0 writes to EL2\n\n__init_el2_fgt2() writes one mask to both HDFGRTR2_EL2 and HDFGWTR2_EL2.\nPMZR_EL0 is write-only, so its trap bit, nPMZR_EL0, exists only in\nHDFGWTR2_EL2 and is therefore never set: a PMZR_EL0 write from the host\ntraps to EL2, where the nVHE hypervisor has no handler and BUG()s. The\nkernel never writes PMZR_EL0, but kernel.perf_user_access=1 has the PMU\ndriver set PMUSERENR_EL0.UEN for a task with a user-read event, so a\nwrite from EL0 reaches the trap and takes the host down without a panic\nmessage.\n\nAccumulate the HDFGWTR2_EL2 bits separately, as __init_el2_fgt() already\ndoes for HDFGWTR_EL2, and set nPMZR_EL0 with the other FEAT_PMUv3p9\nbits.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/071f51188a5d8ec10535541255587976d12fc7d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2bc6b218717b9d08f466f88209251d54bc09b207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb8c90c86441c090e9036f019cf1b4d7894a2c40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce71865bf43f88bed9d9218e9218e537150be506"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:06Z"
+  }
+}

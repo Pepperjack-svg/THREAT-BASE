@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mc35-74mg-3v34",
+  "modified": "2026-10-16T18:34:56Z",
+  "published": "2026-10-16T18:34:56Z",
+  "aliases": [
+    "CVE-2026-111720"
+  ],
+  "details": "fish-island-backend through commit 7c61b78 contains an unauthenticated server-side request forgery vulnerability that allows remote attackers to make the server fetch attacker-supplied URLs via the url parameter of GET /api/web/parse. Attackers can target internal hosts, loopback services or cloud metadata endpoints through redirect-following OkHttp requests and read back page titles, meta descriptions and favicons.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111720"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lhccong/fish-island-backend/blob/7c61b7861e99d3970beb34103c244b79e4de7d88/src/main/java/com/cong/fishisland/config/CorsConfig.java#L33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lhccong/fish-island-backend/blob/7c61b7861e99d3970beb34103c244b79e4de7d88/src/main/java/com/cong/fishisland/controller/chat/WebParserController.java#L13-L25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lhccong/fish-island-backend/blob/7c61b7861e99d3970beb34103c244b79e4de7d88/src/main/java/com/cong/fishisland/service/impl/chat/WebParserServiceImpl.java#L28-L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/fish-island-web-parse-unauth-ssrf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/fish-island-backend-through-commit-7c61b78-ssrf-via-api-web-parse"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:56Z"
+  }
+}

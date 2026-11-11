@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j74m-34v4-rgqp",
+  "modified": "2026-04-27T15:30:52Z",
+  "published": "2026-04-27T15:30:52Z",
+  "aliases": [
+    "CVE-2026-40514"
+  ],
+  "details": "SmarterTools SmarterMail builds prior to 9610 contain a cryptographic weakness in the file and email sharing endpoints that use DES-CBC encryption with keys and initialization vectors derived from System.Random seeded with insufficient entropy, reducing the seed space to approximately 19,000 possible values. An unauthenticated attacker can use the attachment download endpoint as an oracle to determine the seed in use and derive encryption keys and initialization vectors to forge sharing tokens for arbitrary emails, attachments, or file storage contents without prior access to the targeted content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40514"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.smartertools.com/smartermail/release-notes/current"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/smartertools-smartermail-build-9610-cryptographic-weakness-via-weak-rng"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-338"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-27T15:16:20Z"
+  }
+}

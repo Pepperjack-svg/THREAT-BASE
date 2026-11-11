@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-642p-47qh-4hhp",
+  "modified": "2026-10-30T15:34:40Z",
+  "published": "2026-10-30T15:34:39Z",
+  "aliases": [
+    "CVE-2026-119662"
+  ],
+  "details": "Songloft 2.9.0 before 2.13.6 contains a hardcoded credentials vulnerability that allows adjacent network attackers to authenticate as administrator using the fixed admin/admin pair. Attackers on the same network can log in via the /api/v1/auth/login endpoint to modify library and configuration settings and install JavaScript plugins running in QuickJS.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/songloft-org/songloft/issues/534"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/songloft-org/songloft/commit/034fc1c442af5d6bc188642f1fb766af648e014d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/songloft-org/songloft"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/songloft-org/songloft/blob/v2.13.3/internal/config/types.go#L15-L22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/songloft-org/songloft/blob/v2.13.3/mobile/mobile.go#L60-L84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/songloft-default-admin-credentials-unauth-admin-takeover"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/songloft-2.9.0-before-2.13.6-hardcoded-admin-credentials-in-embedded-backend"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-798"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T15:16:50Z"
+  }
+}

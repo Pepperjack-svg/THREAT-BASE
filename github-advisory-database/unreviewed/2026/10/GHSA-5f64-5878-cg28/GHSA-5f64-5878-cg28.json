@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5f64-5878-cg28",
+  "modified": "2026-10-15T21:36:02Z",
+  "published": "2026-10-15T21:36:02Z",
+  "aliases": [
+    "CVE-2026-110876"
+  ],
+  "details": "AdPlug through 2.4 contains an out-of-bounds read vulnerability in src/xsm.cpp that allows attackers to read before note_table by supplying a negative note index. Attackers can craft an XSM file with the ofTAZ! signature and a song byte of 0x80 or higher, causing a global-buffer-overflow read during playback that may crash affected applications.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110876"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/adplug/adplug"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/adplug/adplug/blob/e491e382479ed2246f124c96c70d94561dce59b9/src/xsm.cpp#L86-L134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/adplug-ksm-note-loop-databuf-oob-write"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/adplug-through-2.4-out-of-bounds-read-via-cxsmplayer-play-note-in-xsm-files"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:24Z"
+  }
+}

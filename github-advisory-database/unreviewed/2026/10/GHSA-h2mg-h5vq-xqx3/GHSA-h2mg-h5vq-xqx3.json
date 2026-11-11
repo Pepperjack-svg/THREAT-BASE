@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h2mg-h5vq-xqx3",
+  "modified": "2026-10-16T18:34:49Z",
+  "published": "2026-10-16T18:34:49Z",
+  "aliases": [
+    "CVE-2026-111675"
+  ],
+  "details": "Course-tencent-cloud through 2.0.1 contains an improper restriction of authentication attempts vulnerability that allows unauthenticated attackers to brute force 6-digit SMS/email verification codes, which are never invalidated or attempt-limited. Attackers who know a victim's phone or email can trigger a code and rotate source IPs against the password reset and verify login endpoints to take over accounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111675"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xiaochong0302/course-tencent-cloud/blob/v2.0.1/app/Services/Logic/Account/PasswordReset.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xiaochong0302/course-tencent-cloud/blob/v2.0.1/app/Services/Verify.php#L27-L73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/ctc-verify-code-brute-force-account-takeover"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/course-tencent-cloud-through-2.0.1-verification-code-brute-force-account-takeover"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-307"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:50Z"
+  }
+}

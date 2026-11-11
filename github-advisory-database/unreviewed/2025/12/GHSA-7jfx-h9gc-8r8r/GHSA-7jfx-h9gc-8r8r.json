@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7jfx-h9gc-8r8r",
+  "modified": "2025-12-15T21:30:30Z",
+  "published": "2025-12-15T15:30:31Z",
+  "aliases": [
+    "CVE-2025-34179"
+  ],
+  "details": "NetSupport Manager < 14.12.0001 contains an unauthenticated SQL injection vulnerability in its Connectivity Server/Gateway HTTPS request handling. The server evaluates request URIs using an unsanitized SQLite query against the FileLinks table in gateway.db. By injecting SQL through the LinkName/URI value, a remote attacker can control the FileName field used by the server to read and return files from disk, resulting in arbitrary local file disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34179"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.netsupportsoftware.com/knowledge-base/updating-and-securing-netsupport-manager"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ret2.me/post/2025-12-04-exploiting-netsupport-gateway"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netsupport-manager-unauthenticated-sqli-local-file-disclosure"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-15T15:15:49Z"
+  }
+}

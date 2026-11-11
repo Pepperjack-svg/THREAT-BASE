@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v54w-6hqg-rx6f",
+  "modified": "2026-10-11T12:31:07Z",
+  "published": "2026-10-11T09:30:24Z",
+  "aliases": [
+    "CVE-2026-81649"
+  ],
+  "details": "The Fundiin cho WooCommerce WordPress plugin through 3.4.0 does not have proper authorisation on several of its REST API routes, relying instead on a credential that is identical on every installation, allowing unauthenticated attackers to disclose the store's payment credentials and customer order data, overwrite the payment gateway configuration so that payments are credited elsewhere, and mark unpaid orders as paid. The same missing authorisation also allows arbitrary script to be stored in a field which is output unescaped on the classic checkout, leading to unauthenticated stored XSS on stores that do not use the block-based checkout.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81649"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/28cec871-1f17-48c7-b836-db705fc5cffa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T07:17:24Z"
+  }
+}

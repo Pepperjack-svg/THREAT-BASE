@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-58rf-522j-f25h",
+  "modified": "2026-03-13T21:31:47Z",
+  "published": "2026-03-13T21:31:46Z",
+  "aliases": [
+    "CVE-2026-2879"
+  ],
+  "details": "The GetGenie plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.3.2. This is due to missing validation on the `id` parameter in the `create()` method of the `GetGenieChat` REST API endpoint. The method accepts a user-controlled post ID and, when a post with that ID exists, calls `wp_update_post()` without verifying that the current user owns the post or that the post is of the expected `getgenie_chat` type. This makes it possible for authenticated attackers, with Author-level access and above, to overwrite arbitrary posts owned by any user — including Administrators — effectively destroying the original content by changing its `post_type` to `getgenie_chat` and reassigning `post_author` to the attacker.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2879"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/getgenie/tags/4.3.2/app/Api/GetGenieChat.php#L60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/getgenie/tags/4.3.2/app/Api/GetGenieChat.php#L91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3479838%40getgenie%2Ftrunk&old=3446466%40getgenie%2Ftrunk&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/8030c334-458a-4d21-9a64-3f5df715ba97?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-13T19:54:34Z"
+  }
+}

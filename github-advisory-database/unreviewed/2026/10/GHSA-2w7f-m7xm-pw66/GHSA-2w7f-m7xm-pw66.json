@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2w7f-m7xm-pw66",
+  "modified": "2026-10-08T06:31:19Z",
+  "published": "2026-10-08T06:31:19Z",
+  "aliases": [
+    "CVE-2026-107450"
+  ],
+  "details": "In Stump through 0.1.10, the updateSmartList and deleteSmartList GraphQL mutations (crates/graphql/src/mutation/smart_lists.rs) depend only on the shared AccessSmartList permission and resolve the target list at Reader access (lacking a creator check). Any authenticated user with that permission can overwrite, delete, or take over another user's smart list. (updateSmartList sets creatorId to the caller identity, and can set visibility to PRIVATE, locking out the original owner.) NOTE: this is unrelated to the graphql crate on crates.io.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107450"
+    },
+    {
+      "type": "WEB",
+      "url": "https://crates.io/crates/graphql"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kashishtopi/stump-smartlist-bola"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/stumpapp/stump/blob/42a9918/crates/graphql/src/mutation/smart_lists.rs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T05:17:04Z"
+  }
+}

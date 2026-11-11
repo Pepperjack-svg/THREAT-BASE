@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fm4f-3f67-2hgv",
+  "modified": "2026-10-20T18:31:43Z",
+  "published": "2026-10-20T18:31:43Z",
+  "aliases": [
+    "CVE-2026-113359"
+  ],
+  "details": "Baserow before 2.3.0 contains a missing authorization vulnerability that allows any authenticated user to read field values from other workspaces via the unique_row_values API endpoint. Attackers can enumerate sequential field IDs to retrieve up to 100 distinct cell values per field from tables in workspaces they do not belong to.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/baserow/baserow/security/advisories/GHSA-r8cf-4rgr-x5cv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113359"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/baserow/baserow/issues/4870"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/baserow/baserow/commit/6884c1a49adb5eb0a32de1220e6d9f99e9d97c1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/baserow/baserow/blob/2.2.2/backend/src/baserow/contrib/database/api/fields/views.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/baserow/baserow/releases/tag/2.3.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/baserow-before-2.3.0-cross-workspace-data-disclosure-via-unique-row-values-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T16:17:06Z"
+  }
+}

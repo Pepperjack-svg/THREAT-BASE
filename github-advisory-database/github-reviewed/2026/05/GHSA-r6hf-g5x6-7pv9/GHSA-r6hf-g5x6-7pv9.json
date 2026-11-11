@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r6hf-g5x6-7pv9",
+  "modified": "2026-10-27T16:47:44Z",
+  "published": "2026-05-12T18:30:40Z",
+  "aliases": [
+    "CVE-2026-31233"
+  ],
+  "summary": "Guardrails AI contains a code injection vulnerability in its Hub package installation mechanism",
+  "details": "Guardrails AI thru 0.6.7 contains a code injection vulnerability (CWE-94) in its Hub package installation mechanism. When installing validator packages via guardrails hub install, the system retrieves a manifest from the Guardrails Hub and dynamically executes a script specified in the post_install field. The script path is constructed from untrusted manifest data and executed without proper validation or sanitization, allowing remote code execution. An attacker who can publish malicious packages to the Hub can inject arbitrary code that will be executed on any system where a victim installs the malicious package.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "guardrails-ai"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.6.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31233"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/guardrails-ai/guardrails"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/guardrails-ai/PYSEC-2026-347.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/guardrails-ai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.notion.so/CVE-2026-31233-35d1e13931888142a954fb3f50ee0c94"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-27T22:03:04Z",
+    "nvd_published_at": "2026-05-12T18:16:51Z"
+  }
+}

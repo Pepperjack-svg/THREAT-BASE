@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-65w6-rwf9-587r",
+  "modified": "2026-03-25T21:30:22Z",
+  "published": "2026-01-14T15:33:00Z",
+  "aliases": [
+    "CVE-2025-71106"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs: PM: Fix reverse check in filesystems_freeze_callback()\n\nThe freeze_all_ptr check in filesystems_freeze_callback() introduced by\ncommit a3f8f8662771 (\"power: always freeze efivarfs\") is reverse which\nquite confusingly causes all file systems to be frozen when\nfilesystem_freeze_enabled is false.\n\nOn my systems it causes the WARN_ON_ONCE() in __set_task_frozen() to\ntrigger, most likely due to an attempt to freeze a file system that is\nnot ready for that.\n\nAdd a logical negation to the check in question to reverse it as\nappropriate.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/222047f68e8565c558728f792f6fef152a1d4d51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b107196729ff6b9d6cde0a71f49c1243def43328"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-14T15:15:59Z"
+  }
+}

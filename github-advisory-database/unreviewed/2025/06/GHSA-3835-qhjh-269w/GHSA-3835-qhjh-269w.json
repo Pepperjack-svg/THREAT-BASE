@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3835-qhjh-269w",
+  "modified": "2025-11-14T18:31:23Z",
+  "published": "2025-06-18T12:30:40Z",
+  "aliases": [
+    "CVE-2022-49996"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix possible memory leak in btrfs_get_dev_args_from_path()\n\nIn btrfs_get_dev_args_from_path(), btrfs_get_bdev_and_sb() can fail if\nthe path is invalid. In this case, btrfs_get_dev_args_from_path()\nreturns directly without freeing args->uuid and args->fsid allocated\nbefore, which causes memory leak.\n\nTo fix these possible leaks, when btrfs_get_bdev_and_sb() fails,\nbtrfs_put_dev_args_from_path() is called to clean up the memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b124ad87244cd7f0883c5eaa38d2326b2154cad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5f52402c77013e4a826394b807dd5ea4dc83bd72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ea0106a7a3d8116860712e3f17cd52ce99f6707"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:27Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73h4-4m3x-58h5",
+  "modified": "2025-09-24T21:30:35Z",
+  "published": "2025-09-19T21:31:17Z",
+  "aliases": [
+    "CVE-2025-34191"
+  ],
+  "details": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host versions prior to 22.0.843 and Application prior to 20.0.1923 (macOS/Linux client deployments) contain an arbitrary file write vulnerability via the response file handling. When tasks produce output the service writes response data into files under /opt/PrinterInstallerClient/tmp/responses/ reusing the requested filename. The service follows symbolic links in the responses directory and writes as the service user (typically root), allowing a local, unprivileged user to cause the service to overwrite or create arbitrary files on the filesystem as root. This can be used to modify configuration files, replace or inject binaries or drivers, and otherwise achieve local privilege escalation and full system compromise.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/saas/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/va/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pierrekim.github.io/blog/2025-04-08-vasion-printerlogic-83-vulnerabilities.html#mac-arbitrary-file-write"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vasion-print-printerlogic-arbitrary-file-write-as-root-via-response-path-symlink-follow"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-19T19:15:39Z"
+  }
+}

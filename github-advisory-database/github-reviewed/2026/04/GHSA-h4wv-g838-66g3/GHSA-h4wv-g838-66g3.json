@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h4wv-g838-66g3",
+  "modified": "2026-04-04T06:00:47Z",
+  "published": "2026-04-02T15:31:39Z",
+  "aliases": [
+    "CVE-2026-4634"
+  ],
+  "summary": "Keycloak: Application-Level DoS via Scope Processing",
+  "details": "A flaw was found in Keycloak. An unauthenticated attacker can exploit this vulnerability by sending a specially crafted POST request with an excessively long scope parameter to the OpenID Connect (OIDC) token endpoint. This leads to high resource consumption and prolonged processing times, ultimately resulting in a Denial of Service (DoS) for the Keycloak server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.keycloak:keycloak-services"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "26.5.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4634"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keycloak/keycloak/issues/47716"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keycloak/keycloak/commit/b455ee4f28abb6f2120aff72fd179589cc5267a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:6475"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:6476"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:6477"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:6478"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-4634"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2450250"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/keycloak/keycloak"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1050"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-04T06:00:47Z",
+    "nvd_published_at": "2026-04-02T13:16:27Z"
+  }
+}

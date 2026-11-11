@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j3jv-p835-c5gh",
+  "modified": "2026-11-10T21:31:59Z",
+  "published": "2026-11-07T21:31:16Z",
+  "aliases": [
+    "CVE-2026-99284"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: skbuff: propagate shared-frag marker in skb_zerocopy()\n\nskb_zerocopy() moves frag descriptors from @from into @to and takes a\nreference on each frag, but it does not copy skb_shinfo(from)->flags into\nskb_shinfo(to)->flags.  A destination skb holding the same page-cache\nbacked frags as the source therefore reports skb_has_shared_frag() as\nfalse.\n\nThat breaks the invariant relied on by later in-place writers.  ESP input\nchecks skb_has_shared_frag() before deciding whether an uncloned\nnonlinear skb can skip skb_cow_data(); with the marker lost, an skb that\nskb_zerocopy() built for nfnetlink_queue or for an openvswitch upcall is\ndecrypted in place, letting an unprivileged user write into the page\ncache of a root-owned read-only file.\n\nPropagate SKBFL_SHARED_FRAG when frag descriptors are copied, as done for\nthe other frag-transfer helpers.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99284"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a9c180cd8435917b7516edfb1c9148032c28773"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c623e3cbf43f12dd4a72712079bfa247a9b8ba3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79dc34beb1fdb3da79753e51e15c68591a2561fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7d6ff98d5d1b400f02211f962ac32cc0020aeab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe8477e23dd2ee6bce231d65f2586a333b211dc0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-07T21:17:00Z"
+  }
+}

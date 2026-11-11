@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6rj2-cjrv-wr38",
+  "modified": "2026-11-07T09:30:40Z",
+  "published": "2026-11-07T09:30:40Z",
+  "aliases": [
+    "CVE-2026-120515"
+  ],
+  "details": "The SEOPress – AI SEO Plugin & On-site SEO plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'seopress_google_analytics_affiliate_tracking' and 'seopress_google_analytics_download_tracking' settings in versions up to, and including, 10.3. This is due to insufficient input sanitization and output escaping on these settings as they are interpolated into the inline Google Analytics tracking snippet by seopress_google_analytics_js(): the affiliate value receives no sanitization at all (it is omitted from inc/admin/sanitize/Sanitize.php) and lands inside a <script> block, while the download value is only passed through sanitize_text_field() and lands inside a JavaScript regular-expression literal that preserves parentheses, semicolons and slashes. This makes it possible for authenticated attackers, with Subscriber-level access and above (where an administrator has delegated the SEOPress 'analytics' capability under Settings > Advanced > Security — the precondition Wordfence accepted for CVE-2026-101357), to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120515"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.svn.wordpress.org/wp-seopress/trunk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-seopress/tags/10.3/inc/admin/sanitize/Sanitize.php#L63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-seopress/tags/10.3/inc/functions/options-google-analytics.php#L800"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-seopress/tags/10.3/inc/functions/options-google-analytics.php#L822"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-seopress/tags/10.3/src/Actions/Api/Options/AnalyticsSettings.php#L104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-seopress/tags/10.4/inc/functions/options-google-analytics.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/10a13871-c98e-4785-ab41-18e548e07c05?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-07T07:17:03Z"
+  }
+}

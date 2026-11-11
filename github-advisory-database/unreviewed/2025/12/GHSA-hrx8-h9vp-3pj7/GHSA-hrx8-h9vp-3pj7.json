@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hrx8-h9vp-3pj7",
+  "modified": "2025-12-09T03:31:09Z",
+  "published": "2025-12-09T03:31:09Z",
+  "aliases": [
+    "CVE-2022-50633"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: dwc3: qcom: Fix memory leak in dwc3_qcom_interconnect_init\n\nof_icc_get() alloc resources for path handle, we should release it when not\nneed anymore. Like the release in dwc3_qcom_interconnect_exit() function.\nAdd icc_put() in error handling to fix this.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f3b51189f7a7be5d822fb8c537d778c57eb9821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/56f6de394f0f57928cd401255a5c7866b68a77e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c39c8d23ff9fb1beb6e16cf0ae929c764538625"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97a48da1619ba6bd42a0e5da0a03aa490a9496b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9089b95548f0272e02a89989c511e235561d051"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T01:16:45Z"
+  }
+}

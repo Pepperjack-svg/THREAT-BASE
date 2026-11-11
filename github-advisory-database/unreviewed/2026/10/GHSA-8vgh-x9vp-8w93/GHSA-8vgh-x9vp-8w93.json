@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8vgh-x9vp-8w93",
+  "modified": "2026-10-11T15:31:02Z",
+  "published": "2026-10-11T15:31:02Z",
+  "aliases": [
+    "CVE-2026-108713"
+  ],
+  "details": "SuiteCRM through 7.15.2 and 8.x through 8.10.2 contains a missing authorization vulnerability that allows authenticated users to create and modify EmailMarketing records via the setCampaignMarketingAndTemplate entry point. Low-privileged users denied Campaigns access can post marketingId, campaignId, and templateId to reattach marketing messages or swap the template EmailMan sends in campaign emails.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108713"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SuiteCRM/SuiteCRM"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SuiteCRM/SuiteCRM-Core/blob/v8.10.2/public/legacy/modules/Campaigns/WizardCampaignSave.php#L88-L113"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SuiteCRM/SuiteCRM/blob/v7.15.2/include/MVC/Controller/entry_point_registry.php#L93"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SuiteCRM/SuiteCRM/blob/v7.15.2/modules/Campaigns/WizardCampaignSave.php#L88-L122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind03/suitecrm-campaign-wizard-emailmarketing-missing-authorization"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/suitecrm-through-7.15.2-and-8.10.2-missing-authorization-via-setcampaignmarketingandtemplate"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T13:17:14Z"
+  }
+}

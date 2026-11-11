@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hxj2-x4g6-rhf8",
+  "modified": "2025-04-14T21:32:23Z",
+  "published": "2025-03-27T18:31:24Z",
+  "aliases": [
+    "CVE-2022-49749"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: designware: use casting of u64 in clock multiplication to avoid overflow\n\nIn functions i2c_dw_scl_lcnt() and i2c_dw_scl_hcnt() may have overflow\nby depending on the values of the given parameters including the ic_clk.\nFor example in our use case where ic_clk is larger than one million,\nmultiplication of ic_clk * 4700 will result in 32 bit overflow.\n\nAdd cast of u64 to the calculation to avoid multiplication overflow, and\nuse the corresponding define for divide.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f29d780bd691d20e89e5b35d5e6568607115e94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f36aae9e80e79b7a6d62227eaa96935166be9fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8c37bc514514999e62a17e95160ed9ebf75ca8d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed173f77fd28a3e4fffc13b3f28687b9eba61157"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-27T17:15:39Z"
+  }
+}

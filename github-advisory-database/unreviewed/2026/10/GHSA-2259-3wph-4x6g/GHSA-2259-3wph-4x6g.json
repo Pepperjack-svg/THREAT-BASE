@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2259-3wph-4x6g",
+  "modified": "2026-10-18T18:31:52Z",
+  "published": "2026-10-18T18:31:52Z",
+  "aliases": [
+    "CVE-2026-98528"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: cdev: fix kernel stack leak to user-space in error path\n\nIf we fail to acquire the GPIO chip guard in gpio_desc_to_lineinfo(), we\nreturn immediately before zeroing the info struct we'll end up passing\nto the user-space later in lineinfo_get_v1(). This may leak the kernel\nstack contents. Make gpio_desc_to_lineinfo() return int so that the\n-ENODEV returned on failure to acquire the guard can be propagated to\nthe callers.\n\nWhile not strictly necessary: move the memset() before trying to acquire\nthe SRCU read lock too for good measure.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98528"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1feb5d39b05afd902ed9fc902ec5b15be03a4bdb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60a466f231905cd96ae6f0f3c44a710c97873dac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8460ee5216ab9a38263b01dca4b0a27e083f70f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf3d043582e106a0e57002bec8a6de8929ba3e1c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:04Z"
+  }
+}

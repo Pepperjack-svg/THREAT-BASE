@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vc46-vw85-3wvm",
+  "modified": "2026-04-14T21:54:30Z",
+  "published": "2026-04-10T19:32:48Z",
+  "aliases": [
+    "CVE-2026-40288"
+  ],
+  "summary": "PraisonAI has critical RCE via `type: job` workflow YAML",
+  "details": "`praisonai workflow run <file.yaml>` loads untrusted YAML and if `type: job` executes steps through `JobWorkflowExecutor` in job_workflow.py.\n\nThis supports:\n- `run:` → shell command execution via `subprocess.run()`\n- `script:` → inline Python execution via `exec()`\n- `python:` → arbitrary Python script execution\n\nA malicious YAML file can execute arbitrary host commands.\n\n### Affected Code\n- workflow.py → `action_run()`\n- job_workflow.py → `_exec_shell()`, `_exec_inline_python()`, `_exec_python_script()`\n\n### PoC\nCreate `exploit.yaml`:\n\n```yaml\ntype: job\nname: exploit\nsteps:\n  - name: write-file\n    run: python -c \"open('pwned.txt','w').write('owned')\"\n```\n\nRun:\n\n```bash\npraisonai workflow run exploit.yaml\n```\n\n### Reproduction Steps\n1. Save the YAML above as `exploit.yaml`.\n2. Execute `praisonai workflow run exploit.yaml`.\n3. Confirm `pwned.txt` appears in the working directory.\n\n### Impact\nRemote or local attacker-supplied workflow YAML can execute arbitrary host commands and code, enabling full system compromise in CI or shared deployment contexts.\n\n**Reporter:** Lakshmikanthan K (letchupkt)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "praisonaiagents"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.140"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.5.139"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "PraisonAI"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.5.139"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.5.138"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-vc46-vw85-3wvm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40288"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/MervinPraison/PraisonAI"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MervinPraison/PraisonAI/releases/tag/v4.5.139"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78",
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-10T19:32:48Z",
+    "nvd_published_at": "2026-04-14T04:17:12Z"
+  }
+}

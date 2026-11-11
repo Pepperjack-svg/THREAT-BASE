@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-839c-hg3j-vc54",
+  "modified": "2025-12-10T21:31:29Z",
+  "published": "2025-09-16T18:31:27Z",
+  "aliases": [
+    "CVE-2023-53325"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mediatek: dp: Change logging to dev for mtk_dp_aux_transfer()\n\nChange logging from drm_{err,info}() to dev_{err,info}() in functions\nmtk_dp_aux_transfer() and mtk_dp_aux_do_transfer(): this will be\nessential to avoid getting NULL pointer kernel panics if any kind\nof error happens during AUX transfers happening before the bridge\nis attached.\n\nThis may potentially start happening in a later commit implementing\naux-bus support, as AUX transfers will be triggered from the panel\ndriver (for EDID) before the mtk-dp bridge gets attached, and it's\ndone in preparation for the same.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53325"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c743c1dd2ee2a72951660b6798d4d7f7674f87b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7839f62294039959076dd06232e07aec7f7d5b2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd70e2019bfbcb0ed90c5e23839bf510ce6acf8f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T17:15:38Z"
+  }
+}

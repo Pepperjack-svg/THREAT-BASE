@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cffc-mxrf-mhh4",
+  "modified": "2025-12-29T22:44:27Z",
+  "published": "2025-12-29T22:44:26Z",
+  "aliases": [],
+  "summary": "Picklescan is vulnerable to RCE via missing detection when calling numpy.f2py.crackfortran.param_eval",
+  "details": "### Summary\nPicklescan uses numpy.f2py.crackfortran.param_eval, which is a function in numpy to execute remote pickle files.\n\n### Details\nThe attack payload executes in the following steps:\n\n- First, the attacker crafts the payload by calling the numpy.f2py.crackfortran.param_eval function via reduce method.\n- Then, when the victim checks whether the pickle file is safe by using the Picklescan library and this library doesn't detect any dangerous functions, they decide to use pickle.load() on this malicious pickle file, thus leading to remote code execution.\n\n\n### PoC\n```\nclass RCE:\n    def __reduce__(self):\n        from numpy.f2py.crackfortran import param_eval\n        return (param_eval,(\"os.system('ls')\",None,None,None))\n```\n\n\n### Impact\nAny organization or individual relying on picklescan to detect malicious pickle files inside PyTorch models.\nAttackers can embed malicious code in pickle file that remains undetected but executes when the pickle file is loaded.\nAttackers can distribute infected pickle files across ML models, APIs, or saved Python objects.\n\n### Report by\nPinji Chen (cpj24@mails.tsinghua.edu.cn) from the NISL lab (https://netsec.ccert.edu.cn/about) at Tsinghua University, Guanheng Liu (coolwind326@gmail.com).",
+  "severity": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "picklescan"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.0.33"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-cffc-mxrf-mhh4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mmaitre314/picklescan/pull/53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mmaitre314/picklescan/commit/70c1c6c31beb6baaf52c8db1b6c3c0e84a6f9dab"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mmaitre314/picklescan"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mmaitre314/picklescan/releases/tag/v0.0.33"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502",
+      "CWE-94"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-29T22:44:26Z",
+    "nvd_published_at": null
+  }
+}

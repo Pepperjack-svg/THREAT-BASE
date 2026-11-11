@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3phr-p473-vc8q",
+  "modified": "2026-04-16T06:31:23Z",
+  "published": "2026-04-16T06:31:23Z",
+  "aliases": [
+    "CVE-2026-3614"
+  ],
+  "details": "The AcyMailing plugin for WordPress is vulnerable to privilege escalation in all versions From 9.11.0 up to, and including, 10.8.1 due to a missing capability check on the `wp_ajax_acymailing_router` AJAX handler. This makes it possible for authenticated attackers, with Subscriber-level access and above, to access admin-only controllers (including configuration management), enable the autologin feature, create a malicious newsletter subscriber with an injected `cms_id` pointing to any WordPress user, and then use the autologin URL to authenticate as that user, including administrators.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3614"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acymailing/tags/10.7.1/WpInit/Router.php#L11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acymailing/tags/10.7.1/WpInit/Router.php#L122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acymailing/tags/10.7.1/WpInit/Router.php#L230"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acymailing/tags/10.7.1/back/Core/AcymController.php#L92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acymailing/tags/10.8.1/back/Core/AcymController.php#L99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acymailing/trunk/WpInit/Router.php#L11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a895e2cf-9eba-4c46-b19f-d008e1058f64?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-16T06:16:18Z"
+  }
+}

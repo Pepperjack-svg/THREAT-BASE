@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hjff-56wf-4v5f",
+  "modified": "2025-04-14T21:32:23Z",
+  "published": "2025-03-27T18:31:24Z",
+  "aliases": [
+    "CVE-2022-49748"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf/x86/amd: fix potential integer overflow on shift of a int\n\nThe left shift of int 32 bit integer constant 1 is evaluated using 32 bit\narithmetic and then passed as a 64 bit function argument. In the case where\ni is 32 or more this can lead to an overflow.  Avoid this by shifting\nusing the BIT_ULL macro instead.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49748"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08245672cdc6505550d1a5020603b0a8d4a6dcc7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14cc13e433e1067557435b1adbf05608d7d47a93"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4d01fb87ece45d4164fd725890211ccf9a307a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f84c9b72fb200633774704d8020f769c88a4b249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fbf7b0e4cef3b5470b610f14fb9faa5ee7f63954"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-27T17:15:39Z"
+  }
+}

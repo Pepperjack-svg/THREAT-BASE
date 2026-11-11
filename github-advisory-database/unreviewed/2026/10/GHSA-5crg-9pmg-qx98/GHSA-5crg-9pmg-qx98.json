@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5crg-9pmg-qx98",
+  "modified": "2026-10-11T03:30:23Z",
+  "published": "2026-10-11T03:30:23Z",
+  "aliases": [
+    "CVE-2026-108702"
+  ],
+  "details": "1Panel-dev CordysCRM through 1.9.3 lacks a PROCESS_SETTING permission check on POST /approval-flow/webhook/test, allowing any authenticated user to trigger server-side requests to attacker-supplied URLs. Attackers can redirect GET requests from a controlled host to bypass SSRFValidator and probe internal addresses through success or failure results.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108702"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/1Panel-dev/CordysCRM/blob/0d7ae06fe94f4ce33ec7f65b9d82a07ae05c2d94/backend/crm/src/main/java/cn/cordys/crm/approval/controller/ApprovalFlowController.java#L101-L105"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AnkesKasty/cve-request-poc/blob/a7b6d1423555812d8efa26c91c5d0683164b31e5/CordysCRM/poc_approval_flow_webhook_test_ssrf.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cordyscrm-through-1.9.3-missing-authorization-and-blind-ssrf-via-webhook-test"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T02:16:38Z"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5vg9-5847-vvmq",
+  "modified": "2026-06-17T13:53:44Z",
+  "published": "2026-06-17T13:53:44Z",
+  "aliases": [],
+  "summary": "Laravel Framework: CRLF injection in default email rule ",
+  "details": "## Summary\nA CRLF injection vulnerability in Laravel's email validation, in combination with how Symfony Mailer and Symfony Mime handle certain character sequences, may allow an unauthenticated attacker to interfere with outbound email processing in applications that send mail to user-supplied addresses.\n\n## Description\nLaravel applications that send email to addresses provided by users — for example during authentication flows or contact forms — may be vulnerable to manipulation of outbound mail content if the address is not adequately sanitized before it reaches the mail transport layer.\nAn attacker who can supply an email address to such a flow may, under certain conditions, be able to influence the content of emails sent by the application, cause those emails to be delivered to unintended recipients, or cause the application's mail server to send unintended messages.\n\n## Impact\nAffected applications may be exposed to unauthorized access and mail relay abuse. The severity depends on what the application sends by email and how its mail infrastructure is configured.\n\n## Remediation\nUpgrade to version 12.60.0 or later, or 13.10.0 or later.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "laravel/framework"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "13.0.0"
+            },
+            {
+              "fixed": "13.10.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 13.9.0"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "laravel/framework"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "12.60.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/security/advisories/GHSA-5vg9-5847-vvmq"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/laravel/framework"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-93"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-17T13:53:44Z",
+    "nvd_published_at": null
+  }
+}

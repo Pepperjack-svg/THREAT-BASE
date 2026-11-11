@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gh8v-hvqf-g2jx",
+  "modified": "2025-10-28T03:30:13Z",
+  "published": "2025-02-27T21:32:16Z",
+  "aliases": [
+    "CVE-2025-21808"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: xdp: Disallow attaching device-bound programs in generic mode\n\nDevice-bound programs are used to support RX metadata kfuncs. These\nkfuncs are driver-specific and rely on the driver context to read the\nmetadata. This means they can't work in generic XDP mode. However, there\nis no check to disallow such programs from being attached in generic\nmode, in which case the metadata kfuncs will be called in an invalid\ncontext, leading to crashes.\n\nFix this by adding a check to disallow attaching device-bound programs\nin generic mode.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21808"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3595599fa8360bb3c7afa7ee50c810b4a64106ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/557707906dd3e34b8a8c265f664d19f95799937e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a9eae683d6c36e8a7aa31e5eb8b369e41aa66e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1bc4a35a04cbeb85b6ef5911ec015baa424989f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T20:16:03Z"
+  }
+}

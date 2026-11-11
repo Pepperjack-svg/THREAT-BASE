@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-945m-m359-mmj7",
+  "modified": "2025-09-23T06:30:27Z",
+  "published": "2025-09-23T06:30:27Z",
+  "aliases": [
+    "CVE-2025-39867"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nft_set_pipapo: fix null deref for empty set\n\nBlamed commit broke the check for a null scratch map:\n  -  if (unlikely(!m || !*raw_cpu_ptr(m->scratch)))\n  +  if (unlikely(!raw_cpu_ptr(m->scratch)))\n\nThis should have been \"if (!*raw_ ...)\".\nUse the pattern of the avx2 version which is more readable.\n\nThis can only be reproduced if avx2 support isn't available.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30c1d25b9870d551be42535067d5481668b5e6f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44b2be6d5994ddf07ecc86c01d3279bfa13e9ef6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51a321b480d1e753667f6aea497312461563f9fe"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-23T06:15:45Z"
+  }
+}

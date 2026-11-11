@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xxc5-272v-5wc3",
+  "modified": "2025-11-10T21:30:27Z",
+  "published": "2025-05-01T15:31:48Z",
+  "aliases": [
+    "CVE-2022-49819"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteon_ep: fix potential memory leak in octep_device_setup()\n\nWhen occur unsupported_dev and mbox init errors, it did not free oct->conf\nand iounmap() oct->mmio[i].hw_addr. That would trigger memory leak problem.\nAdd kfree() for oct->conf and iounmap() for oct->mmio[i].hw_addr under\nunsupported_dev and mbox init errors to fix the problem.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49819"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67b65a0db8a7fdad43159819f41335497a4bb04f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e4041be97b15302ebfffda8bbd45f3b2d096048f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:05Z"
+  }
+}

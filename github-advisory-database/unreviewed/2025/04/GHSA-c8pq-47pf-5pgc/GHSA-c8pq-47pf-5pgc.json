@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8pq-47pf-5pgc",
+  "modified": "2025-04-29T21:31:47Z",
+  "published": "2025-04-16T15:34:40Z",
+  "aliases": [
+    "CVE-2025-22051"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: gpib: Fix Oops after disconnect in agilent usb\n\nIf the agilent usb dongle is disconnected subsequent calls to the\ndriver cause a NULL dereference Oops as the bus_interface\nis set to NULL on disconnect.\n\nThis problem was introduced by setting usb_dev from the bus_interface\nfor dev_xxx messages.\n\nPreviously bus_interface was checked for NULL only in the functions\ndirectly calling usb_fill_bulk_urb or usb_control_msg.\n\nCheck for valid bus_interface on all interface entry points\nand return -ENODEV if it is NULL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22051"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/50ef6e45bec79da4c5a01fad4dc23466ba255099"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8491e73a5223acb0a4b4d78c3f8b96aa9c5e774d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e88633705078f40391a9afc6cc8ea3025e6f692b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:15:58Z"
+  }
+}

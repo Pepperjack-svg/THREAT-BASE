@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3c4r-whrm-5953",
+  "modified": "2026-10-30T15:34:38Z",
+  "published": "2026-10-30T15:34:38Z",
+  "aliases": [
+    "CVE-2026-119654"
+  ],
+  "details": "DataCap through 2025.1.1 contains a missing authorization vulnerability that allows any authenticated user to escalate privileges by calling administrative role and menu management APIs. Attackers, including self-registered accounts, can send PUT requests to /api/v1/user/allocationRole to assign themselves the administrator role and gain full control of the instance.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/devlive-community/metaforge/issues/969"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/devlive-community/metaforge"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/devlive-community/metaforge/blob/2025.1.1/core/datacap-security/src/main/java/io/edurt/datacap/security/SecurityConfigure.java#L63-L78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/devlive-community/metaforge/blob/2025.1.1/core/datacap-server/src/main/java/io/edurt/datacap/server/controller/admin/RoleController.java#L34-L52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/devlive-community/metaforge/blob/2025.1.1/core/datacap-server/src/main/java/io/edurt/datacap/server/controller/user/UserController.java#L97-L108"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/devlive-community/metaforge/blob/2025.1.1/core/datacap-service/src/main/java/io/edurt/datacap/service/service/impl/UserServiceImpl.java#L104-L137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/metaforge-datacap-allocation-role-missing-authz-privilege-escalation"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/datacap-through-2025.1.1-privilege-escalation-via-allocationrole-missing-authorization"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T15:16:49Z"
+  }
+}

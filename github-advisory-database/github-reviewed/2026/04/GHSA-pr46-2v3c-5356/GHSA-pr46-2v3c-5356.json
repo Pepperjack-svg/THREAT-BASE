@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pr46-2v3c-5356",
+  "modified": "2026-06-06T00:26:38Z",
+  "published": "2026-04-08T00:18:46Z",
+  "aliases": [
+    "CVE-2026-39847"
+  ],
+  "summary": "Emmett has a path traversal in internal assets handler",
+  "details": "The RSGI static handler for Emmett's internal assets (`/__emmett__` paths) is vulnerable to path traversal attacks.\n\nAn attacker can use `../` sequences (eg `/__emmett__/../rsgi/handlers.py`) to read arbitrary files outside the assets directory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "emmett"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.5.0"
+            },
+            {
+              "fixed": "2.8.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/emmett-framework/emmett/security/advisories/GHSA-pr46-2v3c-5356"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39847"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/emmett-framework/emmett"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/emmett/PYSEC-2026-59.yaml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-08T00:18:46Z",
+    "nvd_published_at": "2026-04-07T22:16:23Z"
+  }
+}

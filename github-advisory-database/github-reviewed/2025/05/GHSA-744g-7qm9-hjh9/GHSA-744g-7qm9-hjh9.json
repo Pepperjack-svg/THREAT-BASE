@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-744g-7qm9-hjh9",
+  "modified": "2025-05-20T19:39:37Z",
+  "published": "2025-05-20T19:39:37Z",
+  "aliases": [
+    "CVE-2025-47941"
+  ],
+  "summary": "The TYPO3 CMS Backend has Broken Authentication in Backend MFA",
+  "details": "### Problem\nThe multifactor authentication (MFA) dialog presented during backend login can be bypassed due to insufficient enforcement of access restrictions on all backend routes.\n\nSuccessful exploitation requires valid backend user credentials, as MFA can only be bypassed after successful authentication.\n\n### Solution\nUpdate to TYPO3 versions 12.4.31 LTS, 13.4.12 LTS that fix the problem described.\n\n### Credits\nThanks to Jens Jacobsen and Y. Kahveci for reporting this issue, and to TYPO3 security team member Torben Hansen for fixing it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "typo3/cms-backend"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "12.0.0"
+            },
+            {
+              "fixed": "12.4.31"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 12.4.30"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "typo3/cms-backend"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "13.0.0"
+            },
+            {
+              "fixed": "13.4.12"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 13.4.11"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/TYPO3/typo3/security/advisories/GHSA-744g-7qm9-hjh9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-47941"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TYPO3-CMS/backend/commit/034f589029952084771c5f98d42ed0f69f9a7ead"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/TYPO3-CMS/backend"
+    },
+    {
+      "type": "WEB",
+      "url": "https://typo3.org/security/advisory/typo3-core-sa-2025-015"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-288"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-05-20T19:39:37Z",
+    "nvd_published_at": "2025-05-20T14:15:51Z"
+  }
+}

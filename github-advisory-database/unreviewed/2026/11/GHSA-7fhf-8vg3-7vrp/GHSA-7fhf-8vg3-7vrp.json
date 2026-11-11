@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7fhf-8vg3-7vrp",
+  "modified": "2026-11-10T15:33:37Z",
+  "published": "2026-11-10T15:33:37Z",
+  "aliases": [
+    "CVE-2026-121885"
+  ],
+  "details": "A flaw was found in Podman. An attacker can trigger a Denial of Service (DoS) by supplying a container image containing crafted metadata labels. Podman's auto-update mechanism improperly trusts these image labels to determine which system services to restart. If a user runs the malicious container and auto-update processes it, arbitrary system services are restarted with the user's privileges, potentially allowing an attacker to shut down the host system when Podman runs with administrative privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121885"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-121885"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2566844"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-807"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T15:17:15Z"
+  }
+}

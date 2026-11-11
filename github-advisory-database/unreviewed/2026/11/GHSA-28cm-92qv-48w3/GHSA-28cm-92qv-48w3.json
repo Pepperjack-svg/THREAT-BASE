@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28cm-92qv-48w3",
+  "modified": "2026-11-10T21:32:16Z",
+  "published": "2026-11-10T18:31:50Z",
+  "aliases": [
+    "CVE-2026-125729"
+  ],
+  "details": "Plack::Middleware::CSP versions before 0.03 for Perl send the Content Security Policy under the wrong header name, so browsers never enforce it.\n\nThe call method sets the policy in a response header named \"content-security-protocol\" instead of \"Content-Security-Policy\". Browsers ignore that header.\n\nAny cross-site scripting flaw in the wrapped application can run scripts the policy was meant to block.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pangyre/Plack-Middleware-CSP/issues/1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/ASHLEY/Plack-Middleware-CSP-0.03/source/CHANGES"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/11/10/16"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-684"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T18:17:35Z"
+  }
+}

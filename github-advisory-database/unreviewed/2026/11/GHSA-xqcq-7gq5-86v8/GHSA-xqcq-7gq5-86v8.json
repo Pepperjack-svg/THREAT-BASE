@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xqcq-7gq5-86v8",
+  "modified": "2026-11-07T09:30:41Z",
+  "published": "2026-11-07T09:30:40Z",
+  "aliases": [
+    "CVE-2026-104738"
+  ],
+  "details": "The Advanced Form Integration — Connect Forms to 300+ Apps plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 2.10.2 via deserialization of untrusted input . This makes it possible for unauthenticated attackers to inject a PHP Object. No known POP chain is present in the vulnerable software, which means this vulnerability has no impact unless another plugin or theme containing a POP chain is installed on the site. If a POP chain is present via an additional plugin or theme installed on the target system, it may allow the attacker to perform actions like delete arbitrary files, retrieve sensitive data, or execute code depending on the POP chain present. Exploitation requires that an administrator has previously configured at least one active NexForms integration (status=1) in the plugin's database table; in the free tier, only POST parameter keys containing the substrings 'name', 'email', 'first', or 'last' are routed to the vulnerable normalizer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104738"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/advanced-form-integration/tags/2.9.0/includes/triggers/nexforms/nexforms.php#L220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/advanced-form-integration/tags/2.9.0/includes/triggers/nexforms/nexforms.php#L457"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/advanced-form-integration/tags/2.9.0/includes/triggers/nexforms/nexforms.php#L508"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/dbea3356-2fc1-4511-9767-e560b7c4f0a8?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-07T09:17:11Z"
+  }
+}

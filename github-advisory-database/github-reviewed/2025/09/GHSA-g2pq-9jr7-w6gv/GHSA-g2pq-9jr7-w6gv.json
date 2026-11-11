@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g2pq-9jr7-w6gv",
+  "modified": "2025-11-05T20:42:59Z",
+  "published": "2025-09-03T15:30:34Z",
+  "aliases": [
+    "CVE-2025-58458"
+  ],
+  "summary": "Jenkins Git client Plugin file system information disclosure vulnerability",
+  "details": "In Jenkins Git client Plugin 6.3.2 and earlier, Git URL field form validation responses differ based on whether the specified file path exists on the controller when specifying `amazon-s3` protocol for use with JGit, allowing attackers with Overall/Read permission to check for the existence of an attacker-specified file path on the Jenkins controller file system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.plugins:git-client"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.3.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-58458"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/git-client-plugin/commit/20090a86c3ebc72e5283c882de73e3a4459137bb"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/git-client-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2025-09-03/#SECURITY-3590"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/09/03/4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200",
+      "CWE-538"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-09-03T22:22:25Z",
+    "nvd_published_at": "2025-09-03T15:15:39Z"
+  }
+}

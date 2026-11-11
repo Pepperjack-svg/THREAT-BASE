@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vrww-7rmp-3xrm",
+  "modified": "2026-05-01T18:31:23Z",
+  "published": "2026-05-01T15:30:33Z",
+  "aliases": [
+    "CVE-2026-42482"
+  ],
+  "details": "A stack-based buffer overflow in mangle_to_hex_lower() and mangle_to_hex_upper() in src/rp_cpu.c in hashcat v7.1.2 allows an attacker to cause a denial of service or possibly execute arbitrary code via a crafted rule file, or via the -j or -k rule options used with password candidates of 128 or more characters. The vulnerability is caused by a bounds check that fails to account for the 2x expansion that occurs when password bytes are converted to hexadecimal.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42482"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/sgInnora/107f2eb20367e47d58c911e38d56a91f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121",
+      "CWE-787"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T14:16:22Z"
+  }
+}

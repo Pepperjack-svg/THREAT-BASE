@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3c42-fjf2-4p66",
+  "modified": "2026-10-02T12:31:14Z",
+  "published": "2026-10-02T12:31:14Z",
+  "aliases": [
+    "CVE-2026-104427"
+  ],
+  "details": "Zebra before 6.1.0 contains an incomplete cleanup vulnerability in the state write task that allows remote unauthenticated peers to stall node synchronization by poisoning parent_error_map. Attackers can deliver a coinbase-malleated block sharing a canonical block's hash before it propagates, causing the next canonical block to be rejected and stalling the node for roughly 2,000 blocks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ZcashFoundation/zebra/security/advisories/GHSA-8gxx-hc65-vv82"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/zebra-before-6.1.0-chain-stall-via-stale-parent-error-map-entry"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-459"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-02T12:17:13Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g99j-j499-7pp4",
+  "modified": "2026-11-08T03:30:37Z",
+  "published": "2026-11-08T03:30:37Z",
+  "aliases": [
+    "CVE-2026-123603"
+  ],
+  "details": "hickory-proto and hickory-resolver 0.26.0 before 0.26.2, hickory-server 0.25.0-alpha.1 before 0.26.2, and hickory-recursor 0.25.0-alpha.3 through 0.26.0-alpha.1 fail to canonicalize IPv4-mapped IPv6 addresses when checking deny_answers, deny_server, or AccessControlSet rules. Attackers can use IPv4-mapped addresses to evade answer filtering, trigger queries to denied nameservers, or reach hickory-server library deployments on dual-stack IPv6 sockets from denied clients.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/hickory-dns/hickory-dns/security/advisories/GHSA-4jwp-xjwm-333g"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hickory-dns-missing-ipv4-mapped-ipv6-canonicalization-access-control-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-08T02:16:55Z"
+  }
+}

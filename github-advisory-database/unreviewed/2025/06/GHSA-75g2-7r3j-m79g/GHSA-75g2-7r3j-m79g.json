@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-75g2-7r3j-m79g",
+  "modified": "2025-11-14T18:31:22Z",
+  "published": "2025-06-18T12:30:32Z",
+  "aliases": [
+    "CVE-2025-38047"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/fred: Fix system hang during S4 resume with FRED enabled\n\nUpon a wakeup from S4, the restore kernel starts and initializes the\nFRED MSRs as needed from its perspective.  It then loads a hibernation\nimage, including the image kernel, and attempts to load image pages\ndirectly into their original page frames used before hibernation unless\nthose frames are currently in use.  Once all pages are moved to their\noriginal locations, it jumps to a \"trampoline\" page in the image kernel.\n\nAt this point, the image kernel takes control, but the FRED MSRs still\ncontain values set by the restore kernel, which may differ from those\nset by the image kernel before hibernation.  Therefore, the image kernel\nmust ensure the FRED MSRs have the same values as before hibernation.\nSince these values depend only on the location of the kernel text and\ndata, they can be recomputed from scratch.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38047"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c42f740a07eea4807e98d2d8febc549c957a7b49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5f1e8af9c9e151ecd665f6d2e36fb25fec3b110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7090fe75a2826363c71ad1fb4e95e58141478df"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T10:15:37Z"
+  }
+}

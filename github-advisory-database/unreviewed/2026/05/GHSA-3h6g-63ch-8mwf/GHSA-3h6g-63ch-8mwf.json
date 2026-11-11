@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3h6g-63ch-8mwf",
+  "modified": "2026-10-15T03:35:47Z",
+  "published": "2026-05-01T15:30:34Z",
+  "aliases": [
+    "CVE-2026-31737"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ftgmac100: fix ring allocation unwind on open failure\n\nftgmac100_alloc_rings() allocates rx_skbs, tx_skbs, rxdes, txdes, and\nrx_scratch in stages. On intermediate failures it returned -ENOMEM\ndirectly, leaking resources allocated earlier in the function.\n\nRework the failure path to use staged local unwind labels and free\nallocated resources in reverse order before returning -ENOMEM. This\nmatches common netdev allocation cleanup style.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31737"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/184b3a500d60ea48d1b176103cff1706c456edf3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78da43320d9d6ed788147fb085184e4fc801f057"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82f86111f0704ab2ded11a2033bc6cf0be3e09ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8351d18989c8642fc53e2e12d94e42314a39b078"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a71911fc7eeea930153322bc1efc065db8cd97e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a7e1bf392acf11dc4209820fef75758f6e42bd65"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0fd0fe745f5e8c568d898cd1513d0083e46204a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d45230081f19c280096241353c26b0de457de795"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:36Z"
+  }
+}

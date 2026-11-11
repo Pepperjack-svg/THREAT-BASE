@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gx5v-xp9w-j4cg",
+  "modified": "2026-05-18T20:26:58Z",
+  "published": "2026-05-12T18:30:38Z",
+  "aliases": [
+    "CVE-2026-41284"
+  ],
+  "summary": "Apache Tomcat: Unbounded read in WebDAV LOCK and  PROPFIND handling",
+  "details": "Versions Affected:\nApache Tomcat 11.0.0-M1 to 11.0.21\nApache Tomcat 10.1.0-M1 to 10.1.54\nApache Tomcat 9.0.0.M1 to 9.0.117\nOlder, unsupported versions may also be affected\n\nDescription:\nNo limit was enforced on the request body for WebDAV LOCK or PROPFIND\nrequests which were available to unauthenticated users.\n\nMitigation:\nUsers of the affected versions should apply one of the following\nmitigations:\n- Upgrade to Apache Tomcat 11.0.22 or later\n- Upgrade to Apache Tomcat 10.1.55 or later\n- Upgrade to Apache Tomcat 9.0.118 or later\n\nCredit:\nThis issue was identified by Dariusz Gońda",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat.embed:tomcat-embed-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.0.118"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat.embed:tomcat-embed-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "10.1.0-M1"
+            },
+            {
+              "fixed": "10.1.55"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat.embed:tomcat-embed-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "11.0.0-M1"
+            },
+            {
+              "fixed": "11.0.22"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat:tomcat"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.0.118"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat:tomcat"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "10.1.0-M1"
+            },
+            {
+              "fixed": "10.1.55"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat:tomcat"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "11.0.0-M1"
+            },
+            {
+              "fixed": "11.0.22"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat:tomcat-catalina"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.0.118"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat:tomcat-catalina"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "10.1.0-M1"
+            },
+            {
+              "fixed": "10.1.55"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat:tomcat-catalina"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "11.0.0-M1"
+            },
+            {
+              "fixed": "11.0.22"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41284"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/tomcat/commit/17dacd9aa48628da2eba37a9ab743c0b6c71685c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/tomcat/commit/a96fffd18487a29c0a30d36f00cb2b2d91f6d42c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/tomcat/commit/b3d1c1c239142e806be0b7329d304b94a58913ed"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/tomcat"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/2nvqjr7ovjmvx2vbhb7s61ycd5msc8qc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://tomcat.apache.org/security-10.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://tomcat.apache.org/security-11.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://tomcat.apache.org/security-9.html"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/05/12/12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-18T20:26:58Z",
+    "nvd_published_at": "2026-05-12T16:16:15Z"
+  }
+}

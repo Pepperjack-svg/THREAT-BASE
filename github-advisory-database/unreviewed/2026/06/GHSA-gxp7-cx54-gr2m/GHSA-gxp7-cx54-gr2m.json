@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gxp7-cx54-gr2m",
+  "modified": "2026-06-18T18:35:22Z",
+  "published": "2026-06-18T18:35:22Z",
+  "aliases": [
+    "CVE-2026-11791"
+  ],
+  "details": "A flaw was found in 389 Directory Server. During schema reload, the attr_syntax_swap_ht() function unconditionally frees attribute syntax information nodes, bypassing the refcount-based deferred deletion used elsewhere in the attribute syntax subsystem. If an administrator triggers schema reload while concurrent LDAP query traffic is active, worker threads may access freed memory, resulting in use-after-free or double-free and a denial of service (server crash).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11791"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-11791"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2485414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://redhat.atlassian.net/browse/PSIRTSUPT-7600"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-18T16:16:52Z"
+  }
+}

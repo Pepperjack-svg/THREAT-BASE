@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q7h9-pvj5-g9fp",
+  "modified": "2026-05-21T15:34:02Z",
+  "published": "2026-04-20T12:32:00Z",
+  "aliases": [
+    "CVE-2026-31430"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nX.509: Fix out-of-bounds access when parsing extensions\n\nLeo reports an out-of-bounds access when parsing a certificate with\nempty Basic Constraints or Key Usage extension because the first byte of\nthe extension is read before checking its length.  Fix it.\n\nThe bug can be triggered by an unprivileged user by submitting a\nspecially crafted certificate to the kernel through the keyrings(7) API.\nLeo has demonstrated this with a proof-of-concept program responsibly\ndisclosed off-list.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31430"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/206121294b9cf27f0589857f80d64f87e496ffb2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30ab358fad0c7daa1d282ec48089901b21b36a20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/672b526def1f94c1be8eb11b885b803da0d8c2f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7fb4dadc2734f4020d7543d688b8d49c8e569c61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d702c3408213bb12bd570bb97204d8340d141c51"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-20T10:16:16Z"
+  }
+}

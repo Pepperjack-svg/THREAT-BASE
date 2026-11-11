@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hf3c-2524-f4r3",
+  "modified": "2026-10-06T09:31:33Z",
+  "published": "2026-10-06T09:31:33Z",
+  "aliases": [
+    "CVE-2026-98295"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: coredump: Quiesce dump work on unregister\n\nhci_devcd_handle_pkt_init() arms dump_timeout and coredump producers\nqueue dump_rx without holding an hdev reference. Unregister leaves both\nworks live, so disconnecting during an active dump lets them access hdev\nafter hci_release_dev() frees it.\n\nShut down coredump processing during unregister. Close the producer gate\nunder dump_q.lock before disabling both works, then free the active buffer\nand queued packets under hci_dev_lock. Serializing the gate with enqueue\nprevents controller-specific workers from adding packets after the final\npurge.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98295"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24af375d7d8aa5f698e4dc41317102f44114351a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82699d1b727ba5980b94f1eb8dc3d346f41b7c67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d236517c264e41dc09833c708ef23bccb7a91219"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dcaf10ef27f928568c25de3e9fc242e538de5c67"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:20Z"
+  }
+}

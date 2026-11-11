@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2hfj-jv6q-762v",
+  "modified": "2025-10-13T21:01:46Z",
+  "published": "2025-10-13T18:31:13Z",
+  "aliases": [
+    "CVE-2025-62244"
+  ],
+  "summary": "Liferay Publications vulnerable to Authorization Bypass Through User-Controlled Key",
+  "details": "Insecure direct object reference (IDOR) vulnerability in Publications in Liferay Portal 7.3.1 through 7.4.3.111, and Liferay DXP 2023.Q4.0 through 2023.Q4.5, 2023.Q3.1 through 2023.Q3.8, and 7.4 GA through update 92, and 7.3 GA through update 36 allows remote authenticated attackers to view the edit page of a publication via the `_com_liferay_change_tracking_web_portlet_PublicationsPortlet_ctCollectionId` parameter.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:A/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay:com.liferay.change.tracking.web"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.122"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-62244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/0a7a4233881d6fa29fba12695b916d885d76349f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/31cf99363bf615f4a3383ffcc78d800de3fa2465"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/liferay/liferay-portal"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.dev/portal/security/known-vulnerabilities/-/asset_publisher/jekt/content/CVE-2025-62244"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-13T21:01:46Z",
+    "nvd_published_at": "2025-10-13T17:15:34Z"
+  }
+}

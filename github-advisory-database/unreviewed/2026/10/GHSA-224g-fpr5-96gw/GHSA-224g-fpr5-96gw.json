@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-224g-fpr5-96gw",
+  "modified": "2026-10-15T21:36:11Z",
+  "published": "2026-10-15T21:36:11Z",
+  "aliases": [
+    "CVE-2026-111218"
+  ],
+  "details": "Netgate pfSense CE 2.7.0 through 2.9.0 contains an OS command injection vulnerability that allows authenticated users with Traffic Shaper Limiters privileges to execute root commands by tampering with the limiter number field. Attackers can submit a malicious hidden 'number' value when editing a limiter, then delete it so delete_queue() passes the unquoted value to dnctl via /bin/sh as root.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111218"
+    },
+    {
+      "type": "WEB",
+      "url": "https://abraxaslabs.tech/research/pfsense-ce-leftovers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://abraxaslabs.tech/research/pfsense-limiter-number"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/abraxas/pfsense-limiter-number"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pfsense/pfsense/blob/9363ac5b8651a1c7a333180425ce7719070f95f9/src/etc/inc/shaper.inc#L3820-L3821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pfsense/pfsense/blob/9363ac5b8651a1c7a333180425ce7719070f95f9/src/etc/inc/shaper.inc#L3959"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netgate-pfsense-ce-2.7.0-through-2.9.0-os-command-injection-via-traffic-shaper-limiters"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:34Z"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-27gc-wj6x-9w55",
+  "modified": "2025-10-17T17:39:13Z",
+  "published": "2025-10-17T17:39:13Z",
+  "aliases": [
+    "CVE-2025-10044"
+  ],
+  "summary": "Keycloak error_description injection on error pages that can trigger phishing attacks",
+  "details": "Keycloak’s account console accepts arbitrary text in the `error_description` query parameter. This text is directly rendered in error pages without validation or sanitization. While HTML encoding prevents XSS, an attacker can craft URLs with misleading messages (e.g., fake support phone numbers or URLs), which are displayed within the trusted Keycloak UI. This creates a phishing vector, potentially tricking users into contacting malicious actors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.keycloak:keycloak-account-ui"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "26.2.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.keycloak:keycloak-account-ui"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "26.3.0"
+            },
+            {
+              "fixed": "26.3.4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.keycloak:keycloak-admin-ui"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "26.2.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.keycloak:keycloak-admin-ui"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "26.3.0"
+            },
+            {
+              "fixed": "26.3.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/keycloak/keycloak/security/advisories/GHSA-27gc-wj6x-9w55"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-10044"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keycloak/keycloak/pull/42035"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2025:16399"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2025:16400"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2025-10044"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2393551"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/keycloak/keycloak"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-17T17:39:13Z",
+    "nvd_published_at": null
+  }
+}

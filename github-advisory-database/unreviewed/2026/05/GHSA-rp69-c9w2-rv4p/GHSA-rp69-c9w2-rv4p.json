@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rp69-c9w2-rv4p",
+  "modified": "2026-10-15T03:35:49Z",
+  "published": "2026-05-06T12:30:26Z",
+  "aliases": [
+    "CVE-2026-43085"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nfnetlink_log: initialize nfgenmsg in NLMSG_DONE terminator\n\nWhen batching multiple NFLOG messages (inst->qlen > 1), __nfulnl_send()\nappends an NLMSG_DONE terminator with sizeof(struct nfgenmsg) payload via\nnlmsg_put(), but never initializes the nfgenmsg bytes. The nlmsg_put()\nhelper only zeroes alignment padding after the payload, not the payload\nitself, so four bytes of stale kernel heap data are leaked to userspace\nin the NLMSG_DONE message body.\n\nUse nfnl_msg_put() to build the NLMSG_DONE terminator, which initializes\nthe nfgenmsg payload via nfnl_fill_hdr(), consistent with how\n__build_packet_message() already constructs NFULNL_MSG_PACKET headers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43085"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15d209bccf9273b4a8b4e579ba0e92d065b6ec8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f3083aec8836213da441270cdb1ab612dd82cf4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/296f18e1c3a87c915a92ed27832d5040a22d1072"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/368c22aea490f6f50df831b4f9e3623787686c5b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57cc509d82b46150a11dcecc8b25eaa177eda34d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e2182865de781c41ab16b7985e9d26dcefea867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1399632ba255d2e02c757af5d9f5d9279ce168c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d552bcfca323d175664d7444989b04f55666978a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T10:16:21Z"
+  }
+}

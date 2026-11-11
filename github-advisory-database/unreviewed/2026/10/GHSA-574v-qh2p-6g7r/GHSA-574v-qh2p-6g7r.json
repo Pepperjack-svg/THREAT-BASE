@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-574v-qh2p-6g7r",
+  "modified": "2026-10-13T15:32:23Z",
+  "published": "2026-10-13T15:32:23Z",
+  "aliases": [
+    "CVE-2026-109959"
+  ],
+  "details": "EspoCRM 4.0.0 before 10.0.7 contains an access control vulnerability that allows authenticated users to read audited field values restricted by field-level security by fetching individual stream notes. Users with stream access to a parent record can request GET /Note/{id}, which skips the NoteAccessControl filter, and recover data.attributes.was and became values of restricted fields.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/espocrm/espocrm/security/advisories/GHSA-mr36-xx82-qf6h"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109959"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/espocrm-4.0.0-before-10.0.7-field-level-security-bypass-via-note-read-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T14:17:35Z"
+  }
+}

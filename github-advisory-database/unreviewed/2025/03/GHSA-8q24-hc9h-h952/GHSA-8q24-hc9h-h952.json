@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8q24-hc9h-h952",
+  "modified": "2025-03-20T12:32:41Z",
+  "published": "2025-03-20T12:32:41Z",
+  "aliases": [
+    "CVE-2024-10986"
+  ],
+  "details": "GPT Academic version 3.83 is vulnerable to a Local File Read (LFI) vulnerability through its HotReload function. This function can download and extract tar.gz files from arxiv.org. Despite implementing protections against path traversal, the application overlooks the Tarslip triggered by symlinks. This oversight allows attackers to read arbitrary local files from the victim server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10986"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/db2167f5-f17f-491d-aeec-69ba55bf6427"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20",
+      "CWE-59"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-20T10:15:22Z"
+  }
+}

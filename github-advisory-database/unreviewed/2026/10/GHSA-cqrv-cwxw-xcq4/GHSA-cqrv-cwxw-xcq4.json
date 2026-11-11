@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cqrv-cwxw-xcq4",
+  "modified": "2026-10-27T15:32:46Z",
+  "published": "2026-10-27T15:32:45Z",
+  "aliases": [
+    "CVE-2026-117568"
+  ],
+  "details": "mcp-ffmpeg through 1.0.5 contains an OS command injection vulnerability that allows attackers to run shell commands by supplying crafted videoPath or outputDir values to the resize-video, extract-audio and get-video-info tools. Attackers can embed $(), backticks or a closing double quote in an existing file or directory name to break out of the child_process.exec command string and execute commands as the MCP server user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-117568"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bitscorp-mcp/mcp-ffmpeg/issues/8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bitscorp-mcp/mcp-ffmpeg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bitscorp-mcp/mcp-ffmpeg/blob/2ec04e44850cc5ee5354c40643be8bc91c218654/src/mcp-ffmpeg.ts#L184"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mcp-ffmpeg-through-1.0.5-os-command-injection-via-videopath-and-outputdir"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-27T14:16:39Z"
+  }
+}

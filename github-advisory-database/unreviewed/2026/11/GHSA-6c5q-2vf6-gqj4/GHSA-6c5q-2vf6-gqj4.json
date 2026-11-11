@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6c5q-2vf6-gqj4",
+  "modified": "2026-11-10T21:34:26Z",
+  "published": "2026-11-10T21:34:26Z",
+  "aliases": [
+    "CVE-2026-120807"
+  ],
+  "details": "A flaw in MongoDB’s X.509 cluster-membership authentication guard could allow a holder of a cluster-member certificate to gain elevated internal privileges when a specific deployment configuration is in use. An internal check, which prevents a certificate recognized as a cluster member from also being treated as a regular user, does not correctly distinguish between certain error conditions encountered during user lookup. Under certain timing conditions, this can cause the check to be bypassed, granting the connection full internal system privileges. Triggering this issue requires possession of a valid cluster-member TLS certificate, non-default X.509 cluster authentication configuration, and specific conditions during the user cache lookup process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jira.mongodb.org/browse/SERVER-130169"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-754"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T20:18:51Z"
+  }
+}

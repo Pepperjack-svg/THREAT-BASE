@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xc7m-7p9h-4hfm",
+  "modified": "2026-10-14T03:30:40Z",
+  "published": "2026-10-14T03:30:40Z",
+  "aliases": [
+    "CVE-2026-97668"
+  ],
+  "details": "The Abandoned Cart Pro for WooCommerce plugin for WordPress is vulnerable to SQL Injection via the guest cart persistent meta_value in all versions up to, and including, 10.8.0 due to insufficient escaping on user supplied data and lack of sufficient preparation on the existing SQL query in the update_guest_persistent_cart() function. The abandoned_cart_info value, populated from attacker-controlled checkout fields such as the SMS consent field, is passed through stripslashes() and concatenated directly into an UPDATE statement while the adjacent SELECT and INSERT use prepared statements. This makes it possible for unauthenticated attackers to append additional SQL to the query. Because the sink is an UPDATE ... SET on the wp_usermeta table, the injection can both extract sensitive information from the database via time-based blind techniques and modify usermeta rows; it has been demonstrated to escalate an arbitrary account to administrator by writing a wp_capabilities row that shadows the legitimate one.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97668"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tychesoftwares.com/docs/docs/abandoned-cart-pro-for-woocommerce-new/changelog-abandoned-cart-pro"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tychesoftwares.com/products/woocommerce-abandoned-cart-pro-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/9d91ffee-6902-4553-af3b-8ef4e5199367?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T03:17:37Z"
+  }
+}

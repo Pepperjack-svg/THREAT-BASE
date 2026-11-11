@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fgh6-hxpr-2f88",
+  "modified": "2026-09-30T21:32:09Z",
+  "published": "2026-09-30T21:32:09Z",
+  "aliases": [
+    "CVE-2026-101882"
+  ],
+  "details": "OpenClaw Windows Node before 2026.7.1 contains an incomplete validation vulnerability in system.execApprovals.set that accepts wildcard-executable rules and abusable system binaries like mshta, rundll32, and certutil. Remote callers can add broad allow rules to execute arbitrary commands on the Windows host through system.run without operator checks or user prompts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw-windows-node/security/advisories/GHSA-f32j-8759-w2fp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw-windows-node/security/advisories/GHSA-g95v-c9r6-2hmq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101882"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw-windows-node/commit/8f07ad92beb28376bc228c0b07093173a043a656"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw-windows-node/commit/988df5badc84ab5efd5b4e291766a1fa5e7e268a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw-windows-node/blob/v0.6.12/src/OpenClaw.Shared/Capabilities/SystemCapability.cs#L791-L853"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw-windows-node/releases/tag/v2026.7.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-windows-node-before-2026.7.1-remote-code-execution-via-system-execapprovals-set"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-184"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T20:17:19Z"
+  }
+}

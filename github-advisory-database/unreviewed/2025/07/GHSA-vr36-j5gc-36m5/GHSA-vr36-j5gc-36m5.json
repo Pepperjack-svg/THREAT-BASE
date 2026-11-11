@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vr36-j5gc-36m5",
+  "modified": "2026-10-15T03:34:51Z",
+  "published": "2025-07-03T09:30:33Z",
+  "aliases": [
+    "CVE-2025-38125"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: stmmac: make sure that ptp_rate is not 0 before configuring EST\n\nIf the ptp_rate recorded earlier in the driver happens to be 0, this\nbogus value will propagate up to EST configuration, where it will\ntrigger a division by 0.\n\nPrevent this division by 0 by adding the corresponding check and error\ncode.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/451ee661d0f6272017fa012f99617101aa8ddf2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b15c9a21950e1af6d440ce5a8edfa8a94b9acb9b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b92ec4a848728460f181def33735605f154d438f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cbefe2ffa7784525ec5d008ba87c7add19ec631a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5e3bfdba0dc419499b801937128957f77503761"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d6b0f7ed3e9b6c5e2e3a006c8f72c95aa4ac4b74"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-03T09:15:26Z"
+  }
+}

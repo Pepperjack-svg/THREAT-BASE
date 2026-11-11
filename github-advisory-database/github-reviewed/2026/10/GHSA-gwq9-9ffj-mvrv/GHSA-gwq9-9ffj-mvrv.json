@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gwq9-9ffj-mvrv",
+  "modified": "2026-10-27T15:33:42Z",
+  "published": "2026-10-27T15:33:42Z",
+  "aliases": [
+    "CVE-2026-93451"
+  ],
+  "summary": "snappy-java: Heap buffer overflow in Snappy.uncompress*Array typed-array methods",
+  "details": "### Impact\n`Snappy.uncompressCharArray`, `uncompressShortArray`, `uncompressIntArray`, `uncompressLongArray`, `uncompressFloatArray` and `uncompressDoubleArray` sized the result array by dividing the declared uncompressed byte length by the element size, but native code wrote the full byte length. If the declared length is not a multiple of the element size, up to 7 bytes are written past the end of the Java array, corrupting the heap.\n\n### Patches\nFixed in 1.1.10.9 ([#739](https://github.com/xerial/snappy-java/pull/739)). These methods now reject uncompressed lengths that are not a multiple of the element size with `SnappyIOException`.\n\n### Workarounds\nCheck that `Snappy.uncompressedLength(input)` is a multiple of the element size before calling these methods.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.xerial.snappy:snappy-java"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.1.10.9"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.1.10.8"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/xerial/snappy-java/security/advisories/GHSA-gwq9-9ffj-mvrv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93451"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xerial/snappy-java/issues/729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xerial/snappy-java/pull/739"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xerial/snappy-java/commit/943c6043a292568575e8347af4507d015e802c75"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/xerial/snappy-java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xerial/snappy-java/blob/v1.1.10.8/src/main/java/org/xerial/snappy/Snappy.java#L802"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xerial/snappy-java/releases/tag/v1.1.10.9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/snappy-java-through-1.1.10.8-buffer-overflow-via-typed-uncompress-methods"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-193",
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-27T15:33:42Z",
+    "nvd_published_at": null
+  }
+}

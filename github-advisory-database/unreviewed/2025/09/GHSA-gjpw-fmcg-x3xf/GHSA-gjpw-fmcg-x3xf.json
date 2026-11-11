@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gjpw-fmcg-x3xf",
+  "modified": "2025-12-12T21:31:31Z",
+  "published": "2025-09-18T15:30:34Z",
+  "aliases": [
+    "CVE-2023-53405"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: gadget: gr_udc: fix memory leak with using debugfs_lookup()\n\nWhen calling debugfs_lookup() the result must have dput() called on it,\notherwise the memory will leak over time.  To make things simpler, just\ncall debugfs_lookup_and_remove() instead which handles all of the logic\nat once.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53405"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0933eca15f5223b5c2412080c8c3de8758465c78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30f9ba2396a1130eef7f2d3ee7ee8037b7c25be9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73f4451368663ad28daa67980c6dd11d83b303eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be21a66e17ee0ab5f3513b6c86659e60cec5e981"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T14:15:43Z"
+  }
+}

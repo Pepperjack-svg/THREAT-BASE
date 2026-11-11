@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-78rx-wv2g-87wh",
+  "modified": "2025-07-15T15:30:59Z",
+  "published": "2025-07-15T15:30:59Z",
+  "aliases": [
+    "CVE-2025-34107"
+  ],
+  "details": "A buffer overflow vulnerability exists in the WinaXe FTP Client version 7.7 within the FTP banner parsing functionality, WCMDPA10.dll. When the client connects to a remote FTP server and receives an overly long '220 Server Ready' response, the vulnerable component responsible for parsing the banner overflows a stack buffer, leading to arbitrary code execution under the context of the user.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34107"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/ftp/winaxe_server_ready.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/40767"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wina-xe-ftp-client-remote-buffer-overflow"
+    },
+    {
+      "type": "WEB",
+      "url": "http://hyp3rlinx.altervista.org/advisories/WINAXE-FTP-CLIENT-REMOTE-BUFFER-OVERFLOW.txt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-15T13:15:30Z"
+  }
+}

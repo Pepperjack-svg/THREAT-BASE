@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-628f-v4f6-p37r",
+  "modified": "2026-10-09T20:53:51Z",
+  "published": "2026-10-09T20:53:50Z",
+  "aliases": [
+    "CVE-2026-107845"
+  ],
+  "summary": "Contao: Cross-site scripting in the comments bundle",
+  "details": "An unauthenticated front end visitor can post a comment containing a XSS injection. The victim is any back end user who opens the Comments module, and moderation makes exposure certain rather than preventing it. No `Content-Security-Policy` header is sent on the Contao back end, so nothing mitigates the inline handler.\n\n### Impact\n\nAnyone on the internet can inject script that executes in the Contao back end origin, under the session of whichever user opens the Comments module, with no click and no hover. From there the payload acts as that user through the back end: reading any module they can reach, creating a new administrator, or editing a template, which on Contao is a documented path from back end write access to code execution. Moderation does not help and in fact guarantees exposure, since unpublished comments are still inserted and a moderator has to open the list to act on them.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "contao/comments-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "5.3.50"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "contao/comments-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.4.0-RC1"
+            },
+            {
+              "fixed": "5.7.12"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/security/advisories/GHSA-628f-v4f6-p37r"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/commit/22505d5f79bc1a7f52e2cba5fddf6007e1f0408a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/contao/contao"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/releases/tag/5.3.50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/releases/tag/5.7.12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-116",
+      "CWE-79"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-09T20:53:50Z",
+    "nvd_published_at": null
+  }
+}

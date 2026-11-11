@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v95p-x24p-5c2m",
+  "modified": "2026-11-08T21:30:32Z",
+  "published": "2026-11-08T06:30:22Z",
+  "aliases": [
+    "CVE-2026-114432"
+  ],
+  "details": "The Contact Form 7 WordPress plugin before 6.2.4 does not validate the type or extension of files uploaded through a form file field, and a flaw in its temporary-file cleanup leaves the uploaded file on disk, allowing unauthenticated users to upload arbitrary files to the site. On a stock Debian or Ubuntu Apache configuration, which lists directory contents and maps .phar to the PHP handler, the stored file can be located and executed, leading to Remote Code Execution. On other configurations, including nginx and Apache with .htaccess overrides enabled, the issue is limited to an arbitrary file written into the uploads directory, which may still be served as active content such as HTML or SVG from the site's own origin.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/6b0a5d1f-84fb-425f-8d37-ddde5703937c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-08T06:17:04Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5f44-qrrg-g8cm",
+  "modified": "2025-10-17T12:31:17Z",
+  "published": "2025-10-17T12:31:17Z",
+  "aliases": [
+    "CVE-2025-11895"
+  ],
+  "details": "The Binary MLM Plan plugin for WordPress is vulnerable to insecure direct object reference in versions up to, and including, 3.0. This is due to the bmp_user_payout_detail_of_current_user() function selecting payout records solely by id without verifying ownership. This makes it possible for authenticated attackers with the bmp_user role (often subscribers) to view other members' payout summaries via direct requests to the /bmp-account-detail/ endpoint with a crafted payout-id parameter granted they can access the shortcode output.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11895"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/binary-mlm-plan/trunk/includes/bmp-hook-functions.php#L833"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/adba7d0c-29ca-49c5-ac75-bb79d62f6107?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-17T10:15:33Z"
+  }
+}

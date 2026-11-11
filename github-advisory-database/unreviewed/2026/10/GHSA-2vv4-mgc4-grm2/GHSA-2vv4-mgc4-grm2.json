@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2vv4-mgc4-grm2",
+  "modified": "2026-10-16T15:38:29Z",
+  "published": "2026-10-16T00:31:59Z",
+  "aliases": [
+    "CVE-2026-96806"
+  ],
+  "details": "The Apache Airflow Keycloak auth manager did not end the session on logout: the logout route revoked the presented token, but `KeycloakJWTMiddleware` then issued a new, unrevoked token on the same response, so the user stayed logged in. Deployments using the Keycloak auth manager are affected: after a user logs out, anyone with later access to the same browser (for example on a shared workstation) can continue to act as that user.\n\nUsers of apache-airflow-providers-keycloak are recommended to upgrade to apache-airflow-providers-keycloak 0.11.1 or later.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96806"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/73695"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/7vwjg3wn8wxkprg6csxcvs6wkh301r0t"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/15/12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T22:21:19Z"
+  }
+}

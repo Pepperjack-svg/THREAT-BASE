@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mhq7-fqmq-29pq",
+  "modified": "2026-10-15T03:35:53Z",
+  "published": "2026-05-21T15:34:09Z",
+  "aliases": [
+    "CVE-2026-43502"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/rds: handle zerocopy send cleanup before the message is queued\n\nA zerocopy send can fail after user pages have been pinned but before\nthe message is attached to the sending socket.\n\nThe purge path currently infers zerocopy state from rm->m_rs, so an\nunqueued message can be cleaned up as if it owned normal payload pages.\nHowever, zerocopy ownership is really determined by the presence of\nop_mmp_znotifier, regardless of whether the message has reached the\nsocket queue.\n\nCapture op_mmp_znotifier up front in rds_message_purge() and use it as\nthe cleanup discriminator. If the message is already associated with a\nsocket, keep the existing completion path. Otherwise, drop the pinned\npage accounting directly and release the notifier before putting the\npayload pages.\n\nThis keeps early send failure cleanup consistent with the zerocopy\nlifetime rules without changing the normal queued completion path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43502"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f5c185fc79a59ee9991234dd6d2a3e5afa6e75b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14ef6fd18db2494098b21e0471bf27a1d8e9993e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e262db7675e27f42c3f3f47d6011855f4454f24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21d70744e6d3bbf9293aa1ee6fba7c53ad75275e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3abc8983b2bae3f487f77d9da5527d7d6b210d46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44b550d88b267320459d518c0743a241ab2108fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46662f7dc59475995609bf3e9d27eb36f4acf26f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e9aefdc5c53fe9aed108c14e3d155710a1bb14c9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NebuSec/CyberMeowfia/tree/main/security-research/Linux-CVE-2026-43502-openSUSE-6.4.0-150600"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-21T13:16:19Z"
+  }
+}

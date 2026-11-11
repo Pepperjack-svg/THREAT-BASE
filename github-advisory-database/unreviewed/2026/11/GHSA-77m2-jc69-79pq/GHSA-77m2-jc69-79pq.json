@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77m2-jc69-79pq",
+  "modified": "2026-11-10T00:31:45Z",
+  "published": "2026-11-10T00:31:44Z",
+  "aliases": [
+    "CVE-2026-125372"
+  ],
+  "details": "REBUILD before 4.5.3 contains an authorization bypass vulnerability in FeedsListController fetchDetails and fetchComments that skips privilege filtering and FeedsHelper.checkReadable checks. Authenticated attackers can enumerate sequential IDs via the feeds-details and comments-list endpoints to read private or team-scoped feed content, images, attachments and comments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125372"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getrebuild/rebuild/issues/1139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getrebuild/rebuild/commit/03959a464164e12e87443c689043ceccf56044f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getrebuild/rebuild"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getrebuild/rebuild/blob/af00afcc22476b889c06c3db6032fd94a1454cfa/src/main/java/com/rebuild/web/feeds/FeedsListController.java#L190-L194"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getrebuild/rebuild/releases/tag/4.5.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rebuild-before-4.5.3-authorization-bypass-via-feeds-details-and-comments-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T00:17:09Z"
+  }
+}

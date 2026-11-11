@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pcv3-r2v8-4964",
+  "modified": "2025-11-03T21:33:29Z",
+  "published": "2025-04-02T15:31:37Z",
+  "aliases": [
+    "CVE-2025-21994"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix incorrect validation for num_aces field of smb_acl\n\nparse_dcal() validate num_aces to allocate posix_ace_state_array.\n\nif (num_aces > ULONG_MAX / sizeof(struct smb_ace *))\n\nIt is an incorrect validation that we can create an array of size ULONG_MAX.\nsmb_acl has ->size field to calculate actual number of aces in request buffer\nsize. Use this to check invalid num_aces.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21994"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b8b67f3c5e5169535e26efedd3e422172e2db64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c4e202abff45f8eac17989e549fc7a75095f675"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4cb17797a5d241f1e509cb5b46ed95a80c2f5fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3a3484d9d31b27a3db0fab91fcf191132d65236"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0f87370622a853b57e851f7d5a5452b72300f19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6a6721802ac2f12f4c1bbe839a4c229b61866f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-02T14:16:01Z"
+  }
+}

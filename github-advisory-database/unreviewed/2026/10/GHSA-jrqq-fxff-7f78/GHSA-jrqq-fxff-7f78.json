@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jrqq-fxff-7f78",
+  "modified": "2026-10-14T15:32:25Z",
+  "published": "2026-10-14T15:32:25Z",
+  "aliases": [
+    "CVE-2026-110616"
+  ],
+  "details": "NullHub through 2026.5.29 contains a missing authentication vulnerability that allows unauthenticated attackers to access the /api/* management API because the auth_token field defaults to null and is never assigned. Attackers sending requests without Authorization or Origin headers to non-loopback listeners can control agent instances, rewrite configurations including provider credentials, and manage cron jobs and MCP servers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110616"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nullclaw/nullhub"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nullclaw/nullhub/blob/v2026.5.29/Dockerfile#L69-L71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nullclaw/nullhub/blob/v2026.5.29/src/api/settings.zig#L29-L54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nullclaw/nullhub/blob/v2026.5.29/src/server.zig#L546-L556"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/rJrLma3izg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nullhub-through-2026.5.29-missing-authentication-for-api-management-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T15:17:13Z"
+  }
+}

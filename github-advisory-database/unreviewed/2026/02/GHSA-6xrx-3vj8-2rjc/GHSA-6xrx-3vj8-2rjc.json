@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6xrx-3vj8-2rjc",
+  "modified": "2026-03-18T18:31:12Z",
+  "published": "2026-02-18T18:30:39Z",
+  "aliases": [
+    "CVE-2025-71230"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhfs: ensure sb->s_fs_info is always cleaned up\n\nWhen hfs was converted to the new mount api a bug was introduced by\nchanging the allocation pattern of sb->s_fs_info. If setup_bdev_super()\nfails after a new superblock has been allocated by sget_fc(), but before\nhfs_fill_super() takes ownership of the filesystem-specific s_fs_info\ndata it was leaked.\n\nFix this by freeing sb->s_fs_info in hfs_kill_super().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71230"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05ce49a902be15dc93854cbfc20161205a9ee446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/399219831514126bc9541e8eadefe02c6fbd9166"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46c1d56ad321fb024761abd9af61a0cb616cf2f6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-18T16:22:29Z"
+  }
+}

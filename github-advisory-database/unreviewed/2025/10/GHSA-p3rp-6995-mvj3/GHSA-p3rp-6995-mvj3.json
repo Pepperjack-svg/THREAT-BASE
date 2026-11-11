@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p3rp-6995-mvj3",
+  "modified": "2025-10-28T12:30:16Z",
+  "published": "2025-10-28T12:30:16Z",
+  "aliases": [
+    "CVE-2025-40050"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Skip scalar adjustment for BPF_NEG if dst is a pointer\n\nIn check_alu_op(), the verifier currently calls check_reg_arg() and\nadjust_scalar_min_max_vals() unconditionally for BPF_NEG operations.\nHowever, if the destination register holds a pointer, these scalar\nadjustments are unnecessary and potentially incorrect.\n\nThis patch adds a check to skip the adjustment logic when the destination\nregister contains a pointer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40050"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34904582b502a86fdb4d7984b12cacd2faabbe0d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9ef4963227246b9222e1559ddeec8e7af63e6c6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-28T12:15:39Z"
+  }
+}

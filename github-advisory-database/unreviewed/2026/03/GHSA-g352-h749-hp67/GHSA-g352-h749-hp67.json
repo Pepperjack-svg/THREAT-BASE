@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g352-h749-hp67",
+  "modified": "2026-10-15T03:35:20Z",
+  "published": "2026-03-25T12:30:22Z",
+  "aliases": [
+    "CVE-2026-23302"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: annotate data-races around sk->sk_{data_ready,write_space}\n\nskmsg (and probably other layers) are changing these pointers\nwhile other cpus might read them concurrently.\n\nAdd corresponding READ_ONCE()/WRITE_ONCE() annotations\nfor UDP, TCP and AF_UNIX.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23302"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/279f2b67d1c44ee139bd3fdb221850daa9358449"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27fccdbcbbfc4651b6f66756e6fa3f52e051ec23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ef2b20cf4e04ac8a6ba68493f8780776ff84300"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ad01905831c815520f1b0486336a03bb7420465"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c494448bb522bbbb63096540eb2319101a0480ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f17c1c4acbe2bd702abce73a847a04a196fab2c5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:25Z"
+  }
+}

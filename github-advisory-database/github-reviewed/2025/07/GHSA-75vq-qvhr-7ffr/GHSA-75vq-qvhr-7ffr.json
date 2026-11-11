@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-75vq-qvhr-7ffr",
+  "modified": "2025-07-30T15:42:05Z",
+  "published": "2025-07-29T19:10:39Z",
+  "aliases": [
+    "CVE-2025-54425"
+  ],
+  "summary": "Umbraco Delivery API allows for cached requests to be returned with an invalid API key",
+  "details": "### Impact\nUmbraco's [content delivery API](https://docs.umbraco.com/umbraco-cms/reference/content-delivery-api) can be restricted from public access such that an API key must be provided in a header to authorize the request.\n\nIt's also possible to configure output caching, such that the delivery API outputs will be cached for a period of time, improving performance.\n\nThere's an issue when these two things are used together though in that the caching doesn't vary by the header that contains the API key.  As such it's possible for a user without a valid API key to retrieve a response for a given path and query if it has recently been requested and cached by request with a valid key.\n\n### Patches\nPatches will be available in 13.9.3, 15.4.4 and 16.1.1.\n\n### Workarounds\nWorkaround is to remove or reduce the time period of the output caching or to provide other restrictions to access the delivery API such as by IP.\n\n### References\nContent delivery API documentation: https://docs.umbraco.com/umbraco-cms/reference/content-delivery-api",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Umbraco.Cms.Api.Delivery"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "13.0.0"
+            },
+            {
+              "fixed": "13.9.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 13.9.2"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Umbraco.Cms.Api.Delivery"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "15.0.0"
+            },
+            {
+              "fixed": "15.4.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 15.4.3"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Umbraco.Cms.Api.Delivery"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "16.0.0"
+            },
+            {
+              "fixed": "16.1.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 16.1.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/umbraco/Umbraco-CMS/security/advisories/GHSA-75vq-qvhr-7ffr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-54425"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/umbraco/Umbraco-CMS/commit/7e82c258eebaa595eadc9b000461e27d02bc030e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/umbraco/Umbraco-CMS/commit/9f37db18d11c8ba4e3ecdeb35291af30ebee7cd0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/umbraco/Umbraco-CMS/commit/da43086017e1e318f6b5373391d78421efebce3a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.umbraco.com/umbraco-cms/reference/content-delivery-api"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/umbraco/Umbraco-CMS"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-07-29T19:10:39Z",
+    "nvd_published_at": "2025-07-30T14:15:29Z"
+  }
+}

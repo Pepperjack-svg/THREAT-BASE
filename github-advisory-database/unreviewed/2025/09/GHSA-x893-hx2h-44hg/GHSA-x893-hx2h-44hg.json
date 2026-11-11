@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x893-hx2h-44hg",
+  "modified": "2025-12-03T21:30:59Z",
+  "published": "2025-09-15T15:31:25Z",
+  "aliases": [
+    "CVE-2022-50284"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipc: fix memory leak in init_mqueue_fs()\n\nWhen setup_mq_sysctls() failed in init_mqueue_fs(), mqueue_inode_cachep is\nnot released.  In order to fix this issue, the release path is reordered.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50284"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12b677f2c697d61e5ddbcb6c1650050a39392f54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/28dad915abe46d38c5799a0c8130e9a2a1540385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86273624a68d07f129dc182b8394f487ed4de484"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T15:15:39Z"
+  }
+}

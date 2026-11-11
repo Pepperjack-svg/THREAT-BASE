@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pg5c-ggpq-f3pm",
+  "modified": "2025-12-30T15:30:35Z",
+  "published": "2025-12-30T15:30:35Z",
+  "aliases": [
+    "CVE-2023-54297"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: zoned: fix memory leak after finding block group with super blocks\n\nAt exclude_super_stripes(), if we happen to find a block group that has\nsuper blocks mapped to it and we are on a zoned filesystem, we error out\nas this is not supposed to happen, indicating either a bug or maybe some\nmemory corruption for example. However we are exiting the function without\nfreeing the memory allocated for the logical address of the super blocks.\nFix this by freeing the logical address.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54297"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab80a901f8daca07c4a54af0ab0de745c9918294"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c35ea606196243063e63785918c7c8fe27c45798"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cca627afb463a4b47721eac017516ba200de85c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1a07c2b4e2c473ec322b8b9ece071b8c88a3512"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:18Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6pp9-r78q-5hwx",
+  "modified": "2026-03-18T15:30:40Z",
+  "published": "2026-02-14T15:32:18Z",
+  "aliases": [
+    "CVE-2026-23117"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: add missing ice_deinit_hw() in devlink reinit path\n\ndevlink-reload results in ice_init_hw failed error, and then removing\nthe ice driver causes a NULL pointer dereference.\n\n[  +0.102213] ice 0000:ca:00.0: ice_init_hw failed: -16\n...\n[  +0.000001] Call Trace:\n[  +0.000003]  <TASK>\n[  +0.000006]  ice_unload+0x8f/0x100 [ice]\n[  +0.000081]  ice_remove+0xba/0x300 [ice]\n\nCommit 1390b8b3d2be (\"ice: remove duplicate call to ice_deinit_hw() on\nerror paths\") removed ice_deinit_hw() from ice_deinit_dev(). As a result\nice_devlink_reinit_down() no longer calls ice_deinit_hw(), but\nice_devlink_reinit_up() still calls ice_init_hw(). Since the control\nqueues are not uninitialized, ice_init_hw() fails with -EBUSY.\n\nAdd ice_deinit_hw() to ice_devlink_reinit_down() to correspond with\nice_init_hw() in ice_devlink_reinit_up().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42fb5f3deb582cb96440e4683745017dbabb83d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3d99e2fbf01446d31a0d0dfc46444e915a1f6d4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T15:16:06Z"
+  }
+}

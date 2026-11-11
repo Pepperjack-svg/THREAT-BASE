@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3fq7-c5m8-g86x",
+  "modified": "2025-12-02T21:10:39Z",
+  "published": "2025-12-02T21:10:39Z",
+  "aliases": [
+    "CVE-2025-13828"
+  ],
+  "summary": "Mautic user without privileged access to the Marketplace can install and uninstall composer packages",
+  "details": "### Summary\n\nA non privileged user can install and remove arbitrary packages via composer for a composer based installed, even if the flag in update settings for enable composer based update is unticked.\n\n### Impact\n\nA low-privileged user of the platform can install malicious code to obtain higher privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.4.18"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.2.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.0.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mautic/mautic/security/advisories/GHSA-3fq7-c5m8-g86x"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13828"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mautic/mautic"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284",
+      "CWE-862"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-02T21:10:39Z",
+    "nvd_published_at": "2025-12-02T17:16:04Z"
+  }
+}

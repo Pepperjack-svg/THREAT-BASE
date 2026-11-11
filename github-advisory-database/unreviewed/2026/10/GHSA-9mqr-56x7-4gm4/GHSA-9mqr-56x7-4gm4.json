@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9mqr-56x7-4gm4",
+  "modified": "2026-10-15T21:36:03Z",
+  "published": "2026-10-15T21:36:03Z",
+  "aliases": [
+    "CVE-2026-111124"
+  ],
+  "details": "CFITSIO through 4.7.0 contains a heap-based out-of-bounds read vulnerability in the imcompress.c unquantize helpers that allows attackers to read memory before the fits_rand_value table via a zero or negative ZDITHER0 seed. Attackers can supply a crafted FITS file with a SUBTRACTIVE_DITHER_1 compressed image, read through fits_open_file() and fits_read_pix(), to cause crashes or leak heap contents in decoded pixels.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111124"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HEASARC/cfitsio"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HEASARC/cfitsio/blob/d6d27653740864a0483e74cff23c53e34e1dceee/imcompress.c#L5353-L5362"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HEASARC/cfitsio/blob/d6d27653740864a0483e74cff23c53e34e1dceee/imcompress.c#L7495-L7516"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/cfitsio-zdither0-dither-seed-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cfitsio-through-4.7.0-heap-out-of-bounds-read-via-negative-zdither0-seed"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:25Z"
+  }
+}

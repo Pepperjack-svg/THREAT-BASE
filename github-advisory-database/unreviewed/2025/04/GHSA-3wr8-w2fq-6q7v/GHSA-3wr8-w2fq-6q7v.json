@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3wr8-w2fq-6q7v",
+  "modified": "2026-04-27T15:30:28Z",
+  "published": "2025-04-16T15:34:46Z",
+  "aliases": [
+    "CVE-2025-22125"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid1,raid10: don't ignore IO flags\n\nIf blk-wbt is enabled by default, it's found that raid write performance\nis quite bad because all IO are throttled by wbt of underlying disks,\ndue to flag REQ_IDLE is ignored. And turns out this behaviour exist since\nblk-wbt is introduced.\n\nOther than REQ_IDLE, other flags should not be ignored as well, for\nexample REQ_META can be set for filesystems, clearing it can cause priority\nreverse problems; And REQ_NOWAIT should not be cleared as well, because\nio will wait instead of failing directly in underlying disks.\n\nFix those problems by keep IO flags from master bio.\n\nFises: f51d46d0e7cb (\"md: add support for REQ_NOWAIT\")",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10f4ff4baeb6951cf58282954318827b6852d501"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73506e581c0b1814cdfd2229d589f30751d7de26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a0adf3d778c4a0893c6d34a9e1b0082a6f1c495"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e879a0d9cb086c8e52ce6c04e5bfa63825a6213c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:16:06Z"
+  }
+}

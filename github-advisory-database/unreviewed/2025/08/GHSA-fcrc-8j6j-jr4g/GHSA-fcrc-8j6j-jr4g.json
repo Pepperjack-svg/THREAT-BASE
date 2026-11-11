@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcrc-8j6j-jr4g",
+  "modified": "2026-01-07T18:30:21Z",
+  "published": "2025-08-22T18:31:22Z",
+  "aliases": [
+    "CVE-2025-38644"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: reject TDLS operations when station is not associated\n\nsyzbot triggered a WARN in ieee80211_tdls_oper() by sending\nNL80211_TDLS_ENABLE_LINK immediately after NL80211_CMD_CONNECT,\nbefore association completed and without prior TDLS setup.\n\nThis left internal state like sdata->u.mgd.tdls_peer uninitialized,\nleading to a WARN_ON() in code paths that assumed it was valid.\n\nReject the operation early if not in station mode or not associated.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38644"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c84204cf0bbe89e454a5caccc6a908bc7db1542"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16ecdab5446f15a61ec88eb0d23d25d009821db0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/31af06b574394530f68a4310c45ecbe2f68853c4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/378ae9ccaea3f445838a087962a067b5cb2e8577"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4df663d4c1ca386dcab2f743dfc9f0cc07aef73c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af72badd5ee423eb16f6ad7fe0a62f1b4252d848"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-22T16:15:38Z"
+  }
+}

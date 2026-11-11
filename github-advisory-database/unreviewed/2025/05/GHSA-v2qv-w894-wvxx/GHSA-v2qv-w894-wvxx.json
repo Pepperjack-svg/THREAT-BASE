@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v2qv-w894-wvxx",
+  "modified": "2025-11-13T00:30:16Z",
+  "published": "2025-05-08T09:30:24Z",
+  "aliases": [
+    "CVE-2025-37812"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: cdns3: Fix deadlock when using NCM gadget\n\nThe cdns3 driver has the same NCM deadlock as fixed in cdnsp by commit\n58f2fcb3a845 (\"usb: cdnsp: Fix deadlock issue during using NCM gadget\").\n\nUnder PREEMPT_RT the deadlock can be readily triggered by heavy network\ntraffic, for example using \"iperf --bidir\" over NCM ethernet link.\n\nThe deadlock occurs because the threaded interrupt handler gets\npreempted by a softirq, but both are protected by the same spinlock.\nPrevent deadlock by disabling softirq during threaded irq handler.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37812"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09e90a9689a4aac7a2f726dc2aa472b0b37937b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48a62deb857f0694f611949015e70ad194d97159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59a760e4796a3cd88d8b9d7706e0a638de677751"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74cd6e408a4c010e404832f0e4609d29bf1d0c41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1059896f2bfdcebcdc7153c3be2307ea319501f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b96239582531775f2fdcb14de29bdb6870fd4c8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c27db84ed44e50ff90d9e3a2a25fae2e0a0fa015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eebfb64c624fc738b669100173344fb441c5e719"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-08T07:15:52Z"
+  }
+}

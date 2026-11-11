@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7gp9-jx5j-42cf",
+  "modified": "2025-11-12T21:31:04Z",
+  "published": "2025-05-14T15:31:37Z",
+  "aliases": [
+    "CVE-2023-53146"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: dw2102: Fix null-ptr-deref in dw2102_i2c_transfer()\n\nIn dw2102_i2c_transfer, msg is controlled by user. When msg[i].buf\nis null and msg[i].len is zero, former checks on msg[i].buf would be\npassed. Malicious data finally reach dw2102_i2c_transfer. If accessing\nmsg[i].buf[0] without sanity check, null ptr deref would happen.\nWe add check on msg[i].len to prevent crash.\n\nSimilar commit:\ncommit 950e252cb469\n(\"[media] dw2102: limit messages to buffer size\")",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53146"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08dfcbd03b2b7f918c4f87c6ff637054e510df74"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ae544d94abc8ff77b1b9bf8774def3fa5689b5b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77cbd42d29de9ffc93d5529bab8813cde53af14c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/903566208ae6bb9c0e7e54355ce75bf6cf72485d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97fdbdb750342cbc204befde976872fedb406ee6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/beb9550494e7349f92b9eaa283256a5ad9b1c9be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ecbe6d011b95c7da59f014f8d26cb7245ed1e11e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb28afab113a82b89ffec48c8155ec05b4f8cb5e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-14T13:15:47Z"
+  }
+}

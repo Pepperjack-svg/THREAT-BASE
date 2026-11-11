@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6c7f-9265-g8fw",
+  "modified": "2026-10-23T20:55:15Z",
+  "published": "2026-10-23T20:55:15Z",
+  "aliases": [
+    "CVE-2026-115572"
+  ],
+  "summary": "pypdf: Possible long runtimes for repeated references to the same missing object",
+  "details": "### Impact\n\nAn attacker who uses this vulnerability can craft a PDF which leads to long runtimes. This requires loading relevant parts of a file (like their pages) where the same, but non-existent indirect object is referenced multiple times.\n\n### Patches\n\nThis has been fixed in [pypdf==6.21.2](https://github.com/py-pdf/pypdf/releases/tag/6.21.2).\n\n### Workarounds\n\nIf you cannot upgrade yet, consider applying the changes from PR [#4240](https://github.com/py-pdf/pypdf/pull/4240).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pypdf"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.21.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/security/advisories/GHSA-6c7f-9265-g8fw"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/pull/4240"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/commit/68a0e5046cc9e14a6c24a21a713f3c7fbde18b4b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/py-pdf/pypdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/releases/tag/6.21.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-23T20:55:15Z",
+    "nvd_published_at": null
+  }
+}

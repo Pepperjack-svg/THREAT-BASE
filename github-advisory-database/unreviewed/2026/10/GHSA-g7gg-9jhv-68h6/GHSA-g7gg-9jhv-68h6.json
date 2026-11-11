@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g7gg-9jhv-68h6",
+  "modified": "2026-10-26T15:34:42Z",
+  "published": "2026-10-26T15:34:42Z",
+  "aliases": [
+    "CVE-2026-115693"
+  ],
+  "details": "Improper Certificate Validation vulnerability in hackney_ssl in benoitc hackney allows an on-path attacker to impersonate a server pinned to a private certificate authority via a certificate chain that ends in a publicly trusted root. hackney adds {partial_chain, fun hackney_ssl:partial_chain/1} to every verify_peer configuration. The callback returns any certificate in the peer chain whose public key matches a root in the bundled certifi store as the trust anchor, and OTP honours that callback over the configured cacerts. hackney_ssl:merge_ssl_opts/3 kept the callback when the caller replaced the trust store with cacerts or cacertfile in ssl_options, so a connection pinned to a private CA still accepted any chain that carried a publicly trusted root.\n\nThe hostname check still applies, so the attacker needs a publicly trusted certificate for the pinned hostname.\n\nThis issue affects hackney: from 1.24.0 before 4.9.0.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/pull/978"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/commit/915eb5737e9c489d8fc22eec8cdae30e9b027be4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/commit/d8a9afcf5c3849904274e2eba1df56c63d1a1a0c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cna.erlef.org/cves/CVE-2026-115693.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/releases/tag/4.9.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osv.dev/vulnerability/EEF-CVE-2026-115693"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T14:16:31Z"
+  }
+}

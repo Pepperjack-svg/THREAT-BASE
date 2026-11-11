@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x2m7-qhj2-gp6r",
+  "modified": "2025-11-19T21:31:15Z",
+  "published": "2025-07-09T12:31:35Z",
+  "aliases": [
+    "CVE-2025-38253"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: wacom: fix crash in wacom_aes_battery_handler()\n\nCommit fd2a9b29dc9c (\"HID: wacom: Remove AES power_supply after extended\ninactivity\") introduced wacom_aes_battery_handler() which is scheduled\nas a delayed work (aes_battery_work).\n\nIn wacom_remove(), aes_battery_work is not canceled. Consequently, if\nthe device is removed while aes_battery_work is still pending, then hard\ncrashes or \"Oops: general protection fault...\" are experienced when\nwacom_aes_battery_handler() is finally called. E.g., this happens with\nbuilt-in USB devices after resume from hibernate when aes_battery_work\nwas still pending at the time of hibernation.\n\nSo, take care to cancel aes_battery_work in wacom_remove().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57a3d82200dbeccd002244b96acad570eeeb731f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4f182ffa30c52ad1c8e12edfb8049ee748c0f1b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f3054152c12e2eed1e72704aff47b0ea58229584"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-09T11:15:27Z"
+  }
+}

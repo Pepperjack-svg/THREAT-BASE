@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wxj9-x4vw-8w2j",
+  "modified": "2026-10-21T15:40:32Z",
+  "published": "2026-05-28T12:30:31Z",
+  "aliases": [
+    "CVE-2026-46171"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nriscv: kvm: fix vector context allocation leak\n\nWhen the second kzalloc (host_context.vector.datap) fails in\nkvm_riscv_vcpu_alloc_vector_context, the first allocation\n(guest_context.vector.datap) is leaked. Free it before returning.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46171"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d57ab45ec5c0e22789de793bcf2a31ad6fb7d98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70ecebe7c58ce01f8da3f513eafb51bd147b1e63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f3a5dc4055e1001b44ca8ae2bd3eb1d07782049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7c958d7c1eb1cb9b2be7b5ee4129fcd66cec978"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd62c0f61bc722a097417401030c596cea8e21aa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:32Z"
+  }
+}

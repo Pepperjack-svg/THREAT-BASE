@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x55j-pj79-2cgm",
+  "modified": "2026-10-12T18:31:45Z",
+  "published": "2026-10-12T18:31:45Z",
+  "aliases": [
+    "CVE-2026-109298"
+  ],
+  "details": "Open WebUI 0.11.0 before 0.11.4 compiles user-chosen grep patterns for its knowledge and chat file search tools with a regex engine that expands nested counted repetition unbounded at compile time and caches the result. Authenticated users can have the model call grep_knowledge_files with short nested-repetition patterns, blocking the event loop and exhausting worker memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-webui/open-webui/security/advisories/GHSA-gww9-mhgj-pfqh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109298"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-webui/open-webui/commit/97e013a66169c4fcd7f26ab9e41a4ff260ffd4da"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/open-webui-0.11.0-before-0.11.4-memory-exhaustion-via-knowledge-search-regex"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T17:17:23Z"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r6p5-w7hv-x5rq",
+  "modified": "2026-10-14T15:32:24Z",
+  "published": "2026-10-14T15:32:24Z",
+  "aliases": [
+    "CVE-2026-110607"
+  ],
+  "details": "BizSpring Shop through commit cf22d39daaf1 contains a payment verification bypass vulnerability that allows authenticated buyers to mark orders paid by calling the PaymentController.testPostPay handler. Attackers can generate a payment log via /member/payment/load and request /member/payment/test_post_pay_{paymentLogSn} to obtain goods without paying or settle other members' orders.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110607"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BizSpringSource/bizspring-shop-opensource"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BizSpringSource/bizspring-shop-opensource/blob/cf22d39daaf17f430d8fc1fb698a2f6e515e1808/bizspring-open/bizspring-business/bizspring-order/src/main/java/cn/bizspring/cloud/order/admin/controller/shop/PaymentController.java#L76-L84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BizSpringSource/bizspring-shop-opensource/blob/cf22d39daaf17f430d8fc1fb698a2f6e515e1808/bizspring-open/bizspring-business/bizspring-order/src/main/java/cn/bizspring/cloud/order/admin/service/impl/PaymentLogServiceImpl.java#L143-L169"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bizspring-open/BizSpring-Java-Mall"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bizspring-open/BizSpring-Java-Mall/blob/369e88c5cda36ddcea56742c335ee1bfe50e8156/bizspring-java/bizspring-business/bizspring-order/src/main/java/cn/bizspring/cloud/order/admin/controller/shop/PaymentController.java#L76-L84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/bizspring-java-mall-payment-forgery-order-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/bizspring-shop-test-pay-endpoint-order-settlement-bypass"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bizspring-shop-through-commit-cf22d39daaf1-payment-bypass-via-test-post-pay-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T15:17:12Z"
+  }
+}

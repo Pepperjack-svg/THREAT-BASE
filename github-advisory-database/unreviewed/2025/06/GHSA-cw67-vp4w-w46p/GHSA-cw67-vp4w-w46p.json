@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cw67-vp4w-w46p",
+  "modified": "2025-11-14T18:31:23Z",
+  "published": "2025-06-18T12:30:40Z",
+  "aliases": [
+    "CVE-2022-49995"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwriteback: avoid use-after-free after removing device\n\nWhen a disk is removed, bdi_unregister gets called to stop further\nwriteback and wait for associated delayed work to complete.  However,\nwb_inode_writeback_end() may schedule bandwidth estimation dwork after\nthis has completed, which can result in the timer attempting to access the\njust freed bdi_writeback.\n\nFix this by checking if the bdi_writeback is alive, similar to when\nscheduling writeback work.\n\nSince this requires wb->work_lock, and wb_inode_writeback_end() may get\ncalled from interrupt, switch wb->work_lock to an irqsafe lock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49995"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a6c710f3bc10bc9cc23e1c080b53245b7f9d5b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f87904c075515f3e1d8f4a7115869d3b914674fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f96b9f7c1676923bce871e728bb49c0dfa5013cc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:27Z"
+  }
+}

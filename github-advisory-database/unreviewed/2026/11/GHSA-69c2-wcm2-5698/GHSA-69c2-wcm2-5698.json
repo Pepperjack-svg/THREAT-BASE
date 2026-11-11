@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-69c2-wcm2-5698",
+  "modified": "2026-11-03T18:31:03Z",
+  "published": "2026-11-03T18:31:03Z",
+  "aliases": [
+    "CVE-2026-121547"
+  ],
+  "details": "Canop dysk before 3.8.2 contains a terminal escape sequence injection vulnerability that allows local users to inject control sequences by crafting mount metadata rendered unsanitized in table and CSV output. Attackers can create FUSE mounts with ESC/OSC sequences in mount-point names or fsname, causing spoofed or hidden output and window-title changes when another user runs dysk.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:A/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121547"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Canop/dysk/issues/125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Canop/dysk/pull/126"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Canop/dysk/commit/726f4f554d7c1ede21363c29b593ab130ca28d86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Canop/dysk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Canop/dysk/blob/v3.8.1/cli/src/table.rs#L60-L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dysk-before-3.8.2-terminal-escape-sequence-injection-via-mount-metadata"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-150"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T16:17:26Z"
+  }
+}

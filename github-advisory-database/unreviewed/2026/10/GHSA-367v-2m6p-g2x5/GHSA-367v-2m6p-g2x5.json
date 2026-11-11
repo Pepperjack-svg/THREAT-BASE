@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-367v-2m6p-g2x5",
+  "modified": "2026-10-30T15:34:36Z",
+  "published": "2026-10-30T15:34:36Z",
+  "aliases": [
+    "CVE-2010-20125"
+  ],
+  "details": "DedeCMS before 5.7 contains a file inclusion vulnerability in plus/carbuyaction.php that allows remote unauthenticated attackers to control the include path by manipulating the uninitialized code parameter passed to require_once. Attackers can supply path traversal sequences ../../ to include arbitrary local files outside the intended payment directory, potentially achieving local file disclosure. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-18.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2010-20125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dedecms/DedeCMS/blob/v5.6/plus/carbuyaction.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dedecms/DedeCMS/releases/tag/v5.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/dedecms/dedecms-carbuyaction-fileinclude.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web.archive.org/web/20100630011301/https://www.myhack58.com/Article/html/3/62/2010/27387.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cnblogs.com/milantgh/p/3615986.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dedecms-file-inclusion-via-plus-carbuyaction-php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-98"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T15:16:43Z"
+  }
+}

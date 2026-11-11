@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jrg-fg6f-m23w",
+  "modified": "2025-11-17T18:30:30Z",
+  "published": "2025-11-17T18:30:30Z",
+  "aliases": [
+    "CVE-2025-63916"
+  ],
+  "details": "MyScreenTools v2.2.1.0 contains a critical OS command injection vulnerability in the GIF compression tool. The application fails to properly sanitize user-supplied file paths before passing them to cmd.exe, allowing attackers to execute arbitrary system commands with the privileges of the user running the application. The vulnerability exists in the CMD() function within GIFSicleTool\\Form_gif_sicle_tool.cs, which constructs shell commands by concatenating unsanitized user input (file paths) and executes them via cmd.exe.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-63916"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cydtseng/Vulnerability-Research/blob/main/myscreentools/OSCommandInjection-GifCompression.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/luotengyuan/MyScreenTools/blob/master/GIFSicleTool/Form_gif_sicle_tool.cs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/luotengyuan/MyScreenTools/tree/master"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-17T16:15:50Z"
+  }
+}

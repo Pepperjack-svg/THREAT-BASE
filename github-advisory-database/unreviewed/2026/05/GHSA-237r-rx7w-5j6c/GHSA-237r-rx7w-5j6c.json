@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-237r-rx7w-5j6c",
+  "modified": "2026-05-30T12:30:23Z",
+  "published": "2026-05-27T15:33:19Z",
+  "aliases": [
+    "CVE-2026-45980"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amdxdna: Stop job scheduling across aie2_release_resource()\n\nRunning jobs on a hardware context while it is in the process of\nreleasing resources can lead to use-after-free and crashes.\n\nFix this by stopping job scheduling before calling\naie2_release_resource() and restarting it after the release completes.\nAdditionally, aie2_sched_job_run() now checks whether the hardware\ncontext is still active.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45980"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/688c3ff079b10e4600f040944430d3d4ff448a15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b79d31dce49b50c79620389b3639280802a86960"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1370241fe8045702bc9d0812b996791f0500f1b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:15Z"
+  }
+}

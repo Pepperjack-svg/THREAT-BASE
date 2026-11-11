@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xc8j-5rr8-8q9r",
+  "modified": "2025-10-31T09:30:26Z",
+  "published": "2025-10-31T09:30:26Z",
+  "aliases": [
+    "CVE-2025-8385"
+  ],
+  "details": "The Zombify plugin for WordPress is vulnerable to Path Traversal in all versions up to, and including, 1.7.5. This is due to insufficient input validation in the zf_get_file_by_url function. This makes it possible for authenticated attackers, with subscriber-level access and above, to read arbitrary files on the server, including sensitive system files like /etc/passwd, via a forged request. It's worth noting that successfully exploiting this vulnerability relies on a race condition as the file generated will be deleted immediately.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-8385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themeforest.net/item/boombox-viral-buzz-wordpress-theme/16596434"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/ef9010e3-f060-4bef-b62b-4a648f5e5577?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-31T08:15:36Z"
+  }
+}

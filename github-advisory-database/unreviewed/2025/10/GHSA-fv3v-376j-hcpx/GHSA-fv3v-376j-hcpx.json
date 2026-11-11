@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fv3v-376j-hcpx",
+  "modified": "2026-01-16T21:30:29Z",
+  "published": "2025-10-01T12:30:29Z",
+  "aliases": [
+    "CVE-2022-50469"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix potential memory leak in rtw_init_drv_sw()\n\nIn rtw_init_drv_sw(), there are various init functions are called to\npopulate the padapter structure and some checks for their return value.\nHowever, except for the first one error path, the other five error paths\ndo not properly release the previous allocated resources, which leads to\nvarious memory leaks.\n\nThis patch fixes them and keeps the success and error separate.\nNote that these changes keep the form of `rtw_init_drv_sw()` in\n\"drivers/staging/r8188eu/os_dep/os_intfs.c\". As there is no proper device\nto test with, no runtime testing was performed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50469"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a5aa9cce621e2c0e25a1e5d72d6be1749167cc0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b2052b365f8035ab7f09ac24b5b499002b298cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b4573a2bad3c3e2643ef3939079eb7035a30e6ee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d95d1526d9f06978c1a7186810a5490d72c62742"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:40Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-76f4-3487-46jf",
+  "modified": "2025-11-19T21:31:15Z",
+  "published": "2025-07-10T09:32:29Z",
+  "aliases": [
+    "CVE-2025-38289"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: lpfc: Avoid potential ndlp use-after-free in dev_loss_tmo_callbk\n\nSmatch detected a potential use-after-free of an ndlp oject in\ndev_loss_tmo_callbk during driver unload or fatal error handling.\n\nFix by reordering code to avoid potential use-after-free if initial\nnodelist reference has been previously removed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38289"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f09940b5581e44069eb31a66cf7f05c3c35ed04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5162bb6aa1ec04dff4509b025883524b6d7e7ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea405fb4144985d5c60f49c2abd9ba47ea44fdb4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-10T08:15:27Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-24xm-58mr-jc27",
+  "modified": "2025-11-26T18:31:01Z",
+  "published": "2025-08-22T18:31:22Z",
+  "aliases": [
+    "CVE-2025-38655"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npinctrl: canaan: k230: add NULL check in DT parse\n\nAdd a NULL check for the return value of of_get_property() when\nretrieving the \"pinmux\" property in the group parser. This avoids\na potential NULL pointer dereference if the property is missing\nfrom the device tree node.\n\nAlso fix a typo (\"sintenel\") in the device ID match table comment,\ncorrecting it to \"sentinel\".",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38655"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d324b262c0ff256b8d603596574d66267b6394f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65bd0be486390fc12a84eafaad78758c5e5a55e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5ae84aeff60b8819e8568ff0c57590caed9e6d3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-22T16:15:40Z"
+  }
+}

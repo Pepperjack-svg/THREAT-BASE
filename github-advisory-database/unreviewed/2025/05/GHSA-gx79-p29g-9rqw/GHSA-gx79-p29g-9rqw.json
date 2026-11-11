@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gx79-p29g-9rqw",
+  "modified": "2025-05-07T03:30:28Z",
+  "published": "2025-05-07T03:30:28Z",
+  "aliases": [
+    "CVE-2025-3924"
+  ],
+  "details": "The PeproDev Ultimate Profile Solutions plugin for WordPress is vulnerable to unauthorized access of data via its publicly exposed reset-password endpoint. The plugin looks up the 'valid_email' value based solely on a supplied username parameter, without verifying that the requester is associated with that user account. This allows unauthenticated attackers to enumerate email addresses for any user, including administrators.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-3924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/peprodev-ups/tags/7.5.2/login/login.php#L1483"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/peprodev-ups/tags/7.5.2/login/login.php#L2659"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/peprodev-ups/tags/7.5.2/login/login.php#L2810"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/peprodev-ups/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/7bb36c0f-68b3-492e-9f08-fe6228b0363f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-07T03:15:18Z"
+  }
+}

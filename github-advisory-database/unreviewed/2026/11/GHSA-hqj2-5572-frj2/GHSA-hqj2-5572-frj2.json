@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hqj2-5572-frj2",
+  "modified": "2026-11-10T21:34:26Z",
+  "published": "2026-11-10T21:34:26Z",
+  "aliases": [
+    "CVE-2026-120808"
+  ],
+  "details": "An issue exists in MongoDB's macOS TLS client implementation where certificate chain-of-trust validation is bypassed for outbound connections to IPv6-addressed peers. When a MongoDB process using the Apple SecureTransport TLS backend connects to an IPv6 target, the trust evaluation result from SecTrustEvaluate is silently discarded, regardless of whether the peer's certificate is trusted. An on-path party could exploit this by presenting a self-signed certificate containing the target's IPv6 address in the Subject Alternative Name to intercept and modify encrypted inter-node or external service traffic. This issue only affects MongoDB processes running on macOS with the Apple SecureTransport TLS provider.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120808"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jira.mongodb.org/browse/SERVER-130681"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T20:18:51Z"
+  }
+}

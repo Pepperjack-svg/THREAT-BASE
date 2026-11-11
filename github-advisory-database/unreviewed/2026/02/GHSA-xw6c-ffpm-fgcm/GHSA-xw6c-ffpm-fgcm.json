@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xw6c-ffpm-fgcm",
+  "modified": "2026-02-24T00:31:33Z",
+  "published": "2026-02-24T00:31:33Z",
+  "aliases": [
+    "CVE-2026-27741"
+  ],
+  "details": "Bludit version 3.16.1 contains a cross-site request forgery (CSRF) vulnerability in the /admin/uninstall-plugin/ and /admin/install-theme/ endpoints. The application does not implement anti-CSRF tokens or other request origin validation mechanisms for these administrative actions. An attacker can induce an authenticated administrator to visit a malicious page that silently submits crafted requests, resulting in unauthorized plugin uninstallation or theme installation. This may lead to loss of functionality, execution of untrusted code via malicious themes, and compromise of system integrity.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27741"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bludit/bludit/issues/1577"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bludit-csrf-in-plugin-and-theme-management-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-23T22:16:25Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m978-pm8w-665r",
+  "modified": "2026-10-18T18:31:50Z",
+  "published": "2026-10-18T18:31:50Z",
+  "aliases": [
+    "CVE-2026-98474"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/pci: Fix missing device lock in zpci_report_status()\n\nWhen pdev is non-NULL, zpci_report_status() accesses the device's driver.\nTo get a consistent state matching the recovery, the device lock needs to\nbe held. Do so by expanding the existing device lock critical section.\n\nThe lock only needs to be held when the pdev is non-NULL, so extract\nthe pdev-specific reporting into a helper function which also adds a\nlockdep assertion to detect calls without the device lock held.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0261aef4b15efcee2860ab857e5cb05e9bfa47b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b957d5c2f737cda731cb1a1b71a7524d54538f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/743a8458978d13d84a1cf74bcd29b9959a75d3a0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:16:57Z"
+  }
+}

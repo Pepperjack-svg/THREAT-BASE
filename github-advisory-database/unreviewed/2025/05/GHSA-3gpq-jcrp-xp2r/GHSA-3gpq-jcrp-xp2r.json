@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3gpq-jcrp-xp2r",
+  "modified": "2025-11-07T21:31:19Z",
+  "published": "2025-05-01T15:31:48Z",
+  "aliases": [
+    "CVE-2022-49815"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: fix missing xas_retry() in fscache mode\n\nThe xarray iteration only holds the RCU read lock and thus may encounter\nXA_RETRY_ENTRY if there's process modifying the xarray concurrently.\nThis will cause oops when referring to the invalid entry.\n\nFix this by adding the missing xas_retry(), which will make the\niteration wind back to the root node if XA_RETRY_ENTRY is encountered.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49815"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/37020bbb71d911431e16c2c940b97cf86ae4f2f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dbc98fe99e17ed18f2f272d5fe880d844b1c68c3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:04Z"
+  }
+}

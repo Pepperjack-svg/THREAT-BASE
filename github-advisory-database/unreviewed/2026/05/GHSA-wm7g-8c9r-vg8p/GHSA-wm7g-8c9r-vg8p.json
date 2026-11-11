@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wm7g-8c9r-vg8p",
+  "modified": "2026-05-19T06:30:29Z",
+  "published": "2026-05-19T06:30:29Z",
+  "aliases": [
+    "CVE-2026-32994"
+  ],
+  "details": "The /api/v1/autotranslate.translateMessage endpoint in versions <8.5.0, <8.4.2, <8.3.4, <8.2.4, <8.1.5, <8.0.6, <7.13.8, and <7.10.12 allows any authenticated user to retrieve the full content of any message from any room (private groups, direct messages, channels) by simply providing the target message ID. The endpoint fetches the message via Messages.findOneById(messageId) with no room access check (canAccessRoomIdAsync is never called), returning the complete IMessage object including message text, sender info, room ID, timestamps, and markdown content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32994"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackerone.com/reports/3713682"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-19T05:16:23Z"
+  }
+}

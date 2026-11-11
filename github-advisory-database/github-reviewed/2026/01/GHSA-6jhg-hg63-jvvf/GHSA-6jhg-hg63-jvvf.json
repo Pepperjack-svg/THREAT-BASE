@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jhg-hg63-jvvf",
+  "modified": "2026-01-06T16:06:55Z",
+  "published": "2026-01-05T23:13:14Z",
+  "aliases": [
+    "CVE-2025-69228"
+  ],
+  "summary": "AIOHTTP vulnerable to  denial of service through large payloads",
+  "details": "### Summary\nA request can be crafted in such a way that an aiohttp server's memory fills up uncontrollably during processing.\n\n### Impact\nIf an application includes a handler that uses the `Request.post()` method, an attacker may be able to freeze the server by exhausting the memory.\n\n-----\n\nPatch: https://github.com/aio-libs/aiohttp/commit/b7dbd35375aedbcd712cbae8ad513d56d11cce60",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "aiohttp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.13.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.13.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/security/advisories/GHSA-6jhg-hg63-jvvf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-69228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/commit/b7dbd35375aedbcd712cbae8ad513d56d11cce60"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/aio-libs/aiohttp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-05T23:13:14Z",
+    "nvd_published_at": "2026-01-06T00:15:48Z"
+  }
+}

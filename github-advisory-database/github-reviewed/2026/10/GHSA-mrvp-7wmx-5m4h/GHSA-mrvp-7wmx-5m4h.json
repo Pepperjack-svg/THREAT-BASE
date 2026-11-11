@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrvp-7wmx-5m4h",
+  "modified": "2026-10-09T20:53:55Z",
+  "published": "2026-10-09T20:53:55Z",
+  "aliases": [
+    "CVE-2026-107844"
+  ],
+  "summary": "Contao: Path traversal in the images controller",
+  "details": "`ImagesController` joins the user controlled `{path}` onto the configured image target directory with `Path::join()`, which canonicalises `..` segments, and never calls `Path::isBasePath()` to confirm the result stayed inside that directory. An unauthenticated GET with percent encoded dot segments therefore escapes the directory and the file is returned by `BinaryFileResponse`. Reads are bounded to the extensions in `contao.image.valid_extensions`, and paths below the upload directory fail for an unrelated reason, so this is reported as a missing boundary check rather than as a general arbitrary file read. Both Apache with the shipped `public/.htaccess` and nginx with the documented configuration are affected.\n\n### Impact\n\nAny unauthenticated visitor can read files that are deliberately kept outside the document root, anywhere under the project directory, as long as the name ends in one of `contao.image.valid_extensions` (`jpg`, `jpeg`, `gif`, `png`, `tif`, `tiff`, `bmp`, `svg`, `svgz`, `webp`). The route also acts as an existence oracle for arbitrary paths, and on a debug enabled instance the 404 message discloses the absolute filesystem path.\n\n**Honesty caveat, stated because it lowers the severity.** The reporter could not use this to read protected member folders: every path below the upload directory returns 500 for the reason given under Details, so the practically reachable set is image typed files outside `files/`.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "contao/core-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.1.0"
+            },
+            {
+              "fixed": "5.3.50"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "contao/core-bundle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.4.0-RC1"
+            },
+            {
+              "fixed": "5.7.12"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/security/advisories/GHSA-mrvp-7wmx-5m4h"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/commit/867c055122fdf12220f973f862082037b695b9bd"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/contao/contao"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/releases/tag/5.3.50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/releases/tag/5.7.12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-09T20:53:55Z",
+    "nvd_published_at": null
+  }
+}

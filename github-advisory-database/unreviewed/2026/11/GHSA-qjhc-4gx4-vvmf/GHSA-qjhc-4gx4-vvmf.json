@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qjhc-4gx4-vvmf",
+  "modified": "2026-11-08T03:30:36Z",
+  "published": "2026-11-08T03:30:36Z",
+  "aliases": [
+    "CVE-2026-123600"
+  ],
+  "details": "Hickory DNS hickory-proto 0.25.0-alpha.3 through 0.25.2 and hickory-net 0.26.0-alpha.1 before 0.26.2 contain a DNSSEC validation flaw in DnssecDnsHandle that accepts NSEC3-signed NODATA responses for zone-apex queries as secure without an NSEC3 record matching the hashed QNAME. On-path attackers or malicious authoritative servers can replay a validly signed non-apex NSEC3 with the zone's signed SOA to serve an authenticated (AD=1) denial of any apex RRtype for the negative-cache TTL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/hickory-dns/hickory-dns/security/advisories/GHSA-3jvh-8vj5-65rq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123600"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hickory-dns-hickory-proto-0.25.0-alpha.3-through-0.25.2-nsec3-apex-nodata-validation-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-358"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-08T02:16:54Z"
+  }
+}

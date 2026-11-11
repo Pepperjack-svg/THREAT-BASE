@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wmxh-4mgr-2w85",
+  "modified": "2025-12-18T21:31:43Z",
+  "published": "2025-12-18T21:31:43Z",
+  "aliases": [
+    "CVE-2025-13911"
+  ],
+  "details": "The vulnerability affects Ignition SCADA applications where Python \nscripting is utilized for automation purposes. The vulnerability arises \nfrom the absence of proper security controls that restrict which Python \nlibraries can be imported and executed within the scripting environment.\n The core issue lies in the Ignition service account having system \npermissions beyond what an Ignition privileged user requires. When an \nauthenticated administrator uploads a malicious project file containing \nPython scripts with bind shell capabilities, the application executes \nthese scripts with the same privileges as the Ignition Gateway process, \nwhich typically runs with SYSTEM-level permissions on Windows. \nAlternative code execution patterns could lead to similar results.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:H/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13911"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2025/icsa-25-352-01.json"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.inductiveautomation.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-25-352-01"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-250"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-18T21:15:52Z"
+  }
+}

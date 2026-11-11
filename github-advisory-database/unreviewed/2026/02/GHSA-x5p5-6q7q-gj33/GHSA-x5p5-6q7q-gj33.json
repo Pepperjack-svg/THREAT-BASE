@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x5p5-6q7q-gj33",
+  "modified": "2026-03-18T15:30:40Z",
+  "published": "2026-02-14T15:32:18Z",
+  "aliases": [
+    "CVE-2026-23123"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ninterconnect: debugfs: initialize src_node and dst_node to empty strings\n\nThe debugfs_create_str() API assumes that the string pointer is either NULL\nor points to valid kmalloc() memory. Leaving the pointer uninitialized can\ncause problems.\n\nInitialize src_node and dst_node to empty strings before creating the\ndebugfs entries to guarantee that reads and writes are safe.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d7c7e1fb3ec24fdd0f9faa27b666d6789e891e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8cc27f5c6dd17dd090f3a696683f04336c162ff5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/935d0938b570589c8b0a1733d2cba3c39d027f25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa79a5a959c7c414bd6fba01ea8dbaddd44f13e7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T15:16:07Z"
+  }
+}

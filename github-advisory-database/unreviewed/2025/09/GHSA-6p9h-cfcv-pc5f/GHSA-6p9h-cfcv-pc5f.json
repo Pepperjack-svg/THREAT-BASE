@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6p9h-cfcv-pc5f",
+  "modified": "2025-12-11T18:30:33Z",
+  "published": "2025-09-18T15:30:32Z",
+  "aliases": [
+    "CVE-2022-50383"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: mediatek: vcodec: Can't set dst buffer to done when lat decode error\n\nCore thread will call v4l2_m2m_buf_done to set dst buffer done for\nlat architecture. If lat call v4l2_m2m_buf_done_and_job_finish to\nfree dst buffer when lat decode error, core thread will access kernel\nNULL pointer dereference, then crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50383"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3568ecd3f3a6d133ab7feffbba34955c8c79bbc4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66d26ed30056e7d2da3e9c14125ffe6049a4f907"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eeb090420f3477eb5011586709409fc655c2b16c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T14:15:37Z"
+  }
+}

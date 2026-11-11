@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wp83-78c2-q7f9",
+  "modified": "2025-05-08T09:30:24Z",
+  "published": "2025-05-08T09:30:23Z",
+  "aliases": [
+    "CVE-2025-37804"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: always do atomic put from iowq\n\nio_uring always switches requests to atomic refcounting for iowq\nexecution before there is any parallilism by setting REQ_F_REFCOUNT,\nand the flag is not cleared until the request completes. That should be\nfine as long as the compiler doesn't make up a non existing value for\nthe flags, however KCSAN still complains when the request owner changes\noter flag bits:\n\nBUG: KCSAN: data-race in io_req_task_cancel / io_wq_free_work\n...\nread to 0xffff888117207448 of 8 bytes by task 3871 on cpu 0:\n req_ref_put_and_test io_uring/refs.h:22 [inline]\n\nSkip REQ_F_REFCOUNT checks for iowq, we know it's set.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37804"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3568fd9e440ea393c7d8bee253419ea11fd8e9d9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/390513642ee6763c7ada07f0a1470474986e6c1c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d2753b46452a557a12f7ef1ef4ee6641b4e89d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5d4d103005d8926cdad344f9fc947e651c9f2f7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-08T07:15:51Z"
+  }
+}

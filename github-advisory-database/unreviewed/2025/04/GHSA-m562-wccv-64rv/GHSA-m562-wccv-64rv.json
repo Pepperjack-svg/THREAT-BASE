@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m562-wccv-64rv",
+  "modified": "2025-04-14T21:32:23Z",
+  "published": "2025-04-14T21:32:22Z",
+  "aliases": [
+    "CVE-2022-49376"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: sd: Fix potential NULL pointer dereference\n\nIf sd_probe() sees an early error before sdkp->device is initialized,\nsd_zbc_release_disk() is called. This causes a NULL pointer dereference\nwhen sd_is_zoned() is called inside that function. Avoid this by removing\nthe call to sd_zbc_release_disk() in sd_probe() error path.\n\nThis change is safe and does not result in zone information memory leakage\nbecause the zone information for a zoned disk is allocated only when\nsd_revalidate_disk() is called, at which point sdkp->disk_dev is fully set,\nresulting in sd_disk_release() being called when needed to cleanup a disk\nzone information using sd_zbc_release_disk().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49376"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05fbde3a77a4f1d62e4c4428f384288c1f1a0be5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fcb0b131cc90c8f523a293d84c58d0c7273c96f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3733439593ad12f7b54ae35c273ea6f15d692de3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78f8e96df06e2d04d82d4071c299b59d28744f47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1f0187025905e9981000d44a92e159468b561a8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:14Z"
+  }
+}

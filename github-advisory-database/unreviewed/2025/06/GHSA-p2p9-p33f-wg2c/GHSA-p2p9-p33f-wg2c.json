@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p2p9-p33f-wg2c",
+  "modified": "2025-11-17T15:30:33Z",
+  "published": "2025-06-18T12:30:37Z",
+  "aliases": [
+    "CVE-2022-49956"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8712: fix use after free bugs\n\n_Read/Write_MACREG callbacks are NULL so the read/write_macreg_hdl()\nfunctions don't do anything except free the \"pcmd\" pointer.  It\nresults in a use after free.  Delete them.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49956"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19e3f69d19801940abc2ac37c169882769ed9770"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/376e15487fec837301d888068a3fcc82efb6171a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7dce6b0ee7d78667d6c831ced957a08769973063"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9fd6170c5e2d0ccd027abe26f6f5ffc528e1bb27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1727def850904e4b8ba384043775672841663a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0aac7146e96bf39e79c65087d21dfa02ef8db38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc02aaf950015850e7589696521c7fca767cea77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e230a4455ac3e9b112f0367d1b8e255e141afae0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:22Z"
+  }
+}

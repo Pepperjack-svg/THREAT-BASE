@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qjr3-64xh-cvgf",
+  "modified": "2026-10-30T15:34:38Z",
+  "published": "2026-10-30T15:34:38Z",
+  "aliases": [
+    "CVE-2026-119650"
+  ],
+  "details": "HuLa-Server through 3.0.7 contains an insecure direct object reference vulnerability in PrivacyController that allows authenticated users to access other users' privacy settings by supplying their uid. Attackers can send GET or POST requests to /privacy with a target uid parameter to read and overwrite that user's UserPrivacy settings without ownership checks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119650"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HuLaSpark/HuLa-Server/issues/34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HuLaSpark/HuLa-Server"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HuLaSpark/HuLa-Server/blob/v3.0.7/luohuo-cloud/luohuo-im/luohuo-im-biz/src/main/java/com/luohuo/flex/im/core/user/service/impl/PrivacyServiceImpl.java#L20-L35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HuLaSpark/HuLa-Server/blob/v3.0.7/luohuo-cloud/luohuo-im/luohuo-im-controller/src/main/java/com/luohuo/flex/im/controller/user/PrivacyController.java#L25-L36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/hula-server-idor-privacy-feed-friend"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hula-server-through-3.0.7-idor-via-privacy-endpoint-in-privacycontroller"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T15:16:48Z"
+  }
+}

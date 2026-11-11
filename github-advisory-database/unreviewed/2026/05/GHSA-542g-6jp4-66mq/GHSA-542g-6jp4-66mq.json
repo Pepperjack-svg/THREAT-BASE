@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-542g-6jp4-66mq",
+  "modified": "2026-06-10T21:31:25Z",
+  "published": "2026-05-28T12:30:33Z",
+  "aliases": [
+    "CVE-2026-46216"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/hdcp: Add NULL check for media_gt in intel_hdcp_gsc_check_status()\n\nWhen media GT is disabled via configfs, there is no allocation for\nmedia_gt, which is kept as NULL.  In such scenario,\nintel_hdcp_gsc_check_status() results in a kernel pagefault error due to\n&gt->uc.gsc being evaluated as an invalid memory address.\n\nFix that by introducing a NULL check on media_gt and bailing out early\nif so.\n\nWhile at it, also drop the NULL check for gsc, since it can't be NULL if\nmedia_gt is not NULL.\n\nv2:\n  - Get address for gsc only after checking that gt is not NULL.\n    (Shuicheng)\n  - Drop the NULL check for gsc. (Shuicheng)\nv3:\n  - Add \"Fixes\" and \"Cc: <stable...>\" tags. (Matt)\n\n(cherry picked from commit bfaf87e84ca3ca3f6e275f9ae56da47a8b55ffd1)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46216"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60a1e131a811b68703da58fd805ab359b704ab03"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/814326e86e929b865020ff44f4576dbdfe3f7ff3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cad210d2851f3a7d9573bdfc02aa61d9287bbe8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8ab4b47edf4578dbfbe5e95817107a514fa34cc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:37Z"
+  }
+}

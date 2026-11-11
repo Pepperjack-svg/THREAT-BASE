@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5pwr-322w-8jr4",
+  "modified": "2026-03-19T18:28:11Z",
+  "published": "2026-03-16T16:22:29Z",
+  "aliases": [
+    "CVE-2026-27459"
+  ],
+  "summary": "pyOpenSSL DTLS cookie callback buffer overflow",
+  "details": "If a user provided callback to `set_cookie_generate_callback` returned a cookie value greater than 256 bytes, pyOpenSSL would overflow an OpenSSL provided buffer.\n\nCookie values that are too long are now rejected.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pyopenssl"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "22.0.0"
+            },
+            {
+              "fixed": "26.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pyca/pyopenssl/security/advisories/GHSA-5pwr-322w-8jr4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27459"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pyca/pyopenssl/commit/57f09bb4bb051d3bc2a1abd36e9525313d5cd408"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pyca/pyopenssl"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pyca/pyopenssl/blob/358cbf29c4e364c59930e53a270116249581eaa3/CHANGELOG.rst"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-16T16:22:29Z",
+    "nvd_published_at": "2026-03-18T00:16:19Z"
+  }
+}

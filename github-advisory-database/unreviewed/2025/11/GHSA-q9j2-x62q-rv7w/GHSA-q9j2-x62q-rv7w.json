@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q9j2-x62q-rv7w",
+  "modified": "2025-11-18T18:32:52Z",
+  "published": "2025-11-18T18:32:52Z",
+  "aliases": [
+    "CVE-2025-63800"
+  ],
+  "details": "The password change endpoint in Open Source Point of Sale 3.4.1 allows users to set their account password to an empty string due to missing server-side validation. When an authenticated user omits or leaves the `password` and `repeat_password` parameters empty in the password change request, the backend still returns a successful response and sets the password to an empty string. This effectively disables authentication and may allow unauthorized access to user or administrative accounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-63800"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/omkaryepre/vulnerability-research/tree/main/CVE-2025-63800"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/opensourcepos/opensourcepos"
+    },
+    {
+      "type": "WEB",
+      "url": "https://opensourcepos.org"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-521"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-18T16:15:46Z"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r3r8-w3g2-hq7h",
+  "modified": "2025-11-21T18:30:30Z",
+  "published": "2025-11-21T18:30:30Z",
+  "aliases": [
+    "CVE-2025-13470"
+  ],
+  "details": "In RNP version 0.18.0 a refactoring regression causes the symmetric \nsession key used for Public-Key Encrypted Session Key (PKESK) packets to\n be left uninitialized except for zeroing, resulting in it always being \nan all-zero byte array.\n\nAny data encrypted using public-key encryption \nin this release can be decrypted trivially by supplying an all-zero \nsession key, fully compromising confidentiality.\n\nThe vulnerability affects only public key encryption (PKESK packets).  Passphrase-based encryption (SKESK packets) is not affected.\n\nRoot cause: Vulnerable session key buffer used in PKESK packet generation.\n\n\n\nThe defect was introduced in commit `7bd9a8dc356aae756b40755be76d36205b6b161a` where initialization \nlogic inside `encrypted_build_skesk()` only randomized the key for the \nSKESK path and omitted it for the PKESK path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:Y/R:X/V:X/RE:H/U:Red"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13470"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rnpgp/rnp/commit/7bd9a8dc356aae756b40755be76d36205b6b161a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/cve-2025-13402"
+    },
+    {
+      "type": "WEB",
+      "url": "https://aur.archlinux.org/packages/rnp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2415863"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rnpgp/rnp/releases/tag/v0.18.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://launchpad.net/ubuntu/+source/rnp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://open.ribose.com/advisories/ra-2025-11-20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://packages.gentoo.org/packages/dev-util/librnp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-330"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-21T17:15:50Z"
+  }
+}

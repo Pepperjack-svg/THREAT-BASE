@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8wc5-pcgr-pg48",
+  "modified": "2026-10-12T18:31:48Z",
+  "published": "2026-10-12T18:31:48Z",
+  "aliases": [
+    "CVE-2026-109311"
+  ],
+  "details": "vLLM before 0.29.0 passes uploaded audio to the PyAV/FFmpeg av.open() fallback with only a file-size check, exposing FFmpeg's IAMF parser heap overflow. Authenticated remote attackers can repeatedly upload malformed IAMF containers to /v1/audio/transcriptions, corrupting the heap and crashing the API process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/vllm-project/vllm/security/advisories/GHSA-m52c-39rh-f3gp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109311"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vllm-before-0.29.0-heap-overflow-dos-via-iamf-audio-transcription-upload"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T17:17:25Z"
+  }
+}

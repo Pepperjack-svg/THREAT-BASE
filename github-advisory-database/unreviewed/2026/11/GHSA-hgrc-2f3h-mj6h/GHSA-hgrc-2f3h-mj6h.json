@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hgrc-2f3h-mj6h",
+  "modified": "2026-11-10T18:31:44Z",
+  "published": "2026-11-10T18:31:44Z",
+  "aliases": [
+    "CVE-2026-112185"
+  ],
+  "details": "In Eclipse Kura versions 5.1.0 through 5.6.2, the Configuration REST API v2 (org.eclipse.kura.rest.configuration.provider) does not restrict access to the configuration of the UserAdmin persistence component to identities holding the kura.admin permission. An authenticated identity holding only the rest.configuration permission can read the password hashes of all identities, including administrators, which are stored as unsalted SHA-256 digests. The same identity can also modify identities and permission assignments, and restore previous configuration snapshots, which allows escalation to full administrative privileges. The issue is fixed in Eclipse Kura 5.6.3.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-kura/kura/security/advisories/GHSA-gqr7-j252-qwqx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112185"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/430"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-522"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T17:17:20Z"
+  }
+}

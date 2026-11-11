@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vqxf-v2gg-x3hc",
+  "modified": "2026-01-22T18:43:42Z",
+  "published": "2026-01-22T18:02:45Z",
+  "aliases": [
+    "CVE-2026-24009"
+  ],
+  "summary": "docling-core vulnerable to Remote Code Execution via unsafe PyYAML usage",
+  "details": "### Impact\n\nA PyYAML-related Remote Code Execution (RCE) vulnerability, namely CVE-2020-14343, is exposed in `docling-core >=2.21.0, <2.48.4` and, specifically only if the application uses `pyyaml < 5.4` and invokes `docling_core.types.doc.DoclingDocument.load_from_yaml()` passing it untrusted YAML data.\n\n### Patches\n\nThe vulnerability has been patched in `docling-core` version **2.48.4**.\nThe fix mitigates the issue by switching `PyYAML` deserialization from `yaml.FullLoader` to `yaml.SafeLoader`, ensuring that untrusted data cannot trigger code execution.\n\n### Workarounds\n\nUsers who cannot immediately upgrade `docling-core` can alternatively ensure that the installed version of `PyYAML` is **5.4 or greater**, which supposedly patches CVE-2020-14343.\n\n### References\n\n* GitHub Issue: #482\n* Upstream Advisory: CVE-2020-14343\n* Fix Release: [v2.48.4](https://github.com/docling-project/docling-core/releases/tag/v2.48.4)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "docling-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.21.0"
+            },
+            {
+              "fixed": "2.48.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/docling-project/docling-core/security/advisories/GHSA-vqxf-v2gg-x3hc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24009"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/docling-project/docling-core/issues/482"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/docling-project/docling-core/commit/3e8d628eeeae50f0f8f239c8c7fea773d065d80c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://github.com/advisories/GHSA-8q59-q68h-6hv4"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/docling-project/docling-core"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/docling-project/docling-core/releases/tag/v2.48.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-22T18:02:45Z",
+    "nvd_published_at": "2026-01-22T16:16:09Z"
+  }
+}

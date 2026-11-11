@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f49j-g49x-qqr9",
+  "modified": "2026-10-07T21:33:31Z",
+  "published": "2026-10-07T21:33:31Z",
+  "aliases": [
+    "CVE-2026-76277"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.3, 10.2.7, 10.0.10, and 9.4.15, a user that holds a role with the edit_user capability could create a native Splunk username that ends with a period. The vulnerability is possible because username validation does not reject a trailing period before the username is used for a user directory. This can cause distinct native Splunk usernames to share per-user configuration data, and user-management operations can affect the wrong account or fail. For more information see Set up native Splunk authentication (https://help.splunk.com/en/splunk-enterprise/administer/manage-users-and-security/10.4/use-the-native-splunk-platform-authentication-scheme/set-up-native-splunk-authentication) and Define roles on the Splunk platform with capabilities (https://help.splunk.com/en/splunk-enterprise/administer/manage-users-and-security/10.4/manage-splunk-platform-users-and-roles/define-roles-on-the-splunk-platform-with-capabilities) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-1001"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-07T21:17:18Z"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vp8m-hhj2-6fc6",
+  "modified": "2026-06-10T21:31:26Z",
+  "published": "2026-05-28T12:30:34Z",
+  "aliases": [
+    "CVE-2026-46239"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: i2c: ov5647: Fix runtime PM refcount leak in s_ctrl\n\nThree control cases (AUTOGAIN, EXPOSURE_AUTO, ANALOGUE_GAIN) directly\nreturn without calling pm_runtime_put(), causing runtime PM reference\ncount leaks.\n\nChange these cases from 'return' to 'ret = ... break' pattern to ensure\npm_runtime_put() is always called before function exit.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46239"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b03ecf75bda5900b8e661eb75656f631b598bc2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f11ae9c04f8368a3b5a0280ef595198dace1c983"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:39Z"
+  }
+}

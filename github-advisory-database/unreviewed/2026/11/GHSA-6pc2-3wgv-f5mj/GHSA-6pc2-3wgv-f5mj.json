@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6pc2-3wgv-f5mj",
+  "modified": "2026-11-08T15:31:25Z",
+  "published": "2026-11-08T15:31:25Z",
+  "aliases": [
+    "CVE-2026-124430"
+  ],
+  "details": "Craft CMS from 5.10.0 before 5.11.2 contains a remote code execution vulnerability that allows non-administrator control panel users to obtain HMAC-signed Twig templates via the app/render-elements endpoint. Attackers can submit the signed templated returnUrl as the login redirect parameter, triggering unsandboxed renderObjectTemplate() evaluation and executing OS commands as the PHP worker.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-qj3q-j7r4-428p"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124430"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/craft-cms-5.10.0-before-5.11.2-rce-via-app-render-elements-signing-oracle"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-08T14:18:08Z"
+  }
+}

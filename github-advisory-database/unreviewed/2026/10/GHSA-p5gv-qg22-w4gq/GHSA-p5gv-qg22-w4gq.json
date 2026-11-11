@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p5gv-qg22-w4gq",
+  "modified": "2026-10-23T15:31:38Z",
+  "published": "2026-10-23T15:31:38Z",
+  "aliases": [
+    "CVE-2026-93628"
+  ],
+  "details": "An attendee authentication vulnerability in the email calendar processing of Zimbra Collaboration Suite (ZCS) allows an unauthenticated sender to forge another attendee's response to an existing meeting. Zimbra passes a null sender identity when processing iCalendar REPLY components, causing the attendee authorization filter to be skipped. An attacker who knows the meeting UID, organizer address and attendee address can send a non-outdated reply that changes the attendee's participation status in the organizer's calendar. The change occurs automatically during delivery without organizer or attendee interaction. ZCS 10.1.16 and 10.1.21 are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93628"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wiki.zimbra.com/wiki/Zimbra_Security_Advisories"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.rapid7.com/blog/post/ve-breaking-zimbra-identity-boundaries-part-1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-290"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T14:17:56Z"
+  }
+}

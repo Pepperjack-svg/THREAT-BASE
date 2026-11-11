@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v9m4-r43p-9696",
+  "modified": "2025-07-31T15:35:50Z",
+  "published": "2025-07-31T15:35:50Z",
+  "aliases": [
+    "CVE-2013-10043"
+  ],
+  "details": "A vulnerability exists in OAstium VoIP PBX astium-confweb-2.1-25399 and earlier, where improper input validation in the logon.php script allows an attacker to bypass authentication via SQL injection. Once authenticated as an administrator, the attacker can upload arbitrary PHP code through the importcompany field in import.php, resulting in remote code execution. The malicious payload is injected into /usr/local/astium/web/php/config.php and executed with root privileges by triggering a configuration reload via sudo /sbin/service astcfgd reload. Successful exploitation leads to full system compromise.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2013-10043"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/linux/http/astium_sqli_upload.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/23831"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/astium-voip-pbx-sqli-file-upload-rce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-31T15:15:34Z"
+  }
+}

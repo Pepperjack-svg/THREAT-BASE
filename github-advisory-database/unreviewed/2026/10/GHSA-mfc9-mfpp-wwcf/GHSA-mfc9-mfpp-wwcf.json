@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mfc9-mfpp-wwcf",
+  "modified": "2026-10-07T09:32:15Z",
+  "published": "2026-10-06T09:31:32Z",
+  "aliases": [
+    "CVE-2026-98261"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: Fix server use-after-free in cifs_chan_skip_or_disable()\n\nWhen a secondary channel is no longer supported by the server,\ncifs_chan_skip_or_disable() drops the channel reference with\ncifs_put_tcp_session() and then continues to use the server pointer by\ncalling cifs_signal_cifsd_for_reconnect() on it and reading its\nprimary_server pointer. cifs_put_tcp_session() can drop the last\nreference of the channel and tear it down, so both the channel and the\nprimary server (whose reference is also dropped by\ncifs_put_tcp_session()) can be freed before they are signaled for\nreconnect.\n\nSignal the channel and the primary server and capture the primary\nserver pointer before dropping the channel reference with\ncifs_put_tcp_session().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0338489960ddad6368bce55e8adbc176c523093d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/717e0a25036b6c92cecace30913b2d874a4c22b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a1b27780b113583a94256d58dabfe7c0d9286e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/edd52eae5fcfb8433b6bb0e7cd98db438fe01227"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fcc0a935bb6e37ecbf7e4335061309f896f35780"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:15Z"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-38g3-xqxq-2v2p",
+  "modified": "2026-10-15T03:35:57Z",
+  "published": "2026-05-27T15:33:21Z",
+  "aliases": [
+    "CVE-2026-46040"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ninotify: fix watch count leak when fsnotify_add_inode_mark_locked() fails\n\nWhen fsnotify_add_inode_mark_locked() fails in inotify_new_watch(),\nthe error path calls inotify_remove_from_idr() but does not call\ndec_inotify_watches() to undo the preceding inc_inotify_watches().\nThis leaks a watch count, and repeated failures can exhaust the\nmax_user_watches limit with -ENOSPC even when no watches are active.\n\nPrior to commit 1cce1eea0aff (\"inotify: Convert to using per-namespace\nlimits\"), the watch count was incremented after fsnotify_add_mark_locked()\nsucceeded, so this path was not affected. The conversion moved\ninc_inotify_watches() before the mark insertion without adding the\ncorresponding rollback.\n\nAdd the missing dec_inotify_watches() call in the error path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46040"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10edf7e0ffdc7faa18e2244b17722c1b882b8273"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ab58cf42c46bf2366d2f55ae5c59299d5e178b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ad9ccea1b25435f6179b57aa891960beb7ce8f9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a320935fa4293e9e599ec9f85dc9eb3be7029f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73ddc8518a32baff6bc17afda4ee1ebae5b4ed12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bcc1cd237ab5ccfdd102869fa031c541943cf40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e48844f708eb48bae4e79cb21edc097c966306d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fdaa42ca370d056428e5e171247c8fdce8dff36a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:23Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3vcm-9wgv-947g",
+  "modified": "2026-05-01T18:31:23Z",
+  "published": "2026-05-01T15:30:36Z",
+  "aliases": [
+    "CVE-2026-42477"
+  ],
+  "details": "A heap-based out-of-bounds read vulnerability in RWObj_Reader::read in the OBJ file parser in Open CASCADE Technology (OCCT) V8_0_0_rc5 allows user-assisted attackers to cause a denial of service or obtain sensitive information by persuading a victim to open a crafted OBJ file. The issue occurs because Standard_ReadLineBuffer::ReadLine() can return a 1-byte buffer for a minimal OBJ line, and RWObj_Reader::read() calls pushIndices(aLine + 2) without validating the buffer length.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42477"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/sgInnora/dfba083d04906283e9c92aea78e2d94a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122",
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:43Z"
+  }
+}

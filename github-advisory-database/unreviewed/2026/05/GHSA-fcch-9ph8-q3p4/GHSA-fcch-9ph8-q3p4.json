@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcch-9ph8-q3p4",
+  "modified": "2026-05-15T21:31:31Z",
+  "published": "2026-05-12T18:30:40Z",
+  "aliases": [
+    "CVE-2026-31231"
+  ],
+  "details": "Cognee thru v0.4.0 contains a critical remote code execution vulnerability in its notebook cell execution API endpoint. The endpoint is designed to execute arbitrary Python code provided by the user, but it does so using the unsafe exec() function without any sandboxing, validation, or security controls. An attacker can exploit this by sending a specially crafted POST request containing malicious Python code to the execution endpoint. This leads to arbitrary code execution on the Cognee server with the privileges of the server process, allowing complete compromise of the system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/topoteretes/cognee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.notion.so/CVE-2026-31231-35d1e13931888178a963ef9efeb29113"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-12T18:16:51Z"
+  }
+}

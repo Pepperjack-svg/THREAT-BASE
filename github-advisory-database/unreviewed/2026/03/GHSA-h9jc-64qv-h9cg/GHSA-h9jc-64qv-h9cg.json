@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h9jc-64qv-h9cg",
+  "modified": "2026-06-26T21:32:03Z",
+  "published": "2026-03-09T18:31:43Z",
+  "aliases": [
+    "CVE-2024-14027"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/xattr: missing fdput() in fremovexattr error path\n\nIn the Linux kernel, the fremovexattr() syscall calls fdget() to acquire a\nfile reference but returns early without calling fdput() when\nstrncpy_from_user() fails on the name argument. In multi-threaded processes\nwhere fdget() takes the slow path, this permanently leaks one\nfile reference per call, pinning the struct file and associated kernel\nobjects in memory. An unprivileged local user can exploit this to cause\nkernel memory exhaustion. The issue was inadvertently fixed by commit\na71874379ec8 (\"xattr: switch to CLASS(fd)\").",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-14027"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a1e865e51063d6c56f673ec8ad4b6604321b455"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a3a2ae5efbbcaed37551218abed94e23c537157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a71874379ec8c6e788a61d71b3ad014a8d9a5c08"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d151b94967c8247005435b63fc60f8f4baa320da"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-09T16:16:14Z"
+  }
+}

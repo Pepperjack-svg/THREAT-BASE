@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9fm9-hp7p-53mf",
+  "modified": "2026-01-29T02:35:55Z",
+  "published": "2025-05-28T12:30:34Z",
+  "aliases": [
+    "CVE-2025-3864"
+  ],
+  "summary": "Hackney fails to properly release HTTP connections to the pool",
+  "details": "Hackney fails to properly release HTTP connections to the pool after handling 307 Temporary Redirect responses. Remote attackers can exploit this to exhaust connection pools, causing denial of service in applications using the library.\nFix for this issue has been included in 1.24.0 release.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Hex",
+        "name": "hackney"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.24.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-3864"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/issues/717"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/benoitc/hackney/commit/8f13ddac50d1626f8b9a47a08bd599e4efe1773d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2025/05/CVE-2025-3864"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/benoitc/hackney"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-772"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-05-28T16:08:47Z",
+    "nvd_published_at": "2025-05-28T12:15:19Z"
+  }
+}

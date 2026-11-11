@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9jr3-rj99-8jq3",
+  "modified": "2026-06-19T20:47:02Z",
+  "published": "2026-06-19T20:47:02Z",
+  "aliases": [
+    "CVE-2026-54779"
+  ],
+  "summary": "CoreWCF: SAML token replay protection is inoperative",
+  "details": "### Impact\nWhen enabling DetectReplayedTokens, a token can be replayed and will be detected despite it being reused.\n\n### Patches\nFixed in CoreWCF v1.8.1 and v1.9.1\n\n### Workarounds\nProvide your own implementation of `ITokenReplayCache` with the correct behavior.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "CoreWCF.Primitives"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.8.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "CoreWCF.Primitives"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.9.0"
+            },
+            {
+              "fixed": "1.9.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/CoreWCF/CoreWCF/security/advisories/GHSA-9jr3-rj99-8jq3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/CoreWCF/CoreWCF"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-294",
+      "CWE-613"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-19T20:47:02Z",
+    "nvd_published_at": null
+  }
+}

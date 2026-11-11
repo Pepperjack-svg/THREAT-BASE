@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rgmp-4873-r683",
+  "modified": "2026-01-06T17:20:58Z",
+  "published": "2026-01-06T17:20:57Z",
+  "aliases": [
+    "CVE-2025-69197"
+  ],
+  "summary": "Pterodactyl TOTPs can be reused during validity window",
+  "details": "### Summary\nWhen a user signs into an account with 2FA enabled they are prompted to enter a token. When that token is used, it is not sufficiently marked as used in the system allowing an attacker that intercepts that token to then use it in addition to a known username/password during the token validity window.\n\nThis vulnerability requires that an attacker already be in possession of a valid username and password combination, and intercept a valid 2FA token (for example, during a screen share). The token must then be provided in addition to the username and password during the limited token validity window. The validity window is ~60 seconds as the Panel allows at most one additional window to the current one, each window being 30 seconds.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "pterodactyl/panel"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.12.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pterodactyl/panel/security/advisories/GHSA-rgmp-4873-r683"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-69197"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pterodactyl/panel/commit/032bf076d92bb2f929fa69c1bac1b89f26b8badf"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pterodactyl/panel"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pterodactyl/panel/releases/tag/v1.12.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-06T17:20:57Z",
+    "nvd_published_at": "2026-01-06T01:16:01Z"
+  }
+}

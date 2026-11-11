@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v5cj-rq82-c9m7",
+  "modified": "2026-11-10T18:31:42Z",
+  "published": "2026-11-10T18:31:42Z",
+  "aliases": [
+    "CVE-2026-97402"
+  ],
+  "details": "In Eclipse Kura versions 3.1.0 to 5.6.2, the iBeacon and Eddystone advertisement decoders wrongly parse the AD-structure length field of an over-the-air BLE advertising payload. Any unauthenticated attacker within BLE radio range can broadcast a two-byte advertising payload that drives the Kura beacon-scanner thread into a tight infinite loop, pinning a CPU core and permanently halting beacon ingestion until the gateway is restarted. To trigger the attack, the iBeacon/Eddystone scanner component should be installed and active. By default the components are not installed or enabled.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-kura/kura/security/advisories/GHSA-x83q-g5h7-ffc5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97402"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/923"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-194"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T16:17:25Z"
+  }
+}

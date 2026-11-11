@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9r9g-2xp7-pmx6",
+  "modified": "2026-10-21T15:41:13Z",
+  "published": "2026-09-16T12:30:38Z",
+  "aliases": [
+    "CVE-2026-89827"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: avoid force-completing uninitialized UVD rings\n\nuvd_v7_0_sw_init() does not initialize the UVD decode ring for an\nSR-IOV VF. However, amdgpu_uvd_resume() unconditionally force-completes\nthe decode ring when restoring its fence sequence.\n\nSkip fence completion when the fence driver is not initialized.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89827"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/668cfb8ab3e22c10fe74307aac86b3cf456d6923"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6760f5cb12d2366ddd58a2d8637f7583d73f596b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/863f08c485fbb51b6443681893e4044c7cb6cd51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/967a179463d3227dfaf9200fd654c1f5a26a11e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc136795f9997adc8d3219f40e8e3afa7df7183f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:49Z"
+  }
+}

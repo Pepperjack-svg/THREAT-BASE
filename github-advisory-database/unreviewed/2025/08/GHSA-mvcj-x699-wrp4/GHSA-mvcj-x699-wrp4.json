@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mvcj-x699-wrp4",
+  "modified": "2025-11-19T00:31:23Z",
+  "published": "2025-08-16T12:30:32Z",
+  "aliases": [
+    "CVE-2025-38519"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/damon: fix divide by zero in damon_get_intervals_score()\n\nThe current implementation allows having zero size regions with no special\nreasons, but damon_get_intervals_score() gets crashed by divide by zero\nwhen the region size is zero.\n\n  [   29.403950] Oops: divide error: 0000 [#1] SMP NOPTI\n\nThis patch fixes the bug, but does not disallow zero size regions to keep\nthe backward compatibility since disallowing zero size regions might be a\nbreaking change for some users.\n\nIn addition, the same crash can happen when intervals_goal.access_bp is\nzero so this should be fixed in stable trees as well.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38519"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd225b9591442065beb876da72656f4a2d627d03"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca4bb9ac706f05ead8ac1cce7b8245fc0645a687"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-369"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-16T11:15:45Z"
+  }
+}

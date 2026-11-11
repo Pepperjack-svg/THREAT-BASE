@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wx3j-j8rq-8w37",
+  "modified": "2025-11-20T21:30:30Z",
+  "published": "2025-07-03T09:30:34Z",
+  "aliases": [
+    "CVE-2025-38144"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwatchdog: lenovo_se30_wdt: Fix possible devm_ioremap() NULL pointer dereference in lenovo_se30_wdt_probe()\n\ndevm_ioremap() returns NULL on error. Currently, lenovo_se30_wdt_probe()\ndoes not check for this case, which results in a NULL pointer\ndereference.\n\nAdd NULL check after devm_ioremap() to prevent this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38144"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57f7a1da0ec06d8579accaf77762d0128d13e4af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4e2401438a26131ecff9be6a3a1d4cbfea66f9a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-03T09:15:29Z"
+  }
+}

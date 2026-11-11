@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qgmq-76m4-c2jv",
+  "modified": "2025-03-25T15:31:22Z",
+  "published": "2025-03-06T18:31:09Z",
+  "aliases": [
+    "CVE-2024-58059"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: uvcvideo: Fix deadlock during uvc_probe\n\nIf uvc_probe() fails, it can end up calling uvc_status_unregister() before\nuvc_status_init() is called.\n\nFix this by checking if dev->status is NULL or not in\nuvc_status_unregister().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a67f75c2b5ecf534eab416ce16c11fe780c4f8f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/db577ededf3a18b39567fc1a6209f12a0c4a3c52"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-06T16:15:52Z"
+  }
+}

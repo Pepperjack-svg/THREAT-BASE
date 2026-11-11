@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mq8q-r5x2-4283",
+  "modified": "2026-11-03T18:31:09Z",
+  "published": "2026-11-03T18:31:09Z",
+  "aliases": [
+    "CVE-2026-121631"
+  ],
+  "details": "Lightdash 0.2609.0 before 3.137.0 contains an authorization bypass vulnerability in the RenameService that allows authenticated users with update Project permission on one project to access and modify dashboards belonging to a different project, caused by the failure to verify that the projectUuid from the URL matches the projectUuid of the target dashboard. Attackers can send crafted POST requests to the rename/dashboard endpoint to modify foreign dashboard filters and break charts, or send GET requests to the rename/dashboard/fields endpoint to read field metadata from projects they do not have access to.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/lightdash/lightdash/security/advisories/GHSA-h6fw-x63x-9gr6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121631"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lightdash/lightdash/releases/tag/3.137.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lightdash-before-cross-project-idor-via-renameservice-dashboard-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T17:18:11Z"
+  }
+}

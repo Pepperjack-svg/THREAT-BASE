@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f3rv-hpw2-w8hv",
+  "modified": "2025-03-12T00:31:49Z",
+  "published": "2025-03-12T00:31:49Z",
+  "aliases": [
+    "CVE-2022-49713"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: dwc2: Fix memory leak in dwc2_hcd_init\n\nusb_create_hcd will alloc memory for hcd, and we should\ncall usb_put_hcd to free it when platform_get_resource()\nfails to prevent memory leak.\ngoto error2 label instead error1 to fix this.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49713"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3755278f078460b021cd0384562977bf2039a57a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52bfcedbfd5bf962dbdcb6e761f4d0dd3ba26dfd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6506aff2dc2f7059aa3d45ee2e8639b25e87090f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/701d8ec01e0f229d4db6f43d3d64ee479120cbeb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/84e6d0af87e27bbc0db94f2e7323b34abe17b6e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/981ee40649e5fd9550f82db1fbb3bfab037da346"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a44a8a762f7fe9ad3c065813d058e835a6180cb2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:47Z"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-58x9-22gw-84q7",
+  "modified": "2026-07-30T06:32:15Z",
+  "published": "2025-10-30T12:31:10Z",
+  "aliases": [
+    "CVE-2025-40099"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: parse_dfs_referrals: prevent oob on malformed input\n\nMalicious SMB server can send invalid reply to FSCTL_DFS_GET_REFERRALS\n\n- reply smaller than sizeof(struct get_dfs_referral_rsp)\n- reply with number of referrals smaller than NumberOfReferrals in the\nheader\n\nProcessing of such replies will cause oob.\n\nReturn -EINVAL error on such replies to prevent oob-s.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40099"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15c73964da9df994302f579ed14ee5fdbce7a332"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6447b0e355562a1ff748c4a2ffb89aae7e84d2c9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bc4a8d39bac23d8b044fd3e2dbfd965f1d9b058"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb0f2e66e1ac043a5b238f5bcab4f26f3c317039"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cfacc7441f760e4a73cc71b6ff1635261d534657"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-30T10:15:34Z"
+  }
+}

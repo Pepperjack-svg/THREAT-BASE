@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8f6w-7m2h-mfwg",
+  "modified": "2026-10-04T18:30:21Z",
+  "published": "2026-10-04T18:30:21Z",
+  "aliases": [
+    "CVE-2026-105218"
+  ],
+  "details": "gopay before 1.5.119 disables TLS certificate verification in defaultClient() in pkg/xhttp/client.go, allowing man-in-the-middle attackers to impersonate payment provider APIs. Attackers can present any certificate to read merchant credentials, signatures and transaction data, and modify payment, refund and order query responses.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105218"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-pay/gopay/issues/540"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-pay/gopay/commit/f6df04fd4f64a2ad2c303ba063b6502bfdd259fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-pay/gopay"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-pay/gopay/blob/v1.5.118/pkg/xhttp/client.go#L15-L37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gopay-before-1.5.119-disabled-tls-certificate-verification-in-xhttp-client"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-04T18:16:34Z"
+  }
+}

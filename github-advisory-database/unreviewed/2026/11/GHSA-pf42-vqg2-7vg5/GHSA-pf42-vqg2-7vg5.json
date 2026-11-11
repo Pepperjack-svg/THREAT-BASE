@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pf42-vqg2-7vg5",
+  "modified": "2026-11-08T15:31:30Z",
+  "published": "2026-11-08T15:31:30Z",
+  "aliases": [
+    "CVE-2026-124551"
+  ],
+  "details": "ClassroomIO through 1.0.0 contains an authorization bypass vulnerability that allows authenticated users of any organization to clone other tenants' courses via the POST /course/:courseId/clone endpoint. Attackers who know a target course id can copy its sections, lessons, exercises, and quiz answer keys into their own organization, exposing private course content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124551"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/classroomio/classroomio/issues/1414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/classroomio/classroomio/commit/6630b73f8d53e316de6f575a170b093da6bf3cca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/classroomio/classroomio"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/classroomio/classroomio/blob/v1.0.0/apps/api/src/routes/course/course.ts#L584-L612"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/classroomio/classroomio/blob/v1.0.0/apps/api/src/services/course/clone.ts#L202-L290"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/classroomio-course-clone-cross-org-content-exfiltration"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/classroomio-through-1.0.0-cross-organization-course-disclosure-via-clone-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-08T14:18:19Z"
+  }
+}

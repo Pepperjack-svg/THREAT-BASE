@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qg2p-mfhr-2jh9",
+  "modified": "2026-10-16T06:30:23Z",
+  "published": "2026-10-16T06:30:23Z",
+  "aliases": [
+    "CVE-2026-103518"
+  ],
+  "details": "The FluentCart A New Era of eCommerce – Faster, Lighter, and Simpler plugin for WordPress is vulnerable to generic SQL Injection via the 'products[*].variants[*].<attacker-chosen key>' parameter in all versions up to, and including, 1.7.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with custom-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. On FluentCart Pro installs, non-administrator users assigned the Manager shop role also hold the products/edit permission and are therefore able to exploit this vulnerability without administrator-level access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103518"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluent-cart/tags/1.7.0/api/Resource/ProductResource.php#L304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluent-cart/tags/1.7.0/app/Http/Controllers/ProductController.php#L1818"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluent-cart/tags/1.7.0/app/Models/BatchQuery/Batch.php#L103"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluent-cart/tags/1.7.0/app/Models/Concerns/CanUpdateBatch.php#L14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluent-cart/tags/1.7.0/app/Services/BulkProductUpdateService.php#L413"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3734886/fluent-cart/trunk/app/Models/BatchQuery/Batch.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/fluent-cart"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/094a768d-85f8-4b6a-8aa3-e243f2e4b505?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T04:18:21Z"
+  }
+}

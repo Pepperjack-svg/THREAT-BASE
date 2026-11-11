@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h4mw-j7qp-8mwm",
+  "modified": "2026-10-16T19:44:37Z",
+  "published": "2026-10-16T19:44:37Z",
+  "aliases": [
+    "CVE-2026-96620"
+  ],
+  "summary": "Claude Agent SDK: Argument Injection via resume Option Allows Arbitrary Command Execution",
+  "details": "The Claude Agent SDK for Python passed the `resume` option to the Claude CLI without validation, allowing a value beginning with `-` to be interpreted as a separate CLI flag. An attacker who controlled the `resume` value could inject an `--mcp-config` flag defining a stdio MCP server, resulting in arbitrary command execution at CLI startup that bypassed the SDK's permission controls. Exploitation required an application to pass untrusted input as the session ID to resume.\n\nUsers are advised to update to the latest version of the claude-agent-sdk package.\n\nThank you to hackerone.com/moamenmahmood for reporting this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "claude-agent-sdk"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.2.121"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/anthropics/claude-agent-sdk-python/security/advisories/GHSA-h4mw-j7qp-8mwm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/anthropics/claude-agent-sdk-python/pull/1123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/anthropics/claude-agent-sdk-python/commit/347a1cb88d7652199399db1b7f914e0a459a6662"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/anthropics/claude-agent-sdk-python"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/anthropics/claude-agent-sdk-python/releases/tag/v0.2.121"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20",
+      "CWE-78",
+      "CWE-88"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-16T19:44:37Z",
+    "nvd_published_at": null
+  }
+}

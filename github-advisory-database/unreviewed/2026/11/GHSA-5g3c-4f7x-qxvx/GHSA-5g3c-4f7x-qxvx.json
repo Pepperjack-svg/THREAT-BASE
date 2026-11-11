@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5g3c-4f7x-qxvx",
+  "modified": "2026-11-09T12:31:41Z",
+  "published": "2026-11-09T12:31:41Z",
+  "aliases": [
+    "CVE-2026-82337"
+  ],
+  "details": "Apache Airflow rebuilt deadline alert fields through generic deserialization, which imports and instantiates the class named in the serialized Dag, in the scheduler and API server. A Dag author could cause classes within Airflow's deserialization allow list to be constructed in those processes with arguments they control. Deployments whose Dags use deadline alerts are affected.\n\nThis is an incomplete fix of CVE-2026-45360, which only hardened the `reference` field; deployments that applied that fix remain affected through the `callback` and `interval` fields.\n\nUsers of apache-airflow are recommended to upgrade to 3.4.0 or later.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82337"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/72651"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/74830"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/9v8f3hlm6pxbwl2jt1c2bw84s80gg6kp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-45360"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T10:17:11Z"
+  }
+}

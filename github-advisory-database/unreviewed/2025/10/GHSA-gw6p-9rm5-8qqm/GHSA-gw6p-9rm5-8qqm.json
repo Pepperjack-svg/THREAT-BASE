@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gw6p-9rm5-8qqm",
+  "modified": "2026-01-17T00:30:23Z",
+  "published": "2025-10-01T12:30:28Z",
+  "aliases": [
+    "CVE-2022-50443"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/rockchip: lvds: fix PM usage counter unbalance in poweron\n\npm_runtime_get_sync will increment pm usage counter even it failed.\nForgetting to putting operation will result in reference leak here.\nWe fix it by replacing it with the newest pm_runtime_resume_and_get\nto keep usage counter balanced.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50443"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/110bf15825edf4f20bc4e56aba624297861b06ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12a9b4c4ebd9a0ba856370e088564af83cffd565"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4dba27f1a14592ac4cf71c3bc1cc1fd05dea8015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/589a911980b730feadb9c430bc0747a118b04dd8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6ed73db390319b248b91a6325da1a48ad85e0d1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:36Z"
+  }
+}

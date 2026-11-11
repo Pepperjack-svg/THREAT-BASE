@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h3p8-5p88-3qf2",
+  "modified": "2026-02-26T21:31:26Z",
+  "published": "2026-01-23T15:31:35Z",
+  "aliases": [
+    "CVE-2025-71147"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKEYS: trusted: Fix a memory leak in tpm2_load_cmd\n\n'tpm2_load_cmd' allocates a tempoary blob indirectly via 'tpm2_key_decode'\nbut it is not freed in the failure paths. Address this by wrapping the blob\ninto with a cleanup helper.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71147"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19166de9737218b77122c41a5730ac87025e089f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3fd7df4636d8fd5e3592371967a5941204368936"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62cd5d480b9762ce70d720a81fa5b373052ae05f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b015f2918b95bdde2ca9cefa10ef02b138aae1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e7c63c69f57b1db1a8a1542359a6167ff8fcef1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af0689cafb127a8d1af78cc8b72585c9b2a19ecd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-23T15:16:05Z"
+  }
+}

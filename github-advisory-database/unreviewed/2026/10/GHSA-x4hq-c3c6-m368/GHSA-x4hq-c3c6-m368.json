@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x4hq-c3c6-m368",
+  "modified": "2026-10-12T15:32:12Z",
+  "published": "2026-10-12T15:32:12Z",
+  "aliases": [
+    "CVE-2026-108952"
+  ],
+  "details": "RT-Thread through 5.3.0 contains a memory corruption vulnerability in the legacy USB CDC virtual COM port driver that aliases rx_ringbuffer as a Serial V2 rt_serial_rx_fifo in _function_enable(). A connected USB host configuring the CDC device triggers writes past the ring buffer into struct vcom members and an invalid rt_free() on close, causing denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:P/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108952"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RT-Thread/rt-thread/issues/11739"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RT-Thread/rt-thread/pull/11770"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RT-Thread/rt-thread/commit/ceef6e0ccd646aef61b907aeb9f29269d1caba50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RT-Thread/rt-thread"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RT-Thread/rt-thread/blob/99428a1e7f7447955aa860f7c969273a12095b8f/components/legacy/usb/usbdevice/class/cdc_vcom.c#L518"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rt-thread-through-5.3.0-memory-corruption-via-usb-cdc-vcom-driver"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-843"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T13:17:28Z"
+  }
+}

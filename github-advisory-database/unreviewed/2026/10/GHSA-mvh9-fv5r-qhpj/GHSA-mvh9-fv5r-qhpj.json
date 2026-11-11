@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mvh9-fv5r-qhpj",
+  "modified": "2026-10-30T15:34:34Z",
+  "published": "2026-10-30T15:34:34Z",
+  "aliases": [
+    "CVE-2026-119573"
+  ],
+  "details": "Traefik 3.7.11 before 3.7.15 contains an authorization bypass in the Kubernetes Ingress NGINX provider that skips the cross-namespace check on the auth-tls-secret annotation when a cached client authentication TLS option is reused. Users who can create Ingresses can reference another namespace's CA secret already used by another Ingress, enforcing it on their own routes and learning whether it exists, without disclosure of its contents.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:N/VI:L/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/traefik/traefik/security/advisories/GHSA-28hp-c82p-8vqj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119573"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/traefik-3.7.11-before-3.7.15-cross-namespace-authorization-bypass-via-auth-tls-secret"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T14:16:46Z"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j92c-7v7g-gj3f",
+  "modified": "2026-02-05T00:36:50Z",
+  "published": "2026-02-03T19:22:06Z",
+  "aliases": [
+    "CVE-2026-25543"
+  ],
+  "summary": "HtmlSanitizer has a bypass via template tag",
+  "details": "### Impact\n\nIf the `template` tag is allowed, its contents are not sanitized. The `template` tag is a special tag that does not usually render its contents, unless the `shadowrootmode` attribute is set to `open` or `closed`. \n\nThe lack of sanitization of the template tag brings up two bypasses:\n\n1. it is still possible to forcibly render the contents of a `<template>` tag through mutation XSS. The DOM parsers in browsers such as Chromium have a node depth limit of 512 and tags which are beyond that depth are flattened. This in turn allows elements within `<template>` (which are not sanitized) to be effectively 'popped out'. An example would look like this: `<div>[...]<template><script>alert('xss')</script>` where `[...]` denotes at least another 509 opening `<div>` tags.\n2. If in addition to the template tag, the `shadowrootmode` attribute is allowed through `sanitizer.AllowedAttributes.Add(\"shadowrootmode\");`, the simple payload of `<div><template shadowrootmode=\"open\"><script>alert('xss')</script>` would bypass the sanitizer. This is because such usage of `<template>` attaches a shadow root to its parent: `<div>`, and its contents will be rendered. \n\nNote that the default configuration is not affected because the `template` tag is disallowed by default.\n\n### Patches\n\nThe problem has been patched in versions [9.0.892](https://www.nuget.org/packages/HtmlSanitizer/9.0.892) and [9.1.893-beta](https://www.nuget.org/packages/HtmlSanitizer/9.1.893-beta).\n\n### Workarounds\n\nDisallow the `template` tag. It is disallowed by default.\n\n### Resources\n\nhttps://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "HtmlSanitizer"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.0.892"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "HtmlSanitizer"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "9.1.878-beta"
+            },
+            {
+              "fixed": "9.1.893-beta"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mganss/HtmlSanitizer/security/advisories/GHSA-j92c-7v7g-gj3f"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25543"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mganss/HtmlSanitizer/commit/0ac53dca30ddad963f2b243669a5066933d82b81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mganss/HtmlSanitizer"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mganss/HtmlSanitizer/releases/tag/v9.0.892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nuget.org/packages/HtmlSanitizer/9.0.892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nuget.org/packages/HtmlSanitizer/9.1.893-beta"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-116",
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-03T19:22:06Z",
+    "nvd_published_at": "2026-02-04T22:16:00Z"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x73h-j8wv-p248",
+  "modified": "2026-10-15T03:35:13Z",
+  "published": "2026-01-31T12:30:11Z",
+  "aliases": [
+    "CVE-2025-71186"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: stm32: dmamux: fix device leak on route allocation\n\nMake sure to drop the reference taken when looking up the DMA mux\nplatform device during route allocation.\n\nNote that holding a reference to a device does not prevent its driver\ndata from going away so there is no point in keeping the reference.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71186"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-253495.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a179ac01ff3993ab97e33cc77c316ed7415cda1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1dda2a32303df0091896b01a9d09070d61fa344c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fb10259d4efb4367787b5ae9c94192e8a91c648"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b42020e6790a5e19b36c187ed5b488a5716f97f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ef52d31cce8ba816739085a61efe07b63c6cf27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6393da54dcb3488c080a183c4182ddec71ba8d7f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd6e4943889fb354efa3f700e42739da9bddb6ef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-31T12:16:03Z"
+  }
+}

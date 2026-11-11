@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6hq5-4rhc-r2cc",
+  "modified": "2025-03-12T00:31:47Z",
+  "published": "2025-03-12T00:31:47Z",
+  "aliases": [
+    "CVE-2022-49627"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nima: Fix potential memory leak in ima_init_crypto()\n\nOn failure to allocate the SHA1 tfm, IMA fails to initialize and exits\nwithout freeing the ima_algo_array. Add the missing kfree() for\nima_algo_array to avoid the potential memory leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49627"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/067d2521874135267e681c19d42761c601d503d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/601ae26aa2802a4c10c94d7388a99eabdbefab2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/830de9667b3ada0a75a3f098dfc7159709fe397b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1d9702ceb4a091da6bee380627596d1fba09274"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:38Z"
+  }
+}

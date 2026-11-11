@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9cv2-cfxc-v4v2",
+  "modified": "2026-06-19T16:36:23Z",
+  "published": "2026-06-19T16:36:23Z",
+  "aliases": [],
+  "summary": "Nokogiri: Null Pointer Dereference calling methods on uninitialized wrapper classes",
+  "details": "### Summary\n\nNokogiri contains a bug when calling certain methods on allocated-but-uninitialized native wrapper classes that inherit from `Nokogiri::XML::Node`. This caused a NULL pointer dereference that could crash the process.\n\nNokogiri 1.19.4 checks for missing native data pointers and raises a `RuntimeError`.\n\nJRuby is not affected.\n\n### Severity\n\nThe Nokogiri maintainers have evaluated this as low severity. This is only triggered by a programming error. It requires application code to call `.allocate` directly on a native-backed class and then invoke methods on the resulting uninitialized object. It cannot be triggered by untrusted input or through normal use of the public API.\n\n### Mitigation\n\nUpgrade to Nokogiri 1.19.4 or later.\n\nAvoid calling `.allocate` directly on Nokogiri native-backed classes. Use the documented constructors and factory methods instead.\n\n### Credit\n\nThis issue was responsibly reported by Zheng Yu from depthfirst.com.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "nokogiri"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.19.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-9cv2-cfxc-v4v2"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/sparklemotion/nokogiri"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-19T16:36:23Z",
+    "nvd_published_at": null
+  }
+}

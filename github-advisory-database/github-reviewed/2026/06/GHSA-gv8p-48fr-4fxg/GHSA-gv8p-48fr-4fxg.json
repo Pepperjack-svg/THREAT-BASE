@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gv8p-48fr-4fxg",
+  "modified": "2026-06-04T19:23:33Z",
+  "published": "2026-06-04T19:23:33Z",
+  "aliases": [
+    "CVE-2026-48008"
+  ],
+  "summary": "Shopware: Privilege Escalation via Sync API Integration Admin Flag Bypass",
+  "details": "## Summary\n\nA non-admin API user with `integration:create` ACL privilege can escalate to full administrator by creating an integration with `admin: true` through the Sync API (`POST /api/_action/sync`). The regular integration endpoint (`POST /api/integration`) correctly blocks this, but the Sync API bypasses the controller-level check by writing directly through the DAL EntityWriter. The `integration` entity definition lacks `WriteProtection`, and the `admin` field has no field-level restriction flag.\n\n**OWASP:** A01:2021 — Broken Access Control\n\n## Root Cause\n\n`IntegrationController::upsertIntegration()` checks `$source->isAdmin()` before allowing the `admin` field to be set. However, `SyncController::sync()` routes writes through `SyncService → EntityWriter`, which only applies:\n\n1. `AclWriteValidator` — checks entity-level ACL (`integration:create` is sufficient)\n2. `EntityProtectionValidator` — checks `WriteProtection` on entity definitions, but `IntegrationDefinition` has none\n\nThe `admin` field in `IntegrationDefinition` is a plain `BoolField` with no `WriteProtection` or special flag. The Sync API writes it without restriction.\n\n**Vulnerable code path:**\n- `src/Core/Framework/Api/Controller/SyncController.php` → `SyncService` → `EntityWriter::upsert()`\n- **Missing protection:** `src/Core/Framework/Integration/IntegrationDefinition.php` — `admin` field has no `WriteProtection(Context::SYSTEM_SCOPE)`\n\n**Working protection (bypassed):**\n- `src/Core/Framework/Integration/IntegrationController.php:46-56` — `isAdmin()` check only applies to the dedicated controller endpoint\n\n## Impact\n\n- **Complete admin API access** — the escalated integration has full read/write on every entity: users, customers, orders, system configuration, integrations, plugins\n- **PII exfiltration** — read all customer records (names, emails, addresses, order history)\n- **Persistent backdoor** — the admin integration survives password changes and user deactivation\n\n## Remediation\n\nAdd `WriteProtection(Context::SYSTEM_SCOPE)` to `IntegrationDefinition`, matching how `UserDefinition` and `AclRoleDefinition` are already protected:\n\n```php\n// src/Core/Framework/Integration/IntegrationDefinition.php\n(new BoolField('admin', 'admin'))\n    ->addFlags(new WriteProtection(Context::SYSTEM_SCOPE)),\n```",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "shopware/platform"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.7.0.0"
+            },
+            {
+              "fixed": "6.7.10.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "shopware/platform"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.6.10.18"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "shopware/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.7.0.0"
+            },
+            {
+              "fixed": "6.7.10.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "shopware/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.6.10.18"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopware/shopware/security/advisories/GHSA-gv8p-48fr-4fxg"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/shopware/shopware"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopware/shopware/releases/tag/v6.6.10.18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopware/shopware/releases/tag/v6.7.10.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-04T19:23:33Z",
+    "nvd_published_at": null
+  }
+}

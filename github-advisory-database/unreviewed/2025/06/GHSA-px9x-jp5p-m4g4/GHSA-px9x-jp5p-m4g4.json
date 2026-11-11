@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-px9x-jp5p-m4g4",
+  "modified": "2025-11-14T21:30:27Z",
+  "published": "2025-06-18T12:30:34Z",
+  "aliases": [
+    "CVE-2025-38076"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nalloc_tag: allocate percpu counters for module tags dynamically\n\nWhen a module gets unloaded it checks whether any of its tags are still in\nuse and if so, we keep the memory containing module's allocation tags\nalive until all tags are unused.  However percpu counters referenced by\nthe tags are freed by free_module().  This will lead to UAF if the memory\nallocated by a module is accessed after module was unloaded.\n\nTo fix this we allocate percpu counters for module allocation tags\ndynamically and we keep it alive for tags which are still in use after\nmodule unloading.  This also removes the requirement of a larger\nPERCPU_MODULE_RESERVE when memory allocation profiling is enabled because\npercpu memory for counters does not need to be reserved anymore.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38076"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12ca42c237756182aad8ab04654c952765cb9061"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cc733e6d96c938d2b82be96858a0ab900eb6fdc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T10:15:41Z"
+  }
+}

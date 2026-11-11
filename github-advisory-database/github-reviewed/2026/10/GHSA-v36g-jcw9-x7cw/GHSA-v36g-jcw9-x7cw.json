@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v36g-jcw9-x7cw",
+  "modified": "2026-10-08T17:40:50Z",
+  "published": "2026-10-08T17:40:50Z",
+  "aliases": [
+    "CVE-2026-107287"
+  ],
+  "summary": "Pydantic AI: Excessive resource use when local web fetching converts nested HTML",
+  "details": "### Summary\n\nApplications using Pydantic AI's local web-fetch tool can experience excessive CPU and memory use when it converts attacker-controlled HTML. An agent must fetch the affected page; provider-native web fetching is not affected.\n\n### Details\n\nNested block elements cause HTML-to-Markdown conversion to reprocess accumulated text at each level and can greatly expand the intermediate output. The response-body limit bounds downloaded bytes, while the returned-content limit is applied only after conversion. On current releases, conversion runs in a worker thread but can still consume substantial resources and delay other work in the process. Older releases performed conversion on the event loop.\n\n### Mitigation\n\nUpgrade to a patched release of `pydantic-ai` or `pydantic-ai-slim`. If you cannot upgrade yet, avoid using local web fetching for attacker-controlled HTML.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pydantic-ai"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.77.0"
+            },
+            {
+              "fixed": "1.107.7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pydantic-ai"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0b1"
+            },
+            {
+              "fixed": "2.52.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pydantic-ai-slim"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.77.0"
+            },
+            {
+              "fixed": "1.107.7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pydantic-ai-slim"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0b1"
+            },
+            {
+              "fixed": "2.52.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pydantic/pydantic-ai/security/advisories/GHSA-v36g-jcw9-x7cw"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pydantic/pydantic-ai/pull/8984"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pydantic/pydantic-ai/pull/8985"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pydantic/pydantic-ai/commit/2b247add4950bef61d352e7ca8aefbd20539180c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pydantic/pydantic-ai/commit/2fd38792693da00a3ca5412aeffb436787af3545"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pydantic/pydantic-ai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pydantic/pydantic-ai/releases/tag/v1.107.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pydantic/pydantic-ai/releases/tag/v2.52.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400",
+      "CWE-407"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-08T17:40:50Z",
+    "nvd_published_at": null
+  }
+}

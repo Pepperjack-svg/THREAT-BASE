@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f9wf-xvm8-m6qp",
+  "modified": "2025-12-12T21:31:31Z",
+  "published": "2025-09-18T15:30:33Z",
+  "aliases": [
+    "CVE-2022-50400"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: greybus: audio_helper: remove unused and wrong debugfs usage\n\nIn the greybus audio_helper code, the debugfs file for the dapm has the\npotential to be removed and memory will be leaked.  There is also the\nvery real potential for this code to remove ALL debugfs entries from the\nsystem, and it seems like this is what will really happen if this code\never runs.  This all is very wrong as the greybus audio driver did not\ncreate this debugfs file, the sound core did and controls the lifespan\nof it.\n\nSo remove all of the debugfs logic from the audio_helper code as there's\nno way it could be correct.  If this really is needed, it can come back\nwith a fixup for the incorrect usage of the debugfs_lookup() call which\nis what caused this to be noticed at all.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50400"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4dab0d27a4211a27135a6899d6c737e6e0759a11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5699afbff1fa2972722e863906c0320d55dd4d58"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0febad83e29d85bb66e4f5cac0115b022403338"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d517cdeb904ddc0cbebcc959d43596426cac40b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d835fa49d9589a780ff0d001bb7e6323238a4afb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T14:15:39Z"
+  }
+}

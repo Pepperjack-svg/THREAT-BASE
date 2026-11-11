@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ccmh-w6v3-pcjp",
+  "modified": "2026-10-16T03:30:25Z",
+  "published": "2026-10-16T03:30:25Z",
+  "aliases": [
+    "CVE-2026-111376"
+  ],
+  "details": "FreeRDP from 3.30.0 before 3.32.0 contains a heap out-of-bounds read vulnerability in the Windows client's CliprdrStream_New that allows malicious RDP servers to trigger invalid memory reads via short clipboard responses. Attackers can answer a FILECONTENTS_SIZE request with a cbRequested of fewer than eight bytes when a user pastes a remote file, crashing the client or corrupting the stream size.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-pvgq-84w2-93ph"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111376"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/freerdp-3.30.0-before-3.32.0-heap-over-read-via-windows-cliprdr-filecontents-size"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T03:18:04Z"
+  }
+}

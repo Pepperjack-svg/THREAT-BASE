@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cp99-548m-58v7",
+  "modified": "2025-05-02T18:31:34Z",
+  "published": "2025-05-02T18:31:34Z",
+  "aliases": [
+    "CVE-2023-53063"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btsdio: fix use after free bug in btsdio_remove due to unfinished work\n\nIn btsdio_probe, &data->work was bound with btsdio_work.In\nbtsdio_send_frame, it was started by schedule_work.\n\nIf we call btsdio_remove with an unfinished job, there may\nbe a race condition and cause UAF bug on hdev.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53063"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e9ac114c4428fdb7ff4635b45d4f46017e8916f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8efae2112d910d8e5166dd0a836791b08721eef1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95eacef5692545f199fae4e52abfbfa273acb351"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a18fb433ceb56e0787546a9d77056dd0f215e762"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af4d48754d5517d33bac5e504ff1f1de0808e29e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c59c65a14e8f7d738429648833f3bb3f9df0513f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cbf8deacb7053ce3e3fed64b277c6c6989e65bba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da3d3fdfb4d523c5da30e35a8dd90e04f0fd8962"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-02T16:15:25Z"
+  }
+}

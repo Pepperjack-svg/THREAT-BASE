@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cfpg-c974-jfhq",
+  "modified": "2026-05-18T20:24:15Z",
+  "published": "2026-05-12T18:30:38Z",
+  "aliases": [
+    "CVE-2026-31220"
+  ],
+  "summary": "PySyft server-side arbitrary Python execution after code approval",
+  "details": "PySyft (Syft Datasite/Server) versions 0.9.5 and earlier are vulnerable to remote code execution due to insufficient validation and sandboxing of user-submitted code. The system allows low-privileged users to submit Python functions (via @sy.syft_function()) for remote execution on the server. While a code approval mechanism exists, the submitted code undergoes no security checks for dangerous operations (e.g., file access, command execution). Once approved, the code is executed within the server process using exec() and eval() functions without proper isolation. A remote attacker can leverage this to execute arbitrary Python code on the server, leading to complete compromise of the server environment.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "syft"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.9.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31220"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/OpenMined/PySyft"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.notion.so/CVE-2026-31220-35d1e1393188814186b9e00114a8aba7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-18T20:24:15Z",
+    "nvd_published_at": "2026-05-12T16:16:13Z"
+  }
+}

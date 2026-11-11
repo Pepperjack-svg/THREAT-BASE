@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8hhc-85h8-34q6",
+  "modified": "2026-10-06T15:31:41Z",
+  "published": "2026-10-05T15:32:22Z",
+  "aliases": [
+    "CVE-2026-88391"
+  ],
+  "details": "Northstar (dromara/northstar, quantitative trading platform) <= 9.1.1 enables the H2 Console but its auth interceptor only covers /northstar/**, so /h2-console is exposed with no authentication and the embedded H2 DB uses default sa / empty password. Any network-reachable attacker can run arbitrary system commands via CREATE ALIAS (pre-auth RCE).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fangtang7/CVE/blob/main/Northstar%20H2/rce.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-05T15:17:22Z"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mj32-r678-7mvp",
+  "modified": "2026-03-10T22:55:02Z",
+  "published": "2026-03-10T18:24:18Z",
+  "aliases": [
+    "CVE-2026-29177"
+  ],
+  "summary": "Craft Commerce has stored XSS in Craft Commerce Order Details Slideout",
+  "details": "## Summary\nA Stored Cross-Site Scripting (XSS) vulnerability exists in the Craft Commerce Order details. Malicious JavaScript can be injected via the **Shipping Method Name**, **Order Reference**, or **Site Name**. When a user opens the order details slideout via a double-click on the order index page, the injected payload executes.\n\n## Reproduction Steps\n1. Navigate to **Commerce** -> **Store Management** -> **Shipping Methods**.\n1. Click \"New Shipping Method\".\n1. In the **Name** field, enter the following XSS payload:\n    ```html\n    <img src=x onerror=alert('XSS_Shipping')>\n    ```\n1. Save the Shipping Method.\n1. Place a new order or edit an existing order.\n1. Set the order's **Shipping Method** to the one created in the previous steps.\n1. Navigate to the **Orders** index page (`/admin/commerce/orders`).\n1. Double-click the target order to open the details slideout.\n1. **Result**: The XSS payload executes.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:A/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/commerce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.10.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.10.1"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/commerce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.5.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.5.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/security/advisories/GHSA-mj32-r678-7mvp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-29177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/commit/b0683e04773f16bba6af9df18aab495fc5dde68a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/commerce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-10T18:24:18Z",
+    "nvd_published_at": "2026-03-10T20:16:39Z"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-22qq-2fwx-7p67",
+  "modified": "2026-10-27T14:46:51Z",
+  "published": "2026-10-27T14:46:51Z",
+  "aliases": [
+    "CVE-2026-114608"
+  ],
+  "summary": "Pylint: Arbitrary code execution via pickle deserialization of the stats cache in PYLINT_HOME",
+  "details": "### Impact\n\nSince 2006 / pylint 0.15.2, pylint caches its stats as pickles in `PYLINT_HOME` and reload them on the next run with `pickle.load`. Someone without access to the configuration or linted code, but with access to the cache directory (predictable `PYLINT_HOME` on a multi-user host) can write a crafted pickle that will runs arbitrary code when pylint access its stat cache.\n\n### Patches\n\nFrom pylint 4.0.9, the result cache is now stored as JSON instead of pickle, preventing code-execution. \n\n### Workarounds\n\nUntil upgrading do not point `PYLINT_HOME` to an untrusted, shared, or group-writable directory. The default value, `~/.cache/pylint`, is writable only by the user running pylint.\n\n### Credits\n\n- Reported privately via Tidelift coordinated disclosure (Dan Lenz).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pylint"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.0.9"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pylint-dev/pylint/security/advisories/GHSA-22qq-2fwx-7p67"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114608"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pylint-dev/pylint/commit/58c87cffca9de2b3e89aa07b89686cbc90cfea2d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pylint-dev/pylint/commit/5b241f66318220e9ba7b21ca631fbfe8e77682ca"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pylint-dev/pylint"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pylint-dev/pylint/releases/tag/v4.0.9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-27T14:46:51Z",
+    "nvd_published_at": "2026-10-22T17:16:58Z"
+  }
+}

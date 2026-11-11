@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rggj-rv54-4gvx",
+  "modified": "2026-07-01T15:35:20Z",
+  "published": "2026-07-01T15:35:20Z",
+  "aliases": [
+    "CVE-2026-6685"
+  ],
+  "details": "FatFs R0.16 and earlier exhibits a stale dirty-cache skip via unsigned-subtraction wrap in f_read() / f_write() (fp->sect - sect < cc) during interleaved read/write on fragmented filesystems. This maps to CWE-191 (Integer Underflow). Estimated CVSS v3.1 vector: CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H (6.1, Medium). The estimated CISA SSVC vectors are Exploitation: PoC, Technical Impact: Total.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://elm-chan.org/fsw/ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/runZeroInc/vulns-2026-fatfs-chance"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.runzero.com/advisories/fatfs-unsigned-sub-wrap-cve-2026-6685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.runzero.com/blog/fatfs-bugs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-01T15:17:12Z"
+  }
+}

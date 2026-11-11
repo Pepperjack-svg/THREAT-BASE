@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fg56-4rxr-cx5x",
+  "modified": "2026-10-16T06:30:24Z",
+  "published": "2026-10-16T06:30:24Z",
+  "aliases": [
+    "CVE-2026-111450"
+  ],
+  "details": "Wheels through 4.1.1 derives its default production error-email address from the Host header of the request that starts the application. If no explicit error-email recipient is configured, a mail server is configured, and the server accepts an attacker-chosen Host, an attacker whose request triggers a cold start can direct later error emails to an address under their control for that application's lifetime. Emails disclose error and request metadata; on engines/versions where scope dumps render, they may also disclose configuration secrets and other users' session/cookie data. On the Lucee 7 engine, scope dumps fail to render, limiting disclosure to header fields. This is fixed in 4.1.2.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/wheels-dev/wheels/security/advisories/GHSA-8gcv-3v9h-7gj2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111450"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-348"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T04:18:31Z"
+  }
+}

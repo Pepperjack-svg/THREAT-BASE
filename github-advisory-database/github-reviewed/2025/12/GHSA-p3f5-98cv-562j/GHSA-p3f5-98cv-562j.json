@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p3f5-98cv-562j",
+  "modified": "2025-12-10T20:10:34Z",
+  "published": "2025-12-10T18:30:26Z",
+  "aliases": [
+    "CVE-2025-67636"
+  ],
+  "summary": "Jenkins is missing a permission check on password fields",
+  "details": "A missing permission check in Jenkins 2.540 and earlier, LTS 2.528.2 and earlier allows attackers with View/Read permission to view encrypted password values in views.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.main:jenkins-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.529"
+            },
+            {
+              "fixed": "2.541"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.main:jenkins-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.528.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-67636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/jenkins/commit/3ee7380c5e167fab865f58b52a81ef01c24b9eb2"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/jenkins"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2025-12-10/#SECURITY-1809"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-10T20:10:34Z",
+    "nvd_published_at": "2025-12-10T17:15:56Z"
+  }
+}

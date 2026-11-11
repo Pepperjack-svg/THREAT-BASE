@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jm67-vrwh-5hh6",
+  "modified": "2026-09-14T12:31:27Z",
+  "published": "2025-07-03T09:30:32Z",
+  "aliases": [
+    "CVE-2025-38097"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nespintcp: remove encap socket caching to avoid reference leak\n\nThe current scheme for caching the encap socket can lead to reference\nleaks when we try to delete the netns.\n\nThe reference chain is: xfrm_state -> enacp_sk -> netns\n\nSince the encap socket is a userspace socket, it holds a reference on\nthe netns. If we delete the espintcp state (through flush or\nindividual delete) before removing the netns, the reference on the\nsocket is dropped and the netns is correctly deleted. Otherwise, the\nnetns may not be reachable anymore (if all processes within the ns\nhave terminated), so we cannot delete the xfrm state to drop its\nreference on the socket.\n\nThis patch results in a small (~2% in my tests) performance\nregression.\n\nA GC-type mechanism could be added for the socket cache, to clear\nreferences if the state hasn't been used \"recently\", but it's a lot\nmore complex than just not caching the socket.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38097"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/028363685bd0b7a19b4a820f82dd905b1dc83999"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74fd327767fb784c5875cf7c4ba1217f26020943"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9673ca00e6c5503069dc98780e2e89db0e663c16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9cbca30102028f9ad3d2098f935c4368f581fd07"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b58a295d10065960bcb9d60cb8ca6ead9837cd27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e32bafd08ee35feacd47b05cc5bfe9cd9659cd25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e4cde54b46a87231c77256a633be1bef62687d69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-03T09:15:23Z"
+  }
+}

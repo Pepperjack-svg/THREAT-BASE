@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cxpq-4fh3-6276",
+  "modified": "2026-10-18T18:31:52Z",
+  "published": "2026-10-18T18:31:52Z",
+  "aliases": [
+    "CVE-2026-98526"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nllc: reserve device headroom for allocated frames\n\nllc_alloc_frame() reserves link-layer headroom using the device type.\nThis is insufficient for stacked Ethernet devices such as VLAN devices,\nwhere vlan_dev_hard_header() pushes a VLAN header before the lower\ndevice's Ethernet header. An LLC response on such a device can\ntherefore underflow skb headroom in eth_header().\n\nUse LL_RESERVED_SPACE() to account for the device's actual required\nheadroom while preserving the existing LLC device-type check.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98526"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/018020f5a48cc86fdd6dc2d380f6c70443ae7639"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16ceac2daa89dd16917bc488ab05b9dd6961a603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1937222c2511ac91377d39f28106c34734f5f8c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3361c93e417384ebf28003e0fb6d5304653d3b05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a3f57c4061d9e9cc3bc04205d36ce41ae3406c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72b5b9a28b996e09b8b5b944370c79851bb68f52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c38524b2b2456bd33cb360420da6cbf9cad1b33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e06f8b6e27cc616d3c587e9784c4a033eb310a16"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:04Z"
+  }
+}

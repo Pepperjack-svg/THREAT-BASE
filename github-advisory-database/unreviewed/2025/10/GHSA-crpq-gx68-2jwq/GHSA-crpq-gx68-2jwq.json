@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-crpq-gx68-2jwq",
+  "modified": "2026-02-04T18:30:19Z",
+  "published": "2025-10-07T18:31:08Z",
+  "aliases": [
+    "CVE-2022-50527"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix size validation for non-exclusive domains (v4)\n\nFix amdgpu_bo_validate_size() to check whether the TTM domain manager for the\nrequested memory exists, else we get a kernel oops when dereferencing \"man\".\n\nv2: Make the patch standalone, i.e. not dependent on local patches.\nv3: Preserve old behaviour and just check that the manager pointer is not\n    NULL.\nv4: Complain if GTT domain requested and it is uninitialized--most likely a\n    bug.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50527"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7554886daa31eacc8e7fac9e15bbce67d10b8f1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80546eef216854a7bd47e39e828f04b406c00599"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ba7c55e112f4ffd2a95b99be1cb1c891ef08ba1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:36Z"
+  }
+}

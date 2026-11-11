@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rg54-mxfq-r39j",
+  "modified": "2026-04-18T09:30:16Z",
+  "published": "2025-10-30T12:31:10Z",
+  "aliases": [
+    "CVE-2025-40103"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: Fix refcount leak for cifs_sb_tlink\n\nFix three refcount inconsistency issues related to `cifs_sb_tlink`.\n\nComments for `cifs_sb_tlink` state that `cifs_put_tlink()` needs to be\ncalled after successful calls to `cifs_sb_tlink()`. Three calls fail to\nupdate refcount accordingly, leading to possible resource leaks.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40103"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/790282abe9d805f08618c1c24ea2529e7259b692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/896bb31e1416f582503db1350cf1bd10dc64e5a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2b77f42205ef485a647f62082c442c1cd69d3fc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3c8ea197055c260119a13360e8202a27e53e1e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7dd034c14928306db1b46be277ae439b84dacf9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e15605b68b490186da2ad8029c0351a9cfb0b9af"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-30T10:15:34Z"
+  }
+}

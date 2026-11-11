@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5pq9-5mpr-jj85",
+  "modified": "2026-01-21T16:23:33Z",
+  "published": "2026-01-13T14:56:04Z",
+  "aliases": [
+    "CVE-2025-68925"
+  ],
+  "summary": "Jervis Has a JWT Algorithm Confusion Vulnerability",
+  "details": "### Vulnerability\n\nhttps://github.com/samrocketman/jervis/blob/157d2b63ffa5c4bb1d8ee2254950fd2231de2b05/src/main/groovy/net/gleske/jervis/tools/SecurityIO.groovy#L244-L249\n\nThe code doesn't validate that the JWT header specifies `\"alg\":\"RS256\"`.\n\n### Impact\n\nDepending on the broader system, this could allow JWT forgery.\n\nInternally this severity is low since JWT is only intended to interface with GitHub.  External users should consider severity moderate.\n\n### Patches\n\nJervis patch will explicitly verify the algorithm in the header matches expectations and further verify the JWT structure.\n\nUpgrade to Jervis 2.2.\n\n### Workarounds\n\nExternal users should consider using an alternate JWT library or upgrade.\n\n### References\n\n- [RFC 7518: JSON Web Algorithms](https://datatracker.ietf.org/doc/html/rfc7518)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "net.gleske:jervis"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/samrocketman/jervis/security/advisories/GHSA-5pq9-5mpr-jj85"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68925"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samrocketman/jervis/commit/c3981ff71de7b0f767dfe7b37a2372cb2a51974a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/samrocketman/jervis"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samrocketman/jervis/blob/157d2b63ffa5c4bb1d8ee2254950fd2231de2b05/src/main/groovy/net/gleske/jervis/tools/SecurityIO.groovy#L244-L249"
+    },
+    {
+      "type": "WEB",
+      "url": "http://github.com/samrocketman/jervis/commit/c3981ff71de7b0f767dfe7b37a2372cb2a51974a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-347"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-13T14:56:04Z",
+    "nvd_published_at": "2026-01-13T20:16:07Z"
+  }
+}

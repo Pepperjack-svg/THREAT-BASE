@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-grcg-mgx8-mfvf",
+  "modified": "2026-10-15T03:34:53Z",
+  "published": "2025-08-19T18:31:34Z",
+  "aliases": [
+    "CVE-2025-38614"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\neventpoll: Fix semi-unbounded recursion\n\nEnsure that epoll instances can never form a graph deeper than\nEP_MAX_NESTS+1 links.\n\nCurrently, ep_loop_check_proc() ensures that the graph is loop-free and\ndoes some recursion depth checks, but those recursion depth checks don't\nlimit the depth of the resulting tree for two reasons:\n\n - They don't look upwards in the tree.\n - If there are multiple downwards paths of different lengths, only one of\n   the paths is actually considered for the depth check since commit\n   28d82dc1c4ed (\"epoll: limit paths\").\n\nEssentially, the current recursion depth check in ep_loop_check_proc() just\nserves to prevent it from recursing too deeply while checking for loops.\n\nA more thorough check is done in reverse_path_check() after the new graph\nedge has already been created; this checks, among other things, that no\npaths going upwards from any non-epoll file with a length of more than 5\nedges exist. However, this check does not apply to non-epoll files.\n\nAs a result, it is possible to recurse to a depth of at least roughly 500,\ntested on v6.15. (I am unsure if deeper recursion is possible; and this may\nhave changed with commit 8c44dac8add7 (\"eventpoll: Fix priority inversion\nproblem\").)\n\nTo fix it:\n\n1. In ep_loop_check_proc(), note the subtree depth of each visited node,\nand use subtree depths for the total depth calculation even when a subtree\nhas already been visited.\n2. Add ep_get_upwards_depth_proc() for similarly determining the maximum\ndepth of an upwards walk.\n3. In ep_loop_check(), use these values to limit the total path length\nbetween epoll nodes to EP_MAX_NESTS edges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38614"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b13b033062824495554e836a1ff5f85ccf6b039"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a0c0c974bea9619c6f41794775ae4b97530e0e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3542c90797bc3ab83ebab54b737d751cf3682036"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71379495ab70eaba19224bd71b5b9b399eb85e04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a2125962c42d5336ca0495a9ce4cb38a63e9161"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea5f97dbdcb1651581a22bd10afd2f0dd9dc11d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2e467a48287c868818085aa35389a224d226732"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-19T17:15:40Z"
+  }
+}

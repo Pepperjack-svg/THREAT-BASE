@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rqhg-m645-r86c",
+  "modified": "2026-10-13T18:30:56Z",
+  "published": "2026-10-13T18:30:56Z",
+  "aliases": [
+    "CVE-2026-110128"
+  ],
+  "details": "fuint through commit 4c4bc8a contains a missing authentication vulnerability that allows unauthenticated attackers to retrieve any member's order details via the /clientApi/order/detail endpoint. Attackers can enumerate sequential orderId values without an Access-Token to expose buyer names, national ID numbers, phone numbers, addresses, WeChat openIds and verification codes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fushengqian/fuint/blob/4c4bc8a68e0a93d37c37ab374f72d64728c9e5f8/fuint-application/src/main/java/com/fuint/common/config/WebConfig.java#L80-L101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fushengqian/fuint/blob/4c4bc8a68e0a93d37c37ab374f72d64728c9e5f8/fuint-application/src/main/java/com/fuint/module/clientApi/controller/ClientOrderController.java#L77-L80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/fuint-order-detail-unauthenticated-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/fuint-through-commit-4c4bc8a-missing-authentication-via-clientapi-order-detail"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T17:17:38Z"
+  }
+}

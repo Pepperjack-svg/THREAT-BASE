@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6p4f-j8j6-463q",
+  "modified": "2026-10-08T22:09:50Z",
+  "published": "2026-10-08T22:09:49Z",
+  "aliases": [
+    "CVE-2026-107395"
+  ],
+  "summary": "Indico: Missing access check in legacy session export API",
+  "details": "### Impact\nA legacy API to retrieve session details could be misused to retrieve metadata (such as title, description and conveners) of a restricted session within without having access to that session, as long as the event itself was accessible.\n\n### Patches\nYou should to update to [Indico 3.3.13](https://github.com/indico/indico/releases/tag/v3.3.13) as soon as possible.\nSee [the docs](https://docs.getindico.io/en/stable/installation/upgrade/) for instructions on how to update.\n\n### Workarounds\nRestrict access to the event itself\n\n### For more information\nIf you have any questions or comments about this advisory:\n\n- Open a thread in [our forum](https://talk.getindico.io/)\n- Email us privately at [indico-team@cern.ch](mailto:indico-team@cern.ch)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "indico"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.3.13"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/indico/indico/security/advisories/GHSA-6p4f-j8j6-463q"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/indico/indico/commit/524e8e93eadcd8484905b1147020a35f5dce6038"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/indico/indico"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/indico/indico/releases/tag/v3.3.13"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-08T22:09:49Z",
+    "nvd_published_at": "2026-10-08T20:17:34Z"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g69g-p5jr-h7qf",
+  "modified": "2025-10-24T18:30:56Z",
+  "published": "2025-10-24T18:30:56Z",
+  "aliases": [
+    "CVE-2022-49672"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: tun: unlink NAPI from device on destruction\n\nSyzbot found a race between tun file and device destruction.\nNAPIs live in struct tun_file which can get destroyed before\nthe netdev so we have to del them explicitly. The current\ncode is missing deleting the NAPI if the queue was detached\nfirst.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49672"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b9bc84d311104906d2b4995a9a02d7b7ddab2db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8145f77d38de4f88b8a69e1463f5c09ba189d77c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82e729aee59acefe135fceffadcbc5b86dd4f1b9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8661d4b8faa2f7ee7a559969c0a7c57f077b1728"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a8cf919022373c97a84fe596bbea544f909c485d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bec1be0a745ab420718217e3e0d9542a75108989"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:42Z"
+  }
+}

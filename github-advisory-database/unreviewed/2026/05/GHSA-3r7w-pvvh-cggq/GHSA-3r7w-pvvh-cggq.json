@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3r7w-pvvh-cggq",
+  "modified": "2026-05-27T09:31:12Z",
+  "published": "2026-05-27T09:31:12Z",
+  "aliases": [
+    "CVE-2026-8698"
+  ],
+  "details": "The Cryptocurrency Prijsvergelijking Widget plugin for WordPress is vulnerable to Stored Cross-Site Scripting in version 1.0. This is due to insufficient output escaping in the as_get_coin_shortcode() function, which renders the 'width' (and 'height') shortcode attribute directly into the style attribute of an <iframe> element without applying any escaping function such as esc_attr(). An attacker-controlled value like '100px;\"onload=\"alert(1)\" x=\"' terminates the style attribute prematurely and injects an arbitrary HTML attribute into the iframe tag. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8698"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cryptocurrency-prijsvergelijking-widget/trunk/functions.php#L138"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cryptocurrency-prijsvergelijking-widget/trunk/functions.php#L157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/058e47cd-55c8-48b3-8aa6-ef299886061d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T07:16:14Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wrc3-5873-3ff6",
+  "modified": "2025-12-02T21:31:26Z",
+  "published": "2025-09-16T15:32:31Z",
+  "aliases": [
+    "CVE-2023-53263"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/nouveau/disp: fix use-after-free in error handling of nouveau_connector_create\n\nWe can't simply free the connector after calling drm_connector_init on it.\nWe need to clean up the drm side first.\n\nIt might not fix all regressions from commit 2b5d1c29f6c4\n(\"drm/nouveau/disp: PIOR DP uses GPIO for HPD, not PMGR AUX interrupts\"),\nbut at least it fixes a memory corruption in error handling related to\nthat commit.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53263"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b254b791d7b7dea6e8adc887fbbd51746d8bb27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f27451c9f29d5ed00232968680c7838a44dcac7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/872feeecd08c81d212a52211d212897b8a857544"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T08:15:34Z"
+  }
+}

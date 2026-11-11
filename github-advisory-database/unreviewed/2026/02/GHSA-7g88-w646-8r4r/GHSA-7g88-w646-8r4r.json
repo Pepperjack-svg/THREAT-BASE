@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7g88-w646-8r4r",
+  "modified": "2026-03-18T15:30:40Z",
+  "published": "2026-02-14T18:30:15Z",
+  "aliases": [
+    "CVE-2026-23160"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteon_ep: Fix memory leak in octep_device_setup()\n\nIn octep_device_setup(), if octep_ctrl_net_init() fails, the function\nreturns directly without unmapping the mapped resources and freeing the\nallocated configuration memory.\n\nFix this by jumping to the unsupported_dev label, which performs the\nnecessary cleanup. This aligns with the error handling logic of other\npaths in this function.\n\nCompile tested only. Issue found using a prototype static analysis tool\nand code review.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23160"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5058d3f8f17202e673f90af1446252322bd0850f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8016dc5ee19a77678c264f8ba368b1e873fa705b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d753f3c3f9d7a6e6dbb4d3a97b73007d71624551"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fdfd28e13c244d7c3345e74f339fd1b67605b694"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T16:15:56Z"
+  }
+}

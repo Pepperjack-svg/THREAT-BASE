@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qhmc-3mvr-f2j4",
+  "modified": "2026-06-05T14:34:45Z",
+  "published": "2025-12-15T15:30:31Z",
+  "aliases": [
+    "CVE-2025-65430"
+  ],
+  "summary": "django-allauth does not reject access tokens for inactive users",
+  "details": "An issue was discovered in allauth-django before 65.13.0. IdP: marking a user as is_active=False after having handed tokens for that user while the account was still active had no effect. Fixed the access/refresh tokens are now rejected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "django-allauth"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "65.13.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-65430"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pennersr/django-allauth/commit/39f4a4ce9c891795b00914ca5ec32de72d5369c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pennersr/django-allauth/commit/c54edf947c5a1c8c4ff3cddb75c86000ecb2507d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://allauth.org/news/2025/10/django-allauth-65.13.0-released"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://codeberg.org/allauth/django-allauth"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/django-allauth/PYSEC-2025-110.yaml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-16T19:33:33Z",
+    "nvd_published_at": "2025-12-15T14:15:57Z"
+  }
+}

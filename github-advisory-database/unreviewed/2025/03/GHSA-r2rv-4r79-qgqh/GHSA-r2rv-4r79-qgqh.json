@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r2rv-4r79-qgqh",
+  "modified": "2025-03-12T00:31:47Z",
+  "published": "2025-03-12T00:31:47Z",
+  "aliases": [
+    "CVE-2022-49618"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npinctrl: aspeed: Fix potential NULL dereference in aspeed_pinmux_set_mux()\n\npdesc could be null but still dereference pdesc->name and it will lead to\na null pointer access. So we move a null check before dereference.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49618"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cb392b64304a05bf647e2e44efacd9a1f3c3c6a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/84a85d3fef2e75b1fe9fc2af6f5267122555a1ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e162a24f1dd06c0dcae71f2565c9f3da2827b98e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ef1e38532f4b2f0f3b460e938a2e7076c3bed5ee"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:37Z"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hv3w-m4g2-5x77",
+  "modified": "2026-06-08T19:51:02Z",
+  "published": "2026-04-06T18:00:29Z",
+  "aliases": [
+    "CVE-2026-35526"
+  ],
+  "summary": "strawberry-graphql: Denial of Service via unbounded WebSocket subscriptions",
+  "details": "Strawberry GraphQL's WebSocket subscription handlers for both the `graphql-transport-ws` and legacy `graphql-ws` protocols allocate an `asyncio.Task` and associated `Operation` object for every incoming subscribe message without enforcing any limit on the number of active subscriptions per connection.\n\nAn unauthenticated attacker can open a single WebSocket connection, send connection_init, and then flood subscribe messages with unique IDs. Each message unconditionally spawns a new `asyncio.Task` and async generator, causing linear memory growth and event loop saturation. This leads to server degradation or an OOM crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "strawberry-graphql"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.312.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.312.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/strawberry-graphql/strawberry/security/advisories/GHSA-hv3w-m4g2-5x77"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-35526"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/strawberry-graphql/strawberry/commit/0977a4e6b41b7cfe3e9d8ba84a43458a2b0c54c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/strawberry-graphql/PYSEC-2026-134.yaml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/strawberry-graphql/strawberry"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/strawberry-graphql/strawberry/releases/tag/0.312.3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400",
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-06T18:00:29Z",
+    "nvd_published_at": "2026-04-07T16:16:28Z"
+  }
+}

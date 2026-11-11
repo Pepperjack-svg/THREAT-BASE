@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cc7x-429h-6pc4",
+  "modified": "2026-10-12T18:31:37Z",
+  "published": "2026-10-12T18:31:37Z",
+  "aliases": [
+    "CVE-2026-109247"
+  ],
+  "details": "FreeRDP before 3.32.0 contains a path traversal vulnerability in convert_filedescriptors_to_file_list() in winpr/libwinpr/clipboard/synthetic_file.c, which concatenates server-supplied cFileName values from FileGroupDescriptorW clipboard data into the published local file:// URI without rejecting '/' or '..' sequences. A malicious RDP server can supply '../' sequences so the user's next clipboard paste copies an arbitrary local file readable by the client user instead of the expected remote file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-c3rh-2hv6-7hf2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/freerdp-before-3.32.0-path-traversal-via-clipboard-cfilename"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T17:17:15Z"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7c48-pxh3-297c",
+  "modified": "2025-11-03T21:33:47Z",
+  "published": "2025-05-01T15:31:45Z",
+  "aliases": [
+    "CVE-2025-37796"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: at76c50x: fix use after free access in at76_disconnect\n\nThe memory pointed to by priv is freed at the end of at76_delete_device\nfunction (using ieee80211_free_hw). But the code then accesses the udev\nfield of the freed object to put the USB device. This may also lead to a\nmemory leak of the usb device. Fix this by using udev from interface.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37796"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/152721cbae42713ecfbca6847e0f102ee6b19546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27c7e63b3cb1a20bb78ed4a36c561ea4579fd7da"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c619aec1f538333b56746d2f796aab1bca5c9a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5e7df74745700f059dc117a620e566964a2e8f2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e4ab3e574c2a335b40fa1f70d1c54fcb58ab33f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ca513631fa6ad3011b8b9197cdde0f351103704"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9682bfef2cf3802515a902e964d774e137be1b9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c731cdfddcf1be1590d5ba8c9b508f98e3a2b3d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T14:15:44Z"
+  }
+}

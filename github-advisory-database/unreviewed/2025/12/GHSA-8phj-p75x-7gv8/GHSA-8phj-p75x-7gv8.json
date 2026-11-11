@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8phj-p75x-7gv8",
+  "modified": "2026-02-26T21:31:25Z",
+  "published": "2025-12-24T15:30:44Z",
+  "aliases": [
+    "CVE-2025-68749"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/ivpu: Fix race condition when unbinding BOs\n\nFix 'Memory manager not clean during takedown' warning that occurs\nwhen ivpu_gem_bo_free() removes the BO from the BOs list before it\ngets unmapped. Then file_priv_unbind() triggers a warning in\ndrm_mm_takedown() during context teardown.\n\nProtect the unmapping sequence with bo_list_lock to ensure the BO is\nalways fully unmapped when removed from the list. This ensures the BO\nis either fully unmapped at context teardown time or present on the\nlist and unmapped by file_priv_unbind().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00812636df370bedf4e44a0c81b86ea96bca8628"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0328bb097bef05a796217c54b3d651cc3782827c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d71333ffdd3707d84cfb95acfaf8ba892adc066b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb16493ebd8f171bcf0772262619618a131f30f7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:29Z"
+  }
+}

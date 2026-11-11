@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3w4f-3q27-257j",
+  "modified": "2026-11-10T18:31:42Z",
+  "published": "2026-11-10T18:31:42Z",
+  "aliases": [
+    "CVE-2026-125759"
+  ],
+  "details": "Nango before 0.71.3 contains an sql injection vulnerability that allows unauthenticated attackers to execute arbitrary SQL by supplying a crafted task group key to the orchestrator API. Attackers can send a malicious group.key to POST /v1/immediate, which TaskEventsHandler.notify() interpolates into a Postgres NOTIFY statement, running stacked queries against the scheduler database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/NangoHQ/nango/security/advisories/GHSA-8m28-9wcj-v8ww"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125759"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NangoHQ/nango/pull/6867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NangoHQ/nango/commit/83f24a5a1ed2db59b6d472e49c25333dc6f28709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NangoHQ/nango/blob/v0.71.1/packages/orchestrator/lib/events.ts#L162"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NangoHQ/nango/releases/tag/v0.71.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nango-before-0.71.3-sql-injection-via-orchestrator-task-group-key"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T16:17:23Z"
+  }
+}

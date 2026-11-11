@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p74f-qpqg-5w8f",
+  "modified": "2025-10-20T18:30:34Z",
+  "published": "2025-10-20T18:30:34Z",
+  "aliases": [
+    "CVE-2025-40017"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: iris: Fix memory leak by freeing untracked persist buffer\n\nOne internal buffer which is allocated only once per session was not\nbeing freed during session close because it was not being tracked as\npart of internal buffer list which resulted in a memory leak.\n\nAdd the necessary logic to explicitly free the untracked internal buffer\nduring session close to ensure all allocated memory is released\nproperly.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40017"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02a24f13b3a1d9da9f3de56aa5fdb7cc1fe167a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9e024e907cafafd6b094f69a0d0f5d18fd28876"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec2f87ad035e8d1ad67567542842f1f23a4dbde2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-20T16:15:38Z"
+  }
+}

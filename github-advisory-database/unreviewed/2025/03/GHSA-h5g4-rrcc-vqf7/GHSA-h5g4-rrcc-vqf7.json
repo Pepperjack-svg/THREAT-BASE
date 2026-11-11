@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h5g4-rrcc-vqf7",
+  "modified": "2025-11-03T21:32:52Z",
+  "published": "2025-03-18T21:31:59Z",
+  "aliases": [
+    "CVE-2022-49190"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nkernel/resource: fix kfree() of bootmem memory again\n\nSince commit ebff7d8f270d (\"mem hotunplug: fix kfree() of bootmem\nmemory\"), we could get a resource allocated during boot via\nalloc_resource().  And it's required to release the resource using\nfree_resource().  Howerver, many people use kfree directly which will\nresult in kernel BUG.  In order to fix this without fixing every call\nsite, just leak a couple of bytes in such corner case.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49190"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0cbcc92917c5de80f15c24d033566539ad696892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3379a60f6bb4afcd9c456e340ac525ae649d3ce7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9e88c2618d228d7a4e7e515cf30dc0d0d813f27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab86020070999e758ce2e60c4348f20bf7ddba56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7faa04a44a0c37ac3d222fa8e0bdcbfcee9c0c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:56Z"
+  }
+}

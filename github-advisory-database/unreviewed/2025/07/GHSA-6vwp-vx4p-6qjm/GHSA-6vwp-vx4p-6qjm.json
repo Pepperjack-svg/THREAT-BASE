@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vwp-vx4p-6qjm",
+  "modified": "2025-12-18T18:30:28Z",
+  "published": "2025-07-04T15:31:08Z",
+  "aliases": [
+    "CVE-2025-38183"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: lan743x: fix potential out-of-bounds write in lan743x_ptp_io_event_clock_get()\n\nBefore calling lan743x_ptp_io_event_clock_get(), the 'channel' value\nis checked against the maximum value of PCI11X1X_PTP_IO_MAX_CHANNELS(8).\nThis seems correct and aligns with the PTP interrupt status register\n(PTP_INT_STS) specifications.\n\nHowever, lan743x_ptp_io_event_clock_get() writes to ptp->extts[] with\nonly LAN743X_PTP_N_EXTTS(4) elements, using channel as an index:\n\n    lan743x_ptp_io_event_clock_get(..., u8 channel,...)\n    {\n        ...\n        /* Update Local timestamp */\n        extts = &ptp->extts[channel];\n        extts->ts.tv_sec = sec;\n        ...\n    }\n\nTo avoid an out-of-bounds write and utilize all the supported GPIO\ninputs, set LAN743X_PTP_N_EXTTS to 8.\n\nDetected using the static analysis tool - Svace.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38183"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41017bd66c533f7af912c58273c7dfd5de0065d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4da0d23516857230b8e9b3022e25422ee2e2ba80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66bba1fd5bad548c03f7e42669a59f3f4d8211cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e353b0854d3a1a31cb061df8d022fbfea53a0f24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8d48201a132f4aab31351c19a802c5a5ae820fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-04T14:15:25Z"
+  }
+}

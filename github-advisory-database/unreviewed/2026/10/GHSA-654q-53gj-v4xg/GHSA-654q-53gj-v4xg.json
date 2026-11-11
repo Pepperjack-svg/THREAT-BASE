@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-654q-53gj-v4xg",
+  "modified": "2026-10-16T00:31:59Z",
+  "published": "2026-10-16T00:31:58Z",
+  "aliases": [
+    "CVE-2026-111365"
+  ],
+  "details": "cool-admin-midway through 8.0.0 contains an authorization bypass vulnerability that allows non-superadmin admins to read, modify, or delete other admins' roles by supplying arbitrary role ids. Attackers holding ordinary sys:role permissions can call /admin/sys/role/info, update, or delete with another admin's role id to rewrite menu and department grants, changing other users' effective access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111365"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cool-team-official/cool-admin-midway"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cool-team-official/cool-admin-midway/blob/e545ef6f3b0c08581e34bd3207ca57d851ccc3ae/src/modules/base/controller/admin/sys/role.ts#L11-L36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cool-team-official/cool-admin-midway/blob/e545ef6f3b0c08581e34bd3207ca57d851ccc3ae/src/modules/base/service/sys/role.ts#L54-L118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/cool-admin-midway-base-crud-role-ownership-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cool-admin-midway-through-8.0.0-missing-authorization-via-system-role-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T22:19:34Z"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h86g-gvx6-h94g",
+  "modified": "2025-10-09T21:31:10Z",
+  "published": "2025-09-29T21:30:27Z",
+  "aliases": [
+    "CVE-2025-34228"
+  ],
+  "details": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host prior to version 25.1.102 and Application prior to version 25.1.1413 (VA/SaaS deployments) contain a server-side request forgery (SSRF) vulnerability. The `/var/www/app/console_release/lexmark/update.php` script is reachable from the internet without any authentication.  The PHP script builds URLs from user‑controlled values and then invokes either 'curl_exec()` or `file_get_contents()` without proper validation. Because the endpoint is unauthenticated, any remote attacker can supply a hostname and cause the server to issue requests to internal resources. This enables internal network reconnaissance, potential pivoting, or data exfiltration. This vulnerability has been confirmed to be remediated, but it is unclear as to when the patch was introduced.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/saas/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/va/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pierrekim.github.io/blog/2025-04-08-vasion-printerlogic-83-vulnerabilities.html#va-ssrf-04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vasion-print-printerlogic-ssrf-via-lexmark-update-php-script"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306",
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-29T21:15:36Z"
+  }
+}

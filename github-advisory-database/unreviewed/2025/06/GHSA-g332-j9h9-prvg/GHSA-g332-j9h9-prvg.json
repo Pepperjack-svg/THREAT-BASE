@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g332-j9h9-prvg",
+  "modified": "2025-11-14T18:31:21Z",
+  "published": "2025-06-18T12:30:31Z",
+  "aliases": [
+    "CVE-2025-38028"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFS/localio: Fix a race in nfs_local_open_fh()\n\nOnce the clp->cl_uuid.lock has been dropped, another CPU could come in\nand free the struct nfsd_file that was just added. To prevent that from\nhappening, take the RCU read lock before dropping the spin lock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38028"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/185a2f2ddabdcf999823f61de67f86376883920d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa7ab64f1e2fdc8f2603aab8e0dd20de89cb10d9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T10:15:34Z"
+  }
+}

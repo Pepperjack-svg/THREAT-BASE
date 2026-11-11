@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vph5-ghq3-q782",
+  "modified": "2025-05-28T20:08:20Z",
+  "published": "2025-05-28T17:38:58Z",
+  "aliases": [
+    "CVE-2024-47055"
+  ],
+  "summary": "Mautic segment cloning doesn't have a proper permission check",
+  "details": "### Summary\nThis advisory addresses a security vulnerability in Mautic related to the segment cloning functionality. This vulnerability allows any authenticated user to clone segments without proper authorization checks.\n\nInsecure Direct Object Reference (IDOR) / Missing Authorization: A missing authorization vulnerability exists in the `cloneAction` of the segment management. This allows an authenticated user to bypass intended permission restrictions and clone segments even if they lack the necessary permissions to create new ones.\n\n### Mitigation\nUpdate Mautic to a version that implements proper authorization checks for the `cloneAction` within the `ListController.php`. Ensure that users attempting to clone segments possess the appropriate creation permissions.\n\n### Workarounds\nNone\n\nIf you have any questions or comments about this advisory:\nEmail us at security@mautic.org",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-alpha"
+            },
+            {
+              "fixed": "5.2.6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0-alpha"
+            },
+            {
+              "fixed": "6.0.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mautic/mautic/security/advisories/GHSA-vph5-ghq3-q782"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47055"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mautic/mautic"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284",
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-05-28T17:38:58Z",
+    "nvd_published_at": "2025-05-28T18:15:24Z"
+  }
+}

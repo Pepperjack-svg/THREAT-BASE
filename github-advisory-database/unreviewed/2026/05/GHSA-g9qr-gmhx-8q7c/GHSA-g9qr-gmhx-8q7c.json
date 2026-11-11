@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g9qr-gmhx-8q7c",
+  "modified": "2026-10-15T03:35:48Z",
+  "published": "2026-05-01T15:30:36Z",
+  "aliases": [
+    "CVE-2026-43024"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: reject immediate NF_QUEUE verdict\n\nnft_queue is always used from userspace nftables to deliver the NF_QUEUE\nverdict. Immediately emitting an NF_QUEUE verdict is never used by the\nuserspace nft tools, so reject immediate NF_QUEUE verdicts.\n\nThe arp family does not provide queue support, but such an immediate\nverdict is still reachable. Globally reject NF_QUEUE immediate verdicts\nto address this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43024"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17dc5d5a935c771338430cbc156a16a51cfd31e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f7f825a548be55420f0f5f716f6c27b9d312d3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42a47f4b1b7695026ab9bc1bb35d4622b0835c95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b12a3cc3f075e750cc3c5e693fd25fb400af4a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/68390437a998c3f2c57212b413abef5e6d657d88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da107398cbd4bbdb6bffecb2ce86d5c9384f4cec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f140593901724cfbd16597c3a4fcb24a58ae44b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f710691be163ae6b39e4bcab9e5be32d329f035b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:46Z"
+  }
+}

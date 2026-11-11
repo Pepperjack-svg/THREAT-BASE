@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x6rr-cr6c-gvp3",
+  "modified": "2026-10-08T06:31:16Z",
+  "published": "2026-10-08T06:31:16Z",
+  "aliases": [
+    "CVE-2026-107446"
+  ],
+  "details": "containerd overlaybd through 1.0.18 has a do_load_index (LSMT index loading) integer overflow (and resultant out-of-bounds heap access) for index_bytes, if an untrusted overlaybd blob from a registry is used in a scenario with multiple overlaybd-backed containers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/containerd/overlaybd/pull/438"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/containerd/overlaybd/commit/a536e3341c82517268b5ce32375b36faecb1fb40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/containerd/overlaybd/commit/d80c1790920a17e84da025675530624aee753f1b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/containerd/overlaybd/blob/58f1508f4c841fe27da428f54d987000f7dae4de/src/image_file.cpp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/containerd/overlaybd/blob/58f1508f4c841fe27da428f54d987000f7dae4de/src/overlaybd/lsmt/file.cpp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T04:17:19Z"
+  }
+}

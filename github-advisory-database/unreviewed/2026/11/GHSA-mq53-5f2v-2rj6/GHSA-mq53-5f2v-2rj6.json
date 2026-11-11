@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mq53-5f2v-2rj6",
+  "modified": "2026-11-04T15:32:32Z",
+  "published": "2026-11-04T15:32:32Z",
+  "aliases": [
+    "CVE-2026-122007"
+  ],
+  "details": "Oqtane Framework before 10.3.0 contains a broken access control vulnerability in SettingController.cs that allows an authenticated site administrator to read and modify settings belonging to other sites within the same tenant database by supplying an arbitrary entityId for Site or Role type settings, since IsAuthorized and FilterPrivate fail to verify the requested site matches the current alias SiteId. Attackers can exploit the /api/setting endpoints to disclose private values such as SMTPPassword, SMTPClientSecret, and ExternalLogin ClientSecret, and to alter another site's OIDC/OAuth2 authentication configuration without requiring host privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122007"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/oqtane/oqtane.framework/releases/tag/v10.3.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.oqtane.org/blog/!/160/oqtane-10-3-released"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/oqtane-framework-before-broken-access-control-via-settingcontroller"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T15:17:43Z"
+  }
+}

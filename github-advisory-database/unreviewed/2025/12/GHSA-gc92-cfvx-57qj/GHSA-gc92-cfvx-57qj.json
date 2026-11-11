@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gc92-cfvx-57qj",
+  "modified": "2025-12-30T15:30:36Z",
+  "published": "2025-12-30T15:30:35Z",
+  "aliases": [
+    "CVE-2023-54309"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntpm: tpm_vtpm_proxy: fix a race condition in /dev/vtpmx creation\n\n/dev/vtpmx is made visible before 'workqueue' is initialized, which can\nlead to a memory corruption in the worst case scenario.\n\nAddress this by initializing 'workqueue' as the very first step of the\ndriver initialization.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54309"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04e8697d26613ccea760cf57eb20a5a27f788c0f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/092db954e2c3c5ba6c0ce990c7da72cf8f3b9c51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/509d21f1c4bb9d35d397fca3226165b156a7639f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86b9820395f226b8f33cbae9599deebf8af1ce72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/99b998fb9d7d2d2d9dbb3e19db2d0ade02f5a604"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ff7fcb3a2ed0e9b895bb5b4c13872d584a8815b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e08295290c53a3cf174c236721747a01b9550ae2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4032d615f90970d6c3ac1d9c0bce3351eb4445c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:16:20Z"
+  }
+}

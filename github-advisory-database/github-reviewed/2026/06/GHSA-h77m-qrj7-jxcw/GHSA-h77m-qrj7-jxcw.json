@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h77m-qrj7-jxcw",
+  "modified": "2026-06-26T23:03:56Z",
+  "published": "2026-06-26T23:03:56Z",
+  "aliases": [
+    "CVE-2026-54243"
+  ],
+  "summary": "Statamic Vulnerable to CSV formula injection in form submission exports",
+  "details": "### Impact\n\nForm submission values were not neutralized for spreadsheet formula characters when exported to CSV. A submission containing a value beginning with a formula trigger character (e.g.  = ,  + ,  - ,  @ ) could be interpreted as a live formula when a Control Panel user opens the export in a spreadsheet application. Form submissions can come from unauthenticated front-end visitors, so the malicious value can be supplied by an anonymous user and is later triggered by an editor opening the export.\n\nExploitation affects the spreadsheet application used to open the export, not the Statamic application or server; the data at risk is the form submission data the exporting user is already authorized to view.\n\n\n### Patches\n\nThis has been fixed in 5.73.24 and 6.20.1.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.20.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.73.24"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/security/advisories/GHSA-h77m-qrj7-jxcw"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/statamic/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1236"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-26T23:03:56Z",
+    "nvd_published_at": null
+  }
+}

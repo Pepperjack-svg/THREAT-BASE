@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2h6g-jf6m-ch5q",
+  "modified": "2026-05-18T15:30:32Z",
+  "published": "2026-05-08T15:31:24Z",
+  "aliases": [
+    "CVE-2026-43343"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_subset: Fix unbalanced refcnt in geth_free\n\ngeth_alloc() increments the reference count, but geth_free() fails to\ndecrement it. This prevents the configuration of attributes via configfs\nafter unlinking the function.\n\nDecrement the reference count in geth_free() to ensure proper cleanup.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43343"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23e4851ce348a329d974e84e828155dda9f52122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d436670b47415da042452618fb5d8e317ab095f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f5bfc550a40d7493b1cf09540ed6b412b3b82be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75776a055b656873319c3830fed471daef3ceb23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a932b171554714b1bca313b853c7aa9f2930f9aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/caa27923aacd8a5869207842f2ab1657c6c0c7bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc8ec610cd14c093a19371691a7ce1ee5421e829"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7d702407b61e96286a15b6e715572f541a8d41c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:44Z"
+  }
+}

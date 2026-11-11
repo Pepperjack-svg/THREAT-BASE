@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-27p4-p9vc-8f94",
+  "modified": "2025-12-16T15:30:43Z",
+  "published": "2025-12-16T15:30:43Z",
+  "aliases": [
+    "CVE-2025-40353"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\narm64: mte: Do not warn if the page is already tagged in copy_highpage()\n\nThe arm64 copy_highpage() assumes that the destination page is newly\nallocated and not MTE-tagged (PG_mte_tagged unset) and warns\naccordingly. However, following commit 060913999d7a (\"mm: migrate:\nsupport poisoned recover from migrate folio\"), folio_mc_copy() is called\nbefore __folio_migrate_mapping(). If the latter fails (-EAGAIN), the\ncopy will be done again to the same destination page. Since\ncopy_highpage() already set the PG_mte_tagged flag, this second copy\nwill warn.\n\nReplace the WARN_ON_ONCE(page already tagged) in the arm64\ncopy_highpage() with a comment.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40353"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0bbf3fc6e9211fce9889fe8efbb89c220504d617"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ff5765a1fc526f07d3bbaedb061d970eb13bcf4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b98c94eed4a975e0c80b7e90a649a46967376f58"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T14:15:47Z"
+  }
+}

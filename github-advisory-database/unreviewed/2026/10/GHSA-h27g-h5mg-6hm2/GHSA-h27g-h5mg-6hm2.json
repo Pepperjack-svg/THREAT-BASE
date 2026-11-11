@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h27g-h5mg-6hm2",
+  "modified": "2026-10-31T12:31:16Z",
+  "published": "2026-10-31T12:31:15Z",
+  "aliases": [
+    "CVE-2026-118599"
+  ],
+  "details": "A file overwrite vulnerability exists in Epiphany when installing WebExtension packages from .xpi files.\n\nIn src/webextension/ephy-web-extension-manager.c, decompress_xpi_thread() used libarchive with archive_read_support_format_all() (and filters), so the installer did not require a real ZIP. A TAR file named *.xpi was extracted. TAR supports hard-link entry types; with Epiphany's archive_write_disk options (including ARCHIVE_EXTRACT_PERM), a crafted hard-link target can cause an attacker-chosen existing user-writable file to be truncated and overwritten with attacker-controlled content and mode bits, without a dedicated warning dialog, when the user installs or opens the crafted .xpi.\n\nThis is related to but separate from the ZIP-slip path traversal fixed as CVE-2026-77679 (#2922 / MR !2143).\n\nRequirements: the victim must install or open a malicious WebExtension (.xpi).\n\nAffected: Epiphany >= 47.0 (WebExtension XPI install path).\nFixed: https://gitlab.gnome.org/GNOME/epiphany/-/merge_requests/2248 (commit 0cc9ab55 — only enable ZIP format support).\nUpstream: https://gitlab.gnome.org/GNOME/epiphany/-/work_items/2988\nReporter acknowledgment: Fernando Munoz",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118599"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-118599"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2562969"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/GNOME/epiphany/-/merge_requests/2248"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/GNOME/epiphany/-/work_items/2988"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-31T10:16:38Z"
+  }
+}

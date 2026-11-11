@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6c3m-6rx5-566h",
+  "modified": "2025-04-14T21:32:22Z",
+  "published": "2025-04-14T21:32:21Z",
+  "aliases": [
+    "CVE-2022-49346"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: dsa: lantiq_gswip: Fix refcount leak in gswip_gphy_fw_list\n\nEvery iteration of for_each_available_child_of_node() decrements\nthe reference count of the previous node.\nwhen breaking early from a for_each_available_child_of_node() loop,\nwe need to explicitly call of_node_put() on the gphy_fw_np.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49346"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0737e018a05e2aa352828c52bdeed3b02cff2930"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e007ac6fa7c9c94ad84da075c5c504afad690a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32cd78c5610f02a929f63cac985e73692d05f33e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/54d6802c4d83fa8de7696cfec06f475d5fd92d27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c8df6fad43d9d5d77f281f794b2a93cd02fd1a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2ae49a113a5344232f1ebb93bcf18bbd11e9c39"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:11Z"
+  }
+}

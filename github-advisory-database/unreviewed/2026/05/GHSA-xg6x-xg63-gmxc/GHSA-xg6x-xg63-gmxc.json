@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xg6x-xg63-gmxc",
+  "modified": "2026-10-15T03:36:04Z",
+  "published": "2026-05-28T12:30:31Z",
+  "aliases": [
+    "CVE-2026-46172"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: xfrm6: release dst on error in xfrm6_rcv_encap()\n\nxfrm6_rcv_encap() performs an IPv6 route lookup when the skb does not\nalready have a dst attached. ip6_route_input_lookup() returns a\nreferenced dst entry even when the lookup resolves to an error route.\n\nIf dst->error is set, xfrm6_rcv_encap() drops the skb without attaching\nthe dst to the skb and without releasing the reference returned by the\nlookup. Repeated packets hitting this path therefore leak dst entries.\n\nRelease the dst before jumping to the drop path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46172"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/554c9b090c8ac5b1c5c507f4badf8d5d0c9c6e13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a5eec0a2a0e99ec9743cf8f1c4082178811d90a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/870560015ce6e0d8f841c6a8aba33c44be52c727"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9d5047782f9bd2829e529df69209bf3232eb561f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0721bcd72641c32b281f227a94505b31cf54117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a20b34f6e854fe6f2aa82528fae7a88759919eb4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc0fcb9823cd0894934cf968b525c575833d7078"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2efc4956981066df2fef1cc77391b523db6d8e4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:32Z"
+  }
+}

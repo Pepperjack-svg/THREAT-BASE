@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-379c-qx7v-6h59",
+  "modified": "2026-10-02T22:43:34Z",
+  "published": "2026-07-24T15:33:03Z",
+  "aliases": [
+    "CVE-2026-66007"
+  ],
+  "summary": "Hugging Face Datasets folder-based builders allow path traversal through file_name metadata",
+  "details": "Datasets through 5.0.0, fixed in f989ef9, contains a path traversal vulnerability in folder-based dataset builders where the file_name metadata field is not properly validated before being joined to the dataset directory. Attackers can supply crafted file_name values with directory traversal sequences to read arbitrary local files, which are then embedded into output when save_to_disk or push_to_hub is called.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "datasets"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66007"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/datasets/issues/8324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/datasets/pull/8325"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/datasets/commit/f989ef9b4cc6c0039a7a82458eebca49e2b58b4b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/huggingface/datasets"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/datasets/PYSEC-2026-3716.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/datasets-path-traversal-via-unsanitized-file-name-metadata"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-02T22:43:34Z",
+    "nvd_published_at": "2026-07-24T15:19:07Z"
+  }
+}

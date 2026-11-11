@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v5c4-wcpj-x73m",
+  "modified": "2026-06-26T23:03:29Z",
+  "published": "2026-06-26T23:03:28Z",
+  "aliases": [
+    "CVE-2026-54242"
+  ],
+  "summary": "Statamic Vulnerable to Server-Side Request Forgery via Glide (DNS rebinding)",
+  "details": "### Impact\n\nThe Glide image proxy's URL validation could be bypassed using DNS rebinding. The remote hostname was validated as publicly routable, but resolved again when the image was actually fetched, so an attacker controlling the hostname's DNS could rebind it to an internal address after validation. This could cause the server to make HTTP requests to internal addresses — including loopback, private network, and cloud metadata endpoints.\n\nThis affects sites that pass user-supplied URLs to Glide.\n\n\n### Patches\n\nThis has been fixed in 5.73.24 and 6.20.1.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.73.24"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.20.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/security/advisories/GHSA-v5c4-wcpj-x73m"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/statamic/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367",
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-26T23:03:28Z",
+    "nvd_published_at": null
+  }
+}

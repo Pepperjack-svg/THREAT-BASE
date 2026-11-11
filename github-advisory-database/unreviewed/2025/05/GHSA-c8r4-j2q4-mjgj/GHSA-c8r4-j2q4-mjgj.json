@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8r4-j2q4-mjgj",
+  "modified": "2025-05-07T15:31:25Z",
+  "published": "2025-05-01T15:31:51Z",
+  "aliases": [
+    "CVE-2022-49875"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpftool: Fix NULL pointer dereference when pin {PROG, MAP, LINK} without FILE\n\nWhen using bpftool to pin {PROG, MAP, LINK} without FILE,\nsegmentation fault will occur. The reson is that the lack\nof FILE will cause strlen to trigger NULL pointer dereference.\nThe corresponding stacktrace is shown below:\n\ndo_pin\n  do_pin_any\n    do_pin_fd\n      mount_bpffs_for_pin\n        strlen(name) <- NULL pointer dereference\n\nFix it by adding validation to the common process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49875"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34de8e6e0e1f66e431abf4123934a2581cb5f133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6dcdd1b68b7f9333d48d48fc77b75e7f235f6a4a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c80b2fca4112d724dde477aed13f7b0510a2792"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da5161ba94c5e9182c301dd4f09c94f715c068bd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:12Z"
+  }
+}

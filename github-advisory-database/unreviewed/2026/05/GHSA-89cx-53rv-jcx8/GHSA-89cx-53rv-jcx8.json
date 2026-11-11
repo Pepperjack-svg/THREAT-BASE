@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-89cx-53rv-jcx8",
+  "modified": "2026-05-07T06:31:42Z",
+  "published": "2026-05-07T06:31:42Z",
+  "aliases": [
+    "CVE-2026-4348"
+  ],
+  "details": "The BetterDocs Pro plugin for WordPress is vulnerable to SQL Injection via the `get_current_letter_docs` and `docs_sort_by_letter` AJAX actions in all versions up to, and including, 3.7.0. This is due to the `limit` POST parameter being interpolated directly into a SQL query string before being passed to `$wpdb->prepare()`, which only parameterizes other variables. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The Encyclopedia feature must be enabled in BetterDocs Pro settings for the vulnerability to be exploitable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://betterdocs.co/changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5c0f02ad-f5f1-42b1-8116-e391aaa85430?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-07T06:16:05Z"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pg53-p7qp-65cv",
+  "modified": "2026-10-29T16:32:58Z",
+  "published": "2026-10-29T16:32:58Z",
+  "aliases": [],
+  "summary": "PocketMine-MP has potential memory/network vulnerability from repeated ResourcePackClientResponsePacket packets",
+  "details": "### Summary\nDuring the resource pack stage of logging in, after the server sends `ResourcePackStackPacket`, a malicious client can send a batch of multiple `ResourcePackClientResponsePacket` packets with status `ResourcePackClientResponsePacket::STATUS_COMPLETED` causing the server to repeatedly execute pre-spawn progression.\n\n###  Impact\nMultiple `Player` objects can be created for just a single session, increasing memory usage and amplifying outbound network traffic from duplication of large pre-spawn packets such as `AvailableCommandsPacket` and `CreativeContentPacket`.\n\n### Workarounds\nPlugins can use their own `PacketHandler` classes that reject/ignore any extra `ResourcePackClientResponsePacket` packets.\n\n### Patches\nThis issue was patched in https://github.com/pmmp/PocketMine-MP/commit/7a27894146a04964ab628ed9033140fdbf887ff3 and released in 5.44.2.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "pocketmine/pocketmine-mp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.44.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/security/advisories/GHSA-pg53-p7qp-65cv"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/commit/7a27894146a04964ab628ed9033140fdbf887ff3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pmmp/PocketMine-MP"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/releases/tag/5.44.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-837"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-29T16:32:58Z",
+    "nvd_published_at": null
+  }
+}

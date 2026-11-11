@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jfg9-48mv-9qgx",
+  "modified": "2026-05-14T20:41:33Z",
+  "published": "2026-05-07T05:14:14Z",
+  "aliases": [
+    "CVE-2026-44248"
+  ],
+  "summary": "Netty MQTT: Resource exhaustion in MqttDecoder",
+  "details": "### Impact\nThe MQTT 5 header Properties section is parsed and buffered _before_ any message size limit is applied.\n\nSpecifically, in `MqttDecoder`, the `decodeVariableHeader()` method is called before the `bytesRemainingBeforeVariableHeader > maxBytesInMessage` check. The `decodeVariableHeader()` can call other methods which will call `decodeProperties()`. Effectively, Netty does not apply any limits to the size of the properties being decoded.\n\nAdditionally, because `MqttDecoder` extends `ReplayingDecoder`, Netty will repeatedly re-parse the enormous Properties sections and buffer the bytes in memory, until the entire thing parses to completion.\n\nThis can cause high resource usage in both CPU and memory.\n\n### Resources\n`ANT-2026-09608`\nhttps://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901027",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-mqtt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.2.0.Alpha1"
+            },
+            {
+              "fixed": "4.2.13.Final"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.2.12.Final"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-mqtt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.1.133.Final"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.1.132.Final"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/security/advisories/GHSA-jfg9-48mv-9qgx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44248"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901027"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/netty/netty"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-07T05:14:14Z",
+    "nvd_published_at": "2026-05-13T19:17:27Z"
+  }
+}

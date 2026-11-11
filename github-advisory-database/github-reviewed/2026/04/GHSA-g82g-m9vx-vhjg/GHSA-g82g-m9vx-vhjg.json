@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g82g-m9vx-vhjg",
+  "modified": "2026-04-27T15:20:26Z",
+  "published": "2026-04-15T19:46:35Z",
+  "aliases": [
+    "CVE-2026-40479"
+  ],
+  "summary": "Kimai has Stored XSS via Incomplete HTML Attribute Escaping in Team Member Widget",
+  "details": "### Summary\nThe client-side `escapeForHtml()` function in `KimaiEscape.js`, introduced in commit `89bfa82c` (#2959) to fix a JavaScript XSS vulnerability, only escapes `<`, `>`, and `&` but does not escape `\"` (double quote) or `'` (single quote). When user-controlled data (profile alias) is placed in an HTML attribute context (`title=\"__DISPLAY__\"`) via the team member form prototype and rendered through `innerHTML`, the missing quote escaping allows HTML attribute injection, resulting in Stored XSS.\n\n### Details\nIncomplete security patch. The `escapeForHtml()` function was meant to prevent XSS but missed quote characters, which are critical for HTML attribute context escaping.\n\n**Vulnerable code** — `assets/js/plugins/KimaiEscape.js:29-33`:\n```javascript\nconst tagsToReplace = {\n    '&': '&amp;',\n    '<': '&lt;',\n    '>': '&gt;',\n    // MISSING: '\"': '&quot;'\n    // MISSING: \"'\": '&#039;'\n};\n```\n\n**Affected code files**:\n- `assets/js/plugins/KimaiEscape.js:24-38` — incomplete escape function\n- `assets/js/forms/KimaiTeamForm.js:77,86` — replacement + innerHTML\n- `templates/macros/widgets.html.twig:126` — `title=\"{{ tooltip }}\"` in avatar macro\n- `templates/form/blocks.html.twig:104` — `{{ widgets.avatar('__INITIALS__', '__COLOR__', '__DISPLAY__') }}`\n\n### PoC\n[poc.zip](https://github.com/user-attachments/files/26537515/poc.zip)\n\nPlease extract the uploaded compressed file before proceeding\n\n1. ./setup.sh\n2. ./poc_xss.sh\n\n<img width=\"751\" height=\"155\" alt=\"스크린샷 2026-04-07 오후 9 06 27\" src=\"https://github.com/user-attachments/assets/c09a23fb-f60b-49dd-9018-8c723e35b4c4\" />\n\n### Impact\n- Stored XSS: payload persists in the database (user alias field)\n- Privilege escalation: ROLE_USER injects XSS that executes in ROLE_ADMIN/ROLE_SUPER_ADMIN browser session",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "kimai/kimai"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.53.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/kimai/kimai/security/advisories/GHSA-g82g-m9vx-vhjg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40479"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kimai/kimai/pull/2959"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/kimai/kimai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kimai/kimai/releases/tag/2.53.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-15T19:46:35Z",
+    "nvd_published_at": "2026-04-17T23:16:12Z"
+  }
+}

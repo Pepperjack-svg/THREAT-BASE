@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hr5p-wrg7-45pp",
+  "modified": "2026-10-18T18:31:54Z",
+  "published": "2026-10-18T18:31:54Z",
+  "aliases": [
+    "CVE-2026-98569"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nip_gre: Reject enabling collect metadata through changelink\n\nipgre_netlink_parms() can enable collect_md on an existing GRE, GRETAP\nor ERSPAN device. Unlike newlink, changelink does not enforce metadata\ntunnel uniqueness. Converting a non-metadata device can therefore\nreplace the metadata receive entry for another device of the same type\nin the same netns. Deleting either device then clears the shared entry,\nbreaking metadata receive lookup for the surviving device.\n\nIf parameter validation fails after collect_md is set, deleting the\nmodified device can also clear an entry it never owned.\n\nReject enabling metadata mode in both changelink callbacks before any\nencapsulation or tunnel parameters are modified. Allow requests that\nrepeat the metadata attribute on an existing metadata device.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98569"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1dc759571f3df14891175fc52527f7624ba01322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e54d53b65e296b4b4bdc2cdd3b2b58dfa8d8c5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63c5e48d6f7f5722a48f63e13e961dc5302894ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3f315be9d30eeb6938d11fa17fd4b32d52f7c42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bdd41b96e814300c66222cf4e47ecb8aef995656"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c80315da84998b69b8829785a174b0bf72a81992"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cff8b520312e750ad38967c30128e1534cbf9484"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da2e0cfbb620b199927a1e5b93b7cfde32083c7d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:09Z"
+  }
+}

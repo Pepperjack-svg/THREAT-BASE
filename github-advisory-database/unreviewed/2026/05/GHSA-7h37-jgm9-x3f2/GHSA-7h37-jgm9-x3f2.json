@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7h37-jgm9-x3f2",
+  "modified": "2026-06-11T03:30:23Z",
+  "published": "2026-05-28T12:30:31Z",
+  "aliases": [
+    "CVE-2026-46179"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: SOF: Don't allow pointer operations on unconfigured streams\n\nWhen reporting the pointer for a compressed stream we report the current\nI/O frame position by dividing the position by the number of channels\nmultiplied by the number of container bytes. These values default to 0 and\nare only configured as part of setting the stream parameters so this allows\na divide by zero to be configured. Validate that they are non zero,\nreturning an error if not",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46179"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f0c0c1397a42aacaacae828206ee1b921623952"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/327a64241f30c74b6f35537eb9e1fc6c3cbe060b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f42dd01f5217465f23a763e27b3984e114d0972"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/76ff6bfc9a809571793f425ba99f6a759108dcf8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98ed1383f597f8a45b6cb816bb20b96d46eeceda"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5b6285aae050ff1c3ea824ca3d88ac4be1e69c8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:33Z"
+  }
+}

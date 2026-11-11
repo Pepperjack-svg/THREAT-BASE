@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f7hx-52q9-hcrf",
+  "modified": "2026-10-07T20:28:27Z",
+  "published": "2026-10-07T20:28:27Z",
+  "aliases": [
+    "CVE-2026-105859"
+  ],
+  "summary": "Payload: Unauthorized update to collection documents",
+  "details": "## Impact\n\nAn attacker can submit a request to a specific endpoint that permits collection documents to be updated regardless of access control and field level access control.\n\n**You are affected if:**\n\n- You are configuring `orderable: true` with any collection or join field.\n\n## Patches\n\nIn the patched version access control is properly enforced.\n\nUsers should upgrade Payload packages to `>= 3.90.0` or `>= 4.0.0-canary.34`.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "payload"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.90.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "payload"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-canary.0"
+            },
+            {
+              "fixed": "4.0.0-canary.34"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/payloadcms/payload/security/advisories/GHSA-f7hx-52q9-hcrf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105859"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/payloadcms/payload/commit/36fa9af73dd04fa59f4b4a06d11454538c4c1409"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/payloadcms/payload"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/payloadcms/payload/releases/tag/v3.90.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639",
+      "CWE-862"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-07T20:28:27Z",
+    "nvd_published_at": "2026-10-06T17:17:21Z"
+  }
+}

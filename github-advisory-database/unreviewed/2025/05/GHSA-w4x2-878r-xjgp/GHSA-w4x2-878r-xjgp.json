@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w4x2-878r-xjgp",
+  "modified": "2026-02-19T18:31:42Z",
+  "published": "2025-05-01T15:31:41Z",
+  "aliases": [
+    "CVE-2025-23155"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: stmmac: Fix accessing freed irq affinity_hint\n\nThe cpumask should not be a local variable, since its pointer is saved\nto irq_desc and may be accessed from procfs.\nTo fix it, use the persistent mask cpumask_of(cpu#).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-23155"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fbf67ddb8a0d0efc00d2df496a9843ec318d48b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/442312c2a90d60c7a5197246583fa91d9e579985"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/960dab23f6d405740c537d095f90a4ee9ddd9285"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e51a6a44e2c4de780a26e8fe110d708e806a8cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c60d101a226f18e9a8f01bb4c6ca2b47dfcb15ef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e148266e104fce396ad624079a6812ac3a9982ef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T13:15:51Z"
+  }
+}

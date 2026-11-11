@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2vrq-rcwg-5982",
+  "modified": "2026-11-04T12:31:30Z",
+  "published": "2026-11-04T12:31:30Z",
+  "aliases": [
+    "CVE-2026-93900"
+  ],
+  "details": "The Simple CAPTCHA with Cloudflare Turnstile plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'id' attribute of the [gravity-simple-turnstile] shortcode in versions up to, and including, 1.44.3 This is due to insufficient input sanitization and output escaping on the shortcode attribute in the cfturnstile_gravity_shortcode() function: the value is filtered only by esc_html() and sanitize_text_field() (neither of which touches parentheses or dots) and then emitted via esc_js() in a raw JavaScript expression context outside any string literal (esc_js only escapes quotes, backslashes, and newlines). This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93900"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-cloudflare-turnstile"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-cloudflare-turnstile/tags/1.41.0/inc/integrations/forms/gravity-forms.php#L13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-cloudflare-turnstile/tags/1.41.0/inc/integrations/forms/gravity-forms.php#L22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-cloudflare-turnstile/tags/1.43.1/inc/integrations/forms/gravity-forms.php#L13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-cloudflare-turnstile/tags/1.43.1/inc/integrations/forms/gravity-forms.php#L22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3776057/simple-cloudflare-turnstile/trunk/inc/integrations/forms/gravity-forms.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/056a6984-4753-4f52-87b0-1a3cc2f5bde2?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T10:17:26Z"
+  }
+}

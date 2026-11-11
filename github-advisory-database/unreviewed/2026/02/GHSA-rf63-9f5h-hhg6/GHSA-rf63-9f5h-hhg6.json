@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rf63-9f5h-hhg6",
+  "modified": "2026-10-15T03:35:14Z",
+  "published": "2026-02-14T18:30:16Z",
+  "aliases": [
+    "CVE-2026-23204"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: cls_u32: use skb_header_pointer_careful()\n\nskb_header_pointer() does not fully validate negative @offset values.\n\nUse skb_header_pointer_careful() instead.\n\nGangMin Kim provided a report and a repro fooling u32_classify():\n\nBUG: KASAN: slab-out-of-bounds in u32_classify+0x1180/0x11b0\nnet/sched/cls_u32.c:221",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23204"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13336a6239b9d7c6e61483017bb8bdfe3ceb10a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29681ed51e737be14d18ecd1c304c57002e4b72c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66e4b63d61c15de6ca5332d9ca6db59a404d7136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a672f177ebe19c93d795fbe967846084fbc7943"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cabd1a976375780dabab888784e356f574bbaed8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cfa745830e45ecb75c061aa34330ee0cac941cc7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e41a23e61259f5526af875c3b86b3d42a9bae0e5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T17:15:58Z"
+  }
+}

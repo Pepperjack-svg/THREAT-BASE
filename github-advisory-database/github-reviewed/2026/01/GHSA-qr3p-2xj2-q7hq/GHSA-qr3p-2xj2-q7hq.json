@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qr3p-2xj2-q7hq",
+  "modified": "2026-01-21T22:56:47Z",
+  "published": "2026-01-21T15:31:16Z",
+  "aliases": [
+    "CVE-2026-22022"
+  ],
+  "summary": "Apache Solr: Unauthorized bypass of certain \"predefined permission\" rules in the RuleBasedAuthorizationPlugin",
+  "details": "Deployments of Apache Solr 5.3.0 through 9.10.0 that rely on Solr's \"Rule Based Authorization Plugin\" are vulnerable to allowing unauthorized access to certain Solr APIs, due to insufficiently strict input validation in those components.  Only deployments that meet all of the following criteria are impacted by this vulnerability:\n\n  *  Use of Solr's \"RuleBasedAuthorizationPlugin\"\n  *  A RuleBasedAuthorizationPlugin config (see security.json) that specifies multiple \"roles\"\n  *  A RuleBasedAuthorizationPlugin permission list (see security.json) that uses one or more of the following pre-defined permission rules: \"config-read\", \"config-edit\", \"schema-read\", \"metrics-read\", or \"security-read\".\n  *  A RuleBasedAuthorizationPlugin permission list that doesn't define the \"all\" pre-defined permission\n  *  A networking setup that allows clients to make unfiltered network requests to Solr. (i.e. user-submitted HTTP/HTTPS requests reach Solr as-is, unmodified or restricted by any intervening proxy or gateway)\n\nUsers can mitigate this vulnerability by ensuring that their RuleBasedAuthorizationPlugin configuration specifies the \"all\" pre-defined permission and associates the permission with an \"admin\" or other privileged role.  Users can also upgrade to a Solr version outside of the impacted range, such as the recently released Solr 9.10.1.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.solr:solr-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.3.0"
+            },
+            {
+              "fixed": "9.10.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22022"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/solr/commit/c135e6335c7158fa26e96b0dc386f825255b47c0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/solr"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.apache.org/jira/browse/SOLR-18054"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/d59hqbgo7p62myq7mgfpz7or8n1j7wbn"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/01/20/4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-21T22:56:47Z",
+    "nvd_published_at": "2026-01-21T14:16:06Z"
+  }
+}

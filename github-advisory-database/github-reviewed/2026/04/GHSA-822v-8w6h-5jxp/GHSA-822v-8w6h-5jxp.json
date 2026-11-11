@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-822v-8w6h-5jxp",
+  "modified": "2026-04-14T20:04:38Z",
+  "published": "2026-04-12T12:30:26Z",
+  "aliases": [
+    "CVE-2026-6125"
+  ],
+  "summary": "Warm-Flow has a SpEL Expression Injection in SpelHelper.parseExpression",
+  "details": "A security flaw has been discovered in Dromara warm-flow up to 1.8.4. Impacted is the function SpelHelper.parseExpression of the file /warm-flow/save-json of the component Workflow Definition Handler. The manipulation of the argument listenerPath/skipCondition/permissionFlag results in code injection. The attack may be performed from remote. The exploit has been released to the public and may be used for attacks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.dromara.warm:warm-flow-plugin-modes-sb"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.8.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitee.com/dromara/warm-flow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitee.com/dromara/warm-flow/issues/IHURVQ"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitee.com/dromara/warm-flow/pulls/387"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/dromara/warm-flow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/793322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/356989"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/356989/cti"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-74"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-14T20:04:38Z",
+    "nvd_published_at": "2026-04-12T10:16:01Z"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cp25-j9x5-p5xm",
+  "modified": "2026-11-09T22:05:06Z",
+  "published": "2026-11-09T22:05:06Z",
+  "aliases": [
+    "CVE-2026-103022"
+  ],
+  "summary": "Urwid: handle_short_request() crashes on non-ASCII POST body (UnicodeEncodeError DoS)",
+  "details": "### Summary\nThe `handle_short_request()` function in `urwid/display/web.py` raises an unhandled `UnicodeEncodeError` when processing a POST request body containing non-ASCII bytes. The function reads POST input and encodes it to ASCII before writing to a named pipe. Any byte value above `0x7F` causes the CGI process to exit with an unhandled exception, returning an HTTP 500 error to the client. Additionally, a file descriptor opened earlier in the same function is not closed before the exception propagates, causing a file descriptor leak for the lifetime of the CGI process.\n\nA second instance of missing exception handling exists in the polling update path, where non-UTF-8 socket output causes an unhandled `UnicodeDecodeError`.\n\n### Impact\nAn attacker who observes a valid `X-Urwid-ID` session token (transmitted in plaintext HTTP response headers) can send repeated POST requests containing non-ASCII bytes to the `urwid` CGI endpoint. Each malformed request causes the CGI handler to crash with HTTP 500. This results in a Denial of Service (DoS) for legitimate users using the `urwid` web interface.\n\n### Affected Versions\n`urwid <= 4.0.6`\n\n### Patches\nFixed in `urwid 4.0.7`. Users should upgrade to version `4.0.7` or later.\n\n### Workarounds\nNo direct workaround exists short of disabling the `urwid` web display interface.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "urwid"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.0.7"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.0.6"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/urwid/urwid/security/advisories/GHSA-cp25-j9x5-p5xm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103022"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/urwid/urwid/pull/1201"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/urwid/urwid/commit/b79d9a96843a6f5950bb2bfab5d059bdc61c538b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/urwid/urwid"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/urwid/urwid/releases/tag/4.0.7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-116",
+      "CWE-248",
+      "CWE-775"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-11-09T22:05:06Z",
+    "nvd_published_at": "2026-11-06T22:17:49Z"
+  }
+}

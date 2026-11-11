@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cjw9-x8qr-5wpf",
+  "modified": "2025-11-03T18:31:15Z",
+  "published": "2025-04-16T15:34:45Z",
+  "aliases": [
+    "CVE-2025-22122"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: fix adding folio to bio\n\n>4GB folio is possible on some ARCHs, such as aarch64, 16GB hugepage\nis supported, then 'offset' of folio can't be held in 'unsigned int',\ncause warning in bio_add_folio_nofail() and IO failure.\n\nFix it by adjusting 'page' & trimming 'offset' so that `->bi_offset` won't\nbe overflow, and folio can be added to bio successfully.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c60158ff14df04c92792dd9b1809372b095040f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26064d3e2b4d9a14df1072980e558c636fb023ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b96e0af1b1c99cb7e6188b6fa4963a4e47beb01e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:16:06Z"
+  }
+}

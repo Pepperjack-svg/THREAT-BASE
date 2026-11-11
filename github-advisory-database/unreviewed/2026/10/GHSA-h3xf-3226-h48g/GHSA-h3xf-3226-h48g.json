@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h3xf-3226-h48g",
+  "modified": "2026-10-12T15:32:19Z",
+  "published": "2026-10-12T15:32:18Z",
+  "aliases": [
+    "CVE-2026-109226"
+  ],
+  "details": "SGLang through 0.5.21 contains a decompression amplification vulnerability in load_audio that allows remote attackers to exhaust memory by submitting highly compressed audio decoded without duration or sample limits. Attackers can supply small FLAC-encoded silence files through audio_url or audio_data inputs that expand into massive PCM buffers, exhausting worker memory and CPU for denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/issues/43708"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/blob/v0.5.21/python/sglang/srt/multimodal/audio_from_video.py#L128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/blob/v0.5.21/python/sglang/srt/multimodal/processors/base_processor.py#L996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/blob/v0.5.21/python/sglang/srt/utils/common.py#L1783"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/blob/v0.5.21/python/sglang/srt/utils/common.py#L1801-L1803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sglang-through-0.5.21-audio-decompression-amplification-via-load-audio"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-409"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T14:17:11Z"
+  }
+}

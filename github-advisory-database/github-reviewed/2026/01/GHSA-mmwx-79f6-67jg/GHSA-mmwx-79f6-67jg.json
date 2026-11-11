@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mmwx-79f6-67jg",
+  "modified": "2026-01-16T21:56:08Z",
+  "published": "2026-01-16T16:58:26Z",
+  "aliases": [
+    "CVE-2026-23535"
+  ],
+  "summary": "Weblate wlc path traversal vulnerability: Unsanitized API slugs in download command ",
+  "details": "### Impact\nMulti-translation download could write to an arbitrary location when instructed by a crafted server.\n\n### Patches\n* https://github.com/WeblateOrg/wlc/pull/1128\n\n### Workarounds\nDo not use `wlc download` with untrusted servers.\n\n### References\nThis issue was reported to us by [wh1zee](https://hackerone.com/wh1zee) via HackerOne.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "wlc"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.17.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/security/advisories/GHSA-mmwx-79f6-67jg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23535"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/pull/1128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/commit/216e691c6e50abae97fe2e4e4f21501bf49a585f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/WeblateOrg/wlc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/releases/tag/1.17.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-16T16:58:26Z",
+    "nvd_published_at": "2026-01-16T19:16:19Z"
+  }
+}

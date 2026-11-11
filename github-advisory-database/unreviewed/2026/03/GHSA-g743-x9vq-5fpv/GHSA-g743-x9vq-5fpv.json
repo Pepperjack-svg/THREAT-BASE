@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g743-x9vq-5fpv",
+  "modified": "2026-10-15T12:30:33Z",
+  "published": "2026-03-25T12:30:23Z",
+  "aliases": [
+    "CVE-2026-23341"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amdxdna: Fix crash when destroying a suspended hardware context\n\nIf userspace issues an ioctl to destroy a hardware context that has\nalready been automatically suspended, the driver may crash because the\nmailbox channel pointer is NULL for the suspended context.\n\nFix this by checking the mailbox channel pointer in aie2_destroy_context()\nbefore accessing it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23341"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d2c32b1b9e32f25214f0cbc818c4d55f7da1d0e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8363c02863332992a1822688da41f881d88d1631"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6317704edab95d66a62fc1861d9546284ab678e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:32Z"
+  }
+}

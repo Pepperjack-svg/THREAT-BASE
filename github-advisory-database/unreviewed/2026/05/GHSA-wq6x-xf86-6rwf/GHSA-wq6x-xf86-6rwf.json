@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wq6x-xf86-6rwf",
+  "modified": "2026-06-25T21:31:22Z",
+  "published": "2026-05-27T15:33:24Z",
+  "aliases": [
+    "CVE-2026-46096"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntpm2-sessions: Fix missing tpm_buf_destroy() in tpm2_read_public()\n\ntpm2_read_public() calls tpm_buf_init() but fails to call\ntpm_buf_destroy() on two exit paths, leaking a page allocation:\n\n1. When name_size() returns an error (unrecognized hash algorithm),\n   the function returns directly without destroying the buffer.\n\n2. On the success path, the buffer is never destroyed before\n   returning.\n\nAll other error paths in the function correctly call\ntpm_buf_destroy() before returning.\n\nFix both by adding the missing tpm_buf_destroy() calls.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46096"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f434be87e256fd58254f60ddf5d7d58e775ca0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0f75a3d98b7959a8677b6363e23190f3018636b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8775d9d9062da662cc861f9ff7722a65896d4cd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:31Z"
+  }
+}

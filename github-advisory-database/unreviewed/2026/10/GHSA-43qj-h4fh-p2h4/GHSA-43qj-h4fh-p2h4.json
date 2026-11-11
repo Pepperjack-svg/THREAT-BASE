@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-43qj-h4fh-p2h4",
+  "modified": "2026-10-27T18:31:18Z",
+  "published": "2026-10-02T09:31:17Z",
+  "aliases": [
+    "CVE-2026-16001"
+  ],
+  "details": "Exposure of the message authentication key through the encryption keystream in the stream mode of IesEngine (an IesEngine constructed without a block cipher) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows a remote attacker who has observed one encrypted message with known plaintext to forge shorter messages of their choosing that the recipient accepts as authentic, via a crafted ciphertext and MAC tag, because the MAC key was taken from the key derivation output directly after a keystream as long as the message, while the derivation input depends only on the static key pair and fixed parameters. The keystream revealed by that one message therefore contains the MAC key for every sufficiently shorter message.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16001"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bcgit/bc-csharp/commit/f881400b761134160ec2a05fd27c3e569453788d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bcgit/bc-csharp/wiki/CVE-2026-16001"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-354"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-02T07:16:36Z"
+  }
+}

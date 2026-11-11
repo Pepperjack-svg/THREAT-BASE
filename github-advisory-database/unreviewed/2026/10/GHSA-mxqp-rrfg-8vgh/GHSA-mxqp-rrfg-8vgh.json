@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mxqp-rrfg-8vgh",
+  "modified": "2026-10-30T21:32:22Z",
+  "published": "2026-10-30T21:32:21Z",
+  "aliases": [
+    "CVE-2026-116245"
+  ],
+  "details": "libpq looks a connection service up in the service file of the operating-system account running pgAdmin 4, and an entry there can hold a password or name a password file or client certificate. In server mode any user could set a server's Service, or a \"service\" connection parameter, to one of those entries and connect with its credentials. A PGPASSWORD or PGSERVICE variable set for that account was likewise used by libpq for every connection without a value of its own and passed on to the utilities, and pg_dumpall read a maintenance database name such as \"service=...\" as a connection string.\n\nThe fix adds the SERVER_MODE_ALLOWED_SERVICES setting, empty by default: in server mode only a listed service can be used, the servicefile parameter is refused, and PGPASSWORD and PGSERVICE are removed from pgAdmin's environment at startup. The allowlist is checked again on the final connection string, and the pg_dumpall database name is wrapped as a connection string.\n\nThis issue affects pgAdmin 4: before 9.19.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:H/VI:N/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pgadmin-org/pgadmin4/issues/10654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pgadmin-org/pgadmin4/commit/a0c8f4857f732c6f5e5bacf4b289b811bb5c6a06"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-522"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T20:17:04Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pxmx-2p3q-jfwf",
+  "modified": "2026-10-16T21:32:44Z",
+  "published": "2026-10-15T21:36:08Z",
+  "aliases": [
+    "CVE-2026-111169"
+  ],
+  "details": "La Suite Docs through 6.0.0 contains an authorization bypass vulnerability that allows authenticated users to write comments into threads of documents they cannot access. Attackers who know a thread UUID can route a POST comment request through their own document's resource_id, inserting comments into another document's thread without access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111169"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/suitenumerique/docs/pull/2838"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/suitenumerique/docs/commit/43f97482dfb968264dceccabb76e155791c8e019"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/suitenumerique/docs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/suitenumerique/docs/blob/dbf8fece4e72292443dc71ff173593551203d011/src/backend/core/api/permissions.py#L178-L182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/suitenumerique/docs/blob/dbf8fece4e72292443dc71ff173593551203d011/src/backend/core/api/serializers.py#L929-L931"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/suitenumerique/docs/blob/dbf8fece4e72292443dc71ff173593551203d011/src/backend/core/api/viewsets.py#L3278-L3282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/la-suite-docs-through-6.0.0-authorization-bypass-via-comment-thread-creation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:32Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p94x-gw9w-73f2",
+  "modified": "2026-05-14T15:31:58Z",
+  "published": "2026-05-14T15:31:58Z",
+  "aliases": [
+    "CVE-2026-4029"
+  ],
+  "details": "The Database Backup for WordPress plugin for WordPress is vulnerable to unauthorized database export in all versions up to, and including, 2.5.2. This is due to the plugin not properly enforcing the return value of its authorization check. This makes it possible for unauthenticated attackers to export database tables, leading to Sensitive Information Exposure. Note: This vulnerability is only exploitable in WordPress Multisite environments where the deprecated is_site_admin() function exists.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4029"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-db-backup/tags/2.5.2/wp-db-backup.php#L1623"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-db-backup/trunk/wp-db-backup.php#L153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-db-backup/trunk/wp-db-backup.php#L1632"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3510595"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d4a21d0d-f455-4901-a04b-13c891cf8f75?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-14T13:16:20Z"
+  }
+}

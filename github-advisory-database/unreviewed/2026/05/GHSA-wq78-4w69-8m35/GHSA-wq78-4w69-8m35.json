@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wq78-4w69-8m35",
+  "modified": "2026-05-11T21:31:31Z",
+  "published": "2026-05-06T12:30:33Z",
+  "aliases": [
+    "CVE-2026-43217"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: iris: gen2: Add sanity check for session stop\n\nIn iris_kill_session, inst->state is set to IRIS_INST_ERROR and\nsession_close is executed, which will kfree(inst_hfi_gen2->packet).\nIf stop_streaming is called afterward, it will cause a crash.\n\nAdd a NULL check for inst_hfi_gen2->packet before sendling STOP packet\nto firmware to fix that.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72846441c5f6396de9face04e77fa3d28e9915b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75992ba43072674fd4767df62a1fe2048565cc60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9aa8d63d09cfc44d879427cc5ba308012ca4ab8e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:41Z"
+  }
+}

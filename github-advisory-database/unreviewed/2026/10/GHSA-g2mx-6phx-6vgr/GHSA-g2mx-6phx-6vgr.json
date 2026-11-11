@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g2mx-6phx-6vgr",
+  "modified": "2026-10-04T00:31:00Z",
+  "published": "2026-10-04T00:31:00Z",
+  "aliases": [
+    "CVE-2026-105127"
+  ],
+  "details": "LaraDashboard 1.4.2 before 1.4.8 applies advanced email validation to unauthenticated forgot-password and reset-password requests, triggering DNS lookups and paid AbstractAPI verification calls. Unauthenticated attackers can submit arbitrary addresses to exhaust the verification quota, making validation fail open for all public forms, and probe domain resolution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/security/advisories/GHSA-5hq2-r2f3-9vp9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/security/advisories/GHSA-v36p-8578-8gch"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/pull/339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/commit/8babc803066a74c628fa012928fb1e6591411eba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/blob/v1.4.2/app/Http/Requests/Auth/ForgotPasswordRequest.php#L22-L27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/blob/v1.4.2/app/Http/Requests/Auth/ResetPasswordRequest.php#L23-L30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/blob/v1.4.2/app/Services/EmailDomainCheckService.php#L128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/blob/v1.4.2/app/Services/EmailVerificationService.php#L95-L114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/releases/tag/v1.4.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/laradashboard-1.4.2-before-1.4.8-resource-exhaustion-via-password-recovery-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-04T00:16:36Z"
+  }
+}

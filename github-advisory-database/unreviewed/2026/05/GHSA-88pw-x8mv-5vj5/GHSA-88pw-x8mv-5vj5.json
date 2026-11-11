@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-88pw-x8mv-5vj5",
+  "modified": "2026-05-29T07:20:06Z",
+  "published": "2026-05-29T07:20:06Z",
+  "aliases": [
+    "CVE-2025-11993"
+  ],
+  "details": "The WooCommerce Infinite Scroll and Ajax Pagination plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 1.8 via the 'settings' parameter in the 'import_settings' function. This is due to deserialization of untrusted data supplied via the import configuration feature without capability checks. This makes it possible for authenticated attackers, with Subscriber-level access and above, to inject a PHP Object. No POP chain is present within the vulnerable plugin itself, but if a POP chain is present via an additional plugin or theme installed on the target system, it could allow an attacker to delete arbitrary files, retrieve sensitive data, or execute code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11993"
+    },
+    {
+      "type": "WEB",
+      "url": "https://codecanyon.net/item/woocommerce-infinite-scroll-and-ajax-pagination/10192075"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a8eb3ec8-0784-4702-86bf-a621b288e7a0?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-29T07:16:13Z"
+  }
+}

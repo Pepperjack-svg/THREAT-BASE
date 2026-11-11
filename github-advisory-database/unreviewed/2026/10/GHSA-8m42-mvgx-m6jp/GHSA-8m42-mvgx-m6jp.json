@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8m42-mvgx-m6jp",
+  "modified": "2026-10-18T18:31:54Z",
+  "published": "2026-10-18T18:31:54Z",
+  "aliases": [
+    "CVE-2026-98566"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/imagination: clamp freelist reconstruction requests\n\nThe firmware reconstruction count controls accesses to the request's\nfixed freelist ID array and the copy into the fixed response array.\nNeither access currently bounds the count to those protocol arrays.\n\nClamp the count to the request capacity, which is shared by the response\nlayout, and use that count consistently for reconstruction and response\npublication. Keep the firmware recovery exchange instead of dropping an\noversized request without a response, as discussed with the firmware\nmaintainer.\n\nThe issue was found by our static-analysis tool.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98566"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45585c3aa285854face65293acc95eff73063d6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b78f8f5532a077baa4aabccf657a4fb3b164659e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0560db0ea6e10c283ebe7c259a7af8d3b6e61a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eabd0ae3611769c826dbc118a1e240628731b348"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:08Z"
+  }
+}

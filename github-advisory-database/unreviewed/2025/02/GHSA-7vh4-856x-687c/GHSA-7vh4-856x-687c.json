@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7vh4-856x-687c",
+  "modified": "2025-02-27T21:32:12Z",
+  "published": "2025-02-27T21:32:12Z",
+  "aliases": [
+    "CVE-2022-49127"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nref_tracker: implement use-after-free detection\n\nWhenever ref_tracker_dir_init() is called, mark the struct ref_tracker_dir\nas dead.\n\nTest the dead status from ref_tracker_alloc() and ref_tracker_free()\n\nThis should detect buggy dev_put()/dev_hold() happening too late\nin netdevice dismantle process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3743c9de303fa36c2e2ca2522ab280c52bcafbd2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3ececfe668facd87d920b608349a32607060e66"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:50Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h6r2-r3xv-333f",
+  "modified": "2026-10-15T03:36:24Z",
+  "published": "2026-10-12T03:32:56Z",
+  "aliases": [
+    "CVE-2026-108982"
+  ],
+  "details": "VeraCrypt 1.26.29 (FUSE-T build) on macOS sometimes allows unintended access to decrypted data. It does not terminate the FUSE-T auxiliary service (go-nfsv4) and its associated VeraCrypt core-service helper processes when a volume is dismounted. After VeraCrypt reports the volume as dismounted, the auxiliary mount continues to serve the decrypted volume image (volume.dmg) over a loopback SMB session, and the leaked processes retain an open handle to the underlying raw device. A local user or process can therefore remount and access the decrypted volume without the passphrase, e.g., by reopening a previously accessed path (such as through a macOS Open Recent menu) or by attaching volume.dmg from the stale auxiliary mount. (The macFUSE build of VeraCrypt is not affected.)",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/veracrypt/VeraCrypt/security/advisories/GHSA-f3px-f8h2-fm4c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108982"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/veracrypt/VeraCrypt/issues/1779"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/veracrypt/VeraCrypt/issues/1845"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/veracrypt/VeraCrypt/pull/1866"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/veracrypt/VeraCrypt/commit/d7bc65bed004996d299ec76666d1b283a07e2526"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/veracrypt/VeraCrypt/releases/tag/VeraCrypt_1.26.29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sourceforge.net/p/veracrypt/discussion/general/thread/57f938df8b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-459"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T03:17:18Z"
+  }
+}

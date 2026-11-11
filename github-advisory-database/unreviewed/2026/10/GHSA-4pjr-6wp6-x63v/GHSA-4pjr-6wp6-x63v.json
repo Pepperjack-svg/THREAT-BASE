@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4pjr-6wp6-x63v",
+  "modified": "2026-10-13T21:33:38Z",
+  "published": "2026-10-13T21:33:38Z",
+  "aliases": [
+    "CVE-2026-110226"
+  ],
+  "details": "QloApps through 1.7.0 contains a broken access control vulnerability that allows hotel-restricted back-office employees to create room types under unassigned hotels by supplying an arbitrary id_hotel. Attackers can enumerate all hotels via the unfiltered room type form selector and post foreign hotel IDs to AdminProductsController, creating rooms and inventory under other hotels.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/pull/1649"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/commit/24ff5f5e6ba0c7a42c83ce8155b318c3ef8c915d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/blob/v1.7.0/controllers/admin/AdminProductsController.php#L2362-L2367"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/blob/v1.7.0/controllers/admin/AdminProductsController.php#L3038-L3052"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/blob/v1.7.0/modules/hotelreservationsystem/classes/HotelBranchInformation.php#L488-L496"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@leediay/SyMoELioMx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/qloapps-through-1.7.0-authorization-bypass-via-id-hotel-in-room-type-creation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:47Z"
+  }
+}

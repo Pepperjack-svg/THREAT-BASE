@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8j7v-p66v-g3f9",
+  "modified": "2026-08-17T21:31:19Z",
+  "published": "2026-08-16T06:30:26Z",
+  "aliases": [
+    "CVE-2026-19728"
+  ],
+  "details": "The Extra Product Options Builder for WooCommerce WordPress plugin before 1.2.176 does not verify that the requester is entitled to a customer-uploaded file before serving it, allowing unauthenticated users who obtain a file's stored name to retrieve it.\n\nThe Extra Product Options Builder for WooCommerce WordPress plugin before 1.2.176 writes a deny-all rule into its upload directories, so the disclosure only crosses a boundary on web servers that honour it, such as Apache. Where it is ignored, as on a default nginx setup, the same files are already served at their direct URL and the endpoint exposes nothing further.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19728"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/fd10aaab-d358-4d2f-aafa-dbfba09b7fff"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-16T06:16:52Z"
+  }
+}

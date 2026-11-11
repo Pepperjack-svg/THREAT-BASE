@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wj89-2385-gpx3",
+  "modified": "2026-03-10T22:55:31Z",
+  "published": "2026-03-10T18:23:58Z",
+  "aliases": [
+    "CVE-2026-29176"
+  ],
+  "summary": "Craft Commerce has stored XSS in Inventory Location Name",
+  "details": "## Summary\nA stored XSS vulnerability exists in the Commerce Settings - Inventory Locations page. The **Name** field is rendered without proper HTML escaping, allowing an attacker to execute arbitrary JavaScript.\n\nThis XSS triggers when an administrator (or user with product editing permissions) creates or edits a variant product.\n\n## Proof of Concept\n\n### Permissions Required\n- General\n    - Access the control panel\n    - Access Craft Commerce\n\n- Craft Commerce\n    - Manage inventory locations\n\n### Steps to Reproduce\n\n1. Log in to the control panel\n2. Navigate to **Commerce → Inventory Locations**\n3. Create or edit a location\n4. Set **Name** to the following payload:\n    ```html\n    <img src=x onerror=\"alert('XSS')\">\n    ```\n5. Save the location\n6. Navigate to **Commerce → Products** and click \"New Product\" and click \"New product variant\"\n7. The Inventory Location table loads, rendering the **Inventory Location Name**\n8. XSS executes\n\n## Impact\n- Potential Session Hijacking\n- Potential Database Exfiltration\n- Potential Account Takeover by forcing a password change on the victim’s account.\n- Potential Privilege escalation, or creating new admin users.\n\n## Mitigation\nSanitize the inventory location name field when rendering in the \"Track Inventory\" table.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/commerce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.5.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.5.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/security/advisories/GHSA-wj89-2385-gpx3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-29176"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/commit/da143df084563ddf0929d7c261bcc11d312e8004"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/commerce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-10T18:23:58Z",
+    "nvd_published_at": "2026-03-10T20:16:38Z"
+  }
+}

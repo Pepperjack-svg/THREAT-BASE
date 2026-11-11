@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-37x9-3cr5-w6m4",
+  "modified": "2026-10-23T03:30:21Z",
+  "published": "2026-10-23T03:30:21Z",
+  "aliases": [
+    "CVE-2026-115485"
+  ],
+  "details": "A flaw was found in the iscsiuio component of open-iscsi. The DHCPv6 option parser calls strlen() on raw network data without ensuring a NUL terminator is present, causing it to read past the buffer into heap memory. This can result in a daemon crash, a 1-byte heap overwrite, or corruption of the iSCSI initiator name. An attacker on the same network segment can trigger this by sending a crafted DHCPv6 Advertise message.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115485"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-115485"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2556266"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T01:16:53Z"
+  }
+}

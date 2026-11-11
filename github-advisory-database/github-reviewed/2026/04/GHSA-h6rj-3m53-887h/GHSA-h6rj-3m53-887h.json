@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h6rj-3m53-887h",
+  "modified": "2026-04-06T22:54:03Z",
+  "published": "2026-04-06T22:54:03Z",
+  "aliases": [],
+  "summary": "PocketMine-MP: LogDoS by large complex unknown property logging in clientData in LoginPacket",
+  "details": "### Impact\n\nAttackers can put large and/or complex structures as a value to an unknown property in the clientData JWT body in the Minecraft `LoginPacket`, causing the server to generate very long log messages.\nAdditionally, the property name is logged without any length limitations or sanitization, which can also be abused for LogDoS.\n\nThis may be used to spam the log/console, waste CPU time serializing the offending structure, and potentially to crash the server entirely.\n\nThis happens because the JsonMapper instance used to process the JWT body is configured to warn on unexpected properties instead of rejecting them outright. While this behaviour increases flexibility for random changes introduced by Microsoft, it also creates vulnerabilities if not handled carefully.\n\nThis vulnerability affects PocketMine-MP servers exposed to a public network where unknown actors may have access.\n\n### PoC\n1. Connect to the server using a custom client.\n\n2. Send a Minecraft `LoginPacket` containing an unexpected JSON property (e.g., invalid_key) within the ClientData.\n\n3. Set the value of invalid_key to a highly recursive or massive object structure (e.g., an array containing millions of elements or deeply nested arrays).\n\n4. The server hits the `warnUndefinedJsonPropertyHandler`, which attempts to var_export the malicious object, leading to an Out-of-Memory crash.\n\n```\nA := make([]interface{}, 1)\n\tptr := &A\n\tfor i := 0; i < 500; i++ {\n\t\tnext := make([]interface{}, 1000)\n\t\t(*ptr)[0] = next\n\t\tptr = &next\n\t}\n\tdata := make([]int, 2000000)\n\tfor i := 0; i < 100; i++ {\n\t\tdata[i] = i\n\t}\n\t(*ptr)[0] = data\n\td.PlayFabID = A\n ```\n\n### Patches\nThe issue was addressed in https://github.com/pmmp/PocketMine-MP/commit/87d1c0cea09d972fd4c2fafb84dac2ecab7649f0 by removing the relevant `var_export` and limiting the length of the logged property name to 80 characters.\n\n### Workarounds\nPlugins can handle `DataPacketReceiveEvent` to capture `LoginPacket`, and pre-process the clientData JWT to ensure it doesn't have any unusual properties in it. This can be achieved using `JsonMapper` (see the original affected code below) and setting the `bExceptionOnUndefinedProperty` flag to `true`. A `JsonMapper_Exception` will be thrown if the JWT is problematic.\n\nHowever, it's important to caveat that this approach may cause login failures if any unexpected properties appear out of the blue in future versions (which has happened in the past).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "pocketmine/pocketmine-mp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.41.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/security/advisories/GHSA-h6rj-3m53-887h"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/commit/87d1c0cea09d972fd4c2fafb84dac2ecab7649f0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pmmp/PocketMine-MP"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/blob/5.41.0/src/network/mcpe/handler/LoginPacketHandler.php#L288-L302"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/blob/5.41.0/src/network/mcpe/handler/LoginPacketHandler.php#L333-L349"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-06T22:54:03Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jgq2-vq69-gr6h",
+  "modified": "2026-04-24T20:49:51Z",
+  "published": "2026-04-17T21:31:46Z",
+  "aliases": [
+    "CVE-2026-40525"
+  ],
+  "summary": "OpenViking: Unauthenticated remote bot control via OpenAPI HTTP routes",
+  "details": "OpenViking prior to commit c7bb167 contains an authentication bypass vulnerability in the VikingBot OpenAPI HTTP route surface where the authentication check fails open when the api_key configuration value is unset or empty. Remote attackers with network access to the exposed service can invoke privileged bot-control functionality without providing a valid X-API-Key header, including submitting attacker-controlled prompts, creating or using bot sessions, and accessing downstream tools, integrations, secrets, or data accessible to the bot.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "openviking"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.3.9"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40525"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/volcengine/OpenViking/pull/1447"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/volcengine/OpenViking/commit/c7bb1676f4d037609f041bf39e4e2bd52e8f9820"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/volcengine/OpenViking"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/volcengine/OpenViking/releases/tag/v0.3.9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openviking-authentication-bypass-via-vikingbot-openapi"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-636"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-24T20:49:51Z",
+    "nvd_published_at": "2026-04-17T19:16:39Z"
+  }
+}

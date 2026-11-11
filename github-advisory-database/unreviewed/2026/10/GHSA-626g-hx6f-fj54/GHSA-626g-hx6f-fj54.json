@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-626g-hx6f-fj54",
+  "modified": "2026-10-20T03:32:45Z",
+  "published": "2026-10-20T03:32:45Z",
+  "aliases": [
+    "CVE-2026-77930"
+  ],
+  "details": "EvoScientist 0.1.0 before 0.2.5 contains an approval bypass vulnerability that allows attackers to run host shell commands by delegating them to async sub-agents lacking an interrupt_on gate. Attackers can plant instructions in ingested content such as fetched web pages, so the agent calls start_async_task and runs commands with user privileges and environment secrets.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77930"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/EvoScientist/EvoScientist/issues/387"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/EvoScientist/EvoScientist/commit/d249e320bd856a7d31d859cfbb2bf75bab6c8686"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/EvoScientist/EvoScientist/blob/ac58caab7bdd1706f3fee55891f611cd175d05b0/EvoScientist/subagents/_factory.py#L116"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/EvoScientist/EvoScientist/releases/tag/v0.2.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.lasso.security/vulnerability-database/cve-2026-77930"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/evoscientist-0.1.0-before-0.2.5-human-approval-bypass-via-async-sub-agents"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T01:17:19Z"
+  }
+}

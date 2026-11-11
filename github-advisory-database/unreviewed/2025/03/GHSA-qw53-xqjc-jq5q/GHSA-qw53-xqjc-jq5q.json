@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qw53-xqjc-jq5q",
+  "modified": "2025-03-12T00:31:48Z",
+  "published": "2025-03-12T00:31:48Z",
+  "aliases": [
+    "CVE-2022-49676"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmemory: samsung: exynos5422-dmc: Fix refcount leak in of_get_dram_timings\n\nof_parse_phandle() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nThis function doesn't call of_node_put() in some error paths.\nTo unify the structure, Add put_node label and goto it on errors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49676"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1332661e09304b7b8e84e5edc11811ba08d12abe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/889aad2203e09eed2071ca8985c25e9d6aea5735"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb2a481778c60f912c363e271ae46b55ff8132db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cde4480b5ab06195b9164184b0c02ced71e601b4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:42Z"
+  }
+}

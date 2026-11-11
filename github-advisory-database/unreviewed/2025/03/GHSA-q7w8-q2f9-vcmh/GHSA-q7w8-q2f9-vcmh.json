@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q7w8-q2f9-vcmh",
+  "modified": "2025-03-05T21:32:07Z",
+  "published": "2025-03-03T15:31:34Z",
+  "aliases": [
+    "CVE-2025-0689"
+  ],
+  "details": "When reading data from disk, the grub's UDF filesystem module utilizes the user controlled data length metadata to allocate its internal buffers. In certain scenarios, while iterating through disk sectors, it assumes the read size from the disk is always smaller than the allocated buffer size which is not guaranteed. A crafted filesystem image may lead to a heap-based buffer overflow resulting in critical data to be corrupted, resulting in the risk of arbitrary code execution by-passing secure boot protections.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-0689"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2025-0689"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2346122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.gnu.org/archive/html/grub-devel/2025-02/msg00024.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-03T15:15:16Z"
+  }
+}

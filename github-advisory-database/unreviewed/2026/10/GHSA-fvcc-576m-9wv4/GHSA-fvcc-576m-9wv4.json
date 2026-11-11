@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fvcc-576m-9wv4",
+  "modified": "2026-10-27T00:32:50Z",
+  "published": "2026-10-27T00:32:50Z",
+  "aliases": [
+    "CVE-2026-76654"
+  ],
+  "details": "An NTLM coercion vulnerability exists on Windows nodes when the subPath supplied in a pod's volumeMounts is set to a symbolic link that points to an attacker-controlled network share. When a kubelet resolves symlinks, it does not reject a target that resolves to a UNC path. As a result, the kubelet will transparently attempt to authenticate to the share using NTLM. This allows an attacker to obtain the NetNTLMv2 hash of the account under which the kubelet is running. An attacker could then attempt to crack the hash to retrieve the corresponding password or relay it to impersonate the node, if the node is domain-joined.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kubernetes/kubernetes/issues/142098"
+    },
+    {
+      "type": "WEB",
+      "url": "https://groups.google.com/g/kubernetes-security-announce/c/Wkv04IFzW8g"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/09/23/36"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-26T23:17:09Z"
+  }
+}

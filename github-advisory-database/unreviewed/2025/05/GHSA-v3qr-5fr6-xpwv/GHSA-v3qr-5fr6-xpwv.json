@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3qr-5fr6-xpwv",
+  "modified": "2025-11-12T21:31:03Z",
+  "published": "2025-05-09T09:33:20Z",
+  "aliases": [
+    "CVE-2025-37880"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\num: work around sched_yield not yielding in time-travel mode\n\nsched_yield by a userspace may not actually cause scheduling in\ntime-travel mode as no time has passed. In the case seen it appears to\nbe a badly implemented userspace spinlock in ASAN. Unfortunately, with\ntime-travel it causes an extreme slowdown or even deadlock depending on\nthe kernel configuration (CONFIG_UML_MAX_USERSPACE_ITERATIONS).\n\nWork around it by accounting time to the process whenever it executes a\nsched_yield syscall.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37880"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/887c5c12e80c8424bd471122d2e8b6b462e12874"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/990ddc65173776f1e01e7135d8c1fd5f8fd4d5d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da780c4a075ba2deb05ae29f0af4a990578c7901"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-09T07:16:09Z"
+  }
+}

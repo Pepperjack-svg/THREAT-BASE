@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p5f5-vqm2-vhg9",
+  "modified": "2026-10-21T18:33:16Z",
+  "published": "2026-10-21T18:33:16Z",
+  "aliases": [
+    "CVE-2026-114477"
+  ],
+  "details": "Missing authorization in the REST metrics route of Progressive Robot hMailServer 6.2.25 through 6.3.6 allows a remote authenticated user whose credential is confined to named domains to read the server-wide traffic history. GET /api/v1/metrics/history returns the server's traffic counters over the last 30 days; those counters are server-wide and carry no domain, which is why the report routes already refuse the same counters to a credential confined to named domains. The metrics route was not among the routes the server's authorization gate refuses a confined credential and its handler was not given the caller, so a domain administrator, an account given another role that holds view_configuration in named domains (the auditor role given a domain list among them), or an API key issued for named domains could read the whole server's traffic totals rather than its own domains'. The disclosure is of aggregate operational counters, not of any message or account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114477"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/hmailserver/hmailserver/-/work_items/96"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T16:17:35Z"
+  }
+}

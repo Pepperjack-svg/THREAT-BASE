@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fj8r-2x4x-2q83",
+  "modified": "2025-12-09T18:30:35Z",
+  "published": "2025-12-09T18:30:35Z",
+  "aliases": [
+    "CVE-2025-40330"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbnxt_en: Shutdown FW DMA in bnxt_shutdown()\n\nThe netif_close() call in bnxt_shutdown() only stops packet DMA.  There\nmay be FW DMA for trace logging (recently added) that will continue.  If\nwe kexec to a new kernel, the DMA will corrupt memory in the new kernel.\n\nAdd bnxt_hwrm_func_drv_unrgtr() to unregister the driver from the FW.\nThis will stop the FW DMA.  In case the call fails, call pcie_flr() to\nreset the function and stop the DMA.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40330"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a8a15c3f71d1199d510ccba4bc201cbd2204048"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc7208ca805ae6062f353a4753467d913d963bc6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T16:17:43Z"
+  }
+}

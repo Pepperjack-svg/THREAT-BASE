@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wvpq-h33f-8rp6",
+  "modified": "2026-01-11T14:55:37Z",
+  "published": "2026-01-09T20:12:24Z",
+  "aliases": [
+    "CVE-2025-61676"
+  ],
+  "summary": "October CMS Vulnerable to Stored XSS via Branding Styles",
+  "details": "A cross-site scripting (XSS) vulnerabilities was identified in October CMS backend configuration forms:\n\n- **Branding and Appearances Styles**  \n   A user with the `Customize Backend Styles` permission could inject malicious HTML/JS into the stylesheet input at  \n   *Settings → Branding & Appearance → Styles*.  \n\nA specially crafted input could break out of the intended `<style>` context, allowing arbitrary script execution across backend pages for all users.\n\n---\n\n### Impact\n- Persistent XSS across the backend interface.  \n- Exploitable by lower-privileged accounts with the above permissions.  \n- Potential consequences include privilege escalation, session hijacking, and execution of unauthorized actions in victim sessions.\n\n---\n\n### Patches\nThe vulnerability has been patched in **v4.0.12** and **v3.7.13**.  \nStylesheet inputs are now sanitized to prevent injection of arbitrary HTML/JS.  \n\nAll users are strongly encouraged to upgrade to the latest patched version.\n\n---\n\n### Workarounds\nIf upgrading immediately is not possible:  \n- Restrict the permissions `Customize Backend Styles` to fully trusted administrators only.  \n\nThis reduces exposure but does not fully eliminate risk.\n\n---\n\n### Credits\n- Reported by **[Nakkouch Tarek](https://github.com/nakkouchtarek)**",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "october/system"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.7.13"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.7.12"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "october/system"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.0.12"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.0.11"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/octobercms/october/security/advisories/GHSA-wvpq-h33f-8rp6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61676"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/octobercms/october"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-09T20:12:24Z",
+    "nvd_published_at": "2026-01-10T04:16:00Z"
+  }
+}

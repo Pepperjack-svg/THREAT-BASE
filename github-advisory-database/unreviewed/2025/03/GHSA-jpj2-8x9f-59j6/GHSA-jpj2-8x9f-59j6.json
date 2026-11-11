@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jpj2-8x9f-59j6",
+  "modified": "2025-03-17T18:31:49Z",
+  "published": "2025-03-17T18:31:49Z",
+  "aliases": [
+    "CVE-2022-49455"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: ocxl: fix possible double free in ocxl_file_register_afu\n\ninfo_release() will be called in device_unregister() when info->dev's\nreference count is 0. So there is no need to call ocxl_afu_put() and\nkfree() again.\n\nFix this by adding free_minor() and return to err_unregister error path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49455"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/252768d32e92c1214aeebb5fec0844ca479bcf5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8fb674216835e1f0c143762696d645facebb4685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/950cf957fe34d40d63dfa3bf3968210430b6491e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e9087cf34ee69f4e95d146ac29385d6e367a97b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de65c32ace9aa70d51facc61ba986607075e3a25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee89d8dee55ab4b3b8ad8b70866b2841ba334767"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:21Z"
+  }
+}

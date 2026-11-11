@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qp76-qqr3-xhv8",
+  "modified": "2026-05-12T15:31:00Z",
+  "published": "2025-09-05T18:31:16Z",
+  "aliases": [
+    "CVE-2025-38693"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: dvb-frontends: w7090p: fix null-ptr-deref in w7090p_tuner_write_serpar and w7090p_tuner_read_serpar\n\nIn w7090p_tuner_write_serpar, msg is controlled by user. When msg[0].buf is null and msg[0].len is zero, former checks on msg[0].buf would be passed. If accessing msg[0].buf[2] without sanity check, null pointer deref would happen. We add\ncheck on msg[0].len to prevent crash.\n\nSimilar commit: commit 0ed554fd769a (\"media: dvb-usb: az6027: fix null-ptr-deref in az6027_i2c_xfer()\")",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17b30e5ded062bd74f8ca6f317e1d415a8680665"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39b06b93f24dff923c4183d564ed28c039150554"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/454a443eaa792c8865c861a282fe6d4f596abc3a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6bbaec6a036940e22318f0454b50b8000845ab59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a41ecfc3415ebe3b4c44f96b3337691dcf431a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/99690a494d91a0dc86cebd628da4c62c40552bcb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3d77a3fc71c084575d3df4ec6544b3fb6ce587d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ddd1f0e0b6991e4f1b5d08a74de388564b7c4ac6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed0234c8458b3149f15e496b48a1c9874dd24a1b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f98132a59ccc59a8b97987363bc99c8968934756"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-04T16:15:37Z"
+  }
+}

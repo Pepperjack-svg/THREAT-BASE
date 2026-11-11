@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8v54-r9x8-p94v",
+  "modified": "2026-10-19T15:32:39Z",
+  "published": "2026-10-19T15:32:39Z",
+  "aliases": [
+    "CVE-2026-112266"
+  ],
+  "details": "SGLang through 0.5.22 contains a denial of service vulnerability that allows API clients to abort other users' in-flight generation requests by supplying a short client-controlled rid. Attackers can submit streaming /generate requests with single hex character rids and disconnect, triggering prefix-matching abort logic that terminates all other clients' requests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112266"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/issues/41474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/issues/45002"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/blob/v0.5.22/python/sglang/srt/managers/scheduler.py#L5458-L5590"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/blob/v0.5.22/python/sglang/srt/managers/tokenizer_manager.py#L2240-L2256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/blob/v0.5.22/python/sglang/srt/managers/tokenizer_manager.py#L2425-L2436"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sglang-through-0.5.22-cross-request-abort-via-rid-prefix-matching"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-187"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T14:17:03Z"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-748j-wm96-4wh5",
+  "modified": "2026-11-04T18:12:08Z",
+  "published": "2026-06-26T00:32:07Z",
+  "aliases": [
+    "CVE-2026-12993"
+  ],
+  "summary": "Apicurio Registry is vulnerable to denial of service through XML entity expansion",
+  "details": "A flaw was found in Apicurio Registry. The DocumentBuilderAccessor correctly blocks external DTD and schema access but does not disable DOCTYPE declarations or enable FEATURE_SECURE_PROCESSING. An attacker with artifact-write permission can upload XML documents with internal entity-expansion payloads (billion-laughs variant) that cause CPU and heap exhaustion, partially mitigated by the JAXP default 64,000 entity-expansion limit.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.apicurio:apicurio-registry-schema-util-xml"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.3.0"
+            },
+            {
+              "fixed": "3.3.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.apicurio:apicurio-registry-schema-util-xml"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.2.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12993"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Apicurio/apicurio-registry/issues/8189"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Apicurio/apicurio-registry/pull/8200"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Apicurio/apicurio-registry/commit/03cd1cc081d9b1b4c8b9a59330ff4c980dc68b73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Apicurio/apicurio-registry/commit/48369d0e9008f7aab16dce5970c1ecbdd55e9aa5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:59360"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-12993"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2491692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Apicurio/apicurio-registry/releases/tag/3.3.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Apicurio/apicurio-registry/releases/tag/v3.2.6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apicurio/apicurio-registry"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-776"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-11-04T18:12:08Z",
+    "nvd_published_at": "2026-06-26T00:16:50Z"
+  }
+}

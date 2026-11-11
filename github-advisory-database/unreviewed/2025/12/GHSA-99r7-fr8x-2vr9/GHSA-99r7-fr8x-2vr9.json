@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-99r7-fr8x-2vr9",
+  "modified": "2025-12-16T09:31:07Z",
+  "published": "2025-12-16T09:31:07Z",
+  "aliases": [
+    "CVE-2025-13439"
+  ],
+  "details": "The Fancy Product Designer plugin for WordPress is vulnerable to Information Disclosure in all versions up to, and including, 6.4.8. This is due to insufficient validation of user-supplied input in the 'url' parameter of the fpd_custom_uplod_file AJAX action, which flows directly into the getimagesize() function without sanitization. While direct exploitation via PHP filter chains is blocked on PHP 8+ due to a separate code bug in the plugin, the vulnerability can be exploited via a TOCTOU race condition (CVE-2025-13231) also present in the same plugin, or may be directly exploitable on PHP 7.x installations. This makes it possible for unauthenticated attackers to read arbitrary sensitive files from the server, including wp-config.php.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13439"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.fancyproductdesigner.com/support/discussions/topics/13000036024"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4fd6df9d-2963-44b1-bc4e-e53eda97a2a9?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T08:15:51Z"
+  }
+}

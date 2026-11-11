@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4x29-79gh-6v8q",
+  "modified": "2026-10-23T21:42:39Z",
+  "published": "2026-06-29T21:32:15Z",
+  "aliases": [
+    "CVE-2026-53434"
+  ],
+  "summary": "Apache Tomcat util accepted misconfigured CRLs",
+  "details": "Detection of Error Condition Without Action vulnerability in Apache Tomcat when configuring Certificate Revocation List (CRLs) for a FFM based connector. If an FFM connector was configured with invalid CRLs, the invalid CRLs were ignored meaning invalid certificates could be accepted.\n\nThis issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.22, from 10.1.0-M7 through 10.1.55, from 9.0.83 through 9.0.118.\n\nUsers are recommended to upgrade to version 11.0.23, 10.1.56 or 9.0.119, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat:tomcat-util"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "11.0.0-M1"
+            },
+            {
+              "fixed": "11.0.23"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 11.0.22"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat:tomcat-util"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "10.1.0-M7"
+            },
+            {
+              "fixed": "10.1.56"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 10.1.55"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.tomcat:tomcat-util"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "9.0.83"
+            },
+            {
+              "fixed": "9.0.119"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 9.0.118"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53434"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/tomcat/commit/7f8ecdbd930d8c5a7fae73aa0eec9124d919e2f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/tomcat/commit/c48ac39c27f4494f8c96b9d56a487253e362d276"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/tomcat/commit/feec60d6099727db6f911534f6a0f6926ebab070"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/x510lbq0sfrd1qyo7q3r1mpllgpdcosk"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/06/29/22"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-390"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-23T21:42:39Z",
+    "nvd_published_at": "2026-06-29T21:16:44Z"
+  }
+}

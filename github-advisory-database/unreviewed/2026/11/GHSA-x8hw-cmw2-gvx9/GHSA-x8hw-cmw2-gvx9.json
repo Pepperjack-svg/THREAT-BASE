@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x8hw-cmw2-gvx9",
+  "modified": "2026-11-03T21:32:00Z",
+  "published": "2026-11-02T18:32:27Z",
+  "aliases": [
+    "CVE-2026-99238"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Hold trace_types_lock when updating modules in persistent instances\n\ntrace_module_record() walks ftrace_trace_arrays from the module notifier\nwithout trace_types_lock. A concurrent rmdir of an instance removes it\nfrom the list and frees it under that lock, so a module load or unload\ncan walk into a freed trace_array.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/244c442f54601a24c86ad90572bf36fc3df41c5e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57408eac99b0d8a005796346d317d31f0ca4e07a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66877a312ae3c2c3d849e82e882f642ffd4ec3e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dab2bd4d67ad5eaa95019a9511f8d379401b5021"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T16:17:49Z"
+  }
+}

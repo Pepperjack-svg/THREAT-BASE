@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3hq9-36qr-g9r9",
+  "modified": "2025-03-14T00:30:50Z",
+  "published": "2025-03-14T00:30:50Z",
+  "aliases": [
+    "CVE-2022-49125"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/sprd: fix potential NULL dereference\n\n'drm' could be null in sprd_drm_shutdown, and drm_warn maybe dereference\nit, remove this warning log.\n\n\nv1 -> v2:\n- Split checking platform_get_resource() return value to a separate patch\n- Use dev_warn() instead of removing the warning log",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8668658aebb0a19d877d5a81c004baf716c4aaa6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3acc8db1bc221604e2db9807f01d8a44b97a64d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:49Z"
+  }
+}

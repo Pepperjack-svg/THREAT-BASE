@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wqgp-m495-6968",
+  "modified": "2026-05-21T21:30:28Z",
+  "published": "2026-03-18T18:31:17Z",
+  "aliases": [
+    "CVE-2025-71269"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: do not free data reservation in fallback from inline due to -ENOSPC\n\nIf we fail to create an inline extent due to -ENOSPC, we will attempt to\ngo through the normal COW path, reserve an extent, create an ordered\nextent, etc. However we were always freeing the reserved qgroup data,\nwhich is wrong since we will use data. Fix this by freeing the reserved\nqgroup data in __cow_file_range_inline() only if we are not doing the\nfallback (ret is <= 0).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71269"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a1fbbd780f04d1b6cf48dd327c866ba937de1c4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a9fd45afadec1fbfec72057b9473d509fa8b68c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3edd1f6c7c520536b62b2904807033597554dbac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6de3a371a8b9fd095198b1aa68c22cc10a4c6961"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8da41de0bff9eb1d774a7253da0c9f637c4470a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-18T18:16:22Z"
+  }
+}

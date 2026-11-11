@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xc26-6hhc-42vj",
+  "modified": "2026-11-06T18:34:59Z",
+  "published": "2026-10-30T15:34:30Z",
+  "aliases": [
+    "CVE-2026-118990"
+  ],
+  "details": "CallBackery versions before 0.62.0 for Perl leave a world-readable dump of the configuration database in /tmp when taking a configuration backup.\n\ngetConfigBlob() has the sqlite3 shell write the dump to /tmp/cbdump<pid> and never removes it. The file takes the process umask, and a symlink planted at that predictable name is followed.\n\nThe dump holds every user's password hash and every value saved by the application's forms. A local user can read these after any backup, and may redirect the dump to a file of their choosing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118990"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/OETIKER/CallBackery-0.62.0/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T13:18:31Z"
+  }
+}

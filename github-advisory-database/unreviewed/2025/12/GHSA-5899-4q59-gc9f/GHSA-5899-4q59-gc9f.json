@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5899-4q59-gc9f",
+  "modified": "2026-08-04T12:34:43Z",
+  "published": "2025-12-24T12:30:27Z",
+  "aliases": [
+    "CVE-2023-53996"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/sev: Make enc_dec_hypercall() accept a size instead of npages\n\nenc_dec_hypercall() accepted a page count instead of a size, which\nforced its callers to round up. As a result, non-page aligned\nvaddrs caused pages to be spuriously marked as decrypted via the\nencryption status hypercall, which in turn caused consistent\ncorruption of pages during live migration. Live migration requires\naccurate encryption status information to avoid migrating pages\nfrom the wrong perspective.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6615212d8e131b45bd9705b0d69cc0d2f624666f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ae7457e71a320867d868f2622d7c643596e4f43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac3f9c9f1b37edaa7d1a9b908bc79d843955a1a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba50e7773a99a109a1ea6f753b766a080d3b21cc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:15:52Z"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xmgr-rx43-m3gf",
+  "modified": "2026-10-15T03:35:46Z",
+  "published": "2026-05-01T15:30:33Z",
+  "aliases": [
+    "CVE-2026-31704"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: use check_add_overflow() to prevent u16 DACL size overflow\n\nset_posix_acl_entries_dacl() and set_ntacl_dacl() accumulate ACE sizes\nin u16 variables. When a file has many POSIX ACL entries, the\naccumulated size can wrap past 65535, causing the pointer arithmetic\n(char *)pndace + *size to land within already-written ACEs. Subsequent\nwrites then overwrite earlier entries, and pndacl->size gets a\ntruncated value.\n\nUse check_add_overflow() at each accumulation point to detect the\nwrap before it corrupts the buffer, consistent with existing\ncheck_mul_overflow() usage elsewhere in smbacl.c.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31704"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/299f962c0b02d048fb45d248b4da493d03f3175d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41e53a773db6342ac9a689ee5ba635c31744c9f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5e7b8f3c539d69b2ed5f2408e2f75e68ce7eef43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d5729350b236896f51379588d9a690b7fafb8db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e1955a94b6f17f4b058afa955a6f187eb3ed7615"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ef7902be3f215b6bf7babe4dc9dd9a7d57dad7a7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T14:16:20Z"
+  }
+}

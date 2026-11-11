@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wr8j-3xx4-g2v5",
+  "modified": "2026-10-12T18:31:43Z",
+  "published": "2026-10-12T18:31:43Z",
+  "aliases": [
+    "CVE-2026-109283"
+  ],
+  "details": "Open WebUI from 0.11.1 before 0.11.4 contains an authorization bypass in the OAuth token exchange endpoint, which reads role claims only from the provider's userinfo response and keeps the user's existing role when no roles claim is found, ignoring roles sent only in the ID token. Users with a linked account whose identity provider role no longer satisfies the OAuth role policy can send a valid provider access token to POST /api/v1/auths/oauth/{provider}/token/exchange to obtain a session retaining their previous role.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-webui/open-webui/security/advisories/GHSA-2rr4-q6pg-m5g3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109283"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/open-webui-0.11.1-before-0.11.4-authorization-bypass-via-oauth-token-exchange"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T17:17:21Z"
+  }
+}

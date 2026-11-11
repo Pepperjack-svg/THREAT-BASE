@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2j82-cf92-x9qh",
+  "modified": "2026-10-15T03:35:13Z",
+  "published": "2026-02-04T18:30:43Z",
+  "aliases": [
+    "CVE-2026-23084"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbe2net: Fix NULL pointer dereference in be_cmd_get_mac_from_list\n\nWhen the parameter pmac_id_valid argument of be_cmd_get_mac_from_list() is\nset to false, the driver may request the PMAC_ID from the firmware of the\nnetwork card, and this function will store that PMAC_ID at the provided\naddress pmac_id. This is the contract of this function.\n\nHowever, there is a location within the driver where both\npmac_id_valid == false and pmac_id == NULL are being passed. This could\nresult in dereferencing a NULL pointer.\n\nTo resolve this issue, it is necessary to pass the address of a stub\nvariable to the function.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23084"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/31410a01a86bcb98c798d01061abf1f789c4f75a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47ffb4dcffe336f4a7bd0f3284be7aadc6484698"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4cba480c9b9a3861a515262225cb53a1f5978344"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c3e00888dbec887125a08b51a705b9b163fcdd1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8215794403d264739cc676668087512950b2ff31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92c6dc181a18e6e0ddb872ed35cb48a9274829e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e206fb415db36bad52bb90c08d46ce71ffbe8a80"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-04T17:16:19Z"
+  }
+}

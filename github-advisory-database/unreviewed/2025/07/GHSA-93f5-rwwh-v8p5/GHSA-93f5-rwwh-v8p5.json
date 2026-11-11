@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-93f5-rwwh-v8p5",
+  "modified": "2026-05-12T15:30:57Z",
+  "published": "2025-07-25T15:30:52Z",
+  "aliases": [
+    "CVE-2025-38393"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSv4/pNFS: Fix a race to wake on NFS_LAYOUT_DRAIN\n\nWe found a few different systems hung up in writeback waiting on the same\npage lock, and one task waiting on the NFS_LAYOUT_DRAIN bit in\npnfs_update_layout(), however the pnfs_layout_hdr's plh_outstanding count\nwas zero.\n\nIt seems most likely that this is another race between the waiter and waker\nsimilar to commit ed0172af5d6f (\"SUNRPC: Fix a race to wake a sync task\").\nFix it up by applying the advised barrier.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38393"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08287df60bac5b008b6bcdb03053988335d3d282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f4da20080718f258e189a2c5f515385fa393da6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/864a54c1243ed3ca60baa4bc492dede1361f4c83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8846fd02c98da8b79e6343a20e6071be6f372180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ca65fa71024a1767a59ffbc6a6e2278af84735e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c01776287414ca43412d1319d2877cbad65444ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e4b13885e7ef1e64e45268feef1e5f0707c47e72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T13:15:28Z"
+  }
+}

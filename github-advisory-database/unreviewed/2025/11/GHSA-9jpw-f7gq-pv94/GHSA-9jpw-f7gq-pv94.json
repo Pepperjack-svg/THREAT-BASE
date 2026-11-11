@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9jpw-f7gq-pv94",
+  "modified": "2025-11-18T06:30:25Z",
+  "published": "2025-11-18T06:30:25Z",
+  "aliases": [
+    "CVE-2025-12974"
+  ],
+  "details": "The Gravity Forms plugin for WordPress is vulnerable to arbitrary file uploads due to missing file type validation in the legacy chunked upload mechanism in all versions up to, and including, 2.9.21.1. This is due to the extension blacklist not including .phar files, which can be uploaded through the chunked upload mechanism. This makes it possible for unauthenticated attackers to upload executable .phar files and achieve remote code execution on the server, granted they can discover or enumerate the upload path. In order for an attacker to achieve RCE, the web server needs to be set up to process .phar file as PHP via file handler mapping or similar.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12974"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.gravityforms.com/gravityforms-change-log"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pronamic/gravityforms/blob/06de1b7e169e4f073e9d0d491e17b89365b48c20/common/common.php#L4178"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pronamic/gravityforms/blob/06de1b7e169e4f073e9d0d491e17b89365b48c20/includes/upload.php#L97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b6395439-da45-4b64-8e30-b106dffd46c1?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-18T04:15:43Z"
+  }
+}

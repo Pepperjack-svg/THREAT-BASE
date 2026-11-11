@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mg6p-rh4v-v7jm",
+  "modified": "2025-12-24T15:30:35Z",
+  "published": "2025-12-24T15:30:35Z",
+  "aliases": [
+    "CVE-2023-54047"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/rockchip: dw_hdmi: cleanup drm encoder during unbind\n\nThis fixes a use-after-free crash during rmmod.\n\nThe DRM encoder is embedded inside the larger rockchip_hdmi,\nwhich is allocated with the component. The component memory\ngets freed before the main drm device is destroyed. Fix it\nby running encoder cleanup before tearing down its container.\n\n[moved encoder cleanup above clk_disable, similar to bind-error-path]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54047"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/110d4202522373d629d14597af9bac97eb58bd67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/218fe9b624545f4bcfb16cdb35ac3d60c8b0d8c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5af48eedcb53491c02ded55d5991e03d6da6dbf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:06Z"
+  }
+}

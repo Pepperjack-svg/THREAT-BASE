@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3f3-rf6r-43x5",
+  "modified": "2025-12-10T20:16:07Z",
+  "published": "2025-12-10T18:30:27Z",
+  "aliases": [
+    "CVE-2025-67641"
+  ],
+  "summary": "Jenkins Coverage Plugin has a stored cross-site scripting (XSS) vulnerability",
+  "details": "Jenkins Coverage Plugin 2.3054.ve1ff7b_a_a_123b_ and earlier does not validate the configured coverage results ID when creating coverage results, only when submitting the job configuration through the UI, allowing attackers with Item/Configure permission to use a `javascript:` scheme URL as identifier by configuring the job through the REST API, resulting in a stored cross-site scripting (XSS) vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.jenkins.plugins:coverage"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.3056"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-67641"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/coverage-plugin/commit/1dfe888b02499d39185397862cf2790efc03e955"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/coverage-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2025-12-10/#SECURITY-3611"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-10T20:16:07Z",
+    "nvd_published_at": "2025-12-10T17:15:56Z"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4m3h-wp5w-5hqh",
+  "modified": "2026-06-05T14:26:02Z",
+  "published": "2026-03-17T12:30:19Z",
+  "aliases": [
+    "CVE-2026-26929"
+  ],
+  "summary": "Apache Airflow: Wildcard DagVersion Listing Bypasses Per‑DAG RBAC and Leaks Metadata",
+  "details": "Apache Airflow versions 3.0.0 through 3.1.7 FastAPI DagVersion listing API does not apply per-DAG authorization filtering when the request is made with dag_id set to \"~\" (wildcard for all DAGs). As a result, version metadata of DAGs that the requester is not authorized to access is returned.\n\n\nUsers are recommended to upgrade to Apache Airflow 3.1.8 or later, which resolves this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "apache-airflow"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.1.8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26929"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/61675"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/airflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/apache-airflow/PYSEC-2026-14.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/g5o6khx83jwqvdyn0mlyb0krt35cs9ss"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/03/17/4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-732"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-18T16:19:16Z",
+    "nvd_published_at": "2026-03-17T11:16:11Z"
+  }
+}

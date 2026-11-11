@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6xjg-5qmq-rh74",
+  "modified": "2026-10-27T18:31:53Z",
+  "published": "2026-10-27T18:31:53Z",
+  "aliases": [
+    "CVE-2026-16491"
+  ],
+  "details": "Grafana’s RBAC service ignored the requested folder when checking whether a user was a folder administrator for deleted dashboard listings. A user with dashboard permission-management rights on any folder could therefore be treated as an administrator of every folder.\n\nThis could expose deleted dashboard items from folders where the user lacked administrative access. The fix requires permission on the specified folder, an ancestor, or a wildcard scope.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16491"
+    },
+    {
+      "type": "WEB",
+      "url": "https://grafana.com/security/security-advisories/cve-2026-16491"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-27T18:17:37Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3r3h-q9jp-47gf",
+  "modified": "2026-10-21T15:41:59Z",
+  "published": "2026-10-18T18:32:03Z",
+  "aliases": [
+    "CVE-2026-98781"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mediatek: Fix pdev reference leak in mtk_drm_bind()\n\nWhen the device is not the mmsys master, mtk_drm_bind() returns early\nafter taking a reference on the disp-mutex device via\nof_find_device_by_node(), without ever dropping it: mtk_drm_unbind()\nonly puts mutex_dev for the master. Drop the reference before returning\nfrom the non-master path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3753e34b73fcbe2a2edbe984614a008a261697ef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a0ae61067671f556eeaf5ea4e59a1db63163d70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a8f9cad0fced77b36b297c67c42730c9cb32ec6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b84f1386d84b3a73f73ebb416a3f97c5d64a8ab3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb3e0244514d13507c6048777e1d0277e611cf6c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:32Z"
+  }
+}

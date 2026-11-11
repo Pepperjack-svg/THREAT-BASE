@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3qfq-f4q6-pq76",
+  "modified": "2026-05-20T21:31:33Z",
+  "published": "2026-05-20T21:31:33Z",
+  "aliases": [
+    "CVE-2026-9129"
+  ],
+  "details": "A path traversal vulnerability exists in the Altium Enterprise Server Viewer StorageController due to improper handling of file path route parameters. On on-premise deployments that use local filesystem storage, a regular authenticated user can supply a URL-encoded absolute path (such as an encoded drive letter) in a Viewer storage API request, causing the configured storage root to be discarded and allowing arbitrary files to be read from the server filesystem.\n\n\n\n\n\n\n\n\nBecause the readable files include the server's master configuration, which stores database credentials, signing key locations, certificate passwords, and OAuth secrets, exploitation can lead to disclosure of all server secrets and full compromise of the server and its data. Cloud deployments are not affected, as they use object storage and do not enable this component.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9129"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.altium.com/platform/security-compliance/security-advisories"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-20T20:16:45Z"
+  }
+}

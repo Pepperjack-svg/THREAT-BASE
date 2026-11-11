@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8hq9-phh3-p2wp",
+  "modified": "2026-03-19T19:01:12Z",
+  "published": "2026-03-17T16:17:41Z",
+  "aliases": [
+    "CVE-2026-31865"
+  ],
+  "summary": "Elysia Cookie Value Prototype Pollution",
+  "details": "### Impact\nElysia cookie can be overridden by prototype pollution , eg. `__proto__`\n\nSending cookie with the follows name can override cookie value:\n```bash\n__proto__=%7B%22injected%22%3A%22polluted%22%7D\n```\n\n### Patches\nPatched by 1.4.27\n\n### Workarounds\n1. Use t.Cookie validation to enforce validation value\n2. Prevent iterable over cookie if possible",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "elysia"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.4.27"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/elysiajs/elysia/security/advisories/GHSA-8hq9-phh3-p2wp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31865"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/elysiajs/elysia/commit/e9d6b1743fa7368ef942dce181f6a089757f6aab"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/elysiajs/elysia"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1321"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-17T16:17:41Z",
+    "nvd_published_at": "2026-03-18T04:17:19Z"
+  }
+}

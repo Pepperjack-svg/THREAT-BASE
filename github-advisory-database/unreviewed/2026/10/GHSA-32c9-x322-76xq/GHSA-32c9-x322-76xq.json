@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-32c9-x322-76xq",
+  "modified": "2026-10-14T15:32:20Z",
+  "published": "2026-10-14T15:32:20Z",
+  "aliases": [
+    "CVE-2026-98411"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: sequencing: fix NULL-pointer dereference in pwrseq_device_register()\n\nIf dev_set_name() fails in pwrseq_device_register(), we jump to the\nerr_put_pwrseq label before initializing pwrseq->targets.\npwrseq_release() will try to iterate over targets unconditionally and\nsubsequently dereference an invalid pointer. Move the call to\ndev_set_name() after the list head is initialized.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98411"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/242da4318d97380741516b595af3920207b2f0f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2890c1eb96d1dd0bec1cce5fbc4ed5af1dfd55d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2fb51ec8920279e9e908010f37b448775f42eff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/efe21a5c5bfe23bd30a8e4ba4e2b04ae265348bb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T14:17:52Z"
+  }
+}

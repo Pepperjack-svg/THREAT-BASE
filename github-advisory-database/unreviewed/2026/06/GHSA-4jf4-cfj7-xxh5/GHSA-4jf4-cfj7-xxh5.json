@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4jf4-cfj7-xxh5",
+  "modified": "2026-06-02T21:30:43Z",
+  "published": "2026-06-02T21:30:43Z",
+  "aliases": [
+    "CVE-2026-5074"
+  ],
+  "details": "The ARMember Premium plugin for WordPress is vulnerable to SQL Injection via the 'sSortDir_0' parameter of the `get_private_content_data` AJAX action in all versions up to, and including, 7.3.1. This is due to insufficient sanitization of the user-supplied parameter which is concatenated directly into the ORDER BY clause of an SQL query without a whitelist check. This makes it possible for authenticated attackers, with Subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Note: The vulnerability can only be exploited if the \"User Private Content\" addon is enabled, which is disabled by default..",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5074"
+    },
+    {
+      "type": "WEB",
+      "url": "https://codecanyon.net/item/armember-complete-wordpress-membership-system/17785056"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/76664f7a-b27d-4f2c-9314-92f4515c359f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-02T20:16:40Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-frxv-g6p8-4jv8",
+  "modified": "2026-11-10T00:31:44Z",
+  "published": "2026-11-10T00:31:44Z",
+  "aliases": [
+    "CVE-2026-125369"
+  ],
+  "details": "Bitpoll through 0.11.0 contains an insecure direct object reference vulnerability that allows unauthenticated attackers to read votes and comments from other polls via unscoped object lookups in views.py. Attackers can pair any public poll slug with sequential vote or comment IDs in vote, vote_delete, vote_assign, or delete_comment GET requests to read names and comments from restricted polls.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125369"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fsinfuhh/Bitpoll/issues/206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fsinfuhh/Bitpoll/commit/71013d36a4d587e672eba225d94f7b94cd412ef9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fsinfuhh/Bitpoll"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fsinfuhh/Bitpoll/blob/0.11.0/bitpoll/poll/views.py#L994"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bitpoll-through-0.11.0-unauthenticated-vote-and-comment-disclosure-via-unscoped-lookups"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T00:17:09Z"
+  }
+}

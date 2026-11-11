@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3hxp-mvw5-v9p7",
+  "modified": "2026-06-16T06:30:24Z",
+  "published": "2026-06-16T06:30:24Z",
+  "aliases": [
+    "CVE-2026-10780"
+  ],
+  "details": "The Static Block plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 2.2. This is due to the static_block_content() shortcode handler retrieving a post via get_post() using an attacker-supplied 'id' attribute and outputting its post_content without verifying the post's status (private, draft, pending) or the requesting user's capability to view it. This makes it possible for authenticated attackers, with contributor-level access and above, to read the contents of arbitrary posts, including private and draft static blocks (and any other post type) created by administrators, by embedding the [static_block_content id=\"X\"] shortcode in their own content and previewing it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10780"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/static-block/trunk/static-block.php#L244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/static-block/trunk/static-block.php#L268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/static-block/trunk/static-block.php#L270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f88c00ca-cf9e-44e7-9495-686ace1ead21?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-16T06:16:58Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5p88-6546-29fh",
+  "modified": "2025-11-08T00:31:01Z",
+  "published": "2025-11-08T00:31:01Z",
+  "aliases": [
+    "CVE-2025-37736"
+  ],
+  "details": "Improper Authorization in Elastic Cloud Enterprise can lead to Privilege Escalation where the built-in readonly user can call APIs that should not be allowed. The list of APIs that are affected by this issue is:\n\n\n\n\n\npost:/platform/configuration/security/service-accounts\ndelete:/platform/configuration/security/service-accounts/{user_id}\npatch:/platform/configuration/security/service-accounts/{user_id}\npost:/platform/configuration/security/service-accounts/{user_id}/keys\ndelete:/platform/configuration/security/service-accounts/{user_id}/keys/{api_key_id}\npatch:/user\npost:/users\npost:/users/auth/keys\ndelete:/users/auth/keys\ndelete:/users/auth/keys/_all\ndelete:/users/auth/keys/{api_key_id}\ndelete:/users/{user_id}/auth/keys\ndelete:/users/{user_id}/auth/keys/{api_key_id}\ndelete:/users/{user_name}\npatch:/users/{user_name}",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37736"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/elastic-cloud-enterprise-ece-3-8-3-and-4-0-3-security-update-esa-2025-22/383132"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-07T23:15:44Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xf8v-f779-856c",
+  "modified": "2026-10-12T18:31:34Z",
+  "published": "2026-10-12T18:31:34Z",
+  "aliases": [
+    "CVE-2026-109399"
+  ],
+  "details": "SWUpdate through 2026.05.1 contains an improper certificate validation vulnerability in crypto/swupdate_cms_verify_openssl.c that trusts untrusted X.509 certificates embedded in CMS SignedData for chain building. Attackers holding a signing key from a sibling intermediate under the same root can embed that intermediate in the signature to install malicious updates.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109399"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sbabic/swupdate/commit/e66c5640664a31668926a24c0c84b6b6570dc0d9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sbabic/swupdate"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sbabic/swupdate/blob/2026.05.1/crypto/swupdate_cms_verify_openssl.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://groups.google.com/g/swupdate/c/dsoMcGFnEns"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/swupdate-through-2026.05.1-cms-signature-verification-bypass-via-embedded-intermediates"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T16:17:05Z"
+  }
+}

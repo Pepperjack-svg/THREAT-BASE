@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hjhx-c2pg-c62c",
+  "modified": "2026-10-18T18:31:56Z",
+  "published": "2026-10-18T18:31:56Z",
+  "aliases": [
+    "CVE-2026-98614"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: avoid livelock while updating retransmit path\n\nsctp_assoc_update_retran_path() can loop forever when every remaining\ntransport, including retran_path, is SCTP_UNCONFIRMED: the state check\nruns before the wraparound test, so the loop cannot observe that it has\ncompleted a full pass.\n\nFix this by considering a transport only when it is not UNCONFIRMED,\nthen checking whether the walk has returned to retran_path. This makes\nthe full-pass termination independent of the transport state while\npreserving the existing fallback selection semantics.\n\nAlso restore the NULL guard around the retran_path assignment. In the\nall-UNCONFIRMED case there is no eligible replacement transport, and\ninstalling NULL would leave later retransmit-path users and the debug\nprint with a NULL path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98614"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/173610fff55022a5ad1579fbcc7faa97467b58b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3fe624c3843694ab096fdb198526ba0c659febbe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/43410c1f2db53516e95ddd7e5b4b02f495b78121"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83b1a7f9e718828ef364a7b004254ebb2d0035fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9338057df1025f578fe7d0ff08bada87b8b838d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2c31b837406395e576afeb25958c98e9938f3f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d893a7cc1cb41dd510f338bb2bfd8f29b14eaf49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ddc34cc0834c873871e88b055ee6a260676efe97"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:14Z"
+  }
+}

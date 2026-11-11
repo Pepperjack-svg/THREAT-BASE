@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9fjc-whw6-cqfc",
+  "modified": "2026-06-26T18:33:59Z",
+  "published": "2026-06-26T18:33:59Z",
+  "aliases": [
+    "CVE-2026-13434"
+  ],
+  "details": "A flaw was found in KubeVirt's network annotation generator. When a tenant creates a VirtualMachineInstance with a Multus network configuration, the supplied networkName value is written verbatim into the launcher pod's v1.multus-cni.io/default-network annotation without format validation or sanitization. The only admission check rejects empty strings; no DNS-1123 format validation, JSON detection, or special character rejection is performed. When the ExternalNetResourceInjection Beta feature gate is enabled (off by default, cluster-admin only), the NAD lookup that would otherwise catch malformed names is skipped by design. A tenant with kubevirt.io:edit permissions can inject a JSON-formatted NetworkSelectionElement array specifying an arbitrary namespace, NAD name, static IP address, and MAC address. Multus on the node parses this JSON and attaches the launcher pod to the specified network attachment in any namespace, enabling cross-namespace network access and IP/MAC impersonation on network segments normally segregated from tenant workloads. The ExternalNetResourceInjection feature gate was introduced in KubeVirt v1.8.0 (first shipped in OpenShift Virtualization 4.21).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13434"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-13434"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2493576"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-26T17:16:32Z"
+  }
+}

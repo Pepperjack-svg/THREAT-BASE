@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wvpm-52pr-rww8",
+  "modified": "2026-10-29T00:31:24Z",
+  "published": "2026-10-29T00:31:23Z",
+  "aliases": [
+    "CVE-2026-118682"
+  ],
+  "details": "KaringX ClashMi through 1.0.32.1801 disables TLS certificate validation by default in the HttpUtils helper, allowing attackers to intercept HTTPS traffic by presenting any certificate. Attackers operating the user's proxy node can serve a forged update manifest omitting sha256 to deliver a malicious installer, achieving code execution when the update runs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118682"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/KaringX/clashmi/issues/605"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/KaringX/clashmi"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/KaringX/clashmi/blob/v1.0.32.1801/lib/app/modules/auto_update_manager.dart#L293"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/KaringX/clashmi/blob/v1.0.32.1801/lib/app/modules/setting_manager.dart#L225"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/KaringX/clashmi/blob/v1.0.32.1801/lib/app/utils/http_utils.dart#L674-L676"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/clashmi-through-1.0.32.1801-disabled-tls-certificate-validation-enables-update-mitm"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T22:17:12Z"
+  }
+}

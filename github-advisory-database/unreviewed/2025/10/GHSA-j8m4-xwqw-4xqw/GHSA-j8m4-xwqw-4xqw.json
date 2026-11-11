@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j8m4-xwqw-4xqw",
+  "modified": "2026-02-04T18:30:19Z",
+  "published": "2025-10-07T18:31:08Z",
+  "aliases": [
+    "CVE-2022-50515"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix memory leak in hpd_rx_irq_create_workqueue()\n\nIf construction of the array of work queues to handle hpd_rx_irq offload\nwork fails, we need to unwind. Destroy all the created workqueues and\nthe allocated memory for the hpd_rx_irq_offload_work_queue struct array.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50515"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ba3814c00a4817eb1cd31eff08d921c40e5f3a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/600de40ed50c8b5ecb9c7a4f41eb882066c15a00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7136f956c73c4ba50bfeb61653dfd6a9669ea915"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b8da09da2701330e7f2c371655887e3d7defe90"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:35Z"
+  }
+}

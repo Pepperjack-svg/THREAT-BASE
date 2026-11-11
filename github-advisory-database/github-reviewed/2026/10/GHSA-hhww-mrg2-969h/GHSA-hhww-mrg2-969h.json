@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hhww-mrg2-969h",
+  "modified": "2026-10-27T15:31:56Z",
+  "published": "2026-10-27T15:31:56Z",
+  "aliases": [],
+  "summary": "LiteLLM vulnerable to reflected XSS in /sso/debug/callback",
+  "details": "### Summary\n\nThe `/sso/debug/callback` endpoint reflected identity-provider-controlled fields into an inline `<script>` block via `json.dumps`, which escapes JSON string syntax but not HTML context characters such as `</script>`. An IdP-returned string field containing `</script>` (for example a user-editable display name) closed the script block and executed attacker JavaScript in the proxy's origin.\n\n### Impact\n\nReflected XSS on the LiteLLM proxy origin. The route required no authentication, so an attacker with an account on the configured IdP whose claims pass such strings through verbatim could complete the SSO flow themselves and deliver the resulting callback URL to a logged-in proxy admin. Scripts executing in the proxy origin can read the dashboard session cookie and act with the victim's privileges, up to full admin account takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "litellm"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.65.5"
+            },
+            {
+              "fixed": "1.85.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/BerriAI/litellm/security/advisories/GHSA-hhww-mrg2-969h"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BerriAI/litellm/pull/27498"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BerriAI/litellm/commit/13a193367f0ae2e7e8b29913e0d23a32d3bb0457"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/BerriAI/litellm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.85.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-27T15:31:56Z",
+    "nvd_published_at": null
+  }
+}

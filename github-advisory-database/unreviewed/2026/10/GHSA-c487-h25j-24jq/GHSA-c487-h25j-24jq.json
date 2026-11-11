@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c487-h25j-24jq",
+  "modified": "2026-10-13T18:30:26Z",
+  "published": "2026-10-07T03:30:23Z",
+  "aliases": [
+    "CVE-2026-16516"
+  ],
+  "details": "wolfSSH does not validate that the ECDSA curve identifier in a KEXDH_REPLY host key blob matches the algorithm negotiated during key exchange. In ParseECCPubKey() (src/internal.c), the blob's algorithm string is used to derive the curve via NameToId/wcPrimeForId without checking against the negotiated ssh->handshake->pubKeyId, and the RFC 5656 curve identifier string is discarded via GetSkip() rather than compared. An active network man-in-the-middle attacker can substitute a host key blob containing a different ECDSA curve, causing the client to import the key on the wrong curve. Because the attacker controls the private key for the substituted curve, signature verification passes. Exploitation requires an active MitM position and a lax public key check callback (e.g., TOFU, algorithm-name-only check, or fingerprint match against the parsed key).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:H/VA:N/SC:L/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16516"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wolfSSL/wolfssh/issues/1012"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wolfSSL/wolfssh/commit/31d13697a608fa1bf9eec11aa6eff1503ade836f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-07T03:16:58Z"
+  }
+}

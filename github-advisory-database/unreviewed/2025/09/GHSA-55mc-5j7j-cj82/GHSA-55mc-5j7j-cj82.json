@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-55mc-5j7j-cj82",
+  "modified": "2025-12-04T15:30:30Z",
+  "published": "2025-09-15T15:31:27Z",
+  "aliases": [
+    "CVE-2022-50317"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/bridge: megachips: Fix a null pointer dereference bug\n\nWhen removing the module we will get the following warning:\n\n[   31.911505] i2c-core: driver [stdp2690-ge-b850v3-fw] unregistered\n[   31.912484] general protection fault, probably for non-canonical address 0xdffffc0000000001: 0000 [#1] PREEMPT SMP KASAN PTI\n[   31.913338] KASAN: null-ptr-deref in range [0x0000000000000008-0x000000000000000f]\n[   31.915280] RIP: 0010:drm_bridge_remove+0x97/0x130\n[   31.921825] Call Trace:\n[   31.922533]  stdp4028_ge_b850v3_fw_remove+0x34/0x60 [megachips_stdpxxxx_ge_b850v3_fw]\n[   31.923139]  i2c_device_remove+0x181/0x1f0\n\nThe two bridges (stdp2690, stdp4028) do not probe at the same time, so\nthe driver does not call ge_b850v3_resgiter() when probing, causing the\ndriver to try to remove the object that has not been initialized.\n\nFix this by checking whether both the bridges are probed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50317"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1daf69228e310938177119c4eadcd30fc75c81e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ff673333d46d2c1b053ebd0c1c7c7c79e36943e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21764467ab396d9f08921e0a5ffa1214244e1ad9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4610e7a4111fa3f3ce27c09d6d94008c55f1cd31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5bc20bafcd87ba0858ab772cefc7047cb51bc249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7371fad5cfe6eada6bb5523c895fd6074b15c2b9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/877e92e9b1bdeb580b31a46061005936be902cd4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aaa512ad1e59f2edf8a9e4f2b167a44b24670679"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T15:15:43Z"
+  }
+}

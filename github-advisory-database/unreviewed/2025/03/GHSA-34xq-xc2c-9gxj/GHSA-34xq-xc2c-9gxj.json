@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-34xq-xc2c-9gxj",
+  "modified": "2025-03-10T21:31:11Z",
+  "published": "2025-03-10T21:31:11Z",
+  "aliases": [
+    "CVE-2022-49594"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: Fix a data-race around sysctl_tcp_mtu_probe_floor.\n\nWhile reading sysctl_tcp_mtu_probe_floor, it can be changed concurrently.\nThus, we need to add READ_ONCE() to its reader.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49594"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/033963b220633ed1602d458e7e4ac06afa9fefb2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e92d4423615a5257d0d871fc067aa561f597deb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc36c37f5fe066c4708e623ead96dc8f57224bf5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5bece4df6090395f891110ef52a6f82d16685db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2ecbf3f0aa88277d43908c53b99399d55729ff9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:34Z"
+  }
+}

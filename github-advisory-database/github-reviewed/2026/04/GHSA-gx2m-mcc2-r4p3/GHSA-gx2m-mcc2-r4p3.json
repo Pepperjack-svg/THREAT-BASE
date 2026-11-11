@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gx2m-mcc2-r4p3",
+  "modified": "2026-05-12T13:27:31Z",
+  "published": "2026-04-24T20:43:30Z",
+  "aliases": [
+    "CVE-2026-42150"
+  ],
+  "summary": "wlc: print_html outputs API data without HTML escaping",
+  "details": "### Impact\nThe HTML output format in wlc embeds API response data into HTML without escaping, allowing cross-site scripting when the output is rendered in a browser.\n\n\n### Patches\n* https://github.com/WeblateOrg/wlc/pull/1327\n\n### Workarounds\nThe only vulnerable code path is HTML output which is opt-in.\n\n### References\nWeblate thanks @fg0x0 for reporting this on GitHub.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:C/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "wlc"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/security/advisories/GHSA-gx2m-mcc2-r4p3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42150"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/pull/1327"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/commit/0f3e58f6d7457b05d48ef40f579a172c4c8b8469"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/WeblateOrg/wlc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/releases/tag/2.0.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-24T20:43:30Z",
+    "nvd_published_at": "2026-05-08T04:16:18Z"
+  }
+}

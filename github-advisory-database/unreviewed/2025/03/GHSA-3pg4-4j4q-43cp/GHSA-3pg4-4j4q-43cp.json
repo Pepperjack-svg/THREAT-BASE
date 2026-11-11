@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3pg4-4j4q-43cp",
+  "modified": "2025-03-07T21:31:04Z",
+  "published": "2025-03-07T21:31:04Z",
+  "aliases": [
+    "CVE-2022-49718"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/apple-aic: Fix refcount leak in aic_of_ic_init\n\nof_get_child_by_name() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49718"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d45670fab3c25a7452721e4588cc95c51cda134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c0010d1dc67c89bcc857c46f542efe318f84ddc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:47Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7wxp-97wr-wj5g",
+  "modified": "2025-10-28T12:30:16Z",
+  "published": "2025-10-28T12:30:16Z",
+  "aliases": [
+    "CVE-2025-40033"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nremoteproc: pru: Fix potential NULL pointer dereference in pru_rproc_set_ctable()\n\npru_rproc_set_ctable() accessed rproc->priv before the IS_ERR_OR_NULL\ncheck, which could lead to a null pointer dereference. Move the pru\nassignment, ensuring we never dereference a NULL rproc pointer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40033"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66821fdb723d55b25482a76b92d17d416efeae6b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9b6d789591f2bd57b0cbd59592493e11e029ed4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d41e075b077142bb9ae5df40b9ddf9fd7821a811"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0164d89950120281f2446be9687cffa1e43dbcc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-28T12:15:37Z"
+  }
+}

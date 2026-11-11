@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-995f-rphp-2rcg",
+  "modified": "2026-05-02T12:31:22Z",
+  "published": "2026-05-02T12:31:22Z",
+  "aliases": [
+    "CVE-2026-4100"
+  ],
+  "details": "The Paid Memberships Pro plugin for WordPress is vulnerable to unauthorized modification and disruption of Stripe webhook configuration in all versions up to, and including, 3.6.5. This is due to missing capability checks on the `wp_ajax_pmpro_stripe_create_webhook`, `wp_ajax_pmpro_stripe_delete_webhook`, and `wp_ajax_pmpro_stripe_rebuild_webhook` AJAX handlers. This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete, create, or rebuild the site's Stripe webhook, disrupting all payment processing, subscription renewal synchronization, cancellation handling, and failed payment management.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4100"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/strangerstudios/paid-memberships-pro/pull/3615"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5b333a3d-e416-42aa-9722-5406df0a64b3?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-02T12:16:16Z"
+  }
+}

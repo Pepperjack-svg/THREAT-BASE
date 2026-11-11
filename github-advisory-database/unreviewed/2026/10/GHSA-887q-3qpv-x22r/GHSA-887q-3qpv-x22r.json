@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-887q-3qpv-x22r",
+  "modified": "2026-10-21T15:41:59Z",
+  "published": "2026-10-18T18:32:04Z",
+  "aliases": [
+    "CVE-2026-98808"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: systemport: Fix buffer overflow in bcm_sysport_get_stats()\n\nWhen running on SYSTEMPORT Lite, certain statistics are unsupported and\nskipped during bcm_sysport_get_stats(). The variable 'j' tracks the\ncompacted index into the destination data buffer, whereas 'i' iterates\nover all elements in bcm_sysport_gstrings_stats.\n\nBecause the buffer allocated by ethtool is sized only according to\nbcm_sysport_get_sset_count(), storing values at data[i] instead of\ndata[j] writes past the allocated array bounds, leading to memory\ncorruption.\n\nFix this by writing to data[j] instead of data[i].",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98808"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29d1d35ad5ad379a904263ea1cd4ba1d71cd965f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96a2b042051553df0d9f03b518dd3b7105b36935"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96d8b26be5bc451188acdcee055948da45adbde0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb7b84af0ec5c71b4920e999611b466b3784496c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/faba9fdde480356f4a1d3b1a5713b7b354858a1c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:34Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rx8r-4hqr-25gw",
+  "modified": "2026-10-10T06:31:00Z",
+  "published": "2026-10-10T06:31:00Z",
+  "aliases": [
+    "CVE-2026-97643"
+  ],
+  "details": "The GiveWP – Donation Plugin and Fundraising Platform plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's `givewp_campaign_grid` shortcode in versions up to, and including, 4.17.0 This is due to insufficient input sanitization and output escaping on user supplied shortcode attributes (`filter_by`, `layout`, `sort_by`, `order_by`) in the CampaignGridShortcode::parseAttributes() function combined with the render template emitting `json_encode($attributes)` inside a single-quoted HTML attribute without esc_attr() — json_encode() does not escape single quotes by default, so a `'` in an attribute value breaks out of the enclosing attribute. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97643"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/impress-org/givewp/releases/tag/4.18.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/give/tags/4.17.0/src/Campaigns/Actions/RegisterCampaignShortcodes.php#L28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/give/tags/4.17.0/src/Campaigns/Blocks/CampaignGrid/render.php#L6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/give/tags/4.17.0/src/Campaigns/Shortcodes/CampaignGridShortcode.php#L22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/give/tags/4.17.0/src/Campaigns/Shortcodes/CampaignGridShortcode.php#L91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/give/tags/4.17.0/src/Campaigns/Shortcodes/ShortcodeRenderController.php#L65"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/cc825b2f-43d0-42f0-972d-7d361f7e0b59?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T06:16:45Z"
+  }
+}

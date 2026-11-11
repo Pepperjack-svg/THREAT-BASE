@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g4p6-4x9w-qfq5",
+  "modified": "2026-10-15T12:30:34Z",
+  "published": "2026-05-06T12:30:33Z",
+  "aliases": [
+    "CVE-2026-43228"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhfs: Replace BUG_ON with error handling for CNID count checks\n\nIn a06ec283e125 next_id, folder_count, and file_count in the super block\ninfo were expanded to 64 bits, and BUG_ONs were added to detect\noverflow. This triggered an error reported by syzbot: if the MDB is\ncorrupted, the BUG_ON is triggered. This patch replaces this mechanism\nwith proper error handling and resolves the syzbot reported bug.\n\nSinged-off-by: Jori Koolstra <jkoolstra@xs4all.nl>",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/559f856b109c45844816a1693e259f93d3556c61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b226804532a875c10276168dc55ce752944096bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b6536c1ced315fa645576d3a39c6e07f2a472962"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-617"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:42Z"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ggj2-v6c6-rgh4",
+  "modified": "2026-05-12T15:30:52Z",
+  "published": "2025-05-20T18:30:57Z",
+  "aliases": [
+    "CVE-2025-37968"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: light: opt3001: fix deadlock due to concurrent flag access\n\nThe threaded IRQ function in this driver is reading the flag twice: once to\nlock a mutex and once to unlock it. Even though the code setting the flag\nis designed to prevent it, there are subtle cases where the flag could be\ntrue at the mutex_lock stage and false at the mutex_unlock stage. This\nresults in the mutex not being unlocked, resulting in a deadlock.\n\nFix it by making the opt3001_irq() code generally more robust, reading the\nflag into a variable and using the variable value at both stages.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37968"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d7def97e7eb65865ccc01bbdf4eb9e6bbe8a5b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c95c8f0959d0a72575eabf2ff888f47ed6d8b77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/748ebd8e61d0bc182c331b8df3887af7285c8a8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ca84f6a22d50bf8b31efe9eb05f9859947266d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/957e8be112636d9bc692917286e81e54bd87decc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9c56ccb7cddfca754291fb24b108a5350a5fbe9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e791bf216c9e236b34dabf514ec0ede140cca719"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f063a28002e3350088b4577c5640882bf4ea17ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-20T17:15:47Z"
+  }
+}

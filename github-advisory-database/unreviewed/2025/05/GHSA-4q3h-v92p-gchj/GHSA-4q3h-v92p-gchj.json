@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4q3h-v92p-gchj",
+  "modified": "2025-05-20T12:30:23Z",
+  "published": "2025-05-20T12:30:23Z",
+  "aliases": [
+    "CVE-2025-30193"
+  ],
+  "details": "In some circumstances, when DNSdist is configured to allow an unlimited number of queries on a single, incoming TCP connection from a client, an attacker can cause a denial of service by crafting a TCP exchange that triggers an exhaustion of the stack and a crash of DNSdist, causing a denial of service.\n\nThe remedy is: upgrade to the patched 1.9.10 version.\n\nA workaround is to restrict the maximum number of queries on incoming TCP connections to a safe value, like 50, via the setMaxTCPQueriesPerConnection setting.\n\nWe would like to thank Renaud Allard for bringing this issue to our attention.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-30193"
+    },
+    {
+      "type": "WEB",
+      "url": "https://dnsdist.org/security-advisories/powerdns-advisory-for-dnsdist-2025-03.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-20T12:15:19Z"
+  }
+}

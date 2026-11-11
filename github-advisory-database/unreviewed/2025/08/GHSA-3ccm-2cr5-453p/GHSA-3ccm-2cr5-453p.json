@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3ccm-2cr5-453p",
+  "modified": "2025-11-18T18:32:49Z",
+  "published": "2025-08-16T15:30:30Z",
+  "aliases": [
+    "CVE-2023-4130"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix wrong next length validation of ea buffer in smb2_set_ea()\n\nThere are multiple smb2_ea_info buffers in FILE_FULL_EA_INFORMATION request\nfrom client. ksmbd find next smb2_ea_info using ->NextEntryOffset of\ncurrent smb2_ea_info. ksmbd need to validate buffer length Before\naccessing the next ea. ksmbd should check buffer length using buf_len,\nnot next variable. next is the start offset of current ea that got from\nprevious ea.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-4130"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4bf629262f9118ee91b1c3a518ebf2b3bcb22180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79ed288cef201f1f212dfb934bcaac75572fb8f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aeb974907642be095e38ecb1a400ca583958b2b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f339d76a3a972601d0738b881b099d49ebbdc3a2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-16T14:15:27Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-43x2-g84q-fmqx",
+  "modified": "2026-06-22T21:10:31Z",
+  "published": "2026-06-22T21:10:31Z",
+  "aliases": [
+    "CVE-2026-46495"
+  ],
+  "summary": "OpenDJ Pre-Auth RCE via Java Deserialization in JMX RMI",
+  "details": "## Summary\n\n**Description**\n\nA Deserialization of Untrusted Data (CWE-502) issue in OpenDJ's JMX RMI connector allows an unauthenticated remote attacker to deserialize arbitrary Java objects on the server. The vulnerability exists because the platform reads and processes attacker-controlled bytes prior to authentication. This affects OpenDJ Community Edition through 5.1.0. This has been patched in version 5.1.1.\n\n## Impact\nThis impacts all current OpenDJ releases where the JMX Connection Handler is enabled. While disabled by default, it is frequently enabled in practice for monitoring integrations. Exploitation requires TCP reachability to the configured listener and does not require authentication, prior privileges, or client certificates. Successful exploitation results in unauthenticated Remote Code Execution (RCE), with the severity depending on the runtime classpath and Java version. Unauthenticated RCE was demonstrated on the OpenDJ 4.4.15 (JDK 11 + Jackson 2.12.6.1).\n\n## Patch\nThis has been patched in OpenDJ Community Edition version 5.1.1. Users are encouraged to update to the latest release.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.openidentityplatform.opendj:opendj-server-legacy"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.1.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.1.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenIdentityPlatform/OpenDJ/security/advisories/GHSA-43x2-g84q-fmqx"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/OpenIdentityPlatform/OpenDJ"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-22T21:10:31Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6gc4-74vr-7h94",
+  "modified": "2026-03-19T15:31:19Z",
+  "published": "2026-03-18T21:32:58Z",
+  "aliases": [
+    "CVE-2025-58112"
+  ],
+  "details": "Microsoft Dynamics 365 Customer Engagement (on-premises) 1612 (9.0.2.3034) allows the generation of customized reports via raw SQL queries in an upload of a .rdl (Report Definition Language) file; this is then processed by the SQL Server Reporting Service. An account with the privilege Add Reporting Services Reports can upload a malicious rdl file. If the malicious rdl file is already loaded and it is executable by the user, the Add Reporting Services Reports privilege is not required. A malicious actor can trigger the generation of the report, causing the execution of arbitrary SQL commands in the underlying database. Depending on the permissions of the account running SQL Server Reporting Services, the attacker may be able to perform additional actions, such as accessing linked servers or executing operating system commands.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-58112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/Redteam-LongwaveSpa/141f6c52ce49f9c0f49989c7d6940abd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://microsoft.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-18T19:16:03Z"
+  }
+}

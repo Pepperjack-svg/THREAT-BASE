@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2c92-jwmp-9jr9",
+  "modified": "2025-12-16T15:30:47Z",
+  "published": "2025-12-16T15:30:47Z",
+  "aliases": [
+    "CVE-2025-68252"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: fastrpc: Fix dma_buf object leak in fastrpc_map_lookup\n\nIn fastrpc_map_lookup, dma_buf_get is called to obtain a reference to\nthe dma_buf for comparison purposes. However, this reference is never\nreleased when the function returns, leading to a dma_buf memory leak.\n\nFix this by adding dma_buf_put before returning from the function,\nensuring that the temporarily acquired reference is properly released\nregardless of whether a matching map is found.\n\nRule: add",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68252"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/214e81a63a9aa0be42382ef0365ba5ed32c513ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a297a68c3ba4a7ecb31ed52f61bd6634abb79d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2fef5ebb73f3dabae6fbc571d181914ed32c483"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e17b13387827adce7acb19ac0f07f9bcafe0ff4c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fff111bf45cbeeb659324316d68554e35d350092"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T15:15:54Z"
+  }
+}

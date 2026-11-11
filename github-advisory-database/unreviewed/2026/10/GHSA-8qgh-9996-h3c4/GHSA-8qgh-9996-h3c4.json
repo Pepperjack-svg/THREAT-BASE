@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8qgh-9996-h3c4",
+  "modified": "2026-10-15T03:36:27Z",
+  "published": "2026-10-15T03:36:27Z",
+  "aliases": [
+    "CVE-2026-110909"
+  ],
+  "details": "Wheels CLI through 4.1.0 does not verify that the local development server answering its HTTP requests belongs to the current project. A process listening on a port targeted by the CLI can receive the project's reload password and code submitted through wheels reload or wheels console; console also probes common ports when the project server is down. Other commands can perform unintended state-changing operations against a different local application's server and database. Exploitation requires a process listening on a targeted local port and the developer running an affected command. This is fixed in 4.1.1, including changes to the CLI and application template.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/wheels-dev/wheels/security/advisories/GHSA-x3cm-2j3q-jgg4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110909"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-923"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T03:17:10Z"
+  }
+}

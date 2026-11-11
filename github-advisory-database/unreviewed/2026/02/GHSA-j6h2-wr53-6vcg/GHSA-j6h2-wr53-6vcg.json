@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j6h2-wr53-6vcg",
+  "modified": "2026-06-02T15:31:53Z",
+  "published": "2026-02-18T18:30:40Z",
+  "aliases": [
+    "CVE-2026-23228"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: server: fix leak of active_num_conn in ksmbd_tcp_new_connection()\n\nOn kthread_run() failure in ksmbd_tcp_new_connection(), the transport is\nfreed via free_transport(), which does not decrement active_num_conn,\nleaking this counter.\n\nReplace free_transport() with ksmbd_tcp_disconnect().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-253495.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/599271110c35f6b16e2e4e45b9fbd47ed378c982"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6dd2645cf080a75be31fa66063c7332b291f46f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77ffbcac4e569566d0092d5f22627dfc0896b553"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/787769c8cc50416af7b8b1a36e6bcd6aaa7680aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ddd69cd1338c6197e1b6b19cec60d99c8633e4f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/baf664fc90a6139a39a58333e4aaa390c10d45dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd25e0d809531a67e9dd53b19012d27d2b13425f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-18T16:22:32Z"
+  }
+}

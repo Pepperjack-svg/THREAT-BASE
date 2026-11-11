@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-46cx-5vwq-g5q3",
+  "modified": "2026-06-09T06:31:56Z",
+  "published": "2026-06-09T06:31:56Z",
+  "aliases": [
+    "CVE-2026-10738"
+  ],
+  "details": "The jQuery Hover Footnotes plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Footnote Qualifier ('{{...}}' Syntax) in all versions up to, and including, 1.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The attribute-breakout payload (e.g., a double-quote followed by an event handler) contains no angle brackets and therefore bypasses WordPress core's wp_kses_post() filtering, which only strips disallowed HTML tags rather than sanitizing attribute contexts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10738"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jquery-hover-footnotes/trunk/jqFootnotes.php#L213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jquery-hover-footnotes/trunk/jqFootnotes.php#L222"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jquery-hover-footnotes/trunk/jqFootnotes.php#L235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jquery-hover-footnotes/trunk/jqFootnotes.php#L246"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b02bdf2a-1d99-4cc3-8f75-822ff0792e44?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-09T05:16:29Z"
+  }
+}

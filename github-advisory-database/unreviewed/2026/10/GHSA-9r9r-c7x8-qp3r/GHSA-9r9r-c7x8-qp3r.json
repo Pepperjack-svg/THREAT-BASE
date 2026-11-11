@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9r9r-c7x8-qp3r",
+  "modified": "2026-10-03T03:31:33Z",
+  "published": "2026-10-03T03:31:32Z",
+  "aliases": [
+    "CVE-2026-105083"
+  ],
+  "details": "ImageMagick before 7.1.2-32 and 6.9.13-57 contains a policy bypass vulnerability in LoadPolicyCache that silently skips security policy rules when policy.xml uses an alternate DOCTYPE. A valid DOCTYPE not ending in ']>' makes the parser consume the rest of the file, so no policy rules are applied and restricted operations become allowed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:H/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-jjp4-3fwf-393j"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105083"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImageMagick/ImageMagick/commit/1926ccf119141c26274c120d1899dffae19b0c71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImageMagick/ImageMagick/commit/399d4bd3b081f44c7fef78153f65e8cdebed9f1a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImageMagick/ImageMagick6/commit/402ebc5353e569234908962cbdf451531ff66a57"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImageMagick/ImageMagick6/commit/da6022b2efe6cce8a2fd8f9e51188a45a3b9d558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImageMagick/ImageMagick"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImageMagick/ImageMagick/blob/7.1.2-31/MagickCore/policy.c#L1138-L1145"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-32-and-6.9.13-57-security-policy-bypass-via-policy-xml-doctype"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-03T02:17:18Z"
+  }
+}

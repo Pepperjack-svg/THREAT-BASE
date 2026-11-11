@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m9g7-rgfc-jcm7",
+  "modified": "2026-03-31T22:35:47Z",
+  "published": "2026-03-31T22:35:47Z",
+  "aliases": [
+    "CVE-2026-30877"
+  ],
+  "summary": "baserCMS Update Functionality Vulnerable to OS Command Injection",
+  "details": "### Summary\nThe latest version of baserCMS (basercms-5.2.2) contains an OS command injection vulnerability (CWE-78) in its update functionality.\nDue to this issue, an authenticated user with administrator privileges in baserCMS can execute arbitrary OS commands on the server with the privileges of the user account running baserCMS.\n\n### Details\nPlease refer to the attached materials.\n[OSコマンドインジェクション（baserCMSのアップデート機能）.pdf](https://github.com/user-attachments/files/25468689/OS.baserCMS.pdf)\n\n\n\n### Impact\nAn authenticated user with administrator privileges in baserCMS can execute OS commands on the server with the privileges of the user account running baserCMS.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "baserproject/basercms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.2.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.2.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/baserproject/basercms/security/advisories/GHSA-m9g7-rgfc-jcm7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-30877"
+    },
+    {
+      "type": "WEB",
+      "url": "https://basercms.net/security/JVN_20837860"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/baserproject/basercms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/baserproject/basercms/releases/tag/5.2.3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-31T22:35:47Z",
+    "nvd_published_at": "2026-03-31T01:16:35Z"
+  }
+}

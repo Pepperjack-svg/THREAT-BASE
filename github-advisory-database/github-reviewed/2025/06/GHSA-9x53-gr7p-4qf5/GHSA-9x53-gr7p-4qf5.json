@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9x53-gr7p-4qf5",
+  "modified": "2025-06-19T16:19:58Z",
+  "published": "2025-06-19T12:30:34Z",
+  "aliases": [
+    "CVE-2025-32896"
+  ],
+  "summary": "Apache SeaTunnel: Unauthenticated insecure access",
+  "details": "# Summary\n\nUnauthorized users can perform Arbitrary File Read and Deserialization\nattack by submit job using restful api-v1.\n\n# Details\nUnauthorized users can access `/hazelcast/rest/maps/submit-job` to submit\njob.\nAn attacker can set extra params in mysql url to perform Arbitrary File\nRead and Deserialization attack.\n\nThis issue affects Apache SeaTunnel: <=2.3.10\n\n# Fixed\n\nUsers are recommended to upgrade to version 2.3.11, and enable restful api-v2 & open https two-way authentication , which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.seatunnel:seatunnel-engine-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.3.11"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.seatunnel:seatunnel-engine-common"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.3.11"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-32896"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/seatunnel/pull/9010"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/seatunnel/commit/53325aa3e76e3939f41a4bf3eaaf3ee56f13f311"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/seatunnel"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/qvh3zyt1jr25rgvw955rb8qjrnbxfro9"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/04/12/1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-06-19T16:19:58Z",
+    "nvd_published_at": "2025-06-19T11:15:24Z"
+  }
+}

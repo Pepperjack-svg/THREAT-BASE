@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m9gh-q95c-rcfx",
+  "modified": "2026-10-06T09:31:33Z",
+  "published": "2026-10-06T09:31:33Z",
+  "aliases": [
+    "CVE-2026-98293"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: Fix parent socket leak in iso_conn_ready()\n\niso_get_sock() returns the parent socket with a reference held, which is\ndropped by sock_put() once the child socket has been set up. The error\npath taken when iso_sock_alloc() fails only calls release_sock() and\nreturns, leaking the reference and thus the parent socket itself.\n\nDrop the reference on that path as well.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98293"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9228f87365e68a6cae191f57f456e89a6d2167cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca18ee413a7cb6f09885778039225e58bae0d607"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2b156a8d25966be49c1f809b654a2c4bb16564d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea8a262662be62c095789924c11722ecbf40a4de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f016daabd4fec4e9b8563f8b6f42eabce0ca66b0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:19Z"
+  }
+}

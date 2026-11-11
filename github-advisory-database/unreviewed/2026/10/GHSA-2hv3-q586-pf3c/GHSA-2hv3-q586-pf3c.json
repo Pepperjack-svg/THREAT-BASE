@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2hv3-q586-pf3c",
+  "modified": "2026-10-24T12:30:24Z",
+  "published": "2026-10-24T12:30:24Z",
+  "aliases": [
+    "CVE-2026-116017"
+  ],
+  "details": "Xiaozhi-esp32-server before 0.9.8 contains an insecure direct object reference vulnerability in the manager-api DeviceController.getAddressBook handler that allows authenticated users to read other users' device address books. Attackers with a normal or self-registered account can request /device/address-book/{macAddress} with another user's device MAC to obtain contact MACs, aliases, call permissions, and owner user IDs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116017"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xinnan-tech/xiaozhi-esp32-server/issues/3459"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xinnan-tech/xiaozhi-esp32-server/pull/3460"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xinnan-tech/xiaozhi-esp32-server/commit/d4ff9c5c17cbd82ec98a2a6bb4f82a07c1be0f03"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xinnan-tech/xiaozhi-esp32-server/blob/v0.9.7/main/manager-api/src/main/java/xiaozhi/modules/device/controller/DeviceController.java#L173-L178"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xinnan-tech/xiaozhi-esp32-server/blob/v0.9.7/main/manager-api/src/main/resources/mapper/device/DeviceAddressBookDao.xml#L5-L10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xinnan-tech/xiaozhi-esp32-server/releases/tag/v0.9.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/xiaozhi-esp32-server-address-book-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/xiaozhi-esp32-server-before-0.9.8-idor-via-device-address-book-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-24T12:16:58Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qwr3-mfw3-8qfr",
+  "modified": "2026-11-10T00:31:44Z",
+  "published": "2026-11-10T00:31:44Z",
+  "aliases": [
+    "CVE-2026-125371"
+  ],
+  "details": "Tinyproxy through 1.11.3 contains an access control bypass vulnerability in acl_string_processing() in src/acl.c that compares only trailing hostname characters without checking DNS label boundaries. Attackers controlling the PTR record for their source IP, such as untrusted.net, can satisfy an 'Allow trusted.net' entry to use the proxy despite deny-by-default ACLs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125371"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinyproxy/tinyproxy/issues/627"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinyproxy/tinyproxy/commit/3991ac8f98c6a9f05b3265018b812dbf2ca92c28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinyproxy/tinyproxy"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinyproxy/tinyproxy/blob/1.11.3/src/acl.c#L156-L174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/tinyproxy-through-1.11.3-hostname-acl-allow-list-bypass-via-suffix-match"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-187"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T00:17:09Z"
+  }
+}

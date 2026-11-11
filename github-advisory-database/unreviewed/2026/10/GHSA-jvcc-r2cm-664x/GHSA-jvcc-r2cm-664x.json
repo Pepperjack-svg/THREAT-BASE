@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jvcc-r2cm-664x",
+  "modified": "2026-10-11T15:31:05Z",
+  "published": "2026-10-11T15:31:05Z",
+  "aliases": [
+    "CVE-2026-108744"
+  ],
+  "details": "pbi-cli 3.10.1 through 3.12.0 contains an OS command injection vulnerability in desktop_sync.py that passes unquoted .pbip paths to cmd /c start when reopening projects. Attackers can lure victims into opening a Power BI project from a space-free path containing & to run commands with victim privileges during report write or reload.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108744"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MinaSaad1/pbi-cli"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MinaSaad1/pbi-cli/blob/c8655cb9a131e2ce87ae5e1380994099f693d6af/src/pbi_cli/utils/desktop_sync.py#L286-L291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MinaSaad1/pbi-cli/blob/c8655cb9a131e2ce87ae5e1380994099f693d6af/src/pbi_cli/utils/desktop_sync.py#L398-L405"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind/pbi-cli-desktop-sync-pbip-cmd-argument-injection"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pbi-cli-3.10.1-through-3.12.0-os-command-injection-via-desktop-sync"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T13:17:18Z"
+  }
+}

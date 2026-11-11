@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2v7w-p95j-mfhp",
+  "modified": "2025-05-16T21:32:10Z",
+  "published": "2025-05-15T21:31:26Z",
+  "aliases": [
+    "CVE-2023-6030"
+  ],
+  "details": "The LogDash Activity Log WordPress plugin before 1.1.4 hooks the wp_login_failed function (from src/Hooks/Users.php) in order to log failed login attempts to the database but it doesn't escape the username when it perform some SQL request leading to a SQL injection vulnerability which can be exploited using time-based technique by unauthenticated attacker",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-6030"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/b658e403-006c-4555-b1b2-3603e44f4411"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-15T20:15:28Z"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vww6-hvwf-mv33",
+  "modified": "2026-05-26T15:32:08Z",
+  "published": "2026-05-08T15:31:27Z",
+  "aliases": [
+    "CVE-2026-43392"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsched_ext: Fix starvation of scx_enable() under fair-class saturation\n\nDuring scx_enable(), the READY -> ENABLED task switching loop changes the\ncalling thread's sched_class from fair to ext. Since fair has higher\npriority than ext, saturating fair-class workloads can indefinitely starve\nthe enable thread, hanging the system. This was introduced when the enable\npath switched from preempt_disable() to scx_bypass() which doesn't protect\nagainst fair-class starvation. Note that the original preempt_disable()\nprotection wasn't complete either - in partial switch modes, the calling\nthread could still be starved after preempt_enable() as it may have been\nswitched to ext class.\n\nFix it by offloading the enable body to a dedicated system-wide RT\n(SCHED_FIFO) kthread which cannot be starved by either fair or ext class\ntasks. scx_enable() lazily creates the kthread on first use and passes the\nops pointer through a struct scx_enable_cmd containing the kthread_work,\nthen synchronously waits for completion.\n\nThe workfn runs on a different kthread from sch->helper (which runs\ndisable_work), so it can safely flush disable_work on the error path\nwithout deadlock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43392"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05ab9ec5dc24f234e0a2fecf3e6ff937c68f7d81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b06ccbabe2506fd70b9167a644978b049150224a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c44198f25fdfecc0ec0fe366bf8a47fe17d8e229"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0b14bf06393be137d3efb6a3b7cd5b4b9810a6b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T15:16:50Z"
+  }
+}

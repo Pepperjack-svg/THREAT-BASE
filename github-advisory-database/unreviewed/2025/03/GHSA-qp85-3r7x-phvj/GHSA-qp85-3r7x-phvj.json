@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qp85-3r7x-phvj",
+  "modified": "2025-03-12T00:31:46Z",
+  "published": "2025-03-12T00:31:46Z",
+  "aliases": [
+    "CVE-2022-49609"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npower/reset: arm-versatile: Fix refcount leak in versatile_reboot_probe\n\nof_find_matching_node_and_match() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49609"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/493ceca3271316e74639c89ff8ac35883de64256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49fa778ee044b00471dd9ccae5f6a121fffea1ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6689754b121bd487f99680280102b3a5cd7374af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71ab83ac65e2d671552374123bf920c1d698335a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78bdf732cf5d74d1c6ecda06830a91f80a4aef6f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80192eff64eee9b3bc0594a47381937b94b9d65a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9ed3ad3a8d1dfbc829d86edb3236873a315db11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b4d224eec96a18fa8959512cd9e5b6a50bd16a41"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:36Z"
+  }
+}

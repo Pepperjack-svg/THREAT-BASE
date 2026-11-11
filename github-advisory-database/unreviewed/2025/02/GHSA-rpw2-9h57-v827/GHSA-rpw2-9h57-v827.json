@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rpw2-9h57-v827",
+  "modified": "2025-02-27T21:32:15Z",
+  "published": "2025-02-27T21:32:15Z",
+  "aliases": [
+    "CVE-2022-49730"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: lpfc: Resolve NULL ptr dereference after an ELS LOGO is aborted\n\nA use-after-free crash can occur after an ELS LOGO is aborted.\n\nSpecifically, a nodelist structure is freed and then\nndlp->vport->cfg_log_verbose is dereferenced in lpfc_nlp_get() when the\ndiscovery state machine is mistakenly called a second time with\nNLP_EVT_DEVICE_RM argument.\n\nRework lpfc_cmpl_els_logo() to prevent the duplicate calls to release a\nnodelist structure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49730"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5e83869e29448958f8ae2c6911f350318f75e4fc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1b3440f437b75fb2a9b0cfe58df461e40eca474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eea34ce23dc3a595695856dc73bb132a9c5a2902"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:48Z"
+  }
+}

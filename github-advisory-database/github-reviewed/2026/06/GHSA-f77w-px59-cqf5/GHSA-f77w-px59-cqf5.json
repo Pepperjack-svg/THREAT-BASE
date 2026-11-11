@@ -1,0 +1,222 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f77w-px59-cqf5",
+  "modified": "2026-11-04T16:10:26Z",
+  "published": "2026-06-30T12:31:52Z",
+  "aliases": [
+    "CVE-2026-53917"
+  ],
+  "summary": "Apache ActiveMQ, Apache ActiveMQ All, Apache ActiveMQ Client, Apache ActiveMQ Broker have Memory Allocation with Excessive Size Value vulnerability",
+  "details": "Memory Allocation with Excessive Size Value vulnerability in Apache ActiveMQ, Apache ActiveMQ All, Apache ActiveMQ Client, Apache ActiveMQ Broker.\n\nAn authenticated user can cause a broker DoS by sending a crafted OpenWire Message with a large encoded size value for the map. OpenWire message property maps are unmarshaled without size validation which can trigger OOM and crash the broker.\nThis issue affects Apache ActiveMQ: before 5.19.8, from 6.0.0 before 6.2.7; Apache ActiveMQ All: before 5.19.8, from 6.0.0 before 6.2.7; Apache ActiveMQ Client: before 5.19.8, from 6.0.0 before 6.2.7; Apache ActiveMQ Broker: before 5.19.8, from 6.0.0 before 6.2.7.\n\nUsers are recommended to upgrade to version 6.2.7 or 5.19.8, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.activemq:apache-activemq"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.19.8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.activemq:apache-activemq"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.2.7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.activemq:activemq-all"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.19.8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.activemq:activemq-all"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.2.7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.activemq:activemq-client"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.19.8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.activemq:activemq-client"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.2.7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.activemq:activemq-broker"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.19.8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.activemq:activemq-broker"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.2.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53917"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/activemq/pull/2136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/activemq/commit/78bb8dcdc32e80c8b8813b57f89147572d16a2b9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/activemq/commit/b20e61c7ef736a04ad07a934ea8de628550c6cf2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/activemq/commit/ecfd1336fa3f3f6116a78f0ab71d1b2f90bc717f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/activemq"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/activemq/releases/tag/activemq-5.19.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/activemq/releases/tag/activemq-6.2.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/grrd1mwgkgblqjbwkkq6dvmdxd9ov2dx"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/06/29/14"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-789"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-11-04T16:10:26Z",
+    "nvd_published_at": "2026-06-30T11:16:30Z"
+  }
+}

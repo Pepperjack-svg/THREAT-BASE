@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rp6p-7xx7-cr6f",
+  "modified": "2025-03-12T18:32:52Z",
+  "published": "2025-03-12T18:32:52Z",
+  "aliases": [
+    "CVE-2025-20115"
+  ],
+  "details": "A vulnerability in confederation implementation for the Border Gateway Protocol (BGP)&nbsp;in Cisco IOS XR Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition.\n\nThis vulnerability is due to a memory corruption that occurs when a BGP update is created with an AS_CONFED_SEQUENCE attribute that has 255 autonomous system numbers (AS numbers). An attacker could exploit this vulnerability by sending a crafted BGP update message, or the network could be designed in such a manner that the AS_CONFED_SEQUENCE attribute grows to 255 AS numbers or more. A successful exploit could allow the attacker to cause memory corruption, which may cause the BGP process to restart, resulting in a DoS condition. To exploit this vulnerability, an attacker must control a BGP confederation speaker within the same autonomous system as the victim, or the network must be designed in such a manner that the AS_CONFED_SEQUENCE attribute grows to 255 AS numbers or more.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-20115"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.apnic.net/2024/09/02/crafting-endless-as-paths-in-bgp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-iosxr-bgp-dos-O7stePhX"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-12T16:15:21Z"
+  }
+}

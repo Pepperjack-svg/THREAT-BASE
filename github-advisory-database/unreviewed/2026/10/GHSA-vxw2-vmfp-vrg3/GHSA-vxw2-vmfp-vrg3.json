@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vxw2-vmfp-vrg3",
+  "modified": "2026-10-20T18:31:44Z",
+  "published": "2026-10-20T18:31:44Z",
+  "aliases": [
+    "CVE-2026-113603"
+  ],
+  "details": "The x402 SIWX server extension in @x402/extensions 2.3.1 through 2.28.0, x402 PyPI 2.11.0 through 2.25.0, and Go module 2.16.0 through 2.28.0 contains an authorization bypass vulnerability that allows paying clients to unlock unpaid routes by supplying a mismatched PaymentPayload.resource URL. Attackers can pay for the cheapest SIWX-protected route while setting resource.url to an expensive route, then repeatedly access it using only a SIGN-IN-WITH-X header without further payment.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/x402-foundation/x402/issues/3838"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/x402-foundation/x402/pull/3840"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/x402-foundation/x402/blob/go/v2.28.0/go/extensions/signinwithx/server.go"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/x402-foundation/x402/blob/npm-@x402/extensions@v2.28.0/typescript/packages/extensions/src/sign-in-with-x/hooks.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/x402-foundation/x402/blob/pypi-x402@v2.25.0/python/x402/extensions/sign_in_with_x/hooks.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/x402-x402-extensions-2.3.1-through-2.28.0-siwx-payment-bypass-via-paymentpayload-resource"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T16:17:10Z"
+  }
+}

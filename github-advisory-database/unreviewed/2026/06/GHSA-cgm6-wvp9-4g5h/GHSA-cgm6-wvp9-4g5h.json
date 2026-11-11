@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cgm6-wvp9-4g5h",
+  "modified": "2026-06-26T00:32:07Z",
+  "published": "2026-06-26T00:32:07Z",
+  "aliases": [
+    "CVE-2026-13318"
+  ],
+  "details": "A server-side request forgery (SSRF) flaw was found in KubeVirt's virt-api port-forward handler. When processing a port-forward request to a VirtualMachineInstance (VMI), virt-api reads the target IP from vmi.Status.Interfaces[0].IP and passes it directly to net.Dial() without validation. For VMIs using non-masquerade network bindings (bridge or secondary-only), this IP is reported by the QEMU guest agent running inside the VM and is fully controllable by the VM owner. An attacker with kubevirt.io:edit permissions can create a VM with a modified guest agent that reports an arbitrary IP address, then request port-forward to establish a bidirectional TCP tunnel from virt-api's cluster-internal network position to any routable destination, bypassing NetworkPolicy isolation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13318"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-13318"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2492659"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-26T00:16:51Z"
+  }
+}

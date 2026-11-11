@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hgf8-39gv-g3f2",
+  "modified": "2025-12-02T00:27:38Z",
+  "published": "2025-12-02T00:27:38Z",
+  "aliases": [
+    "CVE-2025-66221"
+  ],
+  "summary": "Werkzeug safe_join() allows Windows special device names",
+  "details": "Werkzeug's `safe_join` function allows path segments with Windows device names. On Windows, there are special device names such as `CON`, `AUX`, etc that are implicitly present and readable in every directory. `send_from_directory` uses `safe_join` to safely serve files at user-specified paths under a directory. If the application is running on Windows, and the requested path ends with a special device name, the file will be opened successfully, but reading will hang indefinitely.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "werkzeug"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.1.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pallets/werkzeug/security/advisories/GHSA-hgf8-39gv-g3f2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66221"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pallets/werkzeug/commit/4b833376a45c323a189cd11d2362bcffdb1c0c13"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pallets/werkzeug"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pallets/werkzeug/releases/tag/3.1.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-67"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-02T00:27:38Z",
+    "nvd_published_at": "2025-11-29T03:16:00Z"
+  }
+}

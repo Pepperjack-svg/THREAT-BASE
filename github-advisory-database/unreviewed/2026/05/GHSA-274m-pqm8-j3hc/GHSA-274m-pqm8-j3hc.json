@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-274m-pqm8-j3hc",
+  "modified": "2026-10-21T15:40:26Z",
+  "published": "2026-05-08T15:31:24Z",
+  "aliases": [
+    "CVE-2026-43346"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: ptp: don't WARN when controlling PF is unavailable\n\nIn VFIO passthrough setups, it is possible to pass through only a PF\nwhich doesn't own the source timer. In that case the PTP controlling PF\n(adapter->ctrl_pf) is never initialized in the VM, so ice_get_ctrl_ptp()\nreturns NULL and triggers WARN_ON() in ice_ptp_setup_pf().\n\nSince this is an expected behavior in that configuration, replace\nWARN_ON() with an informational message and return -EOPNOTSUPP.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43346"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/228497715a162d040df1617e62c3b7d0df54b235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb3f21edc7056cdf44a7f7bd7ba65af40741838c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c73f365707d3b1b78b7d16e1f029020d1ae50d0f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e19675b384e9dcaca1bd5e4a67b8ad136eccfbe8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-617"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:44Z"
+  }
+}

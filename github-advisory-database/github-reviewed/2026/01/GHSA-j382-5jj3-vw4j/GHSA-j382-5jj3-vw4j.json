@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j382-5jj3-vw4j",
+  "modified": "2026-03-18T18:31:10Z",
+  "published": "2026-01-07T18:30:25Z",
+  "aliases": [
+    "CVE-2025-12543"
+  ],
+  "summary": "Undertow HTTP server core doesn't properly validate the Host header in incoming HTTP requests",
+  "details": "A flaw was found in the Undertow HTTP server core, which is used in WildFly, JBoss EAP, and other Java applications. The Undertow library fails to properly validate the Host header in incoming HTTP requests. As a result, requests containing malformed or malicious Host headers are processed without rejection, enabling attackers to poison caches, perform internal network scans, or hijack user sessions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.undertow:undertow-core"
+      },
+      "versions": [
+        "2.4.0.Alpha1"
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.undertow:undertow-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.3.0.Alpha1"
+            },
+            {
+              "fixed": "2.3.21.Final"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.undertow:undertow-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.2.39.Final"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12543"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/undertow-io/undertow/pull/1860"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/undertow-io/undertow/pull/1857"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.redhat.com/browse/UNDERTOW-2656"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/undertow-io/undertow/releases/tag/2.3.21.Final"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/undertow-io/undertow/releases/tag/2.2.39.Final"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/undertow-io/undertow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2408784"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2025-12543"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:4924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:4917"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:4916"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:4915"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:3892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:3891"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:3890"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:3889"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:0386"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:0384"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:0383"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-08T17:15:55Z",
+    "nvd_published_at": "2026-01-07T17:15:55Z"
+  }
+}

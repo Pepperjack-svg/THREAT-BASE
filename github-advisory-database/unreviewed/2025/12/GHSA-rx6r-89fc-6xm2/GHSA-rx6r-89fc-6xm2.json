@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rx6r-89fc-6xm2",
+  "modified": "2025-12-22T18:30:24Z",
+  "published": "2025-12-22T18:30:24Z",
+  "aliases": [
+    "CVE-2025-10021"
+  ],
+  "details": "A Use of Uninitialized Variable vulnerability exists in Open Design Alliance Drawings SDK static versions (mt) before 2026.12. Static object `COdaMfcAppApp theApp` may access `OdString::kEmpty` before its initialization. Due to undefined initialization order of static objects across translation units (Static Initialization Order Fiasco), the application accesses uninitialized memory. This results in application crash on startup, causing denial of service. Due to undefined behavior,  memory corruption and potential arbitrary code execution cannot be ruled out in specific exploitation scenarios.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:Y/R:U/V:D/RE:L/U:Amber"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-10021"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.opendesign.com/security-advisories"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-457"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-22T16:15:43Z"
+  }
+}

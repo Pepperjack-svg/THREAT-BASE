@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mpr4-2mm3-rwm6",
+  "modified": "2026-10-15T03:36:04Z",
+  "published": "2026-05-28T12:30:31Z",
+  "aliases": [
+    "CVE-2026-46173"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nexit: prevent preemption of oopsing TASK_DEAD task\n\nWhen an already-exiting task oopses, make_task_dead() currently calls\ndo_task_dead() with preemption enabled.  That is forbidden:\ndo_task_dead() calls __schedule(), which has a comment saying \"WARNING:\nmust be called with preemption disabled!\".\n\nIf an oopsing task is preempted in do_task_dead(), between becoming\nTASK_DEAD and entering the scheduler explicitly, bad things happen:\nfinish_task_switch() assumes that once the scheduler has switched away\nfrom a TASK_DEAD task, the task can never run again and its stack is no\nlonger needed; but that assumption apparently doesn't hold if the dead\ntask was preempted (the SM_PREEMPT case).\n\nThis means that the scheduler ends up repeatedly dropping references on\nthe dead task's stack, which can lead to use-after-free or double-free\nof the entire task stack; in other words, two tasks can end up running\non the same stack, resulting in various kinds of memory corruption.\n\n(This does not just affect \"recursively oopsing\" tasks; it is enough to\noops once during task exit, for example in a file_operations::release\nhandler)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46173"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d6fb8a7690c23e3213c4b008f64d89a44b98737"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/640b4c00fb0e2920327435f6176cbefc3c546165"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f49f94f3b11fe8bff1bf2a054143789e76aaf17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b2800ba5f5f77a8ee7f4cbadb19cf1264597a34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9756b3db5db6c2f5eccb32dddbd88eb4c54f575e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1fa0bb633e4a6b11e83ffc57fa5abe8ebb87891"
+    },
+    {
+      "type": "WEB",
+      "url": "https://project-zero.issues.chromium.org/issues/510793286"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416",
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:32Z"
+  }
+}

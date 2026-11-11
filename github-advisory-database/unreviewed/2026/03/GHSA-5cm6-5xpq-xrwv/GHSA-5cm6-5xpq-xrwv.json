@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5cm6-5xpq-xrwv",
+  "modified": "2026-03-11T15:31:36Z",
+  "published": "2026-03-09T15:30:47Z",
+  "aliases": [
+    "CVE-2026-2261"
+  ],
+  "details": "Due to a programming error, blocklistd leaks a socket descriptor for each adverse event report it receives.\n\nOnce a certain number of leaked sockets is reached, blocklistd becomes unable to run the helper script: a child process is forked, but this child dereferences a null pointer and crashes before it is able to exec the helper.  At this point, blocklistd still records adverse events but is unable to block new addresses or unblock addresses whose database entries have expired.\n\nOnce a second, much higher number of leaked sockets is reached, blocklistd becomes unable to receive new adverse event reports.\n\nAn attacker may take advantage of this by triggering a large number of adverse events from sacrificial IP addresses to effectively disable blocklistd before launching an attack.\n\nEven in the absence of attacks or probes by would-be attackers, adverse events will occur regularly in the course of normal operations, and blocklistd will gradually run out file descriptors and become ineffective.\n\nThe accumulation of open sockets may have knock-on effects on other parts of the system, resulting in a general slowdown until blocklistd is restarted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-26:03.blocklistd.asc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-772"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-09T13:15:57Z"
+  }
+}

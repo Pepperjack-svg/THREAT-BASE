@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cjp6-6pg7-25q5",
+  "modified": "2026-05-03T09:33:11Z",
+  "published": "2026-05-01T15:30:37Z",
+  "aliases": [
+    "CVE-2026-43044"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: caam - fix DMA corruption on long hmac keys\n\nWhen a key longer than block size is supplied, it is copied and then\nhashed into the real key.  The memory allocated for the copy needs to\nbe rounded to DMA cache alignment, as otherwise the hashed key may\ncorrupt neighbouring memory.\n\nThe rounding was performed, but never actually used for the allocation.\nFix this by replacing kmemdup with kmalloc for a larger buffer,\nfollowed by memcpy.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43044"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ddfdcbe10dc5f97afc4e46ca22be2be717e8caf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/68feed135a0c7243a9275ae7e6a18260f755f52b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a7ecf06d3ee06e9b3322e1e7b003ea5c6f6e135a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0c133e0225d87aad326bb90bbce9bdd6fde3cbb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2af8be110bde26b3e3354efdfdda97f426306a4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:50Z"
+  }
+}

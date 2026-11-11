@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p786-pp8p-8p3m",
+  "modified": "2026-04-21T21:31:21Z",
+  "published": "2026-04-20T21:31:44Z",
+  "aliases": [
+    "CVE-2026-29649"
+  ],
+  "details": "NEMU contains an implementation flaw in its RISC-V Hypervisor CSR handling where henvcfg[7:4] (CBIE/CBCFE/CBZE-related fields) is incorrectly masked/updated based on menvcfg[7:4], so a machine-mode write to menvcfg can implicitly modify the hypervisor's environment configuration. This can lead to incorrect enforcement of virtualization configuration and may cause unexpected traps or denial of service when executing cache-block management instructions in virtualized contexts (V=1).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-29649"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenXiangShan/NEMU/issues/681"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenXiangShan/NEMU/pull/689"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.riscv.org/reference/isa/priv/hypervisor.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.riscv.org/reference/isa/priv/machine.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-20T20:16:48Z"
+  }
+}

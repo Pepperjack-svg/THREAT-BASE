@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vw94-38cw-wj37",
+  "modified": "2025-12-12T18:30:28Z",
+  "published": "2025-09-18T15:30:34Z",
+  "aliases": [
+    "CVE-2023-53379"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: phy: phy-tahvo: fix memory leak in tahvo_usb_probe()\n\nSmatch reports:\ndrivers/usb/phy/phy-tahvo.c: tahvo_usb_probe()\nwarn: missing unwind goto?\n\nAfter geting irq, if ret < 0, it will return without error handling to\nfree memory.\nJust add error handling to fix this problem.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53379"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/342161c11403ea00e9febc16baab1d883d589d04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38dbd6f72bfbeba009efe0e9ec1f3ff09f9e23fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e5a7bebf832b1482efe27bcc15a88c5b28a30d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4da9edeccf77d7b4c6dbcb34d5908acdaa5bd7e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/56901de563359de20513e16a9ae008ae2c22e9a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd9b7c89a80428cc5f4ae0d2e1311fdedb2a1aac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ecf26d6e1b5450620c214feea537bb6ce05c6741"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe9cdc19861950582f077f254a12026e169eaee5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T14:15:40Z"
+  }
+}

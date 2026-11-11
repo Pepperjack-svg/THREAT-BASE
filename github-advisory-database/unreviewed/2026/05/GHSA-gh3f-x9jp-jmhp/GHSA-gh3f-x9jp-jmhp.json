@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gh3f-x9jp-jmhp",
+  "modified": "2026-05-03T09:33:10Z",
+  "published": "2026-05-01T15:30:35Z",
+  "aliases": [
+    "CVE-2026-31766"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: validate doorbell_offset in user queue creation\n\namdgpu_userq_get_doorbell_index() passes the user-provided\ndoorbell_offset to amdgpu_doorbell_index_on_bar() without bounds\nchecking. An arbitrarily large doorbell_offset can cause the\ncalculated doorbell index to fall outside the allocated doorbell BO,\npotentially corrupting kernel doorbell space.\n\nValidate that doorbell_offset falls within the doorbell BO before\ncomputing the BAR index, using u64 arithmetic to prevent overflow.\n\n(cherry picked from commit de1ef4ffd70e1d15f0bf584fd22b1f28cbd5e2ec)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31766"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3543005a42d7e8e12b21897ef6798541bf7cbcd3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86b732fbc37ce4fb76cdd4af0fb7e30a6acdbce6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a018d1819f158991b7308e4f74609c6c029b670c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:39Z"
+  }
+}

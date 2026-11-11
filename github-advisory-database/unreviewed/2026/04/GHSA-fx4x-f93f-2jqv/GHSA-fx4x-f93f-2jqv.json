@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fx4x-f93f-2jqv",
+  "modified": "2026-10-21T15:40:18Z",
+  "published": "2026-04-22T15:31:43Z",
+  "aliases": [
+    "CVE-2026-31493"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/efa: Fix use of completion ctx after free\n\nOn admin queue completion handling, if the admin command completed with\nerror we print data from the completion context. The issue is that we\nalready freed the completion context in polling/interrupts handler which\nmeans we print data from context in an unknown state (it might be\nalready used again).\nChange the admin submission flow so alloc/dealloc of the context will be\nsymmetric and dealloc will be called after any potential use of the\ncontext.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0dd98aea1c0c45987fa2dd92f988b0eb1a72c125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1cf95fe5dc5471efea947b4c6f8913da6bc7976e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ba09d85f177e9f5f64b881f33dbcb57b2cf23d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c24b5179af260a5f36571c992d29aab1f448544"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ef3b06742c8a201d0e83edc9a33a89a4fe3009f8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-22T14:16:47Z"
+  }
+}

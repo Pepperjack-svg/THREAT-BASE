@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g4qg-94xm-4cx6",
+  "modified": "2026-10-15T18:32:39Z",
+  "published": "2026-10-15T18:32:39Z",
+  "aliases": [
+    "CVE-2026-97665"
+  ],
+  "details": "A missing authorization check in Nexus Repository 3's NuGet Components API upload path allows an account holding only repository read and browse privileges to upload and persist NuGet symbol packages (.snupkg) to a hosted repository, bypassing the write-permission check enforced for ordinary package uploads. Exploitation requires a hosted NuGet repository with Symbol Server enabled. If anonymous access is enabled, the built-in anonymous user holds read and browse privileges across all repositories by default, so this precondition can also be met without an authenticated account.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97665"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.sonatype.com/en/sonatype-nexus-repository-3-97-0-release-notes.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.sonatype.com/hc/en-us/articles/55793090807827"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T16:18:25Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-78fw-w53r-pgwg",
+  "modified": "2025-04-15T21:31:42Z",
+  "published": "2025-04-15T15:30:54Z",
+  "aliases": [
+    "CVE-2025-3522"
+  ],
+  "details": "Thunderbird processes the X-Mozilla-External-Attachment-URL header to handle attachments which can be hosted externally. When an email is opened, Thunderbird accesses the specified URL to  determine file size, and navigates to it when the user clicks the attachment. Because the URL is not validated or sanitized, it can reference internal resources like chrome:// or SMB share file:// links, potentially leading to hashed Windows credential leakage and opening the door to more serious security issues. This vulnerability affects Thunderbird < 137.0.2 and Thunderbird < 128.9.2.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-3522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=1955372"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.mozilla.org/security/advisories/mfsa2025-26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.mozilla.org/security/advisories/mfsa2025-27"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-15T15:16:09Z"
+  }
+}

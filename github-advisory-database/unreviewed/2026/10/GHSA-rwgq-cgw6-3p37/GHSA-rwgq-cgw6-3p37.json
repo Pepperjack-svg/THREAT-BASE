@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rwgq-cgw6-3p37",
+  "modified": "2026-10-16T18:34:42Z",
+  "published": "2026-10-16T18:34:42Z",
+  "aliases": [
+    "CVE-2026-111609"
+  ],
+  "details": "PKP Open Journal Systems through 3.5.0-5 contains an insecure direct object reference vulnerability that allows journal or subscription managers to access other journals' subscriptions by supplying arbitrary subscription ids. Attackers can enumerate sequential ids through editSubscription to view subscriber details and use updateSubscription to reassign subscriptions to their own journal, revoking victims' access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111609"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pkp/ojs/blob/3_5_0-5/controllers/grid/subscriptions/IndividualSubscriptionForm.php#L47-L51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pkp/ojs/blob/3_5_0-5/controllers/grid/subscriptions/InstitutionalSubscriptionForm.php#L57-L62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/ojs-subscription-form-cross-journal-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pkp-open-journal-systems-through-3.5.0-5-cross-journal-subscription-idor-via-updatesubscription"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:40Z"
+  }
+}

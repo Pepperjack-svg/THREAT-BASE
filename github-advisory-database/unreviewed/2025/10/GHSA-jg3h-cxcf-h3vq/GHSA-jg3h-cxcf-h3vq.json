@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jg3h-cxcf-h3vq",
+  "modified": "2026-02-04T00:30:27Z",
+  "published": "2025-10-07T18:31:09Z",
+  "aliases": [
+    "CVE-2023-53638"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteon_ep: cancel queued works in probe error path\n\nIf it fails to get the devices's MAC address, octep_probe exits while\nleaving the delayed work intr_poll_task queued. When the work later\nruns, it's a use after free.\n\nMove the cancelation of intr_poll_task from octep_remove into\noctep_device_cleanup. This does not change anything in the octep_remove\nflow, but octep_device_cleanup is called also in the octep_probe error\npath, where the cancelation is needed.\n\nNote that the cancelation of ctrl_mbox_task has to follow\nintr_poll_task's, because the ctrl_mbox_task may be queued by\nintr_poll_task.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53638"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62312e2f6466b5f0a120542a38b410d88a34ed00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/758c91078165ae641b698750a72eafe7968b3756"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:47Z"
+  }
+}

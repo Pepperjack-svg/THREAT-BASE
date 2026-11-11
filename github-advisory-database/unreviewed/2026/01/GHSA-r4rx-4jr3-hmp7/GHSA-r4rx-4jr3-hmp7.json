@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r4rx-4jr3-hmp7",
+  "modified": "2026-10-15T03:35:13Z",
+  "published": "2026-01-31T12:30:12Z",
+  "aliases": [
+    "CVE-2026-23026"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: qcom: gpi: Fix memory leak in gpi_peripheral_config()\n\nFix a memory leak in gpi_peripheral_config() where the original memory\npointed to by gchan->config could be lost if krealloc() fails.\n\nThe issue occurs when:\n1. gchan->config points to previously allocated memory\n2. krealloc() fails and returns NULL\n3. The function directly assigns NULL to gchan->config, losing the\n   reference to the original memory\n4. The original memory becomes unreachable and cannot be freed\n\nFix this by using a temporary variable to hold the krealloc() result\nand only updating gchan->config when the allocation succeeds.\n\nFound via static analysis and code review.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23026"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-253495.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01b1d781394fc9b83015e3a3cd46b17bda842bd8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f747004bbd641131d9396d87b5d2d3d1e182728"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4532f18e4ab36def1f55cd936d0fc002b2ce34c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55a67ba5ac4cebfd54cc8305d4d57a0f1dfe6a85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/694ab1f6f16cb69f7c5ef2452b22ba7b00a3c7c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6bf4ef078fd11910988889a6c0b3698d2e0c89af"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-31T12:16:05Z"
+  }
+}

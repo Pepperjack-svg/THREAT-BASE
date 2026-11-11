@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vj2-gjw9-6mgj",
+  "modified": "2026-05-20T21:31:28Z",
+  "published": "2026-05-08T15:31:28Z",
+  "aliases": [
+    "CVE-2026-43426"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: renesas_usbhs: fix use-after-free in ISR during device removal\n\nIn usbhs_remove(), the driver frees resources (including the pipe array)\nwhile the interrupt handler (usbhs_interrupt) is still registered. If an\ninterrupt fires after usbhs_pipe_remove() but before the driver is fully\nunbound, the ISR may access freed memory, causing a use-after-free.\n\nFix this by calling devm_free_irq() before freeing resources. This ensures\nthe interrupt handler is both disabled and synchronized (waits for any\nrunning ISR to complete) before usbhs_pipe_remove() is called.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43426"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b7d11fd6e742ecc0b1eca44b4f0b93140c74bae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1899edac312ef17a7234851686e8a703f56d0a84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cbc242b88c607f55da3d0d0d336b49bf1e20412"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51afaf919bbaacdd9cc9e146033ae0a743a42dd7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6287e0c01ccb818e7214f88d885ffb7c9e81b0e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ffe44f022c95b1b29c691d2169c5abc046f7580"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c6159d5b72d5fc265cce5da04f27d730b552e69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7012fc73dab4829404fedeeaa8531f12ac8545f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T15:16:54Z"
+  }
+}

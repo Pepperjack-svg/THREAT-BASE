@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-49p8-c5g6-5pj6",
+  "modified": "2026-05-26T13:30:23Z",
+  "published": "2026-05-26T13:30:23Z",
+  "aliases": [
+    "CVE-2026-6419"
+  ],
+  "details": "The WishList Member plugin for WordPress is vulnerable to Privilege Escalation via Missing Authorization in versions up to and including 3.30.1. This is due to the missing capability and nonce check in the ajax_get_screen() function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to supply an arbitrary admin screen identifier via the data[url] parameter, causing the plugin to load and execute the administrative API configuration template without authorization. The rendered HTML, which contains the plugin's plaintext REST API Secret Key, is returned directly to the attacker in the AJAX JSON response. An attacker who obtains this key can authenticate to the WishList Member API, create a new membership level assigned the administrator WordPress role, and register an arbitrary administrator-level user account, resulting in complete site takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6419"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wishlistmember.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f5ff0ff4-0878-4e9e-8082-e0f6effef92c?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-23T05:16:34Z"
+  }
+}

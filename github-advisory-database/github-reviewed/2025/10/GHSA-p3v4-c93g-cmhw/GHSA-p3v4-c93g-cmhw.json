@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p3v4-c93g-cmhw",
+  "modified": "2025-10-27T20:15:12Z",
+  "published": "2025-10-27T20:15:12Z",
+  "aliases": [
+    "CVE-2025-10282"
+  ],
+  "summary": "BBOT's gitlab.py exposes globally configured \"gitlab\" API key",
+  "details": "### Summary\n\nbbot's `gitlab.py` sends the user's \"gitlab\" API key to on-premise GitLab instances.\n\nIf a user has configured a gitlab.com API key using this mechanism, it may be leaked to an attacker-controlled server.\n\n### Impact\n\nA user with a \"gitlab\" API key configured who uses bbot to scan a malicious webserver may leak their gitlab.com API key to an untrustworthy server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "bbot"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.7.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 2.7.0"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "bbot"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.7.0.6919rc0"
+            },
+            {
+              "fixed": "2.7.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/blacklanternsecurity/bbot/security/advisories/GHSA-p3v4-c93g-cmhw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-10282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.blacklanternsecurity.com/p/bbot-security-advisory-gitdumper"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/blacklanternsecurity/bbot"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-27T20:15:12Z",
+    "nvd_published_at": "2025-10-09T16:15:43Z"
+  }
+}

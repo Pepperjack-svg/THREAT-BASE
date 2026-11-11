@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xp55-qmgg-q2rh",
+  "modified": "2025-11-26T18:31:00Z",
+  "published": "2025-08-22T18:31:22Z",
+  "aliases": [
+    "CVE-2025-38633"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nclk: spacemit: mark K1 pll1_d8 as critical\n\nThe pll1_d8 clock is enabled by the boot loader, and is ultimately a\nparent for numerous clocks, including those used by APB and AXI buses.\nGuodong Xu discovered that this clock got disabled while responding to\ngetting -EPROBE_DEFER when requesting a reset controller.\n\nThe needed clock (CLK_DMA, along with its parents) had already been\nenabled.  To respond to the probe deferral return, the CLK_DMA clock\nwas disabled, and this led to parent clocks also reducing their enable\ncount.  When the enable count for pll1_d8 was decremented it became 0,\nwhich caused it to be disabled.  This led to a system hang.\n\nMarking that clock critical resolves this by preventing it from being\ndisabled.\n\nDefine a new macro CCU_FACTOR_GATE_DEFINE() to allow clock flags to\nbe supplied for a CCU_FACTOR_GATE clock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10948c00e548e9ad2ce9d765baf26dce2d9b806b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7554729de27daf6d54bcf8689d863bbe267828bf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-22T16:15:37Z"
+  }
+}

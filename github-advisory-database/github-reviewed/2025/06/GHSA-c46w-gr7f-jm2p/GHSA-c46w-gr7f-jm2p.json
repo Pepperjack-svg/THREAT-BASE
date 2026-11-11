@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c46w-gr7f-jm2p",
+  "modified": "2025-06-13T21:21:04Z",
+  "published": "2025-06-13T09:30:33Z",
+  "aliases": [
+    "CVE-2025-22239"
+  ],
+  "summary": "Salt vulnerable to arbitrary event injection",
+  "details": "Arbitrary event injection on Salt Master. The master's \"_minion_event\" method can be used by and authorized minion to send arbitrary events onto the master's event bus.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "salt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3006.0rc1"
+            },
+            {
+              "fixed": "3006.12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "salt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3007.0rc1"
+            },
+            {
+              "fixed": "3007.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22239"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/saltstack/salt/commit/41d834bf800d86fc496e4fac2d3875fc2aca7c62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.saltproject.io/en/3006/topics/releases/3006.12.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.saltproject.io/en/3007/topics/releases/3007.4.html"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/saltstack/salt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-06-13T21:21:04Z",
+    "nvd_published_at": "2025-06-13T07:15:21Z"
+  }
+}

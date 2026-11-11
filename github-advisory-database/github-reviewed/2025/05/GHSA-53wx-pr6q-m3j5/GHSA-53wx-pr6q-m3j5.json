@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-53wx-pr6q-m3j5",
+  "modified": "2025-05-06T16:46:15Z",
+  "published": "2025-05-06T12:30:23Z",
+  "aliases": [
+    "CVE-2025-46762"
+  ],
+  "summary": "Apache Parquet Java: Potential malicious code execution from trusted packages in the parquet-avro module when reading an Avro schema from a Parquet file metadata",
+  "details": "Schema parsing in the parquet-avro module of Apache Parquet 1.15.0 and previous versions allows bad actors to execute arbitrary code.\n\nWhile 1.15.1 introduced a fix to restrict untrusted packages, the default setting of trusted packages still allows malicious classes from these packages to be executed.\n\nThe exploit is only applicable if the client code of parquet-avro uses the \"specific\" or the \"reflect\" models deliberately for reading Parquet files. (\"generic\" model is not impacted)\n\nUsers are recommended to upgrade to 1.15.2 or set the system property \"org.apache.parquet.avro.SERIALIZABLE_PACKAGES\" to an empty string on 1.15.1. Both are sufficient to fix the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:A/VC:L/VI:H/VA:H/SC:L/SI:H/SA:H/S:N/RE:M/U:Amber"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.parquet:parquet-avro"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.15.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-46762"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/parquet-java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.apache.org/jira/browse/AVRO-3985"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/t7724lpvl110xsbgqwsmrdsns0rhycdp"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/05/02/1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-05-06T16:46:15Z",
+    "nvd_published_at": "2025-05-06T10:15:16Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mj94-g7gv-r97m",
+  "modified": "2026-02-06T18:30:27Z",
+  "published": "2025-09-18T18:30:26Z",
+  "aliases": [
+    "CVE-2022-50404"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: fbcon: release buffer when fbcon_do_set_font() failed\n\nsyzbot is reporting memory leak at fbcon_do_set_font() [1], for\ncommit a5a923038d70 (\"fbdev: fbcon: Properly revert changes when\nvc_resize() failed\") missed that the buffer might be newly allocated\nby fbcon_set_font().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50404"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06926607b9fddf7ce8017493899ce6eb7e79a123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c3bfb8586f848317ceba5d777e11204ba3e5758"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a341810a22e51c3a7a108f7896b5fd58d44d127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88ec6d11052da527eb9268831e7a9bc5bbad02f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a609bfc1e644a8467cb31945ed1488374ebdc013"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T16:15:43Z"
+  }
+}

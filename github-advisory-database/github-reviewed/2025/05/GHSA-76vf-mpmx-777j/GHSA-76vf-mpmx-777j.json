@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-76vf-mpmx-777j",
+  "modified": "2025-05-07T19:08:39Z",
+  "published": "2025-05-07T15:27:24Z",
+  "aliases": [
+    "CVE-2025-46827"
+  ],
+  "summary": "Graylog Allows Session Takeover via Insufficient HTML Sanitization",
+  "details": "### Impact\nIt is possible to obtain user session cookies by submitting an HTML form as part of an Event Definition Remediation Step field. \nFor this attack to succeed, the attacker needs a user account with permissions to create event definitions, while the user must have permissions to view alerts. Additionally, an active Input must be present on the Graylog server that is capable of receiving form data (e.g. a HTTP input, TCP raw or syslog etc).\n\n### Patches\n\n### Workarounds\nNone, as long as the relatively rare prerequisites are met.\n\nAnalysis provided by Fabian Yamaguchi - Whirly Labs (Pty) Ltd",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.graylog2:graylog2-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.0.14"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 6.0.13"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.graylog2:graylog2-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.1.0"
+            },
+            {
+              "fixed": "6.1.10"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 6.1.9"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Graylog2/graylog2-server/security/advisories/GHSA-76vf-mpmx-777j"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-46827"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Graylog2/graylog2-server"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-05-07T15:27:24Z",
+    "nvd_published_at": "2025-05-07T16:15:22Z"
+  }
+}

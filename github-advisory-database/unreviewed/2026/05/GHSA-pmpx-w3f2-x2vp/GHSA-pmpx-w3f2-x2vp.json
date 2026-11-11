@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pmpx-w3f2-x2vp",
+  "modified": "2026-10-21T15:40:24Z",
+  "published": "2026-05-06T12:30:29Z",
+  "aliases": [
+    "CVE-2026-43127"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs3: fix circular locking dependency in run_unpack_ex\n\nSyzbot reported a circular locking dependency between wnd->rw_lock\n(sbi->used.bitmap) and ni->file.run_lock.\n\nThe deadlock scenario:\n1. ntfs_extend_mft() takes ni->file.run_lock then wnd->rw_lock.\n2. run_unpack_ex() takes wnd->rw_lock then tries to acquire\n   ni->file.run_lock inside ntfs_refresh_zone().\n\nThis creates an AB-BA deadlock.\n\nFix this by using down_read_trylock() instead of down_read() when\nacquiring run_lock in run_unpack_ex(). If the lock is contended,\nskip ntfs_refresh_zone() - the MFT zone will be refreshed on the\nnext MFT operation. This breaks the circular dependency since we\nnever block waiting for run_lock while holding wnd->rw_lock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08ce2fee1b869ecbfbd94e0eb2630e52203a2e03"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/76016d15bbd90caa0ce7765fddf9bde8e943e601"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b014372b62237521444ee51384549bdf48b79015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8d22d9d8260b0f4f4d8e2898c98037c9982ea66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d60f09d2d16c44a797d8cb67015cde2508720506"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:29Z"
+  }
+}

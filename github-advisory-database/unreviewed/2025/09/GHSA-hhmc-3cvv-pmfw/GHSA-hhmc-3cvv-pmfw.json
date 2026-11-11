@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hhmc-3cvv-pmfw",
+  "modified": "2025-12-02T21:31:27Z",
+  "published": "2025-09-16T15:32:33Z",
+  "aliases": [
+    "CVE-2023-53299"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid10: fix leak of 'r10bio->remaining' for recovery\n\nraid10_sync_request() will add 'r10bio->remaining' for both rdev and\nreplacement rdev. However, if the read io fails, recovery_request_write()\nreturns without issuing the write io, in this case, end_sync_request()\nis only called once and 'remaining' is leaked, cause an io hang.\n\nFix the problem by decreasing 'remaining' according to if 'bio' and\n'repl_bio' is valid.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53299"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11141630f03efffdfe260b3582b2d93d38171b97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1697fb124c6d6c5237e9cbd78890310154738084"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d2c6c6e37fe5de11fd01a82badf03390e12df7a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26208a7cffd0c7cbf14237ccd20c7270b3ffeb7e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3481dec5ecbbbbe44ab23e22c2b14bd65c644ec6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f82e7e07cdaf2947d71968e3d6b73370a217093"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c5d5d7ffd1e76734811b8ea5417cf0432b9952c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d09065802c53cc938d162b62f6c4150b392c90e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb827ed2bb34480dc102146d3a1f89fdbcafc028"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T08:15:39Z"
+  }
+}

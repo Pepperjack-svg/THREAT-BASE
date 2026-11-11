@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cp9h-h8x8-m9h6",
+  "modified": "2026-03-19T15:31:15Z",
+  "published": "2026-03-18T18:31:14Z",
+  "aliases": [
+    "CVE-2025-55041"
+  ],
+  "details": "MuraCMS through 10.1.10 contains a CSRF vulnerability in the Add To Group functionality for user management (cUsers.cfc addToGroup method) that allows attackers to escalate privileges by adding any user to any group without proper authorization checks. The vulnerable function lacks CSRF token validation and directly processes user-supplied userId and groupId parameters via getUserManager().createUserInGorup(), enabling malicious websites to forge requests that automatically execute when an authenticated administrator visits a crafted page. Adding a user to the Super Admins group (s2 user) is not possible. Successful exploitation results in the attacker gaining privilege escalation both horizontally to other groups and vertically to the admin group. Escalation to the s2 User group is not possible.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-55041"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.murasoftware.com/v10/release-notes/#section-version-1014"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.murasoftware.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-18T16:16:23Z"
+  }
+}

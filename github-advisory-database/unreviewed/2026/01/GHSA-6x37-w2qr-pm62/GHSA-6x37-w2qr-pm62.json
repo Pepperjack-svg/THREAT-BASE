@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6x37-w2qr-pm62",
+  "modified": "2026-01-31T12:30:12Z",
+  "published": "2026-01-31T12:30:12Z",
+  "aliases": [
+    "CVE-2026-23029"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nLoongArch: KVM: Fix kvm_device leak in kvm_eiointc_destroy()\n\nIn kvm_ioctl_create_device(), kvm_device has allocated memory,\nkvm_device->destroy() seems to be supposed to free its kvm_device\nstruct, but kvm_eiointc_destroy() is not currently doing this, that\nwould lead to a memory leak.\n\nSo, fix it.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23029"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d8553fc75aefa7ec936af0cf8443ff90b51732e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e94ec9661c5820d157d2cc4b6cf4a6ab656a7b4d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-31T12:16:06Z"
+  }
+}

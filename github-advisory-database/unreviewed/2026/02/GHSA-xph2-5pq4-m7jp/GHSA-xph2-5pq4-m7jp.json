@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xph2-5pq4-m7jp",
+  "modified": "2026-03-25T12:30:19Z",
+  "published": "2026-02-14T18:30:15Z",
+  "aliases": [
+    "CVE-2025-71203"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nriscv: Sanitize syscall table indexing under speculation\n\nThe syscall number is a user-controlled value used to index into the\nsyscall table. Use array_index_nospec() to clamp this value after the\nbounds check to prevent speculative out-of-bounds access and subsequent\ndata leakage via cache side channels.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71203"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/25fd7ee7bf58ac3ec7be3c9f82ceff153451946c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/33743ec6679aa364ee19d1afbaa50593e9e6e443"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b44e753795107a22ba31495686e83f4aca48f36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c45848936ebdb4fcab92f8c39510db83c16d0239"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-129"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T17:15:54Z"
+  }
+}

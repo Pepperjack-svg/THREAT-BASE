@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hcxm-g8rr-hmvw",
+  "modified": "2026-10-27T12:30:49Z",
+  "published": "2026-10-27T12:30:49Z",
+  "aliases": [
+    "CVE-2026-116893"
+  ],
+  "details": "REDAXO core before 5.21.5 contains a missing authorization vulnerability in the rex_api_package API function that lets non-admin backend users manage packages with only a valid CSRF token. Attackers holding a token, such as demoted admins with active sessions, can uninstall system addons like structure (dropping their database tables), deactivate, install, or activate packages, and delete non-system packages.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/redaxo/core/security/advisories/GHSA-fw98-549m-whxx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116893"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/redaxo/core/commit/bd96cf27c2ab919b8320264c9f5502753aa82f28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/redaxo-core-before-5.21.5-missing-authorization-in-rex-api-package-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-27T11:17:32Z"
+  }
+}

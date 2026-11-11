@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4w7w-2mrj-36vw",
+  "modified": "2026-07-24T15:32:37Z",
+  "published": "2026-06-25T09:31:19Z",
+  "aliases": [
+    "CVE-2026-53163"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nlocking/rtmutex: Skip remove_waiter() when waiter is not enqueued\n\nsyzbot triggered the following splat in remove_waiter() via\nFUTEX_CMP_REQUEUE_PI:\n\n  KASAN: null-ptr-deref in range [0x0000000000000a88-0x0000000000000a8f]\n   class_raw_spinlock_constructor\n   remove_waiter+0x159/0x1200 kernel/locking/rtmutex.c:1561\n   rt_mutex_start_proxy_lock+0x103/0x120\n   futex_requeue+0x10e4/0x20d0\n   __x64_sys_futex+0x34f/0x4d0\n\ntask_blocks_on_rt_mutex() does not arm the waiter upon deadlock detection,\nleaving waiter->task nil, where 3bfdc63936dd (\"rtmutex: Use waiter::task instead\nof current in remove_waiter()\") made this fatal.\n\nFurthermore, rt_mutex_start_proxy_lock() should not be calling into remove_waiter()\nupon a successfully grabbing the rtmutex. 1a1fb985f2e2 (\"futex: Handle early deadlock\nreturn correctly\"), moved the remove_waiter() out of __rt_mutex_start_proxy_lock()\n(where 'ret' was only ever 0 or < 0) into the wrapper. Tighten this check to\naccount for try_to_take_rt_mutex().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53163"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40a25d59e85b3c8709ac2424d44f65610467871e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4afda3a1da02129568a3a2f1898aa13e6763bcba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ffacf76a457b7ca8ac05f5df8740b0d8f53574a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55363fa0a04524d11efeaadee734d2db1756ed27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5799f9bd7fee40370b93ab1ddf001cdc7017c14d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6707d7e0b71748cb3cd95bad81dae5fe1b3c8f48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a388e3dfaf9538a680de5ed43a8ebb5dd45b6e53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bfbc047ceb42c0e1fac8f3a155d4548a8bbe76b1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:33Z"
+  }
+}

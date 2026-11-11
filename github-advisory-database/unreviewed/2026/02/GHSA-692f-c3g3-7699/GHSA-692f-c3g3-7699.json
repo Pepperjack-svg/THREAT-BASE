@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-692f-c3g3-7699",
+  "modified": "2026-03-25T12:30:19Z",
+  "published": "2026-02-04T18:30:43Z",
+  "aliases": [
+    "CVE-2026-23070"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nOcteontx2-af: Add proper checks for fwdata\n\nfirmware populates MAC address, link modes (supported, advertised)\nand EEPROM data in shared firmware structure which kernel access\nvia MAC block(CGX/RPM).\n\nAccessing fwdata, on boards booted with out MAC block leading to\nkernel panics.\n\nInternal error: Oops: 0000000096000005 [#1]  SMP\n[   10.460721] Modules linked in:\n[   10.463779] CPU: 0 UID: 0 PID: 174 Comm: kworker/0:3 Not tainted 6.19.0-rc5-00154-g76ec646abdf7-dirty #3 PREEMPT\n[   10.474045] Hardware name: Marvell OcteonTX CN98XX board (DT)\n[   10.479793] Workqueue: events work_for_cpu_fn\n[   10.484159] pstate: 80400009 (Nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)\n[   10.491124] pc : rvu_sdp_init+0x18/0x114\n[   10.495051] lr : rvu_probe+0xe58/0x1d18",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23070"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/079050a23de6b7505595e4af75b36c34f0e9627e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a3dba48188208e4f66822800e042686784d29d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e343973fab43c266a40e4e0dabdc4216db6d5eff"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-04T17:16:17Z"
+  }
+}

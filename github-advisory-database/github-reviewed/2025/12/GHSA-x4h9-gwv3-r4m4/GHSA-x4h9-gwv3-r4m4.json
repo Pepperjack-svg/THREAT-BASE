@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x4h9-gwv3-r4m4",
+  "modified": "2025-12-12T21:52:40Z",
+  "published": "2025-12-08T22:03:19Z",
+  "aliases": [
+    "CVE-2025-66568"
+  ],
+  "summary": "Ruby-saml allows a Libxml2 Canonicalization error to bypass Digest/Signature validation",
+  "details": "### Summary\nRuby-saml up to and including 1.12.4, there is an authentication bypass vulnerability because of an issue at libxml2 canonicalization process used by Nokogiri for document transformation. That allows an attacker to be able to execute a Signature Wrapping attack. The vulnerability does not affect the version 1.18.0.\n\n### Details\nWhen libxml2’s canonicalization is invoked on an invalid XML input, it may return an empty string rather than a canonicalized node. ruby-saml then proceeds to compute the DigestValue over this empty string, treating it as if canonicalization succeeded.\n\n### Impact\n1. Digest bypass: By crafting input that causes canonicalization to yield an empty string, the attacker can manipulate validation to pass incorrectly.\n\n2. Signature replay on empty canonical form: If an empty string has been signed once (e.g., in a prior interaction or via a misconfigured flow), that signature can potentially be replayed to bypass authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "ruby-saml"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.18.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/SAML-Toolkits/ruby-saml/security/advisories/GHSA-x4h9-gwv3-r4m4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66568"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SAML-Toolkits/ruby-saml/commit/acac9e9cc0b9a507882c614f25d41f8b47be349a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/SAML-Toolkits/ruby-saml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/ruby-saml/CVE-2025-66568.yml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-347"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-08T22:03:19Z",
+    "nvd_published_at": "2025-12-09T16:18:21Z"
+  }
+}

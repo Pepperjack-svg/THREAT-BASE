@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ggr9-wchc-h5rx",
+  "modified": "2026-10-19T12:32:51Z",
+  "published": "2026-10-19T12:32:51Z",
+  "aliases": [
+    "CVE-2026-85296"
+  ],
+  "details": "Exposure of Data Element to Wrong Session vulnerability in Apache Camel AS2 component.\n\nThis issue affects Apache Camel: from 4.0.0 before 4.18.5, from 4.19.0 before 4.22.1.\n\nSigning material belonging to an individual request was stored in state that is shared across requests rather than confined to the request being processed. Where a deployment serves more than one trading partner, concurrent or successive requests could therefore observe each other's material, and a Message Disposition Notification could be signed with the key of a partner other than the one the receipt was for. The result is cross-partner key confusion: a receipt attributable to the wrong partner, and one partner's signing material used while handling another partner's exchange. AS2 deployments are typically multi-partner by design, so the condition is reached by ordinary concurrent traffic rather than by anything the attacker must arrange.\n\nUpgrade to Apache Camel 4.23.0, which fixes the issue. Users on the 4.18.x LTS releases stream should upgrade to 4.18.5. Users on the 4.22.x LTS releases stream should upgrade to 4.22.1. Per-request signing keys are now confined to the request being processed in ResponseMDN. For deployments that cannot upgrade immediately, run a separate Camel context per trading partner so that no signing material is shared between them.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/25641"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/25869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/25870"
+    },
+    {
+      "type": "WEB",
+      "url": "https://camel.apache.org/security/CVE-2026-85296.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.apache.org/jira/browse/CAMEL-24429"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-488"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T11:17:24Z"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hx47-q2x9-r28j",
+  "modified": "2026-02-23T06:30:19Z",
+  "published": "2026-02-23T06:30:18Z",
+  "aliases": [
+    "CVE-2026-2974"
+  ],
+  "details": "A vulnerability was identified in AliasVault App up to 0.25.3 on Android/iOS. This vulnerability affects unknown code of the file shared_prefs/aliasvault.xml of the component Backup Handler. The manipulation of the argument accessToken/refreshToken/metadata/key_derivation_params/auth_methods leads to exposure of backup file to an unauthorized control sphere. An attack has to be approached locally. The attack is considered to have high complexity. It is stated that the exploitability is difficult. The exploit is publicly available and might be used. Upgrading to version 0.26.0 is able to resolve this issue. The identifier of the patch is 873ecc03f92238e162f98a068ad56069a922b4f6/0bd662320174d8265dfe3b05a04bc13efc960532. It is recommended to upgrade the affected component. The creator of the software explains: \"Because of AliasVault's zero-knowledge encryption design, the tokens stored in aliasvault.xml are API session tokens that cannot decrypt the vault on their own: the master password is required for that. So while this isn't a direct vault compromise risk, there's no reason to include them in backups either.\"",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2974"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aliasvault/aliasvault/issues/1497"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aliasvault/aliasvault/issues/1497#issue-3855176470"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aliasvault/aliasvault/pull/1499"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aliasvault/aliasvault/commit/873ecc03f92238e162f98a068ad56069a922b4f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aliasvault/aliasvault/releases/tag/0.26.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?ctiid.347340"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?id.347340"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?submit.756058"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?submit.756059"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-23T06:16:16Z"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pfq8-pr42-5qc2",
+  "modified": "2025-12-08T03:31:03Z",
+  "published": "2025-12-08T03:31:03Z",
+  "aliases": [
+    "CVE-2023-53746"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/vfio-ap: fix memory leak in vfio_ap device driver\n\nThe device release callback function invoked to release the matrix device\nuses the dev_get_drvdata(device *dev) function to retrieve the\npointer to the vfio_matrix_dev object in order to free its storage. The\nproblem is, this object is not stored as drvdata with the device; since the\nkfree function will accept a NULL pointer, the memory for the\nvfio_matrix_dev object is never freed.\n\nSince the device being released is contained within the vfio_matrix_dev\nobject, the container_of macro will be used to retrieve its pointer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53746"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5195de1d5f66b276683240a896783f7f43c4f664"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a40fda14b4be3e38f03cc42ffd4efbc64fb3e67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b6a02f5bf15931464c79dfd487c57f76aae3496"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f8cf767589f2131ae5d40f3758429095c701c84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa2bff25e9bb10c935c7ffe3d5f5975bdccb1749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee17dea3072dec0bc34399a32fa884e26342e4ea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-08T02:15:49Z"
+  }
+}

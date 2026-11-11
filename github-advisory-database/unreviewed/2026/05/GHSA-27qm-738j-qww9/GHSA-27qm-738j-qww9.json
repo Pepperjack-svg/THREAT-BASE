@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-27qm-738j-qww9",
+  "modified": "2026-05-11T21:31:31Z",
+  "published": "2026-05-06T12:30:34Z",
+  "aliases": [
+    "CVE-2026-43251"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: prodikeys: Check presence of pm->input_ep82\n\nFake USB devices can send their own report descriptors for which the\ninput_mapping() hook does not get called.  In this case, pm->input_ep82 stays\nNULL, which leads to a crash later.\n\nThis does not happen with the real device, but can be provoked by imposing as\none.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f1b21cc67a15d7d081378a9b8747dd000a017b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cee8337e1bad168136aecfe6416ecd7d3aa7529a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d08f35f843881ec504d7537a9bb728a073db3366"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5512ce892f774d37c53082adadfcad04f21b50e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7ac1cd823cd2e9fcbd5cb0b261d6d35dbb79341"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/edccbf7d6dc05d692bde3a89de5a4001f72a0fa4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee572578f09f0e743e9383393a75c3a7a0f9b4c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f580c79683356632f12f2c2029f2fe936d953aa1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:45Z"
+  }
+}

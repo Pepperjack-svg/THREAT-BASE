@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3jg2-q8pw-r325",
+  "modified": "2026-11-10T03:30:25Z",
+  "published": "2026-11-10T03:30:25Z",
+  "aliases": [
+    "CVE-2026-107242"
+  ],
+  "details": "The Node.js web service on VOS (previously Versa FlexVNF) is used for URL-based Zero Touch Provisioning (ZTP) of the VOS appliance and is not required after provisioning is complete. This service generates session identifiers using UUID version 1 (UUIDv1), which is derived from the system’s date and time and its MAC address. As a result, successive identifiers differ only slightly and can be predicted. An attacker who can predict a user’s session ID could hijack that user’s session. \n\nVersa’s security hardening guide for Hubs, Branches, and Controllers recommends disabling the Node.js web service after the initial provisioning of the VOS device. This vulnerability is not exploitable on VOS devices where the Node.js web service has been disabled.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107242"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security-portal.versa-networks.com/emailbulletins/6af22a90dd1c93ddc0a3e836"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-340"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T01:17:12Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mppv-m824-3w4x",
+  "modified": "2026-11-10T00:31:48Z",
+  "published": "2026-11-10T00:31:47Z",
+  "aliases": [
+    "CVE-2026-125380"
+  ],
+  "details": "DataRoom through 3.0.0 contains an incorrect authorization vulnerability in DatasetController.runTest that allows visitor-role users to execute dataset definitions supplied in the request body. Attackers can specify an arbitrary dataSourceCode and raw SELECT SQL to query any configured relational data source using its stored decrypted credentials, bypassing developer-only restrictions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125380"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gcpaas/DataRoom/issues/25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gcpaas/DataRoom/commit/4022eb30d44501aa502e08696e49cbd2a3b33ae7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gcpaas/DataRoom"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gcpaas/DataRoom/blob/3.0.0/dataRoomServer/src/main/java/com/gccloud/gcpaas/dataroom/core/dataset/DatasetController.java#L129-L133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dataroom-through-3.0.0-incorrect-authorization-via-dataroom-dataset-run-test"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T00:17:11Z"
+  }
+}

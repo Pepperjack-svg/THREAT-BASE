@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-345q-9jmq-g9q4",
+  "modified": "2025-04-25T16:31:47Z",
+  "published": "2025-04-25T15:31:22Z",
+  "aliases": [
+    "CVE-2025-32044"
+  ],
+  "summary": "Moodle allows unauthenticated REST API user data exposure",
+  "details": "A flaw has been identified in Moodle where, on certain sites, unauthenticated users could retrieve sensitive user data—including names, contact information, and hashed passwords—via stack traces returned by specific API calls. Sites where PHP is configured with zend.exception_ignore_args = 'On' or zend.exception_ignore_args = 1 in the relevant php.ini file are NOT affected by this vulnerability. Sites that do not have the zend.exception_ignore_args setting enabled and are using the internal Moodle LMS authentication system are affected by this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "moodle/moodle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.5.0-beta"
+            },
+            {
+              "fixed": "4.5.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-32044"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moodle/moodle/commit/41917db65e6b3dba3bf3d805a8599e6752655646"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2025-32044"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2356829"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/moodle/moodle"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-04-25T16:31:47Z",
+    "nvd_published_at": "2025-04-25T15:15:36Z"
+  }
+}

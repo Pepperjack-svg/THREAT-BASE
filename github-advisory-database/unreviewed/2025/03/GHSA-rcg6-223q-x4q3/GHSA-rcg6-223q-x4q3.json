@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rcg6-223q-x4q3",
+  "modified": "2025-03-12T00:31:47Z",
+  "published": "2025-03-12T00:31:47Z",
+  "aliases": [
+    "CVE-2022-49637"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: Fix a data-race around sysctl_fib_sync_mem.\n\nWhile reading sysctl_fib_sync_mem, it can be changed concurrently.\nSo, we need to add READ_ONCE() to avoid a data-race.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/190cd4ff128373271e065afb20f1d2247b3f10c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/418b191d5f223a8cb6cab09eae1f72c04ba6adf2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73318c4b7dbd0e781aaababff17376b2894745c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c1acd98fb221dc0d847451b9ab86319f8b9916c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9be8aac91960ea32fd0e874758c9afee665c57d2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:38Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7rfg-j54g-6xm2",
+  "modified": "2026-11-02T15:31:43Z",
+  "published": "2026-11-02T15:31:43Z",
+  "aliases": [
+    "CVE-2026-120451"
+  ],
+  "details": "libgphoto2 through 2.5.34 contains stack-based and heap-based buffer overflow vulnerabilities in jl2005c_init() that allow malicious USB devices to corrupt memory by supplying an unbounded allocation table entry count. Attackers can connect a spoofed Jeilin JL2005B/C/D camera reporting 1022 or more entries to overwrite the saved return address and heap data, potentially achieving code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:P/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120451"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gphoto/libgphoto2/issues/1326"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gphoto/libgphoto2/commit/6a3393dd996502457ab965432cf0b2035278825e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gphoto/libgphoto2/commit/af3b8e9c542cda863fb5f2f3cfeb261bd78e4442"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gphoto/libgphoto2/blob/v2.5.34/camlibs/jl2005c/jl2005c.c#L138-L154"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/libgphoto2-jl2005c-init-alloc-table-buffer-overflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libgphoto2-through-2.5.34-buffer-overflow-via-jl2005c-camera-driver"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T15:17:28Z"
+  }
+}

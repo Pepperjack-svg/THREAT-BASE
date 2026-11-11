@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pchj-j532-7cm6",
+  "modified": "2026-10-28T12:31:01Z",
+  "published": "2026-10-28T12:31:01Z",
+  "aliases": [
+    "CVE-2026-99102"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: take invalidate_lock in ntfs_setattr_size()\n\nntfs_setattr_size() updates i_size and resizes the on-disk attribute\nwithout holding mapping->invalidate_lock.  Page faults take the lock\nshared, so a fault racing the resize can resolve a VCN against the\ntransient runlist state of ntfs_non_resident_attr_expand() and fail\nwith a spurious SIGBUS, and can interleave with the size-change\nepilogue (truncate_pagecache(), i_size_write(),\npagecache_isize_extended()).\n\nTake invalidate_lock exclusively around the whole resize after\ninode_dio_wait(), matching the fallocate path and other filesystems\nsuch as xfs, which wraps truncate in its mmaplock (= invalidate_lock).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99102"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9cc5761b8f28f9cef72061094eb5e37e2cd44d97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0b0738ba95731eeafd11352c74f8b48951f67dc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T11:17:29Z"
+  }
+}

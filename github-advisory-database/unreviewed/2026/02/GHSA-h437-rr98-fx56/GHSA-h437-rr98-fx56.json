@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h437-rr98-fx56",
+  "modified": "2026-03-18T15:30:41Z",
+  "published": "2026-02-18T18:30:40Z",
+  "aliases": [
+    "CVE-2026-23223"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: fix UAF in xchk_btree_check_block_owner\n\nWe cannot dereference bs->cur when trying to determine if bs->cur\naliases bs->sc->sa.{bno,rmap}_cur after the latter has been freed.\nFix this by sampling before type before any freeing could happen.\nThe correct temporal ordering was broken when we removed xfs_btnum_t.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23223"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c253e11225bc5167217897885b85093e17c2217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d411278dda293a507cb794db7d9ed3511c685c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba5264610423d9653aa36920520902d83841bcfd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed82e7949f5cac3058f4100f3cd670531d41a266"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-18T16:22:32Z"
+  }
+}

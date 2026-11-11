@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8hr-j464-wc7x",
+  "modified": "2025-12-24T15:30:34Z",
+  "published": "2025-12-24T15:30:34Z",
+  "aliases": [
+    "CVE-2022-50769"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: mxcmmc: fix return value check of mmc_add_host()\n\nmmc_add_host() may return error, if we ignore its return value, the memory\nthat allocated in mmc_alloc_host() will be leaked and it will lead a kernel\ncrash because of deleting not added device in the remove path.\n\nSo fix this by checking the return value and goto error path which will call\nmmc_free_host().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50769"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1cf0c1e58738b97e2de207846105b6a5d46622ee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d496050ded83b13b16f05e1fc0329b0210d2493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32eb502c972dfc34413c9147418b3d94d870c2b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3904eb97bb78fdca3e16d30a38ce5697b9686110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5f35c038c9f4d258b3cf77885a2730f1417d63e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8bdb3fd13d5cd1e86d22fd3f803a742fd88af89"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cde600af7b413c9fe03e85c58c4279df90e91d13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2ead18bc7cc166220cab5a744a05c5b69431a12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d37474ab9a79149075f0823315c6d45dd983a78c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:03Z"
+  }
+}

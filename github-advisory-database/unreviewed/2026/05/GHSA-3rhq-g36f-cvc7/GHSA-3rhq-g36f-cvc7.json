@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3rhq-g36f-cvc7",
+  "modified": "2026-05-15T09:31:32Z",
+  "published": "2026-05-15T09:31:32Z",
+  "aliases": [
+    "CVE-2026-4683"
+  ],
+  "details": "The Smartcat Translator for WPML plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the 'routeData' REST endpoint in all versions up to, and including, 3.1.77. This makes it possible for unauthenticated attackers to overwrite the plugin's Smartcat API credentials (account ID, API secret key, hub key, API host, and hub host), effectively hijacking the translation service or causing a denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4683"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/smartcat-wpml/trunk/includes/Controllers/CallbackController.php#L10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/smartcat-wpml/trunk/includes/Services/Plugin/Router.php#L18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3524382"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/6a9397ed-eddf-466b-b810-1e2f45afd291?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-15T09:16:16Z"
+  }
+}

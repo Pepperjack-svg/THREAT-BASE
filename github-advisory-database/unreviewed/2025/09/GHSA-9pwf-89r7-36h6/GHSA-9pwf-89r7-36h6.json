@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9pwf-89r7-36h6",
+  "modified": "2025-12-11T18:30:32Z",
+  "published": "2025-09-17T15:30:38Z",
+  "aliases": [
+    "CVE-2023-53335"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/cxgb4: Fix potential null-ptr-deref in pass_establish()\n\nIf get_ep_from_tid() fails to lookup non-NULL value for ep, ep is\ndereferenced later regardless of whether it is empty.\nThis patch adds a simple sanity check to fix the issue.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53335"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/283861a4c52c1ea4df3dd1b6fc75a50796ce3524"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2cfc00e974d75a3aa8155f2660f57d342e1f67ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9dca64042d855a24b0bd81ce242e5dc7e939f6eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ddc77eefb2a567b705c3c86ab2ddabe43cadf1b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-17T15:15:36Z"
+  }
+}

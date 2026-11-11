@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j2h6-x5fv-586q",
+  "modified": "2026-03-18T15:30:40Z",
+  "published": "2026-02-14T15:32:18Z",
+  "aliases": [
+    "CVE-2026-23122"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nigc: Reduce TSN TX packet buffer from 7KB to 5KB per queue\n\nThe previous 7 KB per queue caused TX unit hangs under heavy\ntimestamping load. Reducing to 5 KB avoids these hangs and matches\nthe TSN recommendation in I225/I226 SW User Manual Section 7.5.4.\n\nThe 8 KB \"freed\" by this change is currently unused. This reduction\nis not expected to impact throughput, as the i226 is PCIe-limited\nfor small TSN packets rather than TX-buffer-limited.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88037973c8ef6032bf84e9955595f8b20bc14c21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ad1b6c1e63d25f5465b7a8aa403bdcee84b86f9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-14T15:16:07Z"
+  }
+}

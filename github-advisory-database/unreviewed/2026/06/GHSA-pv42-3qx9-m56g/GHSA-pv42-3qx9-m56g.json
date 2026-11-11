@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pv42-3qx9-m56g",
+  "modified": "2026-06-24T00:30:30Z",
+  "published": "2026-06-23T15:32:37Z",
+  "aliases": [
+    "CVE-2026-56784"
+  ],
+  "details": "OpenRemote Manager before 1.24.2 contains an insecure direct object reference vulnerability in the removeAlarms() method that allows authenticated users to delete alarms from other tenants by supplying arbitrary alarm IDs. The bulk deletion endpoint fails to validate that targeted alarm IDs belong to the caller's realm, enabling cross-tenant permanent destruction of safety-critical and security alerts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openremote/openremote/security/advisories/GHSA-h3m5-97jq-qjrf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56784"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openremote-cross-tenant-idor-in-bulk-alarm-deletion"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openremote-manager-cross-tenant-idor-in-bulk-alarm-deletion"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-23T13:16:46Z"
+  }
+}

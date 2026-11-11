@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-39ch-8xp7-gcgh",
+  "modified": "2026-10-10T09:30:26Z",
+  "published": "2026-10-10T09:30:26Z",
+  "aliases": [
+    "CVE-2026-103427"
+  ],
+  "details": "The Simple Membership plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'country' parameter in all versions up to, and including, 4.8.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Unauthenticated attackers may also exploit this vulnerability when the plugin's Enable Free Membership feature is turned on, as it permits anonymous front-end registration and profile submission.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://downloads.wordpress.org/plugin/simple-membership.4.8.5.zip"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-membership/tags/4.8.4/classes/class.swpm-form.php#L158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-membership/tags/4.8.4/classes/class.swpm-utils-misc.php#L1060"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-membership/tags/4.8.4/views/admin_member_form_common_part.php#L42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/fbebb9d4-c445-473d-a5f6-beac00ebe7aa?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T07:16:40Z"
+  }
+}

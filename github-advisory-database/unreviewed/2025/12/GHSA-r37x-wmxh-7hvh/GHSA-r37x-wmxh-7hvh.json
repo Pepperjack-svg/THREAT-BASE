@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r37x-wmxh-7hvh",
+  "modified": "2026-07-30T06:32:19Z",
+  "published": "2025-12-07T00:30:56Z",
+  "aliases": [
+    "CVE-2025-40271"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/proc: fix uaf in proc_readdir_de()\n\nPde is erased from subdir rbtree through rb_erase(), but not set the node\nto EMPTY, which may result in uaf access.  We should use RB_CLEAR_NODE()\nset the erased node to EMPTY, then pde_subdir_next() will return NULL to\navoid uaf access.\n\nWe found an uaf issue while using stress-ng testing, need to run testcase\ngetdent and tun in the same time.  The steps of the issue is as follows:\n\n1) use getdent to traverse dir /proc/pid/net/dev_snmp6/, and current\n   pde is tun3;\n\n2) in the [time windows] unregister netdevice tun3 and tun2, and erase\n   them from rbtree.  erase tun3 first, and then erase tun2.  the\n   pde(tun2) will be released to slab;\n\n3) continue to getdent process, then pde_subdir_next() will return\n   pde(tun2) which is released, it will case uaf access.\n\nCPU 0                                      |    CPU 1\n-------------------------------------------------------------------------\ntraverse dir /proc/pid/net/dev_snmp6/      |   unregister_netdevice(tun->dev)   //tun3 tun2\nsys_getdents64()                           |\n  iterate_dir()                            |\n    proc_readdir()                         |\n      proc_readdir_de()                    |     snmp6_unregister_dev()\n        pde_get(de);                       |       proc_remove()\n        read_unlock(&proc_subdir_lock);    |         remove_proc_subtree()\n                                           |           write_lock(&proc_subdir_lock);\n        [time window]                      |           rb_erase(&root->subdir_node, &parent->subdir);\n                                           |           write_unlock(&proc_subdir_lock);\n        read_lock(&proc_subdir_lock);      |\n        next = pde_subdir_next(de);        |\n        pde_put(de);                       |\n        de = next;    //UAF                |\n\nrbtree of dev_snmp6\n                        |\n                    pde(tun3)\n                     /    \\\n                  NULL  pde(tun2)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40271"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-253495.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03de7ff197a3d0e17d0d5c58fdac99a63cba8110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d1596d68a6f11d28f677eedf6cf5b17dbfeb491"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4cba73c4c89219beef7685a47374bf88b1022369"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/623bb26127fb581a741e880e1e1a47d79aecb6f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67272c11f379d9aa5e0f6b16286b9d89b3f76046"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f2482745e510ae1dacc9b090194b9c5f918d774"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/895b4c0c79b092d732544011c3cecaf7322c36a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c81d0385500446efe48c305bbb83d47f2ae23a50"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-06T22:15:54Z"
+  }
+}

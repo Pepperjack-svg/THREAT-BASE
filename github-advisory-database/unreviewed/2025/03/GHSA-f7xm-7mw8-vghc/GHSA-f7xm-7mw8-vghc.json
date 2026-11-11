@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f7xm-7mw8-vghc",
+  "modified": "2025-03-17T18:31:50Z",
+  "published": "2025-03-17T18:31:49Z",
+  "aliases": [
+    "CVE-2022-49461"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\namt: fix memory leak for advertisement message\n\nWhen a gateway receives an advertisement message, it extracts relay\ninformation and then it should be freed.\nBut the advertisement handler doesn't free it.\nSo, memory leak would occur.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19bb2d57eac86a368839a92117d8a10ab7183623"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7322da399fb86a2072f008b56f7160afa1b2051"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe29794c3585d039fefebaa2b5a4932a627ad4fd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:22Z"
+  }
+}

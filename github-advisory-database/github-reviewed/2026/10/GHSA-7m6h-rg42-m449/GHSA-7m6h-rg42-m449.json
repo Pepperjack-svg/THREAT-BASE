@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7m6h-rg42-m449",
+  "modified": "2026-10-19T19:37:37Z",
+  "published": "2026-10-05T23:44:12Z",
+  "aliases": [
+    "CVE-2026-104181"
+  ],
+  "summary": "Filament: Multi-factor authentication (app) management actions do not require password reauthentication",
+  "details": "App-based multi-factor authentication management actions did not consistently require the user to confirm their current password. In particular, an authenticated session could set up app-based MFA and obtain recovery codes without password reauthentication. Disabling app-based MFA and regenerating recovery codes also accepted an existing app code or recovery code without requiring the current password. This issue does not affect email-based MFA.\n\nIf an attacker gains access to a user's authenticated session, they could enable app-based MFA and obtain recovery codes without knowing the user's password, changing the account's MFA configuration and potentially locking the legitimate user out. This issue does not by itself allow an unauthenticated attacker to sign in.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "filament/filament"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.13.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.13.2"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "filament/filament"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.8.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.8.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/filamentphp/filament/security/advisories/GHSA-7m6h-rg42-m449"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104181"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/filamentphp/filament/pull/20522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/filamentphp/filament/commit/6d4dae6d7a94ce5aefd7ed4dc836acb0e6b71bb1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/filamentphp/filament"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/filamentphp/filament/releases/tag/v4.13.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/filamentphp/filament/releases/tag/v5.8.3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-05T23:44:12Z",
+    "nvd_published_at": "2026-10-01T21:17:18Z"
+  }
+}

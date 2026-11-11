@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6hp6-98mx-37xj",
+  "modified": "2026-06-01T18:31:34Z",
+  "published": "2026-05-27T15:33:21Z",
+  "aliases": [
+    "CVE-2026-46027"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: avoid early lgr access in smc_clc_wait_msg\n\nA CLC decline can be received while the handshake is still in an early\nstage, before the connection has been associated with a link group.\n\nThe decline handling in smc_clc_wait_msg() updates link-group level sync\nstate for first-contact declines, but that state only exists after link\ngroup setup has completed. Guard the link-group update accordingly and\nkeep the per-socket peer diagnosis handling unchanged.\n\nThis preserves the existing sync_err handling for established link-group\ncontexts and avoids touching link-group state before it is available.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46027"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22546729b96fc873b23065dc49e3d73c45cfb874"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/257cdf0c5ced9c0fba8aba501d94b0a5fcef2086"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a8db80f721deee8e916c2cfdee78decda02ce4f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5eedbfd82c2884e0010fdfb3c9446a6ebcadb691"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6180a296ca65b08a81914805cbc0f78da5f10a1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83bcf9228b0501694fb2589ed1d142855a2887f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea0b5d0fe96356dce38f98375a57c52a04e13712"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0858e1d5624bb120b198f2a8528f97a9b0ae069"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-617"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:21Z"
+  }
+}

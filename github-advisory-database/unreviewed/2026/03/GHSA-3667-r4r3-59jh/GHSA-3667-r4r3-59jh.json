@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3667-r4r3-59jh",
+  "modified": "2026-10-15T03:35:26Z",
+  "published": "2026-03-25T12:30:24Z",
+  "aliases": [
+    "CVE-2026-23388"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nSquashfs: check metadata block offset is within range\n\nSyzkaller reports a \"general protection fault in squashfs_copy_data\"\n\nThis is ultimately caused by a corrupted index look-up table, which\nproduces a negative metadata block offset.\n\nThis is subsequently passed to squashfs_copy_data (via\nsquashfs_read_metadata) where the negative offset causes an out of bounds\naccess.\n\nThe fix is to check that the offset is within range in\nsquashfs_read_metadata.  This will trap this and other cases.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23388"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01ee0bcc29864b78249308e8b35042b09bbf5fe3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c8ab092aec3ac4294940054772d30b511b16713"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b9499e7d677dd4366239a292238489a804936b2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f68a9457a6190814377577374da75f872e0a013"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60f679f643f3f36a8571ea585e4ce5d93ef952b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b847d65f5b0065e02080c61fad93d57d6686383"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e9fa5ad37c9cbad73c165c7ff1e76e650825e7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fdb24a820a5832ec4532273282cbd4f22c291a0d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:39Z"
+  }
+}

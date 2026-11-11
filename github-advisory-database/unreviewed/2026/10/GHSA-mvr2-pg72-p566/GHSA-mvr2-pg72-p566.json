@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mvr2-pg72-p566",
+  "modified": "2026-10-21T18:33:16Z",
+  "published": "2026-10-21T18:33:15Z",
+  "aliases": [
+    "CVE-2026-114473"
+  ],
+  "details": "Incorrect authorization in the Sender Rewriting Scheme (SRS) of Progressive Robot hMailServer 6.2.1 through 6.3.6 allows a remote attacker to relay mail through the server to outside addresses. With SRS enabled, the server rewrites the envelope sender of mail it forwards to a signed SRS address at the forwarding domain, and passes a bounce to that address back to the original sender; but it took every message to a valid SRS address, whatever its sender, as delivery to a local recipient, so the relay rules and the SMTP authentication they require were not applied, and the message was delivered to the outside address the SRS address encodes. Anyone holding a valid SRS address of the server, such as the recipient of a forwarded message, could have the server relay mail to the address it encodes for 21 days, and an account holder whose account forwards to an outside mailbox could obtain one for any address. SRS is off by default.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114473"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/hmailserver/hmailserver/-/work_items/94"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T16:17:34Z"
+  }
+}

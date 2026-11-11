@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cqv3-6vqr-2pmm",
+  "modified": "2025-12-09T18:30:36Z",
+  "published": "2025-12-09T18:30:36Z",
+  "aliases": [
+    "CVE-2025-40332"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Fix mmap write lock not release\n\nIf mmap write lock is taken while draining retry fault, mmap write lock\nis not released because svm_range_restore_pages calls mmap_read_unlock\nthen returns. This causes deadlock and system hangs later because mmap\nread or write lock cannot be taken.\n\nDowngrade mmap write lock to read lock if draining retry fault fix this\nbug.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40332"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7574f30337e19045f03126b4c51f525b84e5049e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2105ba1c262dcaa9573f11844b6e1e1ca762c3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7569ef1cf978aa87aa81b5e9bf40a77497f3685"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T16:17:43Z"
+  }
+}

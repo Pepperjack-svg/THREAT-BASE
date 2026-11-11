@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g8hq-q89f-265v",
+  "modified": "2025-11-14T18:31:25Z",
+  "published": "2025-06-18T12:30:41Z",
+  "aliases": [
+    "CVE-2022-50007"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: fix refcount leak in __xfrm_policy_check()\n\nThe issue happens on an error path in __xfrm_policy_check(). When the\nfetching process of the object `pols[1]` fails, the function simply\nreturns 0, forgetting to decrement the reference count of `pols[0]`,\nwhich is incremented earlier by either xfrm_sk_policy_lookup() or\nxfrm_policy_lookup(). This may result in memory leaks.\n\nFix it by decreasing the reference count of `pols[0]` in that path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50007"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0769491a8acd3e85ca4c3f65080eac2c824262df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1305d7d4f35ca6f214a2d23b075aa6a924cff3be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/18e6b6e2555c93f5ca09f2b85ef1fa025c8accea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26ad2398fe4984f4f6f930bcb3bc9047fa77265b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63da7a2bbf3f28094920e0b8a17d2571a9bd842d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f94b933103ee1bda119543369cc18a1be5536db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c9cb23e00ddf45679b21b4dacc11d1ae7961ebe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d66c052879791313f90c0584420f196a038fb8b8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:28Z"
+  }
+}

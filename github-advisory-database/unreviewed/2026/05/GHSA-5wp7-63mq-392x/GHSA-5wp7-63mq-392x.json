@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5wp7-63mq-392x",
+  "modified": "2026-08-07T00:31:04Z",
+  "published": "2026-05-13T21:32:06Z",
+  "aliases": [
+    "CVE-2026-8496"
+  ],
+  "details": "A cross-site scripting (XSS) vulnerability exists in Alinto SOGo, version  5.12.7. A maliciously crafted ICS calendar invitation files allows arbitrary JavaScript execution within the authenticated SOGo webmail session. The issue occurs because SVG content embedded in the description field of an ICS file, with an onrepeat event handler, is insufficiently sanitized before being rendered in the webmail interface. A remote attacker can execute JavaScript in the victim's browser when the malicious calendar invite is viewed.  Successful exploitation may allow mailbox access, email and contact theft, session hijacking, and other actions allowed by an authenticated user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8496"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Alinto/sogo/commit/67ce01ec2a1a7854d8e9f615dd65afb949043e86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Alinto/sogo/releases/tag/SOGo-5.12.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.kb.cert.org/vuls/id/487613"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.sogo.nu/news/2026/sogo-v5128-released.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-13T19:17:30Z"
+  }
+}

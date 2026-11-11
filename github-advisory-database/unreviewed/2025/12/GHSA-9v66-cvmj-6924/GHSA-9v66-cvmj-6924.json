@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9v66-cvmj-6924",
+  "modified": "2026-08-04T12:34:40Z",
+  "published": "2025-12-09T18:30:32Z",
+  "aliases": [
+    "CVE-2022-50671"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/rxe: Fix \"kernel NULL pointer dereference\" error\n\nWhen rxe_queue_init in the function rxe_qp_init_req fails,\nboth qp->req.task.func and qp->req.task.arg are not initialized.\n\nBecause of creation of qp fails, the function rxe_create_qp will\ncall rxe_qp_do_cleanup to handle allocated resource.\n\nBefore calling __rxe_do_task, both qp->req.task.func and\nqp->req.task.arg should be checked.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50671"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d773c58d702f0a7c16ee8d69617fd2c28350795"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b8752f086eb6865cc3662ad13249b03024501e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48cd7098e71735ccafa0b3cf27c53924f9cb5b2f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c5dd6993c794703e74c6ba17ac78ca0211ef940"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a625ca30eff806395175ebad3ac1399014bdb280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb33fa65da77f5f02dbee6f25cebaeedfcd70028"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cdce36a88def550773142a34ef727a830cad96a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eca119693010032d6cc6e7e9b4fb2c363c7e12ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2f405af70e6f0419e718d23fa304798a5405c41"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T16:17:19Z"
+  }
+}

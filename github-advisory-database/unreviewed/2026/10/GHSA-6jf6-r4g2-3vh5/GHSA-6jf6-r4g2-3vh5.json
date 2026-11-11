@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jf6-r4g2-3vh5",
+  "modified": "2026-10-15T18:32:27Z",
+  "published": "2026-10-15T09:30:33Z",
+  "aliases": [
+    "CVE-2026-101309"
+  ],
+  "details": "The xHCI (USB 3) device model did not validate or save the event ring size provided by the guest.  The size was re-read from guest memory on each use, and Transfer Request Block (TRB) fields were loaded without protection against concurrent modification by the guest.  This race condition could be triggered by a guest running malicious, privileged code.\n\nA malicious guest can crash the bhyve process or potentially execute arbitrary code in the host userspace context running the virtual machine, subject to bhyve's Capsicum sandbox.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101309"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-26:72.bhyve.asc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T08:16:36Z"
+  }
+}

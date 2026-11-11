@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cp5p-6f9j-7hj2",
+  "modified": "2025-12-09T03:31:11Z",
+  "published": "2025-12-09T03:31:11Z",
+  "aliases": [
+    "CVE-2023-53799"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: api - Use work queue in crypto_destroy_instance\n\nThe function crypto_drop_spawn expects to be called in process\ncontext.  However, when an instance is unregistered while it still\nhas active users, the last user may cause the instance to be freed\nin atomic context.\n\nFix this by delaying the freeing to a work queue.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53799"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/048545d9fc6424b0a11e7e8771225bb9afe09422"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/625bf86bf53eb7a8ee60fb9dc45b272b77e5ce1c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/867a146690960ac7b89ce40f4ee60dd32eeb1682"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ae4577bc077a7e32c3c7d442c95bc76865c0f17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0dbcebc7f390ec7dbe010dcc22c60f0c6bfc26d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4cb61c5f976183c07d16b0071f0c60bc212ef1f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T01:16:51Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rgpg-w634-4pfv",
+  "modified": "2026-10-18T18:31:52Z",
+  "published": "2026-10-18T18:31:51Z",
+  "aliases": [
+    "CVE-2026-98506"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/hugetlb: do not dissolve gigantic pages without runtime support\n\ndissolve_free_hugetlb_folio() doesn't check\nhstate_is_gigantic_no_runtime(h) though remove_hugetlb_folio()/\nupdate_and_free_hugetlb_folio() silently bail for such folios, so it frees\na still-listed folio and, on vmemmap restore failure, the\nadd_hugetlb_folio() rollback corrupts the free list.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98506"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/443628f755b35bf45044f68b970b65cd531c42fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a363c62a653cc8b3e21da9545fa4e028ef50f9c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ccf96a4b8626a001c13c5836d8357f31c57bbd8e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ddc1055b557506a6ea8930dfbd8d1555d6a3f01e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:01Z"
+  }
+}

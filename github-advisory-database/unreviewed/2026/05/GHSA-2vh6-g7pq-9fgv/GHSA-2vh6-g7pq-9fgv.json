@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2vh6-g7pq-9fgv",
+  "modified": "2026-06-11T03:30:23Z",
+  "published": "2026-05-28T12:30:32Z",
+  "aliases": [
+    "CVE-2026-46182"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npseries/papr-hvpipe: Prevent kernel stack memory leak to userspace\n\nThe hdr variable is allocated on the stack and only hdr.version and\nhdr.flags are initialized explicitly. Because the struct papr_hvpipe_hdr\ncontains reserved padding bytes (reserved[3] and reserved2[40]), these\ncould leak the uninitialized bytes to userspace after copy_to_user().\n\nThis patch fixes that by initializing the whole struct to 0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0479b6e9f999cc1cbad7d9f09f574fc387e605d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cefeed44296261173a806bef988b26bc565da4be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f88f8e4485b437e0a2f96a7ff1f88aa22d925659"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:33Z"
+  }
+}

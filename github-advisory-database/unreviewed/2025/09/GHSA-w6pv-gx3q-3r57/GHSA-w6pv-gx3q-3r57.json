@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w6pv-gx3q-3r57",
+  "modified": "2025-12-11T18:30:34Z",
+  "published": "2025-09-18T15:30:34Z",
+  "aliases": [
+    "CVE-2023-53387"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: ufs: core: Fix device management cmd timeout flow\n\nIn the UFS error handling flow, the host will send a device management cmd\n(NOP OUT) to the device for link recovery. If this cmd times out and\nclearing the doorbell fails, ufshcd_wait_for_dev_cmd() will do nothing and\nreturn. hba->dev_cmd.complete struct is not set to NULL.\n\nWhen this happens, if cmd has been completed by device, then we will call\ncomplete() in __ufshcd_transfer_req_compl(). Because the complete struct is\nallocated on the stack, the following crash will occur:\n\n  ipanic_die+0x24/0x38 [mrdump]\n  die+0x344/0x748\n  arm64_notify_die+0x44/0x104\n  do_debug_exception+0x104/0x1e0\n  el1_dbg+0x38/0x54\n  el1_sync_handler+0x40/0x88\n  el1_sync+0x8c/0x140\n  queued_spin_lock_slowpath+0x2e4/0x3c0\n  __ufshcd_transfer_req_compl+0x3b0/0x1164\n  ufshcd_trc_handler+0x15c/0x308\n  ufshcd_host_reset_and_restore+0x54/0x260\n  ufshcd_reset_and_restore+0x28c/0x57c\n  ufshcd_err_handler+0xeb8/0x1b6c\n  process_one_work+0x288/0x964\n  worker_thread+0x4bc/0xc7c\n  kthread+0x15c/0x264\n  ret_from_fork+0x10/0x30",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53387"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36822124f9de200cedc2f42516301b50d386a6cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ffd2cd644e0f1eea01339831bac4b1054e8817c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf45493432704786a0f8294c7723ad4eeb5fff24"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T14:15:41Z"
+  }
+}

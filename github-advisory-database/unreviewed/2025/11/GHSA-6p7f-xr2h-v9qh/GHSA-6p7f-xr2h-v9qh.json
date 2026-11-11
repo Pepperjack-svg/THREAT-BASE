@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6p7f-xr2h-v9qh",
+  "modified": "2025-11-13T00:30:18Z",
+  "published": "2025-11-13T00:30:18Z",
+  "aliases": [
+    "CVE-2025-40191"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Fix kfd process ref leaking when userptr unmapping\n\nkfd_lookup_process_by_pid hold the kfd process reference to ensure it\ndoesn't get destroyed while sending the segfault event to user space.\n\nCalling kfd_lookup_process_by_pid as function parameter leaks the kfd\nprocess refcount and miss the NULL pointer check if app process is\nalready destroyed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58e6fc2fb94f0f409447e5d46cf6a417b6397fbc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60f6112fc9b3ba0eae519f10702c0c13bab45742"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-12T22:15:46Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pvj4-6qwf-8pwq",
+  "modified": "2026-10-18T18:31:51Z",
+  "published": "2026-10-18T18:31:51Z",
+  "aliases": [
+    "CVE-2026-98492"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: macb: fix dma_alloc_coherent() leak on macb_alloc() error paths\n\nFix 3 leaks in macb_alloc() error paths:\n- Tx buffer allocated but crossing a 4G boundary: Tx leaked.\n- Rx buffer allocation fails: Tx leaked.\n- Rx buffer allocated but crossing a 4G boundary: Tx & Rx leaked.\n\nThis is because our error handling calls macb_free(bp) which in turn\nfrees the buffers stored in bp->queues[0], but nothing has been stored\nin there. Fix by storing allocated buffers into bp->queues[0] ASAP.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98492"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23d42b9a3bcd55b17d3b371544fedc708c2397e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/259e6cbb6a097da8ced544ee92a6fbde35aa1338"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bda487567d0b7b15dfa876511085c0666b9efad5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:00Z"
+  }
+}

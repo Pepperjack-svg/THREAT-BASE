@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5rfx-cp42-p624",
+  "modified": "2026-01-07T20:37:40Z",
+  "published": "2026-01-07T18:09:56Z",
+  "aliases": [
+    "CVE-2025-66560"
+  ],
+  "summary": "Quarkus REST has potential worker thread starvation when HTTP connection is closed while waiting to write",
+  "details": "A vulnerability exists in the HTTP layer of Quarkus REST related to response handling. When a response is being written, the framework waits for previously written response chunks to be fully transmitted before proceeding. If the client connection is dropped during this waiting period, the associated worker thread is never released and becomes permanently blocked. Under sustained or repeated occurrences, this can exhaust the available worker threads, leading to degraded performance, or complete unavailability of the application.\n\n## Workarounds\n\nFor versions without the fix applied, it is recommended to implement a health check that monitors the status and saturation of the worker thread pool. This helps detect abnormal thread retention early and allows operators to take corrective action before the application’s responsiveness is impacted.\n\n## Credits\n\nCVE reported by Shaswata Jash, Nokia",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.quarkus:quarkus-rest"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.20.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.quarkus:quarkus-rest"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.21.0"
+            },
+            {
+              "fixed": "3.27.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.quarkus:quarkus-rest"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.30.0"
+            },
+            {
+              "fixed": "3.31.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/quarkusio/quarkus/security/advisories/GHSA-5rfx-cp42-p624"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66560"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/quarkusio/quarkus"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-07T18:09:56Z",
+    "nvd_published_at": "2026-01-07T18:15:52Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6j54-23c6-25cx",
+  "modified": "2026-11-10T21:34:26Z",
+  "published": "2026-11-10T21:34:26Z",
+  "aliases": [
+    "CVE-2026-120806"
+  ],
+  "details": "A flaw in MongoDB Server's user management commands may lead to incomplete cleanup of role authorization data when roles are dropped from a database. Due to incorrect internal query predicates, the drop operation removes role definitions but fails to remove stale references in user and role documents. If a role with the same name is subsequently recreated with different privileges, previously associated users may silently inherit the new role's privileges without an explicit grant or corresponding audit event. Exploitation requires authenticated access with database administrative privileges on the target database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120806"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jira.mongodb.org/browse/SERVER-130261"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-459"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T20:18:50Z"
+  }
+}

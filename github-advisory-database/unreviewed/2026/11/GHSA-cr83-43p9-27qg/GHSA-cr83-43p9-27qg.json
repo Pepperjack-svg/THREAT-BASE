@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cr83-43p9-27qg",
+  "modified": "2026-11-10T00:31:38Z",
+  "published": "2026-11-10T00:31:38Z",
+  "aliases": [
+    "CVE-2026-119759"
+  ],
+  "details": "TrailBase 0.28.2 before 0.35.10 contains an insecure direct object reference vulnerability that allows authenticated attackers to manipulate the object-store id metadata within std.FileUpload columns without ownership validation during insert and update operations. Attackers can reference another user's or table's file id in a record they own to read the victim's file bytes through their own record, or trigger permanent deletion of the victim's file by deleting or nulling their own record, while also using a $like filter on the file column to brute-force recover stripped ids character by character.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119759"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/trailbaseio/trailbase/releases#release-v0.35.10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/trailbase-idor-via-record-api-file-column"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T22:18:28Z"
+  }
+}

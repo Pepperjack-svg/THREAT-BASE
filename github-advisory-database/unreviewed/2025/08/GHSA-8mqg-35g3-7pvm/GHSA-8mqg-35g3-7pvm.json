@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8mqg-35g3-7pvm",
+  "modified": "2025-11-19T00:31:23Z",
+  "published": "2025-08-16T12:30:32Z",
+  "aliases": [
+    "CVE-2025-38522"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsched/ext: Prevent update_locked_rq() calls with NULL rq\n\nAvoid invoking update_locked_rq() when the runqueue (rq) pointer is NULL\nin the SCX_CALL_OP and SCX_CALL_OP_RET macros.\n\nPreviously, calling update_locked_rq(NULL) with preemption enabled could\ntrigger the following warning:\n\n    BUG: using __this_cpu_write() in preemptible [00000000]\n\nThis happens because __this_cpu_write() is unsafe to use in preemptible\ncontext.\n\nrq is NULL when an ops invoked from an unlocked context. In such cases, we\ndon't need to store any rq, since the value should already be NULL\n(unlocked). Ensure that update_locked_rq() is only called when rq is\nnon-NULL, preventing calling __this_cpu_write() on preemptible context.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/237c43037b336e36a49eb9f2daac1c7719ec7f8b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e14fd98c6d66cb76694b12c05768e4f9e8c95664"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-16T12:15:27Z"
+  }
+}

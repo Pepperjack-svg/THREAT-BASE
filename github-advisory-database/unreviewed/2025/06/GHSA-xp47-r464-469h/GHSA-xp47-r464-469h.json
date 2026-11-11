@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xp47-r464-469h",
+  "modified": "2025-06-23T21:31:56Z",
+  "published": "2025-06-23T21:31:56Z",
+  "aliases": [
+    "CVE-2025-52921"
+  ],
+  "details": "In Innoshop through 0.4.1, an authenticated attacker could exploit the File Manager functions in the admin panel to achieve code execution on the server, by uploading a crafted file and then renaming it to have a .php extension by using the Rename Function. This bypasses the initial check that uploaded files are image files. The application relies on frontend checks to restrict the administrator from changing the extension of uploaded files to .php. This restriction is easily bypassed with any proxy tool (e.g., BurpSuite). Once the attacker renames the file, and gives it the .php extension, a GET request can be used to trigger the execution of code on the server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-52921"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/innocommerce/innoshop"
+    },
+    {
+      "type": "WEB",
+      "url": "https://medium.com/@The_Hiker/how-i-found-multiple-cves-in-innoshop-0-4-1-12c8f84ad87f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-420"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-23T12:15:22Z"
+  }
+}

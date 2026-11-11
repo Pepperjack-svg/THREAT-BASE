@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jv3r-47pw-5225",
+  "modified": "2025-11-03T21:33:34Z",
+  "published": "2025-04-16T15:34:39Z",
+  "aliases": [
+    "CVE-2025-22027"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: streamzap: fix race between device disconnection and urb callback\n\nSyzkaller has reported a general protection fault at function\nir_raw_event_store_with_filter(). This crash is caused by a NULL pointer\ndereference of dev->raw pointer, even though it is checked for NULL in\nthe same function, which means there is a race condition. It occurs due\nto the incorrect order of actions in the streamzap_disconnect() function:\nrc_unregister_device() is called before usb_kill_urb(). The dev->raw\npointer is freed and set to NULL in rc_unregister_device(), and only\nafter that usb_kill_urb() waits for in-progress requests to finish.\n\nIf rc_unregister_device() is called while streamzap_callback() handler is\nnot finished, this can lead to accessing freed resources. Thus\nrc_unregister_device() should be called after usb_kill_urb().\n\nFound by Linux Verification Center (linuxtesting.org) with Syzkaller.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22027"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15483afb930fc2f883702dc96f80efbe4055235e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30ef7cfee752ca318d5902cb67b60d9797ccd378"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4db62b60af2ccdea6ac5452fd20e29587ed85f57"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8760da4b9d44c36b93b6e4cf401ec7fe520015bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/adf0ddb914c9e5b3e50da4c97959e82de2df75c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e11652a6514ec805440c1bb3739e6c6236fffcc7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1d518c0bad01abe83c2df880274cb6a39f4a457"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f656cfbc7a293a039d6a0c7100e1c846845148c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362",
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:15:55Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hfm8-q4mr-mf9f",
+  "modified": "2025-11-18T18:32:49Z",
+  "published": "2025-08-16T12:30:33Z",
+  "aliases": [
+    "CVE-2025-38551"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio-net: fix recursived rtnl_lock() during probe()\n\nThe deadlock appears in a stack trace like:\n\n  virtnet_probe()\n    rtnl_lock()\n    virtio_config_changed_work()\n      netdev_notify_peers()\n        rtnl_lock()\n\nIt happens if the VMM sends a VIRTIO_NET_S_ANNOUNCE request while the\nvirtio-net driver is still probing.\n\nThe config_work in probe() will get scheduled until virtnet_open() enables\nthe config change notification via virtio_config_driver_enable().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38551"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3859f137b3c1fa1f0031d54263234566bdcdd7aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e7c46362550b229354aeb52038f414e231b0037"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be5dcaed694e4255dc02dd0acfe036708c535def"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-16T12:15:31Z"
+  }
+}

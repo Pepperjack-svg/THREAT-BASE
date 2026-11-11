@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-733g-xvvm-2g6j",
+  "modified": "2025-12-23T18:30:20Z",
+  "published": "2025-07-25T15:30:54Z",
+  "aliases": [
+    "CVE-2025-38428"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: ims-pcu - check record size in ims_pcu_flash_firmware()\n\nThe \"len\" variable comes from the firmware and we generally do\ntrust firmware, but it's always better to double check.  If the \"len\"\nis too large it could result in memory corruption when we do\n\"memcpy(fragment->data, rec->data, len);\"",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38428"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17474a56acf708bf6b2d174c06ed26abad0a9fd6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a8cd6ae8393e2eaebf51d420d5374821ef2af87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74661516daee1eadebede8dc607b6830530096ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e03f1c7d50343bf21da54873301bc4fa647479f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a95ef0199e80f3384eb992889322957d26c00102"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1b9d140b0807c6aee4bb53e1bfa4e391e3dc204"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d63706d9f73846106fde28b284f08e01b92ce9f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5a2481dc2a0b430f49276d7482793a8923631d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T15:15:27Z"
+  }
+}

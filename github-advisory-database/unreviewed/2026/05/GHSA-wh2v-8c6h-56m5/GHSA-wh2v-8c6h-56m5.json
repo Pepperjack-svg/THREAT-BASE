@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wh2v-8c6h-56m5",
+  "modified": "2026-05-08T15:31:16Z",
+  "published": "2026-05-06T12:30:30Z",
+  "aliases": [
+    "CVE-2026-43150"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf/arm-cmn: Reject unsupported hardware configurations\n\nSo far we've been fairly lax about accepting both unknown CMN models\n(at least with a warning), and unknown revisions of those which we\ndo know, as although things do frequently change between releases,\ntypically enough remains the same to be somewhat useful for at least\nsome basic bringup checks. However, we also make assumptions of the\nmaximum supported sizes and numbers of things in various places, and\nthere's no guarantee that something new might not be bigger and lead\nto nasty array overflows. Make sure we only try to run on things that\nactually match our assumptions and so will not risk memory corruption.\n\nWe have at least always failed on completely unknown node types, so\nupdate that error message for clarity and consistency too.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43150"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00d69f21ef2ab00e6156c764d89e2b3539eb2f33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08c7eadd8a934a1968e1aeeee8b61b853b99fb3a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36c0de02575ce59dfd879eb4ef63d53a68bbf9ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7e2c200010aa93fa78201da959b4ac6b9f8fed0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a251d866f50b6a4c95901fa722025065679c2eca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3e837e11ee9ed08df229272319199003ba00379"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122",
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:32Z"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c6hr-v224-3w2w",
+  "modified": "2026-10-15T03:36:00Z",
+  "published": "2026-05-28T12:30:28Z",
+  "aliases": [
+    "CVE-2026-46107"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-thin: fix metadata refcount underflow\n\nThere's a bug in dm-thin in the function rebalance_children. If the\ninternal btree node has one entry, the code tries to copy all btree\nentries from the node's child to the node itself and then decrement the\nchild's reference count.\n\nIf the child node is shared (it has reference count > 1), we won't free\nit, so there would be two pointers to each of the grandchildren nodes.\nBut the reference counts of the grandchildren is not increased, thus the\nreference count doesn't match the number of pointers that point to the\ngrandchildren. This results in \"device mapper: space map common: unable\nto decrement block\" errors.\n\nFix this bug by incrementing reference counts on the grandchildren if the\nbtree node is shared.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46107"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09a65adc7d8bbfce06392cb6d375468e2728ead5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12161e03d33afce781f68fa11cc6060538862fad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/323d252a4a378834e4fe68298ca61cfc5dd3a460"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ec0debbcfd43596e32c1239e993de06a704e04c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85311a585a26640760cd0f3349ab9f2905691044"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b719d12cb94df345e9ad2715fd0abe9afcaeb111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f06f6aededd792a754cd677c02b3d3016d868c2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f49b41c9eb7c6ff00df27cd49cea210abbadd8ad"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191",
+      "CWE-667"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:26Z"
+  }
+}

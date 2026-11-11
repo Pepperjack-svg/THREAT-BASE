@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xc4c-5vw7-m8p2",
+  "modified": "2026-11-10T18:31:39Z",
+  "published": "2026-11-10T18:31:39Z",
+  "aliases": [
+    "CVE-2026-112191"
+  ],
+  "details": "In Eclipse Kura versions 5.4.0 through 5.6.2, the Identity REST APIs (identity/v1, and identity/v2 since 5.5.0, provided by org.eclipse.kura.rest.identity.provider) do not check identity and permission management requests against the permissions of the requesting identity. An authenticated identity holding the rest.identity permission, but not kura.admin, can assign any permission to any identity, including kura.admin to itself. It can also change the password of, or delete, identities holding more privileges than its own, including administrators, and create or delete permissions. This allows escalation to full administrative privileges and can lock legitimate administrators out of the device. The issue is fixed in Eclipse Kura 5.6.3.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-kura/kura/security/advisories/GHSA-v8gf-9w4p-662w"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/431"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T16:17:16Z"
+  }
+}

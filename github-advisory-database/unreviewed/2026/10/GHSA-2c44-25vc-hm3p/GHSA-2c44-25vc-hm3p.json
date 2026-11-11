@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2c44-25vc-hm3p",
+  "modified": "2026-10-31T12:31:16Z",
+  "published": "2026-10-31T12:31:15Z",
+  "aliases": [
+    "CVE-2026-107711"
+  ],
+  "details": "The FlexStock – Product Stock Sync with Google Sheets for WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'products[].post_content' parameter in all versions up to, and including, 3.17.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is exploitable by any Subscriber-level user because the plugin's admin_enqueue_scripts callback exposes the REST bearer token in the Dashboard page source via wp_localize_script() without a capability check, and the REST endpoint's permission_callback validates only that bearer token rather than performing a current_user_can() capability check.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107711"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/stock-sync-with-google-sheet-for-woocommerce/tags/3.17.2/includes/classes/class-api.php#L577"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/stock-sync-with-google-sheet-for-woocommerce/tags/3.17.2/includes/classes/class-api.php#L79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/stock-sync-with-google-sheet-for-woocommerce/tags/3.17.2/includes/classes/class-app.php#L458"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/stock-sync-with-google-sheet-for-woocommerce/tags/3.17.2/includes/classes/class-hooks.php#L1184"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/stock-sync-with-google-sheet-for-woocommerce/tags/3.17.2/includes/helper/functions.php#L139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/stock-sync-with-google-sheet-for-woocommerce/tags/3.17.2/includes/models/class-product.php#L1500"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3768111/stock-sync-with-google-sheet-for-woocommerce/trunk/includes/models/class-product.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b03cabc6-1cbe-4aa2-8eae-cea30d01b811?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-31T10:16:37Z"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c4fm-qmm5-xqx8",
+  "modified": "2026-07-30T06:32:23Z",
+  "published": "2025-12-09T18:30:35Z",
+  "aliases": [
+    "CVE-2025-40331"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: Prevent TOCTOU out-of-bounds write\n\nFor the following path not holding the sock lock,\n\n  sctp_diag_dump() -> sctp_for_each_endpoint() -> sctp_ep_dump()\n\nmake sure not to exceed bounds in case the address list has grown\nbetween buffer allocation (time-of-check) and write (time-of-use).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40331"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fe08fcaacb7eb019fa9c81db39b2214de216677"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3006959371007fc2eae4a078f823c680fa52de1a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/584307275b2048991b2e8984962189b6cc0a9b85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72e3fea68eac8d088e44c3dd954e843478e9240e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/89eac1e150dbd42963e13d23828cb8c4e0763196"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95aef86ab231f047bb8085c70666059b58f53c09"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b106a68df0650b694b254427cd9250c04500edd3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9119f243d9c0da3c3b5f577a328de3e7ffd1b42"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T16:17:43Z"
+  }
+}

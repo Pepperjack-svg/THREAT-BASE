@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qhr6-6cgv-6638",
+  "modified": "2025-12-11T15:47:30Z",
+  "published": "2025-12-10T21:30:55Z",
+  "aliases": [
+    "CVE-2025-66033"
+  ],
+  "summary": "Improper Memory Cleanup in the Okta Java SDK",
+  "details": "### Description\nIn the Okta Java SDK, specific multithreaded implementations may encounter memory issues as threads are not properly cleaned up after requests are completed. Over time, this can degrade performance and availability in long-running applications and may result in a denial-of-service condition under sustained load.\n\n### Affected product and versions\nYou may be affected by this vulnerability if you meet the following preconditions:\n- Using the Okta Java SDK between versions 21.0.0 and 24.0.0, and\n- Implementing a long-running application using the ApiClient in a multi-threaded manner.\n\n### Resolution\nUpgrade Okta/okta-sdk-java to versions 24.0.1 or greater. \n\n### Acknowledgement\nOkta would like to thank Andrew Pikler (pyckle) for their discovery and responsible disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.okta.sdk:okta-sdk-root"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "21.0.0"
+            },
+            {
+              "fixed": "24.0.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 24.0.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/okta/okta-sdk-java/security/advisories/GHSA-qhr6-6cgv-6638"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66033"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/okta/okta-sdk-java/commit/1daa9229a70fc38fb252aeaa637f82d0b0729b3f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/okta/okta-sdk-java"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-10T21:30:55Z",
+    "nvd_published_at": "2025-12-10T22:16:27Z"
+  }
+}

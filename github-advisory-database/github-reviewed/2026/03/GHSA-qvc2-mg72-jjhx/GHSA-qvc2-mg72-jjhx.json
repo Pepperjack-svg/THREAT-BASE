@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qvc2-mg72-jjhx",
+  "modified": "2026-03-18T20:19:47Z",
+  "published": "2026-03-18T20:19:47Z",
+  "aliases": [],
+  "summary": "JustHTML Affected by Mutation XSS via Literal Text Serialization in Raw Text Elements (style/script)",
+  "details": "## Summary\n\nSanitized DOM trees can be unsafe to serialize when a custom policy allows raw-text elements such as `<style>` or `<script>`.\n\nThe issue affects DOM trees that are constructed or modified programmatically and then passed through `sanitize_dom()` with a policy that keeps these elements. Text nodes inside `<style>` and `<script>` are serialized literally, so attacker-controlled text containing the matching closing tag sequence can break out of the raw-text context and inject HTML into the serialized output.\n\nThe default sanitization policy is not affected because it drops the contents of `style` and `script`.\n\n## Details\n\nThe root cause is in HTML serialization of raw-text elements. In serialize.py, text children of `script` and `style` are emitted verbatim:\n\n```python\n_LITERAL_TEXT_SERIALIZATION_ELEMENTS = frozenset({\"script\", \"style\"})\n\ndef _serialize_text_for_parent(text: str | None, parent_name: str | None) -> str:\n    if not text:\n        return \"\"\n    if parent_name in _LITERAL_TEXT_SERIALIZATION_ELEMENTS:\n        return text\n    return _escape_text(text)",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "justhtml"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.12.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.11.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/EmilStenstrom/justhtml/security/advisories/GHSA-qvc2-mg72-jjhx"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/EmilStenstrom/justhtml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-18T20:19:47Z",
+    "nvd_published_at": null
+  }
+}

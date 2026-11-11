@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9p7x-8c57-4pqv",
+  "modified": "2025-09-11T13:30:32Z",
+  "published": "2025-09-09T21:30:29Z",
+  "aliases": [
+    "CVE-2025-43786"
+  ],
+  "summary": "Liferay Portal exposes ERC which can lead to exploit the time response attack",
+  "details": "Enumeration of ERC from object entry in Liferay Portal 7.4.0 through 7.4.3.128, and Liferay DXP 2024.Q3.0 through 2024.Q3.1, 2024.Q2.0 through 2024.Q2.13, 2024.Q1.1 through 2024.Q1.12, 2023.Q4.0 and 7.4 GA through update 92 allow attackers to determine existent ERC in the application by exploit the time response.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay:com.liferay.portal.vulcan.impl"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.7"
+            },
+            {
+              "fixed": "5.0.127"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay:com.liferay.headless.admin.workflow.impl"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.4"
+            },
+            {
+              "fixed": "5.0.83"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay:com.liferay.portal.workflow.api"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.1"
+            },
+            {
+              "fixed": "11.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-43786"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/8f9728086bd61661437b0aa8493c83510914a474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/e34499eab2ce1d544835835afe6733a78b4ab532"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/e4a140d6d92e92911f08fe33051b677742531f19"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/liferay/liferay-portal"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.atlassian.net/browse/LPE-18106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.dev/portal/security/known-vulnerabilities/-/asset_publisher/jekt/content/CVE-2025-43786"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-203",
+      "CWE-208"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-09-11T13:30:32Z",
+    "nvd_published_at": "2025-09-09T20:15:40Z"
+  }
+}

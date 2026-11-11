@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-36jf-xmwg-5wp8",
+  "modified": "2026-10-13T18:30:26Z",
+  "published": "2026-10-07T03:30:23Z",
+  "aliases": [
+    "CVE-2026-83540"
+  ],
+  "details": "When password or public key authentication is used with the Windows port of wolfSSHd, the Windows logon token acquired for one authenticated connection is not released before a token is acquired for a subsequent connection, resulting in user login poisoning between connections. A less privileged user with a valid account on the server can exploit this to force a login as a more privileged user. The vulnerability was introduced with the initial Windows port of wolfSSHd in wolfSSH version 1.4.15 and affects all versions through 1.5.0. Non-Windows builds of wolfSSHd are not affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83540"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wolfSSL/wolfssh/commit/9777bc5ce810d6c418a1473e9e8c40cdb0026e5a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wolfSSL/wolfssh/commit/b6bd975ccfac6aadf29b98e35e09114bef3840a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wolfSSL/wolfssh"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wolfssl.com/docs/security-vulnerabilities"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-07T03:16:59Z"
+  }
+}

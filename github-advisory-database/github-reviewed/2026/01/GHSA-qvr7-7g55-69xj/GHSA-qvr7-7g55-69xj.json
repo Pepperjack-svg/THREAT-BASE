@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qvr7-7g55-69xj",
+  "modified": "2026-01-21T16:52:07Z",
+  "published": "2026-01-14T21:15:43Z",
+  "aliases": [
+    "CVE-2026-23492"
+  ],
+  "summary": "Pimcore Has an Incomplete Patch for CVE-2023-30848",
+  "details": "### Summary\nAn **incomplete SQL injection patch** in the Admin Search Find API allows an authenticated attacker to perform **blind SQL injection**.\nAlthough CVE-2023-30848 attempted to mitigate SQL injection by removing SQL comments (--) and catching syntax errors, the fix is insufficient. Attackers can still inject SQL payloads that do not rely on comments and infer database information via blind techniques. This vulnerability affects the admin interface and can lead to **database information disclosure**.\n\n### Details\nThe vulnerability exists in the Admin Search Find API endpoint:\n```\n/admin/search/search/find\n```\nIn CVE-2023-30848, the following patch was applied:\n\n- SQL comments are removed by replacing `--`\n- SQL syntax errors are caught and replaced with a generic exception\n\nRelevant commit:  \nhttps://github.com/pimcore/pimcore/commit/25ad8674886f2b938243cbe13e33e204a2e35cc3\n\nKey changes include:\n```\n// remove sql comments\n$fields = str_replace('--', '', $fields);\n\ntry {\n    $hits = $searcherList->load();\n} catch (SyntaxErrorException $syntaxErrorException) {\n    throw new \\InvalidArgumentException('Check your arguments.');\n}\n```\nHowever, this mitigation is incomplete for the following reasons:\n\n**1. Only `--` is filtered**\n\nSQL injection does not require SQL comments. Payloads using boolean conditions, SQL functions, or time-based expressions remain effective.\n\n**2. Exception handling only suppresses error output**\n\nWhile syntax errors no longer produce detailed error messages, the underlying SQL query is still executed. This allows attackers to perform blind SQL injection.\n\n**3. User-controlled input is still used in SQL query construction**\nThe `fields[]` parameter is attacker-controlled and can be abused to inject SQL expressions into the generated query.\n\nAs a result, attackers can craft payloads that do not trigger syntax errors and still influence SQL execution.\n### PoC\nThe following request demonstrates a **blind SQL injection** via the `fields[]` parameter.\n\n**Boolean-based Blind Injection**\n```\nGET /admin/search/search/find?query=2&\nfields[]=field1 AND (SELECT CASE WHEN (1=1) THEN 1 ELSE 0 END)=1~field2&\nfilter=[{\"property\":\"value\"}]&\nclass=classname\n```\n**Time-based Blind Injection**\n```\nGET /admin/search/search/find?query=2&\nfields[]=field1 AND IF(1=1,SLEEP(5),0)~field2&\nfilter=[{\"property\":\"value\"}]&\nclass=classname\n```\n**Observed behavior:**\n\n- When the condition is true, the response is delayed (e.g., ~5 seconds)\n\n- When the condition is false, the response is returned immediately\n\nThis confirms that injected SQL expressions are executed successfully.\n### Impact\nThis is a **Blind SQL Injection vulnerability.**\n\n- Affected users: Systems exposing the Admin Search Find API to authenticated users\n\n- Attack requirements: Authenticated access to the admin interface\n\n- Potential impact:\n\n  - Database schema enumeration\n  \n  - Extraction of sensitive data via blind SQL injection\n  \n  - Potential full database compromise depending on database privileges\n\nThis issue demonstrates that the fix for CVE-2023-30848 is **incomplete.**",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "pimcore/pimcore"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "12.0.0-RC1"
+            },
+            {
+              "fixed": "12.3.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "pimcore/pimcore"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "11.5.14"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 11.5.13"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pimcore/pimcore/security/advisories/GHSA-qvr7-7g55-69xj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23492"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pimcore/pimcore/commit/25ad8674886f2b938243cbe13e33e204a2e35cc3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://github.com/advisories/GHSA-6mhm-gcpf-5gr8"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pimcore/pimcore"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-14T21:15:43Z",
+    "nvd_published_at": "2026-01-14T19:16:48Z"
+  }
+}

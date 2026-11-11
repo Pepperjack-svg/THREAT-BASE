@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rhqh-r6x3-52xx",
+  "modified": "2026-10-21T15:42:00Z",
+  "published": "2026-10-18T18:32:05Z",
+  "aliases": [
+    "CVE-2026-98835"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: accel: kionix-kx022a: Fix array boundary check\n\nThe driver performs a sanity check for an array size, when converting a\nregister value to an array index. The check incorrectly accepts the\nsizeof(array) as a last index, when last valid index should be\nsizeof(array) - 1.\n\nFix the check by bailing out when index >= sizeof(array).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98835"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e65412aee4f651d2c9785f542a13e4b44002a75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22d377178de281d21ddf908d03a8e9fde3339d9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c73c1859fa64509aae7e23a6dbd2d5c8a64c05d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/714d8f0b1c616a6a82be87ccb72271b6092773d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87746be179dca4d94d73d5a323a39a87bb2e90fc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:37Z"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jrvw-hv7x-27p4",
+  "modified": "2026-03-21T03:31:15Z",
+  "published": "2026-03-21T03:31:15Z",
+  "aliases": [
+    "CVE-2026-4302"
+  ],
+  "details": "The WowOptin: Next-Gen Popup Maker plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 1.4.29. This is due to the plugin exposing a publicly accessible REST API endpoint (optn/v1/integration-action) with a permission_callback of __return_true that passes user-supplied URLs directly to wp_remote_get() and wp_remote_post() in the Webhook::add_subscriber() method without any URL validation or restriction. The plugin does not use wp_safe_remote_get/post which provide built-in SSRF protection. This makes it possible for unauthenticated attackers to make web requests to arbitrary locations originating from the web application, which can be used to query and modify information from internal services.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4302"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optin/tags/1.4.23/frontend/class-rest-frontend.php#L44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optin/tags/1.4.23/frontend/class-rest-frontend.php#L55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optin/tags/1.4.23/includes/integrations/implementations/class-webhook.php#L38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optin/tags/1.4.23/includes/integrations/implementations/class-webhook.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optin/trunk/frontend/class-rest-frontend.php#L44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optin/trunk/frontend/class-rest-frontend.php#L55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optin/trunk/includes/integrations/implementations/class-webhook.php#L38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/optin/trunk/includes/integrations/implementations/class-webhook.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3484392%40optin&new=3484392%40optin&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b1c3e480-0221-4913-bcce-f34ded9edca8?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-21T02:16:18Z"
+  }
+}

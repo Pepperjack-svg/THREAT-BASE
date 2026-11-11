@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pw98-7748-hwv3",
+  "modified": "2026-11-03T18:31:07Z",
+  "published": "2026-11-03T18:31:07Z",
+  "aliases": [
+    "CVE-2026-115710"
+  ],
+  "details": "Use of Cache Containing Sensitive Information (CWE-524) in Elasticsearch can lead to information disclosure and incorrect search results via specially crafted search requests. For some query types, Elasticsearch can share cached query results between users who have field-level security restrictions and users who do not. A user restricted by field-level security can learn which documents match a value in a field that they cannot read. A restricted user can also cause users with full access to receive incomplete search results. Disclosure is only possible when a user with full access ran the same query on the same shard recently.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115710"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/elasticsearch-8-19-24-9-4-9-9-5-6-security-update-esa-2026-210/391363"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-524"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T17:17:55Z"
+  }
+}

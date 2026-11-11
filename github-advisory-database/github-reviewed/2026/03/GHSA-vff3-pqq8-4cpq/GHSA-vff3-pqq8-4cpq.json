@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vff3-pqq8-4cpq",
+  "modified": "2026-03-11T20:57:29Z",
+  "published": "2026-03-10T18:24:49Z",
+  "aliases": [
+    "CVE-2026-31867"
+  ],
+  "summary": "Craft Commerce: Potential IDOR in Commerce carts",
+  "details": "An Insecure Direct Object Reference (IDOR) vulnerability exists in Craft Commerce’s cart functionality that allows users to hijack any shopping cart by knowing or guessing its 32-character number. This vulnerability enables the takeover of shopping sessions and potential exposure of PII.\n\n## Vulnerability Details\n\n### Root Cause\n\nThe `CartController` accepts a user-supplied `number` parameter to load and modify shopping carts. No ownership validation is performed - the code only checks if the order exists and is incomplete, not whether the requester has authorization to access it.\n\n```php\n// CartController.php:374-389 - actionLoadCart()\npublic function actionLoadCart(): ?Response\n{\n    $number = $this->request->getParam('number');\n\n    if ($number === null) {\n        return $this->asFailure(Craft::t('commerce', 'A cart number must be specified.'));\n    }\n\n    // No ownership check - returns any cart to any requester\n    $cart = Order::find()->number($number)->isCompleted(false)->one();\n\n    // Cart is loaded into attacker's session without authorization\n    ...\n}\n```\n\n```php\n// CartController.php:606-616 - _getCart()\n$orderNumber = $this->request->getBodyParam('number');\nif ($orderNumber) {\n    // Same issue - no ownership validation\n    $cart = Order::find()->number($orderNumber)->isCompleted(false)->one();\n    // Returns cart to any requester who knows the number\n}\n```\n---\n\n## Attack Scenario\n\n### Prerequisites\n- Target Craft Commerce installation with active shopping carts\n- Knowledge of a victim’s cart number (32-character hex string)\n\n### Cart Number Acquisition Vectors\n\n1. **Referrer Header Leakage**: Cart URLs shared externally expose the number\n2. **Browser History**: Accessible on shared/compromised devices\n3. **Proxy/WAF Logs**: Cart numbers logged in URL parameters\n4. **Social Engineering**: Support tickets, screenshots containing cart URLs\n5. **Brute Force**: While impractical for random targeting, feasible for targeted attacks against recently-created carts\n\n---",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/commerce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.6.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/commerce"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.11.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/security/advisories/GHSA-vff3-pqq8-4cpq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/commerce/pull/4207"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/commerce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-03-10T18:24:49Z",
+    "nvd_published_at": "2026-03-11T18:16:25Z"
+  }
+}

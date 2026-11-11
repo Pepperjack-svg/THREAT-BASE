@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9qq8-wxc9-p23m",
+  "modified": "2025-12-24T15:30:36Z",
+  "published": "2025-12-24T15:30:36Z",
+  "aliases": [
+    "CVE-2023-54066"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: dvb-usb-v2: gl861: Fix null-ptr-deref in gl861_i2c_master_xfer\n\nIn gl861_i2c_master_xfer, msg is controlled by user. When msg[i].buf\nis null and msg[i].len is zero, former checks on msg[i].buf would be\npassed. Malicious data finally reach gl861_i2c_master_xfer. If accessing\nmsg[i].buf[0] without sanity check, null ptr deref would happen.\nWe add check on msg[i].len to prevent crash.\n\nSimilar commit:\ncommit 0ed554fd769a\n(\"media: dvb-usb: az6027: fix null-ptr-deref in az6027_i2c_xfer()\")",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54066"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a33fc57133d6f39d62285df6706aeb1714967f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/578b67614ae0e4fba3945b66a4c8f9ae77115bcb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72af676551efe820e309a6c7681c2c4372f37376"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b97719a66970601cd3151a3e2020f4454a1c4ff6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dfcd3c010209927b9f45b860f046635dc32e32e1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:08Z"
+  }
+}

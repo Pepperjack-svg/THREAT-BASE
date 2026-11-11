@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qmfv-4x39-7vh3",
+  "modified": "2026-06-01T18:31:41Z",
+  "published": "2026-05-28T12:30:33Z",
+  "aliases": [
+    "CVE-2026-46218"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Add bounds checking to ib_{get,set}_value\n\nThe uvd/vce/vcn code accesses the IB at predefined offsets without\nchecking that the IB is large enough. Check the bounds here. The caller\nis responsible for making sure it can handle arbitrary return values.\n\nAlso make the idx a uint32_t to prevent overflows causing the condition\nto fail.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46218"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fb5cb556b249b2b64c0f818136c4c3e838ef53f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5da6c6430be0acb25b4242bce0323fc514d4e3cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66085e206431ef88ce36f53c1f53d570790ccc9e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a853178d23e774adfe3a35073c375b04b3b20f7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee26fcf7c5cf131f0b6a732faa27d79ec61b8ec7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fec8b11b55e53ff51a741e56894fe331a516f5c6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:37Z"
+  }
+}

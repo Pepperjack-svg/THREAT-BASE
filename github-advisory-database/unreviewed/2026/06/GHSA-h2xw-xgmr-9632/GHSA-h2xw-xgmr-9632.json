@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h2xw-xgmr-9632",
+  "modified": "2026-06-09T06:31:56Z",
+  "published": "2026-06-09T06:31:56Z",
+  "aliases": [
+    "CVE-2026-11603"
+  ],
+  "details": "The Product Filter Widget for Elementor plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via 'args[filterFormArray]' Parameter in all versions up to, and including, 1.0.6 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link. The endpoint is registered via wp_ajax_nopriv_ with no nonce verification or capability check, and exploitation is delivered via a CSRF-style form auto-submission to the admin-ajax.php endpoint, requiring the attacker to trick a victim into visiting an attacker-controlled page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/product-filter-widget-for-elementor/trunk/inc/controller/Eszpf_Ajax_Handler.php#L117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e25ef117-72c4-4696-9248-5caa937b47e9?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-09T05:16:30Z"
+  }
+}

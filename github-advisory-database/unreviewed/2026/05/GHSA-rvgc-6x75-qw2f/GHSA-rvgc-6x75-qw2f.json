@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rvgc-6x75-qw2f",
+  "modified": "2026-06-16T03:30:33Z",
+  "published": "2026-05-27T15:33:18Z",
+  "aliases": [
+    "CVE-2026-45969"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: playstation: Add missing check for input_ff_create_memless\n\nThe ps_gamepad_create() function calls input_ff_create_memless()\nwithout verifying its return value,  which can lead to incorrect\nbehavior or potential crashes when FF effects are triggered.\n\nAdd a check for the return value of input_ff_create_memless().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45969"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/33acf9a4d6eb1f6d01691faca96ad6b2ab0fcfc0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/35301ca2a83d17aac2f3e8e35c696f0da2a13111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45b01d85265bc1ccdd69e0a7887db4b905a778f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/496a345cc047a2c2d9d5a76956e1182525578bd5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/987dee1486e975e2baa6a5d062cfdf18bbe901c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d955aeb26e1210a018492b3b32cbdfaf017aaa25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6807641ac94e832988655a1c0e60ccc806b76dc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:13Z"
+  }
+}

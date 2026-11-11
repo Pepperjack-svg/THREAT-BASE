@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qwvg-xq53-3vw2",
+  "modified": "2026-02-12T15:32:43Z",
+  "published": "2026-02-11T18:31:30Z",
+  "aliases": [
+    "CVE-2025-70083"
+  ],
+  "details": "An issue was discovered in OpenSatKit 2.2.1. The DirName field in the telecommand is provided by the ground segment and must be treated as untrusted input. The program copies DirName into the local buffer DirWithSep using strcpy. The size of this buffer is OS_MAX_PATH_LEN. If the length of DirName is greater than or equal to OS_MAX_PATH_LEN, a stack buffer overflow occurs, overwriting adjacent stack memory. The path length check (FileUtil_AppendPathSep) is performed after the strcpy operation, meaning the validation occurs too late and cannot prevent the overflow.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-70083"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/jonafk555"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenSatKit/OpenSatKit"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenSatKit/OpenSatKit/releases/tag/v2.2.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/OpenSatKit/OpenSatKit/master/cfs/apps/filemgr/fsw/src/dir.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/OpenSatKit/OpenSatKit/master/cfs/apps/filemgr/fsw/src/dir.c#:~:text=strcpy%28DirWithSep"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-11T18:16:06Z"
+  }
+}

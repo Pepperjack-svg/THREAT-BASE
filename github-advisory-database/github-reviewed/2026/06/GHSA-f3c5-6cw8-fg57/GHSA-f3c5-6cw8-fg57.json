@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f3c5-6cw8-fg57",
+  "modified": "2026-06-23T22:11:13Z",
+  "published": "2026-06-23T22:11:13Z",
+  "aliases": [
+    "CVE-2026-48492"
+  ],
+  "summary": "Snipe-IT's selectlist visibility is too permissive",
+  "details": "### Impact\nThe GET /api/v1/{object}/selectlist API endpoint is missing an authorization check. Any user who can log into Snipe-IT - regardless of permissions - can retrieve a paginated list of all user accounts using only their web session cookie. No API token or elevated permissions are required. This exposes usernames, display names, employee numbers, and user IDs for every active account in the system if FMCS is not enabled, and within the company they belong to if FMCS is enabled.\n\n### What an attacker can do with a valid login and zero permissions:\n- Enumerate all active user accounts by paginating through the endpoint\n- Harvest usernames for credential stuffing or password spray attacks\n- Collect employee numbers and full names for social engineering\n- Perform indirect email enumeration via the search parameter\n- Map user IDs for use in further enumeration against other endpoints\n\nThis vulnerability is exploitable only by users who have a working login to the Snipe-IT system. \n\n### Patches\nhttps://github.com/grokability/snipe-it/commit/4f943d4a7ab8e53f3d9e32770602d1118bab005f",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.5.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-f3c5-6cw8-fg57"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/4f943d4a7ab8e53f3d9e32770602d1118bab005f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-23T22:11:13Z",
+    "nvd_published_at": null
+  }
+}

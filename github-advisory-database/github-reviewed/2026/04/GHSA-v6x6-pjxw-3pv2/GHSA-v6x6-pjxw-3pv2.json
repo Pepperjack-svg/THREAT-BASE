@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v6x6-pjxw-3pv2",
+  "modified": "2026-07-17T20:49:35Z",
+  "published": "2026-04-28T09:34:13Z",
+  "aliases": [
+    "CVE-2026-40966"
+  ],
+  "summary": "Spring AI's VectorStoreChatMemoryAdvisor conversation scoping can lead to cross-tenant memory exfiltration",
+  "details": "In Spring AI, an attacker can bypass conversation isolation and exfiltrate sensitive memory from other users’ chat histories, including secrets and credentials, by injecting filter logic through conversationId. Only applications that use VectorStoreChatMemoryAdvisor and pass user-supplied input as a conversationId are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.ai:spring-ai-advisors-vector-store"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "1.0.6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.ai:spring-ai-advisors-vector-store"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.1.0"
+            },
+            {
+              "fixed": "1.1.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40966"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/spring-projects/spring-ai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jinyeong.seol.pro/blogs/cve-2026-40966/en"
+    },
+    {
+      "type": "WEB",
+      "url": "https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?version=3.1&vector=AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "WEB",
+      "url": "https://spring.io/security/cve-2026-40966"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-06T19:54:29Z",
+    "nvd_published_at": "2026-04-28T08:16:01Z"
+  }
+}

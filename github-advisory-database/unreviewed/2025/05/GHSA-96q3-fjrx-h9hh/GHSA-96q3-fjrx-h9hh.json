@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-96q3-fjrx-h9hh",
+  "modified": "2025-05-17T06:30:27Z",
+  "published": "2025-05-16T18:31:06Z",
+  "aliases": [
+    "CVE-2025-47916"
+  ],
+  "details": "Invision Community 5.0.0 before 5.0.7 allows remote code execution via crafted template strings to themeeditor.php. The issue lies within the themeeditor controller (file: /applications/core/modules/front/system/themeeditor.php), where a protected method named customCss can be invoked by unauthenticated users. This method passes the value of the content parameter to the Theme::makeProcessFunction() method; hence it is evaluated by the template engine. Accordingly, this can be exploited by unauthenticated attackers to inject and execute arbitrary PHP code by providing crafted template strings.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-47916"
+    },
+    {
+      "type": "WEB",
+      "url": "https://invisioncommunity.com/release-notes-v5/507-r41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://karmainsecurity.com/KIS-2025-02"
+    },
+    {
+      "type": "WEB",
+      "url": "http://seclists.org/fulldisclosure/2025/May/4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336",
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-16T15:15:48Z"
+  }
+}

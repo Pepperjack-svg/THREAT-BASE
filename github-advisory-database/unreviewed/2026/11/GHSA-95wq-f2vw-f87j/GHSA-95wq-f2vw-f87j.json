@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-95wq-f2vw-f87j",
+  "modified": "2026-11-10T18:31:43Z",
+  "published": "2026-11-10T18:31:43Z",
+  "aliases": [
+    "CVE-2026-97888"
+  ],
+  "details": "The embedded HTTP server does not clear the security identity established during a request before its worker thread handles the next request. A remote unauthenticated attacker can have their request processed with the identity of a previously authenticated user, gaining that user's privileges. Only applications served by the embedded HTTP server that authenticate programmatically or via basic authentication are affected. Users are recommended to block network access to the embedded HTTP server from untrusted clients, or to migrate to the Tomcat based TomEE distributions.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97888"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/7snc0d5bd2hvk1416v5b34pjgn0mmdvn"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-488"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T16:17:27Z"
+  }
+}

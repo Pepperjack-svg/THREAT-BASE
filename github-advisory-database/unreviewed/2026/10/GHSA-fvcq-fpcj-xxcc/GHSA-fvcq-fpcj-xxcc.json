@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fvcq-fpcj-xxcc",
+  "modified": "2026-10-20T21:30:43Z",
+  "published": "2026-10-17T00:31:19Z",
+  "aliases": [
+    "CVE-2026-110756"
+  ],
+  "details": "Text::CSV_XS versions before 1.65 for Perl drop the end of a record and its line ending when a UTF-8 flagged field precedes invalid UTF-8 bytes in print.\n\nWhen a record contains a UTF-8 flagged field, print holds back trailing bytes that are not valid UTF-8 at each buffer flush, so that a character split across two flushes can be completed. Nothing writes the held-back bytes after the record's final flush. A record whose last field ends in such a byte loses it, any closing quote and the line ending, while print still returns true. combine is not affected.\n\nThe next record is written onto the same line, or, when the last field was quoted, the missing closing quote makes a reader take every following record as part of that field.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110756"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cpan-authors/Text-CSV_XS/commit/0610a8d81262ae6f1ac82a88d73c8a471f38af19.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/HMBRAND/Text-CSV_XS-1.65/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-116"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T23:17:00Z"
+  }
+}

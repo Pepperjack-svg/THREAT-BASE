@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jv7x-xhv2-p5v2",
+  "modified": "2025-07-28T16:50:03Z",
+  "published": "2025-07-14T21:22:01Z",
+  "aliases": [
+    "CVE-2025-53833"
+  ],
+  "summary": "LaRecipe is vulnerable to Server-Side Template Injection attacks",
+  "details": "### Impact\nAttackers could:\n1. Execute arbitrary commands on the server\n2. Access sensitive environment variables\n3. Escalate access depending on server configuration\n\nA critical vulnerability was discovered in LaRecipe that allows an attacker to perform Server-Side Template Injection (SSTI), potentially leading to Remote Code Execution (RCE) in vulnerable configurations.\n\n### Patches\nUsers are strongly advised to upgrade to version v2.8.1 or later.\n\n### Credit\nWe would like to thank **Roman Ananev** for responsibly identifying and reporting this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "binarytorch/larecipe"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.8.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/saleem-hadad/larecipe/security/advisories/GHSA-jv7x-xhv2-p5v2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-53833"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/saleem-hadad/larecipe/pull/390"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/saleem-hadad/larecipe/commit/c1d0d56889655ce5f2645db5acf0e78d5fc3b36b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/saleem-hadad/larecipe"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-07-14T21:22:01Z",
+    "nvd_published_at": "2025-07-14T23:15:24Z"
+  }
+}

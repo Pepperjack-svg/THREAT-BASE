@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2px4-3jpx-h38h",
+  "modified": "2025-12-03T18:30:20Z",
+  "published": "2025-09-15T15:31:30Z",
+  "aliases": [
+    "CVE-2023-53253"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: nvidia-shield: Reference hid_device devm allocation of input_dev name\n\nUse hid_device for devm allocation of the input_dev name to avoid a\nuse-after-free. input_unregister_device would trigger devres cleanup of all\nresources associated with the input_dev, free-ing the name. The name would\nsubsequently be used in a uevent fired at the end of unregistering the\ninput_dev.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/197d3143520fec9fde89aebabc9f0d7464f08e50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b85d3807e5ec368bfd5b20245347d7c1434aff76"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T15:15:52Z"
+  }
+}

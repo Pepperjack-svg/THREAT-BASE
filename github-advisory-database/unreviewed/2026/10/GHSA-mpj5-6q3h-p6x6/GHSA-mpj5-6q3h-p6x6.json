@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mpj5-6q3h-p6x6",
+  "modified": "2026-10-22T09:31:47Z",
+  "published": "2026-10-22T09:31:47Z",
+  "aliases": [
+    "CVE-2026-110974"
+  ],
+  "details": "The org.json parser in com.vaadin.external.google:android-json recurses once per nesting level with no depth limit: JSONTokener.nextValue() calls readArray() and readObject(), which call nextValue() again. A deeply nested JSON document, around 20 KB of nested arrays with the default thread stack, makes the JSONArray and JSONObject constructors throw a raw java.lang.StackOverflowError instead of a JSONException. Any application that parses untrusted JSON with this library can be made to fail the thread doing the parsing. The artifact is a 2013 repackage of third-party org.json classes, published once and never maintained, and no fixed version will be released.\n\n\nUsers of the affected version should apply the following mitigation.\n\nProduct version\ncom.vaadin.external.google:android-json 0.0.20131108.vaadin1\n\nMitigation\nNo fixed version will be released. Replace the artifact with an org.json implementation that limits the nesting depth, such as org.json:json 20231013 or later.\n\nArtifacts\nMaven coordinates / Vulnerable versions / Fixed version\ncom.vaadin.external.google:android-json / 0.0.20131108.vaadin1 / none",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110974"
+    },
+    {
+      "type": "WEB",
+      "url": "https://repo.maven.apache.org/maven2/com/vaadin/external/google/android-json/0.0.20131108.vaadin1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T09:17:13Z"
+  }
+}

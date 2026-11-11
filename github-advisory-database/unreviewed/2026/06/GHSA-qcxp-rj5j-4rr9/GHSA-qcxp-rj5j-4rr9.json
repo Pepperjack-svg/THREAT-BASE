@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qcxp-rj5j-4rr9",
+  "modified": "2026-07-06T15:30:41Z",
+  "published": "2026-06-25T09:31:18Z",
+  "aliases": [
+    "CVE-2026-53139"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/v3d: Skip CSD when it has zeroed workgroups\n\nA compute shader dispatch encodes its workgroup counts in the CFG0..CFG2\nregisters. Kicking off a dispatch with a zero count in any of the three\ndimensions is invalid. First, the hardware will process 0 as 65536,\nwhile the user-space driver exposes a maximum of 65535. Over that, a\nsubmission with a zeroed workgroup dimension should be a no-op.\n\nThese zeroed counts can reach the dispatch path through an indirect CSD\njob, whose workgroup counts are only known once the indirect buffer is\nread and may legitimately be zero, but such scenario should only result in\na no-op.\n\nOverwrite the indirect CSD job workgroup counts with the indirect BO\nones, even if they are zeroed, and don't submit the job to the hardware\nwhen any of the workgroup counts is zero, so the job completes immediately\ninstead of running the shader.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11e6432836394e00d39e468cd514f9ddb66f1e49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f93fad5ea0affc9e1505dd0f7596c0fdb496213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b51c5406ad748c3d5575b66b6009b5dbbc08b80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9655b56b6de918e1c22b92f3880ae41b052cbd00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/abb069fdf51a9ddabcc1ed125dafe54e2089900b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ad166139d123dc162e8636f0c7962516d04074e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3a8dd72b0d008ff142880b4dbe5ca37dcf962b4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:31Z"
+  }
+}

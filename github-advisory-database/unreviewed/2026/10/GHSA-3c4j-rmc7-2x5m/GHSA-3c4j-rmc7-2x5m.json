@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3c4j-rmc7-2x5m",
+  "modified": "2026-10-16T21:32:41Z",
+  "published": "2026-10-15T09:30:32Z",
+  "aliases": [
+    "CVE-2026-101306"
+  ],
+  "details": "SCM_RIGHTS file descriptor passing did not preserve FD_RESOLVE_BENEATH when a descriptor was transferred.  A process could clear the restriction by sending the descriptor to itself over a Unix domain socket.\n\nA process in a jail that has received a directory file descriptor from another jail can use these techniques to escape the jail's filesystem root restriction.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101306"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-26:66.jail.asc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-273"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T07:17:57Z"
+  }
+}

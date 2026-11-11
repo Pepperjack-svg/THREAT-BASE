@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r6v3-89j7-2957",
+  "modified": "2026-10-15T03:35:02Z",
+  "published": "2026-01-13T18:31:03Z",
+  "aliases": [
+    "CVE-2025-68782"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: target: Reset t_task_cdb pointer in error case\n\nIf allocation of cmd->t_task_cdb fails, it remains NULL but is later\ndereferenced in the 'err' path.\n\nIn case of error, reset NULL t_task_cdb value to point at the default\nfixed-size buffer.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68782"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0260ad551b0815eb788d47f32899fbcd65d6f128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d36db68fdb8a3325386fd9523b67735f944e1f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45fd86b444105c8bd07a763f58635c87e5dc7aea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5053eab38a4c4543522d0c320c639c56a8b59908"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cac97b12bdab04832e0416d049efcd0d48d303b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8727663ded659aad55eef21e3864ebf5a4796a96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8edbb9e371af186b4cf40819dab65fafe109df4d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-13T16:15:57Z"
+  }
+}

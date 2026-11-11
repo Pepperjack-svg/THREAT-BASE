@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrwj-wrmj-995m",
+  "modified": "2026-11-03T12:31:51Z",
+  "published": "2026-11-03T12:31:50Z",
+  "aliases": [
+    "CVE-2026-99259"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoc/tegra: pmc: Fix uninitialised clock rate\n\nFor legacy 32-bit Tegra devices, the warning in the\ntegra_pmc_enter_suspend_mode() function is being triggered because the\nearly_pmc->rate variable is never configured and hence, always 0. This\nissue started occurring after updating the PMC driver to create the PMC\ncontext dynamically which causes the 'rate' to be set in the new dynamic\ncontext, but missed updating the rate in the early PMC context.\n\nFix this by initialising the early_pmc->rate variable for 32-bit Tegra\ndevices when the rate for the PMC context is initialised.\n\n[treding@nvidia.com: move assignment to existing #ifdef block]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99259"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/43bc7d5707bbbf75e56db849b987193d6e866ec6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5c95dbdc9011a56359df4dc00be829bbcc0b036"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T12:17:32Z"
+  }
+}

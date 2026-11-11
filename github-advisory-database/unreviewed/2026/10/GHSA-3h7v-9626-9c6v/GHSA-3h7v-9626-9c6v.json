@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3h7v-9626-9c6v",
+  "modified": "2026-10-31T09:31:13Z",
+  "published": "2026-10-31T09:31:13Z",
+  "aliases": [
+    "CVE-2026-119163"
+  ],
+  "details": "The FunnelKit Automations – Email Marketing Automation and CRM for WordPress & WooCommerce plugin for WordPress is vulnerable to time-based SQL Injection via the 'bwfan_cart_id' parameter in all versions up to, and including, 3.8.5.2 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Exploitation is a two-step persisted attack: an unauthenticated attacker submits a crafted bwfan_cart_id value during a guest Store API checkout (requiring only a publicly obtainable WooCommerce cart nonce), and the injection fires when a scheduled Action Scheduler job later reloads the stored meta upon order status transition out of pending, failed, or cancelled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119163"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-marketing-automations/tags/3.8.5.2/includes/db/class-bwfan-model-automation-contact.php#L132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-marketing-automations/tags/3.8.5.2/modules/abandoned-cart/class-bwfan-abandoned.php#L1007"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-marketing-automations/tags/3.8.5.2/modules/abandoned-cart/class-bwfan-abandoned.php#L414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3759554/wp-marketing-automations/trunk/includes/db/class-bwfan-model-automation-contact.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/22399b2a-75e5-428d-a9a2-8b42e23c1825?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-31T07:16:36Z"
+  }
+}

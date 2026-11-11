@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rxrw-f2xj-7fjx",
+  "modified": "2026-10-28T21:31:18Z",
+  "published": "2026-10-28T21:31:18Z",
+  "aliases": [
+    "CVE-2026-6647"
+  ],
+  "details": "In deployments of WSO2 Identity Server configured with a case-insensitive user store and a case-sensitive database for identity data, mismatches in username case handling can occur. This inconsistency results in OAuth token revocation operations failing to correctly identify usernames containing mixed-case characters during certain lifecycle events, preventing tokens from being invalidated.\n\nA malicious actor can exploit this vulnerability by possessing a valid access or refresh token associated with a mixed-case username. In affected configurations, these tokens may not be revoked when expected. The actor can then leverage these unrevoked tokens, before their expiry, to continue performing actions that should have been restricted, effectively bypassing intended access controls.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6647"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2026-5387"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T20:18:44Z"
+  }
+}

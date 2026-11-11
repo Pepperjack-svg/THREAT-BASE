@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fg2p-gxqh-hm83",
+  "modified": "2026-11-08T03:30:35Z",
+  "published": "2026-11-08T03:30:35Z",
+  "aliases": [
+    "CVE-2026-123594"
+  ],
+  "details": "Hickory DNS hickory-proto through 0.26.0-alpha.1 and hickory-net 0.26.0-beta.1 before 0.26.2 contain an NSEC validation flaw that returns a secure proof for NXDOMAIN responses when the covering NSEC's Next Domain Name is a strict descendant of the query name, which actually proves the name exists as an empty non-terminal. On-path attackers can flip the unsigned rcode of a genuine signed NODATA response from NOERROR to NXDOMAIN, causing validators to accept forged nonexistence of the name.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/hickory-dns/hickory-dns/security/advisories/GHSA-86vr-jm6c-7cpg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123594"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hickory-dns-through-0.26.0-alpha.1-dnssec-nsec-validation-bypass-for-empty-non-terminals"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-08T02:16:53Z"
+  }
+}

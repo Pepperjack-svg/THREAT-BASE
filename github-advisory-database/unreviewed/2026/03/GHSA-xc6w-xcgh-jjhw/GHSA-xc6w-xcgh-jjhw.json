@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xc6w-xcgh-jjhw",
+  "modified": "2026-05-22T00:31:15Z",
+  "published": "2026-03-25T12:30:21Z",
+  "aliases": [
+    "CVE-2026-23282"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix oops due to uninitialised var in smb2_unlink()\n\nIf SMB2_open_init() or SMB2_close_init() fails (e.g. reconnect), the\niovs set @rqst will be left uninitialised, hence calling\nSMB2_open_free(), SMB2_close_free() or smb2_set_related() on them will\noops.\n\nFix this by initialising @close_iov and @open_iov before setting them\nin @rqst.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/048efe129a297256d3c2088cf8d79515ff5ec864"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86163b98891aa9800f6103252e5acc7bb98afb91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc710c87af3341554d02d634ada1d2036c49a94a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:22Z"
+  }
+}

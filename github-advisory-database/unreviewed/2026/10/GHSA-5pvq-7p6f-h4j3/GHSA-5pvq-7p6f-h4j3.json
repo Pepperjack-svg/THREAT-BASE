@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5pvq-7p6f-h4j3",
+  "modified": "2026-10-22T12:31:18Z",
+  "published": "2026-10-22T12:31:18Z",
+  "aliases": [
+    "CVE-2026-115334"
+  ],
+  "details": "Lotus through 0.10.2 contains an authorization bypass vulnerability in ChangeUserOrganizationView.post that allows authenticated users to join any organization by supplying its UUID. Self-registered attackers who know another organization's UUID can send a POST request to /app/switch_organization/ to access that tenant's data and billing configuration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115334"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uselotus/lotus"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uselotus/lotus/blob/0.10.2/backend/metering_billing/views/views.py#L326-L340"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@leediay/BkUc3WL2Mx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lotus-through-0.10.2-authorization-bypass-via-switch-organization-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T11:17:52Z"
+  }
+}

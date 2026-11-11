@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3965-x5g2-56x2",
+  "modified": "2026-05-14T21:30:37Z",
+  "published": "2026-05-08T15:31:21Z",
+  "aliases": [
+    "CVE-2025-71301"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/tests: shmem: Hold reservation lock around vmap/vunmap\n\nAcquire and release the GEM object's reservation lock around vmap and\nvunmap operations. The tests use vmap_locked, which led to errors such\nas show below.\n\n[  122.292030] WARNING: CPU: 3 PID: 1413 at drivers/gpu/drm/drm_gem_shmem_helper.c:390 drm_gem_shmem_vmap_locked+0x3a3/0x6f0\n\n[  122.468066] WARNING: CPU: 3 PID: 1413 at drivers/gpu/drm/drm_gem_shmem_helper.c:293 drm_gem_shmem_pin_locked+0x1fe/0x350\n\n[  122.563504] WARNING: CPU: 3 PID: 1413 at drivers/gpu/drm/drm_gem_shmem_helper.c:234 drm_gem_shmem_get_pages_locked+0x23c/0x370\n\n[  122.662248] WARNING: CPU: 2 PID: 1413 at drivers/gpu/drm/drm_gem_shmem_helper.c:452 drm_gem_shmem_vunmap_locked+0x101/0x330\n\nOnly export the new vmap/vunmap helpers for Kunit tests. These are\nnot interfaces for regular drivers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71301"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b953d92f2f29e74b125617c6f00300fa1bed97e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cda83b099f117f2a28a77bf467af934cb39e49cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7b7022f11d3cf281c726117478696b83681bf11"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:31Z"
+  }
+}

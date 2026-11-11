@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-phjr-p9c5-hprx",
+  "modified": "2025-10-22T21:56:40Z",
+  "published": "2025-10-22T21:31:33Z",
+  "aliases": [
+    "CVE-2025-62248"
+  ],
+  "summary": "Liferay Portal and Liferay DXP vulnerable to reflected cross-site scripting (XSS)",
+  "details": "A  reflected cross-site scripting (XSS) vulnerability, resulting from a regression, has been identified in Liferay Portal 7.4.0 through 7.4.3.132, and Liferay DXP 2025.Q2.0 through 2025.Q2.9, 2025.Q1.0 through 2025.Q1.16, 2024.Q4.0 through 2024.Q4.7, 2024.Q3.1 through 2024.Q3.13, 2024.Q2.1 through 2024.Q2.13, 2024.Q1.1 through 2024.Q1.19 allows a remote, authenticated attacker to inject and execute JavaScript code via the _com_liferay_dynamic_data_mapping_web_portlet_DDMPortlet_definition parameter. The malicious payload is executed within the victim's browser when they access a URL that includes the crafted parameter.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:P/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay:com.liferay.dynamic.data.mapping.web"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "5.0.122"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-62248"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/a659c94bcfb218e5e5bb3e2cf7efa20a5abc10ed"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/liferay/liferay-portal"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.atlassian.net/browse/LPE-18304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.dev/portal/security/known-vulnerabilities/-/asset_publisher/jekt/content/CVE-2025-62248"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-10-22T21:56:40Z",
+    "nvd_published_at": "2025-10-22T19:15:35Z"
+  }
+}

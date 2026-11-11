@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c68j-74mr-g84m",
+  "modified": "2026-09-14T12:31:27Z",
+  "published": "2025-08-22T18:31:23Z",
+  "aliases": [
+    "CVE-2025-38660"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\n[ceph] parse_longname(): strrchr() expects NUL-terminated string\n\n... and parse_longname() is not guaranteed that.  That's the reason\nwhy it uses kmemdup_nul() to build the argument for kstrtou64();\nthe problem is, kstrtou64() is not the only thing that need it.\n\nJust get a NUL-terminated copy of the entire thing and be done\nwith that...",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38660"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/101841c38346f4ca41dc1802c867da990ffb32eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3145b2b11492d61c512bbc59660bb823bc757f48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/493479af8af3ab907f49e99323777d498a4fbd2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b9aee707c4580511983a0998547f3b28514e6a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb80f7618832d26f7e395f52f82b1dac76223e5f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-22T16:15:41Z"
+  }
+}

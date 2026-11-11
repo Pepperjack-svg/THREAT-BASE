@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m633-2hf7-44hp",
+  "modified": "2026-10-16T18:34:49Z",
+  "published": "2026-10-16T18:34:49Z",
+  "aliases": [
+    "CVE-2026-111671"
+  ],
+  "details": "Cube-studio through 2026.09.01 contains an insecure direct object reference vulnerability that allows authenticated users to stop, reset, clear or redeploy other users' notebooks and services by id. Attackers can pass sequential ids to lifecycle endpoints in view_notebook.py, view_inferenceserving.py and view_serving.py to delete pods and take production inference endpoints offline.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111671"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/data-infra/cube-studio/blob/v2026.09.01/myapp/views/view_inferenceserving.py#L805-L915"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/data-infra/cube-studio/blob/v2026.09.01/myapp/views/view_notebook.py#L784-L873"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/data-infra/cube-studio/blob/v2026.09.01/myapp/views/view_serving.py#L184-L203"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/cube-studio-idor-expose-api-lifecycle"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cube-studio-through-2026.09.01-idor-via-notebook-and-serving-lifecycle-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:49Z"
+  }
+}

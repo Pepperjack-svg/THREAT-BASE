@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-96c4-w7rm-2mx2",
+  "modified": "2026-10-15T03:35:13Z",
+  "published": "2026-01-31T12:30:12Z",
+  "aliases": [
+    "CVE-2026-23038"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npnfs/flexfiles: Fix memory leak in nfs4_ff_alloc_deviceid_node()\n\nIn nfs4_ff_alloc_deviceid_node(), if the allocation for ds_versions fails,\nthe function jumps to the out_scratch label without freeing the already\nallocated dsaddrs list, leading to a memory leak.\n\nFix this by jumping to the out_err_drain_dsaddrs label, which properly\nfrees the dsaddrs list before cleaning up other resources.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23038"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-253495.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c728083654f0066f5e10a1d2b0bd0907af19a58"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27c90d8ed81e7a289c9fe41b5e31d8bb609a3385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34b9dd179818ff7af2b36410985fd8166573c62d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/869862056e100973e76ce9f5f1b01837771b7722"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86da7efd12295a7e2b4abde5e5984c821edd938f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2dde5dafb80f1af4028ed10ad255f42af71c784"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed5d3f2f6885eb99f729e6ffd946e3aa058bd3eb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-31T12:16:07Z"
+  }
+}

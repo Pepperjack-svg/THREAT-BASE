@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vhmf-xjjg-5pxr",
+  "modified": "2026-06-01T18:31:42Z",
+  "published": "2026-05-28T12:30:34Z",
+  "aliases": [
+    "CVE-2026-46238"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: stop caching unowned originator pointers in BAT IV\n\nBAT IV keeps the last-hop neighbor address in each neigh_node, but some\npaths also cache an originator pointer derived from a temporary lookup.\nThat pointer is not owned by the neigh_node and may no longer refer to a\nlive originator entry after purge handling runs.\n\nStop storing the auxiliary originator pointer in the BAT IV neighbor\nstate. When BAT IV needs the neighbor originator data, resolve it from\nthe stored neighbor address and drop the reference again after use.\n\n[sven: avoid bonding logic for outgoing OGM]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09dc0d1a12222ffca6481916eab3cfea477b9620"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/384e3050a42be9085d50507b4d5f8266a588d742"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67bceeb22207f1f5a402973a3a0809e5f2698f38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e20700f8c524ac379ba8274ff5d453023b7c006"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86b2b58d7c228d850c8c78e4144e6123e8ed2718"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c16c68fdbb69778f8d04f650340c3f4d1518f8e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aafcbaf1159ea224528ca4075d0ba8c10ef374af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f03e8583532941b07761c5429de7d50766fa3110"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:39Z"
+  }
+}

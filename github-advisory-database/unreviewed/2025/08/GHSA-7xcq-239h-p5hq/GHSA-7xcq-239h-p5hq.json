@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7xcq-239h-p5hq",
+  "modified": "2025-08-04T18:30:38Z",
+  "published": "2025-08-04T18:30:37Z",
+  "aliases": [
+    "CVE-2013-10054"
+  ],
+  "details": "An unauthenticated arbitrary file upload vulnerability exists in LibrettoCMS version 1.1.7 (and possibly earlier) contains an unauthenticated arbitrary file upload vulnerability in its File Manager plugin. The upload handler located at adm/ui/js/ckeditor/plugins/pgrfilemanager/php/upload.php fails to properly validate file extensions, allowing attackers to upload files with misleading extensions and subsequently rename them to executable .php scripts. This enables remote code execution on the server without authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2013-10054"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/unix/webapp/libretto_upload_exec.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sourceforge.net/projects/librettocms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/26213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/26421"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/librettocms-file-manager-arbitrary-file-upload"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-04T18:15:34Z"
+  }
+}

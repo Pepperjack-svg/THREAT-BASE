@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mhgq-ww4c-c9h8",
+  "modified": "2026-11-08T03:30:35Z",
+  "published": "2026-11-08T03:30:35Z",
+  "aliases": [
+    "CVE-2026-123588"
+  ],
+  "details": "The recursive resolver in Hickory DNS (all versions of the hickory-recursor crate, and hickory-resolver 0.26.0 before 0.26.2) caches an empty connection pool when it follows a referral with no glue records and all queries for the name servers' IP addresses fail. An attacker able to spoof DNS responses can make these lookups fail, causing all subsequent queries for the affected zone to fail until the cache entry expires or is evicted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/hickory-dns/hickory-dns/security/advisories/GHSA-9px7-7m25-f6q2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123588"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hickory-dns-recursive-resolver-denial-of-service-via-cached-empty-connection-pool"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-754"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-08T02:16:52Z"
+  }
+}

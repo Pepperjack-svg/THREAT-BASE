@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v64r-7wg9-23pr",
+  "modified": "2026-01-09T03:11:23Z",
+  "published": "2026-01-05T18:49:56Z",
+  "aliases": [
+    "CVE-2025-68456"
+  ],
+  "summary": "Unauthenticated Craft CMS users can trigger a database backup",
+  "details": "Unauthenticated users can trigger database backup operations the `updater/backup` action, potentially leading to resource exhaustion or information disclosure.\n\nUsers should update to the patched versions (5.8.21 and 4.16.17) to mitigate the issue.\n\nCraft 3 users should update to the latest Craft 4 and 5 releases, which include the fixes.\n\nReferences:\n\nhttps://github.com/craftcms/cms/commit/f83d4e0c6b906743206b4747db4abf8164b8da39\n\nhttps://github.com/craftcms/cms/blob/5.x/CHANGELOG.md#5821---2025-12-04\n\n## Affected Endpoints\n\n- `POST /admin/actions/updater/backup` (unauthenticated)\n\n## Vulnerability Details\n\n### Root Cause\nAll `updater/*` actions are explicitly configured with anonymous access:\n\n```php\n// BaseUpdaterController.php  \nprotected array|bool|int $allowAnonymous = self::ALLOW_ANONYMOUS_LIVE | self::ALLOW_ANONYMOUS_OFFLINE;\n```\n\n### Attack Vector\n1. Send unauthenticated POST request to `/admin/actions/updater/backup`\n2. Database backup executes with configured `backupCommand`",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:H/SC:N/SI:N/SA:N/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-RC1"
+            },
+            {
+              "fixed": "5.8.21"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.8.20"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "4.16.17"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.16.16"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-v64r-7wg9-23pr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68456"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/f83d4e0c6b906743206b4747db4abf8164b8da39"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/blob/5.x/CHANGELOG.md#5821---2025-12-04"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-202",
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-05T18:49:56Z",
+    "nvd_published_at": "2026-01-05T22:15:52Z"
+  }
+}

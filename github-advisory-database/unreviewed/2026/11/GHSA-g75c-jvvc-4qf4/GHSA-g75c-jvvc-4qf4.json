@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g75c-jvvc-4qf4",
+  "modified": "2026-11-10T21:31:59Z",
+  "published": "2026-11-07T15:30:29Z",
+  "aliases": [
+    "CVE-2026-124308"
+  ],
+  "details": "Fraunhofer HHI VVdeC before 3.2.1 contains a heap use-after-free vulnerability in DecLibRecon::createSubPicRefBufs because decompressPicture clears m_subPicExtTasks without waiting for pending tasks. Attackers can supply a crafted multi-subpicture VVC bitstream to decoders using two or more threads, causing heap memory corruption or a decoder crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124308"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fraunhoferhhi/vvdec/issues/392"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fraunhoferhhi/vvdec/issues/403"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fraunhoferhhi/vvdec/commit/8a0def8ba6050412d33e69a6f1e66e287b039083"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fraunhoferhhi/vvdec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fraunhoferhhi/vvdec/blob/v3.2.0/source/Lib/DecoderLib/DecLibRecon.cpp#L405-L420"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fraunhoferhhi/vvdec/blob/v3.2.0/source/Lib/DecoderLib/DecLibRecon.cpp#L538-L542"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/fraunhofer-hhi-vvdec-before-3.2.1-use-after-free-via-declibrecon-createsubpicrefbufs"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/11/10/15"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-07T15:17:14Z"
+  }
+}

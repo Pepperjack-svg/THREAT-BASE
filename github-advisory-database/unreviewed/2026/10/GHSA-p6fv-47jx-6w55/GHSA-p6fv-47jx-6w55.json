@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p6fv-47jx-6w55",
+  "modified": "2026-10-19T12:32:51Z",
+  "published": "2026-10-19T12:32:51Z",
+  "aliases": [
+    "CVE-2026-85300"
+  ],
+  "details": "Incorrect Default Permissions vulnerability in Apache Camel PQC component.\n\nThis issue affects Apache Camel: from 4.12.0 before 4.18.5, from 4.19.0 before 4.22.1.\n\nWhen the component wrote generated key material to disk it did so with the permissions the process default umask produced, rather than restricting the file to its owner. On a host whose umask allows group or world read, the private key was therefore readable by other local accounts. The exposure is to a local party rather than to the remote sender that the Camel threat model treats as the primary adversary, which is why the severity is assessed low, but the consequence where it applies is complete: possession of the private key defeats every signature and key exchange the deployment performs with it.\n\nUpgrade to Apache Camel 4.23.0, which fixes the issue. Users on the 4.18.x LTS releases stream should upgrade to 4.18.5. Users on the 4.22.x LTS releases stream should upgrade to 4.22.1. Key material is now written with owner-only permissions. For deployments that cannot upgrade immediately, place the key directory on a path only the service account can traverse, and tighten the process umask. Key material already written with permissive permissions should be treated as exposed and rotated.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85300"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/25826"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/25856"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/25857"
+    },
+    {
+      "type": "WEB",
+      "url": "https://camel.apache.org/security/CVE-2026-85300.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.apache.org/jira/browse/CAMEL-24447"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-276"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T11:17:24Z"
+  }
+}

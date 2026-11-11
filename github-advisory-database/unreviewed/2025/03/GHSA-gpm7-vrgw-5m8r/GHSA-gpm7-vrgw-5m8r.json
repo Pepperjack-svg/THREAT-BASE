@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gpm7-vrgw-5m8r",
+  "modified": "2025-03-10T21:31:10Z",
+  "published": "2025-03-10T21:31:10Z",
+  "aliases": [
+    "CVE-2022-49576"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: Fix data-races around sysctl_fib_multipath_hash_fields.\n\nWhile reading sysctl_fib_multipath_hash_fields, it can be changed\nconcurrently.  Thus, we need to add READ_ONCE() to its readers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49576"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36f5b86f309b3b11295d087cd7433f1c897caf94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/548d6678c4a3d43667e59686665f8674b82440a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8895a9c2ac76fb9d3922fed4fe092c8ec5e5cccc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:33Z"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-72mh-hgpm-6384",
+  "modified": "2026-01-13T16:53:38Z",
+  "published": "2025-12-19T19:17:26Z",
+  "aliases": [
+    "CVE-2025-68457"
+  ],
+  "summary": "Orejime has executable code in HTML attributes",
+  "details": "### Impact\n\nOn HTML elements handled by Orejime, one could run malicious code by embedding `javascript:` code within data attributes.\nWhen consenting to the related purpose, Orejime would turn data attributes into unprefixed ones (i.e. `data-href` into `href`), thus executing the code.\n\nThis shouldn't have any impact on most setups, as elements handled by Orejime are generally hardcoded. The problem would only arise if somebody could inject HTML code within pages.\n\nSee https://github.com/boscop-fr/orejime/issues/142 for the original report.\n\n### Patches\n\nThe problem has been patched by https://github.com/boscop-fr/orejime/pull/143. It is available in version 2.3.2.\n\n### Workarounds\n\nThe problem can be fixed outside of Orejime by sanitizing attributes which could contain executable code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "orejime"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.3.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/boscop-fr/orejime/security/advisories/GHSA-72mh-hgpm-6384"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68457"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/boscop-fr/orejime/issues/142"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/boscop-fr/orejime/pull/143"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/boscop-fr/orejime"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-19T19:17:26Z",
+    "nvd_published_at": "2025-12-19T17:15:53Z"
+  }
+}

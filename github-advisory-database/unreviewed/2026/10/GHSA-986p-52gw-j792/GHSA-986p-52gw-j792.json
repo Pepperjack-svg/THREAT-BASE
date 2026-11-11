@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-986p-52gw-j792",
+  "modified": "2026-10-28T09:31:55Z",
+  "published": "2026-10-28T09:31:55Z",
+  "aliases": [
+    "CVE-2026-111111"
+  ],
+  "details": "The Prime Slider – Hero Slider, Carousel, WooCommerce & Post Slider Elementor Addons plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 4.7.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is possible because core wp_filter_kses leaves the submitted markup inert, but the plugin's subsequent regex fallback consumes closing quotes of allowed attribute values containing 'bdt-', promoting previously inert bytes — such as event handlers like onfocus — into real HTML attributes that are then written to the database and rendered without further sanitization.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bdthemes-prime-slider-lite/tags/4.7.2/includes/class-content-guard.php#L128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bdthemes-prime-slider-lite/tags/4.7.2/includes/class-content-guard.php#L292"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bdthemes-prime-slider-lite/tags/4.7.2/includes/class-content-guard.php#L329"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bdthemes-prime-slider-lite/tags/4.7.2/includes/class-content-guard.php#L59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bdthemes-prime-slider-lite/tags/4.7.2/loader.php#L133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3752580/bdthemes-prime-slider-lite/trunk/includes/class-content-guard.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/918dd473-dbe7-4352-95e9-3f705b09a4f2?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T07:16:46Z"
+  }
+}

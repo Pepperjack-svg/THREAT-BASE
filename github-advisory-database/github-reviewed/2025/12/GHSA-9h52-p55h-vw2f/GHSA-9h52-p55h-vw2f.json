@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9h52-p55h-vw2f",
+  "modified": "2026-07-16T18:30:59Z",
+  "published": "2025-12-02T16:52:08Z",
+  "aliases": [
+    "CVE-2025-66416"
+  ],
+  "summary": "Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default",
+  "details": "### Description\n\nThe Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using `FastMCP` with streamable HTTP or SSE transport, and has not configured `TransportSecuritySettings`, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances.\n\nNote that running HTTP-based MCP servers locally without authentication is not recommended per MCP security best practices. This issue does not affect servers using stdio transport.\n\nServers created via `FastMCP()` now have DNS rebinding protection enabled by default when the `host` parameter is `127.0.0.1` or `localhost`. Users are advised to update to version `1.23.0` to receive this automatic protection. Users with custom low-level server configurations using `StreamableHTTPSessionManager` or `SseServerTransport` directly should explicitly configure `TransportSecuritySettings` when running an unauthenticated server on localhost.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.23.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-9h52-p55h-vw2f"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66416"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/python-sdk/commit/d3a184119e4479ea6a63590bc41f01dc06e3fa99"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://github.com/advisories/GHSA-9h52-p55h-vw2f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/modelcontextprotocol/python-sdk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/mcp/PYSEC-2026-1617.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/mcp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1188",
+      "CWE-350"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-12-02T16:52:08Z",
+    "nvd_published_at": "2025-12-02T19:15:52Z"
+  }
+}

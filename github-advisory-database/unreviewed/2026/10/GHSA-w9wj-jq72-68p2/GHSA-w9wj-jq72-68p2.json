@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9wj-jq72-68p2",
+  "modified": "2026-10-20T03:32:45Z",
+  "published": "2026-10-20T03:32:45Z",
+  "aliases": [
+    "CVE-2026-77935"
+  ],
+  "details": "Coze Studio through 0.5.1 contains an insecure direct object reference vulnerability in workflow.go that allows authenticated users to access other spaces' workflows by supplying foreign workflowIDs. Attackers can pair their own spaceID with another tenant's workflowID in save, update_meta, batch_delete, canvas, test_run and nodeDebug routes to read, run, overwrite or delete workflows.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77935"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/coze-dev/coze-studio/blob/72cecff858a5a18662c5d9d1a4764c53ebc98317/backend/application/workflow/workflow.go#L303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.lasso.security/vulnerability-database/cve-2026-77935"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/coze-studio-through-0.5.1-cross-space-workflow-idor-via-workflow-api-handlers"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T01:17:19Z"
+  }
+}

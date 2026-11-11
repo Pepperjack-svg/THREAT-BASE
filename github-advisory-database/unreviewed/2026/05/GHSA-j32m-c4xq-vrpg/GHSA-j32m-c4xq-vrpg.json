@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j32m-c4xq-vrpg",
+  "modified": "2026-07-24T15:32:32Z",
+  "published": "2026-05-28T12:30:30Z",
+  "aliases": [
+    "CVE-2026-46152"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: drop stray 'static' from fast-RX rx_result\n\nieee80211_invoke_fast_rx() is documented as safe for parallel RX, but\nits per-invocation rx_result is declared static. Concurrent callers then\nshare one instance and can overwrite each other's result between\nieee80211_rx_mesh_data() and the switch on res.\n\nThat can make a packet that was queued or consumed by\nieee80211_rx_mesh_data() fall through into ieee80211_rx_8023(), or make\na packet that should continue return as queued.\n\nMake res an automatic variable so each invocation keeps its own result.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:26427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:26428"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:27288"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:27789"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:36767"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:38902"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:44694"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-46152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2482563"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03584528bfffb195e384698af9148b94e42e3f14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1739fc31b4de06c5c78ce0741182770fb079091e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ef44f96ccc3e06e059dec57842e366f0c4b1893"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a5b81e0c87a075afd572f659d8eb68c9c4cd2ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e131562d6f2b958148c35c98831b007f47f0e3d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-46152.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1058",
+      "CWE-362"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:30Z"
+  }
+}

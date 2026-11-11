@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x93q-x9pc-w5hw",
+  "modified": "2026-06-22T20:30:16Z",
+  "published": "2026-06-22T20:30:16Z",
+  "aliases": [
+    "CVE-2026-44585"
+  ],
+  "summary": "Paymenter has broken object level authorization via service reference manipulation on ticket creation",
+  "details": "### Summary\nThe ticket creation endpoint accepts a user-supplied service identifier without enforcing ownership validation, allowing authenticated users to create support tickets referencing services belonging to other accounts by modifying the service ID in the request.\n\n### Technical Details\n\nThe ticket creation endpoint accepted a user-supplied service identifier without verifying ownership or authorization against the authenticated account. An attacker could modify the service ID value in the client-side request and successfully create a ticket associated with another user's service.\n\nThe vulnerability required authentication and did not provide direct access to service contents or customer data. However, referenced service information could become visible to support personnel handling the ticket.\n\n### Impact\n\nSuccessful exploitation could allow an authenticated user to:\n- Create support tickets referencing services belonging to other users\n- Potentially cause support staff to interact with or review unrelated customer services\n\nThe vulnerability did not allow:\n- Direct access to another user's service\n- Modification of another user's service\n- Retrieval of confidential service data through the vulnerable endpoint itself",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "paymenter/paymenter"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Paymenter/Paymenter/security/advisories/GHSA-x93q-x9pc-w5hw"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Paymenter/Paymenter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-22T20:30:16Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-22x8-669x-gh7m",
+  "modified": "2026-10-20T18:31:45Z",
+  "published": "2026-10-20T18:31:45Z",
+  "aliases": [
+    "CVE-2026-113610"
+  ],
+  "details": "Xen Orchestra before 6.9.0 contains an authorization bypass vulnerability in the xo-server user.set API method that allows low-privileged authenticated users to modify other users' preferences by supplying an arbitrary target user id. Attackers can delete the preferences.otp TOTP secret to disable two-factor authentication, corrupt it to block logins, or overwrite stored xsCredentials and sshKeys.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/vatesfr/xen-orchestra/security/advisories/GHSA-mc4m-hc98-rhmv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113610"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vatesfr/xen-orchestra/commit/3dbf8738f1e682b96ade2074dc84bee02a0c2d48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vatesfr/xen-orchestra/blob/f187b7931988e3e5c9ccd58abe730d6b006cc246/packages/xo-server/src/api/user.mjs#L73-L93"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/xen-orchestra-before-6.9.0-authorization-bypass-via-user-set-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T16:17:11Z"
+  }
+}

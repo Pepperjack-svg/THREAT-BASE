@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4mf3-frrh-jfqw",
+  "modified": "2026-04-18T09:30:16Z",
+  "published": "2026-01-23T15:31:35Z",
+  "aliases": [
+    "CVE-2025-71150"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: Fix refcount leak when invalid session is found on session lookup\n\nWhen a session is found but its state is not SMB2_SESSION_VALID, It\nindicates that no valid session was found, but it is missing to decrement\nthe reference count acquired by the session lookup, which results in\na reference count leak. This patch fixes the issue by explicitly calling\nksmbd_user_session_put to release the reference to the session.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71150"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02e06785e85b4bd86ef3d23b7c8d87acc76773d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fb87b28cafae71e9c8248432cc3a6a1fd759efc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11fe566b442e3bc2774191740fd377739a87a1c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8cabcb4dd3dc85dd83a37d26efcc59a66a4074d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cafb57f7bdd57abba87725eb4e82bbdca4959644"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e54fb2a4772545701766cba08aab20de5eace8cd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-23T15:16:05Z"
+  }
+}

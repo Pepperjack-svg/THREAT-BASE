@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-33mg-5c73-726g",
+  "modified": "2026-10-12T21:32:00Z",
+  "published": "2026-10-12T21:32:00Z",
+  "aliases": [
+    "CVE-2026-109568"
+  ],
+  "details": "Shaark 1.2.13 through 1.2.44 contains a missing authorization vulnerability in the Link, Story, Chest and Album API controllers that skips ownership checks. Authenticated non-admin users can send PUT or DELETE requests to /api/{link,story,chest,album}/{id} with numeric IDs to overwrite or delete other users' content, including private items.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109568"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MarceauKa/shaark/pull/110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MarceauKa/shaark"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MarceauKa/shaark/blob/1.2.44/app/Http/Controllers/Api/LinkController.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/shaark-1.2.13-through-1.2.44-missing-authorization-via-api-update-and-delete-routes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T21:17:13Z"
+  }
+}

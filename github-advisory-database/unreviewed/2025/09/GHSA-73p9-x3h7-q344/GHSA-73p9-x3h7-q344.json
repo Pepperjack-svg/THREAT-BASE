@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73p9-x3h7-q344",
+  "modified": "2025-12-02T03:31:33Z",
+  "published": "2025-09-15T15:31:24Z",
+  "aliases": [
+    "CVE-2023-53175"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: hv: Fix a crash in hv_pci_restore_msi_msg() during hibernation\n\nWhen a Linux VM with an assigned PCI device runs on Hyper-V, if the PCI\ndevice driver is not loaded yet (i.e. MSI-X/MSI is not enabled on the\ndevice yet), doing a VM hibernation triggers a panic in\nhv_pci_restore_msi_msg() -> msi_lock_descs(&pdev->dev), because\npdev->dev.msi.data is still NULL.\n\nAvoid the panic by checking if MSI-X/MSI is enabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53175"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04bbe863241a9be7d57fb4cf217ee4a72f480e70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/223fc5352054900f70b8b5e10cfc2f297e70c512"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0687755407b21d252b98dca6be459153a60c62a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e32fc2168aa6b477290392ddbb73d95f012b050c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T14:15:39Z"
+  }
+}

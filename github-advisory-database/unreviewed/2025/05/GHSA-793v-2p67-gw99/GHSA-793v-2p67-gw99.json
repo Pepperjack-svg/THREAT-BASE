@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-793v-2p67-gw99",
+  "modified": "2026-02-06T18:30:26Z",
+  "published": "2025-05-20T18:30:55Z",
+  "aliases": [
+    "CVE-2025-37926"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix use-after-free in ksmbd_session_rpc_open\n\nA UAF issue can occur due to a race condition between\nksmbd_session_rpc_open() and __session_rpc_close().\nAdd rpc_lock to the session to protect it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37926"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1067361a1cc6ad9cdf7acfc47f90012b72ad1502"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6323fec65fe54b365961fed260dd579191e46121"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8fb3b6c85b7e3127161623586b62abcc366caa20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1f46c99d9ea411f9bf30025b912d881d36fc709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4348710a7267705b75692dc1a000920481d1d92"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-20T16:15:29Z"
+  }
+}

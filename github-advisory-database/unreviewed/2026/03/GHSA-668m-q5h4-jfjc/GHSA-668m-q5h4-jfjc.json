@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-668m-q5h4-jfjc",
+  "modified": "2026-04-23T21:31:17Z",
+  "published": "2026-03-25T12:30:22Z",
+  "aliases": [
+    "CVE-2026-23322"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipmi: Fix use-after-free and list corruption on sender error\n\nThe analysis from Breno:\n\nWhen the SMI sender returns an error, smi_work() delivers an error\nresponse but then jumps back to restart without cleaning up properly:\n\n1. intf->curr_msg is not cleared, so no new message is pulled\n2. newmsg still points to the message, causing sender() to be called\n   again with the same message\n3. If sender() fails again, deliver_err_response() is called with\n   the same recv_msg that was already queued for delivery\n\nThis causes list_add corruption (\"list_add double add\") because the\nrecv_msg is added to the user_msgs list twice. Subsequently, the\ncorrupted list leads to use-after-free when the memory is freed and\nreused, and eventually a NULL pointer dereference when accessing\nrecv_msg->done.\n\nThe buggy sequence:\n\n  sender() fails\n    -> deliver_err_response(recv_msg)  // recv_msg queued for delivery\n    -> goto restart                    // curr_msg not cleared!\n  sender() fails again (same message!)\n    -> deliver_err_response(recv_msg)  // tries to queue same recv_msg\n    -> LIST CORRUPTION\n\nFix this by freeing the message and setting it to NULL on a send error.\nAlso, always free the newmsg on a send error, otherwise it will leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/594c11d0e1d445f580898a2b8c850f2e3f099368"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65ff5d1e4410df05edfbeb7bf2d62f7681ce1d53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c08ec55617cb9674a060a3392ea08391ab2a4f74"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:29Z"
+  }
+}

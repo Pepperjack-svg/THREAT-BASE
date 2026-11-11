@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mwrq-hx54-3h97",
+  "modified": "2026-10-23T12:31:37Z",
+  "published": "2026-10-23T12:31:37Z",
+  "aliases": [
+    "CVE-2026-98900"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen/gntalloc: validate grant count before allocation\n\ngntalloc_ioctl_alloc() allocates the grant-id array before checking\nwhether the requested count fits within the global grant limit. Counts\nabove that limit cannot succeed, so reject them before the\nuser-controlled allocation reaches kcalloc().\n\nUse a subtraction-based check while holding gref_mutex so adding the\nrequested count cannot wrap. Also cast the count before advancing the\nper-file index so the page-size multiplication is performed in 64-bit\narithmetic.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98900"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2299822f3f466b5dcad2377bf63986199f881a6b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/231542f4e43cf9837cb520664545e85fbe666b7b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/641de086a05f349de7fc548612432bc2fed721ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71a0cf87e19fb35c4292ca88985e376e613c900a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/720554c04acba80018ded069d3e0984bebaee891"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/84d5727cef8eb9c8a28210ad248f1c70b223b065"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2806390aa1c4d5b3f7a68f10a56ae12c71c00d8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T12:18:24Z"
+  }
+}

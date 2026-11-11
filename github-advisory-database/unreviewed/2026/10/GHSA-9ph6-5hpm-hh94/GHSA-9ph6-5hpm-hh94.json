@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9ph6-5hpm-hh94",
+  "modified": "2026-10-10T15:30:22Z",
+  "published": "2026-10-10T15:30:22Z",
+  "aliases": [
+    "CVE-2026-108161"
+  ],
+  "details": "FusionPBX through 5.6.5 contains an OS command injection vulnerability in call_recordings::download() that allows unauthenticated attackers to execute commands by placing calls with malicious caller ID values. When the record_name filename template is enabled, attackers can embed shell metacharacters like $(...) in the Caller-ID name or number, executing commands as the web server user once a privileged user downloads multiple recordings as a ZIP.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108161"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fusionpbx/fusionpbx/commit/074a69310100f95171c67db62643cc2aac4f4d37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fusionpbx/fusionpbx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fusionpbx/fusionpbx/blob/ac4cd29870e3af67506390800904e262fee7e0ec/app/call_recordings/resources/classes/call_recordings.php#L736-L776"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/fusionpbx-through-5.6.5-os-command-injection-via-caller-id-in-recording-zip-download"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T14:16:37Z"
+  }
+}

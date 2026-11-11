@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-44vj-49qr-87q3",
+  "modified": "2026-02-10T12:30:28Z",
+  "published": "2026-02-10T12:30:28Z",
+  "aliases": [
+    "CVE-2026-2268"
+  ],
+  "details": "The Ninja Forms plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 3.14.0. This is due to the unsafe application of the `ninja_forms_merge_tags` filter to user-supplied input within repeater fields, which allows the resolution of `{post_meta:KEY}` merge tags without authorization checks. This makes it possible for unauthenticated attackers to extract arbitrary post metadata from any post on the site, including sensitive data such as WooCommerce billing emails, API keys, private tokens, and customer personal information via the `nf_ajax_submit` AJAX action.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ninja-forms/tags/3.13.3/includes/AJAX/Controllers/Submission.php#L222"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ninja-forms/tags/3.13.3/includes/AJAX/Controllers/Submission.php#L706"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ninja-forms/tags/3.13.3/includes/MergeTags/WP.php#L48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3454719/ninja-forms/trunk/includes/AJAX/Controllers/Submission.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/24902fab-44ea-44c9-bcf5-70960cfeb402?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-10T10:16:00Z"
+  }
+}

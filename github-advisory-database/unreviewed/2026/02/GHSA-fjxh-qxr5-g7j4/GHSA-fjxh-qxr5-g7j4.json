@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fjxh-qxr5-g7j4",
+  "modified": "2026-02-18T15:31:26Z",
+  "published": "2026-02-18T15:31:26Z",
+  "aliases": [
+    "CVE-2025-71228"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nLoongArch: Set correct protection_map[] for VM_NONE/VM_SHARED\n\nFor 32BIT platform _PAGE_PROTNONE is 0, so set a VMA to be VM_NONE or\nVM_SHARED will make pages non-present, then cause Oops with kernel page\nfault.\n\nFix it by set correct protection_map[] for VM_NONE/VM_SHARED, replacing\n_PAGE_PROTNONE with _PAGE_PRESENT.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/046303283d02c9732a778ccdeea433a899c78cbd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/380d7c1af4bd3e797692f5410ab374a98e766cd4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5fbdf95d2575ec53fd4a5c18e789b4d54a0281fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9531210f348aa78e260a9e5b0d1a6f7e7aa329e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5be446948b379f1d1a8e7bc6656d13f44c5c7b1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-18T15:18:40Z"
+  }
+}

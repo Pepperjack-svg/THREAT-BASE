@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-69p9-3qcg-w5mw",
+  "modified": "2025-10-20T18:30:34Z",
+  "published": "2025-10-20T18:30:34Z",
+  "aliases": [
+    "CVE-2025-40011"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/gma500: Fix null dereference in hdmi teardown\n\npci_set_drvdata sets the value of pdev->driver_data to NULL,\nafter which the driver_data obtained from the same dev is\ndereferenced in oaktrail_hdmi_i2c_exit, and the i2c_dev is\nextracted from it. To prevent this, swap these calls.\n\nFound by Linux Verification Center (linuxtesting.org) with Svacer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40011"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02e4ff4941efb9bbb40d8d5b61efa1a4119b1ba7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fc650fa475b50c1da8236c5e900b9460c7027bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/352e66900cde63f3dadb142364d3c35170bbaaff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4bbfd1b290857b9d14ea9d91562bde55ff2bc85e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ffa6b5bc861a3ea9dfcdc007f002b4a347c24ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70b0c11483d3b90b2d0f416026e475e084a77e62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e15de80737d444ed743b1c60ced4a3a97913169b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f800f7054d2cf28b51296c7c575da27c29e3859b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-20T16:15:37Z"
+  }
+}

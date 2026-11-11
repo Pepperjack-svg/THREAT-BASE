@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-397c-7vfx-vg4x",
+  "modified": "2026-07-06T15:30:42Z",
+  "published": "2026-06-25T09:31:20Z",
+  "aliases": [
+    "CVE-2026-53195"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: serial: io_ti: fix heap overflow in build_i2c_fw_hdr()\n\nbuild_i2c_fw_hdr() allocates a fixed-size buffer of\n(16*1024 - 512) + sizeof(struct ti_i2c_firmware_rec) bytes, then\ncopies le16_to_cpu(img_header->Length) bytes into it without\nvalidating that Length fits within the available space after the\nfirmware record header.\n\nimg_header->Length is a __le16 from the firmware file and can be\nup to 65535. check_fw_sanity() validates the total firmware size\nbut not img_header->Length specifically.\n\nFix by rejecting images where img_header->Length exceeds the\navailable destination space.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53195"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fd2b00b2d3d05e3eaa13342b3dfb0fa85c226ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/130d6567eb148040eed1b73e1414ad6c27d22bd5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/294692d3296eee3391c348d7ea6401916d27806c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fd64bf0ad66ab5de0c73524591d879427ba5aba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e187152f44d76d7633a3855ffd0099e1588b82a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4cb722747ed25971f35cc47ce5c0e79d7f717713"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a79b634ee58786ca627268daefa7744f2af2e14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7faf660eefa2047ebc2959ff76da2b6eae2e9e3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:36Z"
+  }
+}

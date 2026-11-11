@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q72h-v66c-fgvw",
+  "modified": "2025-03-12T00:31:49Z",
+  "published": "2025-03-12T00:31:49Z",
+  "aliases": [
+    "CVE-2022-49712"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: lpc32xx_udc: Fix refcount leak in lpc32xx_udc_probe\n\nof_parse_phandle() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nAdd missing of_node_put() to avoid refcount leak.\nof_node_put() will check NULL pointer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49712"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ef6917c0524da5b88496b9706628ffef108b9bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a598da14856ead80c726b38ba426c68637d9211"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46da1e4a8b6329479433b2a4056941dfdd7f3efd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4757c9ade34178b351580133771f510b5ffcf9c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57901c658f77d9ea2e772f35cb38e47efb54c558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/727c82d003e0ec64411fd1257a9a57de4ad7a99a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b75bddfcc18170ce8e3fb695a76ec2dec4ce0ea5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d85e4e6284a91aa2d1ab004e9d84b9c09b4aa203"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:46Z"
+  }
+}

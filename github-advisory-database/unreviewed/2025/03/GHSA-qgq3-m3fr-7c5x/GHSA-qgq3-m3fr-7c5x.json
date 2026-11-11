@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qgq3-m3fr-7c5x",
+  "modified": "2025-03-10T21:31:11Z",
+  "published": "2025-03-10T21:31:11Z",
+  "aliases": [
+    "CVE-2022-49596"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: Fix data-races around sysctl_tcp_min_snd_mss.\n\nWhile reading sysctl_tcp_min_snd_mss, it can be changed concurrently.\nThus, we need to add READ_ONCE() to its readers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49596"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d8a39feb58910a7f7746b1770ee5578cc551fe6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fc9357282df055e30990b29f4b7afa53ab42cdb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78eb166cdefcc3221c8c7c1e2d514e91a2eb5014"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97992e8feff33b3ae154a113ec398546bbacda80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fdb96b69f5909ffcdd6f1e0902219fc6d7689ff7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:35Z"
+  }
+}

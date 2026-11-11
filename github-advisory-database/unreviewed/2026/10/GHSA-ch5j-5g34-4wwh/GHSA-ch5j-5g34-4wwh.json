@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ch5j-5g34-4wwh",
+  "modified": "2026-10-10T21:31:16Z",
+  "published": "2026-10-10T21:31:16Z",
+  "aliases": [
+    "CVE-2026-108602"
+  ],
+  "details": "Helicone through v2025.08.21-1 contains a server-side request forgery vulnerability in the Jawn webhook sender that allows authenticated organization users to reach internal services by using hostnames resolving to private addresses. Attackers can create webhooks with public hostnames that resolve or DNS-rebind to loopback or internal addresses, causing blind POST requests to internal HTTPS services.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108602"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Helicone/helicone"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Helicone/helicone/blob/067d9290acb4f1fc9320e902fc67b4b399b50363/valhalla/jawn/src/controllers/public/webhookController.ts#L64-L85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Helicone/helicone/blob/067d9290acb4f1fc9320e902fc67b4b399b50363/valhalla/jawn/src/lib/clients/webhookSender.ts#L11-L76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind/helicone-webhook-dns-ssrf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/helicone-through-2025.08.21-1-ssrf-via-jawn-webhook-sender-dns-resolution"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T20:16:32Z"
+  }
+}

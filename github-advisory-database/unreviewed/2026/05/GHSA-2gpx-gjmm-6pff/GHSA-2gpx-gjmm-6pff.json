@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2gpx-gjmm-6pff",
+  "modified": "2026-06-24T18:32:28Z",
+  "published": "2026-05-27T15:33:16Z",
+  "aliases": [
+    "CVE-2026-45922"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/mlx5: Fix memory leak in GET_DATA_DIRECT_SYSFS_PATH handler\n\nThe UVERBS_HANDLER(MLX5_IB_METHOD_GET_DATA_DIRECT_SYSFS_PATH) function\nallocates memory for the device path using kobject_get_path(). If the\nlength of the device path exceeds the output buffer length, the function\nreturns -ENOSPC but does not free the allocated memory, resulting in a\nmemory leak.\n\nAdd a kfree() call to the error path to ensure the allocated memory is\nproperly freed.\n\nCompile tested only. Issue found using a prototype static analysis tool\nand code review.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45922"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b9d253908478f504297ac283c514e5953ddafa6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2bc649c18fbe8a7fd38d17266da3dcbfbcc44d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3a10eca24fcfe913c0875e620f19596001bd6dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee998cdbff6680891b0efd9d6ce53a388e5342c3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:07Z"
+  }
+}

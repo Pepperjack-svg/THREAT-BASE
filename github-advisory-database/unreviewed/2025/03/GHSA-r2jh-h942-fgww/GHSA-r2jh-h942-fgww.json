@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r2jh-h942-fgww",
+  "modified": "2025-03-13T15:32:55Z",
+  "published": "2025-03-07T09:30:36Z",
+  "aliases": [
+    "CVE-2025-21843"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: avoid garbage value in panthor_ioctl_dev_query()\n\n'priorities_info' is uninitialized, and the uninitialized value is copied\nto user object when calling PANTHOR_UOBJ_SET(). Using memset to initialize\n'priorities_info' to avoid this garbage value problem.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21843"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b32b7f638fe61e9d29290960172f4e360e38233"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64b95bbc08bacf3e4b05c8604e6a4fec43bb712a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-07T09:15:17Z"
+  }
+}

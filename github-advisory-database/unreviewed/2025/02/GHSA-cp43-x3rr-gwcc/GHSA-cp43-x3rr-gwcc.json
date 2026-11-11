@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cp43-x3rr-gwcc",
+  "modified": "2026-07-18T18:30:20Z",
+  "published": "2025-02-27T21:32:16Z",
+  "aliases": [
+    "CVE-2025-21807"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: fix queue freeze vs limits lock order in sysfs store methods\n\nqueue_attr_store() always freezes a device queue before calling the\nattribute store operation. For attributes that control queue limits, the\nstore operation will also lock the queue limits with a call to\nqueue_limits_start_update(). However, some drivers (e.g. SCSI sd) may\nneed to issue commands to a device to obtain limit values from the\nhardware with the queue limits locked. This creates a potential ABBA\ndeadlock situation if a user attempts to modify a limit (thus freezing\nthe device queue) while the device driver starts a revalidation of the\ndevice queue limits.\n\nAvoid such deadlock by not freezing the queue before calling the\n->store_limit() method in struct queue_sysfs_entry and instead use the\nqueue_limits_commit_update_frozen helper to freeze the queue after taking\nthe limits lock.\n\nThis also removes taking the sysfs lock for the store_limit method as\nit doesn't protect anything here, but creates even more nesting.\nHopefully it will go away from the actual sysfs methods entirely soon.\n\n(commit log adapted from a similar patch from  Damien Le Moal)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1645cd7fd42c236c952e9228badcac4fea1829ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8985da5481562e96b95e94ed8e5cc9b6565eb82b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c99f66e4084a62a2cc401c4704a84328aeddc9ec"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-27T20:16:03Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-29j6-3xvc-79ff",
+  "modified": "2026-10-10T18:31:20Z",
+  "published": "2026-10-10T18:31:20Z",
+  "aliases": [
+    "CVE-2026-108582"
+  ],
+  "details": "GenOffice through 0.11.505 contains an incorrect permissions vulnerability in its HTTP MCP server file store that allows local unprivileged users to read uploaded and generated documents. Attackers can list the world-readable genoffice-mcp-http directory under the system temporary directory to read client uploads and converted outputs, bypassing the HTTP bearer token.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108582"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/genspark-ai/genoffice/blob/v0.11.505/packages/cli/src/mcp/files.ts#L70-L90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/genspark-ai/genoffice/releases/tag/v0.11.505"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind/genoffice-http-mcp-temp-file-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/genoffice-through-0.11.505-insecure-permissions-in-http-mcp-server-file-store"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-732"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-10T16:16:31Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-25rw-cfg7-vc2v",
+  "modified": "2026-10-15T21:36:04Z",
+  "published": "2026-10-15T21:36:04Z",
+  "aliases": [
+    "CVE-2026-111141"
+  ],
+  "details": "zziplib through 0.13.80 contains an out-of-bounds read vulnerability in __zzip_parse_root_directory() in zzip/zip.c that allows attackers to read past the mapped central directory in mmap builds due to an ineffective bounds check. Attackers can supply a crafted ZIP whose entry name ends at the central directory end, triggering 28-byte ZIP64 extra field over-reads via zzip_dir_open() that crash the process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111141"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gdraheim/zziplib"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gdraheim/zziplib/blob/f58313c1f65f46bf73f3526d1afd4d6bb46cc4ae/zzip/zip.c#L530-L558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/zziplib-zip-central-directory-oob-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/zziplib-through-0.13.80-out-of-bounds-read-via-zzip-parse-root-directory-zip64-parsing"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:28Z"
+  }
+}

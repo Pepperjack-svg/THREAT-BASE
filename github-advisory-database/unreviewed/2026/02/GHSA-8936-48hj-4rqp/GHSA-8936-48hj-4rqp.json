@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8936-48hj-4rqp",
+  "modified": "2026-02-04T18:30:41Z",
+  "published": "2026-02-04T18:30:41Z",
+  "aliases": [
+    "CVE-2026-23042"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nidpf: fix aux device unplugging when rdma is not supported by vport\n\nIf vport flags do not contain VIRTCHNL2_VPORT_ENABLE_RDMA, driver does not\nallocate vdev_info for this vport. This leads to kernel NULL pointer\ndereference in idpf_idc_vport_dev_down(), which references vdev_info for\nevery vport regardless.\n\nCheck, if vdev_info was ever allocated before unplugging aux device.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23042"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ad6d6e50e9d8bf596cfe77a882ddc20b29f525a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4648fb2f2e7210c53b85220ee07d42d1e4bae3f9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-04T16:16:19Z"
+  }
+}

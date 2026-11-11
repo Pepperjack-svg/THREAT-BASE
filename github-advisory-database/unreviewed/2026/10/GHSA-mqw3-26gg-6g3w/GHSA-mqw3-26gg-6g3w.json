@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mqw3-26gg-6g3w",
+  "modified": "2026-10-13T21:32:15Z",
+  "published": "2026-10-11T15:31:08Z",
+  "aliases": [
+    "CVE-2026-108858"
+  ],
+  "details": "Predibase LoRAX through 0.12.1 contains a sensitive information exposure vulnerability that writes the caller-supplied api_token from POST /generate request bodies into router logs. Attackers with access to router logs or OTLP trace backends can recover other users' private-adapter tokens recorded through the instrumented GenerateParameters span field.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108858"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/predibase/lorax"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/predibase/lorax/blob/c0e5798318a6b826572c612ddd4cf44621aa4add/router/src/lib.rs#L182-L188"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/predibase/lorax/blob/c0e5798318a6b826572c612ddd4cf44621aa4add/router/src/server.rs#L584-L596"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/cve-2026-108858-predibase-lorax-generate-api-token-logging"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/predibase-lorax-generate-api-token-logging"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/predibase-lorax-through-0.12.1-api-token-exposure-via-router-logs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T14:17:05Z"
+  }
+}

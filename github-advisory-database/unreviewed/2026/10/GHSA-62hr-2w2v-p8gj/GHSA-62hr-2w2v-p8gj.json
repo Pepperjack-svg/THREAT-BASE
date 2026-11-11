@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-62hr-2w2v-p8gj",
+  "modified": "2026-10-13T15:32:27Z",
+  "published": "2026-10-13T15:32:27Z",
+  "aliases": [
+    "CVE-2026-65200"
+  ],
+  "details": "The openUBMC device-management process parses PLDM-over-MCTP and NCSI-over-MCTP responses from on-bus devices, and three response parsers in the shared transport libraries subtract a fixed header or reserved-field size from a device-supplied response length without a lower-bound check. An undersized response wraps the unsigned length difference to a very large value, and the parser then reads far past the response buffer. The affected code sits in the base (non-vendor) PLDM control class and the Huawei NCSI driver, so it is reachable for any PLDM endpoint or Huawei NIC on the internal management bus, unlike the vendor-specific wangxun parser tracked separately.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65200"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.runzero.com/advisories/huawei-malicious-device-integer-underflow-cve-2026-65200"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T15:17:47Z"
+  }
+}

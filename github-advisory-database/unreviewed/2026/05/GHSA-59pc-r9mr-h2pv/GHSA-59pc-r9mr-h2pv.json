@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-59pc-r9mr-h2pv",
+  "modified": "2026-10-15T03:35:49Z",
+  "published": "2026-05-01T15:30:37Z",
+  "aliases": [
+    "CVE-2026-43040"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ipv6: ndisc: fix ndisc_ra_useropt to initialize nduseropt_padX fields to zero to prevent an info-leak\n\nWhen processing Router Advertisements with user options the kernel\nbuilds an RTM_NEWNDUSEROPT netlink message. The nduseroptmsg struct\nhas three padding fields that are never zeroed and can leak kernel data\n\nThe fix is simple, just zeroes the padding fields.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43040"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-082556.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11d7fe97421cfc81549940c20ed5ac9472d6db05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1da9023f6b071a38e5430ffbce4b70b2b1ac4f9c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fe4d0ba690a69ad6ae9f7ab9bdc96e02610b648"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f810c686fde509d1cdaa706322d9d2531f8f1a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f56d87e527bb5a13c3e8b0d5840cb6332822f6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae05340ccaa9d347fe85415609e075545bec589f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b485eef3d97b7aae55ce669b6de555ec81f3d21c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ef3645606e4a635d5062a492f22b7f490852ee67"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-909"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:50Z"
+  }
+}

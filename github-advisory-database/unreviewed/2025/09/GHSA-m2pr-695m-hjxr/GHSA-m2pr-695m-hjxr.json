@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m2pr-695m-hjxr",
+  "modified": "2025-12-02T03:31:36Z",
+  "published": "2025-09-15T15:31:24Z",
+  "aliases": [
+    "CVE-2023-53191"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/alpine-msi: Fix refcount leak in alpine_msix_init_domains\n\nof_irq_find_parent() returns a node pointer with refcount incremented,\nWe should use of_node_put() on it when not needed anymore.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/071d068b89e95d1b078aa6bbcb9d0961b77d6aa1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5fbf2cc39b62a4afe44f3d42ee3dcf8f012c1926"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65e30bd1310d90b794c377bf405394157854aa30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e79ac4f70fd51243e1c6108d4b0baf16cfde99c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9aaf4efe1f02b2fef21a69fb3652f5ad12a5710"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d6c66c46889752fa4962c6388516f7ab66a8d6a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eef04516f0c317ce80502c1d6b0d06235a87cd8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eef09f786df4b34b97557929287c4e5a83bbf09b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T14:15:41Z"
+  }
+}

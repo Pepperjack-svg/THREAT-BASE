@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wcg2-hr8x-qqgg",
+  "modified": "2026-11-04T21:32:28Z",
+  "published": "2026-11-04T21:32:28Z",
+  "aliases": [
+    "CVE-2026-113373"
+  ],
+  "details": "Sonatype Nexus Repository 3 Pro does not check the local account status when a user signs in through a configured SAML or OAuth2/OpenID Connect identity provider. A user whose account was disabled or locked by an administrator in Nexus Repository can sign in again with valid identity provider credentials for the same account, and then receives a new session with the roles of that account. The attacker needs no Nexus Repository session and no Nexus Repository privilege. The attacker needs a named account that holds valid credentials at the identity provider. The anonymous user is not part of this attack path.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113373"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.sonatype.com/en/sonatype-nexus-repository-3-98-0-release-notes.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.sonatype.com/hc/en-us/articles/56614238092947"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1390"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T20:18:56Z"
+  }
+}

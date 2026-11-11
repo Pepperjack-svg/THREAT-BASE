@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rgvr-v3r8-5gwx",
+  "modified": "2026-10-16T18:34:49Z",
+  "published": "2026-10-16T18:34:49Z",
+  "aliases": [
+    "CVE-2026-111673"
+  ],
+  "details": "IceCMS through 4.1.5 contains a missing authentication vulnerability that allows unauthenticated attackers to modify, delete, or disable any account because /User/** is excluded from the Shiro jwt filter. Attackers can send PUT requests to /User/updateUser to set a new password and role on any userId, including administrators, enabling full account takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111673"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Thecosy/IceCMS"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Thecosy/IceCMS/blob/afd7a9f0d04a714e7c7e735e566c27f54b5d5201/IceCMS-ment/src/main/java/com/ttice/icewkment/configuration/ShiroConfig.java#L64-L88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Thecosy/IceCMS/blob/afd7a9f0d04a714e7c7e735e566c27f54b5d5201/IceCMS-ment/src/main/java/com/ttice/icewkment/controller/backend/UserController.java#L743-L818"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/icecms-backend-user-admin-unauth-account-takeover"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/icecms-through-4.1.5-missing-authentication-via-user-administrative-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:49Z"
+  }
+}

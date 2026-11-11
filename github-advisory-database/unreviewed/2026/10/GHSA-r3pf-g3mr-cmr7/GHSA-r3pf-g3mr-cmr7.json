@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r3pf-g3mr-cmr7",
+  "modified": "2026-10-20T18:31:48Z",
+  "published": "2026-10-20T18:31:48Z",
+  "aliases": [
+    "CVE-2026-105772"
+  ],
+  "details": "Path Traversal (CWE-22) in FileArtifactService in Google ADK TypeScript (@google/adk) versions 0.4.0 before 0.6.0 allows a remote unauthenticated attacker to read files matching the artifact directory layout or write files (when an agent tool invokes saveArtifact) outside the intended artifact storage root via crafted relative or percent-encoded path traversal sequences (such as ../ or ..%2F) in the userId or sessionId parameters when the ADK API server is exposed with the non-default FileArtifactService enabled. Applications using the default InMemoryArtifactService are unaffected. Upgrade to @google/adk version 0.6.0 or later.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/adk-js/security/advisories/GHSA-8hc4-6xx6-3rh3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105772"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/adk-js/pull/210"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/adk-js/commit/710b4ebed118b0ded8fc257e5d0099e6b2008bc0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/google/adk-js/commit/8c0eaa160a43c1d791d5838a5de6ac87d905cf70"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T18:17:16Z"
+  }
+}

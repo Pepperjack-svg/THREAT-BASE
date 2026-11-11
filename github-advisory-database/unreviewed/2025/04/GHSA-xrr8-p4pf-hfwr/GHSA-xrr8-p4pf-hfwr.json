@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xrr8-p4pf-hfwr",
+  "modified": "2026-06-19T15:33:07Z",
+  "published": "2025-04-16T15:34:39Z",
+  "aliases": [
+    "CVE-2025-22026"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: don't ignore the return code of svc_proc_register()\n\nCurrently, nfsd_proc_stat_init() ignores the return value of\nsvc_proc_register(). If the procfile creation fails, then the kernel\nwill WARN when it tries to remove the entry later.\n\nFix nfsd_proc_stat_init() to return the same type of pointer as\nsvc_proc_register(), and fix up nfsd_net_init() to check that and fail\nthe nfsd_net construction if it occurs.\n\nsvc_proc_register() can fail if the dentry can't be allocated, or if an\nidentical dentry already exists. The second case is pretty unlikely in\nthe nfsd_net construction codepath, so if this happens, return -ENOMEM.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22026"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30405b23b4d5e2a596fb756d48119d7293194e75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51107e768de6821b68aa34a136d07bc7a09cf6c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51da899c209a9624e48be416bd30e7ed5cd6c3d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a59b70fe71ec66c0dd19e2c279c71846a3fb2f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/930b64ca0c511521f0abdd1d57ce52b2a6e3476b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9d9456185fd5f1891c74354ee297f19538141ead"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e31957a819e60cf0bc9a49408765e6095fd3d046"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e4316bd85e42b01125b2aab691769234a388b8a3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-252"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:15:55Z"
+  }
+}

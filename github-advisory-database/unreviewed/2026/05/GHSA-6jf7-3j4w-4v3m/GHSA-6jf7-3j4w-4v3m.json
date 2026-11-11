@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jf7-3j4w-4v3m",
+  "modified": "2026-05-26T21:31:54Z",
+  "published": "2026-05-26T18:31:43Z",
+  "aliases": [
+    "CVE-2026-48684"
+  ],
+  "details": "FastNetMon Community Edition through 1.2.9 contains an out-of-bounds read in the NetFlow v9 options template parser. In process_netflow_v9_options_template() (src/netflow_plugin/netflow_v9_collector.cpp), the scope parsing loop (lines 224-229) iterates until scopes_offset reaches the attacker-controlled option_scope_length value, reading netflow9_template_flowset_record_t structures at each step. No bounds check validates that (zone_address + scopes_offset + sizeof(record)) stays within the flowset. The same issue affects the options field loop (lines 241-257) with option_length. Furthermore, option_scope_length is not validated to be a multiple of sizeof(netflow9_template_flowset_record_t), potentially causing misaligned reads. An attacker can trigger reads past the end of the UDP packet buffer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48684"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pavel-odintsov/fastnetmon"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pavel-odintsov/fastnetmon/blob/master/src/netflow_plugin/netflow_v9_collector.cpp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lorikeetsecurity.com/blog/fastnetmon-cve-2026-48684-netflow-v9-options-oob"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-26T16:16:26Z"
+  }
+}

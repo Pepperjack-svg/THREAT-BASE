@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mv9v-2x56-gv9x",
+  "modified": "2025-12-14T06:30:24Z",
+  "published": "2025-12-14T06:30:24Z",
+  "aliases": [
+    "CVE-2025-13126"
+  ],
+  "details": "The wpForo Forum plugin for WordPress is vulnerable to generic SQL Injection via the `post_args` and `topic_args` parameters in all versions up to, and including, 2.4.12 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13126"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpforo/tags/2.4.10/classes/Posts.php?rev=3386327#L633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpforo/tags/2.4.10/classes/Topics.php?rev=3386327#L1641"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpforo/tags/2.4.10/widgets/RecentPosts.php?rev=3386327#L177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpforo/tags/2.4.10/widgets/RecentTopics.php?rev=3386327#L117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/fd1704ef-e259-40a3-974b-128145bc8a4a?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-14T05:15:59Z"
+  }
+}

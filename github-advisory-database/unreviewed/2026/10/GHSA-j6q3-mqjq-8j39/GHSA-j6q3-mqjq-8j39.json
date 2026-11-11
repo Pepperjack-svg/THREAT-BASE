@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j6q3-mqjq-8j39",
+  "modified": "2026-10-17T21:31:19Z",
+  "published": "2026-10-17T21:31:19Z",
+  "aliases": [
+    "CVE-2026-111912"
+  ],
+  "details": "Admidio from 5.0.0 before 5.0.16 contains an insecure direct object reference vulnerability in ForumService::saveTopic() that allows authenticated members to modify other users' forum topics. Attackers can replace the topic_uuid parameter in their own topic_save request, reusing their CSRF token, to overwrite the victim topic's title and first post.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Admidio/admidio/security/advisories/GHSA-8256-4wm7-f628"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111912"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/admidio-5.0.0-before-5.0.16-idor-via-forum-topic-update"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-17T19:16:33Z"
+  }
+}

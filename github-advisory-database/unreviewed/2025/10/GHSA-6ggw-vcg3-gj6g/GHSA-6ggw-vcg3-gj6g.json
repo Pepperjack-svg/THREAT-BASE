@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6ggw-vcg3-gj6g",
+  "modified": "2025-10-20T18:30:34Z",
+  "published": "2025-10-20T18:30:34Z",
+  "aliases": [
+    "CVE-2025-40015"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: stm32-csi: Fix dereference before NULL check\n\nIn 'stm32_csi_start', 'csidev->s_subdev' is dereferenced directly while\nassigning a value to the 'src_pad'. However the same value is being\nchecked against NULL at a later point of time indicating that there\nare chances that the value can be NULL.\n\nMove the dereference after the NULL check.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f053d82e59c785b2b939cbed12f13657f84b296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4eeafff163e80d576c5efc1360ae310c0ceedd02"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80eaf32672871bd2623ce6ba13ffc1f018756580"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-20T16:15:38Z"
+  }
+}

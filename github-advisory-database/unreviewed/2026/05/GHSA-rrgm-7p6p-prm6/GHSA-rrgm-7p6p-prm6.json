@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rrgm-7p6p-prm6",
+  "modified": "2026-05-08T18:31:26Z",
+  "published": "2026-05-01T15:30:35Z",
+  "aliases": [
+    "CVE-2026-31760"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpib: lpvo_usb: fix memory leak on disconnect\n\nThe driver iterates over the registered USB interfaces during GPIB\nattach and takes a reference to their USB devices until a match is\nfound. These references are never released which leads to a memory leak\nwhen devices are disconnected.\n\nFix the leak by dropping the unnecessary references.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31760"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21f942879f86108b300a23683e67483f8c358fc7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5cefb52c1af6f69ea719e42788f6ec6a087eb74c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/706f4fe2dacc95d65e7c8dff321711f024bb8d20"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:39Z"
+  }
+}

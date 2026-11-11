@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pcm3-h7mm-fp3g",
+  "modified": "2026-05-14T21:30:36Z",
+  "published": "2026-05-08T15:31:21Z",
+  "aliases": [
+    "CVE-2025-71296"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/tests: shmem: Hold reservation lock around purge\n\nAcquire and release the GEM object's reservation lock around calls\nto the object's purge operation. The tests use\ndrm_gem_shmem_purge_locked(), which led to errors such as show below.\n\n[   58.709128] WARNING: CPU: 1 PID: 1354 at drivers/gpu/drm/drm_gem_shmem_helper.c:515 drm_gem_shmem_purge_locked+0x51c/0x740\n\nOnly export the new helper drm_gem_shmem_purge() for Kunit tests.\nThis is not an interface for regular drivers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f41307d589c2f25d556d47b165df808124cd0c4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8baeee2c1c0cdb3a8eac3b8f38156cce6ee1a69f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cdf8bbbd9017adcfb91ad9a902198d4b507719a9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T14:16:30Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3r42-9858-556g",
+  "modified": "2026-11-10T21:34:26Z",
+  "published": "2026-11-10T21:34:26Z",
+  "aliases": [
+    "CVE-2026-120811"
+  ],
+  "details": "A use-after-free issue exists in the MongoDB server’s classic query engine plan cache. Under certain query conditions, an unowned reference to data from an earlier command can be retained in cached plan statistics. After the originating memory is freed, a subsequent diagnostic command serializing those statistics can read freed heap memory, potentially returning sensitive server process memory contents to the authenticated client. Under certain heap reuse conditions, this may also cause the server to crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120811"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jira.mongodb.org/browse/SERVER-135353"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T20:18:51Z"
+  }
+}

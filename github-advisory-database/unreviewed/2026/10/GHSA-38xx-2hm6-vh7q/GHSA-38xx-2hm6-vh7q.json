@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-38xx-2hm6-vh7q",
+  "modified": "2026-10-06T18:31:26Z",
+  "published": "2026-10-05T09:31:51Z",
+  "aliases": [
+    "CVE-2019-25777"
+  ],
+  "details": "YAML versions before 1.27_001 for Perl allow a loaded perl/glob document to replace any package variable, which can lead to arbitrary code execution.\n\nA perl/glob document names a package and a symbol, and supplies the value assigned to it. Nothing restricts the name, so the target can be @INC or YAML's own load options.\n\nA perl/glob document that sets $YAML::LoadCode or $YAML::UseCode turns on code loading, which is off by default, for every later Load() in the process. A perl/code document is then passed to a string eval, so an attacker who supplies two documents to separate Load() calls in one process can execute arbitrary Perl code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-25777"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ingydotnet/yaml-pm/issues/212"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ingydotnet/yaml-pm/commit/bace96b5e6661d521c7c515c94a09e081c911fce.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/TINITA/YAML-1.28/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/05/7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-05T07:16:29Z"
+  }
+}

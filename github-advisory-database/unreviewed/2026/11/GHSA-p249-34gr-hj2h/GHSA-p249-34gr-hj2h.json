@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p249-34gr-hj2h",
+  "modified": "2026-11-10T00:31:42Z",
+  "published": "2026-11-10T00:31:42Z",
+  "aliases": [
+    "CVE-2026-125357"
+  ],
+  "details": "Munin munin-httpd 2.99.1 through 2.999.18 contains a path traversal vulnerability in the static file handler of Munin::Master::HTML::handle_request that allows unauthenticated attackers to read files outside the static directory. Attackers can request /static/../<file> to bypass the '/../' substring check and read munin.conf and plugin-conf.d files containing monitored service credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125357"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/munin-monitoring/munin/issues/1710"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/munin-monitoring/munin/commit/e7b6f452ccca04cff8a0e7285c1279b116a768e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/munin-monitoring/munin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/munin-monitoring/munin/blob/2.999.18/lib/Munin/Master/HTML.pm#L30-L58"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/munin-munin-httpd-through-2.999.18-path-traversal-via-static-file-handler"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T00:17:07Z"
+  }
+}

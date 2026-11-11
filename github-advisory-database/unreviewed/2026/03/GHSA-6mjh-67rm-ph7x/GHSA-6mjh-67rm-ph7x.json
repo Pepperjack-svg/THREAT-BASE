@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6mjh-67rm-ph7x",
+  "modified": "2026-03-27T15:30:26Z",
+  "published": "2026-03-27T15:30:26Z",
+  "aliases": [
+    "CVE-2026-4984"
+  ],
+  "details": "The Twilio integration webhook handler accepts any POST request without validating Twilio's 'X-Twilio-Signature'.\n\nWhen processing media messages, it fetches user-controlled URLs ('MediaUrlN' parameters) using HTTP requests that include the integration's Twilio credentials in the 'Authorization' header.\n\nAn attacker can forge a webhook payload pointing to their own server and receive the victim's 'accountSID' and 'authToken' in plaintext (base64-encoded Basic Auth), leading to full compromise of the Twilio account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4984"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tenable.com/security/research/tra-2026-22"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-27T15:17:03Z"
+  }
+}

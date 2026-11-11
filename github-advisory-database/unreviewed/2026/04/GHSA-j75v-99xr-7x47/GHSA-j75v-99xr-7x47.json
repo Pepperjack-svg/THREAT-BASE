@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j75v-99xr-7x47",
+  "modified": "2026-04-09T15:35:06Z",
+  "published": "2026-04-07T18:31:35Z",
+  "aliases": [
+    "CVE-2024-36057"
+  ],
+  "details": "Koha Library before 23.05.10 fails to sanitize user-controllable filenames prior to unzipping, leading to remote code execution. The line \"qx/unzip $filename -d $dirname/;\" in upload-cover-image.pl is vulnerable to command injection via shell metacharacters because input data can be controlled by an attacker and is directly included in a system command, i.e., an attack can occur via malicious filenames after uploading a .zip file and clicking Process Images.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-36057"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hacklantic/Research/tree/main/CVE-2024-36057"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/koha-community/Koha/-/blob/23.05.x/misc/release_notes/release_notes_23_05_10.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/koha-community/Koha/-/blob/23.05.x/misc/release_notes/release_notes_23_05_11.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://koha-community.org/koha-22-05-22-released"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-07T16:16:21Z"
+  }
+}

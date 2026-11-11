@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9j3f-4m2h-6f2h",
+  "modified": "2026-01-15T21:31:47Z",
+  "published": "2026-01-15T21:31:47Z",
+  "aliases": [
+    "CVE-2025-60011"
+  ],
+  "details": "An Improper Check for Unusual or Exceptional Conditions vulnerability in the routing protocol daemon (rpd) of Juniper Networks Junos OS and Junos OS Evolved allows an unauthenticated, network-based attacker to cause an availability impact for downstream devices.\n\nWhen an affected device receives a specific optional, transitive BGP attribute over an existing BGP session, it will be erroneously modified before propagation to peers. When the attribute is detected as malformed by the peers, these peers will most likely terminate the BGP sessions with the affected devices and thereby cause an availability impact due to the resulting routing churn.\n\nThis issue affects:\n\nJunos OS:\n\n\n\n  *  all versions before 22.4R3-S8,\n  *  23.2 versions before 23.2R2-S5\n  *  23.4 versions before 23.4R2-S6,\n  *  24.2 versions before 24.2R2-S2,\n  *  24.4 versions before 24.4R2;\n\n\n\n\nJunos OS Evolved: \n\n\n\n  *  all versions before 22.4R3-S8-EVO,\n  *  23.2 versions before 23.2R2-S5-EVO,\n  *  23.4 versions before 23.4R2-S6-EVO,\n  *  24.2 versions before 24.2R2-S2-EVO,\n  *  24.4 versions before 24.4R2-EVO.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:Y/R:U/V:X/RE:M/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-60011"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.juniper.net/JSA103161"
+    },
+    {
+      "type": "WEB",
+      "url": "https://supportportal.juniper.net"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-754"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-15T21:16:03Z"
+  }
+}

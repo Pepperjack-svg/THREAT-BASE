@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p97w-7qmq-228w",
+  "modified": "2026-10-21T15:41:43Z",
+  "published": "2026-10-06T09:31:28Z",
+  "aliases": [
+    "CVE-2026-98168"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix reparse buffer bounds in cifs_query_reparse_point()\n\nIn cifs_query_reparse_point(), the start >= end check before casting to\nstruct reparse_data_buffer * only ensures the start pointer is within the\nresponse. It fails to verify that there is enough space remaining for the\nfixed 8-byte header of the structure.\n\nIf a server provides a DataOffset that leaves less than 8 bytes remaining,\nthe check passes, but subsequent reads of ReparseTag and ReparseDataLength\nwill occur out-of-bounds.\n\nFix this by ensuring the remaining space is at least the size of the\nreparse_data_buffer structure before accessing its fields.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98168"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d67f155fe5813cfb02a551a9a12d6ea06a902e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5f0306e731e2f46e91419eae57eee3a241c055e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8dc5db3a0e583ea8d31d0613cefd99e93e095c3c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa00eead258e4fe8158a3a3e2d65facf06274abd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1152c96a3002e3df6b9a5b007cecaa7b19b4f79"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:17:58Z"
+  }
+}

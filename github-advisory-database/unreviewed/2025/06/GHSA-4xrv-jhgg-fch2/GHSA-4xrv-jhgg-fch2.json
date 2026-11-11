@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4xrv-jhgg-fch2",
+  "modified": "2025-06-26T18:31:28Z",
+  "published": "2025-06-26T18:31:28Z",
+  "aliases": [
+    "CVE-2025-34046"
+  ],
+  "details": "An unauthenticated file upload vulnerability exists in the Fanwei E-Office <= v9.4 web management interface. The vulnerability affects the /general/index/UploadFile.php endpoint, which improperly validates uploaded files when invoked with certain parameters (uploadType=eoffice_logo or uploadType=theme). An attacker can exploit this flaw by sending a crafted HTTP POST request to upload arbitrary files without requiring authentication. Successful exploitation could enable remote code execution on the affected server, leading to complete compromise of the web application and potentially the underlying system.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34046"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/M0ge/CNVD-2021-49104-Fanwei-Eoffice-fileupload/blob/main/eoffice_fileupload.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cnvd/2021/CNVD-2021-49104.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vulncheck.com/advisories/fanwei-eoffice-file-upload"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cnvd.org.cn/flaw/show/CNVD-2021-49104"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434",
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-26T16:15:27Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p42f-m78x-844r",
+  "modified": "2025-11-05T00:31:32Z",
+  "published": "2025-10-31T12:30:21Z",
+  "aliases": [
+    "CVE-2025-58148"
+  ],
+  "details": "[This CNA information record relates to multiple CVEs; the\ntext explains which aspects/vulnerabilities correspond to which CVE.]\n\nSome Viridian hypercalls can specify a mask of vCPU IDs as an input, in\none of three formats.  Xen has boundary checking bugs with all three\nformats, which can cause out-of-bounds reads and writes while processing\nthe inputs.\n\n * CVE-2025-58147.  Hypercalls using the HV_VP_SET Sparse format can\n   cause vpmask_set() to write out of bounds when converting the bitmap\n   to Xen's format.\n\n * CVE-2025-58148.  Hypercalls using any input format can cause\n   send_ipi() to read d->vcpu[] out-of-bounds, and operate on a wild\n   vCPU pointer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-58148"
+    },
+    {
+      "type": "WEB",
+      "url": "https://xenbits.xenproject.org/xsa/advisory-475.html"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/10/21/1"
+    },
+    {
+      "type": "WEB",
+      "url": "http://xenbits.xen.org/xsa/advisory-475.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-31T12:15:35Z"
+  }
+}

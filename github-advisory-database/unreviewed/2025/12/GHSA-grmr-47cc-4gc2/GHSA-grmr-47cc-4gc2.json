@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-grmr-47cc-4gc2",
+  "modified": "2025-12-24T15:30:34Z",
+  "published": "2025-12-24T15:30:34Z",
+  "aliases": [
+    "CVE-2022-50764"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6/sit: use DEV_STATS_INC() to avoid data-races\n\nsyzbot/KCSAN reported that multiple cpus are updating dev->stats.tx_error\nconcurrently.\n\nThis is because sit tunnels are NETIF_F_LLTX, meaning their ndo_start_xmit()\nis not protected by a spinlock.\n\nWhile original KCSAN report was about tx path, rx path has the same issue.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50764"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/207501a986831174df09a36a8cb62a28f92f0dc8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/222cc04356984f3f98acfa756a69d4bed7c501ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4eed93bb3e57b8cc78d17166a14e40a73276015a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb34b7cf17ecf33499c9298943f85af247abc1e9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T13:16:03Z"
+  }
+}

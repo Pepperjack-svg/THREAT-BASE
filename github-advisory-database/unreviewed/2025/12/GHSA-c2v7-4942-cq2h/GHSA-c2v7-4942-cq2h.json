@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c2v7-4942-cq2h",
+  "modified": "2025-12-08T03:31:03Z",
+  "published": "2025-12-08T03:31:03Z",
+  "aliases": [
+    "CVE-2023-53758"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: atmel-quadspi: Free resources even if runtime resume failed in .remove()\n\nAn early error exit in atmel_qspi_remove() doesn't prevent the device\nunbind. So this results in an spi controller with an unbound parent\nand unmapped register space (because devm_ioremap_resource() is undone).\nSo using the remaining spi controller probably results in an oops.\n\nInstead unregister the controller unconditionally and only skip hardware\naccess and clk disable.\n\nAlso add a warning about resume failing and return zero unconditionally.\nThe latter has the only effect to suppress a less helpful error message by\nthe spi core.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53758"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/618770d4d8e40b7f8ed9eb5f210cd9164dfac47d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77806d7c9bebe40a8cdce2b8d30fbe6511745df8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9448bc1dee65f86c0fe64d9dea8b410af0586886"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6974fb20499e3b6522daa7aec822aac11dfcf42"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-08T02:15:51Z"
+  }
+}

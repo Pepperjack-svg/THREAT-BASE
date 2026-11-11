@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r7vw-575j-q6qj",
+  "modified": "2025-08-21T21:32:08Z",
+  "published": "2025-08-21T21:32:08Z",
+  "aliases": [
+    "CVE-2010-20108"
+  ],
+  "details": "FTPPad <= 1.2.0 contains a stack-based buffer overflow vulnerability in its FTP directory listing parser. When the client connects to an FTP server and receives a crafted response to a LIST command containing an excessively long directory and filename, the application fails to properly validate input length. This results in a buffer overflow that overwrites the saved Extended Instruction Pointer (EIP), allowing remote attackers to execute arbitrary code.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2010-20108"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/rapid7/metasploit-framework/master/modules/exploits/windows/ftp/ftppad_list_reply.rb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web.archive.org/web/20111016194057/https://www.corelan.be/index.php/2010/10/12/death-of-an-ftp-client"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.chip.de/downloads/FTPPad_12993921.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.exploit-db.com/exploits/16726"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ftppad-stack-buffer-overflow"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-21T21:15:33Z"
+  }
+}

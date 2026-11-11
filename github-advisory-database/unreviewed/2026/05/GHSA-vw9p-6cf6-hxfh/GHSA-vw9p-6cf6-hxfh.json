@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vw9p-6cf6-hxfh",
+  "modified": "2026-06-01T18:31:28Z",
+  "published": "2026-05-01T15:30:33Z",
+  "aliases": [
+    "CVE-2026-31716"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: validate rec->used in journal-replay file record check\n\ncheck_file_record() validates rec->total against the record size but\nnever validates rec->used.  The do_action() journal-replay handlers read\nrec->used from disk and use it to compute memmove lengths:\n\n  DeleteAttribute:    memmove(attr, ..., used - asize - roff)\n  CreateAttribute:    memmove(..., attr, used - roff)\n  change_attr_size:   memmove(..., used - PtrOffset(rec, next))\n\nWhen rec->used is smaller than the offset of a validated attribute, or\nlarger than the record size, these subtractions can underflow allowing\nus to copy huge amounts of memory in to a 4kb buffer, generally\nconsidered a bad idea overall.\n\nThis requires a corrupted filesystem, which isn't a threat model the\nkernel really needs to worry about, but checking for such an obvious\nout-of-bounds value is good to keep things robust, especially on journal\nreplay\n\nFix this up by bounding rec->used correctly.\n\nThis is much like commit b2bc7c44ed17 (\"fs/ntfs3: Fix slab-out-of-bounds\nread in DeleteIndexEntryRoot\") which checked different values in this\nsame switch statement.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31716"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0112e6279420d4005b3d57af36fb45c01b8d0116"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ca0485e4b2e837ebb6cbd4f2451aba665a03e4b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1393a467a9607e62123806de7d4c3a3e54e396a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b1613d7e2deda831a97e427d1ea586e50fe1be5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e64d33198b5a0fb14a452708bad844f94f03b2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f79d0403ea20a81bc29105bba54fbcab54e8c403"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f90b8a1798b750755a9e9aee66678f0a1820bbaf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T14:16:21Z"
+  }
+}

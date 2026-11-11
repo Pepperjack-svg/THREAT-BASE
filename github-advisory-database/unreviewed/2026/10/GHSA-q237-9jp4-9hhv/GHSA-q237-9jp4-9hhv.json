@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q237-9jp4-9hhv",
+  "modified": "2026-10-16T06:30:26Z",
+  "published": "2026-10-16T06:30:26Z",
+  "aliases": [
+    "CVE-2026-109191"
+  ],
+  "details": "The Image Hub – Free Images from Unsplash, Pixabay, Pexels, Openverse & Giphy plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 1.2.0 via the 'image_hub_api_keys_* (6 options)' parameter. This makes it possible for authenticated attackers, with subscriber-level access and above, to extract the plaintext API credentials for six third-party services — Giphy, Openverse (client ID and secret), Pexels, Pixabay, and Unsplash — emitted verbatim into every admin page's HTML via wp_localize_script. The leaked page HTML also contains a valid image_hub_nonce AJAX nonce, which — combined with the absence of any capability check in the image_hub_update_settings AJAX handler — allows the same Subscriber-level attacker to overwrite all six stored API credential options via update_option().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-hub/tags/1.2.0/image-hub.php#L46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-hub/tags/1.2.0/inc/src/MediaModal.php#L19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-hub/tags/1.2.0/inc/src/MediaModal.php#L38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-hub/tags/1.2.0/inc/src/MediaModal.php#L56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-hub/tags/1.2.0/inc/src/Settings.php#L23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-hub/tags/1.2.0/inc/src/Settings.php#L78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-hub/tags/1.2.0/inc/src/Utils.php#L11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3745452/image-hub/trunk/inc/src/MediaModal.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/99d1e0cc-1fd0-47f7-8b73-33663ed72eea?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T05:17:28Z"
+  }
+}

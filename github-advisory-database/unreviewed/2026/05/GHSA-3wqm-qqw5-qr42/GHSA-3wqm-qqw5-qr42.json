@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3wqm-qqw5-qr42",
+  "modified": "2026-06-24T18:32:32Z",
+  "published": "2026-05-28T12:30:30Z",
+  "aliases": [
+    "CVE-2026-46131"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: x86: check for nEPT/nNPT in slow flush hypercalls\n\nChecking is_guest_mode(vcpu) is incorrect, because translate_nested_gpa()\nis only valid if an L2 guest is running *with nested EPT/NPT enabled*.\nInstead use the same condition as translate_nested_gpa() itself.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46131"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45fc766bc756ff1d66f8ca026a9c4f7f764adfae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/464af6fc2b1dcc74005b7f58ee3812b17777efee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c7f8436b19a2a3acc0cb6b6e3becd6796ae5c57"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/971f17f5d91045404e3914029ea57c3da90179a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d6f4e217d663ede5becc2fd6cb612c749677387b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:28Z"
+  }
+}

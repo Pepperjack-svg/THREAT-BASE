@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5xpc-qj79-9qw9",
+  "modified": "2026-01-27T18:32:06Z",
+  "published": "2025-10-04T18:31:13Z",
+  "aliases": [
+    "CVE-2022-50489"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mipi-dsi: Detach devices when removing the host\n\nWhenever the MIPI-DSI host is unregistered, the code of\nmipi_dsi_host_unregister() loops over every device currently found on that\nbus and will unregister it.\n\nHowever, it doesn't detach it from the bus first, which leads to all kind\nof resource leaks if the host wants to perform some clean up whenever a\ndevice is detached.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50489"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/262364574b05676d4b9ebde2ddd3588cd2efd8ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26c1b4cfe56f040f71a51c92da1f4cac2e3b9455"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/353ab1c13fdd6e524edde780235a8ce9b892c81c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45120fa5e522d444e3fc1c5a9afc5d53eed91d00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/668a8f17b5290d04ef7343636a5588a0692731a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6fc2cd40db1969ba372ce9536dcfcdb87271eac4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8242167cfc83dd7e4c96f44b45f108db9bb88146"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95ae458209f5a556bba98aff872f933694914eb7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c202cda08cd5693645d4990ad1eb2e8068a884ec"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-04T16:15:45Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gw9c-gjgc-x3m8",
+  "modified": "2026-10-23T21:35:48Z",
+  "published": "2026-10-21T15:42:28Z",
+  "aliases": [
+    "CVE-2026-114400"
+  ],
+  "details": "Trudesk through 1.2.11 contains a missing authentication vulnerability that allows unauthenticated attackers to download private ticket attachments under /uploads. Because express.static serves the public/ directory before the hasAuth-guarded /uploads mount, attackers who know or guess a ticket ObjectId and filename can retrieve confidential attachments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114400"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/polonel/trudesk/issues/754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/polonel/trudesk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/polonel/trudesk/blob/v1.2.11/src/middleware/index.js#L140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/polonel/trudesk/blob/v1.2.11/src/middleware/index.js#L59-L65"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@leediay/multiple-vuln-trudesk-1211"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/trudesk-through-1.2.11-missing-authentication-for-ticket-attachments-via-uploads"
+    },
+    {
+      "type": "WEB",
+      "url": "https://zineausa.com/blog/2026/10/trudesk-1-2-11-unauthorized-ticket-access-idor"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-552"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T13:18:31Z"
+  }
+}

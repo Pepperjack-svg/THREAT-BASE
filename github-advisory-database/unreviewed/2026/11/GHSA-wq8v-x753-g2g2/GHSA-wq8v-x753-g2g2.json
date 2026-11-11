@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wq8v-x753-g2g2",
+  "modified": "2026-11-03T06:31:13Z",
+  "published": "2026-11-03T06:31:13Z",
+  "aliases": [
+    "CVE-2026-120574"
+  ],
+  "details": "The SureCart plugin for WordPress is vulnerable to unauthenticated account takeover in all versions up to, and including, 4.9.5. The passwordless one-time-code login REST route (VerificationCodeController::verify(), whose permission callback returns true) resolves an attacker-supplied login to any WordPress user, verifies a 6-digit code, and on success calls $user->login() → wp_set_auth_cookie() for a user of any role. In the affected versions this path has no per-account attempt counter, no persistent email/IP lockout or rate limit (the upstream CDN throttle is bypassable via IP rotation), and no restriction preventing high-privilege accounts from being logged in through it. An unauthenticated attacker can trigger a code for any user (including an administrator) via the companion unauthenticated endpoint and brute-force the 6-digit code to obtain an authenticated session as that user, resulting in a full administrator account takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120574"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.svn.wordpress.org/surecart/trunk/app/src/Controllers/Rest/VerificationCodeController.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.svn.wordpress.org/surecart/trunk/app/src/Models/User.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.svn.wordpress.org/surecart/trunk/app/src/Rest/VerificationCodeRestServiceProvider.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/surecart/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/dffdcaa2-5100-48f5-9b82-e22075fd87e5?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T05:18:33Z"
+  }
+}

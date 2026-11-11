@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j23c-3429-q5qm",
+  "modified": "2025-11-19T15:31:28Z",
+  "published": "2025-05-20T18:30:54Z",
+  "aliases": [
+    "CVE-2025-37900"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu: Fix two issues in iommu_copy_struct_from_user()\n\nIn the review for iommu_copy_struct_to_user() helper, Matt pointed out that\na NULL pointer should be rejected prior to dereferencing it:\nhttps://lore.kernel.org/all/86881827-8E2D-461C-BDA3-FA8FD14C343C@nvidia.com\n\nAnd Alok pointed out a typo at the same time:\nhttps://lore.kernel.org/all/480536af-6830-43ce-a327-adbd13dc3f1d@oracle.com\n\nSince both issues were copied from iommu_copy_struct_from_user(), fix them\nfirst in the current header.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37900"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e303d010722787dc84d94f68d70fe10dfc1b9ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30a3f2f3e4bd6335b727c83c08a982d969752bc1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/967d6f0d9a20a1bf15ee7ed881e2d4e532e22709"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-20T16:15:26Z"
+  }
+}

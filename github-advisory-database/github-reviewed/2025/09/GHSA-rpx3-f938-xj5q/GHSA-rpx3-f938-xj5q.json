@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rpx3-f938-xj5q",
+  "modified": "2025-12-16T23:59:11Z",
+  "published": "2025-09-24T03:30:26Z",
+  "aliases": [
+    "CVE-2025-43819"
+  ],
+  "summary": "Liferay Portal and DXP does not properly expire sessions",
+  "details": "### Summary\n\nLiferay Portal/DXP contains an Insufficient Session Expiration issue where the Single Logout (SLO) API may fail to invalidate a user’s previous session. An attacker can reuse a stale session via the SLO endpoint to gain an authenticated context.\n\n### Affected Versions\n\nThe following platform versions are affected:\n\n*   **Liferay Portal:**  \n    *   `7.3.3.131` through `7.4.3.121`\n*   **Liferay DXP:**\n    *   `2024.Q4.0`–`2024.Q4.3`\n    *   `2024.Q3.1`–`2024.Q3.13`\n    *   `2024.Q2.0`–`2024.Q2.13`\n    *   `2024.Q1.1`–`2024.Q1.12`\n\n### Remediation\n\nUpdate to the fixed builds and, for Maven consumers of the SAML module, upgrade `com.liferay:com.liferay.saml.impl` to **5.0.51** or later. After upgrading, ensure session invalidation policies are enforced and verify SLO behavior end-to-end.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.liferay:com.liferay.saml.impl"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.0.51"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-43819"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/433dff5edae4414fdc436b49a9edb62d721c84b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liferay/liferay-portal/commit/da9105a61d788801797797a32583a4b76c902cdc"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/liferay/liferay-portal"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.atlassian.net/browse/LPE-18159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://liferay.dev/portal/security/known-vulnerabilities/-/asset_publisher/jekt/content/CVE-2025-43819"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osv.dev/vulnerability/GHSA-rpx3-f938-xj5q"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-09-24T17:28:45Z",
+    "nvd_published_at": "2025-09-24T02:15:31Z"
+  }
+}

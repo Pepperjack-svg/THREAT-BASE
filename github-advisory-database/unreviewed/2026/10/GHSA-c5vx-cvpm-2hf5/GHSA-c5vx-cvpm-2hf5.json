@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c5vx-cvpm-2hf5",
+  "modified": "2026-10-07T06:33:02Z",
+  "published": "2026-10-07T06:33:02Z",
+  "aliases": [
+    "CVE-2026-103869"
+  ],
+  "details": "A flaw was found in pulp-ansible's bearer-token refresh for collection remotes. The access token is kept in one module-level variable and reused for every token download in that worker. A user who can sync an Ansible remote that uses token refresh, and can point that remote at a server they control, receives an access token obtained for a different remote, and can reuse it at the service that issued it. Content stored in Pulp is not changed, and the service is not stopped.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-103869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2544603"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-488"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-07T06:16:35Z"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mv3m-x6qp-j4p5",
+  "modified": "2026-10-15T03:35:50Z",
+  "published": "2026-05-06T12:30:28Z",
+  "aliases": [
+    "CVE-2026-43111"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: roccat: fix use-after-free in roccat_report_event\n\nroccat_report_event() iterates over the device->readers list without\nholding the readers_lock. This allows a concurrent roccat_release() to\nremove and free a reader while it's still being accessed, leading to a\nuse-after-free.\n\nProtect the readers list traversal with the readers_lock mutex.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/181ea51ab0f6370842c5b49cfb86824253a1189e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/20dca865460f7943cf70afca274b60dac371f546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36bb2d0b915014bbdc5044982b31b57b78045b93"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/441689e3103694caa3e2d62b7d57c7bccefa5e37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bca0b595e15450dd66b1153c76c4ef1087ee011b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d802d848308b35220f21a8025352f0c0aba15c12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e16a6d11bd77b81632165f02cf0d5946df74b3b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6a445513fbc6a0329d2d5ff375b6725750ec5a6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362",
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T10:16:24Z"
+  }
+}

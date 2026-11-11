@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pvwj-4565-gq34",
+  "modified": "2026-11-09T15:32:11Z",
+  "published": "2026-11-09T15:32:11Z",
+  "aliases": [
+    "CVE-2026-124959"
+  ],
+  "details": "The loadIndex function in nmslib hnswlib and Spotify Voyager does not verify that the element count in a serialized HNSW index is within the stored capacity used to allocate the heap buffer. An attacker can supply a crafted index file with an element count greater than the stored capacity, causing the loader to write beyond the allocated buffer and potentially crash the application when it loads the file.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124959"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nmslib/hnswlib"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spotify/voyager"
+    },
+    {
+      "type": "WEB",
+      "url": "https://m00dy.sh/notes/when-an-hnsw-index-lies-about-its-capacity"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T15:17:19Z"
+  }
+}

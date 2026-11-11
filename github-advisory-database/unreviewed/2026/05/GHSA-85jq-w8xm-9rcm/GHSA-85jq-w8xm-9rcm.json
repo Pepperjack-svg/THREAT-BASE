@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-85jq-w8xm-9rcm",
+  "modified": "2026-05-07T21:30:23Z",
+  "published": "2026-05-01T15:30:34Z",
+  "aliases": [
+    "CVE-2026-31744"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nPM: EM: Fix NULL pointer dereference when perf domain ID is not found\n\ndev_energymodel_nl_get_perf_domains_doit() calls\nem_perf_domain_get_by_id() but does not check the return value before\npassing it to __em_nl_get_pd_size(). When a caller supplies a\nnon-existent perf domain ID, em_perf_domain_get_by_id() returns NULL,\nand __em_nl_get_pd_size() immediately dereferences pd->cpus\n(struct offset 0x30), causing a NULL pointer dereference.\n\nThe sister handler dev_energymodel_nl_get_perf_table_doit() already\nhandles this correctly via __em_nl_get_pd_table_id(), which returns\nNULL and causes the caller to return -EINVAL. Add the same NULL check\nin the get-perf-domains do handler.\n\n[ rjw: Subject and changelog edits ]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31744"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9badc2a84e688be1275bb740942d5f6f51746908"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab09b9a1e3b02ff62c5aebe3b12b0cb4cb4ea8ab"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:37Z"
+  }
+}

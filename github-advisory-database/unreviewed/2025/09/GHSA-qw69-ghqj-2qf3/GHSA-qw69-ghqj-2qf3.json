@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qw69-ghqj-2qf3",
+  "modified": "2025-09-18T15:30:32Z",
+  "published": "2025-09-18T15:30:32Z",
+  "aliases": [
+    "CVE-2022-50377"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: check and assert if marking an no_delete evicting inode dirty\n\nIn ext4_evict_inode(), if we evicting an inode in the 'no_delete' path,\nit cannot be raced by another mark_inode_dirty(). If it happens,\nsomeone else may accidentally dirty it without holding inode refcount\nand probably cause use-after-free issues in the writeback procedure.\nIt's indiscoverable and hard to debug, so add an WARN_ON_ONCE() to\ncheck and detect this issue in advance.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50377"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c026f975d24701766cf4ac63995ead9f6d57a59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/318cdc822c63b6e2befcfdc2088378ae6fa18def"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9020f56a3cad1c97b81c7dab2aa67027b59c8f73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91009e361e8cb2cbd1dc9496cb5fb4f8de3f4b11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1ec687ebd1bf146333955b7e209d21508c3ba9f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T14:15:36Z"
+  }
+}

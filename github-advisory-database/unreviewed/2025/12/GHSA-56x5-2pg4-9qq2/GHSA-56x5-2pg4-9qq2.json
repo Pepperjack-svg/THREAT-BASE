@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-56x5-2pg4-9qq2",
+  "modified": "2026-10-21T15:40:12Z",
+  "published": "2025-12-24T12:30:30Z",
+  "aliases": [
+    "CVE-2025-68374"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd: fix rcu protection in md_wakeup_thread\n\nWe attempted to use RCU to protect the pointer 'thread', but directly\npassed the value when calling md_wakeup_thread(). This means that the\nRCU pointer has been acquired before rcu_read_lock(), which renders\nrcu_read_lock() ineffective and could lead to a use-after-free.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68374"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0dc76205549b4c25705e54345f211b9f66e018a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21989cb5034c835b212385a2afadf279d8069da0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4bd1caf591faeae44cb10b6517e7dacb5139bda"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc6d1249ee35c1c76700b4b96281daeb7637bce1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f98b191f78124405294481dea85f8a22a3eb0a59"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:16:00Z"
+  }
+}

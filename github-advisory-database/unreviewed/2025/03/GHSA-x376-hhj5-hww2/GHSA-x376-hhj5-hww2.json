@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x376-hhj5-hww2",
+  "modified": "2025-03-12T00:31:46Z",
+  "published": "2025-03-12T00:31:46Z",
+  "aliases": [
+    "CVE-2022-49601"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp/dccp: Fix a data-race around sysctl_tcp_fwmark_accept.\n\nWhile reading sysctl_tcp_fwmark_accept, it can be changed concurrently.\nThus, we need to add READ_ONCE() to its reader.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49601"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13207f9485b5de68decf296ceb0046f5eabb2485"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a0008f9df59451d0a17806c1ee1a19857032fa8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45fc82706a97242539d6b841ddd7a077ec20757b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/526d8cf8824f613c72dba2155542295e70135f62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a7386602a2fe2f6192477e8ede291a815da09d81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/abf70de2ec026ae8d7da4e79bec61888a880e00b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf3134feffe61b7a0e21f60a04743f8da0958b53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4f65615db7fca3df9f7e79eadf937e6ddb03c54"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:35Z"
+  }
+}

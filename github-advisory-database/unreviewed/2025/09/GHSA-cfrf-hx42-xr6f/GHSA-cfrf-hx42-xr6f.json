@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cfrf-hx42-xr6f",
+  "modified": "2026-05-12T15:31:08Z",
+  "published": "2025-09-16T15:32:35Z",
+  "aliases": [
+    "CVE-2025-39813"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nftrace: Fix potential warning in trace_printk_seq during ftrace_dump\n\nWhen calling ftrace_dump_one() concurrently with reading trace_pipe,\na WARN_ON_ONCE() in trace_printk_seq() can be triggered due to a race\ncondition.\n\nThe issue occurs because:\n\nCPU0 (ftrace_dump)                              CPU1 (reader)\necho z > /proc/sysrq-trigger\n\n!trace_empty(&iter)\ntrace_iterator_reset(&iter) <- len = size = 0\n                                                cat /sys/kernel/tracing/trace_pipe\ntrace_find_next_entry_inc(&iter)\n  __find_next_entry\n    ring_buffer_empty_cpu <- all empty\n  return NULL\n\ntrace_printk_seq(&iter.seq)\n  WARN_ON_ONCE(s->seq.len >= s->seq.size)\n\nIn the context between trace_empty() and trace_find_next_entry_inc()\nduring ftrace_dump, the ring buffer data was consumed by other readers.\nThis caused trace_find_next_entry_inc to return NULL, failing to populate\n`iter.seq`. At this point, due to the prior trace_iterator_reset, both\n`iter.seq.len` and `iter.seq.size` were set to 0. Since they are equal,\nthe WARN_ON_ONCE condition is triggered.\n\nMove the trace_printk_seq() into the if block that checks to make sure the\nreturn value of trace_find_next_entry_inc() is non-NULL in\nftrace_dump_one(), ensuring the 'iter.seq' is properly populated before\nsubsequent operations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39813"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/28c8fb7ae2ad27d81c8de3c4fe608c509f6a18aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4013aef2ced9b756a410f50d12df9ebe6a883e4a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ab0ec206deb99eb3baf8f1d7602aeaa91dbcc85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6f0f8873cc30fd4543b09adf03f7f51d293f0e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ced94e137e6cd5e79c65564841d3b7695d0f5fa3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e80ff23ba8bdb0f41a1afe2657078e4097d13a9a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f299353e7ccbcc5c2ed8993c48fbe7609cbe729a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fbd4cf7ee4db65ef36796769fe978e9eba6f0de4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00007.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T13:15:55Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j46m-h6wf-3gc4",
+  "modified": "2026-03-03T18:31:33Z",
+  "published": "2026-03-03T18:31:33Z",
+  "aliases": [
+    "CVE-2025-67840"
+  ],
+  "details": "Multiple authenticated OS command injection vulnerabilities exist in the Cohesity (formerly Stone Ram) TranZman 4.0 Build 14614 through TZM_1757588060_SEP2025_FULL.depot web application API endpoints (including Scheduler and Actions pages). The appliance directly concatenates user-controlled parameters into system commands without sufficient sanitisation, allowing an authenticated admin user to inject and execute arbitrary OS commands with root privileges. An attacker can intercept legitimate requests (e.g. during job creation or execution) using a proxy and modify parameters to include shell metacharacters, achieving remote code execution on the appliance. This completely bypasses the intended CLISH restricted shell confinement and results in full system compromise. The vulnerabilities persist in Release 4.0 Build 14614 including the latest patch (as of the time of testing) TZM_1757588060_SEP2025_FULL.depot.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-67840"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cohesity.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/GregDurys/ef7fc6a36646df927374bba8e7279270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/GregDurys/Cohesity-TranZman-CVEs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-03T18:16:24Z"
+  }
+}

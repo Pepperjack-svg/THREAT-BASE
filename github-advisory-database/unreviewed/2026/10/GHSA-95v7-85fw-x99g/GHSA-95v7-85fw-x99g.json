@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-95v7-85fw-x99g",
+  "modified": "2026-10-22T21:32:38Z",
+  "published": "2026-10-22T21:32:38Z",
+  "aliases": [
+    "CVE-2026-115362"
+  ],
+  "details": "OpenBao before 2.6.4 and 2.7.x before 2.7.1 does not check Secret ID expiration at use in the AppRole auth method, leaving expired Secret IDs valid until the periodic tidy removes them. An attacker holding an expired, untidied Secret ID can log in and gain access beyond its TTL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:H/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openbao/openbao/security/advisories/GHSA-7m59-mp95-w6ph"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115362"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openbao-before-2.6.4-and-2.7.0-before-2.7.1-expired-approle-secretid-authentication-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T19:17:42Z"
+  }
+}

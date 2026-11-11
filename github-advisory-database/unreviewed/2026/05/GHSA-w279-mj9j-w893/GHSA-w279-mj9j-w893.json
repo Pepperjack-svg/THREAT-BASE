@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w279-mj9j-w893",
+  "modified": "2026-10-15T03:35:58Z",
+  "published": "2026-05-27T15:33:22Z",
+  "aliases": [
+    "CVE-2026-46065"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: defio: Disconnect deferred I/O from the lifetime of struct fb_info\n\nHold state of deferred I/O in struct fb_deferred_io_state. Allocate an\ninstance as part of initializing deferred I/O and remove it only after\nthe final mapping has been closed. If the fb_info and the contained\ndeferred I/O meanwhile goes away, clear struct fb_deferred_io_state.info\nto invalidate the mapping. Any access will then result in a SIGBUS\nsignal.\n\nFixes a long-standing problem, where a device hot-unplug happens while\nuser space still has an active mapping of the graphics memory. The hot-\nunplug frees the instance of struct fb_info. Accessing the memory will\noperate on undefined state.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46065"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/25c2b77bc463f29ee71a54b883548baf9386a0db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a40f8bc9bb713329f1c35ffc199ee961a7135b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b53d3a52e8e5403a4f4fb57ac6cad3fd2cb1066"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4aab89603b637a2e441b38808c4f6fe7d1184df6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4fda0d6b45faad44926dd3e4f55f118d899b2e27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ded47ad003f09a94b6a710b5c47f4aa5ceb7429"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0aafb421dd15e935d81543152617f2742cefa70"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401",
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:27Z"
+  }
+}

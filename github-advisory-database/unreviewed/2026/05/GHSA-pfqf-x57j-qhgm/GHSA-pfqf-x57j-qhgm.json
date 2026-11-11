@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pfqf-x57j-qhgm",
+  "modified": "2026-05-11T09:30:31Z",
+  "published": "2026-05-08T15:31:27Z",
+  "aliases": [
+    "CVE-2026-43406"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: prevent potential out-of-bounds reads in process_message_header()\n\nIf the message frame is (maliciously) corrupted in a way that the\nlength of the control segment ends up being less than the size of the\nmessage header or a different frame is made to look like a message\nframe, out-of-bounds reads may ensue in process_message_header().\n\nPerform an explicit bounds check before decoding the message header.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43406"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/035867ae6f18df0aeedb2a57a5b74091bd4e3fe8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/50156622eb0888e62541d715a98584480a1bc7cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69fb5d91bba44ecf7eb80530b85fa4fb028921d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69fe5af33fa3806f398d21c081d73c66e5523bc2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75582aaa580c11aed4c7731cad6b068b700e7efb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/76ccf21a12c5f6d6790bc32c7da82446d877b2f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dbd857a9e1e33ea71eaf3e211877027e533770d1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T15:16:52Z"
+  }
+}

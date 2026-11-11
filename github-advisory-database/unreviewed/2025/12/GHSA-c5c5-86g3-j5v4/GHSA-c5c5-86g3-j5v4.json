@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c5c5-86g3-j5v4",
+  "modified": "2025-12-30T15:30:27Z",
+  "published": "2025-12-30T15:30:27Z",
+  "aliases": [
+    "CVE-2022-50836"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nremoteproc: sysmon: fix memory leak in qcom_add_sysmon_subdev()\n\nThe kfree() should be called when of_irq_get_byname() fails or\ndevm_request_threaded_irq() fails in qcom_add_sysmon_subdev(),\notherwise there will be a memory leak, so add kfree() to fix it.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50836"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/131c0a3ead78d45f0f39ddb42cf1bd9be26239b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a62bebe0705556d37cfa8409ddc759b11d404f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27441fab2651cd909d8a5440ca079bc50245f427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e01ce676aaef3b13d02343d7e70f9637d93a3367"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e4539eb5c0c342567183fe386d0699c8dab49490"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec97e9a5c2f25d2f9f9d7005e9ac67f23cc751cd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-30T13:15:58Z"
+  }
+}

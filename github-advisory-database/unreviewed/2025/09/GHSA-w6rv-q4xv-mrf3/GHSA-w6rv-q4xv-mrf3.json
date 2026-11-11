@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w6rv-q4xv-mrf3",
+  "modified": "2025-12-04T15:30:31Z",
+  "published": "2025-09-15T15:31:27Z",
+  "aliases": [
+    "CVE-2022-50330"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: cavium - prevent integer overflow loading firmware\n\nThe \"code_length\" value comes from the firmware file.  If your firmware\nis untrusted realistically there is probably very little you can do to\nprotect yourself.  Still we try to limit the damage as much as possible.\nAlso Smatch marks any data read from the filesystem as untrusted and\nprints warnings if it not capped correctly.\n\nThe \"ntohl(ucode->code_length) * 2\" multiplication can have an\ninteger overflow.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50330"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/172c8a24fc8312cf6b88d3c88469653fdcb1c127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2526d6bf27d15054bb0778b2f7bc6625fd934905"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/371fa5129af53a79f6dddc90fe5bb0825cbe72a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a720eb89026c5241b8c4abb33370dc6fb565eee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/584561e94260268abe1c83e00d9c205565cb7bc5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90e483e7f20c32287d2a9da967e122938f52737a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4d4c2afd08dfb3cd1c880d1811ede2568e81a6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e29fd7a6852376d2cfb95ad5d6d3eeff93f815e9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T15:15:45Z"
+  }
+}

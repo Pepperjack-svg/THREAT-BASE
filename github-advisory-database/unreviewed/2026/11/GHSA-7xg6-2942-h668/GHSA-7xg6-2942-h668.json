@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7xg6-2942-h668",
+  "modified": "2026-11-02T21:31:55Z",
+  "published": "2026-11-02T18:32:28Z",
+  "aliases": [
+    "CVE-2026-106808"
+  ],
+  "details": "OpenAirInterface Core Network v2.2.1 has a stack-based buffer overflow vulnerability in the OAI CN5G UDM Nudm_UEAU Generate Authentication Data endpoint. The UDM passes attacker-controlled resynchronizationInfo.rand and auts values to conv::hex_str_to_uint8(), which converts arbitrary-length hex strings into fixed-size stack buffers without validating the destination size. An unauthenticated attacker with access to the SBI interface and a valid SUPI can submit an oversized value to overwrite adjacent stack memory, corrupt the stack canary, and terminate the UDM process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106808"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openairinterface/oai-cn5g-udm/issues/4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/hackeryounow/66b7612729af8e205089097e68a42116"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T18:18:34Z"
+  }
+}

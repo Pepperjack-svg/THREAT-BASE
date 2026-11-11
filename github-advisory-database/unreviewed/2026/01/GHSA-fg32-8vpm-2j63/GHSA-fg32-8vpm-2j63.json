@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fg32-8vpm-2j63",
+  "modified": "2026-01-31T12:30:12Z",
+  "published": "2026-01-31T12:30:12Z",
+  "aliases": [
+    "CVE-2026-23027"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nLoongArch: KVM: Fix kvm_device leak in kvm_pch_pic_destroy()\n\nIn kvm_ioctl_create_device(), kvm_device has allocated memory,\nkvm_device->destroy() seems to be supposed to free its kvm_device\nstruct, but kvm_pch_pic_destroy() is not currently doing this, that\nwould lead to a memory leak.\n\nSo, fix it.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23027"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1cf342a7c3adc5877837b53bbceb5cc9eff60bbf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc53a66227af08d868face4b33fa8b2e1ba187ed"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-31T12:16:06Z"
+  }
+}

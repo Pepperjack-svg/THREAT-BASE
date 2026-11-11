@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qhw8-6crf-m6jv",
+  "modified": "2026-10-13T21:32:14Z",
+  "published": "2026-10-11T15:31:02Z",
+  "aliases": [
+    "CVE-2026-108712"
+  ],
+  "details": "SuiteCRM through 7.15.2 and 8.10.2 contains a missing authorization vulnerability in the DetailUserRole entry point that allows authenticated non-admin users to view other users' ACL data. Attackers can supply another non-admin user's id in the record parameter to read that user's assigned roles and per-module ACL action matrix.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108712"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SuiteCRM/SuiteCRM"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SuiteCRM/SuiteCRM-Core/blob/v8.10.2/public/legacy/modules/ACLRoles/DetailUserRole.php#L51-L53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SuiteCRM/SuiteCRM/blob/v7.15.2/include/MVC/Controller/entry_point_registry.php#L71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SuiteCRM/SuiteCRM/blob/v7.15.2/modules/ACLRoles/DetailUserRole.php#L51-L98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind03/cve-2026-108712-suitecrm-detailuserrole-acl-matrix-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind03/suitecrm-detailuserrole-acl-matrix-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/suitecrm-through-7.15.2-and-8.10.2-missing-authorization-via-detailuserrole-entry-point"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T13:17:14Z"
+  }
+}

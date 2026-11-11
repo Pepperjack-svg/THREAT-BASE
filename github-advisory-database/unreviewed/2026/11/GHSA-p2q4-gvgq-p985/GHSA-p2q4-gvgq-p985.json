@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p2q4-gvgq-p985",
+  "modified": "2026-11-10T18:31:45Z",
+  "published": "2026-11-10T18:31:45Z",
+  "aliases": [
+    "CVE-2026-126048"
+  ],
+  "details": "Gwenhywfar 4.99.8beta before 5.14.2 contains a stack-based buffer overflow in GWEN_TLV_Buffer_To_DB() in src/parser/tlv.c when decoding BER-TLV tags into a fixed 128-byte buffer. Attackers can supply a record with about 127 or more tag continuation bytes or a truncated multi-byte tag, such as via a malicious chip card's EF_SSD file read by libchipcard's ZKA driver, to crash the application.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:P/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126048"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aqbanking/gwenhywfar/commit/6b50388e6b4a96f02d3d56e1d7747405fa881f39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aqbanking/gwenhywfar/commit/ed8e2f8cdc27fd5c1b629cf9c1f6b93b2e009757"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aqbanking/gwenhywfar/blob/424949d0c6e61028eaccd6e46e4c0c41931c2b2f/src/parser/tlv.c#L629-L655"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.aquamaniac.de/rdm/projects/gwenhywfar/files"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gwenhywfar-4.99-8beta-before-5.14.2-stack-buffer-overflow-via-gwen-tlv-buffer-to-db"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T17:17:31Z"
+  }
+}

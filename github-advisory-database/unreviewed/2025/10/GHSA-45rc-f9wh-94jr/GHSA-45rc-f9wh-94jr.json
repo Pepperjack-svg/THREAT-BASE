@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-45rc-f9wh-94jr",
+  "modified": "2026-02-04T18:30:19Z",
+  "published": "2025-10-07T18:31:08Z",
+  "aliases": [
+    "CVE-2022-50522"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmcb: mcb-parse: fix error handing in chameleon_parse_gdd()\n\nIf mcb_device_register() returns error in chameleon_parse_gdd(), the refcount\nof bus and device name are leaked. Fix this by calling put_device() to give up\nthe reference, so they can be released in mcb_release_dev() and kobject_cleanup().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/110dc34c9fa33d37f55b394b1199ea6c0ad1ee84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/43bfc7c2402a22d3b4eb08c040f274ba2b76461a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a9f1a8b3af287581ffb690d0e1593c681729ddb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/728ac3389296caf68638628c987aeae6c8851e2d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b289b791a59386dc23a00d3cf17a0db984b40d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/891f606ae0765bc9ca99f5276735be4d338f0255"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b948baa29394ec5f4e6ec28486e7d06a76caee91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf6e70c0ced50b52415ac0c88eba1fb09c500a5a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd85ece416fd7edb945203e59d4cd94952f77e7c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:36Z"
+  }
+}

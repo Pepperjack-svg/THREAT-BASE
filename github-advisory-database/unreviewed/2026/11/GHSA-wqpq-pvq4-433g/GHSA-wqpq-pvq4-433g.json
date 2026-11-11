@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wqpq-pvq4-433g",
+  "modified": "2026-11-03T09:31:45Z",
+  "published": "2026-11-03T09:31:45Z",
+  "aliases": [
+    "CVE-2026-118446"
+  ],
+  "details": "A use-after-free vulnerability in the pybddisasm Python bindings affects array-valued members of INSTRUX objects, including ND_OPERAND arrays. These arrays are exposed as Python lists whose elements reference memory owned by the parent INSTRUX object. Retaining a list or an element does not keep the parent allocation alive. Accessing an element after the parent INSTRUX object has been freed therefore accesses freed memory. Depending on how the element is used and whether the freed allocation has been reused, this may expose process memory or cause the Python process to crash. Exploitation requires an application to retain and subsequently access an array element after the parent object has been freed. The pybddisasm package is no longer maintained.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/pybddisasm"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T09:17:11Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4j9-j24x-79rm",
+  "modified": "2025-11-18T18:32:46Z",
+  "published": "2025-06-18T12:30:50Z",
+  "aliases": [
+    "CVE-2022-50134"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/hfi1: fix potential memory leak in setup_base_ctxt()\n\nsetup_base_ctxt() allocates a memory chunk for uctxt->groups with\nhfi1_alloc_ctxt_rcv_groups(). When init_user_ctxt() fails, uctxt->groups\nis not released, which will lead to a memory leak.\n\nWe should release the uctxt->groups with hfi1_free_ctxt_rcv_groups()\nwhen init_user_ctxt() fails.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1750be1e9f18787cf717c24dbc5fa029fc372a22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f90813f1c21c3d780585390af961bd17c8515ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90ef48a718f88935d4af53d7dadd1ceafe103ce6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a85c7dd1edadcdeca24e603a6618153a3bcc81ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9055dfe437efae77e28e57205437c878a03ccb7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa2a1df3a2c85f855af7d54466ac10bd48645d63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e25b828553aecb3185a8d8d0c4f9b4e133fb5db6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc4de8009fd6c2ca51986c6757efa964040e7d02"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-06-18T11:15:43Z"
+  }
+}

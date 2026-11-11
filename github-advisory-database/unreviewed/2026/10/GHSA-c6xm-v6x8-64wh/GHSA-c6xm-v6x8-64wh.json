@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c6xm-v6x8-64wh",
+  "modified": "2026-10-06T09:31:35Z",
+  "published": "2026-10-06T09:31:35Z",
+  "aliases": [
+    "CVE-2026-98350"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: brcmfmac: cyw: pass PMKID to firmware if present\n\nZero out auth_status on initialization. Otherwise, garbage will\nleak from the stack to the firmware (when ssid is less than 32 bytes\nand/or when params->pmkid is set). Then, pass the params->pmkid to the\nfirmware (without it, the firmware caches a garbage PMKID on successful\nauthentication and denies a subsequent association request that includes\nthe PMKID).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6fba6233e9ca7718661e53555a3961c58772c21a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2cf589c7d546557ed60c43f2ec014279265dfbf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2de8d5eb2984416affdd9559e55f37c7f1bbf47"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:28Z"
+  }
+}

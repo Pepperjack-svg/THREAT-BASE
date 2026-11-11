@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pg76-q8r9-xqw5",
+  "modified": "2025-05-07T15:31:24Z",
+  "published": "2025-05-01T15:31:49Z",
+  "aliases": [
+    "CVE-2022-49848"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nphy: qcom-qmp-combo: fix NULL-deref on runtime resume\n\nCommit fc64623637da (\"phy: qcom-qmp-combo,usb: add support for separate\nPCS_USB region\") started treating the PCS_USB registers as potentially\nseparate from the PCS registers but used the wrong base when no PCS_USB\noffset has been provided.\n\nFix the PCS_USB base used at runtime resume to prevent dereferencing a\nNULL pointer on platforms that do not provide a PCS_USB offset (e.g.\nSC7180).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49848"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04948e757148f870a31f4887ea2239403f516c3c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c559a8b5cfa3db196ced0257b288f17027621348"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:08Z"
+  }
+}

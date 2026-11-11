@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-54m9-qc5w-93rc",
+  "modified": "2026-10-13T21:32:15Z",
+  "published": "2026-10-11T15:31:08Z",
+  "aliases": [
+    "CVE-2026-108863"
+  ],
+  "details": "Katanemo Plano through 0.4.37 contains a missing authentication vulnerability that allows unauthenticated network attackers to access the Envoy admin interface, which is bound to all host interfaces on port 9901. Attackers can request the /config_dump endpoint to read configured LLM provider API keys in plaintext from the WASM filter configuration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108863"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/katanemo/plano"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/katanemo/plano/blob/0.4.37/cli/planoai/config_generator.py#L588-L656"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/katanemo/plano/blob/0.4.37/config/envoy.template.yaml#L1-L3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/cve-2026-108863-katanemo-plano-envoy-admin-config-secret-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/katanemo-plano-envoy-admin-config-secret-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/katanemo-plano-through-0.4.37-missing-authentication-on-envoy-admin-interface"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T14:17:06Z"
+  }
+}

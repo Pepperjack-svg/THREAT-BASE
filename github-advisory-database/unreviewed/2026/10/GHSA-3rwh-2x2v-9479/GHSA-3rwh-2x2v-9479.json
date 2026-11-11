@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3rwh-2x2v-9479",
+  "modified": "2026-10-28T09:31:54Z",
+  "published": "2026-10-28T09:31:54Z",
+  "aliases": [
+    "CVE-2026-109590"
+  ],
+  "details": "The Tour Booking Manager plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'width', 'height' and 'zoom' shortcode attributes of the [ttbm-hotel-map] shortcode in versions up to, and including, 2.3.6 This is due to insufficient input sanitization and output escaping on user supplied attributes in the ttbm_hotel_map_shortcode() function, which concatenates the raw attribute values into double-quoted HTML attributes of an <iframe> tag. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109590"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/magepeopleteam/tour-booking-manager"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tour-booking-manager/tags/2.3.6/inc/TTBM_Shortcodes.php#L76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tour-booking-manager/tags/2.3.6/inc/TTBM_Shortcodes.php#L91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3757674/tour-booking-manager/trunk/inc/TTBM_Shortcodes.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2100f72a-ff75-4429-8dc6-be5b6e3c84cb?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-28T07:16:44Z"
+  }
+}

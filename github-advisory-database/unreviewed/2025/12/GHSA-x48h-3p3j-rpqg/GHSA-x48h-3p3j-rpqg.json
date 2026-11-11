@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x48h-3p3j-rpqg",
+  "modified": "2025-12-09T18:30:33Z",
+  "published": "2025-12-09T18:30:33Z",
+  "aliases": [
+    "CVE-2023-53840"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: early: xhci-dbc: Fix a potential out-of-bound memory access\n\nIf xdbc_bulk_write() fails, the values in 'buf' can be anything. So the\nstring is not guaranteed to be NULL terminated when xdbc_trace() is called.\n\nReserve an extra byte, which will be zeroed automatically because 'buf' is\na static variable, in order to avoid troubles, should it happen.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53840"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/351c8d8650d1ccc006255fa01f98b6c6496a02e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4a97ab3db5c081eb6e7dba91306adefb461e0bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df7c8aba7309f4dc55df94e06b67f576c0f52406"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8fb0f13e45cf361fd06593d3cb2d89915cd3bd0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T16:17:23Z"
+  }
+}

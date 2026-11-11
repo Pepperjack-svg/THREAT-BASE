@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7pf8-cp62-gc3p",
+  "modified": "2026-10-16T18:34:53Z",
+  "published": "2026-10-16T18:34:53Z",
+  "aliases": [
+    "CVE-2026-111702"
+  ],
+  "details": "ChatOllama through commit 96c3ce5 contains an insecure direct object reference vulnerability that allows remote attackers to access other users' private knowledge bases by supplying sequential ids. Attackers can enumerate ids via GET /api/knowledgebases/{id} or the knowledgebaseId parameter of POST /api/models/chat to read metadata and retrieved document content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111702"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sugarforever/chat-ollama/blob/6f4245a96b58ce8833a8c51d90d923b0e9814784/server/api/knowledgebases/%5Bid%5D.get.ts#L25-L34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sugarforever/chat-ollama/blob/6f4245a96b58ce8833a8c51d90d923b0e9814784/server/api/models/chat/index.post.ts#L392-L427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/chat-ollama-knowledge-base-cross-user-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/chatollama-through-commit-96c3ce5-idor-exposes-private-knowledge-bases"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:54Z"
+  }
+}

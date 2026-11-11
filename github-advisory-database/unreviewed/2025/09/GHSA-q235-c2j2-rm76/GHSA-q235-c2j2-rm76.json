@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q235-c2j2-rm76",
+  "modified": "2025-09-22T21:30:21Z",
+  "published": "2025-09-22T21:30:21Z",
+  "aliases": [
+    "CVE-2025-10854"
+  ],
+  "details": "The txtai framework allows the loading of compressed tar files as embedding indices. While the validate function is intended to prevent path traversal vulnerabilities by ensuring safe filenames, it does not account for symbolic links within the tar file. An attacker is able to write a file anywhere in the filesystem when txtai is used to load untrusted embedding indices",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-10854"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/neuml/txtai/issues/965"
+    },
+    {
+      "type": "WEB",
+      "url": "https://research.jfrog.com/vulnerabilities/txtai-arbitrary-file-write-jfsa-2025-001471363"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-61"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-22T13:16:01Z"
+  }
+}

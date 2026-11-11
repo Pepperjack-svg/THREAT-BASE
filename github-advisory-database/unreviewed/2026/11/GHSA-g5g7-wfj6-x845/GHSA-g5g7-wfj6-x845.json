@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g5g7-wfj6-x845",
+  "modified": "2026-11-03T21:32:06Z",
+  "published": "2026-11-03T12:31:49Z",
+  "aliases": [
+    "CVE-2026-99245"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKEYS: Fix key_reject_and_link() race with keyring restriction\n\nThe restrict_link check in key_reject_and_link() is done before taking\nthe keyring semaphore, racing with a concurrent keyring_restrict()\nthat installs the restriction while holding the semaphore in write\nmode.\n\nMove the check to after __key_link_lock(), so it is done under the\nsemaphore, matching the pattern used in __key_create_or_update().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01835d3a3709be508ae5209f806640336c48e395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b157166e612b70f98a332b6c7be7eac6f8e9593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19dfc37c9deefa69dc805d01d35d1f2fd7902e33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23a9163cc40b4996ba1e20533b1210a1a0bee416"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c3d907dd15f4e30d4c35b9f7a7a5078de6a1b1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5787887eba0f0979a8c86d03a8e891395d5c24ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6fc0c818b1cac66003e937c8a0d3bfb23fd3f130"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72f367417a6aee56821d0b0114cfd2b080008b63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7956ec99ad0e173720d95de9fa788bb077809f2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T12:17:30Z"
+  }
+}

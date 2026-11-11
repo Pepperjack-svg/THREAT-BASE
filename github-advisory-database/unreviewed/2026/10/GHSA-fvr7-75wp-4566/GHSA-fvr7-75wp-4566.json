@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fvr7-75wp-4566",
+  "modified": "2026-10-12T18:31:53Z",
+  "published": "2026-10-12T18:31:53Z",
+  "aliases": [
+    "CVE-2026-109360"
+  ],
+  "details": "MONAI 0.4.0 before 1.6.1 contains a remote code execution vulnerability that allows on-path attackers to execute code by tampering with SENet pretrained weights fetched over plaintext HTTP. Attackers can substitute a crafted .pth file that load_state_dict_from_url unpickles without weights_only=True, executing code when SEResNet50 or other SENet models are constructed with pretrained=True.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Project-MONAI/MONAI/security/advisories/GHSA-vm9c-7j6g-c7mm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109360"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/monai-0.4.0-before-1.6.1-rce-via-senet-pretrained-weights-over-plaintext-http"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T17:17:33Z"
+  }
+}

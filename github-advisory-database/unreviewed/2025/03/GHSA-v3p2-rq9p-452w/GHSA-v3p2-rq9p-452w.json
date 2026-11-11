@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3p2-rq9p-452w",
+  "modified": "2025-03-17T18:31:49Z",
+  "published": "2025-03-17T18:31:49Z",
+  "aliases": [
+    "CVE-2022-49462"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm/a6xx: Fix refcount leak in a6xx_gpu_init\n\nof_parse_phandle() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\n\na6xx_gmu_init() passes the node to of_find_device_by_node()\nand of_dma_configure(), of_find_device_by_node() will takes its\nreference, of_dma_configure() doesn't need the node after usage.\n\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06907a374f1b74f8f2fb30720dc6df81331e4fb5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48e82ce8cdb19c20a5020fa446b286d6a147450c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65ddbc0d26824e2a5d6154d01d8cf39344900213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6832e36f156ea35a6ed74bca72727806116effdd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c56de483093d7ad0782327f95dda7da97bc4c315"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/edff4c1af831d0c02e654eed9da7d74174de49d5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:22Z"
+  }
+}

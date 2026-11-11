@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xfj7-2jg6-3957",
+  "modified": "2025-08-01T18:31:17Z",
+  "published": "2025-08-01T18:31:17Z",
+  "aliases": [
+    "CVE-2025-52390"
+  ],
+  "details": "Saurus CMS Community Edition since commit d886e5b0 (2010-04-23) is vulnerable to a SQL Injection vulnerability in the `prepareSearchQuery()` method in `FulltextSearch.class.php`. The application directly concatenates user-supplied input (`$search_word`) into SQL queries without sanitization, allowing attackers to manipulate the SQL logic and potentially extract sensitive information or escalate their privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-52390"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sauruscms/Saurus-CMS-Community-Edition/blob/d886e5b0c1e2b42cd74e2184e7c81c720cd9de6b/classes/FulltextSearch.class.php#L331"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/theharshkothari/vulnerability-research/blob/main/CVE-2025-52390.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-01T16:15:42Z"
+  }
+}

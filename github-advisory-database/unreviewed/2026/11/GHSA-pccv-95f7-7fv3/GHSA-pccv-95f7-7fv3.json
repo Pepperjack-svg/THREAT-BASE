@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pccv-95f7-7fv3",
+  "modified": "2026-11-03T12:31:50Z",
+  "published": "2026-11-03T12:31:50Z",
+  "aliases": [
+    "CVE-2026-99251"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nDrivers: hv: Avoid infinite retry loop in init_vp_index()\n\nThere is a retry loop in init_vp_index() where the CPUs from a certain\nnode are stripped out if they have already been in the allocated cpumask\nor not in HK_TYPE_MANAGED_IRQ housekeeping cpumask. If there is no\nCPU left, the allocated cpumask is ignored and the process is retried\nagain. However, if the HK_TYPE_MANAGED_IRQ housekeeping cpumask turns\nout not to contain any CPU in that particular node, that will become an\ninfinite retry loop.  This particular problem was reported by sashiko\n[1]. This should rarely happen, but we still need to guard against this.\n\nFix this infinite loop problem by also skipping NUMA node that has no\nhousekeeping CPU in the inner while loop of init_vp_index(). Also update\nthe early abort check to check for the absence of online housekeeping\nCPUs instead of just the emptiness of the cpumask. As the outer for\nloop will only be reached if the housekeeping cpumask has at least one\nonline CPU, a NUMA node with housekeeping CPUs will eventually be found.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15dd3429f0e76ca071657e480cb7e6ff3a1af730"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32ea0a33e3a0fb7c10c601b43e1b2f6c06a3f5fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7141331f2d245efc07175802a6bf76badec871ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95fec47cdbf747b81ab22affd7252dda6050ad0c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3993f6dc106ff416c7a613c631e1e0af451aed7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f561392afb44a8a42c54c1cfd3f33dace0b50537"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-03T12:17:31Z"
+  }
+}

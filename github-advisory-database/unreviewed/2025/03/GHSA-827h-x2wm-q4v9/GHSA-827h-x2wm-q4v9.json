@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-827h-x2wm-q4v9",
+  "modified": "2025-03-07T21:31:04Z",
+  "published": "2025-03-07T21:31:04Z",
+  "aliases": [
+    "CVE-2022-49717"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/apple-aic: Fix refcount leak in build_fiq_affinity\n\nof_find_node_by_phandle() returns a node pointer with refcount\nincremented, we should use of_node_put() on it when not need anymore.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49717"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2dc14cebe5dc053434b507bb24e6821cb795050f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1ac803f47cb1615468f35cf1ccb553c52087301"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:47Z"
+  }
+}

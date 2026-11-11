@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p6rq-g598-qx9f",
+  "modified": "2026-11-02T21:31:57Z",
+  "published": "2026-11-02T21:31:57Z",
+  "aliases": [
+    "CVE-2026-120059"
+  ],
+  "details": "For an updatable cursor over a table without OIDs that has an auto-increment int4 column, psqlODBC places that column's name, as reported by the server, into a printf-style format string. It later expands that string with one argument while it builds the WHERE clause of its positioned SELECT, UPDATE, and DELETE statements. A column name that contains format directives makes the driver read unrelated memory, which can crash the application or copy client memory into query text sent to the server. The name can come from a server not trusted under current SSL settings, or from any database user who can create a table that the application reads with an updatable cursor. Versions before psqlODBC 18.00.0006 are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/postgresql-interfaces/psqlodbc/security/advisories/GHSA-44rq-72jh-x2h8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120059"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-134"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T19:18:02Z"
+  }
+}

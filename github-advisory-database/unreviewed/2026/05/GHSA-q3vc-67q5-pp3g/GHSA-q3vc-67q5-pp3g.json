@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q3vc-67q5-pp3g",
+  "modified": "2026-05-13T21:31:57Z",
+  "published": "2026-05-06T12:30:30Z",
+  "aliases": [
+    "CVE-2026-43140"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: magicmouse: Do not crash on missing msc->input\n\nFake USB devices can send their own report descriptors for which the\ninput_mapping() hook does not get called.  In this case, msc->input stays NULL,\nleading to a crash at a later time.\n\nDetect this condition in the input_configured() hook and reject the device.\n\nThis is not supposed to happen with actual magic mouse devices, but can be\nprovoked by imposing as a magic mouse USB device.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/165912d4321c692321c02793068d30700b4e0f1a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17abd396548035fbd6179ee1a431bd75d49676a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/243e1165eb03aca97d87aafa9c3130593837a1c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36c83c1329dd881f290f7df2feadfb9a21775108"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5bbe266272d86c0657e8253600f3d5b74fb7b2ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/922bd3e498a4b8e445def6e6ffea2ad3682ad516"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/db5ba06e7af9325519a03e52fccf4a9e7c1fd9b2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6a3860241fbb556fd72332fa31c5e787004413b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:31Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qg24-w69h-hf3v",
+  "modified": "2026-10-16T00:31:59Z",
+  "published": "2026-10-16T00:31:59Z",
+  "aliases": [
+    "CVE-2026-111369"
+  ],
+  "details": "ClassroomIO through 1.0.0 contains an incorrect authorization vulnerability in the PUT and DELETE /:lessonId lesson routes that allows any course member, including students, to modify lessons. Authenticated students can supply arbitrary lesson ids to change titles and stored HTML content or delete lessons in their course and in other courses and organizations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111369"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/classroomio/classroomio"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/classroomio/classroomio/blob/v1.0.0/apps/api/src/middlewares/course-member.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/classroomio/classroomio/blob/v1.0.0/apps/api/src/routes/course/lesson.ts#L107-L152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/classroomio-course-resource-id-scoping-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/classroomio-through-1.0.0-incorrect-authorization-via-lesson-update-and-delete-routes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T22:19:35Z"
+  }
+}

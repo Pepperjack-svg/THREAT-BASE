@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6233-jj46-vp44",
+  "modified": "2025-05-10T03:30:21Z",
+  "published": "2025-04-28T21:30:43Z",
+  "aliases": [
+    "CVE-2025-3224"
+  ],
+  "details": "A vulnerability in the update process of Docker Desktop for Windows versions prior to 4.41.0 could allow a local, low-privileged attacker to escalate privileges to SYSTEM. During an update, Docker Desktop attempts to delete files and subdirectories under the path C:\\ProgramData\\Docker\\config with high privileges. However, this directory often does not exist by default, and C:\\ProgramData\\ allows normal users to create new directories. By creating a malicious Docker\\config folder structure at this location, an attacker can force the privileged update process to delete or manipulate arbitrary system files, leading to Elevation of Privilege.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-3224"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zerodayinitiative.com/blog/2022/3/16/abusing-arbitrary-file-deletes-to-escalate-privilege-and-other-great-tricks"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-28T20:15:21Z"
+  }
+}

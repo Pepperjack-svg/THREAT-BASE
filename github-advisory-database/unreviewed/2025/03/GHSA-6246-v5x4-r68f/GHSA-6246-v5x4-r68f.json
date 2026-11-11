@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6246-v5x4-r68f",
+  "modified": "2025-03-17T18:31:51Z",
+  "published": "2025-03-17T18:31:51Z",
+  "aliases": [
+    "CVE-2022-49516"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: always check VF VSI pointer values\n\nThe ice_get_vf_vsi function can return NULL in some cases, such as if\nhandling messages during a reset where the VSI is being removed and\nrecreated.\n\nSeveral places throughout the driver do not bother to check whether this\nVSI pointer is valid. Static analysis tools maybe report issues because\nthey detect paths where a potentially NULL pointer could be dereferenced.\n\nFix this by checking the return value of ice_get_vf_vsi everywhere.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49516"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/baeb705fd6a7245cc1fa69ed991a9cffdf44a174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7be3877589d539c52e5d1d23a625f889b541b9d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:27Z"
+  }
+}

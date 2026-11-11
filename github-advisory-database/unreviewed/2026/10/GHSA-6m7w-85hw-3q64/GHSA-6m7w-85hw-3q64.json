@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6m7w-85hw-3q64",
+  "modified": "2026-10-22T09:31:47Z",
+  "published": "2026-10-22T09:31:47Z",
+  "aliases": [
+    "CVE-2026-105270"
+  ],
+  "details": "Allocation of Resources Without Limits or Throttling vulnerability in esaml_binding in dropbox esaml allows an unauthenticated attacker to exhaust the Erlang VM atom table and crash the node via a crafted SAMLResponse.\n\nesaml_binding:decode_response/2 parses the decoded SAMLResponse with xmerl_scan:string/2, which interns every element name, attribute name, and namespace prefix it reads as a permanent atom. The SAML consume (ACS) and single-logout endpoints call it on unauthenticated requests before any signature check, so one well-formed document with thousands of distinct names mints thousands of atoms while staying inside the 128 KB request body limit. Atoms are never reclaimed and the VM caps the atom table at about one million entries, so a few dozen requests abort the node.\n\nThis issue affects esaml: from 0.1.0 onward.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/arekinath/esaml/commit/deeb84378d5c82153b470e99d24f77c38afca14a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dropbox/esaml/commit/deeb84378d5c82153b470e99d24f77c38afca14a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/handnot2/esaml/commit/deeb84378d5c82153b470e99d24f77c38afca14a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cna.erlef.org/cves/CVE-2026-105270.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osv.dev/vulnerability/EEF-CVE-2026-105270"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T07:16:40Z"
+  }
+}

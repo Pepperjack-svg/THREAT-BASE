@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6g6f-cc29-q2wg",
+  "modified": "2026-05-15T18:30:30Z",
+  "published": "2026-05-08T15:31:25Z",
+  "aliases": [
+    "CVE-2026-43356"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: imu: adis: Fix NULL pointer dereference in adis_init\n\nThe adis_init() function dereferences adis->ops to check if the\nindividual function pointers (write, read, reset) are NULL, but does\nnot first check if adis->ops itself is NULL.\n\nDrivers like adis16480, adis16490, adis16545 and others do not set\ncustom ops and rely on adis_init() assigning the defaults. Since struct\nadis is zero-initialized by devm_iio_device_alloc(), adis->ops is NULL\nwhen adis_init() is called, causing a NULL pointer dereference:\n\n    Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000\n    pc : adis_init+0xc0/0x118\n    Call trace:\n     adis_init+0xc0/0x118\n     adis16480_probe+0xe0/0x670\n\nFix this by checking if adis->ops is NULL before dereferencing it,\nfalling through to assign the default ops in that case.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43356"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a48f94c63a078e7b6a2e59a637fc0858dc6510c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9990cd4f8827bd1ae3fb6eb7407630d8d463c430"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba19dd366528b961430f5195c2e382420703074f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-08T15:16:46Z"
+  }
+}

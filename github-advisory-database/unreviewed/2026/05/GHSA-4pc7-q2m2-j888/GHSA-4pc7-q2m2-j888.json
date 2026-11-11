@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4pc7-q2m2-j888",
+  "modified": "2026-05-13T21:31:58Z",
+  "published": "2026-05-06T12:30:31Z",
+  "aliases": [
+    "CVE-2026-43156"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: usb: pegasus: enable basic endpoint checking\n\npegasus_probe() fills URBs with hardcoded endpoint pipes without\nverifying the endpoint descriptors:\n\n  - usb_rcvbulkpipe(dev, 1) for RX data\n  - usb_sndbulkpipe(dev, 2) for TX data\n  - usb_rcvintpipe(dev, 3)  for status interrupts\n\nA malformed USB device can present these endpoints with transfer types\nthat differ from what the driver assumes.\n\nAdd a pegasus_usb_ep enum for endpoint numbers, replacing magic\nconstants throughout. Add usb_check_bulk_endpoints() and\nusb_check_int_endpoints() calls before any resource allocation to\nverify endpoint types before use, rejecting devices with mismatched\ndescriptors at probe time, and avoid triggering assertion.\n\nSimilar fix to\n- commit 90b7f2961798 (\"net: usb: rtl8150: enable basic endpoint checking\")\n- commit 9e7021d2aeae (\"net: usb: catc: enable basic endpoint checking\")",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43156"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/229dc9b9db475ac900182bafe258943e0e054c6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26b3ec62fa1a94ac801feca47f040fc729b3c174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2705709f6574a088aab246af72fc95f2fea51484"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/35854ed5c40b02f95824e44398f9d2ba33727203"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d7e6ce34f4fcc7083510c28b17a7c36462a25d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67ba6b13dbcaf45681fb6758794c5ac5fa589a6c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3e64e950a3981a8199de9798f6d21261b959171"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2e7c898cc02dfe42443489a67a45ed616cb76e9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:33Z"
+  }
+}

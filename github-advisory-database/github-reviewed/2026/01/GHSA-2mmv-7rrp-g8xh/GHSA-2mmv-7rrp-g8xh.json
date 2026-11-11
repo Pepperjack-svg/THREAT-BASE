@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2mmv-7rrp-g8xh",
+  "modified": "2026-01-12T20:07:14Z",
+  "published": "2026-01-12T16:13:33Z",
+  "aliases": [
+    "CVE-2026-22250"
+  ],
+  "summary": "Weblate command-line client susceptible to SSL verification skip",
+  "details": "### Impact\nThe SSL verification would be skipped for some crafted URLs.\n\n### Patches\n* https://github.com/WeblateOrg/wlc/pull/1097\n\n### Workarounds\nAvoid using untrusted wlc configurations, as that might cause insecure connections.\n\n### References\nThis issue was reported to us by [wh1zee](https://hackerone.com/wh1zee) via HackerOne.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:C/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "wlc"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.17.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/security/advisories/GHSA-2mmv-7rrp-g8xh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22250"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/pull/1097"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/commit/a513864ec4daad00146e6d6e039559726e256fa3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/WeblateOrg/wlc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-12T16:13:33Z",
+    "nvd_published_at": "2026-01-12T18:15:49Z"
+  }
+}

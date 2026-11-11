@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q99r-wqvw-gc4x",
+  "modified": "2025-11-12T12:30:28Z",
+  "published": "2025-11-12T12:30:28Z",
+  "aliases": [
+    "CVE-2025-40177"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/qaic: Fix bootlog initialization ordering\n\nAs soon as we queue MHI buffers to receive the bootlog from the device,\nwe could be receiving data. Therefore all the resources needed to\nprocess that data need to be setup prior to queuing the buffers.\n\nWe currently initialize some of the resources after queuing the buffers\nwhich creates a race between the probe() and any data that comes back\nfrom the device. If the uninitialized resources are accessed, we could\nsee page faults.\n\nFix the init ordering to close the race.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48814afc7372f96a9584125c8508dffc88d1d378"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/646868e6962b14e25ae7462fdd1fb061b40c1f16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd6e385528d8f85993b7bfc6430576136bb14c65"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-12T11:15:48Z"
+  }
+}

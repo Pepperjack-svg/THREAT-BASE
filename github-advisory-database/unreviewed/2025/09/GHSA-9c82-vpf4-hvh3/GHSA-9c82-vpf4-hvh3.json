@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9c82-vpf4-hvh3",
+  "modified": "2025-09-23T18:30:23Z",
+  "published": "2025-09-23T18:30:23Z",
+  "aliases": [
+    "CVE-2025-0663"
+  ],
+  "details": "A cross-tenant authentication vulnerability exists in multiple WSO2 products due to improper cryptographic design in Adaptive Authentication. A single cryptographic key is used across all tenants to sign authentication cookies, allowing a privileged user in one tenant to forge authentication cookies for users in other tenants.\n\nBecause the Auto-Login feature is enabled by default, this flaw may allow an attacker to gain unauthorized access and potentially take over accounts in other tenants. Successful exploitation requires access to Adaptive Authentication functionality, which is typically restricted to high-privileged users. The vulnerability is only exploitable when Auto-Login is enabled, reducing its practical impact in deployments where the feature is disabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-0663"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2025/WSO2-2025-3864"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-23T17:15:32Z"
+  }
+}

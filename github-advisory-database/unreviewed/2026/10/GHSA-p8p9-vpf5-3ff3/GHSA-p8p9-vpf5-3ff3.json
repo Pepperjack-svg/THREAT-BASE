@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p8p9-vpf5-3ff3",
+  "modified": "2026-10-14T06:31:16Z",
+  "published": "2026-10-14T06:31:16Z",
+  "aliases": [
+    "CVE-2026-50217"
+  ],
+  "details": "A use-after-free vulnerability in the Windows WFP callout driver of Akamai Guardicore Platform Agent (GPA) allows a local low-privileged user to cause a denial of service (system crash / BSOD) via an outbound ICMPv6 packet containing an IPv6 Hop-by-Hop extension header. When the IPv6 ICMP redirect policy is active, the packet is copied into a buffer that is freed but subsequently passed to a downstream filter. The size of the freed allocation is attacker-controlled (via packet length), enabling kernel pool grooming. Exploitation requires that the non-default IPv6 ICMP capture/redirect policy is enabled for the endpoint.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-50217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://techdocs.akamai.com/guardicore-platform-agent/changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.akamai.com/newsroom/security-advisories/guardicore-platform-agent-7-4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T06:17:06Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rvhf-6hhm-xg6w",
+  "modified": "2026-10-22T15:32:49Z",
+  "published": "2026-10-22T15:32:49Z",
+  "aliases": [
+    "CVE-2026-115411"
+  ],
+  "details": "crawlseo before version 0.2.4 contains a server-side request forgery vulnerability in its crawler engine where isPrivateIp() fails to block reserved IP ranges such as RFC 6598 Carrier-Grade NAT, RFC 6890, TEST-NET ranges and certain IPv6 addresses, and additionally fails to pin the validated address for the actual outbound connection, allowing a TOCTOU DNS rebinding bypass. An authenticated attacker can add a malicious domain that resolves to an internal or restricted address, trigger a crawl to reach internal services or cloud metadata endpoints like 169.254.169.254, and retrieve the fetched page's title, description, headings, status code and links through the crawl results API, enabling internal network reconnaissance.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115411"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/crawlseo/crawlseo/commit/76e4e693de0c6b294cf1f60656800e47346f1c28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/mansurmavlankulov/47cb8e183fec39a7afe599d1082a3399"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/crawlseo/crawlseo/releases?page=1#release-v0.2.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/crawlseo-before-server-side-request-forgery-via-crawler"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-22T14:17:39Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8gr4-rxj5-hxc5",
+  "modified": "2026-05-01T18:31:23Z",
+  "published": "2026-05-01T15:30:36Z",
+  "aliases": [
+    "CVE-2026-42476"
+  ],
+  "details": "Two heap-based out-of-bounds read vulnerabilities in the STL ASCII file parser in Open CASCADE Technology (OCCT) V8_0_0_rc5 exist in RWStl_Reader::ReadAscii because buffers returned by Standard_ReadLineBuffer::ReadLine() are not properly length-validated before strncasecmp or direct byte access. User-assisted attackers can trigger these issues by persuading a victim to open a crafted STL file with extremely short lines, resulting in a denial of service or possible information disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42476"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/sgInnora/dfba083d04906283e9c92aea78e2d94a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-01T15:16:43Z"
+  }
+}

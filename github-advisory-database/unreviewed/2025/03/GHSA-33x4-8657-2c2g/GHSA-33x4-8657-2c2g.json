@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-33x4-8657-2c2g",
+  "modified": "2025-03-12T00:31:47Z",
+  "published": "2025-03-12T00:31:47Z",
+  "aliases": [
+    "CVE-2022-49631"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nraw: Fix a data-race around sysctl_raw_l3mdev_accept.\n\nWhile reading sysctl_raw_l3mdev_accept, it can be changed concurrently.\nThus, we need to add READ_ONCE() to its reader.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49631"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/038a87b3e460d2ee579c8b1bd3890d816d6687b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1dace014928e6e385363032d359a04dee9158af0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46e9c46203fd4676720ddca0fef7eff26826648e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab5adca2e17d6595f3fc0e25ccb6bcbe2e01ca4f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc9540ba5b3652c473af7e54892a48cdced87983"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:38Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8c39-3r7m-gwc4",
+  "modified": "2026-10-11T15:31:07Z",
+  "published": "2026-10-11T15:31:07Z",
+  "aliases": [
+    "CVE-2026-108839"
+  ],
+  "details": "thClaws through 0.141.0 contains a link-following vulnerability in the post_inputs handler of the v1 API POST /v1/inputs endpoint that allows writes outside the workspace by following symlinks. Attackers who plant a symlink under the allowed inputs/ prefix can cause later authenticated uploads to write or truncate files outside the workspace with daemon privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108839"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thClaws/thClaws"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thClaws/thClaws/blob/v0.141.0/crates/core/src/api_v1/artifacts.rs#L335-L420"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/thclaws-api-inputs-symlink-escape"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/thclaws-through-0.141.0-symlink-following-file-write-via-post-v1-inputs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T14:17:04Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qxcc-j254-vh2v",
+  "modified": "2026-09-22T21:31:16Z",
+  "published": "2026-09-22T15:32:40Z",
+  "aliases": [
+    "CVE-2026-79313"
+  ],
+  "details": "webpy web.py 0.76 is vulnerable to Insufficient Session Expiration. The application's session management relies on periodic cleanup to expire sessions instead of checking the last-access time when a session is loaded. As a result, an expired session whose record has not yet been cleaned up can still be replayed and used, allowing an attacker holding a previously valid session cookie to continue accessing protected resources after the configured idle timeout.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79313"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lichoin/TraceLoom/blob/main/CVEs/CVE-2026-79313.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/webpy/webpy"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T15:17:15Z"
+  }
+}

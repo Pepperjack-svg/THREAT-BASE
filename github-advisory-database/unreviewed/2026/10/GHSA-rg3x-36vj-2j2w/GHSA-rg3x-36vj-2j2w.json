@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rg3x-36vj-2j2w",
+  "modified": "2026-10-20T18:31:44Z",
+  "published": "2026-10-20T18:31:43Z",
+  "aliases": [
+    "CVE-2026-113599"
+  ],
+  "details": "Modoboa before 2.8.0 contains an insecure direct object reference vulnerability that allows authenticated users to create auto-reply messages for arbitrary mailboxes by supplying another user's mbox value. Attackers can POST to /api/v2/armessages/ to inject attacker-controlled auto-reply subject and content into victims' settings or break their auto-reply management via MultipleObjectsReturned errors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113599"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modoboa/modoboa/issues/3945"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modoboa/modoboa/commit/e0a4e3b9ee8ad84dba46e4c0f04cbbe7cf78c38d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modoboa/modoboa/blob/2.7.2/modoboa/autoreply/api/v2/serializers.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modoboa/modoboa/releases/tag/2.8.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/modoboa-before-2.8.0-idor-via-api-v2-armessages-auto-reply-creation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-20T16:17:09Z"
+  }
+}

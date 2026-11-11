@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h524-c8gm-67jp",
+  "modified": "2026-10-13T21:33:39Z",
+  "published": "2026-10-13T21:33:39Z",
+  "aliases": [
+    "CVE-2026-110233"
+  ],
+  "details": "Rovr through 0.10.3 on Windows contains an OS command injection vulnerability that allows attackers to execute commands by crafting malicious file names. Attackers can deliver a file named with shell metacharacters like & alongside a payload, which runs with user privileges when the file is opened through open_file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110233"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NSPC911/rovr/blob/888a1efecd9eb92a773bb21451244c0edcf1a3f1/src/rovr/functions/path.py#L115-L158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NSPC911/rovr/blob/888a1efecd9eb92a773bb21451244c0edcf1a3f1/src/rovr/functions/path.py#L642-L701"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NSPC911/rovr/releases/tag/v0.10.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/HyCwXmsjfe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/rovr/0.10.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rovr-through-0.10.3-os-command-injection-via-unquoted-path-to-cmd-exe"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T19:18:48Z"
+  }
+}

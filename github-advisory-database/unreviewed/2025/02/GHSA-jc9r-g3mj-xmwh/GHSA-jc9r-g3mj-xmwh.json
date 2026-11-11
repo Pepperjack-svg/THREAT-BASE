@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jc9r-g3mj-xmwh",
+  "modified": "2025-02-27T21:32:14Z",
+  "published": "2025-02-27T21:32:14Z",
+  "aliases": [
+    "CVE-2022-49651"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsrcu: Tighten cleanup_srcu_struct() GP checks\n\nCurrently, cleanup_srcu_struct() checks for a grace period in progress,\nbut it does not check for a grace period that has not yet started but\nwhich might start at any time.  Such a situation could result in a\nuse-after-free bug, so this commit adds a check for a grace period that\nis needed but not yet started to cleanup_srcu_struct().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49651"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ed00760203d8018bee042fbfe8e076579be2c2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e997dda6502eefbc1032d6b0da7b353c53344b07"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:40Z"
+  }
+}

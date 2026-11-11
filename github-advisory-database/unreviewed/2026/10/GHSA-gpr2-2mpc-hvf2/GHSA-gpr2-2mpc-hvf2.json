@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gpr2-2mpc-hvf2",
+  "modified": "2026-10-06T21:31:54Z",
+  "published": "2026-10-06T21:31:54Z",
+  "aliases": [
+    "CVE-2026-102406"
+  ],
+  "details": "Authorization Bypass Through User-Controlled Key (CWE-639) in Kibana could lead to cross-tenant data interception. In this context, \"tenant\" refers to a user or team sharing the same Kibana deployment, not a separate Elastic Cloud organization or customer. Kibana's Fleet package installation process allowed a user holding delegated Fleet package-management privileges, without direct Elasticsearch administrative privileges, to claim a data stream identifier already in use by another tenant. Because ownership of that identifier was not verified before Fleet applied the uploaded package's generated index and ingest-pipeline settings to already-existing infrastructure, an attacker could redirect an existing tenant's data stream through infrastructure under their control. This exposed the affected tenant's subsequently ingested data to unauthorized disclosure and modification, and prevented that data from reaching its intended destination. Interception could continue even after the malicious package was removed, requiring separate remediation of the affected infrastructure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102406"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-22-9-4-7-9-5-4-security-update-esa-2026-187/390860"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T20:17:12Z"
+  }
+}

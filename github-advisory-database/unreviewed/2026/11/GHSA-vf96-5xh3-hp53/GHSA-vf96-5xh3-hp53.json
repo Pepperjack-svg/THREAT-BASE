@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vf96-5xh3-hp53",
+  "modified": "2026-11-09T21:31:40Z",
+  "published": "2026-11-04T00:32:21Z",
+  "aliases": [
+    "CVE-2026-120637"
+  ],
+  "details": "CGI versions before 5.00 for Perl take request parameters from the process command line arguments for an unrecognised REQUEST_METHOD.\n\nFor a REQUEST_METHOD such as OPTIONS, CGI falls through to its offline debugging mode, which is on by default, and builds the parameters and path_info from the process's command line arguments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/leejo/CGI.pm/commit/b753ff75a3bc4554c075cc37c1db605a55297029.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/LEEJO/CGI-4.72/source/lib/CGI.pm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/LEEJO/CGI-5.00/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-489"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T00:17:24Z"
+  }
+}

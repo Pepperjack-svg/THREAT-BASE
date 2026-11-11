@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-58wp-jwch-fgj5",
+  "modified": "2026-06-04T18:30:25Z",
+  "published": "2026-05-28T12:30:34Z",
+  "aliases": [
+    "CVE-2026-9813"
+  ],
+  "details": "FlowIntel up to version 3.3.0 contains a server-side request forgery (SSRF) vulnerability in the external reference URL probe functionality in app/case/task.py. An attacker who can submit an external reference URL can cause the application server to issue an HTTP HEAD request to an attacker-specified destination. Due to insufficient validation of the URL scheme and resolved destination address, affected versions may allow requests to loopback, link-local, private, reserved, or other restricted network resources, potentially enabling interaction with internal services or cloud metadata endpoints from the server's network context.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:A/VC:L/VI:N/VA:N/SC:L/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:N/AU:X/R:X/V:X/RE:L/U:Green"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9813"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flowintel/flowintel/commit/68b523b47854c54bf36fd706c0fd5353063b5409"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-28T10:16:40Z"
+  }
+}

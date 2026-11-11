@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v76p-9ff9-f29g",
+  "modified": "2025-04-17T21:30:44Z",
+  "published": "2025-04-17T21:30:44Z",
+  "aliases": [
+    "CVE-2022-49403"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nlib/string_helpers: fix not adding strarray to device's resource list\n\nAdd allocated strarray to device's resource list. This is a must to\nautomatically release strarray when the device disappears.\n\nWithout this fix we have a memory leak in the few drivers which use\ndevm_kasprintf_strarray().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49403"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a152eb42fcecfe41239c3c6695342f3a128593e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf29edab0c9ff3d2633b8306a67d04c357e2a385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd290a9839cee2f6641558877e707bd373c8f6f1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:16Z"
+  }
+}

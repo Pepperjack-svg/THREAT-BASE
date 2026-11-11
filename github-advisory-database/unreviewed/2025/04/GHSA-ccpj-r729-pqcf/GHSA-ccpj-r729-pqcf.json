@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ccpj-r729-pqcf",
+  "modified": "2025-04-14T21:32:22Z",
+  "published": "2025-04-14T21:32:22Z",
+  "aliases": [
+    "CVE-2022-49369"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\namt: fix possible memory leak in amt_rcv()\n\nIf an amt receives packets and it finds socket.\nIf it can't find a socket, it should free a received skb.\nBut it doesn't.\nSo, a memory leak would possibly occur.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49369"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a1a0e80e005cbdc2c250fc858e1d8570f4e4acb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b8032d39b276c52db57ff834c300405b9da2691"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60d9c020c69977e138727b3577bc6a0458325e9c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:13Z"
+  }
+}

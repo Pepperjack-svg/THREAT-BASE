@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8hvc-93qx-9q29",
+  "modified": "2026-08-04T12:34:43Z",
+  "published": "2025-12-24T12:30:26Z",
+  "aliases": [
+    "CVE-2023-53990"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nSMB3: Add missing locks to protect deferred close file list\n\ncifs_del_deferred_close function has a critical section which modifies\nthe deferred close file list. We must acquire deferred_lock before\ncalling cifs_del_deferred_close function.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53990"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f87e18203bd30f71eb1a65259e28e291b6cc43a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32a046ccaeea6c19965c04a4c521e703f6607924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3aa9d065b0685b4e6052f3f2a2462966fdc44fd2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab9ddc87a9055c4bebd6524d5d761d605d52e557"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb36365dac25d546ca4af0eb22acb43c9b4ddfdf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-24T11:15:51Z"
+  }
+}

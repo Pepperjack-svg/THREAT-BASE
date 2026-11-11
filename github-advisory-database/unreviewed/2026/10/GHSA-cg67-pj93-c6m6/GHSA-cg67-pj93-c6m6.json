@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cg67-pj93-c6m6",
+  "modified": "2026-10-11T15:31:06Z",
+  "published": "2026-10-11T15:31:06Z",
+  "aliases": [
+    "CVE-2026-108754"
+  ],
+  "details": "GPT-Load through 1.4.11 contains a cleartext logging vulnerability that exposes client proxy keys because the Gin Logger middleware records the raw query string before extractAuthKey strips the key parameter. Attackers with read access to console logs or ./data/logs/app.log can recover proxy keys from Gemini-style requests and use them against the corresponding group.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tbphp/gpt-load"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tbphp/gpt-load/blob/a12882be9e06011da5e0284db5dd4617a7ca6e6d/internal/middleware/middleware.go#L20-L74"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tbphp/gpt-load/blob/a12882be9e06011da5e0284db5dd4617a7ca6e6d/internal/middleware/middleware.go#L247-L254"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind03/tbphp-gpt-load-proxy-key-access-log-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gpt-load-through-1.4.11-cleartext-proxy-key-logging-via-access-logger"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T13:17:20Z"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jxwj-6v7h-hf97",
+  "modified": "2026-07-30T06:32:25Z",
+  "published": "2025-12-16T18:31:34Z",
+  "aliases": [
+    "CVE-2025-68303"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: intel: punit_ipc: fix memory corruption\n\nThis passes the address of the pointer \"&punit_ipcdev\" when the intent\nwas to pass the pointer itself \"punit_ipcdev\" (without the ampersand).\nThis means that the:\n\n\tcomplete(&ipcdev->cmd_complete);\n\nin intel_punit_ioc() will write to a wrong memory address corrupting it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15d560cdf5b36c51fffec07ac2a983ab3bff4cb2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e7442c5802146fd418ba3f68dcb9ca92b5cec83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46e9d6f54184573dae1dcbcf6685a572ba6f4480"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b9c0adbc3f8a524d291baccc9d0c04097fb4869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a21615a4ac6fecbb586d59fe2206b63501021789"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2ee6d38996775a19bfdf20cb01a9b8698cb0baa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-16T16:16:09Z"
+  }
+}

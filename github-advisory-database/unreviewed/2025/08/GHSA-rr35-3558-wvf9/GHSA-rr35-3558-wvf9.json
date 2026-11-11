@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rr35-3558-wvf9",
+  "modified": "2025-08-22T15:33:05Z",
+  "published": "2025-08-11T15:32:41Z",
+  "aliases": [
+    "CVE-2025-8672"
+  ],
+  "details": "MacOS version of GIMP bundles a Python interpreter that inherits the Transparency, Consent, and Control (TCC) permissions\ngranted by the user to the main application bundle. An attacker with local user access can\ninvoke this interpreter with arbitrary commands or scripts, leveraging the\napplication's previously granted TCC permissions to access user's files in privacy-protected folders without triggering user prompts. Accessing other resources beyond previously granted TCC permissions will prompt the user for approval in the name of GIMP, potentially disguising attacker's malicious intent.\n\nThis issue has been fixed in 3.1.4.2 version of GIMP.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-8672"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2025/08/tcc-bypass"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/GNOME/gimp/-/issues/13848"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/Infrastructure/gimp-macos-build"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jamf.com/blog/zero-day-tcc-bypass-discovered-in-xcsset-malware"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-276"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-11T13:15:37Z"
+  }
+}

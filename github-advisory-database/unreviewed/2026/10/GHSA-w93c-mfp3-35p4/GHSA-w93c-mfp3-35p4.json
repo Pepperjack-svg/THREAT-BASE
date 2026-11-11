@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w93c-mfp3-35p4",
+  "modified": "2026-10-02T21:32:06Z",
+  "published": "2026-10-02T21:32:06Z",
+  "aliases": [
+    "CVE-2026-82040"
+  ],
+  "details": "UTMStack before 11.2.16 contains a server-side request forgery vulnerability in IdentityProviderService.validateMetadataUrl() that allows authenticated attackers to make the server send requests to arbitrary internal or cloud metadata hosts by supplying a malicious metadata URL to the identity-providers endpoint. Attackers can exploit the POST/PUT /api/identity-providers endpoint with no validation of target host, IP, or scheme to perform internal network port scanning and access cloud instance-metadata services.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82040"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/utmstack/UTMStack/commit/4e7a727c3b8d8e2ad020d3b4f982a6d085dbecdd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/UTMStack/UTMStack/releases/tag/v11.2.16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/utmstack-ssrf-via-identityproviderservice"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-02T20:17:04Z"
+  }
+}

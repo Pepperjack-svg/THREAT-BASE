@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m8f2-rw7m-jrxf",
+  "modified": "2026-03-25T21:30:22Z",
+  "published": "2026-01-14T15:33:00Z",
+  "aliases": [
+    "CVE-2025-71110"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/slub: reset KASAN tag in defer_free() before accessing freed memory\n\nWhen CONFIG_SLUB_TINY is enabled, kfree_nolock() calls kasan_slab_free()\nbefore defer_free(). On ARM64 with MTE (Memory Tagging Extension),\nkasan_slab_free() poisons the memory and changes the tag from the\noriginal (e.g., 0xf3) to a poison tag (0xfe).\n\nWhen defer_free() then tries to write to the freed object to build the\ndeferred free list via llist_add(), the pointer still has the old tag,\ncausing a tag mismatch and triggering a KASAN use-after-free report:\n\n  BUG: KASAN: slab-use-after-free in defer_free+0x3c/0xbc mm/slub.c:6537\n  Write at addr f3f000000854f020 by task kworker/u8:6/983\n  Pointer tag: [f3], memory tag: [fe]\n\nFix this by calling kasan_reset_tag() before accessing the freed memory.\nThis is safe because defer_free() is part of the allocator itself and is\nexpected to manipulate freed memory for bookkeeping purposes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53ca00a19d345197a37a1bf552e8d1e7b091666c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65d4e5af2a2e82f4fc50d8259aee208fbc6b2c1d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-14T15:16:00Z"
+  }
+}

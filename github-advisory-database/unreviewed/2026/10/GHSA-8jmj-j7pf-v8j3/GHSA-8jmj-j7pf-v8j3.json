@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8jmj-j7pf-v8j3",
+  "modified": "2026-10-19T18:32:05Z",
+  "published": "2026-10-18T15:30:29Z",
+  "aliases": [
+    "CVE-2026-112052"
+  ],
+  "details": "libspatialite through 5.1.0 contains an integer overflow vulnerability in the WKB point and vertex count size guard of ParseWkbLine and related parsers in gg_wkb.c, allowing out-of-bounds reads. Attackers can supply a crafted geometry BLOB with a large point count, for example in a SpatiaLite database file, to crash the process or corrupt heap memory on 32-bit builds.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112052"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/cve-2026-112048-112052-libspatialite-wkb-geometry-count-overflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/libspatialite-wkb-geometry-count-overflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.gaia-gis.it/fossil/libspatialite/file?name=src/gaiageo/gg_wkb.c&ci=5a5528e8d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libspatialite-through-5.1.0-integer-overflow-in-wkb-geometry-parsing"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T13:16:37Z"
+  }
+}

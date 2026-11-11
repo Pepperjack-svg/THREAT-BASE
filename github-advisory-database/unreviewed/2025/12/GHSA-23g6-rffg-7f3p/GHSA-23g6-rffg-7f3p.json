@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-23g6-rffg-7f3p",
+  "modified": "2025-12-08T03:31:00Z",
+  "published": "2025-12-08T03:31:00Z",
+  "aliases": [
+    "CVE-2025-40294"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: Fix OOB access in parse_adv_monitor_pattern()\n\nIn the parse_adv_monitor_pattern() function, the value of\nthe 'length' variable is currently limited to HCI_MAX_EXT_AD_LENGTH(251).\nThe size of the 'value' array in the mgmt_adv_pattern structure is 31.\nIf the value of 'pattern[i].length' is set in the user space\nand exceeds 31, the 'patterns[i].value' array can be accessed\nout of bound when copied.\n\nIncreasing the size of the 'value' array in\nthe 'mgmt_adv_pattern' structure will break the userspace.\nConsidering this, and to avoid OOB access revert the limits for 'offset'\nand 'length' back to the value of HCI_MAX_AD_LENGTH.\n\nFound by InfoTeCS on behalf of Linux Verification Center\n(linuxtesting.org) with SVACE.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40294"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a50d59b3781bc3a4e96533612509546a4c309a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b7d4aa5399b5a64caee639275615c63c008540d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5f7350ff2b179764a4f40ba4161b60b8aaef857b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d59fba49362c65332395789fd82771f1028d87e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96616530f524a0a76248cd44201de0a9e8526190"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-08T01:16:01Z"
+  }
+}

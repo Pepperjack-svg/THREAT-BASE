@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3jh3-prx3-w6wc",
+  "modified": "2026-02-24T16:08:41Z",
+  "published": "2026-02-23T22:15:03Z",
+  "aliases": [
+    "CVE-2026-27126"
+  ],
+  "summary": "Craft CMS has Stored XSS in Table Field via \"HTML\" Column Type",
+  "details": "A stored Cross-site Scripting (XSS) vulnerability exists in the `editableTable.twig` component when using the `html` column type. The application fails to sanitize the input, allowing an attacker to execute arbitrary JavaScript when another user views a page with the malicious table field.\n\n## Prerequisites\n* An administrator account\n* `allowAdminChanges` must be enabled in production, which is [against our security recommendations](https://craftcms.com/knowledge-base/securing-craft#set-allowAdminChanges-to-false-in-production).\n\n## Steps to Reproduce\n1. Navigate to **Settings** → **Fields** and create a new field with Type: **Table**\n1. Add a **Column Heading** and set **Column Type** to `Single-line text`\n    - **Note:** The vulnerable **Column Type** is `html`, but it's not available in the UI dropdown.\n1. In **Default Values** section, add a row with the following payload:\n    ```html\n    <img src=x onerror=\"alert('XSS')\">\n    ```\n1. Enable `Static Rows`\n1. Intercept the **Save Field** request using a proxy tool (e.g., Burp Suite) or use `cURL` directly\n1. Modify the request body and change the `types[craft-fields-Table][columns][col3][type]` parameter from `singleline` to `html`\n1. Forward the request to save the field\n1. Use the field in any object (e.g. user profile fields) → then visit the any user's profile\n1. Notice the XSS execution\n1. The XSS will also trigger when an administrator attempts to edit this field, as the malicious payload is executed within the field configuration page, too.\n\n## Resources\n\nhttps://github.com/craftcms/cms/commit/f5d488d9bb6eff7670ed2c2fe30e15692e92c52b",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.5.0-RC1"
+            },
+            {
+              "fixed": "4.16.19"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.16.18"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-RC1"
+            },
+            {
+              "fixed": "5.8.23"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.8.22"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-3jh3-prx3-w6wc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27126"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/f5d488d9bb6eff7670ed2c2fe30e15692e92c52b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-02-23T22:15:03Z",
+    "nvd_published_at": "2026-02-24T03:16:02Z"
+  }
+}

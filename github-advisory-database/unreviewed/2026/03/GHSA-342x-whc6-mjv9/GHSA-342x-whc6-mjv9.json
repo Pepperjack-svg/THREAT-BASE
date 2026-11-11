@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-342x-whc6-mjv9",
+  "modified": "2026-03-21T06:30:25Z",
+  "published": "2026-03-21T06:30:25Z",
+  "aliases": [
+    "CVE-2026-4087"
+  ],
+  "details": "The Pre* Party Resource Hints plugin for WordPress is vulnerable to SQL Injection via the 'hint_ids' parameter of the pprh_update_hints AJAX action in all versions up to, and including, 1.8.20. This is due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with Subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4087"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samperrow/pre-party-browser-hints"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pre-party-browser-hints/tags/1.8.20/includes/admin/LoadAdmin.php#L72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pre-party-browser-hints/tags/1.8.20/includes/common/DAO.php#L78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pre-party-browser-hints/tags/1.8.20/includes/common/DAO.php#L91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/pre-party-browser-hints/tags/1.8.20/includes/utils/Utils.php#L80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/8ceb4750-0780-4437-a3b0-c4c4606f2715?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-21T04:17:41Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7p6v-mhj8-c3pr",
+  "modified": "2026-10-16T18:34:43Z",
+  "published": "2026-10-16T18:34:43Z",
+  "aliases": [
+    "CVE-2026-111621"
+  ],
+  "details": "TDuck Survey Form through 5.3 contains a missing authorization vulnerability that allows any authenticated user to read other owners' raw form settings via GET /user/form/setting/{key}. Attackers can supply the 8-character form key from a public fill link to obtain the form write password, owner notification e-mail, and WeChat openIds.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111621"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TDuckCloud/tduck-survey-form/commit/984efd69f51778e3d1a9ea0feb0f7c9aed266c18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TDuckCloud/tduck-survey-form"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TDuckCloud/tduck-survey-form/blob/5.3/tduck-api/src/main/java/com/tduck/cloud/api/web/controller/UserFormSettingController.java#L66-L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/tduck-survey-form-setting-cross-user-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/tduck-survey-form-through-5.3-missing-authorization-via-user-form-setting-key"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:41Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xp25-2fp7-pffp",
+  "modified": "2026-10-19T12:32:51Z",
+  "published": "2026-10-19T12:32:51Z",
+  "aliases": [
+    "CVE-2026-85249"
+  ],
+  "details": "Improper Input Validation vulnerability in Apache Camel Tika component.\n\nThis issue affects Apache Camel: from 4.0.0 before 4.18.5, from 4.19.0 before 4.22.1.\n\nThe Tika producer mapped every metadata key parsed out of the submitted document onto the Exchange as a header, with no filter applied. Document metadata is attacker-controlled content: the party that supplies the file chooses the metadata keys it carries. A crafted document could therefore set Exchange headers that the rest of the route depends on, including headers in the Camel namespace such as CamelFileName, which downstream components use to decide where content is written. The pattern is the same header-injection class as the consumer advisories published previously, reached here through parsed file content rather than through a protocol header.\n\nUpgrade to Apache Camel 4.23.0, which fixes the issue. Users on the 4.18.x LTS releases stream should upgrade to 4.18.5. Users on the 4.22.x LTS releases stream should upgrade to 4.22.1. Parsed document metadata is now filtered through a HeaderFilterStrategy before it is mapped onto the Exchange. A route that was reading a metadata-derived header the filter now blocks will see it missing. For deployments that cannot upgrade immediately, strip the Camel namespace after the Tika producer with removeHeaders(\"Camel*\") before any component that acts on those headers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/25819"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/25940"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/25942"
+    },
+    {
+      "type": "WEB",
+      "url": "https://camel.apache.org/security/CVE-2026-85249.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.apache.org/jira/browse/CAMEL-24423"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T11:17:23Z"
+  }
+}

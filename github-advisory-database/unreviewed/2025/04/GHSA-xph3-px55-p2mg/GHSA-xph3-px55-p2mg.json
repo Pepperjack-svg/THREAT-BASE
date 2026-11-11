@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xph3-px55-p2mg",
+  "modified": "2025-11-03T21:33:34Z",
+  "published": "2025-04-16T15:34:38Z",
+  "aliases": [
+    "CVE-2023-53034"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntb_hw_switchtec: Fix shift-out-of-bounds in switchtec_ntb_mw_set_trans\n\nThere is a kernel API ntb_mw_clear_trans() would pass 0 to both addr and\nsize. This would make xlate_pos negative.\n\n[   23.734156] switchtec switchtec0: MW 0: part 0 addr 0x0000000000000000 size 0x0000000000000000\n[   23.734158] ================================================================================\n[   23.734172] UBSAN: shift-out-of-bounds in drivers/ntb/hw/mscc/ntb_hw_switchtec.c:293:7\n[   23.734418] shift exponent -1 is negative\n\nEnsuring xlate_pos is a positive or zero before BIT.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53034"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0df2e03e4620548b41891b4e0d1bd9d2e0d8a39a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2429bdf26a0f3950fdd996861e9c1a3873af1dbe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36d32cfb00d42e865396424bb5d340fc0a28870d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b6857bb3bfb0dae17fab1e42c1e82c204a508b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ed22f8d8be26225a78cf5e85b2036421a6bf2d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c61a3f2df162ba424be0141649a9ef5f28eaccc1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb153bdc1812a3375639ed6ca5f147eaefb65349"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de203da734fae00e75be50220ba5391e7beecdf9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f56951f211f181410a383d305e8d370993e45294"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:15:52Z"
+  }
+}

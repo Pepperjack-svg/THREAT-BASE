@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7hj3-vffx-jm3w",
+  "modified": "2026-11-10T00:31:49Z",
+  "published": "2026-11-10T00:31:49Z",
+  "aliases": [
+    "CVE-2026-125390"
+  ],
+  "details": "Group-Office before 6.8.181, 25.0.116, and 26.0.58 contains an arbitrary local file read vulnerability in FolderController::actionProcessUploadQueue that allows authenticated users to read server files by supplying absolute paths in the blobs parameter. Attackers can have files hard-linked or copied into their own folder and downloaded, exposing other users' stored files and config.php database credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Intermesh/groupoffice/security/advisories/GHSA-pf66-g36v-7698"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125390"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Intermesh/groupoffice/commit/3c8e2104e65242b611f7d5a9a19452e369b6f28d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Intermesh/groupoffice/commit/46b9d67e26765d9fad558c143e5d1bed45b636ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Intermesh/groupoffice/commit/5fd450887af707596fb6bdffa1fa1011064460a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Intermesh/groupoffice/blob/v26.0.57/www/modules/files/controller/FolderController.php#L1550"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/group-office-before-6.8.181-25.0.116-and-26.0.58-local-file-read-via-processuploadqueue"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-36"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T00:17:12Z"
+  }
+}

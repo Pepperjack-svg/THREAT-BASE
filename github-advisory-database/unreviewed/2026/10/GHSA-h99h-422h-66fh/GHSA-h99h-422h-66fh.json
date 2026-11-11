@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h99h-422h-66fh",
+  "modified": "2026-10-18T18:31:50Z",
+  "published": "2026-10-18T18:31:50Z",
+  "aliases": [
+    "CVE-2026-98480"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfc: trf7970a: power down on startup RX gain failure\n\ntrf7970a_startup() powers up the device before applying the optional RX\ngain reduction. If the register read or write fails, it returns without\nundoing that power-up. Probe's unwind only drops the separate regulator\nreferences acquired by probe, leaving the additional VIN enable from\nstartup unbalanced. The system resume caller also has no power-down on\nthis error.\n\nCall trf7970a_power_down() before returning the RX gain error to deassert\nthe enable GPIOs, release the startup VIN reference and restore the\npowered-off state. Runtime PM has not been enabled yet, so the full\nshutdown helper is not appropriate here. Preserve the original SPI error.\n\nThis issue was identified during our ongoing static-analysis research while\nreviewing kernel code.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98480"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ef70d790425e76b42c69e416ee78c62bdc37d00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc444e4ad43461374dd128573eccb8979d2adb4c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2acbde7e67df44efa8f0963462d1192e7694ffc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:16:58Z"
+  }
+}

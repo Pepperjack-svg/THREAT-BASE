@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5r7j-r8w6-f8xc",
+  "modified": "2026-07-30T06:32:20Z",
+  "published": "2025-12-07T00:30:56Z",
+  "aliases": [
+    "CVE-2025-40282"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: 6lowpan: reset link-local header on ipv6 recv path\n\nBluetooth 6lowpan.c netdev has header_ops, so it must set link-local\nheader for RX skb, otherwise things crash, eg. with AF_PACKET SOCK_RAW\n\nAdd missing skb_reset_mac_header() for uncompressed ipv6 RX path.\n\nFor the compressed one, it is done in lowpan_header_decompress().\n\nLog: (BlueZ 6lowpan-tester Client Recv Raw - Success)\n------\nkernel BUG at net/core/skbuff.c:212!\nCall Trace:\n<IRQ>\n...\npacket_rcv (net/packet/af_packet.c:2152)\n...\n<TASK>\n__local_bh_enable_ip (kernel/softirq.c:407)\nnetif_rx (net/core/dev.c:5648)\nchan_recv_cb (net/bluetooth/6lowpan.c:294 net/bluetooth/6lowpan.c:359)\n------",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11cd7e068381666f842ad41d1cc58eecd0c75237"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b78f50918276ab28fb22eac9aa49401ac436a3b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ebb90c3c309e6375dc3e841af92e2a039843e62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70d84e7c3a44b81020a3c3d650a64c63593405bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/973e0271754c77db3e1b6b69adf2de85a79a4c8b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c24ac6cfe4f9a47180a65592c47e7a310d2f9d93"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d566e9a2bfc848941b091ffd5f4e12c4e889d818"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea46a1d217bc82e01cf3d0424e50ebfe251e34bf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-06T22:15:56Z"
+  }
+}

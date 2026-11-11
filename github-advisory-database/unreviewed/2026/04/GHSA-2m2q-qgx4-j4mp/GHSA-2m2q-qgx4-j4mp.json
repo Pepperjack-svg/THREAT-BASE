@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2m2q-qgx4-j4mp",
+  "modified": "2026-04-15T18:31:52Z",
+  "published": "2026-04-13T21:30:43Z",
+  "aliases": [
+    "CVE-2026-29955"
+  ],
+  "details": "The `/registercrd` endpoint in KubePlus 4.14 in the kubeconfiggenerator component is vulnerable to command injection. The component uses `subprocess.Popen()` with `shell=True` parameter to execute shell commands, and the user-supplied `chartName` parameter is directly concatenated into the command string without any sanitization or validation. An attacker can inject arbitrary shell commands by crafting a malicious `chartName` parameter value.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-29955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/b0b0haha/f011fdd69adc3ae272a4e3b99af90163"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/b0b0haha/CVE-2026-29955/blob/main/README.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-13T19:16:39Z"
+  }
+}

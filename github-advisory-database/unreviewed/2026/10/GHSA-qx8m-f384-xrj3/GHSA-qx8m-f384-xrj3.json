@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qx8m-f384-xrj3",
+  "modified": "2026-10-05T00:30:25Z",
+  "published": "2026-10-05T00:30:25Z",
+  "aliases": [
+    "CVE-2026-105220"
+  ],
+  "details": "Twine 2 desktop through 2.12.0 contains a cross-site scripting vulnerability in importStories() that executes markup from imported story files in the editor window. Attackers can craft a story file whose script calls the twineElectron openWithScratchFile IPC bridge to write and open a .bat file, executing code as the user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/klembot/twinejs/issues/1706"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/klembot/twinejs/commit/3a9af28cabe9684730beb8b578132cad9bb5bc60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/klembot/twinejs/commit/8e8a2bef5b1e20c58b99d22a2a4d8d867fb421cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/klembot/twinejs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/klembot/twinejs/blob/2.12.0/src/electron/main-process/scratch-file.ts#L57-L63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/klembot/twinejs/blob/2.12.0/src/util/import.ts#L134-L136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/twine-2-desktop-through-2.12.0-arbitrary-code-execution-via-imported-story-files"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-04T23:16:59Z"
+  }
+}

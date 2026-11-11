@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h6jg-7g8r-wgqw",
+  "modified": "2026-05-27T09:31:15Z",
+  "published": "2026-05-27T09:31:15Z",
+  "aliases": [
+    "CVE-2026-6169"
+  ],
+  "details": "The affiliate-toolkit plugin for WordPress is vulnerable to remote code execution in all versions up to, and including, 3.8.5. This is due to the plugin using the BladeOne templating engine's runString() method which compiles user-supplied template content into PHP code and executes it via eval() without sanitization or sandboxing. This makes it possible for authenticated attackers, with Editor-level access and above, to execute arbitrary code on the server by injecting PHP into a plugin template.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6169"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/affiliate-toolkit-starter/tags/3.8.5/includes/atkp_posttypes_template.php#L735"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/affiliate-toolkit-starter/tags/3.8.5/includes/helper/atkp_template_helper.php#L1074"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/affiliate-toolkit-starter/tags/3.8.5/lib/bladeone/BladeOne.php#L320"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b6310a0c-5a96-4dbc-940e-025c9b907c7d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T08:16:44Z"
+  }
+}

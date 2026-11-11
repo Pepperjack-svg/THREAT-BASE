@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q2h6-ghwm-5qm8",
+  "modified": "2026-06-25T21:29:40Z",
+  "published": "2026-06-25T21:29:39Z",
+  "aliases": [
+    "CVE-2026-48516"
+  ],
+  "summary": "MessagePack-CSharp: InterfaceLookupFormatter bypasses collision-resistant comparer settings",
+  "details": "## Summary\n\n`InterfaceLookupFormatter<TKey,TElement>` constructs an internal `Dictionary<TKey, IGrouping<TKey,TElement>>` with the default equality comparer instead of the security-aware comparer supplied by `options.Security.GetEqualityComparer<TKey>()`.\n\nOther hash-based collection formatters use the security-aware comparer when `MessagePackSecurity.UntrustedData` is configured. This formatter omission allows hash-collision CPU denial of service against `ILookup<TKey,TElement>` even when the application has opted into the untrusted-data security posture.\n\n## Impact\n\nApplications are affected when they deserialize untrusted payloads into schemas containing `ILookup<TKey,TElement>` with a key type for which attacker-controlled hash collisions are feasible.\n\nUnder the default comparer, many colliding keys can degrade dictionary insertion from amortized constant time to quadratic behavior. A payload of colliding keys can consume CPU for a disproportionate amount of time. This bypasses the mitigation that developers intentionally enabled by using `MessagePackSecurity.UntrustedData`.\n\n## Affected components\n\n- Package: `MessagePack`\n- API: `InterfaceLookupFormatter<TKey,TElement>.Create`\n- Data type: `ILookup<TKey,TElement>`\n- Finding ID: `MESSAGEPACKCSHARP-041`\n\n## Patches\n\nFixes are prepared and will be released in coordinated patch versions.\n\nUpgrade guidance:\n\n1. Upgrade `MessagePack` to the patched version for your release line.\n2. Upgrade companion MessagePack packages in the same dependency graph to the coordinated patched versions.\n\nThe fix should create the internal dictionary with `options.Security.GetEqualityComparer<TKey>()`, matching the sibling dictionary and lookup formatter behavior.\n\n## Workarounds\n\nPatching is recommended.\n\nUntil a patched version is available, avoid exposing `ILookup<TKey,TElement>` in DTOs that deserialize untrusted data. Use collection shapes that are already protected by the security-aware comparer path, or validate and cap collection sizes at the transport boundary.\n\n## Resources\n\n- `MESSAGEPACKCSHARP-041`: `InterfaceLookupFormatter` missing security comparer\n- CWE-407: Inefficient Algorithmic Complexity",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "MessagePack"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.5.301"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "MessagePack"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0"
+            },
+            {
+              "fixed": "3.1.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/MessagePack-CSharp/MessagePack-CSharp/security/advisories/GHSA-q2h6-ghwm-5qm8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48516"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/MessagePack-CSharp/MessagePack-CSharp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-25T21:29:39Z",
+    "nvd_published_at": "2026-06-22T22:16:48Z"
+  }
+}

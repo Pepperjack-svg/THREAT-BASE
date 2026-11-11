@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4m98-x48v-hh97",
+  "modified": "2025-11-07T21:31:19Z",
+  "published": "2025-05-01T15:31:48Z",
+  "aliases": [
+    "CVE-2022-49813"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ena: Fix error handling in ena_init()\n\nThe ena_init() won't destroy workqueue created by\ncreate_singlethread_workqueue() when pci_register_driver() failed.\nCall destroy_workqueue() when pci_register_driver() failed to prevent the\nresource leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49813"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e2369223b174d198ec42a3ec0a7f06c8727b968"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f7b2ef8fe924e299bc339811ea3f1b9935c040f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b23a4b252044e4fd23438930d452244818d7000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d349e9be5a2c2d7588a2c4e4bfa0bb3dc1226769"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:04Z"
+  }
+}

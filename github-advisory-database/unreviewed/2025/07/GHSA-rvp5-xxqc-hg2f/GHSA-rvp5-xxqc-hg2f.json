@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rvp5-xxqc-hg2f",
+  "modified": "2025-11-19T21:31:16Z",
+  "published": "2025-07-25T15:30:54Z",
+  "aliases": [
+    "CVE-2025-38423"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: codecs: wcd9375: Fix double free of regulator supplies\n\nDriver gets regulator supplies in probe path with\ndevm_regulator_bulk_get(), so should not call regulator_bulk_free() in\nerror and remove paths to avoid double free.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63fe298652d4eda07d738bfcbbc59d1343a675ef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8228b5f3d74fd8ad4dfc79d5d601eb6fca5e63e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce30258c05d39b62a05c99016d7148b3bf60fbdc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-25T15:15:27Z"
+  }
+}

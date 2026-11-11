@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hc3m-pcgg-jv94",
+  "modified": "2025-11-19T15:31:28Z",
+  "published": "2025-05-20T18:30:54Z",
+  "aliases": [
+    "CVE-2025-37898"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npowerpc64/ftrace: fix module loading without patchable function entries\n\nget_stubs_size assumes that there must always be at least one patchable\nfunction entry, which is not always the case (modules that export data\nbut no code), otherwise it returns -ENOEXEC and thus the section header\nsh_size is set to that value. During module_memory_alloc() the size is\npassed to execmem_alloc() after being page-aligned and thus set to zero\nwhich will cause it to fail the allocation (and thus module loading) as\n__vmalloc_node_range() checks for zero-sized allocs and returns null:\n\n[  115.466896] module_64: cast_common: doesn't contain __patchable_function_entries.\n[  115.469189] ------------[ cut here ]------------\n[  115.469496] WARNING: CPU: 0 PID: 274 at mm/vmalloc.c:3778 __vmalloc_node_range_noprof+0x8b4/0x8f0\n...\n[  115.478574] ---[ end trace 0000000000000000 ]---\n[  115.479545] execmem: unable to allocate memory\n\nFix this by removing the check completely, since it is anyway not\nhelpful to propagate this as an error upwards.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37898"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/358b559afec7806b9d01c2405b490e782c347022"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/534f5a8ba27863141e29766467a3e1f61bcb47ac"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-20T16:15:26Z"
+  }
+}

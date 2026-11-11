@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g832-wq36-x2w6",
+  "modified": "2025-08-23T06:30:20Z",
+  "published": "2025-08-23T06:30:20Z",
+  "aliases": [
+    "CVE-2025-9048"
+  ],
+  "details": "The Wptobe-memberships plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the del_img_ajax_call() function in all versions up to, and including, 3.4.2. This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-9048"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.svn.wordpress.org/wptobe-memberships/trunk/bwlms-fields/bwlms-fields.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wptobe-memberships/trunk/bwlms-fields/bwlms-fields.php#L156"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/466568c5-33a9-4891-b4ad-9bc6052603cb?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-23T05:15:33Z"
+  }
+}

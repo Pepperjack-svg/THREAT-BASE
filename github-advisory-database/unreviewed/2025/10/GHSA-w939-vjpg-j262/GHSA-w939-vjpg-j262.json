@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w939-vjpg-j262",
+  "modified": "2026-02-04T00:30:27Z",
+  "published": "2025-10-07T18:31:09Z",
+  "aliases": [
+    "CVE-2023-53636"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nclk: microchip: fix potential UAF in auxdev release callback\n\nSimilar to commit 1c11289b34ab (\"peci: cpu: Fix use-after-free in\nadev_release()\"), the auxiliary device is not torn down in the correct\norder. If auxiliary_device_add() fails, the release callback will be\ncalled twice, resulting in a UAF. Due to timing, the auxdev code in this\ndriver \"took inspiration\" from the aforementioned commit, and thus its\nbugs too!\n\nMoving auxiliary_device_uninit() to the unregister callback instead\navoids the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b4052aa956e11bcd19e50ca559eb38dcb46201b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7455b7007b9e93bcc2bc9c1c6c73a228e3152069"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/934406b2d42eaf3fc57f5546cc68ff7ab9680bb3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7d6dacf39ed102d7667721ca1700022c9c8b11a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-07T16:15:46Z"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-96wc-h5c4-3f6j",
+  "modified": "2026-05-12T15:31:08Z",
+  "published": "2025-09-16T15:32:35Z",
+  "aliases": [
+    "CVE-2025-39819"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/smb: Fix inconsistent refcnt update\n\nA possible inconsistent update of refcount was identified in `smb2_compound_op`.\nSuch inconsistent update could lead to possible resource leaks.\n\nWhy it is a possible bug:\n1. In the comment section of the function, it clearly states that the\nreference to `cfile` should be dropped after calling this function.\n2. Every control flow path would check and drop the reference to\n`cfile`, except the patched one.\n3. Existing callers would not handle refcount update of `cfile` if\n-ENOMEM is returned.\n\nTo fix the bug, an extra goto label \"out\" is added, to make sure that the\ncleanup logic would always be respected. As the problem is caused by the\nallocation failure of `vars`, the cleanup logic between label \"finished\"\nand \"out\" can be safely ignored. According to the definition of function\n`is_replayable_error`, the error code of \"-ENOMEM\" is not recoverable.\nTherefore, the replay logic also gets ignored.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-39819"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3fc11ff13fbc2749871d6ac2141685cf54699997"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4191ea1f0bb3e27d65c5dcde7bd00e709ec67141"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4735f5991f51468b85affb8366b7067248457a71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab529e6ca1f67bcf31f3ea80c72bffde2e9e053e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc82c6dff548f0066a51a6e577c7454e7d26a968"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/10/msg00008.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-16T13:15:58Z"
+  }
+}

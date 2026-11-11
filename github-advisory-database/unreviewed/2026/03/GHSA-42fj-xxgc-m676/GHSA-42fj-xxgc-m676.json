@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-42fj-xxgc-m676",
+  "modified": "2026-03-10T21:32:14Z",
+  "published": "2026-03-09T12:31:39Z",
+  "aliases": [
+    "CVE-2025-15576"
+  ],
+  "details": "If two sibling jails are restricted to separate filesystem trees, which is to say that neither of the two jail root directories is an ancestor of the other, jailed processes may nonetheless be able to access a shared directory via a nullfs mount, if the administrator has configured one.\n\nIn this case, cooperating processes in the two jails may establish a connection using a unix domain socket and exchange directory descriptors with each other.\n\nWhen performing a filesystem name lookup, at each step of the lookup, the kernel checks whether the lookup would descend below the jail root of the current process.  If the jail root directory is not encountered, the lookup continues.\n\nIn a configuration where processes in two different jails are able to exchange file descriptors using a unix domain socket, it is possible for a jailed process to receive a directory for a descriptor that is below that process' jail root.  This enables full filesystem access for a jailed process, breaking the chroot.\n\nNote that the system administrator is still responsible for ensuring that an unprivileged user on the jail host is not able to pass directory descriptors to a jailed process, even in a patched kernel.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-15576"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-26:04.jail.asc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-09T12:16:11Z"
+  }
+}

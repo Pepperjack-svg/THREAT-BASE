@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f5rg-cp58-cwjr",
+  "modified": "2026-10-15T03:34:46Z",
+  "published": "2025-04-16T15:34:41Z",
+  "aliases": [
+    "CVE-2025-22060"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mvpp2: Prevent parser TCAM memory corruption\n\nProtect the parser TCAM/SRAM memory, and the cached (shadow) SRAM\ninformation, from concurrent modifications.\n\nBoth the TCAM and SRAM tables are indirectly accessed by configuring\nan index register that selects the row to read or write to. This means\nthat operations must be atomic in order to, e.g., avoid spreading\nwrites across multiple rows. Since the shadow SRAM array is used to\nfind free rows in the hardware table, it must also be protected in\norder to avoid TOCTOU errors where multiple cores allocate the same\nrow.\n\nThis issue was detected in a situation where `mvpp2_set_rx_mode()` ran\nconcurrently on two CPUs. In this particular case the\nMVPP2_PE_MAC_UC_PROMISCUOUS entry was corrupted, causing the\nclassifier unit to drop all incoming unicast - indicated by the\n`rx_classifier_drops` counter.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-22060"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46c1e23e34c9d1eaadf37f88216d9d8ce0d0bcee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b0ae1723a7d9574ae1aee7d9cf9757a30069865"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96844075226b49af25a69a1d084b648ec2d9b08d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3f48a41a00d6d8d9c6fe09ae47dd21c8c1c8b03"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3711163d14d02af9005e4cdad30899c565f13fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e64e9b6e86b39db3baa576fd73da73533b54cb2d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fcbfb54a0269875cf3cd6a2bff4f85a2e0a0b552"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-16T15:15:59Z"
+  }
+}

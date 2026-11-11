@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-34wc-9m9j-23pc",
+  "modified": "2026-10-15T03:35:13Z",
+  "published": "2026-02-04T18:30:43Z",
+  "aliases": [
+    "CVE-2026-23060"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: authencesn - reject too-short AAD (assoclen<8) to match ESP/ESN spec\n\nauthencesn assumes an ESP/ESN-formatted AAD. When assoclen is shorter than\nthe minimum expected length, crypto_authenc_esn_decrypt() can advance past\nthe end of the destination scatterlist and trigger a NULL pointer dereference\nin scatterwalk_map_and_copy(), leading to a kernel panic (DoS).\n\nAdd a minimum AAD length check to fail fast on invalid inputs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23060"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/161bdc90fce25bd9890adc67fa1c8563a7acbf40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2397e9264676be7794f8f7f1e9763d90bd3c7335"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/767e8349f7e929b7dd95c08f0b4cb353459b365e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9532ff0d0e90ff78a214299f594ab9bac81defe4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0a9609283a5c852addb513dafa655c61eebc1ef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df22c9a65e9a9daa368a72fed596af9d7d5876bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fee86edf5803f1d1f19e3b4f2dacac241bddfa48"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-04T17:16:16Z"
+  }
+}

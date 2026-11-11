@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3jhp-qv93-3428",
+  "modified": "2026-10-27T03:32:10Z",
+  "published": "2026-10-27T03:32:10Z",
+  "aliases": [
+    "CVE-2026-116829"
+  ],
+  "details": "llama.cpp b10398 before b11301 contains an integer overflow vulnerability in gguf_init_from_reader that allows attackers to bypass tensor element-count validation by supplying shapes whose product wraps to zero. Attackers can craft GGUF files with enormous tensor extents that overflow ggml_nbytes() and strides, causing out-of-bounds memory access when buffers are sized from wrapped byte counts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116829"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ggml-org/llama.cpp/issues/29383"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ggml-org/llama.cpp/pull/29384"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ggml-org/llama.cpp/commit/2149c00f4442dc59302e134a02e4c99d5f7ed9fc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ggml-org/llama.cpp/blob/v0.5.0/ggml/src/gguf.cpp#L701"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b11301"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/llama-cpp-b10398-before-b11301-integer-overflow-in-gguf-init-from-reader"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-27T01:19:06Z"
+  }
+}

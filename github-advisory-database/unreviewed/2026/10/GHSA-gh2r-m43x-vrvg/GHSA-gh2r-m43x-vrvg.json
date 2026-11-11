@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gh2r-m43x-vrvg",
+  "modified": "2026-10-23T15:31:34Z",
+  "published": "2026-10-23T15:31:34Z",
+  "aliases": [
+    "CVE-2026-98998"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/bridge: th1520-dw-hdmi: Fix remove() callback\n\nThis driver stores struct th1520_hdmi * in platform drvdata, but\nth1520_dw_hdmi_remove() was reading it back as struct dw_hdmi *\nand passing it to dw_hdmi_remove(), so teardown runs on the wrong\npointer.\n\nRetrieve struct th1520_hdmi * from platform drvdata and pass\nhdmi->dw_hdmi to dw_hdmi_remove().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98998"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01c83795d50ccdb441f60e89ff50767cb2f6045a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7cd43c2f546170ed42b2498d13805f4f89193c1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:22Z"
+  }
+}

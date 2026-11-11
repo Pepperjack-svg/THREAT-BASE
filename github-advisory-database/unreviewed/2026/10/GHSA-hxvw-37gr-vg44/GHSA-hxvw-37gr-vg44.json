@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hxvw-37gr-vg44",
+  "modified": "2026-10-08T15:32:58Z",
+  "published": "2026-10-08T15:32:58Z",
+  "aliases": [
+    "CVE-2026-44031"
+  ],
+  "details": "Uncontrolled recursion in DcmSequenceOfItems::read() and DcmItem::read() in the dcmdata library of OFFIS DCMTK 3.7.0 allows a remote, unauthenticated attacker to cause a denial of service (stack exhaustion and process crash) via a DICOM dataset containing deeply nested sequences (SQ elements). The dataset can be sent in a C-STORE request to storescp, dcmrecv, dcmqrscp, or any other DICOM service built on DCMTK, because the received dataset is parsed before any authentication takes place. Local tools such as dcmdump also crash when opening such a file. The issue is fixed in commit 885ff0f10372bd589b5f44cea974f28a3964cb0f, which adds a configurable sequence nesting depth limit (default 64).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44031"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/DCMTK/dcmtk/commit/885ff0f10372bd589b5f44cea974f28a3964cb0f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.dcmtk.org/redmine/issues/1191"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T13:17:17Z"
+  }
+}

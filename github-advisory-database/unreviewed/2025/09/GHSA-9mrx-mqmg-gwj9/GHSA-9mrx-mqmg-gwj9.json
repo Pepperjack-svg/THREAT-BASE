@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9mrx-mqmg-gwj9",
+  "modified": "2026-07-14T15:31:28Z",
+  "published": "2025-09-30T15:30:30Z",
+  "aliases": [
+    "CVE-2025-9231"
+  ],
+  "details": "Issue summary: A timing side-channel which could potentially allow remote\nrecovery of the private key exists in the SM2 algorithm implementation on 64 bit\nARM platforms.\n\nImpact summary: A timing side-channel in SM2 signature computations on 64 bit\nARM platforms could allow recovering the private key by an attacker..\n\nWhile remote key recovery over a network was not attempted by the reporter,\ntiming measurements revealed a timing signal which may allow such an attack.\n\nOpenSSL does not directly support certificates with SM2 keys in TLS, and so\nthis CVE is not relevant in most TLS contexts.  However, given that it is\npossible to add support for such certificates via a custom provider, coupled\nwith the fact that in such a custom provider context the private key may be\nrecoverable via remote timing measurements, we consider this to be a Moderate\nseverity issue.\n\nThe FIPS modules in 3.5, 3.4, 3.3, 3.2, 3.1 and 3.0 are not affected by this\nissue, as SM2 is not an approved algorithm.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-9231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openssl/openssl/commit/567f64386e43683888212226824b6a179885a0fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openssl/openssl/commit/cba616c26ac8e7b37de5e77762e505ba5ca51698"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openssl/openssl/commit/eed5adc9f969d77c94f213767acbb41ff923b6f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openssl/openssl/commit/fc47a2ec078912b3e914fab5734535e76c4820c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-032379.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-089022.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-253495.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-585531.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://openssl-library.org/news/secadv/20250930.txt"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2025/09/30/5"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/05/11/11"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-385"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-30T14:15:41Z"
+  }
+}

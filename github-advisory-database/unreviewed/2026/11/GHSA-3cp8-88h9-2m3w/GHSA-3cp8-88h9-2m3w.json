@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3cp8-88h9-2m3w",
+  "modified": "2026-11-07T12:31:53Z",
+  "published": "2026-11-07T12:31:53Z",
+  "aliases": [
+    "CVE-2026-121977"
+  ],
+  "details": "The JetFormBuilder — Dynamic Blocks Form Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'note (form field whose value is written to post meta `note`)' parameter in all versions up to, and including, 3.6.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Successful exploitation requires a privileged user with the edit_others_posts capability to visit a form URL containing the attacker-created post ID, a delivery step the attacker controls via a crafted phishing link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121977"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.8/assets/build/frontend/dynamic.value.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.8/includes/blocks/dynamic-value.php#L88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.8/includes/functions.php#L123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.8/includes/presets/sources/preset-source-post.php#L83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3788241/jetformbuilder/trunk/includes/blocks/dynamic-value.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f586a89a-7d1f-48ef-bbf6-0c78154bccbc?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-07T12:17:45Z"
+  }
+}

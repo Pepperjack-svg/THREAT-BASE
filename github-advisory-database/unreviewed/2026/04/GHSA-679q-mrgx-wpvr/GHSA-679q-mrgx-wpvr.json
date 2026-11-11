@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-679q-mrgx-wpvr",
+  "modified": "2026-04-22T21:31:44Z",
+  "published": "2026-04-22T21:31:44Z",
+  "aliases": [
+    "CVE-2026-5617"
+  ],
+  "details": "The Login as User plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 1.0.3. This is due to the handle_return_to_admin() function trusting a client-controlled cookie (oclaup_original_admin) to determine which user to authenticate as, without any server-side verification that the cookie value was legitimately set during an admin-initiated user switch. This makes it possible for authenticated attackers, with Subscriber-level access and above, to escalate their privileges to administrator by setting the oclaup_original_admin cookie to an administrator's user ID and triggering the \"Return to Admin\" functionality.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5617"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/one-click-login-as-user/tags/1.0.3/includes/class-login-handler.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/one-click-login-as-user/tags/1.0.3/includes/class-login-handler.php#L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/one-click-login-as-user/trunk/includes/class-login-handler.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/one-click-login-as-user"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c0c74d48-6cfc-4899-bd2c-4a80b1f6e05f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-15T09:16:33Z"
+  }
+}

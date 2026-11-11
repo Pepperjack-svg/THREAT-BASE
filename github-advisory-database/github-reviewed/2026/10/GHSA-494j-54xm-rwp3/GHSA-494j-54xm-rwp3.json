@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-494j-54xm-rwp3",
+  "modified": "2026-10-26T14:53:54Z",
+  "published": "2026-10-19T17:07:47Z",
+  "aliases": [
+    "CVE-2026-111063"
+  ],
+  "summary": "AIOHTTP: Secure attribute not enforced for shared cookie",
+  "details": "### Summary\n\nThe Secure attribute was not being enforced for the shared cookie.\n\n### Impact\n\nIt may be possible to send a shared cookie marked Secure through an unencrypted request.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "aiohttp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.14.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.14.3"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/security/advisories/GHSA-494j-54xm-rwp3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111063"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/commit/999c356d61e966faffa97b06ab0d0455226d36c5"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/aio-libs/aiohttp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aio-libs/aiohttp/releases/tag/v3.14.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1004",
+      "CWE-311"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-19T17:07:47Z",
+    "nvd_published_at": "2026-10-19T17:17:03Z"
+  }
+}

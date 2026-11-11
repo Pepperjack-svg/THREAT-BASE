@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4xwx-hvv7-7prj",
+  "modified": "2026-05-05T21:44:13Z",
+  "published": "2026-04-27T12:30:38Z",
+  "aliases": [
+    "CVE-2026-40858"
+  ],
+  "summary": "Apache Camel-Infinispan Component Vulnerable to Deserialization of Untrusted Data",
+  "details": "The camel-infinispan component's ProtoStream-based remote aggregation repository deserializes data read from a remote Infinispan cache using java.io.ObjectInputStream without applying any ObjectInputFilter. An attacker who can write to the Infinispan cache used by a Camel application can inject a crafted serialized Java object that, when read during normal aggregation repository operations such as get or recover, results in arbitrary code execution in the context of the application.\n\nThis issue affects Apache Camel: from 4.0.0 before 4.14.7, from 4.15.0 before 4.18.2, from 4.19.0 before 4.20.0.\n\nUsers are recommended to upgrade to version 4.20.0, which fixes the issue. If users are on the 4.14.x LTS releases stream, then they are suggested to upgrade to 4.14.7. If users are on the 4.18.x releases stream, then they are suggested to upgrade to 4.18.2.\n\nThe JIRA ticket:  https://issues.apache.org/jira/browse/CAMEL-23322  refers to the various commits that resolved the issue, and have more details. This issue follows the same class of vulnerability previously addressed in CVE-2024-22369, CVE-2024-23114 and CVE-2026-25747.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.camel:camel-infinispan"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.14.7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.camel:camel-infinispan"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.15.0"
+            },
+            {
+              "fixed": "4.18.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.camel:camel-infinispan"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.19.0"
+            },
+            {
+              "fixed": "4.20.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40858"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/22152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/22151"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/22150"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/22149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/22148"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/22147"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/22146"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/e074c01a719cccf3b1c2efbd2ff31e60fd6220ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/5c20de8f047de725e0b32a874cdb5108c3e46558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/540d48e1cb5e492bd1c74bfc5a6e929fcf24fe3b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/3926ab2b7745e36da2cd8e0dc019018bc415aff9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/05cffa5ec05ff2ec3c50a77825625da6e426e7a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/0307dd4709a8136eba3206701004bcb528bc47fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.apache.org/jira/browse/CAMEL-23222"
+    },
+    {
+      "type": "WEB",
+      "url": "https://camel.apache.org/security/CVE-2026-40858.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-05T21:44:13Z",
+    "nvd_published_at": "2026-04-27T10:16:09Z"
+  }
+}

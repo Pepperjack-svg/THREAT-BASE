@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qggg-4j5m-mx55",
+  "modified": "2026-05-26T21:31:59Z",
+  "published": "2026-05-26T21:31:58Z",
+  "aliases": [
+    "CVE-2026-8890"
+  ],
+  "details": "code100x contains an authentication bypass vulnerability in the Mobile API that allows unauthenticated attackers to impersonate arbitrary users by supplying a crafted JSON payload in the 'g' HTTP header. The middleware in middleware.ts skips identity header generation when an Auth-Key header is present without validating its value, allowing attackers to inject a spoofed user identity header that the downstream route handler in the mobile courses endpoint accepts as trusted, granting unauthorized access to course data belonging to any enrolled user or administrator.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8890"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code100x/cms/issues/1924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code100x/cms/pull/1927"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code100x/cms/pull/1927/changes/88c6c5e94e23da101235c4c7e9c7591ac1016549"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code100x/cms/pull/1927/changes/90b489ee7c63c301107d6374d4b3f2b8e4060fe5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/code100x-mobile-api-authentication-bypass-via-header-spoofing"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-26T19:16:34Z"
+  }
+}

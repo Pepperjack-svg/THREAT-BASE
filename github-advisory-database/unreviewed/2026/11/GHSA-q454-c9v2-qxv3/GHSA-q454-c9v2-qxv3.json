@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q454-c9v2-qxv3",
+  "modified": "2026-11-10T03:30:25Z",
+  "published": "2026-11-10T03:30:25Z",
+  "aliases": [
+    "CVE-2026-107243"
+  ],
+  "details": "The Node.js web service on VOS (previously Versa FlexVNF) is used for URL-based Zero Touch Provisioning (ZTP) of the VOS appliance and is not required after provisioning is complete. The express-session middleware in server.js is configured with a hardcoded secret that is identical across all VOS appliances and is used to sign session cookies. An attacker who obtains a valid session ID from any source can compute the correct HMAC-SHA256 signature and forge a session cookie that the server accepts as legitimate. Because the secret is shared across all VOS appliances, a forged cookie is accepted by any VOS appliance in the deployment. \n\nVersa’s security hardening guide for Hubs, Branches, and Controllers recommends disabling the Node.js web service after the initial provisioning of the VOS device. This vulnerability is not exploitable on VOS devices where the Node.js web service has been disabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:H/PR:H/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107243"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security-portal.versa-networks.com/emailbulletins/6af22ae2dd1c93ddc0a3e838"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-798"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T01:17:12Z"
+  }
+}

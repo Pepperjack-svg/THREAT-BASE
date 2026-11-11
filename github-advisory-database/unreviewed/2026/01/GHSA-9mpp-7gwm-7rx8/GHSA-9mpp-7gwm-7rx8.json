@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9mpp-7gwm-7rx8",
+  "modified": "2026-03-25T21:30:22Z",
+  "published": "2026-01-14T15:33:01Z",
+  "aliases": [
+    "CVE-2025-71124"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm/a6xx: move preempt_prepare_postamble after error check\n\nMove the call to preempt_prepare_postamble() after verifying that\npreempt_postamble_ptr is valid. If preempt_postamble_ptr is NULL,\ndereferencing it in preempt_prepare_postamble() would lead to a crash.\n\nThis change avoids calling the preparation function when the\npostamble allocation has failed, preventing potential NULL pointer\ndereference and ensuring proper error handling.\n\nPatchwork: https://patchwork.freedesktop.org/patch/687659/",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71124"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c46497eb148ec61909f4101b8443f3c4c2daaec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ef3b04091fd8bc737dc45312375df8625b8318e2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-01-14T15:16:02Z"
+  }
+}

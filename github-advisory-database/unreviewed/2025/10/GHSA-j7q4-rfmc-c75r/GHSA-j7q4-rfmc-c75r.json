@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j7q4-rfmc-c75r",
+  "modified": "2025-10-22T15:31:11Z",
+  "published": "2025-10-22T15:31:11Z",
+  "aliases": [
+    "CVE-2023-53724"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmfd: pcf50633-adc: Fix potential memleak in pcf50633_adc_async_read()\n\n`req` is allocated in pcf50633_adc_async_read(), but\nadc_enqueue_request() could fail to insert the `req` into queue.\nWe need to check the return value and free it in the case of failure.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53724"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ee13bdf0d25ae8752ae6185b6d13bbb0d5a8e30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41cdf082ae006ea002135dfaf43b2897de3bded8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/588edb4fb1f1e6487a0f60a5f7b9a24d2d0c9f8e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66616eed76dfa6f3e442907760325a023c6da7e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a8a02dcfae13ab07dc7bed2b409cec7f3d32e92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b450dcff23aa254844492831a8e2b508a9d522d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9cca3a4933ca365cc664d5eefb0f942374ea8b41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a62a5e79202967176a9c1a04e477860779accd6c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-22T14:15:47Z"
+  }
+}

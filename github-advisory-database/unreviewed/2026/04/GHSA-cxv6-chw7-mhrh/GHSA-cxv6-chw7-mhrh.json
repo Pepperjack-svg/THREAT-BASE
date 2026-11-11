@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cxv6-chw7-mhrh",
+  "modified": "2026-05-06T21:31:30Z",
+  "published": "2026-04-27T18:32:09Z",
+  "aliases": [
+    "CVE-2026-31688"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndriver core: enforce device_lock for driver_match_device()\n\nCurrently, driver_match_device() is called from three sites. One site\n(__device_attach_driver) holds device_lock(dev), but the other two\n(bind_store and __driver_attach) do not. This inconsistency means that\nbus match() callbacks are not guaranteed to be called with the lock\nheld.\n\nFix this by introducing driver_match_device_locked(), which guarantees\nholding the device lock using a scoped guard. Replace the unlocked calls\nin bind_store() and __driver_attach() with this new helper. Also add a\nlock assertion to driver_match_device() to enforce this guarantee.\n\nThis consistency also fixes a known race condition. The driver_override\nimplementation relies on the device_lock, so the missing lock led to the\nuse-after-free (UAF) reported in Bugzilla for buses using this field.\n\nStress testing the two newly locked paths for 24 hours with\nCONFIG_PROVE_LOCKING and CONFIG_LOCKDEP enabled showed no UAF recurrence\nand no lockdep warnings.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31688"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc23806a7c47ec5f1293aba407fb69519f976ee0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-27T18:16:54Z"
+  }
+}

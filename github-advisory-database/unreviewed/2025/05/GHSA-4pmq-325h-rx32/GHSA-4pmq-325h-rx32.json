@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4pmq-325h-rx32",
+  "modified": "2025-05-07T15:31:26Z",
+  "published": "2025-05-01T15:31:52Z",
+  "aliases": [
+    "CVE-2022-49906"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nibmvnic: Free rwi on reset success\n\nFree the rwi structure in the event that the last rwi in the list\nprocessed successfully. The logic in commit 4f408e1fa6e1 (\"ibmvnic:\nretry reset if there are no other resets\") introduces an issue that\nresults in a 32 byte memory leak whenever the last rwi in the list\ngets processed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49906"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/535b78739ae75f257c894a05b1afa86ad9a3669e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3543a287cfba9105dcc4bb41eb817f51266caaf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d6dd2fe71153f0ff748bf188bd4af076fe09a0a6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:15Z"
+  }
+}

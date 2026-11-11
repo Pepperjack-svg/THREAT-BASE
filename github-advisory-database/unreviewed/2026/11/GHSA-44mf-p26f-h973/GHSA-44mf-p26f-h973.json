@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-44mf-p26f-h973",
+  "modified": "2026-11-05T21:34:53Z",
+  "published": "2026-11-05T21:34:53Z",
+  "aliases": [
+    "CVE-2026-76181"
+  ],
+  "details": "LibreOffice includes a dBASE database driver, which reads dBASE tables and their .ndx index files when a folder of dBASE files is used as a data source. A heap buffer overflow existed when an index page was read. The number of entries recorded in a page was not checked against the number of entries the page could hold, which comes from a different field of the index header. A crafted index could also make a page refer back to itself, so that reading it recursed without end. In fixed versions the index header and the entry count of each page are limited to what an index page can hold, and a page that refers back to one of its parent pages is not followed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76181"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.libreoffice.org/about-us/security/advisories/cve-2026-76181"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T20:17:59Z"
+  }
+}

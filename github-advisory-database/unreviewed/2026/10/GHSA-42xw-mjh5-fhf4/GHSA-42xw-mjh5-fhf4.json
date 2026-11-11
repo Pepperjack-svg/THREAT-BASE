@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-42xw-mjh5-fhf4",
+  "modified": "2026-10-18T18:31:57Z",
+  "published": "2026-10-18T18:31:56Z",
+  "aliases": [
+    "CVE-2026-98625"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: flowtable: publish HW_DEAD after worker is done\n\nflow_offload_work_del() sets NF_FLOW_HW_DEAD before the work handler\nclears NF_FLOW_HW_PENDING. Once a flow is both HW_DYING and HW_DEAD, a\nconcurrent garbage collection pass can remove it and schedule it for RCU\nfreeing.\n\nThe offload worker holds neither an RCU read lock nor a reference to the\nflow. If it is preempted after publishing HW_DEAD, the RCU callback can\nfree the flow before the worker resumes and clears HW_PENDING, resulting\nin a use-after-free.\n\nMove HW_DEAD publication to the common worker epilogue after the pending\nbit is cleared, making it the final flow access by destroy work. Order all\npreceding flow accesses before publishing the bit that allows garbage\ncollection to free the object.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98625"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00e452a7ca9fda135ea3d04a11128d5088e354a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/56f39c7d139bb76072efe2fb3dcafc13ba915ad8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0ef9450e93f2adeb77593db14c2ac7c6c8f5060"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b4f0f05dfbe836a171bff261f17d098a4d5461ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d644b23afe1ef509c9961a6d84a093c2587edf02"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e20701843032c438f879066a77ea85e361c6b999"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f26652e99f519e6bd34f8a9b48fbb33c603585f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f92e8f39726ba68a7c42c6b7566be687c8161579"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:15Z"
+  }
+}

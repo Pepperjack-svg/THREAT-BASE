@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rgvg-xc9j-2jxv",
+  "modified": "2026-10-21T09:30:29Z",
+  "published": "2026-10-21T06:31:16Z",
+  "aliases": [
+    "CVE-2026-93856"
+  ],
+  "details": "In OpenStack Cinder through 29.0.0, cross-project information disclosure can occur in the Messages API. A non-admin user with the project-scoped 'member' or 'reader' role making the Block Storage API v3.3 \"List messages\" call finds the non-expired user messages for other projects included in the response, resulting in the leakage of UUIDs of resources owned by other projects, in addition to the user message about the other projects' resources (which, by design, are sanitized generic messages). All Cinder deployments are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93856"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.launchpad.net/cinder/+bug/2160671"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.openstack.org/ossa/OSSA-2026-045.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openwall.com/lists/oss-security/2026/10/20/17"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/20/17"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-669"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T06:16:51Z"
+  }
+}

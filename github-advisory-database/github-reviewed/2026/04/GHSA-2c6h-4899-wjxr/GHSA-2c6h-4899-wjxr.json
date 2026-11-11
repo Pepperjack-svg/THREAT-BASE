@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2c6h-4899-wjxr",
+  "modified": "2026-04-04T05:45:50Z",
+  "published": "2026-04-04T05:45:17Z",
+  "aliases": [],
+  "summary": "scaly: Multiple soundness issues in Rust safe APIs",
+  "details": "Affected versions contain multiple safe APIs that can trigger undefined behavior:\n\n- `Array<T>::index` can perform an out-of-bounds read.\n- `String::get_length` can perform an out-of-bounds read.\n- `String::append_character` can perform an invalid write.\n- `String::to_c_string` can perform an out-of-bounds write.\n\nThese issues were reproduced against `scaly` 0.0.37 under Miri. The crate is unmaintained.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "crates.io",
+        "name": "scaly"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.0.37"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustsec/advisory-db/issues/2594"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rschleitzer/Scaly"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rustsec.org/advisories/RUSTSEC-2026-0080.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125",
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-04-04T05:45:17Z",
+    "nvd_published_at": null
+  }
+}

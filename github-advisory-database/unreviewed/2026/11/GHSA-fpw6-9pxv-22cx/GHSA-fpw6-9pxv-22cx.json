@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpw6-9pxv-22cx",
+  "modified": "2026-11-05T21:34:50Z",
+  "published": "2026-11-05T21:34:50Z",
+  "aliases": [
+    "CVE-2026-123199"
+  ],
+  "details": "eBook-speaker 6.1.0 through 6.2.0 contains a stack buffer overflow vulnerability in get_attributes() in src/common.c caused by an unbounded strcpy of an element's name attribute. Attackers can craft an EPUB or DAISY book with a name attribute of 511 or more characters to corrupt the stack and crash the reader when opened.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/book-readers/ebook-speaker/commit/23b5c86585d7e3c27c932b112f4e36858e70f210"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/book-readers/ebook-speaker/blob/4a8f457a0fd65a96463c0fa9bd0612242c081dc8/src/common.c#L631-L632"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ebook-speaker-through-6.2.0-stack-based-buffer-overflow-via-element-name-attribute"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T19:17:18Z"
+  }
+}

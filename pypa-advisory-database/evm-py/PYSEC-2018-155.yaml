@@ -1,0 +1,29 @@
+id: PYSEC-2018-155
+published: "2018-11-12T02:29:00.233Z"
+modified: "2024-11-21T03:56:52.257Z"
+aliases:
+- CVE-2018-18920
+details: "Py-EVM v0.2.0-alpha.33 allows attackers to make a vm.execute_bytecode call that triggers computation._stack.values with '\"stack\": [100, 100, 0]' where b'\\x' was expected, resulting in an execution failure because of an invalid opcode. This is reportedly related to \"smart contracts can be executed indefinitely without gas being paid.\""
+affected:
+- package:
+    name: evm-py
+    ecosystem: PyPI
+    purl: pkg:pypi/evm-py
+  ranges:
+  - type: ECOSYSTEM
+    events:
+    - introduced: "0"
+    - last_affected: "0.2.0-alpha\\.33"
+  ecosystem_specific: {}
+references:
+- type: ADVISORY
+  url: https://twitter.com/AlexanderFisher/status/1060923428641878019
+- type: ADVISORY
+  url: https://twitter.com/NettaLab/status/1060889400102383617
+- type: ADVISORY
+  url: https://www.reddit.com/r/ethereum/comments/9vkk2g/netta_labs_claim_to_have_found_a_vulnerability_in/e9d3wyx/
+- type: EVIDENCE
+  url: https://github.com/ethereum/py-evm/issues/1448
+severity:
+- type: CVSS_V3
+  score: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H

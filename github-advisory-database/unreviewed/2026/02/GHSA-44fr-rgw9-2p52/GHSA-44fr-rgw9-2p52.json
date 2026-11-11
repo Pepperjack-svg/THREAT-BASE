@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-44fr-rgw9-2p52",
+  "modified": "2026-02-26T21:31:27Z",
+  "published": "2026-02-11T18:31:29Z",
+  "aliases": [
+    "CVE-2026-25869"
+  ],
+  "details": "MiniGal Nano versions 0.3.5 and prior contain a path traversal vulnerability in index.php via the dir parameter. The application appends user-controlled input to the photos directory and attempts to prevent traversal by removing dot-dot sequences, but this protection can be bypassed using crafted directory patterns. An attacker can exploit this behavior to cause the application to enumerate and display image files from unintended filesystem locations that are readable by the web server, resulting in unintended information disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sourceforge.net/projects/minigalnano"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web.archive.org/web/20180330004313/http://www.minigal.dk/minigal-nano.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/minigal-nano-path-traversal-via-dir-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-11T16:16:06Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2qph-m57g-q5r9",
+  "modified": "2025-03-10T21:31:10Z",
+  "published": "2025-03-10T21:31:10Z",
+  "aliases": [
+    "CVE-2022-49574"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: Fix data-races around sysctl_tcp_recovery.\n\nWhile reading sysctl_tcp_recovery, it can be changed concurrently.\nThus, we need to add READ_ONCE() to its readers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49574"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52ee7f5c4811ce6be1becd14d38ba1f8a8a0df81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92c35113c63306091df9211375eebd0abd8c2160"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a31e2d0cb5cfa2aae3144cac04f25031d5d20fb4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7a492db1f7c37c758a66915908677bd8bc5d368"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8781f7cd04091744f474a2bada74772084b9dc9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7d2ef837e14a971a05f60ea08c47f3fed1a36e4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:33Z"
+  }
+}

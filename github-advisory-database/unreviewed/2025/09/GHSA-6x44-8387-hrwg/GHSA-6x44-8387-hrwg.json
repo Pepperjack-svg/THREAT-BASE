@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6x44-8387-hrwg",
+  "modified": "2025-09-19T15:31:08Z",
+  "published": "2025-09-18T21:30:57Z",
+  "aliases": [
+    "CVE-2025-57293"
+  ],
+  "details": "A command injection vulnerability in COMFAST CF-XR11 (firmware V2.7.2) exists in the multi_pppoe API, processed by the sub_423930 function in /usr/bin/webmgnt. The phy_interface parameter is not sanitized, allowing attackers to inject arbitrary commands via a POST request to /cgi-bin/mbox-config?method=SET&section=multi_pppoe. When the action parameter is set to \"one_click_redial\", the unsanitized phy_interface is used in a system() call, enabling execution of malicious commands. This can lead to unauthorized access to sensitive files, execution of arbitrary code, or full device compromise.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-57293"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ZZ2266/.github.io/blob/main/comfast/multi_pppoe.markdown"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-18T21:15:49Z"
+  }
+}

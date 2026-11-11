@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vfc-qfc9-vf68",
+  "modified": "2026-10-06T09:31:33Z",
+  "published": "2026-10-06T09:31:33Z",
+  "aliases": [
+    "CVE-2026-98278"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: remove WARN_ON_ONCE() from the dev_fill_forward_path() loop check\n\nipip_fill_forward_path() and ip6_tnl_fill_forward_path() look up the\nroute to the tunnel's remote endpoint and set ctx->dev to its device,\nwhich is the tunnel itself when that route resolves back to the tunnel.\ndev_fill_forward_path() then makes no progress and trips\nWARN_ON_ONCE(last_dev == ctx->dev) as soon as a flowtable tries to\noffload a flow through the tunnel. That routing loop is a configuration\nany CAP_NET_ADMIN user can set up, and ip_tunnel_xmit() and\nip6_tnl_xmit() already treat it as a tx error, so remove the warning and\njust fail the walk, as commit 008e7a7c293b (\"net: remove WARN_ON_ONCE\nwhen accessing forward path array\") did for the path stack overflow.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/150dba2c69e93302af24a0c868eebe4871e2e107"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8eb177632dacda28bc6130c2105afbf5b791eb0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T09:18:17Z"
+  }
+}

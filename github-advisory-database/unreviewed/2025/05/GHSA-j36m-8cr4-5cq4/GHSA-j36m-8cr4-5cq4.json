@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j36m-8cr4-5cq4",
+  "modified": "2026-10-21T15:40:02Z",
+  "published": "2025-05-09T09:33:20Z",
+  "aliases": [
+    "CVE-2025-37870"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: prevent hang on link training fail\n\n[Why]\nWhen link training fails, the phy clock will be disabled. However, in\nenable_streams, it is assumed that link training succeeded and the\nmux selects the phy clock, causing a hang when a register write is made.\n\n[How]\nWhen enable_stream is hit, check if link training failed. If it did, fall\nback to the ref clock to avoid a hang and keep the system in a recoverable\nstate.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37870"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0363c03672cd3191f037905bf981eb523a3b71b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04bf4f2a497e9877c425c5124652e61fb8a1a0aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52cdc47cf6519e2912a34d29b7eeb3f10ca85efa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8058061ed9d6bc259d1e678607b07d259342c08f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-09T07:16:08Z"
+  }
+}

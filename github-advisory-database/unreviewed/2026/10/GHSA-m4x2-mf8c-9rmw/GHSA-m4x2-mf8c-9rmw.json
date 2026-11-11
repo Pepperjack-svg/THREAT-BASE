@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m4x2-mf8c-9rmw",
+  "modified": "2026-10-11T03:30:22Z",
+  "published": "2026-10-11T03:30:22Z",
+  "aliases": [
+    "CVE-2026-108690"
+  ],
+  "details": "mall4j through 4.0 contains an information disclosure vulnerability that allows authenticated customers to read other shoppers' cart items due to an operator precedence error in the getShopCartExpiryItems SQL filter. Attackers with any storefront account can request GET /p/shopCart/expiryProdList to retrieve off-shelf product basket entries including product, SKU, quantity, shop, and promoter card numbers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108690"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AnkesKasty/cve-request-poc/blob/a7b6d1423555812d8efa26c91c5d0683164b31e5/mall4j/poc_shopcart_expiry_prodlist.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gz-yami/mall4j/blob/ffc672fc1aa4320ce02d0b93853bb456ae0a4dae/yami-shop-api/src/main/java/com/yami/shop/api/controller/ShopCartController.java#L162-L186"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gz-yami/mall4j/blob/ffc672fc1aa4320ce02d0b93853bb456ae0a4dae/yami-shop-service/src/main/resources/mapper/BasketMapper.xml#L41-L48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mall4j-through-4.0-operator-precedence-error-exposes-other-users-cart-items-via-p-shopcart-expiryprodlist"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-783"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-11T02:16:37Z"
+  }
+}

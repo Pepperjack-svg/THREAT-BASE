@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p95f-9f9h-wwvh",
+  "modified": "2026-06-26T21:32:16Z",
+  "published": "2026-06-26T21:32:16Z",
+  "aliases": [
+    "CVE-2026-29509"
+  ],
+  "details": "Patool before 4.0.5 contains a path traversal vulnerability in the safe_extract() function in patoolib/programs/py_tarfile.py when running on Python before 3.12, where the is_within_directory() helper uses os.path.commonprefix() for character-level string comparison instead of path-level comparison, allowing a crafted archive member path to bypass the containment check. Attackers can supply a malicious archive with specially crafted member paths to write arbitrary files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-29509"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wummel/patool/blob/main/doc/changelog.txt"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wummel/patool/releases/tag/4.0.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/patool-path-traversal-via-safe-extract-function"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-26T20:16:54Z"
+  }
+}

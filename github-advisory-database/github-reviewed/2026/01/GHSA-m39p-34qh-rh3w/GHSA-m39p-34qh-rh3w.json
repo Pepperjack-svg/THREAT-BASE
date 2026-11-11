@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m39p-34qh-rh3w",
+  "modified": "2026-01-21T22:57:47Z",
+  "published": "2026-01-20T21:31:34Z",
+  "aliases": [
+    "CVE-2026-1245"
+  ],
+  "summary": "binary-parser library has a code injection vulnerability",
+  "details": "A code injection vulnerability in the binary-parser library prior to version 2.3.0 allows arbitrary JavaScript code execution when untrusted values are used in parser field names or encoding parameters. The library directly interpolates these values into dynamically generated code without sanitization, enabling attackers to execute arbitrary code in the context of the Node.js process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "binary-parser"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.3.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keichi/binary-parser/pull/283"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/keichi/binary-parser"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.cert.org/vuls/id/102648"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-1245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.kb.cert.org/vuls/id/102648"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.npmjs.com/package/binary-parser"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-21T22:57:47Z",
+    "nvd_published_at": "2026-01-20T19:15:50Z"
+  }
+}

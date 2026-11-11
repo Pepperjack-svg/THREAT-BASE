@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5hvg-wjm2-j333",
+  "modified": "2026-07-28T15:32:10Z",
+  "published": "2026-07-27T18:31:47Z",
+  "aliases": [
+    "CVE-2026-51296"
+  ],
+  "details": "SQLite 3.41 has a use-after-free vulnerability in jsonRemoveFunc of SQLite JSON module. The parsed JSON object is freed at line 3555, while line 3575 still calls jsonLookupStep with the released pointer. Remote attackers can exploit this flaw to crash the service and leak heap memory information.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/programmervuln/cveadvisory-/commit/75a435c839a4bcc6ca2ad21e3b07c978d814acb2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sqlite/sqlite/blob/master/src/json.c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-27T16:17:38Z"
+  }
+}

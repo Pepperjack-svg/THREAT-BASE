@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jgh8-6hmw-5f93",
+  "modified": "2025-03-17T18:31:50Z",
+  "published": "2025-03-17T18:31:50Z",
+  "aliases": [
+    "CVE-2022-49478"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: pvrusb2: fix array-index-out-of-bounds in pvr2_i2c_core_init\n\nSyzbot reported that -1 is used as array index. The problem was in\nmissing validation check.\n\nhdw->unit_number is initialized with -1 and then if init table walk fails\nthis value remains unchanged. Since code blindly uses this member for\narray indexing adding sanity check is the easiest fix for that.\n\nhdw->workpoll initialization moved upper to prevent warning in\n__flush_work.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49478"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1310fc3538dcc375a2f46ef0a438512c2ca32827"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24e807541e4a9263ed928e6ae3498de3ad43bd1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e004fe914b243db41fa96f9e583385f360ea58e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3309c2c574e13b21b44729f5bdbf21f60189b79a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4351bfe36aba9fa7dc9d68d498d25d41a0f45e67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/471bec68457aaf981add77b4f590d65dd7da1059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3304766d9384886e6d3092c776273526947a2e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3660e06675bccec4bf149c7229ea1d491ba10d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f99a8b1ec0eddc2931aeaa4f490277a15b39f511"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-129"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:24Z"
+  }
+}

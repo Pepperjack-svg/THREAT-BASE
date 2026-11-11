@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mg69-hwrw-4w98",
+  "modified": "2026-04-24T21:31:56Z",
+  "published": "2026-03-25T12:30:23Z",
+  "aliases": [
+    "CVE-2026-23358"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix error handling in slot reset\n\nIf the device has not recovered after slot reset is called, it goes to\nout label for error handling. There it could make decision based on\nuninitialized hive pointer and could result in accessing an uninitialized\nlist.\n\nInitialize the list and hive properly so that it handles the error\nsituation and also releases the reset domain lock which is acquired\nduring error_detected callback.\n\n(cherry picked from commit bb71362182e59caa227e4192da5a612b09349696)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23358"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73e8bdf14248136459753252a438177df7ed8c7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b57c4ec98c17789136a4db948aec6daadceb5024"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/baf4e7968911635eb816870af0ea587ac1457052"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-25T11:16:34Z"
+  }
+}

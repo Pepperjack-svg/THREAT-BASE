@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mmj8-wcvw-6789",
+  "modified": "2026-06-26T21:50:10Z",
+  "published": "2026-06-26T21:50:10Z",
+  "aliases": [
+    "CVE-2026-49262"
+  ],
+  "summary": "Aimeos Pagible CMS vulnerable to Server Side Request Forgery (SSRF) via DNS rebinding in admin proxy",
+  "details": "### Summary\nThe administrative proxy route (`cmsproxy`) in Aimeos Pagible CMS is vulnerable to a Server-Side Request Forgery (SSRF) attack via DNS Rebinding. A Time-of-Check to Time-of-Use (TOCTOU) race condition exists between the URL validation phase and the actual HTTP request phase, allowing attackers to access internal network resources and cloud metadata endpoints.\n\n### Details\nBefore executing an HTTP request to fetch external content, the `AdminController::proxy` controller validates the target URL using `\\Aimeos\\Cms\\Utils::isValidUrl($url)`. This function performs a DNS query to verify that the hostname does not resolve to private or reserved IP ranges (e.g., `127.0.0.1`, `10.0.0.0/8`, `169.254.169.254`). \n\nIf the validation passes, the application proceeds to the \"Use\" phase, invoking Guzzle/cURL to send the request. However, Guzzle performs a *second* DNS lookup to establish the socket connection. \n\nAn attacker can exploit this by setting up a malicious DNS server for a domain they control and configuring it with a TTL of 0. \n1. During the validation \"Check\", the DNS server returns a safe, public IP.\n2. During the Guzzle \"Use\", the DNS server returns an internal/private IP.\n\n  ### POC\n1. Attacker registers `rebound.test.com with a custom nameserver.\n2. Attacker generates a valid proxy token (assuming basic authenticated access).\n3. Attacker requests `/cmsproxy?url=http://rebound.test.com`.\n4. `isValidUrl` checks `rebound.test.com`. DNS returns `8.8.8.8`. Validation passes.\n5. Guzzle requests `http://rebound.test.com`. DNS returns `169.254.169.254`.\n6. The CMS fetches AWS Instance Metadata and returns it to the attacker.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "aimeos/pagible"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.10.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/aimeos/pagible/security/advisories/GHSA-mmj8-wcvw-6789"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/aimeos/pagible"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367",
+      "CWE-918"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-26T21:50:10Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x3wv-3wj6-mvvv",
+  "modified": "2026-06-16T03:30:33Z",
+  "published": "2026-05-27T15:33:19Z",
+  "aliases": [
+    "CVE-2026-45976"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix memory leak in amdgpu_ras_init()\n\nWhen amdgpu_nbio_ras_sw_init() fails in amdgpu_ras_init(), the function\nreturns directly without freeing the allocated con structure, leading\nto a memory leak.\n\nFix this by jumping to the release_con label to properly clean up the\nallocated memory before returning the error code.\n\nCompile tested only. Issue found using a prototype static analysis tool\nand code review.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45976"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fef8c2ac67e7c1b0409d23653300b134c63e54c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f43e7812b30d6b2e850218f9bb1dae60727fcef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c11cd77a18115d2cd3f4b6915c4a537b6042f950"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee41e5b63c8210525c936ee637a2c8d185ce873c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8a5426652bdadd4a5cb48326d48abbdfebe8153"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:14Z"
+  }
+}

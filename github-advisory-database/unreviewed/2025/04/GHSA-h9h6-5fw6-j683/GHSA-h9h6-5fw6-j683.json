@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h9h6-5fw6-j683",
+  "modified": "2025-11-03T21:33:25Z",
+  "published": "2025-04-01T18:30:53Z",
+  "aliases": [
+    "CVE-2025-21963"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: Fix integer overflow while processing acdirmax mount option\n\nUser-provided mount parameter acdirmax of type u32 is intended to have\nan upper limit, but before it is validated, the value is converted from\nseconds to jiffies which can lead to an integer overflow.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21963"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c26edf477e093cefc41637f5bccc102e1a77399"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2809a79bc64964ce02e0c5f2d6bd39b9d09bdb3c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39d086bb3558da9640ef335f97453e01d32578a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b29891f91dfb8758baf1e2217bef4b16b2b165b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6124cbf73e3dea7591857dd63b8ccece28952afd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e438d0410a4002d24f420f2c28897ba2dc0af64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-01T16:15:27Z"
+  }
+}

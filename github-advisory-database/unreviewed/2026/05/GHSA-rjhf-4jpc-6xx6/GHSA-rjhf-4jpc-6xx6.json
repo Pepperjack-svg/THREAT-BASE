@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rjhf-4jpc-6xx6",
+  "modified": "2026-05-29T09:31:05Z",
+  "published": "2026-05-29T09:31:05Z",
+  "aliases": [
+    "CVE-2026-10039"
+  ],
+  "details": "The Frontend Admin by DynamiApps plugin for WordPress is vulnerable to generic SQL Injection via the 'order' parameter in all versions up to, and including, 3.28.28 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Exploitation requires that the attacker also supply a valid 'orderby' parameter in the same request, as this is necessary to reach the vulnerable code path that processes and concatenates the 'order' value into the SQL query.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10039"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.3/main/admin/admin-pages/payments/list.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.3/main/admin/admin-pages/payments/list.php#L46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/trunk/main/admin/admin-pages/payments/list.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/trunk/main/admin/admin-pages/payments/list.php#L46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3472098%40acf-frontend-form-element&new=3472098%40acf-frontend-form-element&sfp_email=&sfph_mail=#file3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/51d79701-8580-4130-8f84-e739aa2f7f5f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-29T09:16:16Z"
+  }
+}

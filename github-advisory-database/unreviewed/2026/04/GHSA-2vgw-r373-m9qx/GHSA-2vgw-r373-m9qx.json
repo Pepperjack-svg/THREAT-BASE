@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2vgw-r373-m9qx",
+  "modified": "2026-04-21T21:31:22Z",
+  "published": "2026-04-20T21:31:46Z",
+  "aliases": [
+    "CVE-2026-29648"
+  ],
+  "details": "In OpenXiangShan NEMU, when Smstateen is enabled, clearing mstateen0.ENVCFG does not correctly restrict access to henvcfg and senvcfg. As a result, less-privileged code may read or write these CSRs without the required exception, potentially bypassing intended state-enable based isolation controls in virtualized or multi-privilege environments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-29648"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenXiangShan/NEMU/issues/690"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenXiangShan/XiangShan/pull/3978"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.riscv.org/reference/isa/priv/smstateen.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-20T21:16:19Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6wfw-fw32-2h84",
+  "modified": "2026-10-21T15:42:27Z",
+  "published": "2026-10-21T15:42:26Z",
+  "aliases": [
+    "CVE-2026-114387"
+  ],
+  "details": "Shopper from 2.0.0 before 2.6.0 contains a missing authorization vulnerability that allows admin-panel users holding only access_dashboard to create administrators and grant permissions. Attackers can call CreateTeamMember::store() or Permissions::togglePermission() directly over /livewire/update to create admin accounts and escalate to full administrator.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114387"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopperlabs/shopper/issues/433"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopperlabs/shopper/commit/d1ac6cee2f02e5a84262fbeb87c689bd38df672f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopperlabs/shopper/blob/v2.5.0/packages/admin/src/Livewire/Components/Settings/Team/Permissions.php#L18-L49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopperlabs/shopper/blob/v2.5.0/packages/admin/src/Livewire/SlideOvers/CreateTeamMember.php#L102-L123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shopperlabs/shopper/releases/tag/v2.6.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/shopper-2.0.0-before-2.6.0-privilege-escalation-via-unguarded-livewire-components"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-21T13:18:28Z"
+  }
+}

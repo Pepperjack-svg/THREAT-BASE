@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7w99-2x38-38jp",
+  "modified": "2026-06-16T03:30:32Z",
+  "published": "2026-05-27T15:33:18Z",
+  "aliases": [
+    "CVE-2026-45954"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: au1200fb: Fix a memory leak in au1200fb_drv_probe()\n\nIn au1200fb_drv_probe(), when platform_get_irq fails(), it directly\nreturns from the function with an error code, which causes a memory\nleak.\n\nReplace it with a goto label to ensure proper cleanup.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45954"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/071d8fb757a8318f72c8e02898c2cf7e14e21fb6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d4202ee6494c0d576cdc104b12e0834ca8136a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e5349e54113e2dce1a659c57935e18032742e56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/762a26818934241b8b0172a229d2cf5d87260e40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81831d56b723bc1090ce3158feddaca88e85f939"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b024a8efee0f55d330a1cdd3eac8f79ac5acd3be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd1ad63e11b2a568e98de536f319054d2de29f56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce4e25198a6aaaaf36248edf8daf3d744ec8e309"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:11Z"
+  }
+}

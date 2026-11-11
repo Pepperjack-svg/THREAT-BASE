@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vc55-8273-pjx9",
+  "modified": "2026-07-06T15:30:42Z",
+  "published": "2026-06-25T09:31:20Z",
+  "aliases": [
+    "CVE-2026-53190"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/virtio: fix dma_fence refcount leak on error in virtio_gpu_dma_fence_wait()\n\ndma_fence_unwrap_for_each() internally calls dma_fence_unwrap_first()\nwhich does cursor->chain = dma_fence_get(head), taking an extra\nreference. On normal loop completion, dma_fence_unwrap_next()\nreleases this via dma_fence_chain_walk() -> dma_fence_put().\n\nWhen virtio_gpu_do_fence_wait() fails and the function returns early\nfrom inside the loop, the cursor->chain reference is never released.\nThis is the only caller in the entire kernel that does an early return\ninside dma_fence_unwrap_for_each.\n\nAdd dma_fence_put(itr.chain) before the early return.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53190"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f26bb732cc136ab20176697c92f32c9c84cb125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73524e9f96a278b521f257a78a845c49eb522bc1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8348567a6afb24e2c9cafe8a321162d0eebe1411"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/898bd0ccfed71651b881660c5d20ad73b5203174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0fffc874c264292e769f26194a2a5e66ce31810"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:36Z"
+  }
+}

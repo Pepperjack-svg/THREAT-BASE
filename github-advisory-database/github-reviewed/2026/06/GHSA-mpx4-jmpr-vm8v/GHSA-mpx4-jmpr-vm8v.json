@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mpx4-jmpr-vm8v",
+  "modified": "2026-06-18T15:05:20Z",
+  "published": "2026-06-18T15:05:20Z",
+  "aliases": [
+    "CVE-2026-54711"
+  ],
+  "summary": "PGHoard: Password written to debug log",
+  "details": "### Impact\nWhen using .pgpass, database connection information including the username and password will be logged at the debug level.\n\n### Patches\nUpgrade to version 2.7.1 or greater.\n\n### Workarounds\nFilter out debug-level logs.\n\n### References\nThis issue was discovered by BugCrowd user DRAKOKORIAN.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:H/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pghoard"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "2.1.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Aiven-Open/pghoard/security/advisories/GHSA-mpx4-jmpr-vm8v"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Aiven-Open/pghoard"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-18T15:05:20Z",
+    "nvd_published_at": null
+  }
+}

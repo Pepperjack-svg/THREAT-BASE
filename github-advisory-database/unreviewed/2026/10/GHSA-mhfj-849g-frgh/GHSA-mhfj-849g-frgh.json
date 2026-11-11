@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mhfj-849g-frgh",
+  "modified": "2026-10-24T15:32:46Z",
+  "published": "2026-10-18T18:31:50Z",
+  "aliases": [
+    "CVE-2026-98485"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ip6t_rt: fix zero-address non-strict match out-of-bounds read\n\nrt_mt6_check() permits rules to be configured with rtinfo->addrnr == 0\neven when address matching (IP6T_RT_FST_MASK) is requested.\n\nIn the IP6T_RT_FST_NSTRICT path, rt_mt6() evaluates packet routing\naddresses against rtinfo->addrs[i] and terminates backwards at the bottom\nof the loop:\n\n    if (ipv6_addr_equal(ap, &rtinfo->addrs[i])) {\n        i++;\n    }\n    if (i == rtinfo->addrnr)\n        break;\n\nWhen addrnr is 0, if the first packet address matches rtinfo->addrs[0],\ni is incremented to 1. Because i is now strictly greater than addrnr (0),\nthe loop termination condition (i == rtinfo->addrnr) is bypassed and will\nnever be satisfied.\n\nIf a crafted IPv6 packet contains matching routing addresses, i will\nadvance past IP6T_RT_HOPS (16). The subsequent call to ipv6_addr_equal()\nreads beyond struct ip6t_rt, triggering UBSAN/KASAN out-of-bounds warnings\nor kernel panics.\n\nFix this by:\n1. Rejecting rules in rt_mt6_check() where IP6T_RT_FST_MASK is set but\n   rtinfo->addrnr is zero.\n2. In rt_mt6(), moving the termination condition (i < rtinfo->addrnr)\n   into the for-loop header condition and removing the backwards break\n   at the end of the loop body.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98485"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/191239b0939692e92459d8d32cad14247fa93f89"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a54f8b7f7fe207a5c14713015a5820588faf1ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82313c169eddc02b1bf5ba6b427803e272d3ec42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/959d1829d1ce8b91b435b24a923b51bcc8897090"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b89249819a7d6698bed152feafd3bc6c08489d15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d9cf4ac6f326330e1fe4d95671d36a6ff3593f64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd55c0ea87bf70e4e4b3b683acd29ef981335b26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe336bab13834394320997de8b16ca4a913b4f13"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:16:59Z"
+  }
+}

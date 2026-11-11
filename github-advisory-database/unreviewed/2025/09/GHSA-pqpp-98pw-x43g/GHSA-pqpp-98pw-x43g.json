@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pqpp-98pw-x43g",
+  "modified": "2025-09-24T18:30:31Z",
+  "published": "2025-09-24T18:30:31Z",
+  "aliases": [
+    "CVE-2025-56816"
+  ],
+  "details": "Datart 1.0.0-rc.3 is vulnerable to Directory Traversal. The configuration file handling of the application allows attackers to upload arbitrary YAML files to the config/jdbc-driver-ext.yml path. The application parses this file using SnakeYAML's unsafe load() or loadAs() method without input sanitization. This allows deserialization of attacker-controlled YAML content, leading to arbitrary class instantiation. Under certain conditions, this can be exploited to achieve remote code execution (RCE).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-56816"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/running-elephant/datart"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xiaoxiaoranxxx/CVE-2025-56815"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-24T17:15:41Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v4rj-whxc-qp2h",
+  "modified": "2026-11-10T21:34:25Z",
+  "published": "2026-11-10T21:34:25Z",
+  "aliases": [
+    "CVE-2026-99286"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen-netback: Fix XenBus connection failure cleanup\n\nxenvif_get_stats and xenvif_get_ethtool_stats capture vif->num_queues\nunder rcu_read_lock. We need to unpublish vif->num_queues before\nsynchronize_net to ensure that readers that come afterwards will not\nread a non-zero vif->num_queues and attempt to access invalid queues.\n\nThis is the same cleanup algorithm as used in backend_disconnect and\nadded in commit b17075d5c198 (\"xen-netback: fix race condition on XenBus\ndisconnect\").\n\nThis is XSA-531",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07aca7d25ce8578fedde49855983a01c537a782b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a97aa838903d15f865d80809f5198ff459c6634a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ade3082dcdee17c5767069883936d64ff83f6c9f"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/11/10/25"
+    },
+    {
+      "type": "WEB",
+      "url": "http://xenbits.xen.org/xsa/advisory-531.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T19:22:31Z"
+  }
+}

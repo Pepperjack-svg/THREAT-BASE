@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ffv7-8x5h-5w7r",
+  "modified": "2026-10-12T15:32:13Z",
+  "published": "2026-10-12T15:32:12Z",
+  "aliases": [
+    "CVE-2026-108953"
+  ],
+  "details": "mac-shell-mcp before 2.0.0 contains an OS command injection vulnerability that allows MCP clients to bypass the command whitelist by injecting shell metacharacters into execute_command arguments. Attackers or malicious prompts can call a safe command such as pwd with arguments like ';' to run forbidden commands as the server user without approval.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108953"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cfdude/mac-shell-mcp/issues/45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cfdude/mac-shell-mcp/commit/932ce733cde07bb30b1f186303e6692dbb5d087a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cfdude/mac-shell-mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cfdude/mac-shell-mcp/blob/1c1708201abb7a18c83075e1bf933e7a92cbeb9f/src/services/command-service.ts#L257-L340"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mac-shell-mcp-before-2.0.0-os-command-injection-via-execute-command-arguments"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T13:17:28Z"
+  }
+}

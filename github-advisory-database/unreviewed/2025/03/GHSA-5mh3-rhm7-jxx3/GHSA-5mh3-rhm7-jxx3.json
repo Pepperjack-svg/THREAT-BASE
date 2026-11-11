@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5mh3-rhm7-jxx3",
+  "modified": "2025-03-20T12:32:43Z",
+  "published": "2025-03-20T12:32:43Z",
+  "aliases": [
+    "CVE-2024-12392"
+  ],
+  "details": "A Server-Side Request Forgery (SSRF) vulnerability exists in binary-husky/gpt_academic version git 310122f. The application has a functionality to download papers from arxiv.org, but the URL validation is incomplete. An attacker can exploit this vulnerability to make the application access any URL, including internal services, and read the response. This can be used to access data that are only accessible from the server, such as AWS metadata credentials, and can escalate local exploits to network-based attacks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12392"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/858de346-698e-4a72-a9e9-3dbd6c60ac18"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-20T10:15:28Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q3pp-r67w-8848",
+  "modified": "2026-10-13T18:30:55Z",
+  "published": "2026-10-13T18:30:55Z",
+  "aliases": [
+    "CVE-2026-110120"
+  ],
+  "details": "Yshopmall through 2.0.0 contains an insecure direct object reference vulnerability in the after-sales API that allows authenticated members to access other members' data by supplying their after-sales id and orderCode. Attackers can call deleteAfterSalesOrder, addLogisticsInformation, or GET /applyForAfterSales/{key} to view other members' order items and tamper with or delete their after-sales records.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110120"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/guchengwuyue/yshopmall/blob/d1b20a2d76dfd98985410116db3aca8aca193b26/yshop-mall-boot/yshop-app/src/main/java/co/yixiang/sales/rest/StoreAfterSalesController.java#L151-L187"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/guchengwuyue/yshopmall/blob/d1b20a2d76dfd98985410116db3aca8aca193b26/yshop-mall-boot/yshop-mall/src/main/java/co/yixiang/modules/sales/service/impl/StoreAfterSalesServiceImpl.java#L353-L383"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@1ExmmukzRMWN7B4gQ4W-4Q/yshopmall-member-api-ownership-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/yshopmall-through-2.0.0-idor-via-after-sales-api-in-storeaftersalescontroller"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-13T17:17:36Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-93m4-3786-5phj",
+  "modified": "2025-11-18T21:32:29Z",
+  "published": "2025-07-10T09:32:30Z",
+  "aliases": [
+    "CVE-2025-38306"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/fhandle.c: fix a race in call of has_locked_children()\n\nmay_decode_fh() is calling has_locked_children() while holding no locks.\nThat's an oopsable race...\n\nThe rest of the callers are safe since they are holding namespace_sem and\nare guaranteed a positive refcount on the mount in question.\n\nRename the current has_locked_children() to __has_locked_children(), make\nit static and switch the fs/namespace.c users to it.\n\nMake has_locked_children() a wrapper for __has_locked_children(), calling\nthe latter under read_seqlock_excl(&mount_lock).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-38306"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f282cdc1d219c4a557f7009e81bc792820d9d9a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/287c7d34eedd37af1272dfb3b6e8656f4f026424"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6482c3dccbfb8d20e2856ce67c75856859930b3f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-07-10T08:15:29Z"
+  }
+}

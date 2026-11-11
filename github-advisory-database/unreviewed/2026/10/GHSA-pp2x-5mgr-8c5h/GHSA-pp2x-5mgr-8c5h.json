@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pp2x-5mgr-8c5h",
+  "modified": "2026-10-16T18:34:42Z",
+  "published": "2026-10-16T18:34:42Z",
+  "aliases": [
+    "CVE-2026-111614"
+  ],
+  "details": "DataCap through 2025.1.1 contains an insecure direct object reference vulnerability in BaseController.getInfoForPath that allows authenticated users to read other users' datasources, snippets and dashboards by numeric id. Low-privileged attackers can enumerate auto-increment ids on the source, snippet and dashboard endpoints to retrieve serialized datasource host, port, username and cleartext passwords.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111614"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/devlive-community/MetaForge/blob/2025.1.1/core/datacap-server/src/main/java/io/edurt/datacap/server/controller/BaseController.java#L91-L95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/devlive-community/MetaForge/blob/2025.1.1/core/datacap-service/src/main/java/io/edurt/datacap/service/service/BaseService.java#L38-L43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/metaforge-datacap-source-getbyid-cross-user-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/datacap-through-2025.1.1-idor-via-basecontroller-getinfoforpath-exposes-credentials"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:40Z"
+  }
+}

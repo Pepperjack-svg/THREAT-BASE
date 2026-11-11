@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7f2q-69qm-pp4c",
+  "modified": "2026-10-18T18:31:49Z",
+  "published": "2026-10-18T18:31:49Z",
+  "aliases": [
+    "CVE-2026-98463"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsched_ext: Derive SCX_RQ_IN_WAKEUP from the core enqueue flags\n\nschedule_deferred_locked() skips scheduling a deferred action while\nSCX_RQ_IN_WAKEUP is set and relies on the task_woken_scx() call that follows\na wakeup enqueue to run it. enqueue_task_scx() sets the flag from the merged\nenqueue flags, which include the flags stashed for a remote activation.\nmove_remote_task_to_local_dsq() thus sets SCX_RQ_IN_WAKEUP on the\ndestination rq when the moved task was woken up, although no\ntask_woken_scx() follows that activation.\n\nAn IMMED insert into a busy destination requests a local reenqueue during\nthat enqueue. The request gets linked but not scheduled and stays pending\nuntil an unrelated wakeup or preemption on that CPU runs the deferred\nactions. The IMMED task sits behind the running task in the meantime. If\nnothing runs them before the scheduler is disabled, the request outlives the\nscheduler and points into its freed per-cpu area, which the next scheduler\ndereferences from run_deferred().\n\nTest the core enqueue flags for the wakeup bit. Only the core's wakeup path\nis followed by task_woken_scx().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98463"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3fdf2ceb31e8aff77451e468bc8409e10587916a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c401ae426e20e53a3398a8e79afd0964c0f5110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df5cdc2c832ca4e8a6d774596b9005558761a403"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:16:56Z"
+  }
+}

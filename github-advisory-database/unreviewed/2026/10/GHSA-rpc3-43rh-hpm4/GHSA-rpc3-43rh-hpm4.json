@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rpc3-43rh-hpm4",
+  "modified": "2026-10-07T18:32:09Z",
+  "published": "2026-10-07T18:32:09Z",
+  "aliases": [
+    "CVE-2026-33586"
+  ],
+  "details": "Authenticated users are able to manipulate both the SMTP\nenvelope “Envelope-from” and “From” fields when sending\nemails through OVH mail servers.\n\n\n\nDue to OVH's default SPF configuration, which\ncommonly includes include:mx.ovh.com, any authenticated user with a\nvalid OVH email account can send messages that appear to originate from any\nOVH-hosted domains using the default SPF record. Since the SPF policy\nexplicitly authorizes OVH mail servers (mx.ovh.com) to send mail on behalf of\nthese domains, forged messages successfully pass SPF validation despite\nnot being authorized by the impersonated domain owner.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:N/SC:N/SI:H/SA:N/E:A/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33586"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.ovhcloud.com/en/guides/web-cloud/email-and-collaborative-solutions/troubleshooting/email-rejected-cross-domain-spoofing"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-290"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-07T16:17:47Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qrvr-jqxg-65rv",
+  "modified": "2026-03-09T18:31:43Z",
+  "published": "2026-03-09T18:31:43Z",
+  "aliases": [
+    "CVE-2026-29023"
+  ],
+  "details": "Keygraph Shannon contains a hard-coded API key in its router configuration that, when the router component is enabled and exposed, allows network attackers to authenticate using the publicly known static key. An attacker able to reach the router port can proxy requests through the Shannon instance using the victim’s configured upstream provider API credentials, resulting in unauthorized API usage and potential disclosure of proxied request and response data. This vulnerability's general exploitability has been mitigated with the introduction of commit 023cc95.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-29023"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/KeygraphHQ/shannon/issues/186"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/KeygraphHQ/shannon/pull/224"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/KeygraphHQ/shannon/pull/224/changes/023cc953db742602964b7826105278d15c28a420"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/keygraph-shannon-hard-coded-router-api-key"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-798"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-09T18:16:22Z"
+  }
+}

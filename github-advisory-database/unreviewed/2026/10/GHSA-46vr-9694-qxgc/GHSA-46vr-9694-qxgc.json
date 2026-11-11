@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-46vr-9694-qxgc",
+  "modified": "2026-10-08T12:34:26Z",
+  "published": "2026-10-08T12:34:26Z",
+  "aliases": [
+    "CVE-2026-103011"
+  ],
+  "details": "Heap-based buffer overflow in the legacy Blowfish encryption routine (BlowFishEncryptor::Encode, called by EncryptToString) in Progressive Robot hMailServer 6.0.0 through 6.3.5 allows an authenticated mailbox user to cause a denial of service (service crash), and possibly other unspecified impact. In 6.3.4 and 6.3.5, where the self-service REST API is enabled (it is off by default), the user does this remotely by adding a fetch account whose password is 129 to 247 characters long and not a multiple of 8, and then requesting their personal data export (GET /api/v1/me/export.zip), which encrypts that password with the legacy scheme. The same flaw is reachable on Windows by any local interactive user with no hMailServer credentials, through the COM method Utilities.BlowfishEncrypt, which checked no authentication. It is also reachable by every stored-secret write when ProtectStoredSecretsWithDPAPI is set to 0. For such a length, the routine's padding loop writes up to 7 zero bytes 2 to 232 bytes past the end of its 255-byte heap buffer. The ciphertext it returns is still correct.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103011"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/hmailserver/hmailserver/-/work_items/49"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T11:16:42Z"
+  }
+}

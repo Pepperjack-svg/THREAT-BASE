@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-44jx-mm6h-r8wp",
+  "modified": "2025-11-13T18:31:06Z",
+  "published": "2025-11-13T18:31:05Z",
+  "aliases": [
+    "CVE-2025-60693"
+  ],
+  "details": "A stack-based buffer overflow exists in the get_merge_mac function of the httpd binary on Linksys E1200 v2 routers (Firmware E1200_v2.0.11.001_us.tar.gz). The function concatenates up to six user-supplied CGI parameters matching <parameter>_0~5 into a fixed-size buffer (a2) without proper bounds checking, appending colon delimiters during concatenation. Remote attackers can exploit this vulnerability via specially crafted HTTP requests to execute arbitrary code or cause denial of service without authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-60693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yifan20020708/SGTaint-0-day/blob/main/Linksys/Linksys-E1200/CVE-2025-60693.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.linksys.com"
+    },
+    {
+      "type": "WEB",
+      "url": "http://linksys.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-13T18:15:53Z"
+  }
+}

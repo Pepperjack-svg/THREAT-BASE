@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3x39-7gwg-8x8p",
+  "modified": "2025-09-24T21:30:36Z",
+  "published": "2025-09-19T21:31:18Z",
+  "aliases": [
+    "CVE-2025-34198"
+  ],
+  "details": "Vasion Print (formerly PrinterLogic) Virtual Appliance Host versions prior to 22.0.951 and Application prior to 20.0.2368 (VA and SaaS deployments) contain shared, hardcoded SSH host private keys in the appliance image. The same private host keys (RSA, ECDSA, and ED25519) are present across installations, rather than being uniquely generated per appliance. An attacker who obtains these private keys (for example from one compromised appliance image or another installation) can impersonate the appliance, decrypt or intercept SSH connections to appliances that use the same keys, and perform man-in-the-middle or impersonation attacks against administrative SSH sessions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-34198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/saas/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.printerlogic.com/va/Print/Security/Security-Bulletins.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pierrekim.github.io/blog/2025-04-08-vasion-printerlogic-83-vulnerabilities.html#va-hardcoded-ssh-keys"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vasion-print-printerlogic-shared-hardcoded-ssh-host-private-keys-in-appliance-image"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-798"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-19T19:15:40Z"
+  }
+}

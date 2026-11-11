@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3wp7-xc34-h3f8",
+  "modified": "2026-03-17T15:36:21Z",
+  "published": "2026-03-16T18:32:03Z",
+  "aliases": [
+    "CVE-2025-69783"
+  ],
+  "details": "A local attacker can bypass OpenEDR's 2.5.1.0 self-defense mechanism by renaming a malicious executable to match a trusted process name (e.g., csrss.exe, edrsvc.exe, edrcon.exe). This allows unauthorized interaction with the OpenEDR kernel driver, granting access to privileged functionality such as configuration changes, process monitoring, and IOCTL communication that should be restricted to trusted components. While this issue alone does not directly grant SYSTEM privileges, it breaks OpenEDR's trust model and enables further exploitation leading to full local privilege escalation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-69783"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ComodoSecurity/openedr/issues/49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ComodoSecurity/openedr"
+    },
+    {
+      "type": "WEB",
+      "url": "https://scavengersecurity.com/posts/edr-as-rootkit-2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openedr.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-250"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-16T16:16:13Z"
+  }
+}

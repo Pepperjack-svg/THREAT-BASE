@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-67mf-3cr5-8w23",
+  "modified": "2025-09-03T13:04:19Z",
+  "published": "2025-08-12T12:30:32Z",
+  "aliases": [
+    "CVE-2025-8885"
+  ],
+  "summary": "Bouncy Castle for Java on All (API modules) allows Excessive Allocation",
+  "details": "A resource allocation vulnerability exists in Bouncy Castle for Java (by Legion of the Bouncy Castle Inc.) that affects all API modules. The vulnerability allows attackers to cause excessive memory allocation through unbounded resource consumption, potentially leading to denial of service. The issue is located in the ASN1ObjectIdentifier.java file in the core module.\n\nThis issue affects Bouncy Castle for Java: from BC 1.0 through 1.77, from BC-FJA 1.0.0 through 2.0.0.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/S:P/R:U/RE:M/U:Amber"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.bouncycastle:bcprov-jdk14"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0"
+            },
+            {
+              "fixed": "1.78"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.bouncycastle:bcprov-jdk15to18"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0"
+            },
+            {
+              "fixed": "1.78"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.bouncycastle:bcprov-jdk18on"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0"
+            },
+            {
+              "fixed": "1.78"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.bouncycastle:bctls-jdk14"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0"
+            },
+            {
+              "fixed": "1.78"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.bouncycastle:bctls-jdk15to18"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0"
+            },
+            {
+              "fixed": "1.78"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.bouncycastle:bctls-jdk18on"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0"
+            },
+            {
+              "fixed": "1.78"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.bouncycastle:bc-fips"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "1.0.2.6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.bouncycastle:bc-fips"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "2.0.1"
+            }
+          ]
+        }
+      ],
+      "versions": [
+        "2.0.0"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-8885"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bcgit/bc-java/commit/3790993df5d28f661a64439a8664343437ed3865"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/bcgit/bc-java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bcgit/bc-java/blob/main/core/src/main/java/org/bouncycastle/asn1/ASN1ObjectIdentifier.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bcgit/bc-java/wiki/CVE%E2%80%902025%E2%80%908885"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-08-12T19:36:18Z",
+    "nvd_published_at": "2025-08-12T10:15:26Z"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hrmc-jmp7-mpm2",
+  "modified": "2026-10-27T17:27:18Z",
+  "published": "2024-09-06T18:31:31Z",
+  "aliases": [
+    "CVE-2024-45758"
+  ],
+  "summary": "H2O.ai H2O vulnerable to deserialization attacks via a JDBC Connection URL",
+  "details": "H2O.ai H2O through 3.46.0.4 allows attackers to arbitrarily set the JDBC URL, leading to deserialization attacks, file reads, and command execution. Exploitation can occur when an attacker has access to post to the ImportSQLTable URI with a JSON document containing a connection_url property with any typical JDBC Connection URL attack payload such as one that uses queryInterceptors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "ai.h2o:h2o-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "3.46.0.7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "h2o"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "3.46.0.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-45758"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/h2oai/h2o-3/issues/16425"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/h2oai/h2o-3/issues/16622"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/h2oai/h2o-3/pull/16624"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/h2oai/h2o-3/commit/f714edd6b8429c7a7211b779b6ec108a95b7382d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/AfterSnows/c24ca3c26dc89ab797e610e92a6a9acb"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/h2oai/h2o-3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/h2o/PYSEC-2026-352.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/h2o"
+    },
+    {
+      "type": "WEB",
+      "url": "https://spear-shield.notion.site/Unauthenticated-Remote-Code-Execution-via-Unrestricted-JDBC-Connection-87a958a4874044199cbb86422d1f6068"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-09-23T18:24:38Z",
+    "nvd_published_at": "2024-09-06T16:15:03Z"
+  }
+}

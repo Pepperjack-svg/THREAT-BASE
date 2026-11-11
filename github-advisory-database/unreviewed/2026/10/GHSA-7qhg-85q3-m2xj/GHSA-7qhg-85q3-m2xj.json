@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7qhg-85q3-m2xj",
+  "modified": "2026-10-14T21:33:45Z",
+  "published": "2026-10-14T21:33:45Z",
+  "aliases": [
+    "CVE-2026-110775"
+  ],
+  "details": "Nexent through 2.7.0 contains a missing authorization vulnerability in check_file_access that allows authenticated users to read other tenants' knowledge-base files by skipping tenant comparison for knowledge_base/ reads. Attackers in multi-tenant deployments can list objects via GET /file/storage for presigned URLs or use GET /file/download/{object_name} to download other tenants' source documents.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110775"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ModelEngine-Group/nexent"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ModelEngine-Group/nexent/blob/90bf1a5dbb1eb16bb4a28c2407ed4b6eda9a09bf/backend/services/file_management_service.py#L177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/nexent-knowledge-base-cross-tenant-file-read"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nexent-through-2.7.0-cross-tenant-knowledge-base-file-read-via-check-file-access"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T19:17:13Z"
+  }
+}

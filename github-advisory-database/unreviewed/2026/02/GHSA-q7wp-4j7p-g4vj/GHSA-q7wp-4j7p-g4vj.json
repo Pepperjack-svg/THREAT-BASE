@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q7wp-4j7p-g4vj",
+  "modified": "2026-02-18T09:31:04Z",
+  "published": "2026-02-18T09:31:04Z",
+  "aliases": [
+    "CVE-2026-2419"
+  ],
+  "details": "The WP-DownloadManager plugin for WordPress is vulnerable to Path Traversal in all versions up to, and including, 1.69 via the 'download_path' configuration parameter. This is due to insufficient validation of the download path setting, which allows directory traversal sequences to bypass the WP_CONTENT_DIR prefix check. This makes it possible for authenticated attackers, with Administrator-level access and above, to configure the plugin to list and access arbitrary files on the server by exploiting the file browser functionality.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2419"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lesterchan/wp-downloadmanager/commit/416b9f5459496166c0395f9e055d4c4cf872404a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-downloadmanager/tags/1.69/download-options.php#L42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-downloadmanager/trunk/download-options.php#L42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/0bb96da1-9c17-4264-ac29-b5ff8dec745d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-18T08:16:15Z"
+  }
+}

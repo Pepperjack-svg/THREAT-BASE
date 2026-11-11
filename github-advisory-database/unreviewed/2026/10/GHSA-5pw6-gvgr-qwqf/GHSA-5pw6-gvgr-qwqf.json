@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5pw6-gvgr-qwqf",
+  "modified": "2026-10-24T15:32:47Z",
+  "published": "2026-10-23T15:31:31Z",
+  "aliases": [
+    "CVE-2026-98932"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nEDAC/altera: Fix use-after-free in error paths\n\nIn both altr_edac_a10_device_add() and altr_portb_setup(), the error path\nfreed the dci structure before releasing the devres group. Since the managed\nsingle and double bit IRQ handlers use altdev(dci->pvt_info) as their data, an\nIRQ firing between freeing dci and unregistering the IRQs could dereference\nthe freed memory.\n\nRelease the devres group first so the managed IRQs are unregistered\nbefore the dci structure is freed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98932"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/865f3bdebbc9b34012358c377c9b15154f95f33b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87364b19b3fe4e6dbf88d6acf6db4ec87e7dfbba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eef3b67f9c6782127163b631c9043011a68016e2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:14Z"
+  }
+}

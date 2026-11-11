@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4463-xxf2-768j",
+  "modified": "2026-10-15T03:36:14Z",
+  "published": "2026-06-25T09:31:19Z",
+  "aliases": [
+    "CVE-2026-53149"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nthunderbolt: Bound root directory content to block size\n\n__tb_property_parse_dir() does not check that content_offset +\ncontent_len fits within block_len for the root directory case.\nWhen rootdir->length equals or exceeds block_len - 2, the entry\nloop reads past the allocated property block.\n\nAdd a bounds check after computing content_offset and content_len\nto reject directories whose content extends past the block.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a32040a48db8cf35de48b85d6115df5623e4964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1912be23daf4afc8d24ce916021ab68ca4c679db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d0b1524caadb04c10a71f3f88692c63dcb39115"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c7657d38d07268124782f03519f07c22a5814fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60ba6217460792356a238299edd675d91d46bab4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65423079c7420e3dbf9a7aa345c243a3f5752e5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b212bc161d8a9937b42153723a4a3f2f74fab528"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cbeb68cbaa0a6f979ef428a7f2d0268c082ba166"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-25T09:16:32Z"
+  }
+}

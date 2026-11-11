@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7fxw-w85g-2jg3",
+  "modified": "2026-06-30T18:31:40Z",
+  "published": "2026-06-30T18:31:40Z",
+  "aliases": [
+    "CVE-2026-58373"
+  ],
+  "details": "CVAT before 2.69.0 contains an improper authorization vulnerability in QualityReportViewSet.get_queryset that allows authenticated attackers to enumerate quality report identifiers belonging to other organizations by exploiting a missing check_object_permissions call on the parent_id query parameter of the quality reports API endpoint. Attackers can send requests with sequential integer parent_id values and distinguish between existing and non-existing reports via HTTP 500 versus HTTP 404 response differences, disclosing cross-organization report existence without returning report content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58373"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cvat-ai/cvat/pull/10807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cvat-ai/cvat/commit/27953f19d2265f8b495369f816730a7452db791b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cvat-ai/cvat/releases/tag/v2.69.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cvat-missing-authorization-on-quality-reports-parent-id-filter-leaks-cross-organization-report-existence"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-30T17:16:25Z"
+  }
+}

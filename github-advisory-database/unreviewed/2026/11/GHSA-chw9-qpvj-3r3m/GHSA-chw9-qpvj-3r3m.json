@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-chw9-qpvj-3r3m",
+  "modified": "2026-11-07T03:31:07Z",
+  "published": "2026-11-02T15:31:45Z",
+  "aliases": [
+    "CVE-2026-120458"
+  ],
+  "details": "Kvazaar through 2.3.2 contains an infinite loop vulnerability in read_header() in src/encmain.c that allows attackers to hang the command-line encoder by supplying a truncated Y4M header. Attackers can provide a crafted .y4m file lacking a terminating newline, causing unchecked EOF reads that hang the process indefinitely while consuming a full CPU core.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120458"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ultravideo/kvazaar/issues/452"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ultravideo/kvazaar/commit/8a2f109be283e87008c679d635966cc034da39c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ultravideo/kvazaar/blob/v2.3.2/src/encmain.c#L339-L357"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ultravideo/kvazaar/releases/tag/v2.3.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/cve-2026-120458-kvazaar-y4m-header-missing-newline-infinite-loop"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haindpwn/kvazaar-y4m-header-missing-newline-infinite-loop"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/kvazaar-through-2.3.2-infinite-loop-dos-via-y4m-header-parser"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-02T15:17:29Z"
+  }
+}

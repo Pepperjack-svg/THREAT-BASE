@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mxfq-hmm6-9phm",
+  "modified": "2026-11-10T18:31:40Z",
+  "published": "2026-11-10T18:31:40Z",
+  "aliases": [
+    "CVE-2026-125748"
+  ],
+  "details": "Parabol before 15.21.2 contains a missing authorization vulnerability in the addReactjiToReactable GraphQL mutation that allows authenticated users to tamper with reactions on other organizations' content. Attackers can pair their own meetingId with a reactableId of another tenant's reflection, comment, or sequential team prompt response to add or remove their reactions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125748"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ParabolInc/parabol/issues/13727"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ParabolInc/parabol/commit/1f063b2f2768ad3a6138156ddce9d938f58e8005"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ParabolInc/parabol/blob/v15.21.1/packages/server/graphql/public/mutations/addReactjiToReactable.ts#L36-L99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ParabolInc/parabol/releases/tag/v15.21.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/parabol-addreactjitoreactable-cross-meeting-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/parabol-before-15.21.2-missing-authorization-via-addreactjitoreactable-mutation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T16:17:20Z"
+  }
+}

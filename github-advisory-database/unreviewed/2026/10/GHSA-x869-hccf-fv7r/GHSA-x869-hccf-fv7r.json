@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x869-hccf-fv7r",
+  "modified": "2026-10-06T15:32:01Z",
+  "published": "2026-10-06T15:32:01Z",
+  "aliases": [
+    "CVE-2026-87975"
+  ],
+  "details": "An issue was discovered in Django 6.1 before 6.1.2, 6.0 before 6.0.9, and 5.2 before 5.2.18.\n`django.forms.models.BaseModelFormSet.save_existing_objects()` used the presence of a primary key on a submitted form's instance as evidence that the instance belonged to the formset's limiting queryset. An object outside that queryset is represented by a newly constructed instance whose primary key can still be populated from submitted data when the model's primary key is a field accepted by the form, such as a `OneToOneField` or parent link used as the primary key of an inline formset's model, or a natural or UUID primary key included in the form's fields. This allows an authenticated user permitted to submit such a formset to delete rows outside the limiting queryset, without any permission on the targeted object, via forged management-form data marking an out-of-queryset object for deletion. Models using the default AutoField primary key are not affected.\nEarlier, unsupported Django series (such as 5.1.x, 5.0.x, and 4.2.x) were not evaluated and may also be affected.\nDjango would like to thank Seonggwon Yoon for reporting this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87975"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/83cbd21be57483e6b3eb6e4688a561c841aff75e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/b83ab92bc5474558b083a840ea4628b3261b2cfe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/cce6c57ed30ea83725f9d6abb2fe5ee932bab107"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/ff27883ca055aa9ab23015b50674a5b10dfe5a41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.djangoproject.com/en/dev/releases/security"
+    },
+    {
+      "type": "WEB",
+      "url": "https://groups.google.com/g/django-announce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.djangoproject.com/weblog/2026/oct/06/security-releases"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-06T14:17:47Z"
+  }
+}

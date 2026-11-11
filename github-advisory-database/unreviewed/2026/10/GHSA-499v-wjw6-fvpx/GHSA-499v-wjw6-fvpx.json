@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-499v-wjw6-fvpx",
+  "modified": "2026-10-27T18:31:18Z",
+  "published": "2026-10-02T09:31:16Z",
+  "aliases": [
+    "CVE-2026-15999"
+  ],
+  "details": "Improper validation of integrity check value in the AES-CCM implementation (CcmParameters and CcmBlockCipher) in Legion of the Bouncy Castle Inc. bc-csharp before 2.7.0 allows an on-path attacker to modify CCM-encrypted content without detection via an AlgorithmIdentifier whose CCMParameters declare an authentication tag (aes-ICVlen) of zero or another length outside the RFC 5084 set, because CcmParameters accepted any value and CcmBlockCipher validated the tag length only when encrypting, so decryption compared a zero-length or very short tag. Affected paths include ParameterUtilities.GetCipherParameters, used by CmsEnvelopedData and CmsEnvelopedDataParser for EnvelopedData encrypted with AES-CCM, and any caller passing an unchecked tag length to CcmBlockCipher for decryption.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15999"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bcgit/bc-csharp/commit/2818bdfa55efd58b0d6a1c75f360b8404d879780"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bcgit/bc-csharp/commit/9d284d8f379614def853b590c62bbb31c48f7af0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bcgit/bc-csharp/wiki/CVE-2026-15999"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-354"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-02T07:16:36Z"
+  }
+}

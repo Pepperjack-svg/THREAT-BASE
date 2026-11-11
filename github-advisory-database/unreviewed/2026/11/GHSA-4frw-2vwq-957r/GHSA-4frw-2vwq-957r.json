@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4frw-2vwq-957r",
+  "modified": "2026-11-05T09:30:22Z",
+  "published": "2026-11-05T09:30:22Z",
+  "aliases": [
+    "CVE-2026-109408"
+  ],
+  "details": "vault-java-driver, a Java client for HashiCorp Vault, silently disables TLS certificate and hostname verification in three states where the caller asked for verification: an SslConfig passed to VaultConfig without calling build(), an SslConfig restored by Java deserialization, and VAULT_SSL_VERIFY set to a truthy value other than \"true\", such as 1, yes or on. In each case SslConfig.isVerify() returns false and the driver installs a trust-all SSLContext. An attacker on the network path to the Vault server can then read the Vault token and secrets in transit and forge responses. This issue affects io.github.jopenlibs:vault-java-driver 5.2.0 through 6.2.3. It is fixed in 7.0.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109408"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jopenlibs/vault-java-driver/pull/78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://repo.maven.apache.org/maven2/io/github/jopenlibs/vault-java-driver/7.0.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-05T08:17:03Z"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xg2q-7399-f2r3",
+  "modified": "2026-09-16T15:30:36Z",
+  "published": "2026-05-27T15:33:22Z",
+  "aliases": [
+    "CVE-2026-46054"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nselinux: fix overlayfs mmap() and mprotect() access checks\n\nThe existing SELinux security model for overlayfs is to allow access if\nthe current task is able to access the top level file (the \"user\" file)\nand the mounter's credentials are sufficient to access the lower\nlevel file (the \"backing\" file).  Unfortunately, the current code does\nnot properly enforce these access controls for both mmap() and mprotect()\noperations on overlayfs filesystems.\n\nThis patch makes use of the newly created security_mmap_backing_file()\nLSM hook to provide the missing backing file enforcement for mmap()\noperations, and leverages the backing file API and new LSM blob to\nprovide the necessary information to properly enforce the mprotect()\naccess controls.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46054"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-46054.json"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d844702198395d3f80222777030f69db6be6b709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd0e707a927a70cdfd8bc5a512a9719a87f5ed51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc6c380c1159de52a252ed11f19a42c47f60a735"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bacd09f12c27710228562e4d13163e58c5f4a45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82544d36b1729153c8aeb179e84750f0c085d3b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2482025"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-46054"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:67723"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:67721"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:59473"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:59091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:52764"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:52667"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:52649"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:51746"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:30848"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:27812"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:27811"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:25191"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-280",
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:25Z"
+  }
+}

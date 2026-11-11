@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8g8c-pxm3-p2hh",
+  "modified": "2026-10-01T09:30:36Z",
+  "published": "2026-10-01T09:30:36Z",
+  "aliases": [
+    "CVE-2026-90992"
+  ],
+  "details": "The Redux Framework plugin for WordPress is vulnerable to Stored Cross-Site Scripting via User Meta Merge via 'user-mediaurl' Media Field in all versions up to, and including, 4.5.14 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is exploitable by Subscriber-level users who can store a payload in user meta fields such as the biography, session_tokens (via a crafted User-Agent at login), or persisted_preferences (via the REST API), which are then promoted to the site-wide redux_demo option when a media URL repair is triggered on the demo panel.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90992"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/redux-framework/tags/4.5.14/redux-core/assets/js/vendor/jsonview.js#L136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/redux-framework/tags/4.5.14/redux-core/inc/classes/class-redux-options-constructor.php#L189"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/redux-framework/tags/4.5.14/redux-core/inc/classes/class-redux-options-constructor.php#L632"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/redux-framework/tags/4.5.14/redux-core/inc/extensions/users/class-redux-extension-users.php#L365"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/redux-framework/tags/4.5.14/redux-core/inc/extensions/users/class-redux-users-api.php#L558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3705066/redux-framework/trunk/redux-core/assets/js/vendor/jsonview.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3705066%40redux-framework%2Ftags%2F4.5.15&old=3688279%40redux-framework%2Ftags%2F4.5.14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2274a464-4eeb-4c8a-b138-44fef6b4a3a5?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-01T09:17:09Z"
+  }
+}

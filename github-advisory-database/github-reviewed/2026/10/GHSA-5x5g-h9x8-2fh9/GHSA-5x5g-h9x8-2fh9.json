@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5x5g-h9x8-2fh9",
+  "modified": "2026-10-08T17:40:06Z",
+  "published": "2026-10-08T17:40:06Z",
+  "aliases": [
+    "CVE-2026-107300"
+  ],
+  "summary": "msgpack5: Many buffered values can exhaust the streaming decoder stack",
+  "details": "### Impact\n\nThe streaming decoder recursively invokes itself for every complete value remaining in a chunk. A single chunk containing many small valid MessagePack values can exhaust the JavaScript call stack and interrupt the process or stream.\n\n### Patches\n\nThe streaming decoder now drains concatenated values iteratively with constant call-stack depth.\n\n### Workarounds\n\nLimit the number of MessagePack values accepted in one chunk, or split large batches before passing them to the decoder stream.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "msgpack5"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.1.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mcollina/msgpack5/security/advisories/GHSA-5x5g-h9x8-2fh9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mcollina/msgpack5/commit/77fbef144d05def5d16fc22c37caa64c0a7efeba"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mcollina/msgpack5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mcollina/msgpack5/releases/tag/v6.1.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-08T17:40:06Z",
+    "nvd_published_at": null
+  }
+}

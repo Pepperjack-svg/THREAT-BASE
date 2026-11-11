@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5fhq-3m7h-fqv8",
+  "modified": "2026-10-12T03:32:56Z",
+  "published": "2026-10-12T03:32:56Z",
+  "aliases": [
+    "CVE-2026-108981"
+  ],
+  "details": "ngx_cache_purge before 3.0.4 can allow file deletion via a symlink attack in certain situations where nginx and a served application (e.g., WordPress) run under the same user account. The attacker must be able to create a symlink inside the cache path. Version 3.0.4 fixes this for the case of a symlink created at an arbitrary earlier time, but does not resolve an applicable TOCTOU race condition. (The ngx_cache_purge module follows symlinks while walking the cache directory tree during purge operations. The module relies on nginx's ngx_walk_tree(), which relies on stat() and therefore follows symlinks.)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108981"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nginx-modules/ngx_cache_purge/pull/72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nginx-modules/ngx_cache_purge/commit/a6da1352f52a8a02dd6828e88c39ed42fddcee96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nginx-modules/ngx_cache_purge/releases/tag/3.0.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-61"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T03:17:18Z"
+  }
+}

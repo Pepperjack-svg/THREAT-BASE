@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cqc2-r3p8-vc5x",
+  "modified": "2026-10-16T18:34:48Z",
+  "published": "2026-10-16T18:34:47Z",
+  "aliases": [
+    "CVE-2026-111657"
+  ],
+  "details": "BeikeShop through 2.0.0.31 contains an insecure direct object reference vulnerability in the markAsShipped handler of RmaController that allows authenticated customers to modify other customers' returns. Attackers can submit sequential RMA ids to the account/rmas/{id}/mark_as_shipped endpoint to overwrite courier names and tracking numbers and mark approved returns as shipped.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111657"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beikeshop/beikeshop/blob/v2.0.0.31/beike/Shop/Http/Controllers/Account/RmaController.php#L67-L93"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beikeshop/beikeshop/blob/v2.0.0.31/beike/Shop/Routes/shop.php#L98-L111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/beikeshop-rma-mark-as-shipped-missing-ownership-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/beikeshop-through-2.0.0.31-idor-via-rma-mark-as-shipped-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:47Z"
+  }
+}

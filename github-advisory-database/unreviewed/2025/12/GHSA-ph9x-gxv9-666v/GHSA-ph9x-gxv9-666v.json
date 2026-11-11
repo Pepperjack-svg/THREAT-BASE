@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ph9x-gxv9-666v",
+  "modified": "2025-12-09T03:31:09Z",
+  "published": "2025-12-09T03:31:09Z",
+  "aliases": [
+    "CVE-2022-50653"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: atmel-mci: fix return value check of mmc_add_host()\n\nmmc_add_host() may return error, if we ignore its return value,\nit will lead two issues:\n1. The memory that allocated in mmc_alloc_host() is leaked.\n2. In the remove() path, mmc_remove_host() will be called to\n   delete device, but it's not added yet, it will lead a kernel\n   crash because of null-ptr-deref in device_del().\n\nSo fix this by checking the return value and calling mmc_free_host()\nin the error path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50653"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00ac0f5f95920f003cd6ece53cdc759549b69118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1925472dec31ec061d57412b3a65a056ea24f340"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6bb26abb92f25e582a0976091a10b539fe3796db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85946ceb0fac20ab39cdb85333086daf0291a553"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/99a6cdfa2cf05028b52f6d8ee85ccc5f8b71b4a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e6e8c43726673ca2abcaac87640b9215fd72f4c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc8bb436f3c842a86b9082d97933582120d180e2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-12-09T01:16:48Z"
+  }
+}

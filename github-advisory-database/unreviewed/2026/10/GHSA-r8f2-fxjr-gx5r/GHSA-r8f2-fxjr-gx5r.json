@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r8f2-fxjr-gx5r",
+  "modified": "2026-10-27T15:32:43Z",
+  "published": "2026-10-27T15:32:43Z",
+  "aliases": [
+    "CVE-2026-117553"
+  ],
+  "details": "Umbraco CMS before 17.7.2 and 18.2.2 contains an authentication bypass vulnerability that allows unauthenticated attackers to register attacker-controlled OAuth redirect URIs by poisoning the Host header. Attackers send signed-in users authorization links using response_mode=form_post to capture codes, then redeem them via HTTP Basic client credentials to hijack back-office sessions and execute code through Razor templates.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/umbraco/Umbraco-CMS/security/advisories/GHSA-rpv9-qp4c-g469"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-117553"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/umbraco/Umbraco-CMS/commit/490b9b27dcbb8fb3fe868a36203590968b0569d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/umbraco/Umbraco-CMS"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/umbraco/Umbraco-CMS/blob/release-18.2.1/src/Umbraco.Cms.Api.Management/Middleware/BackOfficeAuthorizationInitializationMiddleware.cs#L74-L112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/umbraco-cms-before-17.7.2-and-18.2.2-account-takeover-via-host-header-poisoning"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-27T14:16:35Z"
+  }
+}

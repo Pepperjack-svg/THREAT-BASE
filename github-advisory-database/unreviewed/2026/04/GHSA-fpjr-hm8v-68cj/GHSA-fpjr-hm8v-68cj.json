@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpjr-hm8v-68cj",
+  "modified": "2026-05-26T15:32:07Z",
+  "published": "2026-04-03T18:31:23Z",
+  "aliases": [
+    "CVE-2026-31390"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: Fix memory leak in xe_vm_madvise_ioctl\n\nWhen check_bo_args_are_sane() validation fails, jump to the new\nfree_vmas cleanup label to properly free the allocated resources.\nThis ensures proper cleanup in this error path.\n\n(cherry picked from commit 29bd06faf727a4b76663e4be0f7d770e2d2a7965)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31390"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0cfe9c4838f1147713f6b5c02094cd4dc0c598fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c87b48a0ff040723f84a67b32892af7e6a3634f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3aa7b837920c844d5ae0dd3dbaeb465a461de40"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-04-03T16:16:36Z"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xv89-vpfw-p3mv",
+  "modified": "2026-10-18T18:31:52Z",
+  "published": "2026-10-18T18:31:52Z",
+  "aliases": [
+    "CVE-2026-98527"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: zynq: fix runtime PM leak on request error path\n\npm_runtime_get_sync() leaves the usage counter incremented even when it\nfails, and zynq_gpio_request() returns the error without dropping it.\n\ngpiolib does not call ->free() when ->request() fails, so zynq_gpio_free(),\nwhich holds the only matching pm_runtime_put(), never runs. The reference\nis leaked and the controller can no longer runtime-suspend, so its clock\nstays enabled.\n\nSwitch to pm_runtime_resume_and_get(), which only increments the usage\ncounter on success.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98527"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/25c08be2a5e7715f19a6e02bbe9b0e5f01c77aac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58a417a19d80141fff3abe6004e2e47285506e73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60a76cdd92e25f576dc58d756a565760dde1f7a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e05f1c614a57a5d4c364dd12e20c6fd012f9d3e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e20dabffbcd7b222d8e7bb85a7d8e8325df7699"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3e9b7f7c9558f8c9592f8f817557bff98707bb3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e380fba02908b809f5bbef371259003cf5887bb4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e9438ab5328a177c9c0e5df87eb92a7162841e98"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:04Z"
+  }
+}

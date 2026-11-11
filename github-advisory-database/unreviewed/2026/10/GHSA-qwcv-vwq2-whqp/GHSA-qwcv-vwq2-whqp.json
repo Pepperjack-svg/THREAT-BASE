@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qwcv-vwq2-whqp",
+  "modified": "2026-10-14T15:32:19Z",
+  "published": "2026-10-14T15:32:18Z",
+  "aliases": [
+    "CVE-2026-98387"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/crypto: Fix skcipher_walk return code handling in aes_s390\n\nThe return codes from skcipher_walk_virt() were not properly checked\nbefore entering the processing loops in ecb_aes_crypt() and ctr_aes_crypt().\nIf skcipher_walk_virt() fails, the walk structure may be in an undefined\nstate, and attempting to process data could lead to incorrect behavior\nor accessing uninitialized memory.\n\nAdd proper return code checking to ensure correct handling of the walk\ninitialization and walk advance and eventually return to the caller\nwith that return code.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98387"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15fa028589c3a2545f0bff355eff06d5844196bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/35c3f97569306050e818fa18e17fa97c358f0f28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/89b58645646d1dac34162cc2597f42266bfbf930"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aea3e1588f08e381a7a57b2bf1a60cc2347904cd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-14T14:17:49Z"
+  }
+}

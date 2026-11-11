@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-858j-2m97-g3qm",
+  "modified": "2026-10-09T12:31:40Z",
+  "published": "2026-10-08T18:32:30Z",
+  "aliases": [
+    "CVE-2026-93860"
+  ],
+  "details": "In OpenStack Mistral through 23.0.0, the /v2/maintenance API controller clears the request context and calls the maintenance service directly without any policy enforcement. Any holder of a valid Mistral token, regardless of assigned role, can read and change the service's cluster-wide maintenance state. Setting the state to PAUSED stops processing of new workflow and execution objects across all tenant projects until an operator restores it.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93860"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.launchpad.net/ossa/+bug/2162789"
+    },
+    {
+      "type": "WEB",
+      "url": "https://launchpad.net/bugs/2162789"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.openstack.org/ossa/OSSA-2026-044.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T18:18:30Z"
+  }
+}

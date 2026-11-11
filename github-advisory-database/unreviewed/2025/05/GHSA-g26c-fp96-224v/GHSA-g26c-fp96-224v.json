@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g26c-fp96-224v",
+  "modified": "2025-11-07T21:31:18Z",
+  "published": "2025-05-01T15:31:47Z",
+  "aliases": [
+    "CVE-2022-49798"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Fix race where eprobes can be called before the event\n\nThe flag that tells the event to call its triggers after reading the event\nis set for eprobes after the eprobe is enabled. This leads to a race where\nthe eprobe may be triggered at the beginning of the event where the record\ninformation is NULL. The eprobe then dereferences the NULL record causing\na NULL kernel pointer bug.\n\nTest for a NULL record to keep this from happening.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49798"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7291dec4f2d17a2d3fd1f789fb41e58476539f21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73f5191467ffe3af82f27fe0ea6a8c2fac724d3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94eedf3dded5fb472ce97bfaf3ac1c6c29c35d26"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:03Z"
+  }
+}

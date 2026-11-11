@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-78vr-8fpj-r56x",
+  "modified": "2026-11-04T15:32:30Z",
+  "published": "2026-11-04T15:32:30Z",
+  "aliases": [
+    "CVE-2026-119745"
+  ],
+  "details": "Sender plugin for WordPress before 2.11.3 contains a missing authorization vulnerability that allows any authenticated user, including Subscribers, to access a sensitive diagnostic dump by requesting the admin_post_sender_debug_download action handled by downloadDebugFile() without any capability, nonce, or referer check. Attackers can exploit this flaw via wp-admin/admin-post.php?action=sender_debug_download to retrieve WordPress, PHP, WooCommerce, and server version details, the full active plugin inventory, active theme information, and plugin settings including the connected Sender account resource key and account metadata.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119745"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/sender-net-automated-emails/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sender-wordpress-plugin-broken-access-control-via-admin-post-sender-debug-download"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-04T14:17:30Z"
+  }
+}

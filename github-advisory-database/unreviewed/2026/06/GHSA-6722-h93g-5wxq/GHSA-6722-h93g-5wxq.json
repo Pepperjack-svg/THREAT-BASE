@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6722-h93g-5wxq",
+  "modified": "2026-06-10T18:31:46Z",
+  "published": "2026-06-10T18:31:46Z",
+  "aliases": [
+    "CVE-2026-20252"
+  ],
+  "details": "In Splunk Enterprise versions below 10.2.4, 10.0.7, 9.4.12, and 9.3.13, and Splunk Cloud Platform versions below 10.4.2604.3, 10.3.2512.12, 10.2.2510.14, 10.1.2507.22, and 9.3.2411.132, a low-privileged user that does not hold the \"admin\" or \"power\" Splunk roles could send server-side requests to arbitrary internal destinations through the Dashboard Studio PDF export feature.  \n\nThe vulnerability exists because the trusted-domain validation uses a prefix match that can be bypassed with attacker-controlled subdomains (for example, docs.splunk.com.evil.com), and because the PDF export service follows HTTP redirects automatically without re-validating each redirect target against the allowlist.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-20252"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0602"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-10T18:16:40Z"
+  }
+}

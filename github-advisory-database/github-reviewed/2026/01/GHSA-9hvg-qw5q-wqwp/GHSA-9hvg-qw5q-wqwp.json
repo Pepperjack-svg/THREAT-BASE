@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9hvg-qw5q-wqwp",
+  "modified": "2026-01-02T21:56:00Z",
+  "published": "2026-01-02T21:56:00Z",
+  "aliases": [
+    "CVE-2026-21450"
+  ],
+  "summary": "Bagisto SSTI vulnerability in type parameter can lead to RCE",
+  "details": "### Summary\nSSTI is possible in Bagisto via type parameter can lead to RCE and other exploitations.\n\n### Details\n1. Go to `http://127.0.0.1:8000/admin/reporting/products/view?type={{7*7}}`\n\n<img width=\"1251\" height=\"282\" alt=\"image\" src=\"https://github.com/user-attachments/assets/652e96f4-631e-4322-8561-63f4d897a480\" />\n\n\n### Impact\nCan lead to RCE, command injection.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:P"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "bagisto/bagisto"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.3.10"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/bagisto/bagisto/security/advisories/GHSA-9hvg-qw5q-wqwp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21450"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bagisto/bagisto/commit/3f294b4837595929107d9c1bbd6d5b1222ef9fea"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/bagisto/bagisto"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bagisto/bagisto/releases/tag/v2.3.10"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-02T21:56:00Z",
+    "nvd_published_at": "2026-01-02T21:16:02Z"
+  }
+}

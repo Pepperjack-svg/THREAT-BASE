@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8p2-ffwx-rgc9",
+  "modified": "2026-10-18T18:32:01Z",
+  "published": "2026-10-18T18:32:01Z",
+  "aliases": [
+    "CVE-2026-98729"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/mm: Don't apply va_align to hugetlb mappings on AMD F15h\n\nget_align_mask() returns huge_page_mask_align() for hugetlbfs, but get_align_bits()\nadds va_align.bits regardless, so vm_unmapped_area() returns an address off the huge\npage boundary and __unmap_hugepage_range() hits BUG_ON(start & ~huge_page_mask(h)) at\nteardown.\n\nThis can be triggered on Carrizo and FX-8370E, both hstates.\n\nPass the file to get_align_bits() and skip the randomisation for hugetlbfs.\n\n  [ bp: Massage commit message. ]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b46b2e2de47ca9449532b0a7110ed99f79061d6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2457a7e2727dc747a61a50d65c2f259afce8c45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe23680e6f1d52b8cc45d77bf7c54249508a81c7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:26Z"
+  }
+}

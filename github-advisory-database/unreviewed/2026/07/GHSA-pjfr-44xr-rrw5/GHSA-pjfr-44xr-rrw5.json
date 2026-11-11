@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pjfr-44xr-rrw5",
+  "modified": "2026-07-01T06:31:34Z",
+  "published": "2026-07-01T06:31:33Z",
+  "aliases": [
+    "CVE-2026-12904"
+  ],
+  "details": "The Kadence Blocks – Gutenberg Blocks for Page Builder Features plugin for WordPress is vulnerable to Insecure Direct Object Reference in versions up to and including 3.7.7. This is due to a mismatch between the object used for authorization and the object actually accessed in the Optimize_Rest_Controller's create_item(), get_item(), delete_item(), and bulk_delete_items() endpoints — authorization is checked via current_user_can('edit_post'/'delete_post', $post_id) against the user-supplied post_id, while the storage layer keys analysis records on sha256($post_path) from a separately supplied, attacker-controlled post_path parameter, with no enforcement that post_path corresponds to post_id. This makes it possible for authenticated attackers, with Contributor-level access and above, to read or delete optimizer analysis records belonging to posts owned by other users by submitting their own post_id (which passes the capability check) together with the victim post's path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12904"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.6.7/includes/resources/Optimizer/Path/Path.php#L60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.6.7/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.6.7/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L197"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.6.7/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L232"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.6.7/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.6.7/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L383"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.6.7/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L420"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.6.7/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L458"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.6.7/includes/resources/Optimizer/Store/Table_Store.php#L96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.7.6/includes/resources/Optimizer/Path/Path.php#L60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.7.6/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.7.6/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L197"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.7.6/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L232"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.7.6/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.7.6/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L383"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.7.6/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L420"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.7.6/includes/resources/Optimizer/Rest/Optimize_Rest_Controller.php#L458"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.7.6/includes/resources/Optimizer/Store/Table_Store.php#L96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3590217%40kadence-blocks&new=3590217%40kadence-blocks&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/24cdd50f-742c-457c-85f7-9cccaf366e87?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-01T05:16:17Z"
+  }
+}

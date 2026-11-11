@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6723-3r89-pw82",
+  "modified": "2025-11-14T18:31:19Z",
+  "published": "2025-05-20T18:30:57Z",
+  "aliases": [
+    "CVE-2025-37971"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: bcm2835-camera: Initialise dev in v4l2_dev\n\nCommit 42a2f6664e18 (\"staging: vc04_services: Move global g_state to\nvchiq_state\") changed mmal_init to pass dev->v4l2_dev.dev to\nvchiq_mmal_init, however nothing iniitialised dev->v4l2_dev, so we got\na NULL pointer dereference.\n\nSet dev->v4l2_dev.dev during bcm2835_mmal_probe. The device pointer\ncould be passed into v4l2_device_register to set it, however that also\nhas other effects that would need additional changes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37971"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06753f49336ab161ea0e249a0720125b81b7b31b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98698ca0e58734bc5c1c24e5bbc7429f981cd186"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b70bdd4923e8b8edbacde2af83ca337bb7005261"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-20T17:15:47Z"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h2wg-v8wg-jhxh",
+  "modified": "2025-05-28T20:07:50Z",
+  "published": "2025-05-28T17:38:38Z",
+  "aliases": [
+    "CVE-2024-47056"
+  ],
+  "summary": "Mautic does not shield .env files from web traffic",
+  "details": "### Summary \nThis advisory addresses a security vulnerability in Mautic where sensitive `.env` configuration files may be directly accessible via a web browser. This exposure could lead to the disclosure of sensitive information, including database credentials, API keys, and other critical system configurations.\n\nSensitive Information Disclosure via `.env` File Exposure: The `.env` file, which typically contains environment variables and sensitive application configurations, is directly accessible via a web browser due to missing web server configurations that restrict access to such files. This allows an unauthenticated attacker to view the contents of this file by simply navigating to its URL.\n\n### Mitigation\nUpdate Mautic to the latest Mautic version.\nBy default, Mautic does not use `.env` files for production data.\n\n**For Apache users:** Ensure your web server is configured to respect `.htaccess` files.\n\n**For Nginx users:** As Nginx does not inherently support `.htaccess` files, you must manually add a configuration block to your Nginx server configuration to deny access to `.env` files. Add the following to your Nginx configuration for the Mautic site:\n\n```nginx\nlocation ~ /\\.env {\n    deny all;\n}\n```\n\nAfter modifying your Nginx configuration, remember to reload or restart your Nginx service for the changes to take effect.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.4.0"
+            },
+            {
+              "fixed": "4.4.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-alpha"
+            },
+            {
+              "fixed": "5.2.6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0-alpha"
+            },
+            {
+              "fixed": "6.0.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mautic/mautic/security/advisories/GHSA-h2wg-v8wg-jhxh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47056"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mautic/mautic"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-312",
+      "CWE-526"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-05-28T17:38:38Z",
+    "nvd_published_at": "2025-05-28T17:15:23Z"
+  }
+}

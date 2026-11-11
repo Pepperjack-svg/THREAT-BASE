@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6f68-j9jr-9q2w",
+  "modified": "2026-06-26T18:33:58Z",
+  "published": "2026-06-26T18:33:58Z",
+  "aliases": [
+    "CVE-2025-11919"
+  ],
+  "details": "The default JVM can access files and directories under `/tmp/` including the `$TemporaryDirectory` of other users on the same cloud instance (`/tmp/UserTemporaryFiles/`).  The `-init` file for the the JVM initialization exists in the vulnerable directory during the startup of the JVM.  An attacker with access to the shared `/tmp/` space can preemptively create or replace `.jar` files or directories (via the `-init` file) that the victim JVM will resolve first in its classpath.  By strategically placing a malicious version of a commonly used library (e.g., `commons-io`) in a location that is included in the classpath before the legitimate version, an attacker can cause the JVM to load the malicious class during startup, thereby executing the attacker's code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11919"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PeterRoberge/vulnerability-wolfram-cloud-14.2/blob/main/disclosure.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.kb.cert.org/vuls/id/553375"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-06-26T16:16:29Z"
+  }
+}

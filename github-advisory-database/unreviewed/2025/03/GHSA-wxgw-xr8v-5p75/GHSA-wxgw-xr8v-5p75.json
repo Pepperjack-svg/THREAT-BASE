@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wxgw-xr8v-5p75",
+  "modified": "2026-10-15T03:34:39Z",
+  "published": "2025-03-06T18:31:10Z",
+  "aliases": [
+    "CVE-2024-58058"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nubifs: skip dumping tnc tree when zroot is null\n\nClearing slab cache will free all znode in memory and make\nc->zroot.znode = NULL, then dumping tnc tree will access\nc->zroot.znode which cause null pointer dereference.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58058"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-019113.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-265688.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-457936.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert-portal.siemens.com/productcert/html/ssa-784472.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1787cd67bb94b106555ffe64f887f6aa24b47010"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a987950df825d0144370e700dc5fb337684ffba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40e25a3c0063935763717877bb2a814c081509ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/428aff8f7cfb0d9a8854477648022cef96bcab28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6211c11fc20424bbc6d79c835c7c212b553ae898"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77e5266e3d3faa6bdcf20d9c68a8972f6aa06522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bdb0ca39e0acccf6771db49c3f94ed787d05f2d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e01b55f261ccc96e347eba4931e4429d080d879d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/03/msg00028.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-03-06T16:15:52Z"
+  }
+}

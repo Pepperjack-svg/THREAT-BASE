@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f457-wm99-2w49",
+  "modified": "2026-11-06T15:31:20Z",
+  "published": "2026-10-31T15:30:24Z",
+  "aliases": [
+    "CVE-2026-78190"
+  ],
+  "details": "WebDyne versions from 2.014 before 3.022 for Perl reflect request parameters unescaped into form field values, allowing cross-site scripting.\n\nThe textfield, password_field and filefield tags fill their value attribute from the request parameter of the same name. WEBDYNE_CGI_AUTOESCAPE, which controls escaping of these values, defaults to off. From 2.022, WebDyne::HTML::Tiny also replaced its entity_encode method with one that returns its input unchanged, so enabling WEBDYNE_CGI_AUTOESCAPE has no effect.\n\nA remote attacker can inject script into any page using these tags through a crafted link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78190"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/ASPEER/WebDyne-3.022/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-31T15:16:54Z"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j97x-pm24-3q67",
+  "modified": "2026-07-30T06:32:17Z",
+  "published": "2025-11-12T12:30:28Z",
+  "aliases": [
+    "CVE-2025-40171"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet-fc: move lsop put work to nvmet_fc_ls_req_op\n\nIt’s possible for more than one async command to be in flight from\n__nvmet_fc_send_ls_req. For each command, a tgtport reference is taken.\n\nIn the current code, only one put work item is queued at a time, which\nresults in a leaked reference.\n\nTo fix this, move the work item to the nvmet_fc_ls_req_op struct, which\nalready tracks all resources related to the command.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-40171"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/060ecc81240ef9d60d9485a3a5eb55a0d6e7a25c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11269c08013f4ee8b8f5edc6c56700acb34092d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7331925c247b03b7767b8cd93cfe1b7aa2377850"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a619f8c869117ffed08365b377f66b7e1d941b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a28112cc55013cd8cbd5d36b5115a5b851151bd9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/db5a5406fb7e5337a074385c7a3e53c77f2c1bd3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-11-12T11:15:47Z"
+  }
+}

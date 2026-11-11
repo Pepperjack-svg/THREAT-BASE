@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-26vh-p5jc-q2mg",
+  "modified": "2026-10-08T21:33:14Z",
+  "published": "2026-10-08T09:31:55Z",
+  "aliases": [
+    "CVE-2026-66084"
+  ],
+  "details": "An authorization bypass vulnerability in Apache DolphinScheduler allows authenticated users to modify task definitions in projects they are not authorized to access through the /dolphinscheduler/projects/{projectCode}/task-definition/{code}/with-upstream endpoint.\n\n\n\nThe endpoint fails to verify that the task definition identified by code belongs to the project specified by projectCode. An authenticated user can supply the code of a project they are authorized to access together with a task definition code from another project, bypassing project access restrictions and modifying the target task definition and its upstream dependencies.\n\n\n\nThis vulnerability can compromise workflow integrity and disrupt task execution in unauthorized projects.This issue affects Apache DolphinScheduler: before 3.4.3.\n\n\n\nUsers are recommended to upgrade to version 3.4.3, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66084"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/cn6v1m8pfnjn7rsqkq1xow8v63pw27w2"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/10/08/2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-08T09:16:41Z"
+  }
+}

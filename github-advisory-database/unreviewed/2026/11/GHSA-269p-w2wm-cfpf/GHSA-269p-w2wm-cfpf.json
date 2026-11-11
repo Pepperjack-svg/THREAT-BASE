@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-269p-w2wm-cfpf",
+  "modified": "2026-11-09T18:32:01Z",
+  "published": "2026-11-09T18:32:01Z",
+  "aliases": [
+    "CVE-2026-125063"
+  ],
+  "details": "A flaw was found in the rrule validation of schedules in automation controller. Several non-anchored regular expressions with lazy wildcard prefixes are applied to the user-supplied rrule value; when the expected DTSTART/RRULE tokens are absent, validation time grows quadratically with the length of the value. An authenticated user can submit a large token-free rrule through the REST API, including the schedule preview endpoint, which requires no resource-level permissions; validation runs synchronously in the API web worker, so a single such request occupies a worker for an extended time and repeated requests can exhaust the web worker pool, denying access to the API and web UI while the attack is sustained. The impact is limited to availability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125063"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-125063"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2569200"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1333"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-09T18:17:27Z"
+  }
+}

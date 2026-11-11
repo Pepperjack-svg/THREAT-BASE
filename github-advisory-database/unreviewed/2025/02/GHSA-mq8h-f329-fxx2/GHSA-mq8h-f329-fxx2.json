@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mq8h-f329-fxx2",
+  "modified": "2025-11-03T21:32:52Z",
+  "published": "2025-02-24T09:35:48Z",
+  "aliases": [
+    "CVE-2023-52926"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nIORING_OP_READ did not correctly consume the provided buffer list when\nread i/o returned < 0 (except for -EAGAIN and -EIOCBQUEUED return).\nThis can lead to a potential use-after-free when the completion via\nio_rw_done runs at separate context.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-52926"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c27fc6a783c8a77c756dd5461b15e465020d075"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72060434a14caea20925e492310d6e680e3f9007"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a08d195b586a217d76b42062f88f375a3eedda4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/03/msg00001.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-24T09:15:09Z"
+  }
+}

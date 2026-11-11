@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fr63-55g9-p68v",
+  "modified": "2026-10-02T21:32:06Z",
+  "published": "2026-10-02T21:32:06Z",
+  "aliases": [
+    "CVE-2026-104994"
+  ],
+  "details": "Trivy before 0.71.0 allows directory traversal in Terraform filesystem functions when they try to access pathnames above the scan root. The risk occurs when using misconf scanning on untrusted input (e.g., upon a third-party pull request that contains a Terraform configuration), if sensitive data can be found at those unintended pathnames, and an adversary can then view a sensitive data value within scan output.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/aquasecurity/trivy/security/advisories/GHSA-87hp-4m93-274g"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104994"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aquasecurity/trivy/pull/10664"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aquasecurity/trivy/commit/9d91b888cf63023e9c09b64259a4c1cea8dfe993"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aquasecurity/trivy/blob/main/CHANGELOG.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-24"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-02T20:17:01Z"
+  }
+}

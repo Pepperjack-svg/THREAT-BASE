@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ww6h-wxj9-mhx4",
+  "modified": "2026-03-03T12:31:27Z",
+  "published": "2026-03-03T12:31:27Z",
+  "aliases": [
+    "CVE-2026-22886"
+  ],
+  "details": "OpenMQ exposes a TCP-based management service (imqbrokerd) that by default requires\nauthentication. However, the product ships with a default administrative account (admin/\nadmin) and does not enforce a mandatory password change on first use. After the first\nsuccessful login, the server continues to accept the default password indefinitely without\nwarning or enforcement.\n\n\nIn real-world deployments, this service is often left enabled without changing the default\ncredentials. As a result, a remote attacker with access to the service port could authenticate\nas an administrator and gain full control of the protocol’s administrative features.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22886"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/cve-assignment/-/issues/85"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1391"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-03-03T10:16:06Z"
+  }
+}

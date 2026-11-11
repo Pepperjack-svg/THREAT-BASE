@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3fc8-8hp6-6jr4",
+  "modified": "2026-06-23T21:57:49Z",
+  "published": "2026-06-23T21:57:49Z",
+  "aliases": [
+    "CVE-2026-48167"
+  ],
+  "summary": "Filament: Unvalidated ImageColumn and ImageEntry values can be used for XSS",
+  "details": "The `ImageColumn` and `ImageEntry` components render raw database values without escaping HTML. Where the data passed to these components isn't validated, an attacker could plant malicious HTML or JavaScript and achieve stored XSS that executes for users who view the table or schema.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "filament/infolists"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.11.5"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.11.4"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "filament/tables"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.11.5"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.11.4"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "filament/infolists"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.6.5"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.6.4"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "filament/tables"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.6.5"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.6.4"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/filamentphp/filament/security/advisories/GHSA-3fc8-8hp6-6jr4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48167"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/filamentphp/filament"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-23T21:57:49Z",
+    "nvd_published_at": "2026-06-22T22:16:46Z"
+  }
+}

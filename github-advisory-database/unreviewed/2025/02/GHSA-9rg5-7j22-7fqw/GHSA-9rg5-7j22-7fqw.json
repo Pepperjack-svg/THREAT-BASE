@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9rg5-7j22-7fqw",
+  "modified": "2025-02-27T21:32:09Z",
+  "published": "2025-02-27T21:32:09Z",
+  "aliases": [
+    "CVE-2021-47653"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: davinci: vpif: fix use-after-free on driver unbind\n\nThe driver allocates and registers two platform device structures during\nprobe, but the devices were never deregistered on driver unbind.\n\nThis results in a use-after-free on driver unbind as the device\nstructures were allocated using devres and would be freed by driver\ncore when remove() returns.\n\nFix this by adding the missing deregistration calls to the remove()\ncallback and failing probe on registration errors.\n\nNote that the platform device structures must be freed using a proper\nrelease callback to avoid leaking associated resources like device\nnames.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-47653"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/43acb728bbc40169d2e2425e84a80068270974be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6512c3c39cb6b573b791ce45365818a38b76afbe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ffc602e14d7b9f7e7cb2f67e18dfef9ef8af676"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5a3bb7f6f164eb6ee74ef4898dcd019b2063448"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T06:37:07Z"
+  }
+}

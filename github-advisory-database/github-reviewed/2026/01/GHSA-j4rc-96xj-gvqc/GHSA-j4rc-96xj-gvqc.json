@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4rc-96xj-gvqc",
+  "modified": "2026-01-29T03:47:08Z",
+  "published": "2026-01-23T20:17:33Z",
+  "aliases": [
+    "CVE-2026-24422"
+  ],
+  "summary": "phpMyFAQ: Public API endpoints expose emails and invisible questions",
+  "details": "### Summary\nSeveral public API endpoints return email addresses and non‑public records (e.g. open questions with isVisible=false).\n\n### Details\nOpenQuestionController::list() calls Question::getAll() with the default showAll=true, returning invisible questions and their emails. Similar exposures exist in comment/news/faq APIs.\n\n### PoC\n```\ncurl -i -H 'Accept-Language: en' \\\n  http://192.168.40.16/phpmyfaq/api/v3.0/open-questions\n```\n\n### Impact\nPrivacy exposure of email addresses and non‑public content; increased risk of phishing/scraping.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "phpmyfaq/phpmyfaq"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.0.17"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.0.16"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "thorsten/phpmyfaq"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.0.17"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.0.16"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thorsten/phpMyFAQ/security/advisories/GHSA-j4rc-96xj-gvqc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24422"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/thorsten/phpMyFAQ"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-01-23T20:17:33Z",
+    "nvd_published_at": "2026-01-24T03:16:01Z"
+  }
+}

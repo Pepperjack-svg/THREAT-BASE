@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8382-j7xc-2hfv",
+  "modified": "2026-10-12T18:31:38Z",
+  "published": "2026-10-12T18:31:38Z",
+  "aliases": [
+    "CVE-2026-109252"
+  ],
+  "details": "FreeRDP from 3.9.0 before 3.32.0 contains a NULL pointer dereference vulnerability in the RDPEAR NDR reader that allows malicious servers to crash clients via truncated KERB_RPC_INTERNAL_NAME data. Attackers can send a CreateApReqAuthenticatorReq with NameCount of two or more ending before the Names pointer, causing cleanup to dereference a null base and terminate the client.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-93g7-296p-j77j"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109252"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/freerdp-from-3.9.0-before-3.32.0-rdpear-null-pointer-dereference-via-kerb-rpc-internal-name"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-12T17:17:16Z"
+  }
+}

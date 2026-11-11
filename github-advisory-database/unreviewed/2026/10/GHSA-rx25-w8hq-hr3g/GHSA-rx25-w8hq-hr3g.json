@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rx25-w8hq-hr3g",
+  "modified": "2026-10-30T15:34:34Z",
+  "published": "2026-10-30T15:34:34Z",
+  "aliases": [
+    "CVE-2026-119578"
+  ],
+  "details": "MONAI from 1.6.0 before 1.6.1 contains a remote code execution vulnerability in Auto3DSeg algo_from_json() that allows attackers to run Python code via a crafted work directory's algo_object.json. Attackers can ship a malicious algorithm_templates module plus a _target_ name that is imported and instantiated when victims call AutoRunner or import_bundle_algo_history, executing code under default configuration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Project-MONAI/MONAI/security/advisories/GHSA-2wx3-8x3w-r8qv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119578"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/monai-1.6.0-before-1.6.1-code-execution-via-auto3dseg-algo-from-json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-470"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-30T14:16:47Z"
+  }
+}

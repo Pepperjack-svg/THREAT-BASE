@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3cp-rrhp-98mx",
+  "modified": "2026-05-12T09:31:32Z",
+  "published": "2026-05-12T09:31:32Z",
+  "aliases": [
+    "CVE-2026-6663"
+  ],
+  "details": "The GWD Connect plugin for WordPress is vulnerable to missing authorization to limited code execution in all versions up to, and including, 2.9. This is due to the plugin's standalone agent endpoints (gwd-backup.php and gwd-logs.php) not verifying authentication when the API key has not been configured, which is the default state. This makes it possible for unauthenticated attackers - on unregistered installations only, in certain environments - to execute arbitrary code on the server via the update_agent action, which writes attacker-supplied PHP code to the agent file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6663"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/graphic-web-design-inc/tags/2.9/gwd-backup.php?marks=1991,2002,2548#L1991"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/graphic-web-design-inc/tags/2.9/gwd-logs.php?marks=398,403,851#L398"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4d2d435f-d6ce-41bd-8a45-e252fb4ba419?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-12T09:16:55Z"
+  }
+}

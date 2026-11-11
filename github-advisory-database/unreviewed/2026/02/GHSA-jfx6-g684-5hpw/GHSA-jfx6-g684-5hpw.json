@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jfx6-g684-5hpw",
+  "modified": "2026-03-17T21:31:40Z",
+  "published": "2026-02-04T18:30:44Z",
+  "aliases": [
+    "CVE-2026-23094"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nuacce: fix isolate sysfs check condition\n\nuacce supports the device isolation feature. If the driver\nimplements the isolate_err_threshold_read and\nisolate_err_threshold_write callback functions, uacce will create\nsysfs files now. Users can read and configure the isolation policy\nthrough sysfs. Currently, sysfs files are created as long as either\nisolate_err_threshold_read or isolate_err_threshold_write callback\nfunctions are present.\n\nHowever, accessing a non-existent callback function may cause the\nsystem to crash. Therefore, intercept the creation of sysfs if\nneither read nor write exists; create sysfs if either is supported,\nbut intercept unsupported operations at the call site.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82821a681d5dcce31475a65190fc39ea8f372cc0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98eec349259b1fd876f350b1c600403bcef8f85d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ab05cdcac354b1b1139918f49c6418b9005d042"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fdbbb47d15ae17bf39fafec7e2028c1f8efba15e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-02-04T17:16:20Z"
+  }
+}

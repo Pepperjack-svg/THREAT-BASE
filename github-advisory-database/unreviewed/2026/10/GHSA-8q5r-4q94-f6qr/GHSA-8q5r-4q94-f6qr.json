@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8q5r-4q94-f6qr",
+  "modified": "2026-10-15T21:36:04Z",
+  "published": "2026-10-15T21:36:04Z",
+  "aliases": [
+    "CVE-2026-111143"
+  ],
+  "details": "Ansilove libansilove through 1.4.2 contains an out-of-bounds read vulnerability in ansilove_xbin() in src/loaders/xbin.c that lacks bounds checks for compressed run-length records. Attackers can supply a crafted compressed XBIN file ending in a control byte such as 0x7F to read past the input buffer, crashing applications that render untrusted XBIN art.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ansilove/libansilove"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ansilove/libansilove/blob/f1b05447aa566aa4eef9b05ebf8c2aaf1e379cd3/src/loaders/xbin.c#L169-L241"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@haind-pwn/libansilove-xbin-rle-oob-read-and-null-font-deref"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ansilove-libansilove-through-1.4.2-out-of-bounds-read-via-ansilove-xbin-rle-decoding"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-15T19:17:28Z"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vx9-9r2g-8373",
+  "modified": "2025-05-28T20:04:40Z",
+  "published": "2025-05-28T17:39:45Z",
+  "aliases": [
+    "CVE-2025-5256"
+  ],
+  "summary": "Mautic has an Open Redirect vulnerability on user unlock path.",
+  "details": "### Summary\nThis advisory addresses an Open Redirection vulnerability in Mautic's user unlocking endpoint. This vulnerability could be exploited by an attacker to redirect legitimate users to malicious websites, potentially leading to phishing attacks or the delivery of exploit kits.\n\nOpen Redirection via `returnUrl` Parameter: An Open Redirection vulnerability exists in the `/s/action/unlock/user.user/0` endpoint. The `returnUrl` parameter, intended for post-action redirection, is not properly validated. This allows an attacker to craft a URL that, when clicked by a user, redirects them to an arbitrary external website controlled by the attacker.\n\n### Mitigation\nUpdate Mautic to a version that properly validates or sanitizes the `returnUrl` parameter to ensure that redirects only occur to trusted, internal URLs or explicitly whitelisted domains.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "4.4.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-alpha"
+            },
+            {
+              "fixed": "5.2.6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0-alpha"
+            },
+            {
+              "fixed": "6.0.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mautic/mautic/security/advisories/GHSA-6vx9-9r2g-8373"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-5256"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mautic/mautic"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2025-05-28T17:39:45Z",
+    "nvd_published_at": "2025-05-28T18:15:34Z"
+  }
+}

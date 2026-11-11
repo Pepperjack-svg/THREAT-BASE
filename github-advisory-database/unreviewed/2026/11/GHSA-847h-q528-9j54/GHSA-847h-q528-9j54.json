@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-847h-q528-9j54",
+  "modified": "2026-11-06T18:34:46Z",
+  "published": "2026-11-06T18:34:46Z",
+  "aliases": [
+    "CVE-2026-80529"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: don't swallow dquot recovery verification errors\n\nxlog_recover_dquot_commit_pass2() validates the recovered dquot with\nxfs_dqblk_verify() and, on failure, sets error = -EFSCORRUPTED and jumps\nto out_release.  But out_release unconditionally returns 0, so the\ncorruption error is discarded: the caller xlog_recover_items_pass2()\nsees success, log recovery proceeds as if the dquot were valid, and the\ncorrupt quota buffer can be written back to disk.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80529"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36a31b12540c0a0a3b77a01fda86de646f2961fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38a4dbe588bd028a07a77dc5cee62ee3ce21e87d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b756fbb60b5d26063f46a11a3c7daa7eb616d79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a233b3362a3c7bf23f5143b4ef4b17ec337fcb4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2b4a856085e9bd939bde2dee0d08b1d41babde9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e506e127fcb4e2bad1045805f1740b395eea9618"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T15:17:06Z"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hggp-38jg-4c95",
+  "modified": "2025-11-17T18:30:22Z",
+  "published": "2025-05-09T09:33:21Z",
+  "aliases": [
+    "CVE-2025-37889"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI/MSI: Handle the NOMASK flag correctly for all PCI/MSI backends\n\nThe conversion of the XEN specific global variable pci_msi_ignore_mask to a\nMSI domain flag, missed the facts that:\n\n    1) Legacy architectures do not provide a interrupt domain\n    2) Parent MSI domains do not necessarily have a domain info attached\n   \nBoth cases result in an unconditional NULL pointer dereference. This was\nunfortunatly missed in review and testing revealed it late.\n\nCure this by using the existing pci_msi_domain_supports() helper, which\nhandles all possible cases correctly.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37889"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0eba2a7e858907a746ba69cd002eb9eb4dbd7bf3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/296c8295ae34045da0214882628d49c1c060dd8a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e3ad60b8f72a95e3a32ddd9d70ea129aa3fcfb7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ece3e8e5976c49c3f887e5923f998eabd54ff40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46d357520934eef99fa121889f8ebbf46a6eddb8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/544055329560d4b64fe204fc6be325ebc24c72ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/694110bc2407a61f02a770cbb5f39b51e4ec77c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a46a9371f8b9a0eeff53a21e11ed3b65f52d9cf6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c402f184a053c8e7ca325e50f04bbbc1e4fee019"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-09T07:16:10Z"
+  }
+}

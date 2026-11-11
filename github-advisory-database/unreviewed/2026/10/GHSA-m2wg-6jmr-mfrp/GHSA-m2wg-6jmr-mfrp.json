@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m2wg-6jmr-mfrp",
+  "modified": "2026-10-18T18:31:59Z",
+  "published": "2026-10-18T18:31:59Z",
+  "aliases": [
+    "CVE-2026-98678"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: ad4030: fix invalid oversampling_ratio validation\n\nIn ad4030_set_avg_frame_len(), the logarithm is calculated before input\nvalidation. Passing zero or negative values leads to an undefined result\nfrom ilog2().\n\nValidate that the input is strictly positive prior to computing its\nlogarithm.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98678"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b0cc4e32599f59c994a60743f53fc72cb2979f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ca6dcbaa68c5e6dc4df171a32c5822e1a4c66c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d615210564205993e8f0e7ccb57cc2e66b7d5706"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-18T16:17:21Z"
+  }
+}

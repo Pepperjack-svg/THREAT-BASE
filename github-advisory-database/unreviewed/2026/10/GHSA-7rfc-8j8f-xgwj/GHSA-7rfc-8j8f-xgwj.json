@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7rfc-8j8f-xgwj",
+  "modified": "2026-10-16T18:34:43Z",
+  "published": "2026-10-16T18:34:43Z",
+  "aliases": [
+    "CVE-2026-111622"
+  ],
+  "details": "smart-sso through 2.1.1 contains an open redirect vulnerability in the /login handler that allows unauthenticated attackers to steal OAuth2 authorization codes by supplying an unvalidated redirectUri parameter. Attackers can send crafted /login links to users with active SSO sessions, then redeem stolen codes at /oauth2/access_token with any valid client credentials to obtain victims' access tokens.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111622"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/a466350665/smart-sso"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/a466350665/smart-sso/blob/1.6.0/smart-sso-server/src/main/java/openjoe/smart/sso/server/controller/LoginController.java#L50-L59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/a466350665/smart-sso/blob/1.6.0/smart-sso-server/src/main/java/openjoe/smart/sso/server/controller/Oauth2Controller.java#L55-L84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/a466350665/smart-sso/blob/2.1.1/smart-sso-server/src/main/java/com/smart/sso/server/controller/LoginController.java#L53-L63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieuPenguinnn/smart-sso-oauth2-code-leak-open-redirect"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/smart-sso-through-2.1.1-oauth2-authorization-code-theft-via-unvalidated-redirecturi"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-16T18:17:41Z"
+  }
+}

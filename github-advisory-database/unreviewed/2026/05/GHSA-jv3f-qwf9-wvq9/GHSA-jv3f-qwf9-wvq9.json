@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jv3f-qwf9-wvq9",
+  "modified": "2026-06-22T18:34:00Z",
+  "published": "2026-05-18T15:30:38Z",
+  "aliases": [
+    "CVE-2026-41949"
+  ],
+  "details": "Dify version 1.14.1 and prior contain an authorization bypass vulnerability in the file preview endpoint that allows any authenticated user to read up to 3,000 characters of any uploaded document across all tenants and workspaces using only the file's UUID. Attackers can access the /console/api/files/{file_id}/preview endpoint with an intercepted file UUID to extract sensitive content from documents without ownership or workspace permission verification. NOTE: Dify Cloud allows unauthenticated free self-registration, making account creation trivially accessible to any attacker.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41949"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/langgenius/dify/pull/35797"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/langgenius/dify/commit/432a6412a3fdb30ce48003d699b90cc7d890df20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/langgenius/dify/releases/tag/1.14.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/d50a0240-7951-4939-b989-9bded66c7682"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dify-authorization-bypass-via-file-preview-endpoint"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zafran.io/resources/difytap-zafran-discovers-how-attackers-can-silently-wiretap-ai-data-across-tenants-on-a-platform-powering-1m-apps"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-18T15:16:26Z"
+  }
+}

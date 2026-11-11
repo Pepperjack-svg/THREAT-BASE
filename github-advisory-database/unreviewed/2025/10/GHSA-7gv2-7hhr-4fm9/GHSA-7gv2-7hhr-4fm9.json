@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7gv2-7hhr-4fm9",
+  "modified": "2025-12-11T18:30:35Z",
+  "published": "2025-10-01T12:30:27Z",
+  "aliases": [
+    "CVE-2022-50421"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrpmsg: char: Avoid double destroy of default endpoint\n\nThe rpmsg_dev_remove() in rpmsg_core is the place for releasing\nthis default endpoint.\n\nSo need to avoid destroying the default endpoint in\nrpmsg_chrdev_eptdev_destroy(), this should be the same as\nrpmsg_eptdev_release(). Otherwise there will be double destroy\nissue that ept->refcount report warning:\n\nrefcount_t: underflow; use-after-free.\n\nCall trace:\n refcount_warn_saturate+0xf8/0x150\n virtio_rpmsg_destroy_ept+0xd4/0xec\n rpmsg_dev_remove+0x60/0x70\n\nThe issue can be reproduced by stopping remoteproc before\nclosing the /dev/rpmsgX.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50421"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f20ef7a845c2c8d7ec82ecffa20d95cab5ecfeb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/467233a4ac29b215d492843d067a9f091e6bf0c5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ef828a39d6a7028836eaf37df3ad568c8c2dd6f9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-10-01T12:15:33Z"
+  }
+}

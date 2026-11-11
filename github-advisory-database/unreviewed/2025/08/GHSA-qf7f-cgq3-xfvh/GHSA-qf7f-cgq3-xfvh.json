@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qf7f-cgq3-xfvh",
+  "modified": "2025-08-27T15:33:15Z",
+  "published": "2025-08-27T15:33:15Z",
+  "aliases": [
+    "CVE-2025-50989"
+  ],
+  "details": "OPNsense 25.1 contains an authenticated command injection vulnerability in its Bridge Interface Edit endpoint (interfaces_bridge_edit.php). The span POST parameter is concatenated into a system-level command without proper sanitization or escaping, allowing an administrator to inject arbitrary shell operators and payloads. Successful exploitation grants RCE with the privileges of the web service (typically root), potentially leading to full system compromise or lateral movement. This vulnerability arises from inadequate input validation and improper handling of user-supplied data in backend command invocations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-50989"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/4rdr/proofs/blob/main/info/OPNsense-25.1-Command-Injection-via-span-parameter.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-08-27T15:15:38Z"
+  }
+}

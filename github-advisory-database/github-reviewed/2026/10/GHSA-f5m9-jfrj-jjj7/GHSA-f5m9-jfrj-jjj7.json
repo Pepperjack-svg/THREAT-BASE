@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f5m9-jfrj-jjj7",
+  "modified": "2026-10-27T21:06:54Z",
+  "published": "2026-10-27T21:06:54Z",
+  "aliases": [
+    "CVE-2026-116694"
+  ],
+  "summary": "OpenTelemetry Python: Unbounded memory allocation in Jaeger baggage propagation",
+  "details": "## Summary\n\n`JaegerPropagator.extract()` in `opentelemetry-propagator-jaeger` did not enforce limits when extracting inbound `uberctx-*` baggage headers. Attacker-controlled baggage could cause unnecessary CPU work and short-lived heap allocations while processing more data than the propagator should accept.\n\n## Impact\n\nServices that enable the optional Jaeger propagator and accept untrusted inbound propagation headers may experience increased per-request resource usage. This can contribute to denial-of-service risk when transport-level limits are absent or configured above the baggage limits.\n\nThe practical impact for most Python web deployments is limited. The package must be installed separately, and the Jaeger propagator is not enabled by the default OpenTelemetry Python configuration.\n\nCommon Python web servers also constrain request headers before they reach the propagator:\n\n- Gunicorn allows a maximum of 100 request-header fields and 8,190 bytes per field by default.\n- Uvicorn’s h11 implementation limits its incomplete-event buffer to 16,384 bytes by default.\n\nThe risk is higher for non-HTTP transports, custom `TextMapGetter` implementations, or deployments where server and gateway limits have been increased or disabled.\n\nThe impact is limited to availability. This issue does not expose or modify telemetry data and does not allow code execution.\n\n## Patches\n\nVersions of `opentelemetry-propagator-jaeger` earlier than `1.45.0` are affected.\n\nUpgrade `opentelemetry-propagator-jaeger` to version `1.45.0` or later.\n\nVersion `1.45.0` limits extraction to 180 entries and 8,192 total bytes and skips entries larger than 4,096 bytes.\n\n## Credit\n\ntonghuaroot",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "opentelemetry-propagator-jaeger"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.45.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.44.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-telemetry/opentelemetry-python/security/advisories/GHSA-f5m9-jfrj-jjj7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-telemetry/opentelemetry-python/pull/5556"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-telemetry/opentelemetry-python/commit/65c4eeb87cd3815dc795d3b5485e9ea0d5affcc7"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/open-telemetry/opentelemetry-python"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.45.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-27T21:06:54Z",
+    "nvd_published_at": null
+  }
+}

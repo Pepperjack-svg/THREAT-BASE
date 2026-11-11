@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pv9v-q67q-mhqc",
+  "modified": "2026-10-23T15:31:33Z",
+  "published": "2026-10-23T15:31:33Z",
+  "aliases": [
+    "CVE-2026-98972"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncgroup/cpuset: Don't access cpuset_cgrp_subsys.root in is_in_v2_mode()\n\nAfter seeing the patch [1] to guard is_in_v2_mode() with RCU, it makes\nme realize that is_in_v2_mode() may be called in a context where a new\ncgroup filesystem is being rebound with stale cpuset_cgrp_subsys.root\npointer. Avoid this potential UaF situation by adding a new cpuset_v2_mode\nflag which is set when the cpuset_v2_mode mount option is used. This\nflag is written into only when cpuset_bind() is being called with a\nstable cpuset_cgrp_subsys.root value. The is_in_v2_mode() helper is\nmodified to read the new cpuset_v2_mode flag instead of accessing\ncpuset_cgrp_subsys.root directly.\n\n[1] https://lore.kernel.org/lkml/20260929084124.626693-2-arighi@nvidia.com",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98972"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/988bf67a13890a37a33201f95947095ca9bec856"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e06b678e3b4e12fdaa0b51a7a5a54abc5dbd6469"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-23T13:17:18Z"
+  }
+}

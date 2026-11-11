@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hh33-9q27-w8qf",
+  "modified": "2026-11-10T18:31:41Z",
+  "published": "2026-11-10T18:31:41Z",
+  "aliases": [
+    "CVE-2026-125752"
+  ],
+  "details": "Meteroid before 2.2.0 contains a cross-tenant authorization bypass vulnerability in the CouponsService UpdateCouponStatus gRPC handler, whose UPDATE query filters only on coupon id and ignores tenant ID. Authenticated users with catalog:manage or a tenant-scoped API key can supply another tenant's coupon ID to disable, archive, or re-enable that coupon and receive its details.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/meteroid-oss/meteroid/commit/ac3fe5c2bc72b277c5329e20eba384b8653805f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/meteroid-oss/meteroid/blob/v2.1.0/modules/meteroid/crates/diesel-models/src/query/coupons.rs#L472-L486"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/meteroid-oss/meteroid/releases/tag/v2.2.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@hieund/meteroid-cross-tenant-apitoken-hash-and-coupon-status-idor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/meteroid-before-2.2.0-cross-tenant-authorization-bypass-via-updatecouponstatus"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-10T16:17:21Z"
+  }
+}

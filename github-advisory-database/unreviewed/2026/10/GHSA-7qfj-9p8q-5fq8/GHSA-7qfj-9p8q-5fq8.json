@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7qfj-9p8q-5fq8",
+  "modified": "2026-10-27T00:32:51Z",
+  "published": "2026-10-27T00:32:51Z",
+  "aliases": [
+    "CVE-2026-116806"
+  ],
+  "details": "OpenPanel before 3.0.0 contains a missing authorization vulnerability in the onboarding.project tRPC mutation that allows non-admin organization members to create projects and mint write-type ingestion credentials, bypassing the admin-only policy. Attackers can repeatedly call the endpoint with a member session to obtain plaintext secrets, inject fake analytics events, poison business metrics, and consume the organization's usage budget.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Openpanel-dev/openpanel/security/advisories/GHSA-5f38-q67m-mcmp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116806"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Openpanel-dev/openpanel/commit/35c2a138fb9f8dde67dadfd426892f3762b25b78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openpanel-before-3.0.0-privilege-escalation-via-onboarding-project-trpc-mutation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-27T00:17:12Z"
+  }
+}

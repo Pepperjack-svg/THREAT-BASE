@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8qq9-w6jc-22xx",
+  "modified": "2025-03-18T21:31:59Z",
+  "published": "2025-03-18T21:31:59Z",
+  "aliases": [
+    "CVE-2022-49055"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Check for potential null return of kmalloc_array()\n\nAs the kmalloc_array() may return null, the 'event_waiters[i].wait' would lead to null-pointer dereference.\nTherefore, it is better to check the return value of kmalloc_array() to avoid this confusion.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49055"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a692c625e373fef692ffbc7fc41f8a025f01cb7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d7a5aae884ca727d41c7ed15d4c82fdb67c040c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32cf90a521dcc0f136db7ee5ba32bfe5f79e460e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40bf32dbfef866c83a3e74800b81d79e52b6d20b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94869bb0de69a812f70231b0eb480bb2f7ae73a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7a268b33882d5feaafd29c1734456f41ba41396"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ebbb7bb9e80305820dc2328a371c1b35679f2667"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2658d5966bcee8c3eb487875f459756d4f7cdfc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:00:42Z"
+  }
+}

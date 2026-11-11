@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xgcc-8xxp-phhm",
+  "modified": "2025-11-04T18:31:33Z",
+  "published": "2025-05-01T15:31:45Z",
+  "aliases": [
+    "CVE-2025-37792"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btrtl: Prevent potential NULL dereference\n\nThe btrtl_initialize() function checks that rtl_load_file() either\nhad an error or it loaded a zero length file.  However, if it loaded\na zero length file then the error code is not set correctly.  It\nresults in an error pointer vs NULL bug, followed by a NULL pointer\ndereference.  This was detected by Smatch:\n\ndrivers/bluetooth/btrtl.c:592 btrtl_initialize() warn: passing zero to 'ERR_PTR'",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-37792"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d7c60c2a38b4b461fa960ad0995136a6bfe0756"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/324dddea321078a6eeb535c2bff5257be74c9799"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3db6605043b50c8bb768547b23e0222f67ceef3e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53ceef799dcfc22c734d600811bfc9dd32eaea0a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73dc99c0ea94abd22379b2d82cacbc73f3e18ec1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aaf356f872a60db1e96fb762a62c4607fd22741f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3e9717276affe59fd8213706db021b493e81e34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8441818690d795232331bd8358545c5c95b6b72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00030.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T14:15:43Z"
+  }
+}

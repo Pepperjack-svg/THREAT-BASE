@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-238j-2hq5-wrgg",
+  "modified": "2026-10-19T21:36:29Z",
+  "published": "2026-10-19T21:36:29Z",
+  "aliases": [
+    "CVE-2026-112771"
+  ],
+  "details": "Craft CMS 4.0.0 before 4.18.8 and 5.0.0 before 5.11.0 contains a Twig sandbox allowlist bypass because the column, contains, filterByValue, index, where, and multisort filters resolve caller-supplied keys via ArrayHelper::getValue() without consulting the sandbox security policy. Authenticated Control Panel users can supply dot-path keys to traverse the craft global and disclose the securityKey, database credentials, and auth tokens.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-j697-8x93-7mp2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112771"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/craft-cms-before-4.18.8-and-5.11.0-twig-sandbox-allowlist-bypass-via-array-filters"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-10-19T20:17:54Z"
+  }
+}

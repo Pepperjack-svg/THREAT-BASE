@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h3jc-6rcx-xcc3",
+  "modified": "2026-05-11T21:31:31Z",
+  "published": "2026-05-06T12:30:33Z",
+  "aliases": [
+    "CVE-2026-43218"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: i2c/tw9903: Fix potential memory leak in tw9903_probe()\n\nIn one of the error paths in tw9903_probe(), the memory allocated in\nv4l2_ctrl_handler_init() and v4l2_ctrl_new_std() is not freed. Fix that\nby calling v4l2_ctrl_handler_free() on the handler in that error path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43218"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32f0493506313775d3bd448de34762b6538da6bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92537a15780b6d0281fd8286f93fbc3652e35f48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9cb9eca33d20316ed3c7a938793b8735ac3e128b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9cea16fea47e5553f51d10957677ff735b1eff03"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a114918270f0d95c607d69b03a244e6afe54813f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/add02a3fb1fd71b004f0ed824cbac00f850de558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc7aeed33e4f55c76f35f0fca73e4dfe12a63a3a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e54aa17c968c4de2c5f7b7ea390c63d33c07513b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-06T12:16:41Z"
+  }
+}

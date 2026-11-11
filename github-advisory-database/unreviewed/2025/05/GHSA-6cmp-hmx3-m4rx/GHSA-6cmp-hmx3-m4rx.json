@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6cmp-hmx3-m4rx",
+  "modified": "2025-05-07T15:31:24Z",
+  "published": "2025-05-01T15:31:49Z",
+  "aliases": [
+    "CVE-2022-49845"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: j1939: j1939_send_one(): fix missing CAN header initialization\n\nThe read access to struct canxl_frame::len inside of a j1939 created\nskbuff revealed a missing initialization of reserved and later filled\nelements in struct can_frame.\n\nThis patch initializes the 8 byte CAN header with zero.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49845"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2719f82ad5d8199cf5f346ea8bb3998ad5323b72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3eb3d283e8579a22b81dd2ac3987b77465b2a22f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69e86c6268d59ceddd0abe9ae8f1f5296f316c3c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0513b095e1ef1469718564dec3fb3348556d0a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8e0edeaa0f2b860bdbbf0aafb4492533043d650"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-05-01T15:16:08Z"
+  }
+}

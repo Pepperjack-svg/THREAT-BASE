@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w23x-9jrw-r45c",
+  "modified": "2026-10-01T15:07:08Z",
+  "published": "2026-10-01T15:07:08Z",
+  "aliases": [
+    "CVE-2026-103000"
+  ],
+  "summary": "pypdf: Possible large memory usage when retrieving alphabetical page labels",
+  "details": "### Impact\n\nAn attacker who uses this vulnerability can craft a PDF which leads to large memory consumption. This requires accessing the page labels of a document with large alphabetical labels.\n\n### Patches\n\nThis has been fixed in [pypdf==6.19.0](https://github.com/py-pdf/pypdf/releases/tag/6.19.0).\n\n### Workarounds\n\nIf you cannot upgrade yet, consider applying the changes from PR [#4096](https://github.com/py-pdf/pypdf/pull/4096).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pypdf"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.19.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/security/advisories/GHSA-w23x-9jrw-r45c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/pull/4096"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/commit/0d8b5a8832cde1ba308b5c27567b879b7b7eed4a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/py-pdf/pypdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/releases/tag/6.19.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-10-01T15:07:08Z",
+    "nvd_published_at": "2026-09-30T21:17:07Z"
+  }
+}

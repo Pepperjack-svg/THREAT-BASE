@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7c5j-6262-p78w",
+  "modified": "2025-11-03T21:33:25Z",
+  "published": "2025-04-01T18:30:53Z",
+  "aliases": [
+    "CVE-2025-21947"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix type confusion via race condition when using ipc_msg_send_request\n\nreq->handle is allocated using ksmbd_acquire_id(&ipc_ida), based on\nida_alloc. req->handle from ksmbd_ipc_login_request and\nFSCTL_PIPE_TRANSCEIVE ioctl can be same and it could lead to type confusion\nbetween messages, resulting in access to unexpected parts of memory after\nan incorrect delivery. ksmbd check type of ipc response but missing add\ncontinue to check next ipc reponse.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21947"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e8833c03a38e1d5d5df6484e3f670a2fd38fb76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cb2b2e41541fe6f9cc55ca22d4c0bd260498aea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6321bbda4244b93802d61cfe0887883aae322f4b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/76861630b29e51373e73e7b00ad0d467b6941162"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2ff19f0b7a30e03516e6eb73b948e27a55bc9d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.debian.org/debian-lts-announce/2025/05/msg00045.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-04-01T16:15:25Z"
+  }
+}

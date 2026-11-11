@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p26v-fx3x-r2rp",
+  "modified": "2026-06-09T00:03:10Z",
+  "published": "2026-05-15T21:31:32Z",
+  "withdrawn": "2026-06-09T00:03:10Z",
+  "aliases": [],
+  "summary": "Duplicate Advisory: phpMyFAQ's Missing CONFIGURATION_EDIT Permission Check on 12 Admin API Configuration Tab Endpoints Allows Information Disclosure by Any Authenticated User",
+  "details": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-pqh6-8fxf-jx22. This link is maintained to preserve external references.\n\n### Original Description\nphpMyFAQ before 4.1.2 contains missing permission checks in ConfigurationTabController.php where 12 endpoints use userIsAuthenticated() instead of userHasPermission(CONFIGURATION_EDIT). Any authenticated user can enumerate system configuration metadata including permission model, cache backend, mail provider, and translation provider by querying /admin/api/configuration endpoints, violating least privilege access control.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "thorsten/phpmyfaq"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.1.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "phpmyfaq/phpmyfaq"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.1.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thorsten/phpMyFAQ/security/advisories/GHSA-rm98-82fr-mcfx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45007"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/phpmyfaq-missing-permission-check-on-12-configuration-api-endpoints-allows-information-disclosure"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-06-09T00:03:10Z",
+    "nvd_published_at": "2026-05-15T19:17:01Z"
+  }
+}

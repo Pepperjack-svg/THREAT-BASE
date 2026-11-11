@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gf5c-p7m8-wjpg",
+  "modified": "2025-04-14T21:32:22Z",
+  "published": "2025-04-14T21:32:22Z",
+  "aliases": [
+    "CVE-2022-49351"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: altera: Fix refcount leak in altera_tse_mdio_create\n\nEvery iteration of for_each_child_of_node() decrements\nthe reference count of the previous node.\nWhen break from a for_each_child_of_node() loop,\nwe need to explicitly call of_node_put() on the child node when\nnot need anymore.\nAdd missing of_node_put() to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49351"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11ec18b1d8d92b9df307d31950dcba0b3dd7283c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fd12298a0e0ca23478c715e672ee64c85670584"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f850fe0a32c3f1e19b76996a3b1ca32637a14de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5cd0e22fa11f4a21a8c09cc258f20b1474c95801"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/803b217f1fb49a2dbb2123acdb45111b9c48b8be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8174acbef87b8dd8bf3731eba2a5af1ac857e239"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96bf5ed057df2d157274d4e2079002f9a9404bb8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a013fa884d8738ad8455aa1a843b8c9d80c6c833"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e31d9ba169860687dba19bdc8fccbfd34077f655"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-26T07:01:11Z"
+  }
+}

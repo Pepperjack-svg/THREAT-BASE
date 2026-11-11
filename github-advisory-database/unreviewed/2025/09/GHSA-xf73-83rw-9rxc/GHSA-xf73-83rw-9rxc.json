@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xf73-83rw-9rxc",
+  "modified": "2025-12-02T03:31:35Z",
+  "published": "2025-09-15T15:31:24Z",
+  "aliases": [
+    "CVE-2023-53183"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: exit gracefully if reloc roots don't match\n\n[BUG]\nSyzbot reported a crash that an ASSERT() got triggered inside\nprepare_to_merge().\n\n[CAUSE]\nThe root cause of the triggered ASSERT() is we can have a race between\nquota tree creation and relocation.\n\nThis leads us to create a duplicated quota tree in the\nbtrfs_read_fs_root() path, and since it's treated as fs tree, it would\nhave ROOT_SHAREABLE flag, causing us to create a reloc tree for it.\n\nThe bug itself is fixed by a dedicated patch for it, but this already\ntaught us the ASSERT() is not something straightforward for\ndevelopers.\n\n[ENHANCEMENT]\nInstead of using an ASSERT(), let's handle it gracefully and output\nextra info about the mismatch reloc roots to help debug.\n\nAlso with the above ASSERT() removed, we can trigger ASSERT(0)s inside\nmerge_reloc_roots() later.\nAlso replace those ASSERT(0)s with WARN_ON()s.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-53183"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05d7ce504545f7874529701664c90814ca645c5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69dd147de419b04d1d8d2ca67ef424cddd5b8fd5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9d04716e36654275aea00fb93fc9b30b850925e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a96b6519ac71583835cb46d74bc450de5a13877f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-617"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-15T14:15:40Z"
+  }
+}

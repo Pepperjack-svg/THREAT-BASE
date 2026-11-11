@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fff5-56xf-g7v8",
+  "modified": "2026-05-30T12:30:24Z",
+  "published": "2026-05-27T15:33:24Z",
+  "aliases": [
+    "CVE-2026-46100"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs: afs: revert mmap_prepare() change\n\nPartially reverts commit 9d5403b1036c (\"fs: convert most other\ngeneric_file_*mmap() users to .mmap_prepare()\").\n\nThis is because the .mmap invocation establishes a refcount, but\n.mmap_prepare is called at a point where a merge or an allocation failure\nmight happen after the call, which would leak the refcount increment.\n\nFunctionality is being added to permit the use of .mmap_prepare in this\ncase, but in the interim, we need to fix this.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46100"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48c7a0eaeea41da17d1d84d2d7a4c40be122b246"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f51f85c044809fbd39ac8ae07ac99bc43ce32bd5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fbfc6578eaca12daa0c09df1e9ba7f2c657b49da"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-05-27T14:17:31Z"
+  }
+}
