@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q8v9-5h9r-rjp3",
+  "modified": "2026-11-11T18:31:39Z",
+  "published": "2026-11-11T18:31:39Z",
+  "aliases": [
+    "CVE-2026-68486"
+  ],
+  "details": "An authorization bypass in campaign-zone linking in Revive Adserver 6.0.8 and earlier allows an authenticated manager, or a trafficker with zone-linking permissions, to associate another agency's campaign with their own zone. Campaign ownership checks are missing from the bulk-linking and single-link operations in zone-include.php and the XML-RPC campaign-linking method. Although agency filtering prevents foreign banners from being linked, the unauthorized association can expose the foreign campaign's name, type and identifier in the linked-campaign listing. The issue is fixed in Revive Adserver 6.0.9 by validating campaign ownership in the affected operations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68486"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackerone.com/reports/3958112"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T18:19:48Z"
+  }
+}

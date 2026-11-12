@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mfr7-qrjx-rpgx",
+  "modified": "2026-11-11T21:33:01Z",
+  "published": "2026-11-11T21:33:00Z",
+  "aliases": [
+    "CVE-2026-126800"
+  ],
+  "details": "Hydro @hydrooj/ui-default before 4.59.1 contains a stored cross-site scripting vulnerability that allows registered users to inject script by placing double quotes in language- class tokens within markdown-it-xss.ts. Attackers can store a payload in their profile bio that executes when administrators or other users view it, stealing the non-httpOnly sid session cookie for session hijacking.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126800"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hydro-dev/Hydro/commit/3bae56fe8edddff12346bcb1c8281269c94688d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hydro-dev/Hydro/blob/3c8286dd1350fcd00412e95d5b056dbfed64edda/packages/ui-default/backendlib/markdown-it-xss.ts#L150-L157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261107/hydro"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hydro-hydrooj-ui-default-before-4.59.1-stored-xss-via-markdown-language-class"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T21:16:43Z"
+  }
+}

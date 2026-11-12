@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xwqc-wpw7-xxrq",
+  "modified": "2026-11-11T15:30:58Z",
+  "published": "2026-11-11T15:30:58Z",
+  "aliases": [
+    "CVE-2026-105152"
+  ],
+  "details": "Exposure of Sensitive Information to an Unauthorized Actor in Apache Roller 4.0 through 6.1.6 allows a weblog administrator to read another user's stored password hash by authoring a custom weblog template that reaches the wrapped persistent object behind the template's weblog or entry data, rather than the reduced set of fields the wrapper is meant to expose. Roller treats weblog administrators as untrusted and exposes weblog and entry data to templates only through wrapper classes, but a public accessor on those wrapper classes returned the underlying persistent object directly, including the stored password hash of the weblog's creator and of any author whose entry renders on the page. No non-default configuration is required; this affects any weblog whose administrator can author templates. Users are recommended to upgrade to Apache Roller 6.1.7 or later, which removes template access to the underlying wrapped objects.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/roller/pull/199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/v1zondkgmfoh3y83l0l191qthmstcm39"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T13:17:12Z"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jghc-rj2j-x37x",
+  "modified": "2026-11-11T15:30:59Z",
+  "published": "2026-11-11T15:30:59Z",
+  "aliases": [
+    "CVE-2026-122096"
+  ],
+  "details": "Uncontrolled Resource Consumption vulnerability in the sketch deserialization of Apache DataSketches Java.\n\n\n\nSeveral deserializers trusted sizes and counts declared in the serialized input. A small crafted input could make an application allocate an excessive amount of memory, leading to an OutOfMemoryError. A crafted string passed to FrequentLongsSketch.getInstance(String) could also make deserialization, or a later update, loop indefinitely. Only applications that deserialize sketches from untrusted sources are affected.\n\n\n\nThis issue affects Apache DataSketches Java: through 9.0.0.\n\n\n\nUsers are recommended to upgrade to version 9.1.0, which fixes the issue.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-122096"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/datasketches-java/pull/777"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/datasketches-java/pull/783"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/datasketches-java/releases/tag/9.1.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/9wd7ngmho7hm8x74sq1p2fp1xgjd8kt6"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/11/10/29"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T13:17:17Z"
+  }
+}

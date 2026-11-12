@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-55f4-qr9r-gp5r",
+  "modified": "2026-11-11T03:34:26Z",
+  "published": "2026-11-11T03:34:26Z",
+  "aliases": [
+    "CVE-2026-126495"
+  ],
+  "details": "MQTTX desktop through 1.13.3 contains a stored cross-site scripting vulnerability that allows attackers to inject script by publishing malicious MQTT topic names or payloads rendered unescaped in tooltips. Attackers controlling a broker or publishing to subscribed topics can execute script in the Electron renderer, which has nodeIntegration enabled, when victims hover Topic Tree or JSON tree nodes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126495"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/emqx/MQTTX/issues/2180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/emqx/MQTTX"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/emqx/MQTTX/blob/v1.13.3/src/background.ts#L276-L283"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/emqx/MQTTX/blob/v1.13.3/src/widgets/JSONViewer.vue#L175-L184"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/emqx/MQTTX/blob/v1.13.3/src/widgets/TreeView.vue#L195-L226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mqttx-through-1.13.3-stored-xss-via-topic-tree-and-json-tree-tooltips"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T01:17:14Z"
+  }
+}

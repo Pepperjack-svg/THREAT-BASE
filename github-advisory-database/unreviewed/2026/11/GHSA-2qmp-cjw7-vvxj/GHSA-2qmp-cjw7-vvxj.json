@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2qmp-cjw7-vvxj",
+  "modified": "2026-11-11T21:33:01Z",
+  "published": "2026-11-11T21:33:01Z",
+  "aliases": [
+    "CVE-2026-126812"
+  ],
+  "details": "blueprintUE Self-Hosted Edition before 4.3.7 contains an insecure default configuration in its Docker Compose examples that sets MYSQL_ALLOW_EMPTY_PASSWORD=yes in database.env and publishes MariaDB on port 3306. Unauthenticated attackers reaching the Docker host on port 3306 can log in as root without a password to read, modify, or delete user accounts, blueprints, and all databases.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/security/advisories/GHSA-9f6r-vjc7-jq67"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126812"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/pull/270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/commit/e6a6e1d4c2f22efbbabf9fb31ec479544405b469"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/blob/v4.3.6/docker-examples/database.env"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/blob/v4.3.6/docker-examples/docker-compose-smtp.yml#L14-L24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/releases/tag/v4.3.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/blueprintue-self-hosted-edition-before-4.3.7-empty-mariadb-root-password-via-docker-compose"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-258"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T21:16:45Z"
+  }
+}

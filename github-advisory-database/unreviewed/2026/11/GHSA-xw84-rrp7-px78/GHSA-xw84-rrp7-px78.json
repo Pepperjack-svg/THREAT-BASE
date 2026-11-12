@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xw84-rrp7-px78",
+  "modified": "2026-11-11T21:32:57Z",
+  "published": "2026-11-11T21:32:57Z",
+  "aliases": [
+    "CVE-2026-126778"
+  ],
+  "details": "Wallos 4.4.0 before 5.10.3 contains a stored cross-site scripting vulnerability in endpoints/cronjobs/sendnotifications.php that allows registered users to inject scripts via unescaped notification service responses. Attackers can point their Mattermost webhook URL or Web Push endpoint at a controlled server returning JavaScript, which executes in the administrator's session when sendnotifications.php is opened.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126778"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ellite/Wallos/commit/693d8676f3e5b0c85e120fc5958ccb82f37ee89c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ellite/Wallos/blob/v4.4.0/endpoints/cronjobs/sendnotifications.php#L641-L642"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ellite/Wallos/blob/v5.10.2/endpoints/cronjobs/sendnotifications.php#L813-L816"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ellite/Wallos/releases/tag/v5.10.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wallos-4.4.0-before-5.10.3-stored-xss-via-sendnotifications-php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T19:17:38Z"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hhp3-h5fc-wr9j",
+  "modified": "2026-11-11T15:30:58Z",
+  "published": "2026-11-11T15:30:58Z",
+  "aliases": [
+    "CVE-2026-111824"
+  ],
+  "details": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') in Apache Roller 6.1.6 allows an authenticated user with the Author role on a weblog that uses a custom theme to store script that runs in the browser of anyone who opens the file's resource URL. The fix for CVE-2026-82387 serves uploaded media as a download unless it is an image, audio, video, PDF or plain text, but media files found through a custom theme were served with the type their path implies, and the upload form let the uploader choose that path. Media uploads are disabled by default. Users are recommended to upgrade to Apache Roller 6.1.7 or later, which serves these files under the same rules as other media and no longer accepts the path from the upload form.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111824"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/roller/pull/217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/q0lbzt39tsosb99l25gqvx24d6fn263x"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T13:17:13Z"
+  }
+}

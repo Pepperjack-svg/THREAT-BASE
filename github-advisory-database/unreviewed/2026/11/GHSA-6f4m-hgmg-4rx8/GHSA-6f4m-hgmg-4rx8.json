@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6f4m-hgmg-4rx8",
+  "modified": "2026-11-11T18:31:37Z",
+  "published": "2026-11-11T18:31:37Z",
+  "aliases": [
+    "CVE-2026-121737"
+  ],
+  "details": "When a remote, unauthenticated HTTP/1.1 client pipelined the start of a second request and then stopped reading, proxygen's coroutine-based HTTP session could free that pipelined stream while resetting the connection's streams on the resulting write timeout, then go on to use it. This can crash the server, leading to denial of service, and may allow memory corruption with further impact. This issue affects proxygen versions prior to v2026.11.09.00.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121737"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/meta/proxygen/commit/daf245bba7fe1304b9491403fe56f91153299781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.facebook.com/security/advisories/cve-2026-121737"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T17:17:17Z"
+  }
+}

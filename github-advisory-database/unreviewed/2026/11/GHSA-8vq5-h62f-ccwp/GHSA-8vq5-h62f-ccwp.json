@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8vq5-h62f-ccwp",
+  "modified": "2026-11-11T03:34:26Z",
+  "published": "2026-11-11T03:34:26Z",
+  "aliases": [
+    "CVE-2026-126497"
+  ],
+  "details": "LibreCAD through 2.2.1.6 contains a heap-based out-of-bounds write vulnerability in the bundled libdxfrw dwgReader18::parseDataPage() function due to unchecked buffer size and page offsets. Attackers can craft an AC1018 (R2004) DWG file with malicious startOffset values that cause decompress18 to write past the heap buffer when opened, causing crashes and potential code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126497"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LibreCAD/LibreCAD/issues/3256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LibreCAD/LibreCAD/commit/17ba2b273b89cc9c8b6fcf71882e327ccf1eebf6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LibreCAD/LibreCAD"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LibreCAD/LibreCAD/blob/v2.2.1.6/libraries/libdxfrw/src/intern/dwgreader18.cpp#L113-L173"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/librecad-through-2.2.1.6-heap-out-of-bounds-write-via-dwgreader18-parsedatapage"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T01:17:14Z"
+  }
+}

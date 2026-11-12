@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-35gq-v86q-f6rh",
+  "modified": "2026-11-11T18:31:37Z",
+  "published": "2026-11-11T18:31:36Z",
+  "aliases": [
+    "CVE-2026-119234"
+  ],
+  "details": "mvfst did not adequately merge or compact out-of-order STREAM frame data, and a small received fragment could keep a much larger receive buffer alive. QUIC flow control limits the number of buffered stream bytes, but not this per-fragment memory and bookkeeping. A remote, unauthenticated QUIC peer could send many small, non-contiguous stream fragments to make an endpoint consume memory far in excess of its advertised receive window and spend increasing CPU time reassembling stream data, leading to denial of service. This issue affects mvfst versions prior to v2026.11.09.0.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/meta/mvfst/commit/7e5cff58e8cbed87793141ceeca0a8a343c67c44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.facebook.com/security/advisories/cve-2026-119234"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T17:17:16Z"
+  }
+}

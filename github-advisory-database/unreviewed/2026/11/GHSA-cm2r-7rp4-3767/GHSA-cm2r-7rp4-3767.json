@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cm2r-7rp4-3767",
+  "modified": "2026-11-11T03:34:27Z",
+  "published": "2026-11-11T03:34:27Z",
+  "aliases": [
+    "CVE-2026-126562"
+  ],
+  "details": "Semantic MediaWiki 3.0.0 before 7.4.1 contains an uncontrolled recursion vulnerability in the ElasticStore ConceptDescriptionInterpreter that only detects directly self-referencing concepts. Users with page-edit rights can create mutually referencing concept pages, causing concept page views, Special:Ask, or api.php action=ask queries to exhaust PHP memory or stack.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/security/advisories/GHSA-jwx8-mm92-gv95"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126562"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/commit/35d8f8c9c7b48a476751ca0b795b78b648756828"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/blob/7.4.0/src/Elastic/QueryEngine/DescriptionInterpreters/ConceptDescriptionInterpreter.php#L34-L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/releases/tag/7.4.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/semantic-mediawiki-3.0.0-before-7.4.1-uncontrolled-recursion-via-elasticstore-conceptdescriptioninterpreter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T03:16:50Z"
+  }
+}

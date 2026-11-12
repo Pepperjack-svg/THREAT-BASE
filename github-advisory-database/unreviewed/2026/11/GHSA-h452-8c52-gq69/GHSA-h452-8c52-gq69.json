@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h452-8c52-gq69",
+  "modified": "2026-11-11T18:31:38Z",
+  "published": "2026-11-11T18:31:38Z",
+  "aliases": [
+    "CVE-2026-107247"
+  ],
+  "details": "An authorization bypass in Revive Adserver 6.0.0 through 6.0.8 allows an authenticated manager restricted to one agency to access or modify resources belonging to another agency. Global input registration gives GET parameters precedence over POST parameters, while submitted administration forms use POST values. By supplying authorized object identifiers in the query string and different identifiers in the POST body, an attacker can cause permission checks and subsequent operations to target different objects. This permits unauthorized cross-agency changes, campaign ownership reassignment and disclosure of campaign and banner data. The regression was introduced in commit 156dee7bc3283c128f35e5a31bb305054cc8de1b and is fixed in Revive Adserver 6.0.9 by restoring POST precedence in global input registration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackerone.com/reports/3831102"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T18:18:24Z"
+  }
+}

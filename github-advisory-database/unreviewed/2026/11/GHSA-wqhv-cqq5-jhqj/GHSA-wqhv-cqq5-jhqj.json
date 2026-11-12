@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wqhv-cqq5-jhqj",
+  "modified": "2026-11-11T18:31:39Z",
+  "published": "2026-11-11T18:31:39Z",
+  "aliases": [
+    "CVE-2026-117373"
+  ],
+  "details": "Janus WebRTC Server 1.2.3 through 1.4.0 is vulnerable to Directory Traversal. The application accepts a caller supplied media path when an ondemand stream is created. The path is validated only by checking whether it contains one of the audio extensions and is then passed to the file source which opens it. No canonicalization is performed and no directory allowlist is enforced, so an unauthenticated caller can make the server open an arbitrary local file and use it as a media source, with the content delivered to viewers as RTP audio.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-117373"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/meetecho/janus-gateway/pull/3637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/meetecho/janus-gateway/pull/3676"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/meetecho/janus-gateway/releases/tag/v1.4.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/w1n0y/CVE"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T18:19:09Z"
+  }
+}

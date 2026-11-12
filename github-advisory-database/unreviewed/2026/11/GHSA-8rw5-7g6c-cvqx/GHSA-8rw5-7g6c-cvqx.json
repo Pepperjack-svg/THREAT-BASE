@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8rw5-7g6c-cvqx",
+  "modified": "2026-11-11T21:32:57Z",
+  "published": "2026-11-11T21:32:57Z",
+  "aliases": [
+    "CVE-2026-126774"
+  ],
+  "details": "@tinacms/mdx before 2.4.2 contains a code injection vulnerability in its MDX serializer, which writes rich-text values into MDX expressions without escaping them. Authenticated content editors can save crafted values that break out of list field or highlightColor expressions in the stored .mdx file, executing JavaScript in visitors' browsers or on build and server-side rendering hosts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinacms/tinacms/security/advisories/GHSA-6vw5-w22x-ghxv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126774"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinacms/tinacms/pull/7958"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinacms/tinacms/commit/19285c6deeee52c380e8b2fdeafedc9530dc0618"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinacms/tinacms/blob/%40tinacms/mdx%400.60.3/packages/%40tinacms/mdx/src/stringify/acorn.ts#L81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinacms/tinacms/releases/tag/%40tinacms/mdx%402.4.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/tinacms-mdx-before-2.4.2-code-injection-via-mdx-serializer-rich-text-values"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T19:17:37Z"
+  }
+}

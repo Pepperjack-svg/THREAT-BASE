@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h557-gp8h-jfv2",
+  "modified": "2026-11-11T03:34:26Z",
+  "published": "2026-11-11T03:34:26Z",
+  "aliases": [
+    "CVE-2026-126545"
+  ],
+  "details": "WWBN AVideo through 29.7.1 contains a missing authorization vulnerability in API::get_api_tags() in plugin/API/API.php that allows registered users to access restricted video data by querying the tags API. Attackers can subscribe to a tag and query APIName=tags to obtain filenames, titles and stored video_password values of unlisted, group-restricted and password-protected videos, enabling unauthorized viewing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-3w98-8958-84rh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126545"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/commit/a8d1e0e484d655556422841d08b2b0fb64332721"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/blob/v29.7.1/plugin/API/API.php#L958-L976"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/blob/v29.7.1/plugin/VideoTags/Objects/TagsHasVideos.php#L172-L180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wwbn-avideo-through-29.7.1-missing-authorization-via-get-api-tags-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T01:17:16Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5p98-2ff8-345c",
+  "modified": "2026-11-11T18:31:39Z",
+  "published": "2026-11-11T18:31:39Z",
+  "aliases": [
+    "CVE-2026-82978"
+  ],
+  "details": "An authorization bypass in channel-edit.php in Revive Adserver 6.0.8 and earlier allows an authenticated manager to create a delivery rule set belonging to another agency by changing the submitted agencyid parameter. The server trusts the submitted agency identifier when inserting the new rule set, allowing unauthorized creation of objects in another agency's account. The issue is fixed in Revive Adserver 6.0.9 by obtaining the agency identifier from the authenticated account rather than submitted form data and removing the agency identifier from the form's hidden fields.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82978"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackerone.com/reports/3929216"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T18:19:49Z"
+  }
+}

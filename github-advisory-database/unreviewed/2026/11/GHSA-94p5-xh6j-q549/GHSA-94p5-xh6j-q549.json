@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-94p5-xh6j-q549",
+  "modified": "2026-11-11T18:31:39Z",
+  "published": "2026-11-11T18:31:38Z",
+  "aliases": [
+    "CVE-2026-108560"
+  ],
+  "details": "A reflected cross-site scripting vulnerability in updates-history.php in Revive Adserver 6.0.8 and earlier allows an unauthenticated attacker to execute JavaScript in a victim's browser by persuading them to visit a crafted URL. Attacker-controlled values are included in XML command attributes without appropriate encoding, allowing injection of executable XHTML into the response. The preliminary session check omits GET xajax requests, exposing an unauthenticated attack path, while authenticated administrator requests also reach the unsafe output. The issue is fixed in Revive Adserver 6.0.9 by applying the session check to both GET and POST requests and encoding XML command attribute values in both response serializers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108560"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackerone.com/reports/4075098"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T18:18:26Z"
+  }
+}

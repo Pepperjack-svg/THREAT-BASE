@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hg3f-5929-jv7q",
+  "modified": "2026-11-11T09:31:28Z",
+  "published": "2026-11-11T09:31:28Z",
+  "aliases": [
+    "CVE-2026-12424"
+  ],
+  "details": "The ARforms plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Referer Header in all versions up to, and including, 7.2.4 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The arf_save_incomplete_form_data() AJAX handler is registered with wp_ajax_nopriv_, meaning unauthenticated attackers can store a malicious payload by submitting a partial form entry with a forged Referer header, with no authentication required at any step.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12424"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.arformsplugin.com/documentation/changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/23a50221-af0c-46e6-94d5-1d07f6b6fb01?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T08:17:18Z"
+  }
+}

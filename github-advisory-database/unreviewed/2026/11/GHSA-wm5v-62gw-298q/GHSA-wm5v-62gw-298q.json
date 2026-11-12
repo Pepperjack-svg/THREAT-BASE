@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wm5v-62gw-298q",
+  "modified": "2026-11-11T21:33:00Z",
+  "published": "2026-11-11T21:33:00Z",
+  "aliases": [
+    "CVE-2026-126799"
+  ],
+  "details": "Gotenberg 8.31.0 before 8.38.0 contains a server-side request forgery vulnerability in IsPublicIP() that allows unauthenticated attackers to bypass private-IP deny-list protections using IPv6 zone identifiers. Attackers can append a zone such as %25eth0 to the unspecified address or blocked IPv6 prefixes in downloadFrom, webhook, or Chromium/LibreOffice URLs to reach internal services and read responses in the returned PDF.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/gotenberg/gotenberg/security/advisories/GHSA-fqg9-x2xw-5crx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126799"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gotenberg/gotenberg/commit/8e850b1c932452627fba397f2005dd6fd57b9617"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gotenberg/gotenberg/blob/v8.37.0/pkg/gotenberg/outbound.go#L112-L142"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gotenberg/gotenberg/releases/tag/v8.38.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gotenberg-8.31.0-before-8.38.0-ssrf-via-ipv6-zone-identifiers-in-ispublicip"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T21:16:43Z"
+  }
+}

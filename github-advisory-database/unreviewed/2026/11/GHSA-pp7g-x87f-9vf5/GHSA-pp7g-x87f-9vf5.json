@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pp7g-x87f-9vf5",
+  "modified": "2026-11-11T03:34:28Z",
+  "published": "2026-11-11T03:34:27Z",
+  "aliases": [
+    "CVE-2026-126564"
+  ],
+  "details": "Semantic MediaWiki 2.5.0 before 7.4.1 contains a stored cross-site scripting vulnerability in ValueFormatter::getFormattedSubject() that renders property label segments after a literal &nbsp; as unescaped markup. Users with page-edit rights can set a preferred property label containing an img onerror payload that executes when anyone, including administrators, views Special:Browse or the smwbrowse API.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/security/advisories/GHSA-mc5x-2j7v-x8hp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126564"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/commit/c9bf9f25549bb2f5eab916339b267a1732002c4c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/blob/7.4.0/src/MediaWiki/Specials/Browse/ValueFormatter.php#L34-L55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/releases/tag/7.4.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/semantic-mediawiki-2.5.0-before-7.4.1-stored-xss-via-special-browse-factbox-title"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-11T03:16:50Z"
+  }
+}
