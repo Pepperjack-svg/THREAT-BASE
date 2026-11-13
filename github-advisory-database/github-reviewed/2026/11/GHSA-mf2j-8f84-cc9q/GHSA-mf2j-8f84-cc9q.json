@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mf2j-8f84-cc9q",
+  "modified": "2026-11-12T21:00:43Z",
+  "published": "2026-11-12T21:00:42Z",
+  "aliases": [
+    "CVE-2026-126205"
+  ],
+  "summary": "Loofah: Regular expression denial of service in the SVG local-reference check",
+  "details": "## Summary\n\nLoofah's HTML5 sanitizer restricts the `href` and `xlink:href` attributes of SVG reference elements to local references. That check matched the attribute value against `/^\\s*[^#\\s].*/m`. In Ruby `^` anchors to every line start and `\\s` matches newlines, so an all-whitespace value made the engine rescan the value from each of its line starts, taking time quadratic in its length.\n\nOnly Ruby 3.1 and earlier are affected. Ruby 3.2 added linear-time regexp matching, which makes the pattern linear.\n\n## Impact\n\nAn attacker who supplies HTML to be sanitized can consume CPU out of proportion to the input size, by sending an SVG reference element whose `href` or `xlink:href` is a long run of whitespace.\n\nThe default safelist allows the elements in `SVG_ALLOW_LOCAL_HREF`, so no configuration change is required.\n\n## Mitigation\n\nUpgrade to Loofah >= 2.25.3. Applications that cannot upgrade should run Ruby 3.2 or later, which matches the pattern in linear time.\n\n## Credit\n\nReported by scyoon through the Rails HackerOne program.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "loofah"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.25.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/flavorjones/loofah/security/advisories/GHSA-mf2j-8f84-cc9q"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flavorjones/loofah/pull/324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flavorjones/loofah/commit/2f31e7fae36036c9882d3d0fae720e1014c57cd1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/flavorjones/loofah"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flavorjones/loofah/releases/tag/v2.25.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/loofah/GHSA-mf2j-8f84-cc9q.yml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1333",
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-11-12T21:00:42Z",
+    "nvd_published_at": null
+  }
+}

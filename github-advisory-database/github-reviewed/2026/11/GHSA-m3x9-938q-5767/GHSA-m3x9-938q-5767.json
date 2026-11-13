@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m3x9-938q-5767",
+  "modified": "2026-11-12T21:05:41Z",
+  "published": "2026-11-12T21:05:41Z",
+  "aliases": [
+    "CVE-2026-126207"
+  ],
+  "summary": "Loofah: CSS url() sanitization bypass via escaped parentheses",
+  "details": "## Summary\n\n`Loofah::HTML5::Scrub.scrub_css` rejected any property whose top-level Crass tokens included a `:url` or `:bad_url`, and left `url` out of the allowed CSS functions. Both checks ran only against the first parse of the `style` attribute. When `scrub_css` rebuilt each property it emitted identifiers with their CSS escapes decoded, so parentheses written as escapes — `url\\28 …\\29` — hid the `url` token from the checks, and the rebuilt value was re-parsed into a live `url()` that nothing checked again. An escaped property name, six-digit escapes, escaped comments and escaped quotes all reached the same place.\n\n## Impact\n\nA sanitized `style` attribute could make a viewer's browser issue a request to an attacker-chosen URL. `list-style` fetches on render with no interaction, `cursor` on hover. That leaks the viewer's IP address, user agent and access timing, and can reach hosts routable only from the viewer's network. No script survives sanitization and the attacker cannot read the response, so the request itself is the whole impact.\n\nApplications that sanitize user-supplied HTML with Loofah's default allowlist and display it to other people are affected.\n\n## Mitigation\n\nUpgrade to Loofah >= 2.25.3.\n\n## Credit\n\nReported by NotAFlightRisk through GitHub's private vulnerability reporting.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "loofah"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.25.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/flavorjones/loofah/security/advisories/GHSA-m3x9-938q-5767"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flavorjones/loofah/pull/324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flavorjones/loofah/commit/b198a36e44c9c5408163ac50787825e8ca0b166b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/flavorjones/loofah"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flavorjones/loofah/releases/tag/v2.25.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/loofah/GHSA-m3x9-938q-5767.yml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-180",
+      "CWE-184"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-11-12T21:05:41Z",
+    "nvd_published_at": null
+  }
+}

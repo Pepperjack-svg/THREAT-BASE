@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gv3m-v36g-qfr6",
+  "modified": "2026-11-12T09:32:51Z",
+  "published": "2026-11-12T09:32:51Z",
+  "aliases": [
+    "CVE-2026-110003"
+  ],
+  "details": "A vulnerability in the administration REST interface of Azul Payara allows a remote, unauthenticated attacker to bypass secure-admin remote-access restrictions by supplying an arbitrary value in the X-GlassFish-authToken HTTP header. The header's presence waives the remote-rejection check before the token is validated, and an invalid token falls through to password-based authentication, which succeeds without credentials on default domains configured with an empty administrative password. Successful exploitation grants execution of arbitrary administrative commands, equivalent to complete compromise of the server.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110003"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.azul.com/payara-community/release-notes/release-notes-7.2026.11.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.azul.com/payara/release-notes/release-notes-7.6.0.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.azul.com/payara/version/4/release-notes/release-notes-4.1.2.191.61.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.azul.com/payara/version/5/release-notes/release-notes-5.93.0.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.azul.com/payara/version/6/release-notes/release-notes-6.44.0.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-288"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-12T09:16:39Z"
+  }
+}

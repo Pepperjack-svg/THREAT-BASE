@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-59x3-x3hh-x23q",
-  "modified": "2026-11-09T12:31:38Z",
+  "modified": "2026-11-12T18:31:20Z",
   "published": "2026-11-09T12:31:38Z",
   "aliases": [
     "CVE-2026-107474"
   ],
   "details": "The Apache Airflow connections API did not mask the apprise provider's `config` connection extra, which can embed notification-service credentials. A user with permission to read connections could retrieve it in cleartext, although Airflow 3 treats connection credentials as write-only.\n\nUsers are advised to upgrade to apache-airflow 3.4.0 or later.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -31,7 +36,7 @@
     "cwe_ids": [
       "CWE-522"
     ],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-11-09T10:17:02Z"

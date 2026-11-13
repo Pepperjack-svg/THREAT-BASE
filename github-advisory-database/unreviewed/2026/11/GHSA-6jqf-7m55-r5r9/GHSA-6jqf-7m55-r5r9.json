@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jqf-7m55-r5r9",
+  "modified": "2026-11-12T12:31:33Z",
+  "published": "2026-11-12T06:30:20Z",
+  "aliases": [
+    "CVE-2026-111434"
+  ],
+  "details": "Use of Externally-Controlled format string vulnerability in openEuler iSulad on Linux.\n\nThis vulnerability is associated with program file src/daemon/modules/image/oci/oci_load.c.\n\n\n\nThis issue affects iSulad: through 2.1.6.\n\n\n\nWhen the iSulad daemon performs container lifecycle operations (such as create, start, exec, stop, etc.) through the isula runtime (shim), the daemon reads the stderr output of the shim process via a pipe for error information display. If the buffer contains format specifiers such as %s, %x, or %n, it may trigger a format string vulnerability, potentially leading to information leakage, denial of service, or the risk of arbitrary writes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111434"
+    },
+    {
+      "type": "WEB",
+      "url": "https://atomgit.com/openeuler/iSulad/commit/697cb26a5946d56bbb2c5533bab72f4376d8421b?ref=master&prId=2650"
+    },
+    {
+      "type": "WEB",
+      "url": "https://atomgit.com/src-openeuler/iSulad/pull/812"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openeuler.org/zh/security/security-bulletins/detail/?id=openEuler-SA-2026-4865"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-134"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-12T04:17:17Z"
+  }
+}

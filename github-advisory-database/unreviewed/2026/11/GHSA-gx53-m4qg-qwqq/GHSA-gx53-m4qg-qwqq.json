@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gx53-m4qg-qwqq",
+  "modified": "2026-11-12T18:31:47Z",
+  "published": "2026-11-12T18:31:46Z",
+  "aliases": [
+    "CVE-2026-70642"
+  ],
+  "details": "ToolJet before 3.21.94, fixed in commit e5f387a, contains an authorization bypass vulnerability in the app environments init endpoint that allows authenticated users to read app version metadata belonging to other workspaces. Attackers can send GET requests to /api/app-environments/init with an editing_version_id from another workspace to retrieve the version name, description, status, current environment ID, and app ID, because the lookup is not scoped to the caller's organization.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70642"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ToolJet/ToolJet/pull/18137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ToolJet/ToolJet/commit/e5f387a0e6fd8c9627d3e12418a2ae33a00b08d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/tooljet-authorization-bypass-via-app-environments-init"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-12T16:19:13Z"
+  }
+}

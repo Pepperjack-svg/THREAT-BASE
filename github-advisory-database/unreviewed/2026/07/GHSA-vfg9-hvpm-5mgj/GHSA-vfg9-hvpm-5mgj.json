@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vfg9-hvpm-5mgj",
-  "modified": "2026-07-19T15:30:26Z",
+  "modified": "2026-11-12T15:31:44Z",
   "published": "2026-07-19T15:30:26Z",
   "aliases": [
     "CVE-2026-63838"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: rsnd: Fix potential out-of-bounds access of component_dais[]\n\ncomponent_dais[RSND_MAX_COMPONENT] is initially zero-initialized\nand later populated in rsnd_dai_of_node(). However, the existing boundary check:\n  if (i >= RSND_MAX_COMPONENT)\n\ndoes not guarantee that the last valid element remains zero. As a result,\nthe loop can rely on component_dais[RSND_MAX_COMPONENT] being zero,\nwhich may lead to an out-of-bounds access.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -36,8 +41,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T15:16:50Z"

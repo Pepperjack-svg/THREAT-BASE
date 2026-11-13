@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-63px-3qh8-4j7v",
+  "modified": "2026-11-12T21:31:32Z",
+  "published": "2026-11-12T21:31:32Z",
+  "aliases": [
+    "CVE-2026-86324"
+  ],
+  "details": "A flaw was found in Foreman’s Api::V2::SshKeysController, where the target user is resolved through Foreman::Controller::UserAware#find_user using User.find(params[:user_id]) without enforcing the required parent-user authorization check. An attacker with the create_ssh_keys permission can exploit this authorization bypass by submitting POST /api/v2/users/:user_id/ssh_keys with another user’s ID and injecting their own public SSH key into the targeted account. The injected key is subsequently propagated to hosts provisioned by that user, potentially allowing the attacker to authenticate to and gain SSH access to the victim’s managed hosts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-86324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2529291"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-12T21:17:33Z"
+  }
+}

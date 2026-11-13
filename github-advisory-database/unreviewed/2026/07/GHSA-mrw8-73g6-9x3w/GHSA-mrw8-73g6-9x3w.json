@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mrw8-73g6-9x3w",
-  "modified": "2026-07-25T12:31:37Z",
+  "modified": "2026-11-12T18:31:12Z",
   "published": "2026-07-25T12:31:37Z",
   "aliases": [
     "CVE-2026-64470"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btusb: fix use-after-free on marvell probe failure\n\nMake sure to stop any TX URBs submitted during Marvell OOB wakeup\nconfiguration on later probe failures to avoid use-after-free in the\ncompletion callback.\n\nThis issue was reported by Sashiko while reviewing a fix for a wakeup\nsource leak in the btusb probe errors paths.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:32Z"

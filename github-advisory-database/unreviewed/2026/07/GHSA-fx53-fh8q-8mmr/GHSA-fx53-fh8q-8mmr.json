@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fx53-fh8q-8mmr",
-  "modified": "2026-07-25T12:31:38Z",
+  "modified": "2026-11-12T21:30:25Z",
   "published": "2026-07-25T12:31:38Z",
   "aliases": [
     "CVE-2026-64511"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nACPI: NFIT: core: Fix possible NULL pointer dereference\n\nAfter commit 9b311b7313d6 (\"ACPI: NFIT: Install Notify() handler before\ngetting NFIT table\"), acpi_nfit_probe() installs an ACPI notify handler\nfor the NFIT device before checking the presence of the NFIT table.  If\nthat table is not there, 0 is returned without allocating the acpi_desc\nobject and setting the driver data pointer of the NFIT device.  If the\nplatform firmware triggers an NFIT_NOTIFY_UC_MEMORY_ERROR notification\non the NFIT device at that point, acpi_nfit_uc_error_notify() will\ndereference a NULL pointer.\n\nPrevent that from occurring by adding an acpi_desc check against NULL\nto acpi_nfit_uc_error_notify().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -36,8 +41,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:37Z"

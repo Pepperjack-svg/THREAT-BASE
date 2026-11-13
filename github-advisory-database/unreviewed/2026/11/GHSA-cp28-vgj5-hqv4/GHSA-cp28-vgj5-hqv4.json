@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cp28-vgj5-hqv4",
-  "modified": "2026-11-09T18:31:59Z",
+  "modified": "2026-11-12T18:31:22Z",
   "published": "2026-11-09T18:31:59Z",
   "aliases": [
     "CVE-2026-121686"
   ],
   "details": "FrodoBots EarthRover Mini+ firmware (version 6.2.4_6.2.5_0.614.0) is vulnerable to unauthenticated, remote code execution via MQTT. A firmware method accepts arbitrary shell commands delivered via Amazon Web Services Internet of Things Message Queuing Telemetry Transport (AWS IoT MQTT) messages and executes them as root. Access is gated only by shared Internet of Things (IoT) credentials, with no per‑device authentication, enabling remote code execution as root across the fleet.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-11-09T17:17:16Z"

@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g6f8-c3x9-jv7f",
+  "modified": "2026-11-12T18:21:00Z",
+  "published": "2026-11-12T18:21:00Z",
+  "aliases": [
+    "CVE-2026-84987"
+  ],
+  "summary": "code16/sharp: Server-side request forgery through an unanchored autocomplete endpoint check",
+  "details": "### Impact\nAn authenticated attacker can call the Autocomplete API with the configured endpoint as a substring to request another server-side route.\n\n### Patches\nThe problem has been patched in 9.23.0 and pre-release version 10.0.0-beta.4. The regex verifying the endpoint has been anchored to forbid substring injection.\n\n### Workarounds\nUse `SharpFormAutocompleteRemoteField::setRemoteCallback()` instead of `SharpFormAutocompleteRemoteField::setRemoteEndpoint()`.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "code16/sharp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.23.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "code16/sharp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "10.0.0-beta.1"
+            },
+            {
+              "fixed": "10.0.0-beta.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/security/advisories/GHSA-g6f8-c3x9-jv7f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/pull/748"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/commit/339f89110f36d06eaad3f2b4bd048fa5424e5558"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/code16/sharp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/releases/tag/v9.23.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/tree/v10.0.0-beta.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-625",
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-11-12T18:21:00Z",
+    "nvd_published_at": null
+  }
+}

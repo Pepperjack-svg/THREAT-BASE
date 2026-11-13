@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vhhp-qrj9-rf8m",
+  "modified": "2026-11-12T15:31:58Z",
+  "published": "2026-11-12T15:31:58Z",
+  "aliases": [
+    "CVE-2026-116316"
+  ],
+  "details": "Improper protection of alternate path in PostgreSQL security-restricted operations allows an object creator to execute arbitrary SQL as the operation's caller, via a domain, enum, or range type created in pg_temp.  The victim session must later run a query containing an unqualified type name, e.g. \"SELECT '1'::bigint\"; autovacuum and other common security-restricted operation users do not do so, so they are unaffected.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116316"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.postgresql.org/support/security/CVE-2026-116316"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-424"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-12T15:17:39Z"
+  }
+}

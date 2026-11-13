@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9c84-8r2j-9227",
+  "modified": "2026-11-12T21:31:26Z",
+  "published": "2026-11-12T21:31:26Z",
+  "aliases": [
+    "CVE-2026-127235"
+  ],
+  "details": "A reflected cross-site scripting vulnerability exists in the web user interface of multiple versions of OpenNMS Meridian and Horizon. Several web UI pages copy request parameter values into the HTML response without correct contextual output encoding. A remote attacker can craft a link that runs arbitrary JavaScript in the OpenNMS origin when an authenticated user opens it. The script runs in the victim's browser with the victim's session, so the attacker can read page data and send same-origin requests as the victim. The fix encodes the affected request values. On pages that use AngularJS, the fix also stops client-side template evaluation of the reflected values.\n\n\n\nThe solution is to upgrade to Meridian 2024.3.15, 2025.0.12, 2026.0.2 and Horizon 36.0.6 or newer. Meridian and Horizon installation instructions state that they are intended for installation within an organization's private networks and should not be directly accessible from the Internet.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-127235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenNMS/opennms/pull/9066"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-12T19:17:03Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c564-jfpf-wjrh",
-  "modified": "2026-07-25T12:31:36Z",
+  "modified": "2026-11-12T18:31:11Z",
   "published": "2026-07-25T12:31:36Z",
   "aliases": [
     "CVE-2026-64454"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: dwc3: run gadget disconnect from sleepable suspend context\n\ndwc3_gadget_suspend() takes dwc->lock with IRQs disabled and then calls\ndwc3_disconnect_gadget().  For async callbacks that helper only uses\nplain spin_unlock()/spin_lock(), so the gadget ->disconnect() callback\nstill runs with IRQs disabled and any sleepable callback trips Lockdep.\n\nThis issue was found by our static analysis tool and then manually\nreviewed against the current tree.\n\nThe grounded PoC kept the dwc3_gadget_suspend() ->\ndwc3_disconnect_gadget() -> gadget_driver->disconnect() chain, and\nLockdep reported:\n\n  BUG: sleeping function called from invalid context\n  gadget_disconnect+0x21/0x39 [vuln_msv]\n  dwc3_gadget_suspend.constprop.0+0x2b/0x42 [vuln_msv]\n\nKeep the disconnect callback selection in one common helper, but add a\nsleepable suspend-side wrapper which snapshots the callback under\ndwc->lock and then runs it after spin_unlock_irqrestore().  The regular\nevent path still uses the existing spin_unlock()/spin_lock() window.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -44,8 +49,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:30Z"

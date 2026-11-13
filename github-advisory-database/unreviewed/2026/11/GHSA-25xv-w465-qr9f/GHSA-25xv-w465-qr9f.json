@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-25xv-w465-qr9f",
+  "modified": "2026-11-12T18:31:43Z",
+  "published": "2026-11-12T15:32:01Z",
+  "aliases": [
+    "CVE-2026-123790"
+  ],
+  "details": "ComfyUI-Easy-Use version 1.3.6 contains a path traversal vulnerability in the `save_preview()` handler for POST `/easyuse/save/{name}`. The handler checks the source directory before appending a user-supplied filename and allows the request to select the `custom_nodes` directory as a copy destination. An unauthenticated attacker who can reach the ComfyUI server can overwrite an installed custom node’s Python entry point with an uploaded file. When ComfyUI restarts and loads the modified node, the attacker’s code runs with the privileges of the ComfyUI process.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123790"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yolain/ComfyUI-Easy-Use/commit/8a0f2fc412c1c6f9109e9392064800a87a706775"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.nhhoang.io.vn"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.nhhoang.io.vn/posts/2026/11/cve-2026-123790-comfyui-easy-use-save-preview-rce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yolain/ComfyUI-Easy-Use"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.kb.cert.org/vuls/id/944667"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-12T15:17:46Z"
+  }
+}

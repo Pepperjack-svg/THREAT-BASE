@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-w244-36cw-6gvr",
-  "modified": "2026-07-25T12:31:36Z",
+  "modified": "2026-11-12T18:31:12Z",
   "published": "2026-07-25T12:31:36Z",
   "aliases": [
     "CVE-2026-64464"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxhci: sideband: fix ring sg table pages leak\n\nxhci_ring_to_sgtable() allocates a temporary pages array and\nuses it to build the returned sg_table with\nsg_alloc_table_from_pages().\n\nThe error paths free the pages array, but the success path\nreturns the sg_table without freeing it. This leaks the temporary\narray every time a sideband client gets an endpoint or event ring\nbuffer.\n\nFree the pages array after sg_alloc_table_from_pages() succeeds.\nThe returned sg_table has its own scatterlist entries and does not\ndepend on the temporary array after construction.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:31Z"

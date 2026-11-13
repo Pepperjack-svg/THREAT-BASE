@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gv8v-44qf-46cf",
+  "modified": "2026-11-12T18:31:47Z",
+  "published": "2026-11-12T18:31:46Z",
+  "aliases": [
+    "CVE-2026-127141"
+  ],
+  "details": "SOGo before 5.12.13 contains a denial of service vulnerability that allows authenticated attackers to exhaust all worker processes by configuring an auxiliary IMAP mail account pointing to a controlled host that accepts a TCP connection but never sends an IMAP greeting response. Attackers can issue concurrent GET requests to the mail view of this account to hold workers indefinitely without an effective timeout, occupying every SOGo worker and denying service to all users for approximately five minutes until the watchdog kills and respawns the stuck workers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-127141"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Alinto/sogo/releases/tag/SOGo-5.12.13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sogo-before-denial-of-service-via-auxiliary-imap-account-greeting-wait"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1088"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-12T16:19:08Z"
+  }
+}

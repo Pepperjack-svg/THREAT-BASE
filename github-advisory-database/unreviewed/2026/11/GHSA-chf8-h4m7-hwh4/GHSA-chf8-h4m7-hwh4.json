@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-chf8-h4m7-hwh4",
+  "modified": "2026-11-12T15:31:57Z",
+  "published": "2026-11-12T15:31:56Z",
+  "aliases": [
+    "CVE-2026-71367"
+  ],
+  "details": "An incorrect authorization vulnerability was found in AWX's WebSocket consumer. The consumer_access() function only enforces access controls for object-level event groups (job_events, workflow_events, ad_hoc_command_events) but does not restrict subscriptions to global broadcast groups such as 'jobs-status_changed'. When an authenticated user subscribes to a global broadcast group, the server accepts the subscription without verifying that the user has permission to view the associated resources. In multi-organization deployments, this allows a low-privilege user in one organization to receive real-time job status metadata from all organizations, including job IDs, status transitions, timestamps, and infrastructure topology details such as instance group names, bypassing the organization isolation enforced by the REST API.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71367"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-71367"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2511903"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-12T14:17:30Z"
+  }
+}

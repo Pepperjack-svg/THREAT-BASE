@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h24v-f482-8cwf",
+  "modified": "2026-11-12T18:18:44Z",
+  "published": "2026-11-12T18:18:44Z",
+  "aliases": [
+    "CVE-2026-84974"
+  ],
+  "summary": "code16/sharp: Arbitrary class instantiation through the embed_key API parameter",
+  "details": "### Impact\n\nAn authenticated attacker can instantiate any class in the PHP application by using the `embed_key` parameter across multiple API endpoints. The instantiation is performed by the Laravel container. As a result, the `__construct()` method of the class is called and all constructor dependencies are resolved. The attacker cannot specify parameter values and cannot call any arbitrary method.\n\n### Patches\n\nThe problem has been patched in 9.23.0 and pre-release version 10.0.0-beta.4. An additional check was added to verify that `embed_key` is a class extending `SharpFormEditorEmbed` before any instantiation.\n\n### Workarounds\n\nNo known workarounds.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "code16/sharp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.23.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "code16/sharp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "10.0.0-beta.1"
+            },
+            {
+              "fixed": "10.0.0-beta.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/security/advisories/GHSA-h24v-f482-8cwf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/pull/750"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/commit/dfafb44b11574e621bf0785f02c32b9866ab9923"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/code16/sharp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/releases/tag/v9.23.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/tree/v10.0.0-beta.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-470"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-11-12T18:18:44Z",
+    "nvd_published_at": null
+  }
+}

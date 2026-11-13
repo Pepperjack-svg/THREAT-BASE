@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jf63-2q37-pr75",
-  "modified": "2026-11-09T18:31:59Z",
+  "modified": "2026-11-12T18:31:22Z",
   "published": "2026-11-09T18:31:59Z",
   "aliases": [
     "CVE-2026-121688"
   ],
   "details": "FrodoBots EarthRover Mini+ firmware (version 6.2.4_6.2.5_0.614.0) contains an insecure STM32 firmware update mechanism. The STM32 motor‑controller firmware is fetched over unencrypted HTTP. Integrity is validated only via MD5, with the hash provided in the same unprotected response. No code‑signing mechanism is implemented, allowing firmware to be replaced with potentially malicious code.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-494"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-11-09T17:17:17Z"

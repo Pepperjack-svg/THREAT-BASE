@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mfjh-rff8-525v",
-  "modified": "2026-08-19T18:32:01Z",
+  "modified": "2026-11-12T21:30:25Z",
   "published": "2026-07-25T12:31:38Z",
   "aliases": [
     "CVE-2026-64507"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/bugs: Enable IBPB flush on BPF JIT allocation\n\nEnable hardening against JIT spraying when Spectre-v2 mitigations are in\nuse. Specifically, issue an IBPB flush on BPF JIT memory reuse. Skip\nenabling the IBPB flush if the BPF dispatcher is already using a retpoline\nsequence.\n\nThis hardening applies only when BPF-JIT is in use. Guard the enabling\nunder CONFIG_BPF_JIT so that bugs.c still builds with CONFIG_BPF_JIT=n.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:36Z"

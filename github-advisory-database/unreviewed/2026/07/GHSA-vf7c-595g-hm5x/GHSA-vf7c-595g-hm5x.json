@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vf7c-595g-hm5x",
-  "modified": "2026-07-19T18:31:43Z",
+  "modified": "2026-11-12T15:31:45Z",
   "published": "2026-07-19T18:31:43Z",
   "aliases": [
     "CVE-2026-63882"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: fix NULL pointer bug in svm_range_set_attr\n\nThe process_info could be NULL if user doesn't call kfd_ioctl_acquire_vm\nbefore calling kfd_ioctl_svm.\n\n(cherry picked from commit 83a26c812e0529eb040d31a76f73e33e637243d4)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -40,8 +45,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:05Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c2mm-q422-893r",
-  "modified": "2026-11-10T21:34:37Z",
+  "modified": "2026-11-12T21:31:00Z",
   "published": "2026-11-10T21:34:36Z",
   "aliases": [
     "CVE-2026-59626"
   ],
   "details": "In SendInfo of UssiController.cpp, there is a possible way to corrupt memory via a dangling connection listener pointer due to a use after free. This could lead to remote escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-11-10T20:19:32Z"
