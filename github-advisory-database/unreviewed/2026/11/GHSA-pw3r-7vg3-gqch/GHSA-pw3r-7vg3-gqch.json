@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pw3r-7vg3-gqch",
+  "modified": "2026-11-13T18:32:36Z",
+  "published": "2026-11-13T18:32:36Z",
+  "aliases": [
+    "CVE-2026-129165"
+  ],
+  "details": "Tactical RMM 0.17.0 through 1.6.1 contains an arbitrary file read in the /reporting/templates/preview/ endpoint because WeasyPrint resolves file:// links in user-supplied template_md and embeds the files in the returned PDF. Users with report management permission can read the Django SECRET_KEY, reused as the NATS password, and publish runscript commands to every managed agent.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129165"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/amidaware/tacticalrmm/blob/086e2d9714b1716796722c7e0c19a1ebe08a39f2/api/tacticalrmm/ee/reporting/utils.py#L110-L117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/amidaware/tacticalrmm/blob/086e2d9714b1716796722c7e0c19a1ebe08a39f2/api/tacticalrmm/ee/reporting/views.py#L202-L245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/amidaware/tacticalrmm/blob/086e2d9714b1716796722c7e0c19a1ebe08a39f2/api/tacticalrmm/tacticalrmm/utils.py#L227-L236"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261028/tacticalrmm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/tactical-rmm-0.17.0-through-1.6.1-arbitrary-file-read-via-report-preview"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:41Z"
+  }
+}

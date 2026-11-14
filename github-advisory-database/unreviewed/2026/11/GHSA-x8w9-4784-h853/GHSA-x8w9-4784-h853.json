@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x8w9-4784-h853",
+  "modified": "2026-11-13T18:32:36Z",
+  "published": "2026-11-13T18:32:36Z",
+  "aliases": [
+    "CVE-2026-129163"
+  ],
+  "details": "Dromara free-fs 2.0.1 through 2.3.1 contains a stored cross-site scripting vulnerability that allows registered users to run script by uploading HTML files served inline as text/html. Attackers can send a victim the /api/file/stream/preview/{fileId} link to execute script in the application origin, calling /apis endpoints to expose the victim's files and account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129163"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/free-fs/issues/28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/free-fs/blob/f8f4ff2a0b0af8fcd5cbecbf99a4afb7d0b7c020/fs-modules/fs-file/src/main/java/com/xddcodec/fs/file/controller/FileStreamController.java#L209-L237"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261024/free-fs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dromara-free-fs-2.0.1-through-2.3.1-stored-xss-via-file-preview-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:41Z"
+  }
+}

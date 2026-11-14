@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g3mr-xq8h-c9v9",
+  "modified": "2026-11-13T18:32:35Z",
+  "published": "2026-11-13T18:32:35Z",
+  "aliases": [
+    "CVE-2026-129153"
+  ],
+  "details": "SurveyKing 1.12.0 through 1.13.2 contains an authorization bypass in the linked survey feature that fails to verify the referenced linkSurveyId belongs to the caller's own project. Authenticated attackers can point a linked option at another user's survey so that loadLinkResult and updateLinkSurveyAnswer read, rewrite, or create responses in that survey.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/javahuang/SurveyKing/issues/92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/javahuang/SurveyKing/blob/5de0d05b682ee34244c0b6c07be24eb6358cd8a5/server/rdbms/src/main/java/cn/surveyking/server/impl/AnswerServiceImpl.java#L793-L830"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/javahuang/SurveyKing/blob/5de0d05b682ee34244c0b6c07be24eb6358cd8a5/server/rdbms/src/main/java/cn/surveyking/server/impl/SurveyServiceImpl.java#L435-L470"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261107/surveyking"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/surveyking-1.12.0-through-1.13.2-authorization-bypass-via-linked-survey-linksurveyid"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:39Z"
+  }
+}

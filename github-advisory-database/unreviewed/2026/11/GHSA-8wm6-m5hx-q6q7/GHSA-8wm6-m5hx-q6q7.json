@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8wm6-m5hx-q6q7",
+  "modified": "2026-11-13T12:31:46Z",
+  "published": "2026-11-13T12:31:46Z",
+  "aliases": [
+    "CVE-2026-125659"
+  ],
+  "details": "This vulnerability exists in the eMudhra emBridge due to missing authorization checks in the FileBrowser API endpoints. These endpoints perform file system enumeration using the LocalSystem account without adequately validating the requesting caller's authorization. An unauthenticated attacker on the same LAN could exploit this vulnerability by sending malicious webpage to the local HTTPS Web API.\n\n \n\nSuccessful exploitation of this vulnerability could allow the attacker to enumerate file and directory names and obtain information about the directory structure of the targeted system. \n\n\n\nThe vulnerability however, does not provide access to file contents or permit file modification, deletion, or code execution, or access to cryptographic keys and hardware token PINs.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:P/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125659"
+    },
+    {
+      "type": "WEB",
+      "url": "https://emudhra.com/en/post/cve-2026-125659"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES01&VLCODE=CIVN-2026-0549"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T11:17:16Z"
+  }
+}

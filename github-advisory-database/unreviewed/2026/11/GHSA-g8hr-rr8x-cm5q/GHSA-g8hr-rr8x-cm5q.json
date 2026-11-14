@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g8hr-rr8x-cm5q",
+  "modified": "2026-11-13T18:32:35Z",
+  "published": "2026-11-13T18:32:35Z",
+  "aliases": [
+    "CVE-2026-129160"
+  ],
+  "details": "free-fs 2.0.1 through 2.3.1 contains an SQL injection vulnerability in FileShareServiceImpl.getPages, which passes the orderBy parameter of the /apis/share/pages endpoint verbatim into the ORDER BY clause via MyBatis-Flex without a column whitelist. Authenticated users can supply CASE WHEN subquery expressions that use share ordering as a boolean oracle to read arbitrary database contents, such as share codes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129160"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/free-fs/issues/28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/free-fs/blob/f8f4ff2a0b0af8fcd5cbecbf99a4afb7d0b7c020/fs-modules/fs-file/src/main/java/com/xddcodec/fs/file/service/impl/FileShareServiceImpl.java#L93-L99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261024/free-fs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dromara-free-fs-2.0.1-through-2.3.1-sql-injection-via-orderby-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:40Z"
+  }
+}

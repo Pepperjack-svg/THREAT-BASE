@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v55w-mmhm-9mvr",
+  "modified": "2026-11-13T12:31:35Z",
+  "published": "2026-11-13T12:31:35Z",
+  "aliases": [
+    "CVE-2026-127093"
+  ],
+  "details": "Rustrak before 0.26.0 contains a server-side request forgery vulnerability that allows users with integrations update permission to send requests to arbitrary destinations by supplying routing_override.url to POST /api/integrations/{id}/test. Attackers can target loopback, private-network and cloud metadata addresses with custom headers and redirects followed, reading non-2xx response bodies returned in the API response.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-127093"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustrak/rustrak/issues/504"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustrak/rustrak/pull/525"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustrak/rustrak/commit/f41c464ec56954b1876062d70aef920e786ca40b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustrak/rustrak/blob/v0.25.0/apps/server/src/routes/alerts.rs#L422-L479"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustrak/rustrak/blob/v0.25.0/apps/server/src/services/notification/webhook.rs#L161-L250"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustrak/rustrak/releases/tag/v0.26.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rustrak-before-0.26.0-ssrf-via-alert-integration-test-routing-override-url"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:06Z"
+  }
+}

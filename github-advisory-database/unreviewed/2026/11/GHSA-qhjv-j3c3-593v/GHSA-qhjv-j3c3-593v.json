@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qhjv-j3c3-593v",
+  "modified": "2026-11-13T18:32:35Z",
+  "published": "2026-11-13T18:32:35Z",
+  "aliases": [
+    "CVE-2026-129151"
+  ],
+  "details": "SurveyKing 1.13.2 contains a missing authorization vulnerability in result lookup: the anonymous survey view leaks the lookup configuration, including its password, and the lookup password check is skipped when no answer is sent. Unauthenticated attackers with a public survey link can inject a % wildcard into the MyBatis LIKE condition to match all responses, then call loadProject with an answerId to read complete responses including hidden fields.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129151"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/javahuang/SurveyKing/issues/92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/javahuang/SurveyKing/blob/5de0d05b682ee34244c0b6c07be24eb6358cd8a5/server/rdbms/src/main/java/cn/surveyking/server/domain/mapper/ProjectViewMapper.java#L30-L33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/javahuang/SurveyKing/blob/5de0d05b682ee34244c0b6c07be24eb6358cd8a5/server/rdbms/src/main/java/cn/surveyking/server/impl/SurveyServiceImpl.java#L1085-L1096"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/javahuang/SurveyKing/blob/5de0d05b682ee34244c0b6c07be24eb6358cd8a5/server/rdbms/src/main/java/cn/surveyking/server/impl/SurveyServiceImpl.java#L937-L959"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261107/surveyking"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/surveyking-1.13.2-unauthenticated-survey-response-disclosure-via-result-lookup"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:39Z"
+  }
+}

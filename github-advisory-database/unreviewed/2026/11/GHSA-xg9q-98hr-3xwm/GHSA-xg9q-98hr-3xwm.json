@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xg9q-98hr-3xwm",
+  "modified": "2026-11-13T18:32:35Z",
+  "published": "2026-11-13T18:32:35Z",
+  "aliases": [
+    "CVE-2026-129143"
+  ],
+  "details": "paicoding 1.0.3 contains a missing authorization vulnerability in the ArticleRestController article detail endpoint that allows unauthenticated attackers to read restricted articles. Attackers can enumerate article IDs via GET /article/api/data/detail/{articleId} to retrieve full content of paid, login-only, member-only and draft articles.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/itwanger/paicoding/issues/137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/itwanger/paicoding/blob/903adce70309d340f7eec51ec3c80cfe3c8326c1/paicoding-web/src/main/java/com/github/paicoding/forum/web/front/article/rest/ArticleRestController.java#L87-L94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261112/paicoding"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/paicoding-1.0.3-missing-authorization-via-article-detail-api-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:39Z"
+  }
+}

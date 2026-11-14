@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73cc-wjfh-7vgp",
+  "modified": "2026-11-13T18:32:32Z",
+  "published": "2026-11-13T18:32:32Z",
+  "aliases": [
+    "CVE-2026-63164"
+  ],
+  "details": "Omnispace Agora Project through 26.10.0 contains an insecure direct object reference vulnerability that allows authenticated attackers to access another user's private mail by supplying a crafted reloadMailTypeId parameter to Ctrl::getCurObj() without a readRight() ownership check in CtrlMail.php. Attackers can manipulate the mail identifier value, such as reloadMailTypeId=mail-1, to retrieve the title and body of private messages belonging to other users, resulting in unauthorized disclosure of sensitive communications.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63164"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.agora-project.net"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.akailabs.fr/blog/multiple-vulnerabilities-in-agora-project-26-5-2#cve-2026-63164-idor-in-reloadmailtypeid-allows-reading-and-exfiltration-of-other"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/omnispace-agora-project-idor-via-reloadmailtypeid-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T17:17:33Z"
+  }
+}

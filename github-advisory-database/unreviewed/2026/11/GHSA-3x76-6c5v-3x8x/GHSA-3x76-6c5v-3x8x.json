@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3x76-6c5v-3x8x",
+  "modified": "2026-11-13T12:31:41Z",
+  "published": "2026-11-13T12:31:41Z",
+  "aliases": [
+    "CVE-2026-128334"
+  ],
+  "details": "listmonk 6.2.0 before 7.0.0-beta.2 contains a missing authentication vulnerability that allows unauthenticated attackers to submit Azure Event Grid bounce webhooks when no shared secret is configured. Attackers can POST forged EmailDeliveryReportReceived events with Bounced status to /webhooks/service/azure to blocklist, unsubscribe, or delete arbitrary subscribers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-128334"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/biofool/listmonk/issues/5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knadh/listmonk/commit/0c155bd2663d9ec8053ac0d1ab63f021fbb5a0dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knadh/listmonk/blob/v7.0.0-beta.1/internal/bounce/webhooks/azure.go#L141-L149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knadh/listmonk/releases/tag/v7.0.0-beta.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/listmonk-6.2.0-before-7.0.0-beta.2-missing-authentication-via-azure-bounce-webhook"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-636"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:13Z"
+  }
+}

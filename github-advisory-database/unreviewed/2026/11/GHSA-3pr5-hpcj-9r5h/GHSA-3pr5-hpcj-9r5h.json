@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3pr5-hpcj-9r5h",
+  "modified": "2026-11-13T12:31:38Z",
+  "published": "2026-11-13T12:31:38Z",
+  "aliases": [
+    "CVE-2026-128026"
+  ],
+  "details": "FrankenPHP from 1.5.0 before 1.13.0 contains an incomplete environment sandbox vulnerability in which putenv writes to the process-wide OS environment via os.Setenv, leaking values across concurrent requests. Attackers reaching a request path that spawns child processes with the default environment through proc_open or exec can read secrets such as database passwords set by other requests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:N/VC:H/VI:L/VA:N/SC:H/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/php/frankenphp/security/advisories/GHSA-996f-w38m-f574"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-128026"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/frankenphp-1.5.0-before-1.13.0-cross-request-environment-leakage-via-putenv"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-488"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:08Z"
+  }
+}

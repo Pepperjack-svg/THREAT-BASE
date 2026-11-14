@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3q4x-35gh-jfxh",
+  "modified": "2026-11-13T12:31:34Z",
+  "published": "2026-11-13T12:31:34Z",
+  "aliases": [
+    "CVE-2026-126955"
+  ],
+  "details": "Glance from 0.8.0 before 0.8.8 contains an observable response discrepancy in handlePageRequest and handlePageContentRequest that allows unauthenticated attackers to enumerate configured page slugs. Attackers can request candidate names against /{page} or /api/pages/{page}/content/ and compare 303/401 versus 404 status codes to discover hidden page names.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/glanceapp/glance/security/advisories/GHSA-294x-cjq2-6j5r"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/glanceapp/glance/commit/e19081cfa029edbe16b1354ffe03076a8cdf0244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/glanceapp/glance/blob/v0.8.7/internal/glance/glance.go#L306-L316"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/glanceapp/glance/releases/tag/v0.8.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/glance-0.8.0-before-0.8.8-page-slug-enumeration-via-response-discrepancy"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-204"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:03Z"
+  }
+}

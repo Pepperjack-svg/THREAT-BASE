@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xhgr-wvjp-62fm",
+  "modified": "2026-11-13T12:31:22Z",
+  "published": "2026-11-13T12:31:22Z",
+  "aliases": [
+    "CVE-2026-126406"
+  ],
+  "details": "The wasmtime-wasi-http p2 implementation in Wasmtime before 36.0.20, 37.0.0 before 48.0.8, 49.0.0 before 49.0.5, and 50.0.0 before 50.0.1 can send conflicting content-length headers, or ones not matching the body, in outgoing requests. A guest that reuses a received response's headers resource to send a bodyless request can enable request smuggling against non-compliant servers, potentially bypassing embedder destination access controls.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/bytecodealliance/wasmtime/security/advisories/GHSA-h4wp-g4x3-7398"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126406"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wasmtime-before-36.0.20-http-request-smuggling-via-wasi-http-p2-content-length"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-444"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:17:45Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6h86-3g39-r63x",
+  "modified": "2026-11-13T12:31:21Z",
+  "published": "2026-11-13T12:31:21Z",
+  "aliases": [
+    "CVE-2026-126393"
+  ],
+  "details": "SiYuan before 3.8.10 contains a server-side request forgery vulnerability in the skill-install download path because fetchBytes performs only a parse-time hostname check instead of using ssrfSafeClient. Attackers can supply a skill URL via the MCP skill install action that redirects or DNS-rebinds to loopback addresses, reaching internal services and metadata endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-6pg3-pqxw-jm82"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126393"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/siyuan-before-3.8.10-ssrf-via-skill-install-download-redirect-and-dns-rebinding"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:17:43Z"
+  }
+}

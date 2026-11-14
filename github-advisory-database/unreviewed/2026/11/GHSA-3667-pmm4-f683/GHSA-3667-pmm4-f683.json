@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3667-pmm4-f683",
+  "modified": "2026-11-13T12:31:12Z",
+  "published": "2026-11-13T12:31:12Z",
+  "aliases": [
+    "CVE-2026-116614"
+  ],
+  "details": "The WPMR Google Feed Manager for WooCommerce – Sell on Google Merchant Center & Shopping plugin for WordPress is vulnerable to generic SQL Injection via the 'sourceId' parameter in all versions up to, and including, 2.24.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with editor-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The plugin grants the edit_feeds capability to the Editor role on activation, meaning any Editor-level user satisfies the authorization checks and can exploit this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116614"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-product-feed-manager/tags/2.24.1/includes/packages/review-feed-manager/classes/class-wpprfm-ajax-data.php#L59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-product-feed-manager/tags/2.24.1/includes/packages/review-feed-manager/classes/class-wpprfm-queries.php#L42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-product-feed-manager/tags/2.24.1/includes/packages/review-feed-manager/classes/class-wpprfm-queries.php#L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-product-feed-manager/tags/2.24.2/includes/packages/review-feed-manager/classes/class-wpprfm-queries.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3792176"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/7cecb044-2dba-494f-b85c-41bafa69e330?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:17:25Z"
+  }
+}

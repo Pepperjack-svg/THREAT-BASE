@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-63hm-g96r-2m2q",
+  "modified": "2026-11-13T18:54:31Z",
+  "published": "2026-11-13T18:54:31Z",
+  "aliases": [
+    "CVE-2026-128083"
+  ],
+  "summary": "Laravel: Task Output Injection - Concurrency Process",
+  "details": "### Summary\n\nIf a concurrency task prints user-controlled text, an attacker can forge the framework's internal result message and achieve remote code execution in certain conditions\n\n### Pre-reqs\n\nInsecure code and insecure handling of user provided input (devs trust user-provided input) :\n\n1. App has a route that reaches Concurrency::run() (Not by default, it requires app code)\n\n2. The task writes user-controlled data to stdout (echo/print/`dd` of input, hand-built JSON via string concat, passthrough of tool output), and the user-controlled bytes can be made to start the child's stdout and form a complete JSON document followed by \\x1f\\x8b  (Not by default, requires the specific coding pattern in the app code)\n\n### Patches\n* 13.40.0\n* 12.71.0",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:L/VA:L/SC:L/SI:L/SA:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "laravel/framework"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "12.71.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "laravel/framework"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "13.0.0"
+            },
+            {
+              "fixed": "13.40.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/security/advisories/GHSA-63hm-g96r-2m2q"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/pull/62297"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/commit/0f904940d176d51db1105cc925136f01bb69e92c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/commit/c37133b89b30a86eb404537151edd8944e938f0a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/laravel/framework"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/releases/tag/v12.71.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/releases/tag/v13.40.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-11-13T18:54:31Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gxj9-vqfq-hp64",
+  "modified": "2026-11-13T12:31:40Z",
+  "published": "2026-11-13T12:31:40Z",
+  "aliases": [
+    "CVE-2026-128242"
+  ],
+  "details": "actix-http before 3.20.1 and actix-web before 4.18.2 contain an unbounded decompression vulnerability in encoding::Decoder that lets remote attackers exhaust memory and CPU via compressed bodies. Attackers can send small highly compressed gzip, deflate, Brotli or zstd request bodies to Json, Form, Bytes or String extractors, or serve them to awc clients, causing denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/actix/actix-web/security/advisories/GHSA-qph8-7859-gq2f"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-128242"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/actix/actix-web/commit/0d0be61bd757027bfcecbc53df1b7a600f21ecd0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/actix/actix-web/commit/41b54d23ea04f66758c15de7e4ab18325cd25280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/actix/actix-web"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/actix/actix-web/blob/actix-http-v3.20.0/actix-http/src/encoding/decoder.rs#L239-L301"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/actix/actix-web/releases/tag/actix-http-v3.20.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/actix/actix-web/releases/tag/actix-web-v4.18.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rustsec.org/advisories/RUSTSEC-2026-0448.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/actix-http-before-3.20.1-and-actix-web-before-4.18.2-decompression-bomb-dos-via-encoding-decoder"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-409"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:12Z"
+  }
+}

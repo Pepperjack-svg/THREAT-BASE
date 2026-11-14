@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7h5v-m38x-m56w",
+  "modified": "2026-11-13T12:31:38Z",
+  "published": "2026-11-13T12:31:38Z",
+  "aliases": [
+    "CVE-2026-128028"
+  ],
+  "details": "OpenMage magento-lts before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 contains a stored cross-site scripting vulnerability in Mage_Catalog_Model_Product_Option_Type_File, which accepts guest SVG, XHTML, or XML uploads through product File custom options with an empty allowed-extension list. Unauthenticated attackers can send the file URL under media/custom_options/ to victims, executing script in the store origin and exposing administrator sessions when the admin panel shares that origin.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/security/advisories/GHSA-v7mx-rv47-452m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-128028"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/commit/5896b2a60b10e892cec594391b2612ab53a4ce59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/commit/5b6f985785245a964aa3dc78609f6af44d9d5e27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/commit/dd692b825ba50f196bcc20ae67fbed48dd95da56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openmage-magento-lts-before-20.18.2-stored-xss-via-product-custom-option-svg-upload"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:08Z"
+  }
+}

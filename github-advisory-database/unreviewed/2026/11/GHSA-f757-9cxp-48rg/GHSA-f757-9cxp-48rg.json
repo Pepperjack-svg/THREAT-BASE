@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f757-9cxp-48rg",
+  "modified": "2026-11-13T12:31:41Z",
+  "published": "2026-11-13T12:31:41Z",
+  "aliases": [
+    "CVE-2026-128335"
+  ],
+  "details": "Contao 4.6.0 before 5.3.54, 5.4.0-RC1 before 5.7.17, and 6.0.0-RC1 before 6.0.6 fails to invalidate existing user sessions when two-factor authentication is enabled or disabled. Because Contao\\User::isEqualTo() and serialized session data omit two-factor state, attackers already holding a session keep it after the owner changes 2FA settings.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/security/advisories/GHSA-5mg3-mv6j-57wc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-128335"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/commit/7618a5757347a30168139e74c7b326e3e296059d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/commit/7e7c821ce6c41c02ae85b3d9f8eff5039de3fe1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/commit/843da308056402d94ae2dbb999959f9e2ce71fe1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/blob/5.3.53/core-bundle/contao/library/Contao/User.php#L413-L446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/releases/tag/5.3.54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/releases/tag/5.7.17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/contao/contao/releases/tag/6.0.6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/contao-before-5.3.54-5.7.17-and-6.0.6-session-invalidation-failure-on-2fa-change"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:13Z"
+  }
+}

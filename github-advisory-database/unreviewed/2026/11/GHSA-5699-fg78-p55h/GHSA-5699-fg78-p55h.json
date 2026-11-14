@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5699-fg78-p55h",
+  "modified": "2026-11-13T12:31:39Z",
+  "published": "2026-11-13T12:31:39Z",
+  "aliases": [
+    "CVE-2026-128045"
+  ],
+  "details": "OpenMage Magento-LTS before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 contains an authorization bypass in the /rss/order/status feed because its URL key is unsigned Base64-encoded JSON of the order, increment, and customer ids. Unauthenticated attackers can forge keys from enumerated sequential ids to read other customers' names, items, prices, totals, and status comments when order-status RSS is enabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/security/advisories/GHSA-3hh8-xg45-mwrr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-128045"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/commit/fde2d109292944d705c4035d87df055b1e945ea3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openmage-magento-lts-before-20.18.2-authorization-bypass-via-forgeable-rss-order-key"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:10Z"
+  }
+}

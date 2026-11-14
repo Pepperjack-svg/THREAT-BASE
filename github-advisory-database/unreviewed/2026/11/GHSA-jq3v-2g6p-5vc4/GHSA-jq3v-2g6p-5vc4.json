@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jq3v-2g6p-5vc4",
+  "modified": "2026-11-13T18:32:32Z",
+  "published": "2026-11-13T18:32:32Z",
+  "aliases": [
+    "CVE-2026-63151"
+  ],
+  "details": "Omnispace Agora Project through 26.10.0 contains a predictable token generation vulnerability that allows unauthenticated attackers to access private calendar data by exploiting a missing dateCrea value that causes the md5Id token to collapse to md5(calendarId.userId), both small enumerable integers. Attackers can compute valid tokens and request the misc&action=DisplayIcal endpoint with a forged md5Id to read any user's private calendar events without authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63151"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.agora-project.net"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.akailabs.fr/blog/multiple-vulnerabilities-in-agora-project-26-5-2#cve-2026-63151-personal-calendars-zero-entropy-md5id-share-token-allows-unauthen"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/omnispace-agora-project-predictable-token-information-disclosure-via-displayical"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-330"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T17:17:33Z"
+  }
+}

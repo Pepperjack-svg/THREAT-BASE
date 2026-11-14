@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8gcp-qm83-xp47",
-  "modified": "2026-11-10T21:34:37Z",
+  "modified": "2026-11-13T18:32:06Z",
   "published": "2026-11-10T21:34:36Z",
   "aliases": [
     "CVE-2026-59630"
   ],
   "details": "In check_constraint_monotonicity of lib.rs, there is a possible way to downgrade stored security policies and bypass rollback protection due to a logic error. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-11-10T20:19:32Z"

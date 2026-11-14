@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pgqw-7723-22rc",
+  "modified": "2026-11-13T12:31:38Z",
+  "published": "2026-11-13T12:31:38Z",
+  "aliases": [
+    "CVE-2026-128032"
+  ],
+  "details": "OpenMage magento-lts before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 accepts the free (No Payment Information Required) payment method on orders with a non-zero total because the zero-total check runs only when payment data is imported. An API user with cart permissions can select free via cart_payment.method while the total is zero, raise it with cart_coupon.remove, and submit cart.order to place an unpaid full-price order.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:H/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/security/advisories/GHSA-rmw8-7h79-p386"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-128032"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/commit/ae520e9197c4bf86d6e3b39fdded23958bf9d2d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openmage-magento-lts-before-20.18.2-payment-bypass-via-free-payment-method"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-841"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:09Z"
+  }
+}

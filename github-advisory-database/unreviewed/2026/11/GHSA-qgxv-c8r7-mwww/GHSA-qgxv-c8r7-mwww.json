@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qgxv-c8r7-mwww",
+  "modified": "2026-11-13T15:31:45Z",
+  "published": "2026-11-13T15:31:45Z",
+  "aliases": [
+    "CVE-2026-128991"
+  ],
+  "details": "xschem 2.9.9 through 3.4.7 contains an out-of-bounds read vulnerability in read_xschem_file() in src/save.c that mishandles embedded-symbol records lacking a preceding instance. Attackers can supply a crafted schematic beginning with a \"[\" record, causing xschem to read and dereference memory below the instance array and crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-128991"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StefanSchippers/xschem/commit/e29af39c6133c36bdaf66603fd663231e75517f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StefanSchippers/xschem"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StefanSchippers/xschem/blob/3.4.7/src/save.c#L3138-L3141"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/xschem-2.9.9-through-3.4.7-out-of-bounds-read-via-read-xschem-file-embedded-symbol-record"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T15:17:45Z"
+  }
+}

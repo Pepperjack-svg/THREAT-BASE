@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9f94-c996-h2pj",
+  "modified": "2026-11-13T18:32:31Z",
+  "published": "2026-11-13T18:32:31Z",
+  "aliases": [
+    "CVE-2026-129125"
+  ],
+  "details": "C-Kermit 6.0.192 before 11.1.515 contains a remote code execution vulnerability that allows Kermit clients to run shell commands on servers with host commands disabled by abusing REMOTE QUERY evaluation. Attackers can send a REMOTE QUERY invoking the command function, or define a macro via REMOTE ASSIGN and call execute to reach RUN, bypassing the nopush restriction and DISABLE HOST.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenKermit/ckermit/security/advisories/GHSA-c5px-7h4c-gj8p"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenKermit/ckermit/commit/85ef1da670cee132ea2d8e4eb759bab310ff73c9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenKermit/ckermit/blob/v11.0.514/ckcpro.w#L2544"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenKermit/ckermit/releases/tag/v11.1.515"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/c-kermit-6.0.192-before-11.1.515-command-execution-via-remote-query"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T17:17:29Z"
+  }
+}

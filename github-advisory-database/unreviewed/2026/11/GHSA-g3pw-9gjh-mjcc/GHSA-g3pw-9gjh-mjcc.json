@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g3pw-9gjh-mjcc",
+  "modified": "2026-11-13T18:32:36Z",
+  "published": "2026-11-13T18:32:36Z",
+  "aliases": [
+    "CVE-2026-129170"
+  ],
+  "details": "FileCodeBox 2.2.1 through 2.8.4 contains a stored cross-site scripting vulnerability in renderMarkdownPreview, which returns unsanitized text when the marked parser throws. Unauthenticated attackers can share text with thousands of nested blockquote markers followed by HTML payloads, executing script that steals the admin token from localStorage.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129170"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vastsa/FileCodeBox/issues/557"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vastsa/FileCodeBoxFronted/commit/4c40406d366af1583a3ba2327366b7a62d765537"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vastsa/FileCodeBoxFronted/blob/bcc1dbda06b772d6f4afbcc12c6f12e60bbbc7da/src/components/common/ContentPreviewModal.vue#L45-L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vastsa/FileCodeBoxFronted/blob/bcc1dbda06b772d6f4afbcc12c6f12e60bbbc7da/src/utils/content-preview.ts#L43-L57"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261027/filecodebox"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/filecodebox-2.2.1-through-2.8.4-stored-xss-via-markdown-preview-parser-error"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:42Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9cpr-c5m9-prfr",
+  "modified": "2026-11-13T18:32:35Z",
+  "published": "2026-11-13T18:32:35Z",
+  "aliases": [
+    "CVE-2026-129158"
+  ],
+  "details": "ragent 1.1.0 contains a stored cross-site scripting vulnerability that allows authenticated users to inject scripts by uploading SVG knowledge-base documents served inline as image/svg+xml. Attackers can upload a script-bearing SVG via /knowledge-base/{kb-id}/docs/upload so that victims opening /knowledge-base/docs/{docId}/file execute it in the application origin, enabling account takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nageoffer/ragent/issues/187"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nageoffer/ragent/blob/f64de341452c8998ebf64cd264e60ccad6a31631/bootstrap/src/main/java/com/nageoffer/ai/ragent/knowledge/controller/KnowledgeDocumentController.java#L187-L198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nageoffer/ragent/blob/f64de341452c8998ebf64cd264e60ccad6a31631/bootstrap/src/main/java/com/nageoffer/ai/ragent/knowledge/controller/KnowledgeDocumentController.java#L71-L82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261104/ragent"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ragent-1.1.0-stored-xss-via-svg-knowledge-base-document-upload"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:40Z"
+  }
+}

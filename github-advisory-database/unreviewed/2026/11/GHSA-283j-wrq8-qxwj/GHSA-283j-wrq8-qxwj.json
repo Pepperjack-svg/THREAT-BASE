@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-283j-wrq8-qxwj",
+  "modified": "2026-11-13T18:32:32Z",
+  "published": "2026-11-13T18:32:32Z",
+  "aliases": [
+    "CVE-2026-63166"
+  ],
+  "details": "Omnispace Agora Project through 26.10.0 contains a stored cross-site scripting vulnerability that allows attackers to inject malicious HTML markup by controlling imported directory data or an uploaded CSV file, as values are rendered into table cell text and value attributes after only Txt::utf8Encode() with no HTML escaping in VuePersonsImportExport.php. Attackers can craft a CSV cell containing an attribute-breakout payload that is rendered verbatim and executed in the browser of the administrator performing the import, leading to arbitrary script execution in the administrative context.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63166"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.agora-project.net"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.akailabs.fr/blog/multiple-vulnerabilities-in-agora-project-26-5-2#cve-2026-63166-second-order-xss-in-ldap-import-preview"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/omnispace-agora-project-stored-xss-via-csv-import-preview"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T17:17:33Z"
+  }
+}

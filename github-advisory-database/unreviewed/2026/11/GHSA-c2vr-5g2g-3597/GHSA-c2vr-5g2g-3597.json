@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c2vr-5g2g-3597",
+  "modified": "2026-11-13T12:31:35Z",
+  "published": "2026-11-13T12:31:35Z",
+  "aliases": [
+    "CVE-2026-127091"
+  ],
+  "details": "Jadaptive Maverick Synergy Server before 3.0.33 and 3.1.x before 3.1.7, and Maverick Legacy Server before 1.8.1, contain an improper path equivalence flaw in VirtualFileFactory.canonicalisePath that bypasses mount-level access policy. Authenticated users can supply paths with duplicate separators or dot segments to route operations to a less restrictive parent mount and read or write files the child mount denies.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-127091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sshtools/maverick-synergy/commit/f5531c21302d00901021bf2cb4dba7fca6436cfb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sshtools/maverick-synergy/blob/3.1.4/maverick-virtual-filesystem/src/main/java/com/sshtools/common/files/vfs/VirtualFileFactory.java#L189-L219"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jadaptive.com/security/advisories/JADAPTIVE-SA-2026-002"
+    },
+    {
+      "type": "WEB",
+      "url": "https://store.jadaptive.com/app/api/releases/changes/01d04a39-0f05-4bae-842e-d2f1acc16985"
+    },
+    {
+      "type": "WEB",
+      "url": "https://store.jadaptive.com/app/api/releases/changes/ff71bdcf-a2a2-47e0-af5a-22e15af1dfa4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jadaptive-maverick-synergy-server-before-3.0.33-and-3.1-x-before-3.1.7-and-maverick-legacy-server-before-1.8.1-vfs-mount-policy-bypass-via-non-canonical-paths"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-41"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:05Z"
+  }
+}

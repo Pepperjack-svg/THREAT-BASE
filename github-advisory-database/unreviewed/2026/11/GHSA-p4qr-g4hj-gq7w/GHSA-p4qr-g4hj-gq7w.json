@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p4qr-g4hj-gq7w",
+  "modified": "2026-11-13T21:32:01Z",
+  "published": "2026-11-13T21:32:01Z",
+  "aliases": [
+    "CVE-2026-89037"
+  ],
+  "details": "Dolibarr before 24.0.2 contains an insecure direct object reference vulnerability in the REST Documents API for the ticket module that allows authenticated API users to access ticket attachments belonging to other companies by omitting a company-scope check that is only applied via a session variable set during public ticket authentication, which REST API authentication never sets. Attackers with ticket read permission can enumerate predictable ticket identifiers and supply them to the documents endpoint or download path to retrieve sensitive attachments such as invoices and contracts belonging to other third parties.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89037"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dolibarr/dolibarr/commit/f815deb1c234168a69623101a26ae71f8c384c46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dolibarr/dolibarr/releases/tag/24.0.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dolibarr-idor-via-ticket-documents-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T21:17:48Z"
+  }
+}

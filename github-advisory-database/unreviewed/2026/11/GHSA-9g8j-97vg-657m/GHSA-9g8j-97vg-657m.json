@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9g8j-97vg-657m",
+  "modified": "2026-11-13T12:31:15Z",
+  "published": "2026-11-13T12:31:15Z",
+  "aliases": [
+    "CVE-2026-126284"
+  ],
+  "details": "NocoDB from 2026.05.2 before 2026.07.0 contains a server-side request forgery vulnerability that allows Editor-role users to fetch internal URLs because data import reused the webhook internal-network exemption. When NC_ALLOW_LOCAL_HOOKS or NC_WEBHOOK_ALLOW_PRIVATE_NETWORK is set, attackers can request internal services via URLs ending in CSV or spreadsheet extensions and read the responses.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/nocodb/nocodb/security/advisories/GHSA-6q3f-6mpq-cqgc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126284"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nocodb-2026.05.2-before-2026.07.0-ssrf-via-data-import-url-fetch"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:17:31Z"
+  }
+}

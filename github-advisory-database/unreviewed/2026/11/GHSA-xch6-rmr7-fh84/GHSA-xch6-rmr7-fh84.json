@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xch6-rmr7-fh84",
+  "modified": "2026-11-13T12:31:42Z",
+  "published": "2026-11-13T12:31:42Z",
+  "aliases": [
+    "CVE-2026-128343"
+  ],
+  "details": "exceljs through 4.4.0 contains a denial of service vulnerability that allows attackers to block the event loop by supplying unbounded row r attributes parsed in row-xform.js. Attackers can craft an XLSX file with a row numbered far beyond Excel's limit, making getSheetValues(), workbook writes and CSV export consume time proportional to that number.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mateocallec/exceljs-hardened/security/advisories/GHSA-3gm5-qxj8-89rr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-128343"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/exceljs/exceljs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/exceljs/exceljs/blob/v4.4.0/lib/doc/worksheet.js#L571-L580"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/exceljs/exceljs/blob/v4.4.0/lib/doc/worksheet.js#L886-L893"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/exceljs/exceljs/blob/v4.4.0/lib/xlsx/xform/sheet/row-xform.js#L73-L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/exceljs-through-4.4.0-denial-of-service-via-oversized-row-number"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-606"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:14Z"
+  }
+}

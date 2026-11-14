@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c2c3-mpf8-3933",
+  "modified": "2026-11-13T12:31:34Z",
+  "published": "2026-11-13T12:31:33Z",
+  "aliases": [
+    "CVE-2026-126954"
+  ],
+  "details": "Glance from 0.7.9 before 0.8.8 contains a stored cross-site scripting vulnerability that allows malicious extension endpoints to inject javascript: URLs via the Widget-Title-URL response header. Attackers controlling an extension endpoint can execute script when users click the widget title, reading dashboard pages through same-origin requests and exfiltrating content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/glanceapp/glance/security/advisories/GHSA-96x7-3hwp-rcfc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/glanceapp/glance/security/advisories/GHSA-f2c4-p935-ffpj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126954"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/glanceapp/glance/commit/e19081cfa029edbe16b1354ffe03076a8cdf0244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/glanceapp/glance/blob/v0.8.7/internal/glance/templates/widget-base.html#L5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/glanceapp/glance/blob/v0.8.7/internal/glance/widget-extension.go#L151-L152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/glanceapp/glance/releases/tag/v0.8.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/glance-0.7.9-before-0.8.8-stored-xss-via-widget-title-url-header"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:02Z"
+  }
+}

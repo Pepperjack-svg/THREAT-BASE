@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6h3m-pw73-74r6",
+  "modified": "2026-11-13T12:31:33Z",
+  "published": "2026-11-13T12:31:33Z",
+  "aliases": [
+    "CVE-2026-126949"
+  ],
+  "details": "Zipline through 4.4.0 contains a path traversal vulnerability in the PATCH /api/user/files/:id rename endpoint that allows authenticated users to overwrite existing uploads by supplying unsanitized names. Attackers can submit names like ../uploads/victim.txt that bypass the raw-string database uniqueness check but normalize via path.join(), causing fs.rename() to replace other files' contents.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/diced/zipline/security/advisories/GHSA-rw9m-7mvm-6gxp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126949"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/zipline-through-4.4.0-path-traversal-file-overwrite-via-patch-api-user-files-id"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:02Z"
+  }
+}

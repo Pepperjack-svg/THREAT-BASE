@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rhx2-8j4g-j7gx",
+  "modified": "2026-11-13T12:31:45Z",
+  "published": "2026-11-13T12:31:45Z",
+  "aliases": [
+    "CVE-2026-75577"
+  ],
+  "details": "Cudy TR3000 before 2.5.42 contains a command injection vulnerability that allows authenticated administrators to execute commands as root by storing a malicious WireGuard private key. Attackers can save a private_key containing $() shell substitution and call the vpn.export_conf method on the /cgi-bin/luci/rpc/app JSON-RPC endpoint, which passes the key to a wg pubkey shell command.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75577"
+    },
+    {
+      "type": "WEB",
+      "url": "https://d1jvyy13vm72kv.cloudfront.net/device/upgrade/m_upgrade_TR3000_256MB_Flash-R103-2.5.42-20261103-160202-sysupgrade_82672.zip"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cudy.com/en-us/pages/download-center/tr3000-1-0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cudy-tr3000-before-2.5.42-command-injection-via-vpn-export-conf-wireguard-private-key"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:17Z"
+  }
+}

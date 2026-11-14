@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x585-4vv8-2mh2",
+  "modified": "2026-11-13T01:09:54Z",
+  "published": "2026-11-13T01:09:54Z",
+  "aliases": [
+    "CVE-2026-100397"
+  ],
+  "summary": "Rucio: Unauthenticated administrator impersonation through SSH challenge tokens",
+  "details": "## Summary\n\nSSH challenge tokens are mistakenly accepted as valid credentials during the authentication token validation process.\n\nWhile an SSH challenge token is intended as a short-lived nonce for use in a subsequent SSH key exchange, the function to validate authentication tokens does not differentiate between these and actual authentication tokens. Because challenge tokens are generated based on an account name provided via headers without requiring prior authentication, an unauthenticated attacker can request a valid \"challenge\" token for any account (including administrative ones) and use it to authenticate against other API endpoints.\n\n## Proof of Concept\n\nThe vulnerability exists because SSH challenge tokens are stored in the same database table as regular authentication tokens and `validate_auth_token` in `lib/rucio/core/authentication.py` accepts these \"challenge\" tokens. An attacker can obtain a challenge token for an account such as “root” via the REST API and then present it as a valid authentication bearer token:\n\n1. Request a challenge token for an arbitrary account (e.g., \"root\"):\n   `curl -i -H \"X-Rucio-Account: root\" https://rucio/auth/ssh_challenge_token`\n2. The server returns a `200 OK` with the header `X-Rucio-SSH-Challenge-Token`.\n3. The attacker can then use this specific token within the ten-second challenge lifetime as an authentication credential in subsequent requests to the Rucio API:\n  `curl -H \"X-Rucio-Auth-Token: $CHALLENGE_TOKEN\"  https://rucio/accounts/whoami`",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "rucio"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.14.0.post1"
+            },
+            {
+              "fixed": "35.9.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "rucio"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "36.0.0rc1"
+            },
+            {
+              "fixed": "38.6.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "rucio"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "39.0.0rc1"
+            },
+            {
+              "fixed": "40.4.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "rucio"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "41.0.0rc1"
+            },
+            {
+              "fixed": "41.1.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/security/advisories/GHSA-x585-4vv8-2mh2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/commit/f5db3546d9c0de4642dc9aa52e6a6e447911d680"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/commit/e6525523e3bbe8ae34cbfc9b043ae52bda209b87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/commit/d7a3c2c2f933dce8edbcad07d8d076b9b782da35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/commit/b1725ee5477b683202174f0ec77ae00921bc3bd0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/commit/883d526c2f3c315cd775fb142038007053e3882b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/commit/8295d72a9e2d76abf9e98eb6f9a4ed5cb3bb1869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/commit/4df924feb539ef789b3e78cbc00712ef8cdf606e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/commit/4d4a58571ba853f3a55aef16ad9eb0944fce7483"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/releases/tag/35.9.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/releases/tag/35.9.1.post1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/releases/tag/38.6.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/releases/tag/38.6.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/releases/tag/40.4.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/releases/tag/41.1.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rucio/rucio/releases/tag/41.2.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/rucio/rucio"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287",
+      "CWE-305"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-11-13T01:09:54Z",
+    "nvd_published_at": null
+  }
+}

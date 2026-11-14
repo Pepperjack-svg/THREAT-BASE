@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xq8q-45hh-5rfm",
+  "modified": "2026-11-13T12:31:40Z",
+  "published": "2026-11-13T12:31:39Z",
+  "aliases": [
+    "CVE-2026-128031"
+  ],
+  "details": "OpenMage magento-lts before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 contains an incorrect authorization vulnerability because admin controllers' _isAllowed() checks fall back to, or only check, parent ACL resources instead of finer per-action permissions. Authenticated restricted administrators can mass cancel or hold orders, rewrite order shipping addresses, export customer report data, or create REST roles despite their role denying those permissions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/security/advisories/GHSA-wgf8-gh63-gfqf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-128031"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/commit/37fa46699ea0d3c4301994dc9411b5639b2ffc2f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/commit/b36d00df844ad127b24b481e1d4c2df90b75d559"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openmage-magento-lts-before-20.18.2-incorrect-authorization-in-admin-controllers-acl"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:09Z"
+  }
+}

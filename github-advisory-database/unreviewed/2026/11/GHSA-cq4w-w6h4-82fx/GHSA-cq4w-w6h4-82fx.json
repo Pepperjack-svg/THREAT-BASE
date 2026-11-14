@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cq4w-w6h4-82fx",
+  "modified": "2026-11-13T18:32:35Z",
+  "published": "2026-11-13T18:32:35Z",
+  "aliases": [
+    "CVE-2026-129144"
+  ],
+  "details": "paicoding 1.0.3 contains a payment bypass vulnerability that allows authenticated attackers to unlock paid articles by guessing weak payment confirmation codes. Attackers can start a payment, enumerate roughly 2000 IdUtil.genPayCode counter values, and submit the matching verifyCode to the unauthenticated callback to mark it paid.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129144"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/itwanger/paicoding/issues/137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/itwanger/paicoding/blob/903adce70309d340f7eec51ec3c80cfe3c8326c1/paicoding-core/src/main/java/com/github/paicoding/forum/core/util/id/IdUtil.java#L54-L61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/itwanger/paicoding/blob/903adce70309d340f7eec51ec3c80cfe3c8326c1/paicoding-web/src/main/java/com/github/paicoding/forum/web/front/article/rest/ArticlePayRestController.java#L79-L90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261112/paicoding"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/paicoding-1.0.3-payment-bypass-via-guessable-codes-in-article-api-pay-callback"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-334"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:39Z"
+  }
+}

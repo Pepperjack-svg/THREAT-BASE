@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-45mh-8x4c-mfq7",
+  "modified": "2026-11-13T18:32:36Z",
+  "published": "2026-11-13T18:32:36Z",
+  "aliases": [
+    "CVE-2026-129161"
+  ],
+  "details": "Dromara free-fs 2.0.1 through 2.3.1 contains an improper restriction of authentication attempts vulnerability that allows unauthenticated attackers to brute-force six-digit password reset codes via PUT /apis/user/forget-password. Attackers can request a code for a known email and submit unlimited guesses during its 300-second lifetime to set a chosen password and take over the account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129161"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/free-fs/issues/28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/free-fs/blob/f8f4ff2a0b0af8fcd5cbecbf99a4afb7d0b7c020/fs-modules/fs-system/src/main/java/com/xddcodec/fs/system/service/impl/SysUserServiceImpl.java#L277-L294"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261024/free-fs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dromara-free-fs-2.0.1-through-2.3.1-password-reset-code-brute-force-account-takeover"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-307"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:41Z"
+  }
+}

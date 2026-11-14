@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7cmc-68q2-4cf4",
+  "modified": "2026-11-13T12:31:34Z",
+  "published": "2026-11-13T12:31:34Z",
+  "aliases": [
+    "CVE-2026-127083"
+  ],
+  "details": "Huginn from 2026.09.09 before 2026.11.09 contains a server-side request forgery vulnerability because OutboundProxy.configure! applies the egress proxy only to Faraday and Typhoeus. Authenticated users can configure JiraAgent or WeiboPublishAgent to send HTTParty, open-uri or Net::HTTP requests directly to internal services, with JiraAgent returning response data as events.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/huginn/huginn/security/advisories/GHSA-98rv-h5p4-9rgr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-127083"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huginn/huginn/commit/a6f5fb64ac957f33fc6cdff6ab92884e372857a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huginn/huginn/blob/v2026.11.05.2/app/models/agents/jira_agent.rb#L108-L109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huginn/huginn/blob/v2026.11.05.2/lib/outbound_proxy.rb#L38-L42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huginn/huginn/releases/tag/v2026.11.09"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/huginn-from-2026.09.09-before-2026.11.09-ssrf-via-outbound-proxy-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:04Z"
+  }
+}

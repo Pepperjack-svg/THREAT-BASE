@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mg6x-2v8p-4v23",
-  "modified": "2026-11-10T21:34:35Z",
+  "modified": "2026-11-13T18:32:06Z",
   "published": "2026-11-10T21:34:35Z",
   "aliases": [
     "CVE-2026-58801"
   ],
   "details": "In smmu_domain_config_s1 of arm-smmu-v3.c, there is a possible way to access stale stream table entries across reassigned stream identifiers due to a logic error. This could lead to local information disclosure with System execution privileges needed. User interaction is not needed for exploitation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-672"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-11-10T20:19:27Z"

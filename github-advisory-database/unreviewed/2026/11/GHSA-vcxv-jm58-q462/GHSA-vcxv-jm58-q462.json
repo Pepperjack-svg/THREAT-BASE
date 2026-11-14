@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vcxv-jm58-q462",
+  "modified": "2026-11-13T15:31:40Z",
+  "published": "2026-11-13T15:31:40Z",
+  "aliases": [
+    "CVE-2026-124758"
+  ],
+  "details": "P-Net before 1.0.4 does not check the record data length of an IODWrite request to a non-user record index against the size of the record block header. The 32-bit length is reduced by the header size before it is passed to the record handlers, so a length smaller than the header underflows and the handlers receive a data length of about 65530. The fixed-size reads of the I&M and PDPort handlers can then read past the end of the session buffer. The result of the write is discarded. The attacker must have an established Application Relationship or be able to send in the context of one, and requires ADJACENT network access.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124758"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rt-labs.com/wp-content/uploads/2026/11/RRTL-261109-01.pdf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T14:17:50Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pfpf-25qg-8vx8",
+  "modified": "2026-11-13T18:32:36Z",
+  "published": "2026-11-13T18:32:36Z",
+  "aliases": [
+    "CVE-2026-129167"
+  ],
+  "details": "Seafile SeaDoc converter 2.0.4 before 2.0.11 and 3.0.0 before 3.0.8 contains an absolute path traversal vulnerability that allows unauthenticated attackers holding a public share token to execute code. Attackers supply an absolute filename to /api/v1/confluence-to-wiki/ to extract a ZIP from download_url into the Python library path, then trigger the module's import via a file-convert request.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129167"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/haiwen/seadoc-converter/commit/cb43162e8bc2991a2900c8acf85090358a30e516"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/haiwen/seadoc-converter/blob/bb6cf0fb9ebc6bb05c9161acbfd6289737ec2cd6/seadoc_converter/server/apis.py#L26-L42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/haiwen/seadoc-converter/blob/bb6cf0fb9ebc6bb05c9161acbfd6289737ec2cd6/seadoc_converter/server/apis.py#L360-L395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261024/seafile"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/seadoc-converter-2.0.4-before-2.0.11-and-3.0.0-before-3.0.8-path-traversal-rce-via-confluence-to-wiki"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-36"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:41Z"
+  }
+}

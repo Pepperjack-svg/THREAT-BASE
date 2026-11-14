@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5jff-rm7x-vvwf",
+  "modified": "2026-11-13T15:31:45Z",
+  "published": "2026-11-13T15:31:45Z",
+  "aliases": [
+    "CVE-2026-127031"
+  ],
+  "details": "In Eclipse AAS4J before 3.0.1, `XmlSchemaValidator.validateSchema()` (and `AASXValidator.validateSchema()`, which calls it) validates untrusted XML with a default JAXP `Validator` that resolves external DTDs and external entities. An attacker who supplies a crafted AAS XML document or AASX package can read local files from the host, send their contents out-of-band to an attacker-controlled server, and make the validating process send arbitrary outbound requests (SSRF). Validation still returns no errors.\n\n\n\nDetails:\n\n\n\n- Vulnerable code: `dataformat-xml/src/main/java/org/eclipse/digitaltwin/aas4j/v3/dataformat/xml/XmlSchemaValidator.java`. `schema.newValidator().validate(new StreamSource(...))` runs without `ACCESS_EXTERNAL_DTD` / `ACCESS_EXTERNAL_SCHEMA` restrictions and without `disallow-doctype-decl`.\n\n\n\n- Second entry point: `dataformat-aasx/src/main/java/org/eclipse/digitaltwin/aas4j/v3/dataformat/aasx/AASXValidator.java`. The AAS XML part of an `.aasx` package is passed unchanged to the vulnerable validator.\n\n\n\n- `XmlDeserializer` (Jackson/Woodstox) is not affected, because DTD support is disabled by default there.\n\n\n\n- Present since the initial import of the code base (commit `cc9da52`).\n\n\n\n- Fix: harden the validator by setting `ACCESS_EXTERNAL_DTD` and `ACCESS_EXTERNAL_SCHEMA` to `\"\"` and rejecting `DOCTYPE` declarations. The bundled `AAS.xsd` does not need DTDs, so no functionality is lost.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-127031"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-aas4j/aas4j"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-aas4j/aas4j/blob/main/dataformat-xml/src/main/java/org/eclipse/digitaltwin/aas4j/v3/dataformat/xml/XmlSchemaValidator.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/571"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T15:17:44Z"
+  }
+}

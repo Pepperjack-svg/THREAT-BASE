@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cv2f-54jp-59ch",
+  "modified": "2026-11-13T18:32:36Z",
+  "published": "2026-11-13T18:32:36Z",
+  "aliases": [
+    "CVE-2026-129162"
+  ],
+  "details": "Dromara free-fs 2.0.1 through 2.3.1 contains a missing authentication vulnerability in FileStreamController.preview that allows unauthenticated attackers to download stored files. Attackers who obtain a file ID from share listings or preview links can request /api/file/stream/preview/{fileId} to download any user's or workspace's files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129162"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/free-fs/issues/28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/free-fs/blob/f8f4ff2a0b0af8fcd5cbecbf99a4afb7d0b7c020/fs-admin/src/main/java/com/xddcodec/fs/web/WebMvcConfig.java#L50-L84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/free-fs/blob/f8f4ff2a0b0af8fcd5cbecbf99a4afb7d0b7c020/fs-modules/fs-file/src/main/java/com/xddcodec/fs/file/controller/FileStreamController.java#L52-L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261024/free-fs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dromara-free-fs-2.0.1-through-2.3.1-missing-authentication-via-file-stream-preview"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:41Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-grm4-x98c-43rp",
+  "modified": "2026-11-13T12:31:39Z",
+  "published": "2026-11-13T12:31:39Z",
+  "aliases": [
+    "CVE-2026-128048"
+  ],
+  "details": "OpenMage magento-lts before 20.18.2 and 21.0.0-beta1 before 21.0.0-beta3 lets restricted administrators read decrypted configuration secrets because the store.getConfig email template directive's encrypted-path check missed config.xml-declared paths, case variants of the getConfig method name, and parent paths. Administrators with Transactional Emails access can preview a crafted template to expose PayPal, payment gateway, and carrier credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/security/advisories/GHSA-94p5-6j66-c9j6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-128048"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenMage/magento-lts/commit/6763d33dfdb7fb33704ad095eb8e4d5a20e30f75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openmage-magento-lts-before-20.18.2-information-disclosure-via-email-template-getconfig"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-178"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T10:18:10Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vq4h-g7mx-jcq2",
+  "modified": "2026-11-13T18:32:36Z",
+  "published": "2026-11-13T18:32:36Z",
+  "aliases": [
+    "CVE-2026-129166"
+  ],
+  "details": "Keep 0.34.10 through 0.55.0 contains a blind SQL injection vulnerability in its CEL-to-SQL converter, which inserts bracket-indexed JSON keys from CEL filters unescaped into JSON path expressions for SQLite, PostgreSQL, and MySQL. Authenticated users with read:alert permission can submit crafted CEL expressions to /alerts/query or the cel parameter of /incidents, using result counts as a boolean oracle to extract other tenants' alerts and password hashes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129166"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keephq/keep/issues/6902"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keephq/keep/blob/ab394bf49813b92377bbce4332d4f5cad1563a9c/keep/api/core/cel_to_sql/cel_ast_converter.py#L278-L290"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keephq/keep/blob/ab394bf49813b92377bbce4332d4f5cad1563a9c/keep/api/core/cel_to_sql/sql_providers/postgresql.py#L22-L26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keephq/keep/blob/ab394bf49813b92377bbce4332d4f5cad1563a9c/keep/api/core/cel_to_sql/sql_providers/sqlite.py#L16-L18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vul.yulun.ac.cn/20261030/keephq_keep"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/keep-0.34.10-through-0.55.0-blind-sql-injection-via-cel-bracket-indexed-json-keys"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-11-13T18:17:41Z"
+  }
+}
